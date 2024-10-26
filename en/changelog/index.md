@@ -8,9 +8,21 @@ redirect_from:
   - "en/changelog/4x.html"
 ---
 
-# Express release changelog
+# Release changelog
 
 All the latest updates, improvements, and fixes to Express
+
+## 5.0.1 - Release date: 2024-10-08
+{: id="5.0.1"}
+
+The 5.0.1 patch release includes one security fix:
+
+* Update [jshttps/cookie](https://www.npmjs.com/package/cookie) to address a [vulnerability](https://github.com/advisories/GHSA-pxg6-pf52-xh8x).
+
+## 5.0.0 - Release date: 2024-09-09
+{: id="5.0.0"}
+
+Check the [migration guide]({{page.lang}}/guide/migrating-5.html) with all the changes in this new version of Express.  
 
 ## 4.21.1 - Release date: 2024-10-08
 {: id="4.21.1"}
