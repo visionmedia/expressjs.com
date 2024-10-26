@@ -8,7 +8,7 @@ const response = await (await fetch(NPMURL)).json()
 const { next, latest } = response['dist-tags']
 
 try {
-  const filePath = path.resolve(path.join('_data', 'express.yml'))
+  const filePath = path.resolve(path.join('..', '..', '_data', 'express.yml'))
   let content = await readFile(filePath, 'utf8')
 
   content = content.replace(/current_version: ".*"/, `current_version: "${latest}"`)
