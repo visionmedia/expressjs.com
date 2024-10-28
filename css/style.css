@@ -948,6 +948,7 @@ h2 a {
   #home-content {
     margin: 60px 0 0 5%;
     padding-right: 5%;
+    text-align: center;
   }
 
   #description {
@@ -990,6 +991,8 @@ h2 a {
 
   #boxes div {
     width: 90%;
+    text-align: center;
+    margin-left: 5%;
   }
 
   #home-menu {
