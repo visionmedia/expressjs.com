@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Serving static files in Express
+description: Understand how to serve static files like images, CSS, and JavaScript in Express.js applications using the built-in express.static middleware.
 menu: starter
 lang: en
 redirect_from: "/starter/static-files.html"
