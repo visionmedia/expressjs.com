@@ -635,8 +635,7 @@ code {
 
 footer {
   font-size: 12px;
-  margin: 60px auto 30px;
-  max-width: 64rem;
+  margin: 60px 5% 30px;
   display: flex;
   gap: 24px;
   flex-direction: column;
@@ -664,11 +663,7 @@ footer {
   max-width: 125px;
 }
 
-#github {
-  font-size: 20px;
-}
-
-#footer-policy {
+#footer-policy{
   display: flex;
   flex-wrap: wrap;
   column-gap: 20px;
@@ -682,11 +677,13 @@ footer {
   gap: 20px;
 }
 
-@media only screen and (-moz-min-device-pixel-ratio: 1.5),
-  only screen and (-o-min-device-pixel-ratio: 3/2),
-  only screen and (-webkit-min-device-pixel-ratio: 1.5),
-  only screen and (min-devicepixel-ratio: 1.5),
-  only screen and (min-resolution: 1.5dppx) {
+.footer-social {
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+}
+
+@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
   #announcements p:first-child {
     background-image: url(/images/announcement-icon@2x.png);
   }

@@ -19,6 +19,7 @@ jobs:
               with:
                 node-version: 20
             - name: Run scripts
+              working-directory: .github/scripts
               run: |
                 bash ./get-contributing.sh
                 bash ./get-readmes.sh
