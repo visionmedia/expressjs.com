@@ -1,7 +1,7 @@
 ---
 layout: 4x-api
 title: Express 4.x - API Reference
-description: Access the comprehensive API reference for Express.js 4.x, detailing all modules, methods, and properties for building web applications with this version.
+description: Access the API reference for Express.js detailing all modules, methods, and properties for building web applications with this version.
 lang: en
 redirect_from: "/api.html"
 ---

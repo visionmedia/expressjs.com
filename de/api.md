@@ -1,6 +1,7 @@
 ---
 layout: 4x-api
 title: Express 4.x - API-Referenz
+description: Access the API reference for Express.js detailing all modules, methods, and properties for building web applications with this version.
 lang: de
 ---
 <div id="api-doc" markdown="1">

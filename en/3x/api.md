@@ -1,7 +1,7 @@
 ---
 layout: 3x-api
 title: Express 3.x - API Reference
-description: Access the API reference for Express.js version 3.x, noting that this version is end-of-life and no longer maintained; includes details on modules and methods.
+description: Access the API reference for Express.js version 3.x, noting that this version is end-of-life and no longer maintained - includes details on modules and methods.
 menu: api
 lang: en
 redirect_from: "/3x/api.html"
