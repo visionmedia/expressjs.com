@@ -3,6 +3,8 @@ layout: page
 title: Express ile statik dosyalar
 menu: starter
 lang: tr
+description: Understand how to serve static files like images, CSS, and JavaScript
+  in Express.js applications using the built-in 'static' middleware.
 ---
 # Express ile statik dosyaları sunmak
 

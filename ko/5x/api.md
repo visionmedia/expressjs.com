@@ -3,6 +3,8 @@ layout: 5x-api
 title: Express 5.x - API 참조
 menu: api
 lang: ko
+description: Access the API reference for Express.js 5.x, detailing all modules, methods,
+  and properties for building web applications with this latest version.
 ---
 
 <div id="api-doc" markdown="1">

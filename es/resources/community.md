@@ -3,6 +3,8 @@ layout: page
 title: Comunidad de Express
 menu: resources
 lang: es
+description: Connect with the Express.js community, learn about the technical committee,
+  find resources, explore community-contributed modules, and get involved in discussions.
 ---
 
 # Comunidad

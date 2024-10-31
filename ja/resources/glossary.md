@@ -3,6 +3,8 @@ layout: page
 title: Express の用語集
 menu: resources
 lang: ja
+description: A comprehensive glossary of terms related to Express.js, Node.js, middleware,
+  routing, and other key concepts to help you understand and use Express effectively.
 ---
 
 # 用語集

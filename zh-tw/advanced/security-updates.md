@@ -3,6 +3,8 @@ layout: page
 title: Express 安全更新
 menu: advanced
 lang: zh-tw
+description: Review the latest security updates and patches for Express.js, including
+  detailed vulnerability lists for different versions to help maintain a secure application.
 ---
 
 # 安全更新

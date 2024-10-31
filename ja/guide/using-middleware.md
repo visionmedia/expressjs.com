@@ -3,6 +3,8 @@ layout: page
 title: Express ミドルウェアの使用
 menu: guide
 lang: ja
+description: Learn how to use middleware in Express.js applications, including application-level
+  and router-level middleware, error handling, and integrating third-party middleware.
 ---
 
 # ミドルウェアの使用

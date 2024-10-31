@@ -3,6 +3,8 @@ layout: page
 title: 在正式作業中使用 Express 的效能最佳作法
 menu: advanced
 lang: zh-tw
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # 正式作業最佳作法：效能和可靠性

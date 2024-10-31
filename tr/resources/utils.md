@@ -3,6 +3,9 @@ layout: page
 title: Express utilities
 menu: resources
 lang: tr
+description: Discover utility modules related to Express.js and Node.js, including
+  tools for cookies, CSRF protection, URL parsing, routing, and more to enhance your
+  applications.
 ---
 <div id="page-doc" markdown="1">
 ## Express utility functions

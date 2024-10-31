@@ -3,6 +3,8 @@ layout: page
 title: Express 라우팅
 menu: guide
 lang: ko
+description: Learn how to define and use routes in Express.js applications, including
+  route methods, route paths, parameters, and using Router for modular routing.
 ---
 
 # 라우팅

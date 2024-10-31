@@ -3,6 +3,8 @@ layout: page
 title: Обновления системы безопасности Express
 menu: advanced
 lang: ru
+description: Review the latest security updates and patches for Express.js, including
+  detailed vulnerability lists for different versions to help maintain a secure application.
 ---
 
 # Обновления системы безопасности

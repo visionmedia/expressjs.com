@@ -3,6 +3,9 @@ layout: page
 title: Express 자주 묻는 질문(FAQ)
 menu: starter
 lang: ko
+description: Find answers to frequently asked questions about Express.js, including
+  topics on application structure, models, authentication, template engines, error
+  handling, and more.
 ---
 
 # 자주 묻는 질문(FAQ)

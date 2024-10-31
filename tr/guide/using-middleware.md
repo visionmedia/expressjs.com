@@ -3,6 +3,8 @@ layout: page
 title: Express ara yazılımı kullanmak
 menu: guide
 lang: tr
+description: Learn how to use middleware in Express.js applications, including application-level
+  and router-level middleware, error handling, and integrating third-party middleware.
 ---
 <div id="page-doc" markdown="1">
 # Ara yazılım kullanmak

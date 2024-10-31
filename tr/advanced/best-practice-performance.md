@@ -3,7 +3,9 @@ layout: page
 title: Üretim (Production) ortamında Express kullanarak en iyi performans pratikleri
 menu: advanced
 lang: tr
-redirect_from: "/advanced/best-practice-performance.html"
+redirect_from: /advanced/best-practice-performance.html
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # Üretim ortamı en iyi pratikleri: performans ve güvenilirlik

@@ -3,6 +3,8 @@ layout: page
 title: Generador de aplicaciones Express
 menu: starter
 lang: es
+description: Learn how to use the Express application generator tool to quickly create
+  a skeleton for your Express.js applications, streamlining setup and configuration.
 ---
 
 # Generador de aplicaciones Express

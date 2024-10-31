@@ -3,6 +3,8 @@ layout: page
 title: Express "Hello World" príklad
 menu: starter
 lang: sk
+description: Get started with Express.js by building a simple 'Hello World' application,
+  demonstrating the basic setup and server creation for beginners.
 ---
 <!---
  Copyright (c) 2016 StrongLoop, IBM, and Express Contributors

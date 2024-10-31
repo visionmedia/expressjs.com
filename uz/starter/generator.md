@@ -3,6 +3,8 @@ layout: page
 title: Express dasturlar generatori
 menu: starter
 lang: uz
+description: Learn how to use the Express application generator tool to quickly create
+  a skeleton for your Express.js applications, streamlining setup and configuration.
 ---
 
 # Express dasturlar generatori

@@ -3,6 +3,8 @@ layout: page
 title: 编写中间件以用于 Express 应用程序
 menu: guide
 lang: zh-cn
+description: Learn how to write custom middleware functions for Express.js applications,
+  including examples and best practices for enhancing request and response handling.
 ---
 
 # 编写中间件以用于 Express 应用程序

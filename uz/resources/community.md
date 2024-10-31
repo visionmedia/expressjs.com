@@ -3,6 +3,8 @@ layout: page
 title: Express community
 menu: resources
 lang: uz
+description: Connect with the Express.js community, learn about the technical committee,
+  find resources, explore community-contributed modules, and get involved in discussions.
 ---
 
 # Community

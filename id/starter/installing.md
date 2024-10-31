@@ -3,6 +3,8 @@ layout: page
 title: Menginstal Ekspres
 menu: starter
 lang: id
+description: Learn how to install Express.js in your Node.js environment, including
+  setting up your project directory and managing dependencies with npm.
 ---
 
 # Menginstal

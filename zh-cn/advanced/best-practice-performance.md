@@ -3,6 +3,8 @@ layout: page
 title: 在生产环境中使用 Express 的性能最佳实践
 menu: advanced
 lang: zh-cn
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # 生产环境最佳实践：性能和可靠性
