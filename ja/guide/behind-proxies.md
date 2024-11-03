@@ -3,6 +3,8 @@ layout: page
 title: プロキシーの背後の Express
 menu: guide
 lang: ja
+description: Learn how to configure Express.js applications to work correctly behind
+  reverse proxies, including using the trust proxy setting to handle client IP addresses.
 ---
 
 # プロキシーの背後の Express

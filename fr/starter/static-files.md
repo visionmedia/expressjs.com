@@ -3,6 +3,8 @@ layout: page
 title: Servir des fichiers statiques dans Express
 menu: démarrage
 lang: fr
+description: Understand how to serve static files like images, CSS, and JavaScript
+  in Express.js applications using the built-in 'static' middleware.
 ---
 
 # Servir des fichiers statiques dans Express

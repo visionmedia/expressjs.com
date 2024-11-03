@@ -3,6 +3,8 @@ layout: page
 title: Промежуточные обработчики в Express
 menu: resources
 lang: ru
+description: Explore a list of Express.js middleware modules maintained by the Express
+  team and the community, including built-in middleware and popular third-party modules.
 ---
 
 # Промежуточные обработчики сторонних поставщиков ПО

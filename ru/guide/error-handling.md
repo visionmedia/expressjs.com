@@ -3,6 +3,8 @@ layout: page
 title: Обработка ошибок в Express
 menu: guide
 lang: ru
+description: Understand how Express.js handles errors in synchronous and asynchronous
+  code, and learn to implement custom error handling middleware for your applications.
 ---
 
 # Обработка ошибок

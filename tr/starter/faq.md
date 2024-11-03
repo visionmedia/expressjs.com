@@ -3,6 +3,9 @@ layout: page
 title: Express Sıkça Sorulan Sorular
 menu: starter
 lang: tr
+description: Find answers to frequently asked questions about Express.js, including
+  topics on application structure, models, authentication, template engines, error
+  handling, and more.
 ---
 # Sıkça Sorulan Sorular
 

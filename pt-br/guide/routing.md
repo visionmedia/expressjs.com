@@ -3,6 +3,8 @@ layout: page
 title: Roteamento no Express
 menu: guide
 lang: pt-br
+description: Learn how to define and use routes in Express.js applications, including
+  route methods, route paths, parameters, and using Router for modular routing.
 ---
 
 # Roteamento

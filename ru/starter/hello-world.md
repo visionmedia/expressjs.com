@@ -3,6 +3,8 @@ layout: page
 title: Пример "Hello World" в Express
 menu: starter
 lang: ru
+description: Get started with Express.js by building a simple 'Hello World' application,
+  demonstrating the basic setup and server creation for beginners.
 ---
 
 # Пример "Hello world"

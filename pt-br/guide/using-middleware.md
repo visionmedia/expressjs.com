@@ -3,6 +3,8 @@ layout: page
 title: Usando middlewares do Express
 menu: guide
 lang: pt-br
+description: Learn how to use middleware in Express.js applications, including application-level
+  and router-level middleware, error handling, and integrating third-party middleware.
 ---
 
 # Usando middlewares

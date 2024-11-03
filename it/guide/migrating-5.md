@@ -3,6 +3,8 @@ layout: page
 title: Migrazione a Express 5
 menu: guide
 lang: it
+description: A comprehensive guide to migrating your Express.js applications from
+  version 4 to 5, detailing breaking changes, deprecated methods, and new improvements.
 ---
 
 # Passaggio a Express 5

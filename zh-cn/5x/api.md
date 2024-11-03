@@ -3,6 +3,8 @@ layout: 5x-api
 title: Express 5.x - API 参考
 menu: api
 lang: zh-cn
+description: Access the API reference for Express.js 5.x, detailing all modules, methods,
+  and properties for building web applications with this latest version.
 ---
 
 <div id="api-doc" markdown="1">

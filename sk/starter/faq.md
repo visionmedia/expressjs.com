@@ -3,6 +3,9 @@ layout: page
 title: Express FAQ
 menu: starter
 lang: sk
+description: Find answers to frequently asked questions about Express.js, including
+  topics on application structure, models, authentication, template engines, error
+  handling, and more.
 ---
 <!---
  Copyright (c) 2016 StrongLoop, IBM, and Express Contributors

@@ -3,6 +3,8 @@ layout: page
 title: Зневадження в Express
 menu: guide
 lang: uk
+description: Learn how to enable and use debugging logs in Express.js applications
+  by setting the DEBUG environment variable for enhanced troubleshooting.
 ---
 
 # Зневадження в Express

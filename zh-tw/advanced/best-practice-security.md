@@ -3,6 +3,8 @@ layout: page
 title: 正式作業中的 Express 安全最佳作法
 menu: advanced
 lang: zh-tw
+description: Discover crucial security best practices for Express apps in production,
+  including using TLS, input validation, secure cookies, and preventing vulnerabilities.
 ---
 
 # 正式作業最佳作法：安全

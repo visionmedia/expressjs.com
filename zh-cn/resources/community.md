@@ -3,6 +3,8 @@ layout: page
 title: Express 社区
 menu: resources
 lang: zh-cn
+description: Connect with the Express.js community, learn about the technical committee,
+  find resources, explore community-contributed modules, and get involved in discussions.
 ---
 
 # 社区

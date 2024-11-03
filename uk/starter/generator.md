@@ -3,6 +3,8 @@ layout: page
 title: Генератор структури застосунків Express
 menu: starter
 lang: uk
+description: Learn how to use the Express application generator tool to quickly create
+  a skeleton for your Express.js applications, streamlining setup and configuration.
 ---
 
 # Генератор структури застосунків Express

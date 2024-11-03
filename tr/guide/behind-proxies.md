@@ -3,7 +3,9 @@ layout: page
 title: Proxy arkasında Express
 menu: guide
 lang: tr
-redirect_from: "/guide/behind-proxies.html"
+redirect_from: /guide/behind-proxies.html
+description: Learn how to configure Express.js applications to work correctly behind
+  reverse proxies, including using the trust proxy setting to handle client IP addresses.
 ---
 # Proxy arkasında Express
 
