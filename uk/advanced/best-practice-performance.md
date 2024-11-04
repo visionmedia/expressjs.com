@@ -3,6 +3,8 @@ layout: page
 title: Кращі практики експлуатації при використанні Express
 menu: advanced
 lang: uk
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # Кращі практики експлуатації: продуктивність та надійність

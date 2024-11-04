@@ -3,6 +3,8 @@ layout: page
 title: Express 보안 업데이트
 menu: advanced
 lang: ko
+description: Review the latest security updates and patches for Express.js, including
+  detailed vulnerability lists for different versions to help maintain a secure application.
 ---
 
 # 보안 업데이트

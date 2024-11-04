@@ -3,7 +3,9 @@ layout: page
 title: Express hata işleme
 menu: guide
 lang: tr
-redirect_from: "/guide/error-handling.html"
+redirect_from: /guide/error-handling.html
+description: Understand how Express.js handles errors in synchronous and asynchronous
+  code, and learn to implement custom error handling middleware for your applications.
 ---
 # Hata İşleme
 

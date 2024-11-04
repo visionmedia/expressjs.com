@@ -3,8 +3,10 @@ layout: page
 title: Express 미들웨어
 menu: resources
 lang: ko
-redirect_from: "/resources/middleware.html"
+redirect_from: /resources/middleware.html
 module: mw-home
+description: Explore a list of Express.js middleware modules maintained by the Express
+  team and the community, including built-in middleware and popular third-party modules.
 ---
 
 ## Express 미들웨어

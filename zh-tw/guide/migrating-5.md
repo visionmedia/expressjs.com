@@ -3,6 +3,8 @@ layout: page
 title: 移轉至 Express 5
 menu: guide
 lang: zh-tw
+description: A comprehensive guide to migrating your Express.js applications from
+  version 4 to 5, detailing breaking changes, deprecated methods, and new improvements.
 ---
 
 # 移至 Express 5

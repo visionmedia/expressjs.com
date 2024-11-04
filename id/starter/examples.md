@@ -3,6 +3,9 @@ layout: page
 title: Contoh Penggunaan Express
 menu: starter
 lang: id
+description: Explore a collection of Express.js application examples covering various
+  use cases, integrations, and advanced configurations to help you learn and build
+  your projects.
 ---
 
 {% capture examples %}{% include readmes/express-master/examples.md %}{% endcapture %}

@@ -3,6 +3,8 @@ layout: page
 title: Développement de moteurs de modèles pour Express
 menu: advanced
 lang: fr
+description: Learn how to develop custom template engines for Express.js using app.engine(),
+  with examples on creating and integrating your own template rendering logic.
 ---
 
 # Développement de moteurs de modèles pour Express

@@ -3,6 +3,8 @@ layout: page
 title: Express glossary
 menu: resources
 lang: tr
+description: A comprehensive glossary of terms related to Express.js, Node.js, middleware,
+  routing, and other key concepts to help you understand and use Express effectively.
 ---
 <div id="page-doc" markdown="1">
 # Glossary

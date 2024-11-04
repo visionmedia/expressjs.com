@@ -3,6 +3,8 @@ layout: page
 title: Express için şablon motoru geliştirme
 menu: advanced
 lang: tr
+description: Learn how to develop custom template engines for Express.js using app.engine(),
+  with examples on creating and integrating your own template rendering logic.
 ---
 <div id="page-doc" markdown="1">
 # Developing template engines for Express

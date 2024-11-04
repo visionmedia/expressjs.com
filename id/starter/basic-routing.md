@@ -3,6 +3,9 @@ layout: page
 title: Dasar routing Express
 menu: starter
 lang: id
+description: Learn the fundamentals of routing in Express.js applications, including
+  how to define routes, handle HTTP methods, and create route handlers for your web
+  server.
 ---
 
 # Dasar _routing_

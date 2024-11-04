@@ -3,6 +3,8 @@ layout: page
 title: Utilización de motores de plantilla con Express
 menu: guide
 lang: es
+description: Discover how to integrate and use template engines like Pug, Handlebars,
+  and EJS with Express.js to render dynamic HTML pages efficiently.
 ---
 
 # Utilización de motores de plantilla con Express

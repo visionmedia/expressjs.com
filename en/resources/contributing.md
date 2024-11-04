@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Contributing to Express
+description: Find out how to contribute to Express.js, including guidelines for reporting issues, submitting pull requests, becoming a collaborator, and understanding security policies.
 menu: resources
 lang: en
 redirect_from: "/resources/community.html"
@@ -158,7 +159,7 @@ project for at least 6 months as a committer prior to the request. They should h
 helped with code contributions as well as triaging issues. They are also required to
 have 2FA enabled on both their GitHub and npm accounts. Any TC member or existing
 captain on the repo can nominate another committer to the captain role, submit a PR to
-this doc, under `Current Project Captains` section (maintaining the sort order) with
+this doc, in the **Active Project Captains** section (maintaining the sort order) with
 the project, their GitHub handle and npm username (if different). The PR will require
 at least 2 approvals from TC members and 2 weeks hold time to allow for comment and/or
 dissent.  When the PR is merged, a TC member will add them to the proper GitHub/npm groups.
@@ -177,7 +178,7 @@ dissent.  When the PR is merged, a TC member will add them to the proper GitHub/
 - [`expressjs/errorhandler`](https://github.com/expressjs/errorhandler): @ulisesGascon
 - [`expressjs/express-paginate`](https://github.com/expressjs/express-paginate): @ulisesGascon
 - [`expressjs/express`](https://github.com/expressjs/express): @wesleytodd, @ulisesGascon
-- [`expressjs/expressjs.com`](https://github.com/expressjs/expressjs.com): @crandmck, @jonchurch
+- [`expressjs/expressjs.com`](https://github.com/expressjs/expressjs.com): @crandmck, @jonchurch, @bjohansebas
 - [`expressjs/flash`](https://github.com/expressjs/flash): @ulisesGascon
 - [`expressjs/generator`](https://github.com/expressjs/generator): @wesleytodd
 - [`expressjs/method-override`](https://github.com/expressjs/method-override): @ulisesGascon

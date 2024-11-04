@@ -3,6 +3,8 @@ layout: page
 title: Gestione degli errori di Express
 menu: guide
 lang: it
+description: Understand how Express.js handles errors in synchronous and asynchronous
+  code, and learn to implement custom error handling middleware for your applications.
 ---
 
 # Gestione degli errori

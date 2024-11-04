@@ -3,6 +3,8 @@ layout: page
 title: Programma di creazione applicazione Express
 menu: starter
 lang: it
+description: Learn how to use the Express application generator tool to quickly create
+  a skeleton for your Express.js applications, streamlining setup and configuration.
 ---
 
 # Programma di creazione applicazione Express

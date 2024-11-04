@@ -3,6 +3,8 @@ layout: page
 title: Express 앱에서 사용하기 위한 미들웨어 작성
 menu: guide
 lang: ko
+description: Learn how to write custom middleware functions for Express.js applications,
+  including examples and best practices for enhancing request and response handling.
 ---
 
 # Express 앱에서 사용하기 위한 미들웨어 작성

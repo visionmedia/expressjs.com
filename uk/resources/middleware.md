@@ -3,6 +3,8 @@ layout: page
 title: Проміжні обробники Express
 menu: resources
 lang: uk
+description: Explore a list of Express.js middleware modules maintained by the Express
+  team and the community, including built-in middleware and popular third-party modules.
 ---
 
 # Проміжні обробники третій сторін

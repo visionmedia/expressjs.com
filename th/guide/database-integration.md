@@ -3,6 +3,8 @@ layout: page
 title: Express database integration
 menu: guide
 lang: th
+description: Discover how to integrate various databases with Express.js applications,
+  including setup examples for MongoDB, MySQL, PostgreSQL, and more.
 ---
 # Database integration
 

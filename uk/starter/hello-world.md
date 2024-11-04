@@ -3,6 +3,8 @@ layout: page
 title: Приклад з "Hello World" в Express
 menu: starter
 lang: uk
+description: Get started with Express.js by building a simple 'Hello World' application,
+  demonstrating the basic setup and server creation for beginners.
 ---
 
 # Приклад виводу "Hello world"
