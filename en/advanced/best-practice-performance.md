@@ -45,6 +45,7 @@ Gzip compressing can greatly decrease the size of the response body and hence in
 const compression = require('compression')
 const express = require('express')
 const app = express()
+
 app.use(compression())
 ```
 
@@ -56,11 +57,11 @@ Synchronous functions and methods tie up the executing process until they return
 
 Although Node and many modules provide synchronous and asynchronous versions of their functions, always use the asynchronous version in production. The only time when a synchronous function can be justified is upon initial startup.
 
-If you are using Node.js 4.0+ or io.js 2.1.0+, you can use the `--trace-sync-io` command-line flag to print a warning and a stack trace whenever your application uses a synchronous API. Of course, you wouldn't want to use this in production, but rather to ensure that your code is ready for production. See the [node command-line options documentation](https://nodejs.org/api/cli.html#cli_trace_sync_io) for more information.
+You can use the `--trace-sync-io` command-line flag to print a warning and a stack trace whenever your application uses a synchronous API. Of course, you wouldn't want to use this in production, but rather to ensure that your code is ready for production. See the [node command-line options documentation](https://nodejs.org/api/cli.html#cli_trace_sync_io) for more information.
 
 ### Do logging correctly
 
-In general, there are two reasons for logging from your app: For debugging and for logging app activity (essentially, everything else). Using `console.log()` or `console.error()` to print log messages to the terminal is common practice in development. But [these functions are synchronous](https://nodejs.org/api/console.html#console_console_1) when the destination is a terminal or a file, so they are not suitable for production, unless you pipe the output to another program.
+In general, there are two reasons for logging from your app: For debugging and for logging app activity (essentially, everything else). Using `console.log()` or `console.error()` to print log messages to the terminal is common practice in development. But [these functions are synchronous](https://nodejs.org/api/console.html#console) when the destination is a terminal or a file, so they are not suitable for production, unless you pipe the output to another program.
 
 #### For debugging
 
@@ -68,7 +69,7 @@ If you're logging for purposes of debugging, then instead of using `console.log(
 
 #### For app activity
 
-If you're logging app activity (for example, tracking traffic or API calls), instead of using `console.log()`, use a logging library like [Winston](https://www.npmjs.com/package/winston) or [Bunyan](https://www.npmjs.com/package/bunyan). For a detailed comparison of these two libraries, see the StrongLoop blog post [Comparing Winston and Bunyan Node.js Logging](https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
+If you're logging app activity (for example, tracking traffic or API calls), instead of using `console.log()`, use a logging library like [Winston](https://www.npmjs.com/package/winston) or [Pino](https://www.npmjs.com/package/pino). There are more packages with the same purpose, you can check the LogRocket blog post ['Comparing Node.js logging tools'](https://blog.logrocket.com/comparing-node-js-logging-tools/) for a comparison between these packages and others.
 
 ### Handle exceptions properly
 
@@ -84,7 +85,6 @@ Before diving into these topics, you should have a basic understanding of Node/E
 For more on the fundamentals of error handling, see:
 
 * [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
-* [Building Robust Node Applications: Error Handling](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop blog)
 
 #### What not to do
 
@@ -182,7 +182,7 @@ Setting NODE_ENV to "production" makes Express:
 * Cache CSS files generated from CSS extensions.
 * Generate less verbose error messages.
 
-[Tests indicate](http://apmblog.dynatrace.com/2015/07/22/the-drastic-effects-of-omitting-node_env-in-your-express-js-applications/) that just doing this can improve app performance by a factor of three!
+[Tests indicate](https://www.dynatrace.com/news/blog/the-drastic-effects-of-omitting-node-env-in-your-express-js-applications/) that just doing this can improve app performance by a factor of three!
 
 If you need to write environment-specific code, you can check the value of NODE_ENV with `process.env.NODE_ENV`. Be aware that checking the value of any environment variable incurs a performance penalty, and so should be done sparingly.
 
