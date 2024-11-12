@@ -5,9 +5,13 @@ description: Find out how to contribute to Express.js, including guidelines for 
 menu: resources
 lang: en
 redirect_from: "/resources/community.html"
+title2: Contributing to Expressjs.com 
+sub-title: The official documentation for the Express framework. 
 ---
 
 # Contributing to Express
+
+### Looking to contribute to expressjs.com? Click [here](#contributing-to-expressjscom).
 
 Express and the other projects in the [expressjs organization on GitHub](https://github.com/expressjs) are projects of the [OpenJs Foundation](https://openjsf.org/).
 These projects are governed under the general policies and guidelines of the Node.js Foundation along with the additional guidelines below.
@@ -233,6 +237,34 @@ dissent.  When the PR is merged, a TC member will add them to the proper GitHub/
 
 - Triage team [ref](https://github.com/expressjs/discussions/issues/227): @UlisesGascon
 
+### Developer's Certificate of Origin 1.1
+
+```text
+By making a contribution to this project, I certify that:
+
+ (a) The contribution was created in whole or in part by me and I
+     have the right to submit it under the open source license
+     indicated in the file; or
+
+ (b) The contribution is based upon previous work that, to the best
+     of my knowledge, is covered under an appropriate open source
+     license and I have the right under that license to submit that
+     work with modifications, whether created in whole or in part
+     by me, under the same open source license (unless I am
+     permitted to submit under a different license), as indicated
+     in the file; or
+
+ (c) The contribution was provided directly to me by some other
+     person who certified (a), (b) or (c) and I have not modified
+     it.
+
+ (d) I understand and agree that this project and the contribution
+     are public and that a record of the contribution (including all
+     personal information I submit with it, including my sign-off) is
+     maintained indefinitely and may be redistributed consistent with
+     this project or the open source license(s) involved.
+```
+
 ## Collaborator's guide
 
 <!-- SRC: expressjs/express Collaborator-Guide.md -->
@@ -346,3 +378,7 @@ We are currently working on a new version of the security model, the most update
 If you have suggestions on how this process could be improved please submit a
 pull request.
 
+----
+# Contributing to Expressjs.com
+
+<!-- LOAD: expressjs/expressjs.com CONTRIBUTING.md -->
