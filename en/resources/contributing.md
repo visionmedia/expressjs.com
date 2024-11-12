@@ -5,9 +5,13 @@ description: Find out how to contribute to Express.js, including guidelines for 
 menu: resources
 lang: en
 redirect_from: "/resources/community.html"
+title2: Contributing to Expressjs.com 
+sub-title: The official documentation for the Express framework. 
 ---
 
 # Contributing to Express
+
+### Looking to contribute to expressjs.com? Click [here](#contributing-to-expressjscom).
 
 Express and the other projects in the [expressjs organization on GitHub](https://github.com/expressjs) are projects of the [OpenJs Foundation](https://openjsf.org/).
 These projects are governed under the general policies and guidelines of the Node.js Foundation along with the additional guidelines below.
@@ -374,3 +378,7 @@ We are currently working on a new version of the security model, the most update
 If you have suggestions on how this process could be improved please submit a
 pull request.
 
+----
+# Contributing to Expressjs.com
+
+<!-- LOAD: expressjs/expressjs.com CONTRIBUTING.md -->
