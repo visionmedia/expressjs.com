@@ -27,8 +27,10 @@ If you see anything on the site that could use a tune-up, think about how to fix
 
 
 3. **Translation Related**: spelling errors, incorrect/poorly translated words, adding new full site translations.
-    > [!IMPORTANT]: All translation submissions are currently paused. See this [notice](#important-notice-we-have-paused-all-translation-contributions) for more information.
-    - _If you want to do a full site translation, or just translate a single page, there's a section specifically related to [translations](#contributing-translations) below_.
+> [!IMPORTANT]
+> All translation submissions are currently paused. See this [notice](#important-notice-we-have-paused-all-translation-contributions) for more information.
+
+   - _If you want to do a full site translation, or just translate a single page, there's a section specifically related to [translations](#contributing-translations) below_.
 
 #### Want to work on a backlog issue?
 
