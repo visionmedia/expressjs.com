@@ -142,26 +142,23 @@ Now, all errors asynchronous and synchronous get propagated to the error middlew
 
 However, there are two caveats:
 
-1.  All your asynchronous code must return promises (except emitters). If a particular library does not return promises, convert the base object by using a helper function like [Bluebird.promisifyAll()](http://bluebirdjs.com/docs/api/promise.promisifyall.html).
+1.  All your asynchronous code must return promises (except emitters). If a particular library does not return promises, convert the base object by using a helper function like [util.promisify](https://nodejs.org/api/util.html#util_util_promisify_original).
 2.  Event emitters (like `streams`) can still cause uncaught exceptions. So make sure you are handling the error event properly; for example:
 
 ```js
-const wrap = fn => (...args) => fn(...args).catch(args[2])
-
-app.get('/', wrap(async (req, res, next) => {
+app.get('/', async (req, res, next) => {
   const company = await getCompanyById(req.query.id)
   const stream = getLogoStreamById(company.id)
   stream.on('error', next).pipe(res)
-}))
+})
 ```
 
-The `wrap()` function is a wrapper that catches rejected promises and calls `next()` with the error as the first argument.
-For details, see [Asynchronous
-Error Handling in Express with Promises, Generators and ES7](https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/#cleaner-code-with-generators).
+If `getCompanyById` throws an error or rejects, `next` will be called with either the thrown error or the rejected value. If no rejected value is provided, `next` will be called with a default Error object provided by the Express router.
 
-For more information about error-handling by using promises, see [Promises in Node.js with Q – An Alternative to Callbacks](https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/).
+For more information about error-handling, see our guide on [error handling in Express](https://expressjs.com/en/guide/error-handling).
 
-## Things to do in your environment / setup {#in-environment}
+## Things to do in your environment / setup 
+{#in-environment}
 
 Here are some things you can do in your system environment to improve your app's performance:
 
@@ -186,16 +183,7 @@ Setting NODE_ENV to "production" makes Express:
 
 If you need to write environment-specific code, you can check the value of NODE_ENV with `process.env.NODE_ENV`. Be aware that checking the value of any environment variable incurs a performance penalty, and so should be done sparingly.
 
-In development, you typically set environment variables in your interactive shell, for example by using `export` or your `.bash_profile` file. But in general, you shouldn't do that on a production server; instead, use your OS's init system (systemd or Upstart). The next section provides more details about using your init system in general, but setting `NODE_ENV` is so important for performance (and easy to do), that it's highlighted here.
-
-With Upstart, use the `env` keyword in your job file. For example:
-
-```sh
-# /etc/init/env.conf
- env NODE_ENV=production
-```
-
-For more information, see the [Upstart Intro, Cookbook and Best Practices](http://upstart.ubuntu.com/cookbook/#environment-variables).
+In development, you typically set environment variables in your interactive shell, for example by using `export` or your `.bash_profile` file. But in general, you shouldn't do that on a production server; instead, use your OS's init system (systemd). The next section provides more details about using your init system in general, but setting `NODE_ENV` is so important for performance (and easy to do), that it's highlighted here.
 
 With systemd, use the `Environment` directive in your unit file. For example:
 
@@ -204,7 +192,7 @@ With systemd, use the `Environment` directive in your unit file. For example:
 Environment=NODE_ENV=production
 ```
 
-For more information, see [Using Environment Variables In systemd Units](https://coreos.com/os/docs/latest/using-environment-variables-in-systemd-units.html).
+For more information, see [Using Environment Variables In systemd Units](https://www.flatcar.org/docs/latest/setup/systemd/environment-variables/).
 
 ### Ensure your app automatically restarts
 
@@ -227,7 +215,6 @@ In addition to restarting your app when it crashes, a process manager can enable
 
 The most popular process managers for Node are as follows:
 
-* [StrongLoop Process Manager](http://strong-pm.io/)
 * [PM2](https://github.com/Unitech/pm2)
 * [Forever](https://www.npmjs.com/package/forever)
 
@@ -291,94 +278,6 @@ Restart=always
 WantedBy=multi-user.target
 ```
 For more information on systemd, see the [systemd reference (man page)](http://www.freedesktop.org/software/systemd/man/systemd.unit.html).
-
-##### StrongLoop PM as a systemd service
-
-You can easily install StrongLoop Process Manager as a systemd service. After you do, when the server restarts, it will automatically restart StrongLoop PM, which will then restart all the apps it is managing.
-
-To install StrongLoop PM as a systemd service:
-
-```console
-$ sudo sl-pm-install --systemd
-```
-
-Then start the service with:
-
-```console
-$ sudo /usr/bin/systemctl start strong-pm
-```
-
-For more information, see [Setting up a production host (StrongLoop documentation)](https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-RHEL7+,Ubuntu15.04or15.10).
-
-##### Upstart
-
-Upstart is a system tool available on many Linux distributions for starting tasks and services during system startup, stopping them during shutdown, and supervising them. You can configure your Express app or process manager as a service and then Upstart will automatically restart it when it crashes.
-
-An Upstart service is defined in a job configuration file (also called a "job") with filename ending in `.conf`. The following example shows how to create a job called "myapp" for an app named "myapp" with the main file located at `/projects/myapp/index.js`.
-
-Create a file named `myapp.conf` at `/etc/init/` with the following content (replace the bold text with values for your system and app):
-
-```sh
-# When to start the process
-start on runlevel [2345]
-
-# When to stop the process
-stop on runlevel [016]
-
-# Increase file descriptor limit to be able to handle more requests
-limit nofile 50000 50000
-
-# Use production mode
-env NODE_ENV=production
-
-# Run as www-data
-setuid www-data
-setgid www-data
-
-# Run from inside the app dir
-chdir /projects/myapp
-
-# The process to start
-exec /usr/local/bin/node /projects/myapp/index.js
-
-# Restart the process if it is down
-respawn
-
-# Limit restart attempt to 10 times within 10 seconds
-respawn limit 10 10
-```
-
-{% include admonitions/note.html content="This script requires Upstart 1.4 or newer, supported on Ubuntu 12.04-14.10." %}
-
-Since the job is configured to run when the system starts, your app will be started along with the operating system, and automatically restarted if the app crashes or the system goes down.
-
-Apart from automatically restarting the app, Upstart enables you to use these commands:
-
-* `start myapp` – Start the app
-* `restart myapp` – Restart the app
-* `stop myapp` – Stop the app.
-
-For more information on Upstart, see [Upstart Intro, Cookbook and Best Practises](http://upstart.ubuntu.com/cookbook).
-
-##### StrongLoop PM as an Upstart service
-
-You can easily install StrongLoop Process Manager as an Upstart service. After you do, when the server restarts, it will automatically restart StrongLoop PM, which will then restart all the apps it is managing.
-
-To install StrongLoop PM as an Upstart 1.4 service:
-
-```console
-$ sudo sl-pm-install
-```
-
-Then run the service with:
-
-```console
-$ sudo /sbin/initctl start strong-pm
-```
-
-{% include admonitions/note.html content="On systems that don't support Upstart 1.4, the commands are slightly different. See [Setting up a production host (StrongLoop documentation)](https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-RHELLinux5and6,Ubuntu10.04-.10,11.04-.10) for more information." %}
-
-
 
 ### Run your app in a cluster
 
