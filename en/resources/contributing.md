@@ -378,7 +378,6 @@ We are currently working on a new version of the security model, the most update
 If you have suggestions on how this process could be improved please submit a
 pull request.
 
-----
 # Contributing to Expressjs.com
 
-<!-- LOAD: expressjs/expressjs.com CONTRIBUTING.md -->
+<!-- LOCAL: expressjs/expressjs.com CONTRIBUTING.md -->
