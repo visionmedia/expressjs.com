@@ -27,6 +27,7 @@ If you see anything on the site that could use a tune-up, think about how to fix
 
 
 3. **Translation Related**: spelling errors, incorrect/poorly translated words, adding new full site translations.
+    > [!IMPORTANT]: All translation submissions are currently paused. See this [notice](#important-notice-we-have-paused-all-translation-contributions) for more information.
     - _If you want to do a full site translation, or just translate a single page, there's a section specifically related to [translations](#contributing-translations) below_.
 
 #### Want to work on a backlog issue?
@@ -48,15 +49,15 @@ If you want to learn about working on Expressjs.com, this is the right place. Fo
 
 #### Step1: Opening a New Issue
 So, you've found a problem that you want to fix, or have a site enhancement you want to make. 
-1. The first step is to open an [issue](https://github.com/expressjs/expressjs.com/issues/new?assignees=&labels=&projects=&template=3other.md), not a PR. 
-    - Give the issue a good title and be sure to fill in the description section, writing as much detail on your proposal as possible .
-    - Don't leave anything blank! If you leave the description section blank we will not read it and it will almost certainly be rejected. Fill in the details!
+1. The first step is to open an [issue](https://github.com/expressjs/expressjs.com/issues/new?assignees=&labels=&projects=&template=3other.md). 
+    - Give the issue a good title and be sure to fill in the description section, writing as much detail on your proposal as possible.
+    - Don't leave anything blank! The more details you provide the more feedback we can give.
 
 
-2. Next, the Express documentation team will respond, either approving or denying your proposal. We read all submissions and try our best to always respond quickly with feedback. 
+2. Next, the Express documentation team will respond with feedback on your submission. We read all submissions and try our best to always respond quickly with feedback. 
     - After you've received approval, *only then* should you start work or make any pull requests. 
     - If you really want to see you work merged into a super popular open source project, *and you do*, please always follow our process and open an issue first. 
-    - __Don't skip straight to a pull request__. It will be likely be rejected and closed. We DO NOT want anyone's time or hard work to go to waste. So please, follow the steps.
+    - __Please don't skip straight to a pull request unless you are totally sure your work is unique__. This is just because we never want anyone's time or hard work to go to waste on dulicated work.
 
 #### Step2: Get the Application Code Base
 
