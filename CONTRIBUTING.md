@@ -1,13 +1,13 @@
 # Contributing to Expressjs.com
 
-### The Offical Documentation of the Express Framework
+### The Official Documentation of the Express Framework
 
-**NOTE**: This is not the repo for Express JS. To contribute to the _[Express JS framework](https://github.com/expressjs/express)_ itself, [check this out](#were-the-express-js-frameworks-documetation-team---not-the-express-js-framework).
+**NOTE**: This is not the repo for Express JS. To contribute to the _[Express JS framework](https://github.com/expressjs/express)_ itself, [check this out](#were-the-express-js-frameworks-documenntation-team---not-the-express-js-framework).
 
 If you want to contribute to [https://github.com/expressjs/expressjs.com](https://github.com/expressjs/expressjs.com), you're in the right place. 
 
 
-Whether you're a first time first time contributor or you're just looking for a refresher, visit our [Getting Started](#contributors-guide-to-getting-started) guide below to get up and runnning.
+Whether you're a first time first time contributor or you're just looking for a refresher, visit our [Getting Started](#contributors-guide-to-getting-started) guide below to get up and running.
 
 #### Want to help but need some ideas? These are some of our most typical issue types:
 
@@ -59,7 +59,7 @@ So, you've found a problem that you want to fix, or have a site enhancement you 
 2. Next, the Express documentation team will respond with feedback on your submission. We read all submissions and try our best to always respond quickly with feedback. 
     - After you've received approval, *only then* should you start work or make any pull requests. 
     - If you really want to see you work merged into a super popular open source project, *and you do*, please always follow our process and open an issue first. 
-    - __Please don't skip straight to a pull request unless you are totally sure your work is unique__. This is just because we never want anyone's time or hard work to go to waste on dulicated work.
+    - __Please don't skip straight to a pull request unless you are totally sure your work is unique__. This is just because we never want anyone's time or hard work to go to waste on duplicated work.
 
 #### Step2: Get the Application Code Base
 
@@ -147,7 +147,7 @@ Many site translations are still missing pages. To find which ones we need help 
 
 If you contribute a page or section translation, please reference the original PR. This helps the person merging your translation to remove the tag from the original PR.
 
-## We're the Express JS Framework's Documetation Team - Not the Express JS Framework
+## We're the Express JS Framework's Documentation Team - Not the Express JS Framework
 
 If you are looking for the repository for the **Express JS Framework**, you've hopefully noticed by now that you've come to the wrong place. This page is only for issues related to the this website: [http://expressjs.com](http://expressjs.com). 
 
