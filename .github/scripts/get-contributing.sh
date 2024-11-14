@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEST="./en/resources/contributing.md"
+DEST="../../en/resources/contributing.md"
 
 # This script replaces the contents of a section with the contents from
 # the annotated source address.
@@ -43,7 +43,7 @@ while IFS= read -r line; do
   echo "$line"
  
   if [[ -n "$local" ]]; then
-    cat "./$local" | \
+    cat "$local" | \
     # remove the top # headers from cp file
       sed -En '/^##|^[^#]/,$p' | \
       # remove any starting w NOTE: lines

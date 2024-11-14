@@ -380,4 +380,4 @@ pull request.
 
 # Contributing to Expressjs.com
 
-<!-- LOCAL: expressjs/expressjs.com CONTRIBUTING.md -->
+<!-- LOCAL: expressjs/expressjs.com ../../CONTRIBUTING.md -->
