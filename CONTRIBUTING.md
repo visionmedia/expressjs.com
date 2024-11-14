@@ -98,7 +98,54 @@ Now you'll need a way to see your changes, which means you'll need a running ver
     - After the build steps are complete, you'll have access to a __Deploy Preview__ tab that will run your changes on the web, rebuilding after each commit is pushed. 
     - After you are completely done your work and it's ready for review, remove the draft status on your pull request and submit your work. We will review it and respond. 
   
-{% include contributing/translations.md %}
+## Contributing translations
+
+#### Important Notice: We have paused all translation contributions. 
+> [!IMPORTANT]
+> We are currently working toward a more streamlined translations workflow. As long as this notice is posted, we will _not_ be accepting any translation submissions. 
+
+We highly encourage community translations! We no longer have professional translations, and we believe in the power of our community to provide accurate and helpful translations.
+
+The documentation is translated into these languages:
+- English (`en`)
+- Spanish (`es`)
+- French (`fr`)
+- Italian (`it`)
+- Indonesian (`id`)
+- Japanese (`ja`)
+- Korean (`ko`)
+- Brazilian Portuguese (`pt-br`)
+- Russian (`ru`)
+- Slovak (`sk`)
+- Thai (`th`)
+- Turkish (`tr`)
+- Ukrainian (`uk`)
+- Uzbek (`uz`)
+- Simplified Chinese (`zh-cn`)
+- Traditional Chinese (`zh-tw`)
+
+### Adding New Full Site Translations
+
+If you find a translation is missing from the list you can create a new one.
+
+To translate expressjs.com into a new language, follow these steps:
+
+1. Clone the [`expressjs.com`](https://github.com/expressjs/expressjs.com) repository.
+2. Create a directory for the language of your choice using its [ISO 639-1 code](http://www.loc.gov/standards/iso639-2/php/code_list.php) as its name.
+3. Copy `index.md`, `api.md`, `starter/`, `guide/`, `advanced/`, `resources/`, `4x/`, and `3x/`, to the language directory.
+4. Remove the link to 2.x docs from the "API Reference" menu.
+5. Update the `lang` variable in the copied markdown files.
+6. Update the `title` variable in the copied markdown files.
+7. Create the header, footer, notice, and announcement file for the language in the `_includes/` directory, in the respective directories, and make necessary edits to the contents.
+8. Create the announcement file for the language in the `_includes/` directory.
+9. Make sure to append `/{{ page.lang }}` to all the links within the site.
+10. Update the `CONTRIBUTING.md` and the `.github/workflows/translation.yml` files with the new language. 
+
+### Adding Page and Section Translations
+
+Many site translations are still missing pages. To find which ones we need help with, you can [filter for merged PRs](https://github.com/expressjs/expressjs.com/pulls?q=is%3Apr+is%3Aclosed+label%3Arequires-translation-es) that include the tag for your language, such as `requires-translation-es` for requires Spanish translation.   
+
+If you contribute a page or section translation, please reference the original PR. This helps the person merging your translation to remove the tag from the original PR.
 
 ## We're the Express JS Framework's Documetation Team - Not the Express JS Framework
 
