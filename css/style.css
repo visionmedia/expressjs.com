@@ -4,7 +4,7 @@
 */
 
 /* general */
-
+@import "./themes/light-theme.css";
 :root {
   --box-fg: rgb(24, 24, 24);
   --info-bg: rgb(207, 212, 252);
@@ -23,10 +23,10 @@
 
 body {
   font: 400 14px/1.6 "Open Sans", sans-serif;
-  background: #fff;
+  background: var(--bg);
   margin: 0;
   padding: 0;
-  color: #555;
+  color: var(--fg);
 }
 
 body.no-scroll{
@@ -44,7 +44,7 @@ h1 {
 
 h1, h2, h3 {
   margin: 5px 0;
-  color: #353535;
+  color: var(--header);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -54,7 +54,7 @@ h1, h2, h3 {
 
 p em {
   font-weight: bold;
-  color: #353535;
+  color: var(--header);
 }
 
 p {
@@ -63,14 +63,14 @@ p {
 }
 
 strong, th {
-  color: #353535;
+  color: var(--header);
 }
 
 #overlay {
   position: fixed;
   left: 0;
   top: 0;
-  background: #fff;
+  background: var(--bg);
   opacity: 0.8;
   width: 100%;
   height: 100%;
@@ -147,7 +147,7 @@ strong, th {
 #install-command {
   font-family: Consolas, Monaco, "Andale Mono", monospace;
   padding: 5px 10px;
-  background: #fff;
+  background: var(--bg);
   border: 1px solid #eee;
   border-radius: 3px;
   max-width: 375px;
@@ -274,7 +274,7 @@ a {
 }
 
 #description .express a {
-  color: #353535;
+  color: var(--header);
 }
 
 #express-version {
@@ -516,7 +516,7 @@ html[xmlns] .clearfix {
 }
 
 .doc-box pre[class*="language-"] {
-  background: none repeat scroll 0 0 #fff;
+  background: none repeat scroll 0 0 var(--bg);
 }
 
 /* English pages use backticks for code blocks */
@@ -687,7 +687,7 @@ footer {
 
 #navbar a.active {
   font-weight: bold;
-  color: #353535;
+  color: var(--header);
 }
 
 #navbar ul {
@@ -753,7 +753,7 @@ footer {
 
 #navbar .submenu-content a:hover {
   background: #259dff;
-  color: #fff;
+  color: var(--bg);
   text-decoration: none;
 }
 
@@ -827,7 +827,7 @@ footer {
 }
 
 #blog-side-menu-container > h3 > a  {
-  color: #353535
+  color: var(--header)
 }
 
 
@@ -848,7 +848,7 @@ footer {
 }
 
 h2 a {
-  color: #353535 !important;
+  color: var(--header) !important;
 }
 
 /* search */
@@ -1312,7 +1312,7 @@ blockquote {
     left: 0;
     padding: 0;
     top: 57px;
-    background: #fff;
+    background: var(--bg);
     width: 100%;
     position: absolute;
     display: none;
