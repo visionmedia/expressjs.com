@@ -3,6 +3,8 @@ layout: page
 title: Лучшие практические методы защиты для Express в рабочей среде
 menu: advanced
 lang: ru
+description: Discover crucial security best practices for Express apps in production,
+  including using TLS, input validation, secure cookies, and preventing vulnerabilities.
 ---
 
 # Лучшие практические методы для рабочей среды: Защита

@@ -3,6 +3,8 @@ layout: page
 title: Express Kurulumu
 menu: starter
 lang: tr
+description: Learn how to install Express.js in your Node.js environment, including
+  setting up your project directory and managing dependencies with npm.
 ---
 
 # Kurulum

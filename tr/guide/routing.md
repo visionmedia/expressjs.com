@@ -3,6 +3,8 @@ layout: page
 title: Express yönlendirmesi
 menu: guide
 lang: tr
+description: Learn how to define and use routes in Express.js applications, including
+  route methods, route paths, parameters, and using Router for modular routing.
 ---
 <div id="page-doc" markdown="1">
 # Yönlendirme

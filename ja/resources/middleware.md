@@ -3,6 +3,8 @@ layout: page
 title: Express のミドルウェア
 menu: resources
 lang: ja
+description: Explore a list of Express.js middleware modules maintained by the Express
+  team and the community, including built-in middleware and popular third-party modules.
 ---
 
 # サード・パーティー・ミドルウェア

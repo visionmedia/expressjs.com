@@ -3,6 +3,8 @@ layout: page
 title: Comunidade do Express
 menu: resources
 lang: pt-br
+description: Connect with the Express.js community, learn about the technical committee,
+  find resources, explore community-contributed modules, and get involved in discussions.
 ---
 
 # Comunidade
@@ -22,15 +24,16 @@ Os membros do comitê técnico do Express são:
 
 - [@blakeembrey](https://github.com/blakeembrey) - Blake Embrey
 - [@crandmck](https://github.com/crandmck) - Rand McKinney
-- [@dougwilson](https://github.com/dougwilson) - Douglas Wilson
 - [@LinusU](https://github.com/LinusU) - Linus Unnebäck
 - [@ulisesgascon](https://github.com/ulisesGascon) - Ulises Gascón
 - [@sheplu](https://github.com/sheplu) - Jean Burellier
 - [@wesleytodd](https://github.com/wesleytodd) - Wes Todd
 - [@jonchurch](https://github.com/jonchurch) - Jon Church
+- [@ctcpip](https://github.com/ctcpip/) - Chris de Almeida
 
 **Inativo:**
 
+- [@dougwilson](https://github.com/dougwilson) - Douglas Wilson
 - [@hacksparrow](https://github.com/hacksparrow) - Hage Yaapa
 - [@jonathanong](https://github.com/jonathanong) - jongleberry
 - [@niftylettuce](https://github.com/niftylettuce) - niftylettuce

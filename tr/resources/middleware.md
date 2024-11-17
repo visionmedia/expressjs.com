@@ -3,6 +3,8 @@ layout: page
 title: Express middleware
 menu: resources
 lang: tr
+description: Explore a list of Express.js middleware modules maintained by the Express
+  team and the community, including built-in middleware and popular third-party modules.
 ---
 <div id="page-doc" markdown="1">
 ## Express middleware

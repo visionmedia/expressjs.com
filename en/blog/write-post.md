@@ -1,6 +1,7 @@
 ---
 layout: post
 title: How to write a blog post
+description: Learn how to propose and write a blog post for the Express.js blog, including submission guidelines and steps to contribute your content.
 menu: blog
 lang: en
 redirect_from: "/blog/write.html"
@@ -30,6 +31,7 @@ Create a new file in the `_posts` directory named using following the format: `Y
     ---
     title: <your-title>
     sub_title: <your-optional-sub-title>
+    description: <description-of-your-post>
     tags: <white-space-separated-topics>
     author: <your-name>
     ---

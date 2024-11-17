@@ -3,6 +3,8 @@ layout: page
 title: Express komunita
 menu: resources
 lang: sk
+description: Connect with the Express.js community, learn about the technical committee,
+  find resources, explore community-contributed modules, and get involved in discussions.
 ---
 <!---
  Copyright (c) 2016 StrongLoop, IBM, and Express Contributors

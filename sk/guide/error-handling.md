@@ -3,6 +3,8 @@ layout: page
 title: Error handling v Express-e
 menu: guide
 lang: sk
+description: Understand how Express.js handles errors in synchronous and asynchronous
+  code, and learn to implement custom error handling middleware for your applications.
 ---
 <!---
  Copyright (c) 2016 StrongLoop, IBM, and Express Contributors

@@ -4,6 +4,8 @@ title: Express middleware
 menu: resources
 lang: th
 module: mw-home
+description: Explore a list of Express.js middleware modules maintained by the Express
+  team and the community, including built-in middleware and popular third-party modules.
 ---
 
 ## Express middleware

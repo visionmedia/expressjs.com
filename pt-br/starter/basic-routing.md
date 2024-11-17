@@ -3,6 +3,9 @@ layout: page
 title: Roteamento básico no Express
 menu: starter
 lang: pt-br
+description: Learn the fundamentals of routing in Express.js applications, including
+  how to define routes, handle HTTP methods, and create route handlers for your web
+  server.
 ---
 
 # Roteamento Básico

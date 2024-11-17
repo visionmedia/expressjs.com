@@ -3,6 +3,8 @@ layout: page
 title: Express 应用程序生成器
 menu: starter
 lang: zh-cn
+description: Learn how to use the Express application generator tool to quickly create
+  a skeleton for your Express.js applications, streamlining setup and configuration.
 ---
 
 # Express 应用程序生成器

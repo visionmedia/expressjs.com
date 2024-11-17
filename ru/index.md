@@ -3,6 +3,8 @@ layout: home
 title: Express - фреймворк веб-приложений Node.js
 menu: home
 lang: ru
+description: Express is a fast, unopinionated, minimalist web framework for Node.js,
+  providing a robust set of features for web and mobile applications.
 ---
 <section id="home-content">
   {% include header/header-{{ page.lang }}.html %}

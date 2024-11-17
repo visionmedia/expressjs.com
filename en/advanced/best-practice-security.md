@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Security Best Practices for Express in Production
+description: Discover crucial security best practices for Express apps in production, including using TLS, input validation, secure cookies, and preventing vulnerabilities.
 menu: advanced
 lang: en
 redirect_from: "/advanced/best-practice-security.html"
@@ -51,8 +52,7 @@ Also, a handy tool to get a free TLS certificate is [Let's Encrypt](https://lets
 ## Do not trust user input
 
 For web applications, one of the most critical security requirements is proper user input validation and handling. This comes in many forms and we will not cover all of them here.
-Ultimately, the responsibility for validating and correctly handling the types of user input your application accepts. Here are a few examples of validating user input specifically
-using a few `express` apis.
+Ultimately, the responsibility for validating and correctly handling the types of user input your application accepts is yours.
 
 ### Prevent open redirects
 

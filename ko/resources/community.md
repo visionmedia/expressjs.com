@@ -3,6 +3,8 @@ layout: page
 title: Express 커뮤니티
 menu: resources
 lang: ko
+description: Connect with the Express.js community, learn about the technical committee,
+  find resources, explore community-contributed modules, and get involved in discussions.
 ---
 
 # 커뮤니티

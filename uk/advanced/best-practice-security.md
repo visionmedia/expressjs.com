@@ -3,6 +3,8 @@ layout: page
 title: Кращі практики безпеки для Express в експлуатації
 menu: advanced
 lang: uk
+description: Discover crucial security best practices for Express apps in production,
+  including using TLS, input validation, secure cookies, and preventing vulnerabilities.
 ---
 
 # Кращі практики експлуатації: Безпека

@@ -3,6 +3,8 @@ layout: page
 title: Отладка Express
 menu: guide
 lang: ru
+description: Learn how to enable and use debugging logs in Express.js applications
+  by setting the DEBUG environment variable for enhanced troubleshooting.
 ---
 
 # Отладка Express

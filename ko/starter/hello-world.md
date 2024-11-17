@@ -3,6 +3,8 @@ layout: page
 title: Express "Hello World" 예제
 menu: starter
 lang: ko
+description: Get started with Express.js by building a simple 'Hello World' application,
+  demonstrating the basic setup and server creation for beginners.
 ---
 
 # Hello world 예제

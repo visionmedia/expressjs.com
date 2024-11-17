@@ -3,6 +3,8 @@ layout: page
 title: 调试 Express
 menu: guide
 lang: zh-cn
+description: Learn how to enable and use debugging logs in Express.js applications
+  by setting the DEBUG environment variable for enhanced troubleshooting.
 ---
 
 # 调试 Express

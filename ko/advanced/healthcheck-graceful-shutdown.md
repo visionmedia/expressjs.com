@@ -3,6 +3,9 @@ layout: page
 title: 상태 검사와 우아한 종료
 menu: advanced
 lang: ko
+description: Learn how to implement health checks and graceful shutdown in Express
+  apps to enhance reliability, manage deployments, and integrate with load balancers
+  like Kubernetes.
 ---
 
 # 상태 확인와 정상 종료

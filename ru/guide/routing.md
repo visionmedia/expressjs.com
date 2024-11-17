@@ -3,6 +3,8 @@ layout: page
 title: Маршрутизация в Express
 menu: guide
 lang: ru
+description: Learn how to define and use routes in Express.js applications, including
+  route methods, route paths, parameters, and using Router for modular routing.
 ---
 
 # Маршрутизация

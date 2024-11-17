@@ -3,6 +3,8 @@ layout: page
 title: Osvedčené postupy pre Express v produkcii - Security
 menu: advanced
 lang: sk
+description: Discover crucial security best practices for Express apps in production,
+  including using TLS, input validation, secure cookies, and preventing vulnerabilities.
 ---
 <!---
  Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
