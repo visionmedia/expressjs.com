@@ -381,3 +381,142 @@ pull request.
 # Contributing to Expressjs.com {#expressjs-website-contributing}
 
 <!-- LOCAL: expressjs/expressjs.com ../../CONTRIBUTING.md -->
+### The Official Documentation of the Express Framework
+
+
+If you want to contribute to [https://github.com/expressjs/expressjs.com](https://github.com/expressjs/expressjs.com), you're in the right place. 
+
+
+Whether you're a first time first time contributor or you're just looking for a refresher, visit our [Getting Started](#contributors-guide-to-getting-started) guide below to get up and running.
+
+#### Want to help but need some ideas? These are some of our most typical issue types:
+
+1.  **Website Related**: 
+If you see anything on the site that could use a tune-up, think about how to fix it.
+
+    - display or screen sizing problems
+    - mobile responsiveness issues
+    - missing or broken accessibility features 
+    - website outages
+    - broken links
+    - page structure or user interface enhancements
+
+
+2. **Content Related**: spelling errors, incorrect/outdated Express documentation, adding missing content.
+    - _We love any reports of typos. If you see one, fixing it is a great way to help_.
+
+
+3. **Translation Related**: spelling errors, incorrect/poorly translated words, adding new full site translations.
+> [!IMPORTANT]
+> All translation submissions are currently paused. See this [notice](#important-notice-we-have-paused-all-translation-contributions) for more information.
+
+   - _If you want to do a full site translation, or just translate a single page, there's a section specifically related to [translations](#contributing-translations) below_.
+
+#### Want to work on a backlog issue?
+
+We often have bugs or enhancements that need work. You can find these on our repo [https://github.com/expressjs/expressjs.com/issues](https://github.com/expressjs/expressjs.com/issues). Check out the tags to find something that's a good match for you.
+
+#### Have an idea? Found a bug?
+
+If you've found a bug or a typo, or if you have an idea for an enhancement, please submit a [new issue](https://github.com/expressjs/expressjs.com/issues/new?assignees=&labels=&projects=&template=3other.md). You can do this by going to our [repo](https://github.com/expressjs/expressjs.com) and opening a "New Issue" under the **Issues** tab. If you submit it, we will respond.
+
+## Contributor's Guide to Getting Started
+
+If you want to learn about working on Expressjs.com, this is the right place. Follow the steps below to get started.
+
+#### TL;DR
+1. Open an issue and get approval.
+2. Make your pull request, and celebrate being a contributor.
+
+
+#### Step1: Opening a New Issue
+So, you've found a problem that you want to fix, or have a site enhancement you want to make. 
+1. The first step is to open an [issue](https://github.com/expressjs/expressjs.com/issues/new?assignees=&labels=&projects=&template=3other.md). 
+    - Give the issue a good title and be sure to fill in the description section, writing as much detail on your proposal as possible.
+    - Don't leave anything blank! The more details you provide the more feedback we can give.
+
+
+2. Next, the Express documentation team will respond with feedback on your submission. We read all submissions and try our best to always respond quickly with feedback. 
+    - After you've received approval, *only then* should you start work or make any pull requests. 
+    - If you really want to see you work merged into a super popular open source project, *and you do*, please always follow our process and open an issue first. 
+    - __Please don't skip straight to a pull request unless you are totally sure your work is unique__. This is just because we never want anyone's time or hard work to go to waste on duplicated work.
+
+#### Step2: Get the Application Code Base
+
+After you've been approved, now you can clone the repo and get the code.
+- `git clone https://github.com/expressjs/expressjs.com.git`
+
+
+- These files render to html and make up the individual pages of the site. Most of the site's documentation text content is written in `md` files.
+- Change these to make changes to individual pages' content/text or markup. 
+- Each translation has it's own complete set of pages, located under their respective language directories. Ex. English middleware page is located at `en > resources > middleware.md.`
+
+- These file are page components that make up the user interface and periphery structure. Ex. Header, Footer, etc.
+- There are also markdown files here that are *included* within other larger files. Ex `api > en` holds the API Reference text content.
+- Change these to make changes to page layouts or site-wide structures, or to change the API Reference documentation.
+- Located mainly under `_includes` and `_layouts`. API markdown and text content are located under `_includes/api`.
+
+- These files make up the individual blog posts. If you want to contribute a blog post please
+follow the specific instructions for [How to write a blog post.](https://expressjs.com/en/blog/write-post.html)
+- Located under the `_posts` directory. 
+
+- All css and js files are kept in `css` and `js` folders on the project root.
+
+#### Step3: Running the Application
+
+
+1. __Run Locally__: This gets the local version of the application up and running on your machine. Follow our [Local Setup Guide](https://github.com/expressjs/expressjs.com?tab=readme-ov-file#local-setup) to use this option.  
+    - This is the recommended option for moderate to complex work. 
+2. __Run using Deploy Preview__: Use this option if you don't want to bother with a local installation. Part of our continuous integration pipeline includes [Netlify Deploy Preview](https://docs.netlify.com/site-deploys/deploy-previews/). 
+    - To use this you'll need to get your changes online - after you've made your first commit on your feature branch, make a *draft* pull request. 
+    - After the build steps are complete, you'll have access to a __Deploy Preview__ tab that will run your changes on the web, rebuilding after each commit is pushed. 
+    - After you are completely done your work and it's ready for review, remove the draft status on your pull request and submit your work. We will review it and respond. 
+  
+## Contributing translations
+
+#### Important Notice: We have paused all translation contributions. 
+> [!IMPORTANT]
+> We are currently working toward a more streamlined translations workflow. As long as this notice is posted, we will _not_ be accepting any translation submissions. 
+
+We highly encourage community translations! We no longer have professional translations, and we believe in the power of our community to provide accurate and helpful translations.
+
+- English (`en`)
+- Spanish (`es`)
+- French (`fr`)
+- Italian (`it`)
+- Indonesian (`id`)
+- Japanese (`ja`)
+- Korean (`ko`)
+- Brazilian Portuguese (`pt-br`)
+- Russian (`ru`)
+- Slovak (`sk`)
+- Thai (`th`)
+- Turkish (`tr`)
+- Ukrainian (`uk`)
+- Uzbek (`uz`)
+- Simplified Chinese (`zh-cn`)
+- Traditional Chinese (`zh-tw`)
+
+### Adding New Full Site Translations
+
+If you find a translation is missing from the list you can create a new one.
+
+
+1. Clone the [`expressjs.com`](https://github.com/expressjs/expressjs.com) repository.
+2. Create a directory for the language of your choice using its [ISO 639-1 code](http://www.loc.gov/standards/iso639-2/php/code_list.php) as its name.
+3. Copy `index.md`, `api.md`, `starter/`, `guide/`, `advanced/`, `resources/`, `4x/`, and `3x/`, to the language directory.
+4. Remove the link to 2.x docs from the "API Reference" menu.
+5. Update the `lang` variable in the copied markdown files.
+6. Update the `title` variable in the copied markdown files.
+7. Create the header, footer, notice, and announcement file for the language in the `_includes/` directory, in the respective directories, and make necessary edits to the contents.
+8. Create the announcement file for the language in the `_includes/` directory.
+9. Make sure to append `/{{ page.lang }}` to all the links within the site.
+10. Update the `CONTRIBUTING.md` and the `.github/workflows/translation.yml` files with the new language. 
+
+### Adding Page and Section Translations
+
+Many site translations are still missing pages. To find which ones we need help with, you can [filter for merged PRs](https://github.com/expressjs/expressjs.com/pulls?q=is%3Apr+is%3Aclosed+label%3Arequires-translation-es) that include the tag for your language, such as `requires-translation-es` for requires Spanish translation.   
+
+If you contribute a page or section translation, please reference the original PR. This helps the person merging your translation to remove the tag from the original PR.
+
+
