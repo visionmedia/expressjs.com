@@ -3,7 +3,7 @@ layout: page
 title: Спільнота Express
 menu: resources
 lang: uk
-description: Connect with the Express.js community, learn about the technical committee, find resources, explore community-contributed modules, and get involved in discussions.
+description: Долучайтеся до спільноти Express.js, ознайомтеся з діяльністю технічного комітету, знаходьте корисні ресурси, досліджуйте створені спільнотою модулі та приєднуйтеся до обговорень.
 ---
 
 # Спільнота
@@ -42,7 +42,7 @@ description: Connect with the Express.js community, learn about the technical co
 
 Крім того, спільнота Express підтримує модулі в цих двох GitHub-організаціях:
 
-- [jshttp](https://jshttp.github.io/) модулі, що надають корисні утилітарні функції; перегляньте [утилітарні модулі](/{{ page.lang }}/resources/utils.html).
+- [jshttp](https://jshttp.github.io/): модулі, що надають корисні утилітарні функції; перегляньте [утилітарні модулі](/{{ page.lang }}/resources/utils.html).
 - [pillarjs](https://pillarjs.github.io/): модулі нищого рівня, які Express використовує всередині.
 
 Щоб триматися в курсі того, що відбувається в спільноті, перегляньте [ExpressJS StatusBoard](https://expressjs.github.io/statusboard/).
@@ -58,8 +58,8 @@ description: Connect with the Express.js community, learn about the technical co
 ## Github-обговорення
 
 Розділ [GitHub-обговорень](https://github.com/expressjs/discussions) — це чудове місце для участі в розмовах про розробку та підтримку Express, обміну ідеями та обговоренням тем, пов'язаних з його використанням.
- 
- 
+
+
 # Бренд Express.js
 
 ## Логотип Express.js
