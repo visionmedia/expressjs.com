@@ -11,7 +11,7 @@ sub-title: The official documentation for the Express framework.
 
 # Contributing to Express
 
-### Looking to contribute to expressjs.com? Click [here](#contributing-to-expressjscom).
+### Looking to contribute to expressjs.com? Click [here](#expressjs-website-contributing).
 
 Express and the other projects in the [expressjs organization on GitHub](https://github.com/expressjs) are projects of the [OpenJs Foundation](https://openjsf.org/).
 These projects are governed under the general policies and guidelines of the Node.js Foundation along with the additional guidelines below.
@@ -378,6 +378,6 @@ We are currently working on a new version of the security model, the most update
 If you have suggestions on how this process could be improved please submit a
 pull request.
 
-# Contributing to Expressjs.com
+# Contributing to Expressjs.com {#expressjs-website-contributing}
 
 <!-- LOCAL: expressjs/expressjs.com ../../CONTRIBUTING.md -->

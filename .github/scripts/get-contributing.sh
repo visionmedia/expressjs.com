@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEST="../../en/resources/contributing.md"
+DEST="./en/resources/contributing.md"
 
 # This script replaces the contents of a section with the contents from
 # the annotated source address.
@@ -44,12 +44,13 @@ while IFS= read -r line; do
  
   if [[ -n "$local" ]]; then
     cat "$local" | \
-    # remove the top # headers from cp file
+    # remove the top 1# headers from cat'd file
       sed -En '/^##|^[^#]/,$p' | \
-      # remove any starting w NOTE: lines
+      # remove any ln starting w 'NOTE: lines'
       sed -E '/^[NOTE:*]/d' | \
-      # remove any lines with Not the Express JS Framework string
-      sed -E '/Not the Express JS Framework/I,$d'
+      # remove any lines with 'Not the Express JS Framework'
+      sed -E '/Not the Express JS Framework/I,$d' | \
+      sed -E 's/> \[!IMPORTANT\]/> **IMORTANT:** /g'
       echo
   elif [[ -n "$src" ]]; then  
     echo

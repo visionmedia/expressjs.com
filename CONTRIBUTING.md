@@ -131,7 +131,7 @@ If you find a translation is missing from the list you can create a new one.
 To translate expressjs.com into a new language, follow these steps:
 
 1. Clone the [`expressjs.com`](https://github.com/expressjs/expressjs.com) repository.
-2. Create a directory for the language of your choice using its [ISO 639-1 code](http://www.loc.gov/standards/iso639-2/php/code_list.php) as its name.
+2. Create a directory for the language of your choice using its [ISO 639-1 code](https://www.loc.gov/standards/iso639-2/php/code_list.php) as its name.
 3. Copy `index.md`, `api.md`, `starter/`, `guide/`, `advanced/`, `resources/`, `4x/`, and `3x/`, to the language directory.
 4. Remove the link to 2.x docs from the "API Reference" menu.
 5. Update the `lang` variable in the copied markdown files.
@@ -139,7 +139,7 @@ To translate expressjs.com into a new language, follow these steps:
 7. Create the header, footer, notice, and announcement file for the language in the `_includes/` directory, in the respective directories, and make necessary edits to the contents.
 8. Create the announcement file for the language in the `_includes/` directory.
 9. Make sure to append `/{{ page.lang }}` to all the links within the site.
-10. Update the `CONTRIBUTING.md` and the `.github/workflows/translation.yml` files with the new language. 
+10. Update the [CONTRIBUTING.md](https://github.com/expressjs/expressjs.com/blob/gh-pages/CONTRIBUTING.md#contributing-translations)  and the `.github/workflows/translation.yml` files with the new language. 
 
 ### Adding Page and Section Translations
 
@@ -149,6 +149,6 @@ If you contribute a page or section translation, please reference the original P
 
 ## We're the Express JS Framework's Documentation Team - Not the Express JS Framework
 
-If you are looking for the repository for the **Express JS Framework**, you've hopefully noticed by now that you've come to the wrong place. This page is only for issues related to the this website: [http://expressjs.com](http://expressjs.com). 
+If you are looking for the repository for the **Express JS Framework**, you've hopefully noticed by now that you've come to the wrong place. This page is only for issues related to the this website: [https://expressjs.com](https://expressjs.com). 
 
 For more information on contributing to Express itself, check our out our [Contributing to Express](/{{ page.lang }}/resources/contributing.html) page. For anything else, visit the repository [https://github.com/expressjs/express](https://github.com/expressjs/express).
