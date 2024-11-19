@@ -3,6 +3,8 @@ layout: page
 title: Ecriture de middleware utilisable dans les applications Express
 menu: guide
 lang: fr
+description: Learn how to write custom middleware functions for Express.js applications,
+  including examples and best practices for enhancing request and response handling.
 ---
 
 # Ecriture de middleware utilisable dans les applications Express

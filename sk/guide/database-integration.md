@@ -3,6 +3,8 @@ layout: page
 title: Integrácia Express s databázou
 menu: guide
 lang: sk
+description: Discover how to integrate various databases with Express.js applications,
+  including setup examples for MongoDB, MySQL, PostgreSQL, and more.
 ---
 <!---
  Copyright (c) 2016 StrongLoop, IBM, and Express Contributors

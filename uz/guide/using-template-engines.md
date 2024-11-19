@@ -3,6 +3,8 @@ layout: page
 title: Using template engines with Express
 menu: guide
 lang: uz
+description: Discover how to integrate and use template engines like Pug, Handlebars,
+  and EJS with Express.js to render dynamic HTML pages efficiently.
 ---
 
 # Using template engines with Express

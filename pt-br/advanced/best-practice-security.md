@@ -3,6 +3,8 @@ layout: page
 title: Melhores Práticas de Segurança para o Express em Produção
 menu: advanced
 lang: pt-br
+description: Discover crucial security best practices for Express apps in production,
+  including using TLS, input validation, secure cookies, and preventing vulnerabilities.
 ---
 
 # Melhores Práticas em Produção: Segurança

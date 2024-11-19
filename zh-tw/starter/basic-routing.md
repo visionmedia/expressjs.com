@@ -3,6 +3,9 @@ layout: page
 title: Express 基本路由
 menu: starter
 lang: zh-tw
+description: Learn the fundamentals of routing in Express.js applications, including
+  how to define routes, handle HTTP methods, and create route handlers for your web
+  server.
 ---
 
 # 基本路由

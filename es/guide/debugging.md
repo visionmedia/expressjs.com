@@ -3,6 +3,8 @@ layout: page
 title: Depuración de Express
 menu: guide
 lang: es
+description: Learn how to enable and use debugging logs in Express.js applications
+  by setting the DEBUG environment variable for enhanced troubleshooting.
 ---
 
 # Depuración de Express

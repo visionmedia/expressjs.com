@@ -3,6 +3,8 @@ layout: page
 title: 프로덕션 환경의 Express를 위한 보안 우수 사례
 menu: advanced
 lang: ko
+description: Discover crucial security best practices for Express apps in production,
+  including using TLS, input validation, secure cookies, and preventing vulnerabilities.
 ---
 
 # 프로덕션 우수 사례: 보안

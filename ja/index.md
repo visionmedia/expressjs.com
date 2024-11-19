@@ -3,6 +3,8 @@ layout: home
 title: Express - Node.js Web アプリケーション・フレームワーク
 menu: home
 lang: ja
+description: Express is a fast, unopinionated, minimalist web framework for Node.js,
+  providing a robust set of features for web and mobile applications.
 ---
 
 <section id="home-content">

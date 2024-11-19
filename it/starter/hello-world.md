@@ -3,6 +3,8 @@ layout: page
 title: Esempio di "Hello World" di express
 menu: starter
 lang: it
+description: Get started with Express.js by building a simple 'Hello World' application,
+  demonstrating the basic setup and server creation for beginners.
 ---
 
 # Esempio di Hello world

@@ -3,6 +3,8 @@ layout: page
 title: Написание кода промежуточных обработчиков для использования в приложениях Express
 menu: guide
 lang: ru
+description: Learn how to write custom middleware functions for Express.js applications,
+  including examples and best practices for enhancing request and response handling.
 ---
 
 # Написание кода промежуточных обработчиков для использования в приложениях Express

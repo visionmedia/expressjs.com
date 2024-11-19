@@ -3,6 +3,8 @@ layout: page
 title: Overriding the Express API
 menu: guide
 lang: id
+description: Discover how to customize and extend the Express.js API by overriding
+  methods and properties on the request and response objects using prototypes.
 ---
 <div id="page-doc" markdown="1">
 

@@ -3,6 +3,8 @@ layout: home
 title: Express - Node.js Web 应用程序框架
 menu: home
 lang: zh-cn
+description: Express is a fast, unopinionated, minimalist web framework for Node.js,
+  providing a robust set of features for web and mobile applications.
 ---
 <section id="home-content">
   {% include header/header-{{ page.lang }}.html %}

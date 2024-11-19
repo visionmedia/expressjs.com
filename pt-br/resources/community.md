@@ -3,6 +3,8 @@ layout: page
 title: Comunidade do Express
 menu: resources
 lang: pt-br
+description: Connect with the Express.js community, learn about the technical committee,
+  find resources, explore community-contributed modules, and get involved in discussions.
 ---
 
 # Comunidade
@@ -27,6 +29,7 @@ Os membros do comitê técnico do Express são:
 - [@sheplu](https://github.com/sheplu) - Jean Burellier
 - [@wesleytodd](https://github.com/wesleytodd) - Wes Todd
 - [@jonchurch](https://github.com/jonchurch) - Jon Church
+- [@ctcpip](https://github.com/ctcpip/) - Chris de Almeida
 
 **Inativo:**
 

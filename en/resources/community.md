@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Express community
+description: Connect with the Express.js community, learn about the technical committee, find resources, explore community-contributed modules, and get involved in discussions.
 menu: resources
 lang: en
 redirect_from: "/resources/community.html"
@@ -28,6 +29,7 @@ Members of the Express technical committee are:
 - [@sheplu](https://github.com/sheplu) - Jean Burellier
 - [@wesleytodd](https://github.com/wesleytodd) - Wes Todd
 - [@jonchurch](https://github.com/jonchurch) - Jon Church
+- [@ctcpip](https://github.com/ctcpip/) - Chris de Almeida
 
 **Inactive:**
 

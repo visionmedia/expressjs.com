@@ -3,6 +3,8 @@ layout: page
 title: Express "Merhaba Dünya" örneği
 menu: starter
 lang: tr
+description: Get started with Express.js by building a simple 'Hello World' application,
+  demonstrating the basic setup and server creation for beginners.
 ---
 
 # Merhaba Dünya Örneği

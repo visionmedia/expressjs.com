@@ -3,6 +3,8 @@ layout: page
 title: 実稼働環境における Express の使用におけるパフォーマンスに関するベスト・プラクティス
 menu: advanced
 lang: ja
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # 実稼働環境におけるベスト・プラクティス: パフォーマンスと信頼性

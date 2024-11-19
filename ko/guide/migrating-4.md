@@ -3,6 +3,8 @@ layout: page
 title: Express 4로의 마이그레이션
 menu: guide
 lang: ko
+description: A guide to migrating your Express.js applications from version 3 to 4,
+  covering changes in middleware, routing, and how to update your codebase effectively.
 ---
 
 # Express 4로의 이전
