@@ -78,10 +78,13 @@ strong, th {
   z-index: 1;
 }
 
-#home-content {
+main.home {
+  max-width: 75rem;
   margin: 40px auto 2%;
-  max-width: 64rem;
-  padding-right: 9%;
+  padding-inline: 5%;
+}
+
+#home-content {
   display: flex;
 }
 
@@ -107,8 +110,7 @@ strong, th {
 }
 
 #announcements {
-  margin: 3px auto 32px;
-  max-width: 64rem;
+  margin-top: 40px;
   padding: 0 16px;
   background: #fdfae6;
   border: 1px solid #ebdbb7;
@@ -305,11 +307,6 @@ a {
   margin-left: 5px;
 }
 
-#intro {
-  margin: auto;
-  max-width: 64rem;
-}
-
 #doc-langs {
   text-align: center;
   font-size: 12px;
@@ -426,6 +423,10 @@ html[xmlns] .clearfix {
 /* boxes */
 
 #boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  row-gap: 20px;
+  column-gap: 50px;
   margin-top: 30px;
 }
 
@@ -434,11 +435,7 @@ html[xmlns] .clearfix {
 }
 
 #boxes div {
-  width: 215px;
-  margin-right: 50px;
-  float: left;
   list-style: none;
-  padding-bottom: 20px;
 }
 
 #boxes div:last-child {
@@ -1002,9 +999,7 @@ h2 a {
   }
 
   #boxes div {
-    width: 90%;
     text-align: center;
-    margin-left: 5%;
   }
 
   #home-menu {
