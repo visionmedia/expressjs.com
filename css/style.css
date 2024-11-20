@@ -436,12 +436,8 @@ html[xmlns] .clearfix {
 
 #boxes div {
   list-style: none;
+  text-align: center;
 }
-
-#boxes div:last-child {
-  margin-right: 0;
-}
-
 
 #boxes h3 {
   background: none;
@@ -996,10 +992,6 @@ h2 a {
   #logo .express {
     margin-top: 0px;
     font-weight: bold;
-  }
-
-  #boxes div {
-    text-align: center;
   }
 
   #home-menu {
