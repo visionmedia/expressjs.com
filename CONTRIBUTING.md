@@ -2,7 +2,8 @@
 
 ### The Official Documentation of the Express Framework
 
-**NOTE**: This is not the repo for Express JS. To contribute to the _[Express JS framework](https://github.com/expressjs/express)_ itself, [check this out](#were-the-express-js-frameworks-documenntation-team---not-the-express-js-framework).
+>[!NOTE]
+> This is not the repo for Express JS. To contribute to the _[Express JS framework](https://github.com/expressjs/express)_ itself, [check this out](#were-the-express-js-frameworks-documenntation-team---not-the-express-js-framework).
 
 If you want to contribute to [https://github.com/expressjs/expressjs.com](https://github.com/expressjs/expressjs.com), you're in the right place. 
 
@@ -28,7 +29,7 @@ If you see anything on the site that could use a tune-up, think about how to fix
 
 3. **Translation Related**: spelling errors, incorrect/poorly translated words, adding new full site translations.
 > [!IMPORTANT]
-> All translation submissions are currently paused. See this [notice](#important-notice-we-have-paused-all-translation-contributions) for more information.
+> All translation submissions are currently paused. See this [notice](#notice-we-have-paused-all-translation-contributions) for more information.
 
    - _If you want to do a full site translation, or just translate a single page, there's a section specifically related to [translations](#contributing-translations) below_.
 
@@ -100,7 +101,7 @@ Now you'll need a way to see your changes, which means you'll need a running ver
   
 ## Contributing translations
 
-#### Important Notice: We have paused all translation contributions. 
+#### Notice: We have paused all translation contributions. 
 > [!IMPORTANT]
 > We are currently working toward a more streamlined translations workflow. As long as this notice is posted, we will _not_ be accepting any translation submissions. 
 

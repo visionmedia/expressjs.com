@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEST="./en/resources/contributing.md"
+DEST="../../en/resources/contributing.md"
 
 # This script replaces the contents of a section with the contents from
 # the annotated source address.
@@ -14,11 +14,14 @@ local=''
 while IFS= read -r line; do
   # this section removes prev lines after file loads - src/load set to non-empty 
   if [[ -n "$src" || -n "$local" ]]; then
-     #  if line eq level - level is num of ##s
-    if [[ "$line" == "$level"'#'*  || 
-    # line not a header)
-    "$line" != '#'* ]]; then
-      continue
+    # line not a horitzontal rule hr
+    if  [[ "$line" != "----"* ]]; then
+    #  if line eq level - level is num of ##s
+      if [[ "$line" == "$level"'#'*  ||
+      # line not a header)
+      "$line" != '#'* ]]; then
+        continue
+      fi
     fi
   fi
 
@@ -46,11 +49,12 @@ while IFS= read -r line; do
     cat "$local" | \
     # remove the top 1# headers from cat'd file
       sed -En '/^##|^[^#]/,$p' | \
-      # remove any ln starting w 'NOTE: lines'
-      sed -E '/^[NOTE:*]/d' | \
+      # remove GH specific tags staring w '[!NOTE\] and next line
+      sed -E '/^>\[!NOTE\]*/{N;d}' | \
       # remove any lines with 'Not the Express JS Framework'
       sed -E '/Not the Express JS Framework/I,$d' | \
-      sed -E 's/> \[!IMPORTANT\]/> **IMORTANT:** /g'
+      # remove GH specific md tags
+      sed -E 's/> \[!IMPORTANT\]/> **IMPORTANT:** /g'
       echo
   elif [[ -n "$src" ]]; then  
     echo
