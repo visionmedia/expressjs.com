@@ -65,10 +65,12 @@ function toggleStorageTheme(e) {
   }
 }
 function darkModeOn() {
+  document?.documentElement?.classList?.remove('light-mode')
   document?.documentElement?.classList?.add('dark-mode')
 }
 function lightModeOn() {
   document?.documentElement?.classList.remove('dark-mode')
+  document?.documentElement?.classList?.add('light-mode')
 }
 function darkModeState() {
   return document.documentElement.classList.contains('dark-mode')

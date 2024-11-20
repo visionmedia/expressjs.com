@@ -1,27 +1,5 @@
-.dark-mode:root{
-  --box-fg: rgb(255, 255, 255);
-  --info-bg: rgb(23, 29, 79);
-  --info-accent: rgb(189, 195, 255);
-  --notice-bg: rgb(78, 64, 34);
-  --notice-accent: rgb(249, 232, 195);
-  --warn-bg: rgb(78, 34, 50);
-  --warn-accent: rgb(249, 195, 214);
-  --code-bg: #0d1117;
-}
+@import "../values.css";
 
-:root {
-  --main_dark_bg: #010409;
-  --second_dark_bg: #0d1117;
-  --darker_hover: #171b20;
-  --dark_hover: #383838;
-  --second_dark_hover: #484848;
-  --dark_inner_text: #888888;
-  --dark_header_text: silver;
-  --dark_main_text: #e6edf3;
-  --dark_bright_text: wheat;
-  --dark_border: #ddd;
-  --link: #259dff;
-}
 #theme-icon-container {
   position: relative;
   color: black;
@@ -148,6 +126,7 @@ html.dark-mode #navbar ul#navmenu > span.algolia-autocomplete > input::placehold
 }
 html.dark-mode div#overlay {
   opacity: 0.5;
+  background: var(--lightm-bg);
 }
 
 html.dark-mode .doc-box.doc-info pre.language-javascript {
@@ -159,7 +138,8 @@ html.dark-mode h2,
 html.dark-mode h3,
 html.dark-mode code,
 html.dark-mode em,
-html.dark-mode strong  {
+html.dark-mode strong,  
+html.dark-mode th  {
   color: var(--dark_main_text);
 }
 html.dark-mode pre {
@@ -170,11 +150,17 @@ html.dark-mode #description .express > a {
   color: var(--dark_main_text);
 }
 html.dark-mode #install-command {
-  background: var(--main_dark_bg);
+      /* check if needed */
+  /* background: var(--main_dark_bg); */
 }
 html.dark-mode #announcements {
   background: var(--main_dark_bg);
+  border-color: var(--notice-light-border);
+  &p:first-child {
+    background-image: url(/images/announcement-icon-dark.png);
+  }
 }
+
 html.dark-mode #boxes div > h3 {
   color: var(--dark_main_text);
 }

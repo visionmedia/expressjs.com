@@ -1,18 +1,38 @@
-:root {
-    /* (background) */
---bg: #ffffff;
-/* (general texts) */
---fg: #383838;
---header: #353535;
-/* (header, code blocks, announcement, etc) */
---card-bg: #f0f1f3; 
---card-fg: #383838;
-/* (hover background) */
---hover-bg: #484848;
-/* (hover foreground) */
---hover-fg: #fafafa;
-/* (borders) */
---border: #d9e1e4;
-/* (Links) */
---accent: #0e78ce;
+@import "../values.css";
+body {
+    color: var(--lightm-fg);
 }
+h1, h2, h3 {
+    color: var(--header);
+}
+p em {
+    color: var(--header);
+}
+strong, th {
+    color: var(--header);
+}
+#overlay {
+    background: var(--hover-bg);
+
+}
+#announcements {
+    background: var(--notice-light-bg);
+    border-color: var(--notice-light-border);
+    &p:first-child{
+        background-image: url(/images/announcement-icon.png);
+    }
+}
+#install-command {
+    /* check if needed */
+    /* background: var(--lightm-bg); */
+    border-color: var(--border);
+  }
+#api-doc > h3, 
+#api-doc h5 {
+    color: var(--lightm-grey-h-fg)
+  }
+/* li code,   */
+code {
+    color:var(--lightm-card-fg);
+  }
+  
