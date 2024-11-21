@@ -424,7 +424,7 @@ html[xmlns] .clearfix {
 
 #boxes {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   row-gap: 20px;
   column-gap: 50px;
   margin-top: 30px;
@@ -883,6 +883,10 @@ h2 a {
 /* responsive */
 
 @media all and (max-width: 1110px) {
+  #boxes {
+    grid-template-columns: 1fr 1fr;
+  }
+
   #home-content {
     flex-direction: column;
   }
@@ -1024,6 +1028,12 @@ h2 a {
   }
 }
 
+
+@media all and (max-width: 540px) {
+  #boxes {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media all and (max-width: 420px) {
   #app-settings-property {
