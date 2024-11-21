@@ -883,7 +883,6 @@ h2 a {
   padding: 153px 32px 7%;
   text-align: center;
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-direction: column;
 }
