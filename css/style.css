@@ -78,10 +78,13 @@ strong, th {
   z-index: 1;
 }
 
+main.home {
+  max-width: 75rem;
+  margin: 40px auto 2%;
+  padding-inline: 5%;
+}
+
 #home-content {
-  margin: 40px 0 2% 5%;
-  max-width: 900px;
-  padding-right: 9%;
   display: flex;
 }
 
@@ -107,8 +110,7 @@ strong, th {
 }
 
 #announcements {
-  margin: 3px 5% 32px;
-  max-width: 1005px;
+  margin-top: 40px;
   padding: 0 16px;
   background: #fdfae6;
   border: 1px solid #ebdbb7;
@@ -223,11 +225,11 @@ li code {
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background-color: gray
+  background-color: gray;
 }
 
 *::-webkit-scrollbar-thumb:active {
-  background-color: #616161
+  background-color: #616161;
 } 
 
 /* links */
@@ -303,10 +305,6 @@ a {
   font-size: 9px;
   color: #999;
   margin-left: 5px;
-}
-
-#intro {
-  margin-left: 5%;
 }
 
 #doc-langs {
@@ -425,6 +423,10 @@ html[xmlns] .clearfix {
 /* boxes */
 
 #boxes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 20px;
+  column-gap: 50px;
   margin-top: 30px;
 }
 
@@ -433,17 +435,9 @@ html[xmlns] .clearfix {
 }
 
 #boxes div {
-  width: 215px;
-  margin-right: 50px;
-  float: left;
   list-style: none;
-  padding-bottom: 20px;
+  text-align: center;
 }
-
-#boxes div:last-child {
-  margin-right: 0;
-}
-
 
 #boxes h3 {
   background: none;
@@ -889,6 +883,10 @@ h2 a {
 /* responsive */
 
 @media all and (max-width: 1110px) {
+  #boxes {
+    grid-template-columns: 1fr 1fr;
+  }
+
   #home-content {
     flex-direction: column;
   }
@@ -963,6 +961,7 @@ h2 a {
   #home-content {
     margin: 60px 0 0 5%;
     padding-right: 5%;
+    text-align: center;
   }
 
   #description {
@@ -999,10 +998,6 @@ h2 a {
     font-weight: bold;
   }
 
-  #boxes div {
-    width: 90%;
-  }
-
   #home-menu {
     display: block;
     position: absolute;
@@ -1033,6 +1028,12 @@ h2 a {
   }
 }
 
+
+@media all and (max-width: 540px) {
+  #boxes {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media all and (max-width: 420px) {
   #app-settings-property {
