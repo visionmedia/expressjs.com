@@ -1,6 +1,6 @@
 # Contributing to Expressjs.com
 
-### The Official Documentation of the Express Framework
+### The Official Documentation of the Express JS Framework
 
 >[!NOTE]
 > This is not the repo for Express JS. To contribute to the _[Express JS framework](https://github.com/expressjs/express)_ itself, [check this out](#were-the-express-js-frameworks-documenntation-team---not-the-express-js-framework).
@@ -23,51 +23,48 @@ If you see anything on the site that could use a tune-up, think about how to fix
     - page structure or user interface enhancements
 
 
-2. **Content Related**: spelling errors, incorrect/outdated Express documentation, adding missing content.
-    - _We love any reports of typos. If you see one, fixing it is a great way to help_.
+2. **Content Related**: spelling errors, incorrect/outdated Express JS documentation, adding missing content.
+    - We love any reports of typos. If you see one, fixing it is a great way to help.
 
 
 3. **Translation Related**: spelling errors, incorrect/poorly translated words, adding new full site translations.
 > [!IMPORTANT]
 > All translation submissions are currently paused. See this [notice](#notice-we-have-paused-all-translation-contributions) for more information.
 
-   - _If you want to do a full site translation, or just translate a single page, there's a section specifically related to [translations](#contributing-translations) below_.
+   - If you want to do a full site translation, or just translate a single page, there's a section specifically related to [translations](#contributing-translations) below.
 
 #### Want to work on a backlog issue?
 
-We often have bugs or enhancements that need work. You can find these on our repo [https://github.com/expressjs/expressjs.com/issues](https://github.com/expressjs/expressjs.com/issues). Check out the tags to find something that's a good match for you.
+We often have bugs or enhancements that need work. You can find these under our repo's [Issues tab](https://github.com/expressjs/expressjs.com/issues). Check out the tags to find something that's a good match for you.
 
 #### Have an idea? Found a bug?
 
-If you've found a bug or a typo, or if you have an idea for an enhancement, please submit a [new issue](https://github.com/expressjs/expressjs.com/issues/new?assignees=&labels=&projects=&template=3other.md). You can do this by going to our [repo](https://github.com/expressjs/expressjs.com) and opening a "New Issue" under the **Issues** tab. If you submit it, we will respond.
+If you've found a bug or a typo, or if you have an idea for an enhancement, you can:
+- Submit a [new issue](https://github.com/expressjs/expressjs.com/issues/new?assignees=&labels=&projects=&template=3other.md) on our repo. Do this for larger proposals, or if you'd like to discuss or get feedback first. 
+- Make a [Github pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). If you have already done work and it's ready to go, feel free to send it our way.
 
 ## Contributor's Guide to Getting Started
 
-If you want to learn about working on Expressjs.com, this is the right place. Follow the steps below to get started.
+The steps below will guide you through the expressjs.com contribution process.
 
-#### TL;DR
-1. Open an issue and get approval.
-2. Make your pull request, and celebrate being a contributor.
-
-
-#### Step1: Opening a New Issue
+#### Step1: (OPTIONAL) Opening a New Issue
 So, you've found a problem that you want to fix, or have a site enhancement you want to make. 
-1. The first step is to open an [issue](https://github.com/expressjs/expressjs.com/issues/new?assignees=&labels=&projects=&template=3other.md). 
-    - Give the issue a good title and be sure to fill in the description section, writing as much detail on your proposal as possible.
-    - Don't leave anything blank! The more details you provide the more feedback we can give.
+1. If you want to get feedback or discuss, open a discussion [issue](https://github.com/expressjs/expressjs.com/issues/new/choose) prior to starting work. This is not required, but encouraged for larger proposals. 
+    - While we highly encourage this step, it is only for submissions proposing significant change. It  helps us to clarify and focus the work, and ensure it aligns with overall project priorities.
+    - For submissions proposing small minor improvements or corrections, this is not needed. You can skip this step.
+    - When opening an issue please give it title and fill in the description section. The more details you provide, the more feedback we can give.
 
-
-2. Next, the Express documentation team will respond with feedback on your submission. We read all submissions and try our best to always respond quickly with feedback. 
-    - After you've received approval, *only then* should you start work or make any pull requests. 
-    - If you really want to see you work merged into a super popular open source project, *and you do*, please always follow our process and open an issue first. 
-    - __Please don't skip straight to a pull request unless you are totally sure your work is unique__. This is just because we never want anyone's time or hard work to go to waste on duplicated work.
+2. After receiving your issue the Express JS documentation team will respond with feedback. We read every submissions and always try to respond quickly with feedback. 
+    - For submissions proposing significant change, we encourage you to follow the review process before starting work. 
 
 #### Step2: Get the Application Code Base
 
-After you've been approved, now you can clone the repo and get the code.
+Clone the repo and get the code:
 - `git clone https://github.com/expressjs/expressjs.com.git`
 
-This is a list of the main sections of the application, where most changes are likely to be made. This may help you identify where files you need to change live. 
+Now that you've got the code you're ready to start making your changes! 
+
+But just in case you need a little extra explanation, this section outlines the main sections of the code base, where most changes are likely to be made.  
 
 **Markdown Page Files**: 
 - These files render to html and make up the individual pages of the site. Most of the site's documentation text content is written in `md` files.
@@ -88,6 +85,8 @@ follow the specific instructions for [How to write a blog post.](https://express
 **CSS or Javascript**
 - All css and js files are kept in `css` and `js` folders on the project root.
 
+The Express JS website is build using [Jeykyll](https://jekyllrb.com/) and is hosted on [Github Pages](https://pages.github.com/).
+
 #### Step3: Running the Application
 
 
@@ -97,7 +96,7 @@ Now you'll need a way to see your changes, which means you'll need a running ver
 2. __Run using Deploy Preview__: Use this option if you don't want to bother with a local installation. Part of our continuous integration pipeline includes [Netlify Deploy Preview](https://docs.netlify.com/site-deploys/deploy-previews/). 
     - To use this you'll need to get your changes online - after you've made your first commit on your feature branch, make a *draft* pull request. 
     - After the build steps are complete, you'll have access to a __Deploy Preview__ tab that will run your changes on the web, rebuilding after each commit is pushed. 
-    - After you are completely done your work and it's ready for review, remove the draft status on your pull request and submit your work. We will review it and respond. 
+    - After you are completely done your work and it's ready for review, remove the draft status on your pull request and submit your work.
   
 ## Contributing translations
 
