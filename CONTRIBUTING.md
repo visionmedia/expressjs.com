@@ -40,7 +40,7 @@ We often have bugs or enhancements that need work. You can find these under our 
 #### Have an idea? Found a bug?
 
 If you've found a bug or a typo, or if you have an idea for an enhancement, you can:
-- Submit a [new issue](https://github.com/expressjs/expressjs.com/issues/new?assignees=&labels=&projects=&template=3other.md) on our repo. Do this for larger proposals, or if you'd like to discuss or get feedback first. 
+- Submit a [new issue](https://github.com/expressjs/expressjs.com/issues/new/choose) on our repo. Do this for larger proposals, or if you'd like to discuss or get feedback first. 
 - Make a [Github pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). If you have already done work and it's ready to go, feel free to send it our way.
 
 ## Contributor's Guide to Getting Started
@@ -52,9 +52,9 @@ So, you've found a problem that you want to fix, or have a site enhancement you 
 1. If you want to get feedback or discuss, open a discussion [issue](https://github.com/expressjs/expressjs.com/issues/new/choose) prior to starting work. This is not required, but encouraged for larger proposals. 
     - While we highly encourage this step, it is only for submissions proposing significant change. It  helps us to clarify and focus the work, and ensure it aligns with overall project priorities.
     - For submissions proposing small minor improvements or corrections, this is not needed. You can skip this step.
-    - When opening an issue please give it title and fill in the description section. The more details you provide, the more feedback we can give.
+    - When opening an issue please give it a title and fill in the description section. The more details you provide, the more feedback we can give.
 
-2. After receiving your issue the Express JS documentation team will respond with feedback. We read every submissions and always try to respond quickly with feedback. 
+2. After receiving your issue the Express JS documentation team will respond with feedback. We read every submission and always try to respond quickly with feedback. 
     - For submissions proposing significant change, we encourage you to follow the review process before starting work. 
 
 #### Step2: Get the Application Code Base
