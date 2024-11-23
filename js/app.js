@@ -54,6 +54,19 @@ $(function(){
     $('#fork').html(editLink);
   }
 
+  if (document.readyState !== 'loading') {
+    const languageElement = document.getElementById('languageData');
+    const languagesData = languageElement ? JSON.parse(languageElement.dataset.languages) : [];
+
+    const langDisplay = document.getElementById('current-lang');
+
+    if (langDisplay) {
+      const currentLanguage = window.location.pathname.split('/')[1];
+      const matchedLang = languagesData.find(lang => lang.code === currentLanguage);
+      langDisplay.textContent = matchedLang ? matchedLang.name : 'English';
+    }
+  }
+
   // code highlight
 
   $('code.language-js').each(function(){
@@ -139,7 +152,7 @@ $(function(){
 
   })
   $('#tags-side-menu li').on('click', function() {
-      // Remove prev 'active's 
+      // Remove prev 'active's
       $(this).next().siblings().removeClass('active');
       $(this).next().addClass('active')
     })

@@ -13,7 +13,7 @@
                       <ul class="submenu-content">
                           <li>
                             <a href="/{{ page.lang }}/starter/installing.html">
-                             O'rnatish 
+                             O'rnatish
                             </a>
                           </li>
                           <li>
@@ -23,7 +23,7 @@
                           </li>
                           <li>
                           <a href="/{{ page.lang }}/starter/generator.html">
-                            Express generator 
+                            Express generator
                           </a>
                           </li>
                           <li>
@@ -92,7 +92,7 @@
                           </li>
                           <li><a href="/{{ page.lang }}/advanced/best-practice-performance.html">Performance best practices</a>
                           </li>
-                      </ul>                  
+                      </ul>
           </li>
           <li id="resources-menu" class="submenu">
                   <a href="/{{ page.lang }}/resources/glossary.html"{% if page.menu == 'resources' %} class="active"{% endif %}>Resources</a>
@@ -107,8 +107,11 @@
           </li>
       </ul>
   </div>
-  <div id="theme-icon-container" class="theme-toggle default-theme" title="toggle darkmode">
-    <i class="fa fa-moon-o fa-2x hidden-dark"></i>
-    <span class="sun-icon hidden-light"></span>
+  <div class="header-right">
+    <div id="theme-icon-container" class="theme-toggle default-theme" title="toggle darkmode">
+      <i class="fa fa-moon-o fa-2x hidden-dark"></i>
+      <span class="sun-icon hidden-light"></span>
+    </div>
+    {% include language-picker.html %}
   </div>
 </header>

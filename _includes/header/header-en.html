@@ -131,20 +131,23 @@
                   <a href="{{site.posts.first.url}}"{% if page.menu == 'blog' %} class="active"{% endif %}>Blog</a>
                       <ul class="submenu-content">
                           <li>
-                            <a href="{{site.posts.first.url}}">Latest post</a> 
+                            <a href="{{site.posts.first.url}}">Latest post</a>
                           </li>
                           <li>
-                            <a href="/{{ page.lang }}/blog/posts.html">All posts</a> 
-                          </li>                          
+                            <a href="/{{ page.lang }}/blog/posts.html">All posts</a>
+                          </li>
                           <li>
                             <a href="/{{ page.lang }}/blog/write-post.html">Write a Post</a>
                           </li>
                       </ul>
-                  </li>
-      </ul>
-  </div>
-  <div id="theme-icon-container" class="theme-toggle default-theme" title="toggle darkmode">
-    <i class="fa fa-moon-o fa-2x hidden-dark"></i>
-    <span class="sun-icon hidden-light"></span>
-  </div>
+          </li>
+        </ul>
+      </div>
+      <div class="header-right">
+        <div id="theme-icon-container" class="theme-toggle default-theme" title="toggle darkmode">
+          <i class="fa fa-moon-o fa-2x hidden-dark"></i>
+          <span class="sun-icon hidden-light"></span>
+        </div>
+        {% include language-picker.html %}
+      </div>
 </header>

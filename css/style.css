@@ -230,7 +230,7 @@ li code {
 
 *::-webkit-scrollbar-thumb:active {
   background-color: #616161;
-} 
+}
 
 /* links */
 
@@ -316,6 +316,12 @@ a {
   margin: 3px 0;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 header {
   position: fixed;
   top: 0;
@@ -326,7 +332,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 45px;
+  padding-inline: 25px;
   z-index: 100;
   border-bottom: 1px solid #ddd;
 }
@@ -449,7 +455,7 @@ html[xmlns] .clearfix {
   width: 100%;
   margin-top: 5px;
   margin-bottom: 20px;
-}     
+}
 
 /* doc specific */
 
@@ -627,7 +633,7 @@ footer {
 
 #footer-copyright {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center;
   gap: 20px;
 }
@@ -709,7 +715,7 @@ footer {
   margin: auto;
   box-shadow: 0px 1px 3px #00000026;
   z-index: 1000;
-  min-width: 230px;
+  min-width: max-content;
   width: fit-content;
   background-color: #fcfcfa;
   border: 1px solid #b2b2b2;
@@ -1100,7 +1106,7 @@ h2 a {
 #blog-doc {
   margin: 0 10px;
 }
-#blog-doc:has(> h1#express-blog), 
+#blog-doc:has(> h1#express-blog),
 #blog-doc:has(> h1#write-a-blog-post) {
   min-height: 300px;
 }
@@ -1125,7 +1131,7 @@ h2 a {
   justify-content: space-between;
   box-shadow: 2px 3px #E0E0E0;
   border-radius: 5px;
-  border: 1px solid #808080;  
+  border: 1px solid #808080;
   transition: 0.1s;
 }
 .blog-post:hover {
@@ -1181,7 +1187,7 @@ h2 a {
     margin-right: 0;
     padding-right: 10px;
   }
-  
+
 
 
   #blog-doc .blog-details + p > img {
@@ -1198,7 +1204,7 @@ h2 a {
   }
   .blog-tags {
     margin-bottom: 20px;
-  } 
+  }
   .blog-title {
     font-size: 1.3rem;
     margin-bottom: 20px;
@@ -1207,7 +1213,7 @@ h2 a {
   .blog-post .blog-details {
     display: flex;
     flex-direction: row;
-    margin-left: 1rem; 
+    margin-left: 1rem;
     font-size: 90%;
   }
   .blog-post .blog-details div:first-child {
@@ -1358,6 +1364,7 @@ blockquote {
     overflow-y: auto;
     overflow-x: hidden;
     transform: none;
+    cursor: pointer;
   }
 
   .submenu-content li > a {
