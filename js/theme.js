@@ -1,3 +1,8 @@
+/*
+ Copyright (c) 2024 OpenJs Foundation and Express Contributors
+ License: MIT
+*/
+
 const themeWatcher = watchColorSchemeChange((colorScheme) => {
   if (!hasLocalStorage()) {
     document?.addEventListener('DOMContentLoaded', () => {

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
+ Copyright (c) 2024 OpenJs Foundation and Express Contributors
  License: MIT
 */
 

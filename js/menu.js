@@ -1,3 +1,8 @@
+/*
+ Copyright (c) 2024 OpenJs Foundation and Express Contributors
+ License: MIT
+*/
+
 // It uses `window.matchMedia` instead of `window.addEventListener('resize')` because `matchMedia` performs better by not changing its value with every screen resize.
 const mobileScreen = window.matchMedia("(max-width: 1110px)");
 let isSmallScreen = mobileScreen?.matches;
