@@ -1,50 +1,68 @@
+:root {
+  --gbl-grey-txt-one: #aeaeae;
+}
 .light-mode:root {
-    /* (background) */
-    --lightm-bg: #ffffff;
-    /* (general texts) */
-    --lightm-fg: #383838;
-    --lightm-card-bg: #f0f1f3;
-    /* (h1,h2, code blocks, announcement, etc) */
-    --lightm-card-fg: #383838;
-     /* grey h3  */
-    --lightm-grey-h-fg: #888;
-    /* (hover background) */
-    --lightm-hover-bg: #484848;
-    /* (hover foreground) */
-    --lightm-hover-fg: #fafafa;
-    /* (borders) */
-    --lightm-border: #d9e1e4;
-    /* (Links) */
-    --accent: #0e78ce;
-    --box-fg: rgb(24, 24, 24);
-    --info-bg: rgb(207, 212, 252);
-    --info-accent: rgb(15, 28, 138);
-    --notice-light-bg: #fdfae6;
-    --notice-light-border: #ebdbb7;
-    --notice-bg: rgb(252, 234, 197);
-    --notice-accent: rgb(115, 82, 13);
-    --warn-bg: rgb(250, 209, 223);
-    --warn-accent: rgb(138, 15, 58);
-    --code-bg: #f0f1f3;
-  }
-  .dark-mode:root{
-    --box-fg: rgb(255, 255, 255);
-    --info-bg: rgb(23, 29, 79);
-    --info-accent: rgb(189, 195, 255);
-    --notice-bg: rgb(78, 64, 34);
-    --notice-accent: rgb(249, 232, 195);
-    --warn-bg: rgb(78, 34, 50);
-    --warn-accent: rgb(249, 195, 214);
-    --code-bg: #0d1117;--main_dark_bg: #010409;
-    --second_dark_bg: #0d1117;
-    --darker_hover: #171b20;
-    --dark_hover: #383838;
-    --second_dark_hover: #484848;
-    --dark_inner_text: #888888;
-    --dark_header_text: silver;
-    --dark_main_text: #e6edf3;
-    --dark_bright_text: wheat;
-    --dark_border: #ddd;
-    --link: #259dff;
-    
-  }
+  /* background (main) */
+  --lightm-bg: #ffffff;
+  /* text (general) */
+  --lightm-fg: #383838;
+  /* background  (sub sections in - h1,h2, code blocks, announcement, etc) */
+  --lightm-card-bg: #f0f1f3;
+  /* text (h1,h2, code blocks, announcement, etc) */
+  --lightm-card-fg: #383838;
+  /* text (side menus h3...)  */
+  --lightm-submenu-grey: #888;
+  /* (hover background) */
+  --lightm-hover-bg: #484848;
+  /* (hover foreground) */
+  --lightm-hover-fg: #fafafa;
+  /* borders) */
+  --lightm-border: #d9e1e4;
+  /* (Links) */
+  --lightm-link: #0e78ce;
+  --box-fg: rgb(24, 24, 24);
+  --info-bg: rgb(207, 212, 252);
+  --info-accent: rgb(15, 28, 138);
+  --notice-light-bg: #fdfae6;
+  --notice-light-border: #ebdbb7;
+  --notice-bg: rgb(252, 234, 197);
+  --notice-accent: rgb(115, 82, 13);
+  --warn-bg: rgb(250, 209, 223);
+  --warn-accent: rgb(138, 15, 58);
+  --code-bg: #f0f1f3;
+}
+.dark-mode:root {
+  /* (background) */
+  --bg: #0c0c0c;
+  /* (general texts) */
+  --fg: #fafafa;
+  --card: #181818;
+  /* (header, code blocks, announcement, etc) */
+  --card-foreground: #71717a;
+  /* (hover background) */
+  --hover-bg: #484848;
+  /* (hover foreground) */
+  --hover-fg: #fafafa;
+  --border: #d9e1e4;
+  /* (Links) */
+  --darkm-link: #2b8fe0;
+  --box-fg: rgb(255, 255, 255);
+  --info-bg: rgb(23, 29, 79);
+  --info-accent: rgb(189, 195, 255);
+  --notice-bg: rgb(78, 64, 34);
+  --notice-accent: rgb(249, 232, 195);
+  --warn-bg: rgb(78, 34, 50);
+  --warn-accent: rgb(249, 195, 214);
+  --code-bg: #0d1117;
+  --main_dark_bg: #010409;
+  --second_dark_bg: #0d1117;
+  --darker_hover: #171b20;
+  --dark_hover: #383838;
+  --second_dark_hover: #484848;
+  --dark_inner_text: #888888;
+  --dark_header_text: silver;
+  --dark_main_text: #e6edf3;
+  --dark_bright_text: wheat;
+  --dark_border: #ddd;
+  --link: #259dff;
+}

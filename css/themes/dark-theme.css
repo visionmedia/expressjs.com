@@ -1,5 +1,6 @@
 @import "../values.css";
 
+
 #theme-icon-container {
   position: relative;
   color: black;
@@ -26,6 +27,9 @@ html .hidden-light {
   display: none;
 }
 
+html.dark-mode a{
+  color: var(--darkm-link)
+}
 html.dark-mode .hidden-light {
   display: block;
 }
@@ -52,11 +56,13 @@ html.dark-mode #logo > a {
 html.dark-mode #navbar ul#navmenu li a {
   color: var(--dark_main_text);
 }
-/* first drop down link - some js is adding current class */
-html.dark-mode #navbar ul#navmenu li a.current {
+/* don't think it exists anymore */
+
+/* first drop down link - some js is adding current clas  s */
+/* html.dark-mode #navbar ul#navmenu li a.current {
   background: transparent;
-}
-html.dark-mode #navbar ul#navmenu li a.current:hover,
+} */
+/* html.dark-mode #navbar ul#navmenu li a.current:hover, */
 html.dark-mode .submenu-content a:hover {
   background: var(--dark_hover);
 }
@@ -167,6 +173,13 @@ html.dark-mode #announcements {
 html.dark-mode #boxes div > h3 {
   color: var(--dark_main_text);
 }
+#logo .express {
+  color: var(--darkm-link )
+}
+html.dark-mode #description .express a#express-version {
+    color: var(--darkm-link);
+}
+
 /* basic-routing.htlm */
 html.dark-mode [class*='language-'] {
   text-shadow: 0 1px var(--second_dark_bg);

@@ -23,16 +23,35 @@ strong, th {
     }
 }
 #install-command {
-    /* check if needed */
+    /* not needed */
     /* background: var(--lightm-bg); */
-    border-color: var(--border);
+    border-color: var(--lightm-border);
   }
 #api-doc > h3, 
 #api-doc h5 {
-    color: var(--lightm-grey-h-fg)
+    color: var(--lightm-submenu-grey)
   }
 /* li code,   */
 code {
     color:var(--lightm-card-fg);
-  }
-  
+}
+a {
+    color: var(--lightm-link);
+}
+#logo .express {
+    color: var(--lightm-card-fg)
+}
+#description .express > a {
+    color: var(--lightm-card-fg);
+}
+#description .express a#express-version {
+    color: var(--lightm-link);
+}
+    
+header{
+    background: var(--lightm-card-bg);
+}
+#navmenu>li {
+    background: var(--lightm-card-bg);
+
+}
