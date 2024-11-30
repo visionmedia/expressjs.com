@@ -3,6 +3,8 @@ layout: page
 title: Actualizaciones de seguridad de Express
 menu: advanced
 lang: es
+description: Review the latest security updates and patches for Express.js, including
+  detailed vulnerability lists for different versions to help maintain a secure application.
 ---
 
 # Actualizaciones de seguridad

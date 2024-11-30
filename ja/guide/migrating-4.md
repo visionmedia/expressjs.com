@@ -3,6 +3,8 @@ layout: page
 title: Express 4 への移行
 menu: guide
 lang: ja
+description: A guide to migrating your Express.js applications from version 3 to 4,
+  covering changes in middleware, routing, and how to update your codebase effectively.
 ---
 
 # Express 4 への移行

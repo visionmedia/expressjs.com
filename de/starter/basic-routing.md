@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Basisrouting in Express
+description: Learn the fundamentals of routing in Express.js applications, including how to define routes, handle HTTP methods, and create route handlers for your web server.
 menu: starter
 lang: de
 ---

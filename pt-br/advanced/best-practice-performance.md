@@ -3,6 +3,8 @@ layout: page
 title: Melhores Práticas de Desempenho Usando o Express em Produção
 menu: advanced
 lang: pt-br
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # Melhores Práticas de Produção: desempenho e confiabilidade

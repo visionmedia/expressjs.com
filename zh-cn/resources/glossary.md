@@ -3,6 +3,8 @@ layout: page
 title: Express 词汇表
 menu: resources
 lang: zh-cn
+description: A comprehensive glossary of terms related to Express.js, Node.js, middleware,
+  routing, and other key concepts to help you understand and use Express effectively.
 ---
 
 # 词汇表

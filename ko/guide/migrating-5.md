@@ -3,6 +3,8 @@ layout: page
 title: Express 5로의 마이그레이션
 menu: guide
 lang: ko
+description: A comprehensive guide to migrating your Express.js applications from
+  version 4 to 5, detailing breaking changes, deprecated methods, and new improvements.
 ---
 
 # Express 5로의 이전
@@ -16,7 +18,7 @@ Express 5는 Express 4와 크게 다르지 않으며, API에 대한 변경은 3.
 Express 5의 최신 알파 버전을 설치하고 미리보려면, 애플리케이션 루트 디렉토리에서 다음의 명령을 입력하십시오.
 
 ```console
-$ npm install "express@>={{ site.data.express.next_version }}" --save
+$ npm install "express@^{{ site.data.express.next_version }}" --save
 ```
 
 이후 자동화된 테스트를 실행하여 실패하는 항목을 확인하고, 아래에 나열된 업데이트에 따라 문제를 수정할 수 있습니다. 테스트 실패 항목을 처리한 후에는 앱을 실행하여 어떠한 오류가 발생하는지 확인하십시오. 지원되지 않는 메소드나 특성을 앱이 사용하는 경우에는 이를 곧바로 확인할 수 있습니다.
@@ -63,7 +65,7 @@ $ npm install "express@>={{ site.data.express.next_version }}" --save
 
 Express 5는 `app.del()` 함수를 더 이상 지원하지 않습니다. 이 함수를 사용하면 오류에 대한 예외 처리(throw)가 발생합니다. HTTP DELETE 라우트를 등록하려면 `app.delete()` 함수를 대신 사용하십시오.
 
-`delete`는 JavaScript의 예약된 키워드이므로, 처음에는 `delete` 대신 `del`이 사용되었습니다. 그러나, ECMAScript 6을 기준으로, `delete` 및 다른 예약된 키워드를 정식 특성 이름으로 사용할 수 있게 되었습니다. `app.del` 함수 사용 중단의 요인이 된 토론을 여기서 읽을 수 있습니다.
+`delete`는 JavaScript의 예약된 키워드이므로, 처음에는 `delete` 대신 `del`이 사용되었습니다. 그러나, ECMAScript 6을 기준으로, `delete` 및 다른 예약된 키워드를 정식 특성 이름으로 사용할 수 있게 되었습니다.
 
 <h4 id="app.param">app.param(fn)</h4>
 

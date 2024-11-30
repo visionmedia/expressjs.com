@@ -3,6 +3,8 @@ layout: page
 title: 撰寫中介軟體以用於 Express 應用程式中
 menu: guide
 lang: zh-tw
+description: Learn how to write custom middleware functions for Express.js applications,
+  including examples and best practices for enhancing request and response handling.
 ---
 
 # 撰寫中介軟體以用於 Express 應用程式中

@@ -3,6 +3,8 @@ layout: page
 title: Express の「Hello World」の例
 menu: starter
 lang: ja
+description: Get started with Express.js by building a simple 'Hello World' application,
+  demonstrating the basic setup and server creation for beginners.
 ---
 
 # Hello World の例

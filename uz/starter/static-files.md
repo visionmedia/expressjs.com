@@ -3,6 +3,8 @@ layout: page
 title: Expressda server statik fayllar
 menu: starter
 lang: uz
+description: Understand how to serve static files like images, CSS, and JavaScript
+  in Express.js applications using the built-in 'static' middleware.
 ---
 
 # Expressda server statik fayllar

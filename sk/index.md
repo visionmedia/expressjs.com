@@ -3,6 +3,8 @@ layout: home
 title: Express - Node.js webový aplikačný framework
 menu: home
 lang: sk
+description: Express is a fast, unopinionated, minimalist web framework for Node.js,
+  providing a robust set of features for web and mobile applications.
 ---
 <!---
  Copyright (c) 2016 StrongLoop, IBM, and Express Contributors

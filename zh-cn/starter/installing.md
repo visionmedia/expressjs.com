@@ -3,6 +3,8 @@ layout: page
 title: 安装 Express
 menu: starter
 lang: zh-cn
+description: Learn how to install Express.js in your Node.js environment, including
+  setting up your project directory and managing dependencies with npm.
 ---
 
 # 安装

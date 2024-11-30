@@ -3,6 +3,8 @@ layout: home
 title: Express - Node.js web-dasturlar uchun freymvork
 menu: home
 lang: uz
+description: Express is a fast, unopinionated, minimalist web framework for Node.js,
+  providing a robust set of features for web and mobile applications.
 ---
 <section id="home-content">
   {% include header/header-{{ page.lang }}.html %}

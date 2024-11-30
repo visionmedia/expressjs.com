@@ -3,6 +3,8 @@ layout: page
 title: Migrando para o Express 5
 menu: guide
 lang: pt-br
+description: A comprehensive guide to migrating your Express.js applications from
+  version 4 to 5, detailing breaking changes, deprecated methods, and new improvements.
 ---
 
 # Migrando para o Express 5
@@ -23,7 +25,7 @@ Para instalar o alfa mais recente e ter uma prévia do Express
 5, digite o seguinte comando no diretório raiz do seu aplicativo:
 
 ```console
-$ npm install "express@>={{ site.data.express.next_version }}" --save
+$ npm install "express@^{{ site.data.express.next_version }}" --save
 ```
 
 É possível em seguida executar seus testes automatizados para

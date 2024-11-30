@@ -3,6 +3,8 @@ layout: page
 title: Express application generator
 menu: starter
 lang: th
+description: Learn how to use the Express application generator tool to quickly create
+  a skeleton for your Express.js applications, streamlining setup and configuration.
 ---
 
 # เครื่องมือสร้าง Express

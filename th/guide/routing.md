@@ -3,6 +3,8 @@ layout: page
 title: Express routing
 menu: guide
 lang: th
+description: Learn how to define and use routes in Express.js applications, including
+  route methods, route paths, parameters, and using Router for modular routing.
 ---
 
 # Routing

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Writing middleware for use in Express apps
+description: Learn how to write custom middleware functions for Express.js applications, including examples and best practices for enhancing request and response handling.
 menu: guide
 lang: en
 redirect_from: "/guide/writing-middleware.html"

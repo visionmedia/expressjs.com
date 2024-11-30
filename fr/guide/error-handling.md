@@ -3,6 +3,8 @@ layout: page
 title: Traitement d'erreurs Express
 menu: guide
 lang: fr
+description: Understand how Express.js handles errors in synchronous and asynchronous
+  code, and learn to implement custom error handling middleware for your applications.
 ---
 
 # Traitement d'erreurs

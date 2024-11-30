@@ -3,6 +3,8 @@ layout: page
 title: Express 애플리케이션 생성기
 menu: starter
 lang: ko
+description: Learn how to use the Express application generator tool to quickly create
+  a skeleton for your Express.js applications, streamlining setup and configuration.
 ---
 
 # Express 애플리케이션 생성기

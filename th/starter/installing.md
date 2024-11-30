@@ -3,6 +3,8 @@ layout: page
 title: Installing Express
 menu: starter
 lang: th
+description: Learn how to install Express.js in your Node.js environment, including
+  setting up your project directory and managing dependencies with npm.
 ---
 
 # การติดตั้ง
