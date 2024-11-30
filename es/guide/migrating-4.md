@@ -96,14 +96,13 @@ En la mayoría de los casos, sólo tiene que sustituir el middleware de la versi
 En la versión 4, puede utilizar un parámetro de variable para definir la vía de acceso donde se cargan las funciones de middleware y, a continuación, leer el valor del parámetro en el manejador de rutas.
 Por ejemplo:
 
-<pre>
-<code class="language-javascript" translate="no">
-app.use('/book/:id', function(req, res, next) {
-  console.log('ID:', req.params.id);
-  next();
-});
-</code>
-</pre>
+```js
+app.use('/book/:id', function (req, res, next) {
+  console.log('ID:', req.params.id)
+  next()
+})
+```
+
 <h3 id="routing">
 El sistema de direccionamiento
 </h3>
@@ -122,8 +121,7 @@ El nuevo método `app.route()` permite crear manejadores de rutas encadenables p
 
 A continuación, se muestra un ejemplo de manejadores de rutas encadenados que se definen utilizando la función `app.route()`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -134,8 +132,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h4 id="express-router">Clase <code>express.Router</code></h4>
 
@@ -145,28 +142,26 @@ El siguiente ejemplo crea un direccionador como un módulo, carga el middleware 
 
 Por ejemplo, cree un archivo de direccionador denominado `birds.js` en el directorio de la aplicación, con el siguiente contenido:
 
-<pre>
-<code class="language-javascript" translate="no">
-var express = require('express');
-var router = express.Router();
+```js
+var express = require('express')
+var router = express.Router()
 
 // middleware specific to this router
-router.use(function timeLog(req, res, next) {
-  console.log('Time: ', Date.now());
-  next();
-});
+router.use(function timeLog (req, res, next) {
+  console.log('Time: ', Date.now())
+  next()
+})
 // define the home page route
-router.get('/', function(req, res) {
-  res.send('Birds home page');
-});
+router.get('/', function (req, res) {
+  res.send('Birds home page')
+})
 // define the about route
-router.get('/about', function(req, res) {
-  res.send('About birds');
-});
+router.get('/about', function (req, res) {
+  res.send('About birds')
+})
 
-module.exports = router;
-</code>
-</pre>
+module.exports = router
+```
 
 A continuación, cargue el módulo de direccionador en la aplicación:
 
