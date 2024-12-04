@@ -1,8 +1,11 @@
 ---
 layout: page
-title: Лучшие практические методы улучшения производительности при использовании Express в рабочей среде
+title: Лучшие практические методы улучшения производительности при использовании Express
+  в рабочей среде
 menu: advanced
 lang: ru
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # Лучшие практические методы для рабочей среды: производительность и надежность

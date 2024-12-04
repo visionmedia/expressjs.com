@@ -3,6 +3,8 @@ layout: page
 title: Express за прокси
 menu: guide
 lang: ru
+description: Learn how to configure Express.js applications to work correctly behind
+  reverse proxies, including using the trust proxy setting to handle client IP addresses.
 ---
 
 # Express за прокси

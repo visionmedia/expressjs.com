@@ -3,6 +3,8 @@ layout: page
 title: Tvorba middleware pre použitie v Express applikáciách
 menu: guide
 lang: sk
+description: Learn how to write custom middleware functions for Express.js applications,
+  including examples and best practices for enhancing request and response handling.
 ---
 <!---
  Copyright (c) 2016 StrongLoop, IBM, and Express Contributors

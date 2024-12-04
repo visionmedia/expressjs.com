@@ -3,6 +3,8 @@ layout: page
 title: Gestione dei file statici in Express
 menu: starter
 lang: it
+description: Understand how to serve static files like images, CSS, and JavaScript
+  in Express.js applications using the built-in 'static' middleware.
 ---
 
 # Gestione dei file statici in Express

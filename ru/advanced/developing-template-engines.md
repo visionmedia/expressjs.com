@@ -3,6 +3,8 @@ layout: page
 title: Разработка шаблонизаторов для Express
 menu: advanced
 lang: ru
+description: Learn how to develop custom template engines for Express.js using app.engine(),
+  with examples on creating and integrating your own template rendering logic.
 ---
 
 # Разработка шаблонизаторов для Express

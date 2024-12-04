@@ -3,6 +3,8 @@ layout: page
 title: Entregando arquivos estáticos no Express
 menu: starter
 lang: pt-br
+description: Understand how to serve static files like images, CSS, and JavaScript
+  in Express.js applications using the built-in 'static' middleware.
 ---
 
 # Entregando arquivos estáticos no Express

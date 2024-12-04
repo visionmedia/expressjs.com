@@ -3,6 +3,9 @@ layout: page
 title: Routage de base Express
 menu: starter
 lang: fr
+description: Learn the fundamentals of routing in Express.js applications, including
+  how to define routes, handle HTTP methods, and create route handlers for your web
+  server.
 ---
 
 # Routage de base

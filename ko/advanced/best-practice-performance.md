@@ -3,6 +3,8 @@ layout: page
 title: 프로덕션 환경에서의 Express 사용을 위한 성능 우수 사례
 menu: advanced
 lang: ko
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # 프로덕션 우수 사례: 성능 및 신뢰성

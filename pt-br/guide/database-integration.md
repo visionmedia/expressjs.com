@@ -3,6 +3,8 @@ layout: page
 title: Integração de banco de dados do Express
 menu: guide
 lang: pt-br
+description: Discover how to integrate various databases with Express.js applications,
+  including setup examples for MongoDB, MySQL, PostgreSQL, and more.
 ---
 
 # Integração de Banco de dados

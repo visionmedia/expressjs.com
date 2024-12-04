@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Migrating to Express 5
+description: A comprehensive guide to migrating your Express.js applications from version 4 to 5, detailing breaking changes, deprecated methods, and new improvements.
 menu: guide
 lang: en
 redirect_from: "/guide/migrating-5.html"
@@ -14,7 +15,7 @@ Express 5 is not very different from Express 4; although it maintains the same b
 To install this version, you need to have a Node.js version 18 or higher. Then, execute the following command in your application directory:
 
 ```console
-$ npm install "express@>={{ site.data.express.next_version }}" --save
+$ npm install "express@^{{ site.data.express.next_version }}"
 ```
 
 You can then run your automated tests to see what fails, and fix problems according to the updates listed below. After addressing test failures, run your app to see what errors occur. You'll find out right away if the app uses any methods or properties that are not supported.

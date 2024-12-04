@@ -3,6 +3,9 @@ layout: 3x-api
 title: Express 3.x - API リファレンス
 menu: api
 lang: ja
+description: Access the API reference for Express.js version 3.x, noting that this
+  version is end-of-life and no longer maintained - includes details on modules and
+  methods.
 ---
 <div id="api-doc" markdown="1">
 

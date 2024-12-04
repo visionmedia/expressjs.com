@@ -3,6 +3,9 @@ layout: page
 title: Contributing to Express
 menu: resources
 lang: id
+description: Find out how to contribute to Express.js, including guidelines for reporting
+  issues, submitting pull requests, becoming a collaborator, and understanding security
+  policies.
 ---
 
 # Contributing to Express

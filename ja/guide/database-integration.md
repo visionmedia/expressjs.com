@@ -3,6 +3,8 @@ layout: page
 title: Express でのデータベースの統合
 menu: guide
 lang: ja
+description: Discover how to integrate various databases with Express.js applications,
+  including setup examples for MongoDB, MySQL, PostgreSQL, and more.
 ---
 
 # データベースの統合

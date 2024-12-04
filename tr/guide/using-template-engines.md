@@ -3,7 +3,9 @@ layout: page
 title: Express ile şablon motorları kullanmak
 menu: guide
 lang: tr
-redirect_from: "/guide/using-template-engines.html"
+redirect_from: /guide/using-template-engines.html
+description: Discover how to integrate and use template engines like Pug, Handlebars,
+  and EJS with Express.js to render dynamic HTML pages efficiently.
 ---
 # Express ile şablon motorları kullanmak
 
