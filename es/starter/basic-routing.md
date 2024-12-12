@@ -3,6 +3,9 @@ layout: page
 title: Direccionamiento básico de Express
 menu: starter
 lang: es
+description: Learn the fundamentals of routing in Express.js applications, including
+  how to define routes, handle HTTP methods, and create route handlers for your web
+  server.
 ---
 
 # Direccionamiento básico

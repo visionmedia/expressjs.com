@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Performance Best Practices Using Express in Production
+description: Discover performance and reliability best practices for Express apps in production, covering code optimizations and environment setups for optimal performance.
 menu: advanced
 lang: en
 redirect_from: "/advanced/best-practice-performance.html"
@@ -82,7 +83,7 @@ Before diving into these topics, you should have a basic understanding of Node/E
 
 For more on the fundamentals of error handling, see:
 
-* [Error Handling in Node.js](https://www.joyent.com/developers/node/design/errors)
+* [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
 * [Building Robust Node Applications: Error Handling](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop blog)
 
 #### What not to do
@@ -137,12 +138,12 @@ app.use((err, req, res, next) => {
 })
 ```
 
-Now all errors asynchronous and synchronous get propagated to the error middleware.
+Now, all errors asynchronous and synchronous get propagated to the error middleware.
 
 However, there are two caveats:
 
 1.  All your asynchronous code must return promises (except emitters). If a particular library does not return promises, convert the base object by using a helper function like [Bluebird.promisifyAll()](http://bluebirdjs.com/docs/api/promise.promisifyall.html).
-2.  Event emitters (like streams) can still cause uncaught exceptions. So make sure you are handling the error event properly; for example:
+2.  Event emitters (like `streams`) can still cause uncaught exceptions. So make sure you are handling the error event properly; for example:
 
 ```js
 const wrap = fn => (...args) => fn(...args).catch(args[2])
@@ -185,7 +186,7 @@ Setting NODE_ENV to "production" makes Express:
 
 If you need to write environment-specific code, you can check the value of NODE_ENV with `process.env.NODE_ENV`. Be aware that checking the value of any environment variable incurs a performance penalty, and so should be done sparingly.
 
-In development, you typically set environment variables in your interactive shell, for example by using `export` or your `.bash_profile` file. But in general you shouldn't do that on a production server; instead, use your OS's init system (systemd or Upstart). The next section provides more details about using your init system in general, but setting NODE_ENV is so important for performance (and easy to do), that it's highlighted here.
+In development, you typically set environment variables in your interactive shell, for example by using `export` or your `.bash_profile` file. But in general, you shouldn't do that on a production server; instead, use your OS's init system (systemd or Upstart). The next section provides more details about using your init system in general, but setting `NODE_ENV` is so important for performance (and easy to do), that it's highlighted here.
 
 With Upstart, use the `env` keyword in your job file. For example:
 
@@ -230,7 +231,7 @@ The most popular process managers for Node are as follows:
 * [PM2](https://github.com/Unitech/pm2)
 * [Forever](https://www.npmjs.com/package/forever)
 
-For a feature-by-feature comparison of the three process managers, see [http://strong-pm.io/compare/](http://strong-pm.io/compare/). For a more detailed introduction to all three, see [Process managers for Express apps](/{{ page.lang }}/advanced/pm.html).
+For a feature-by-feature comparison of the three process managers, see [http://strong-pm.io/compare/](http://strong-pm.io/compare/). 
 
 Using any of these process managers will suffice to keep your application up, even if it does crash from time to time.
 
@@ -258,7 +259,7 @@ There are two ways to use init systems with your Express app:
 
 Systemd is a Linux system and service manager. Most major Linux distributions have adopted systemd as their default init system.
 
-A systemd service configuration file is called a _unit file_, with a filename ending in `.service`. Here's an example unit file to manage a Node app directly.  Replace the values enclosed in `<angle brackets>` for your system and app:
+A systemd service configuration file is called a _unit file_, with a filename ending in `.service`. Here's an example unit file to manage a Node app directly. Replace the values enclosed in `<angle brackets>` for your system and app:
 
 ```sh
 [Unit]
@@ -347,7 +348,7 @@ respawn
 respawn limit 10 10
 ```
 
-NOTE: This script requires Upstart 1.4 or newer, supported on Ubuntu 12.04-14.10.
+{% include admonitions/note.html content="This script requires Upstart 1.4 or newer, supported on Ubuntu 12.04-14.10." %}
 
 Since the job is configured to run when the system starts, your app will be started along with the operating system, and automatically restarted if the app crashes or the system goes down.
 
@@ -375,7 +376,9 @@ Then run the service with:
 $ sudo /sbin/initctl start strong-pm
 ```
 
-NOTE: On systems that don't support Upstart 1.4, the commands are slightly different. See [Setting up a production host (StrongLoop documentation)](https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-RHELLinux5and6,Ubuntu10.04-.10,11.04-.10) for more information.
+{% include admonitions/note.html content="On systems that don't support Upstart 1.4, the commands are slightly different. See [Setting up a production host (StrongLoop documentation)](https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-RHELLinux5and6,Ubuntu10.04-.10,11.04-.10) for more information." %}
+
+
 
 ### Run your app in a cluster
 
@@ -445,7 +448,7 @@ No matter how optimized an app is, a single instance can handle only a limited a
 
 A load balancer is usually a reverse proxy that orchestrates traffic to and from multiple application instances and servers. You can easily set up a load balancer for your app by using [Nginx](http://nginx.org/en/docs/http/load_balancing.html) or [HAProxy](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts).
 
-With load balancing, you might have to ensure that requests that are associated with a particular session ID connect to the process that originated them. This is known as _session affinity_, or _sticky sessions_, and may be addressed by the suggestion above to use a data store such as Redis for session data (depending on your application). For a discussion, see [Using multiple nodes](https://socket.io/docs/using-multiple-nodes).
+With load balancing, you might have to ensure that requests that are associated with a particular session ID connect to the process that originated them. This is known as _session affinity_, or _sticky sessions_, and may be addressed by the suggestion above to use a data store such as Redis for session data (depending on your application). For a discussion, see [Using multiple nodes](https://socket.io/docs/v4/using-multiple-nodes/).
 
 ### Use a reverse proxy
 

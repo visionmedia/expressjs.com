@@ -3,7 +3,9 @@ layout: page
 title: Express veritabanı integrasyonu
 menu: guide
 lang: tr
-redirect_from: "/guide/database-integration.html"
+redirect_from: /guide/database-integration.html
+description: Discover how to integrate various databases with Express.js applications,
+  including setup examples for MongoDB, MySQL, PostgreSQL, and more.
 ---
 # Veritabanı integrasyonu
 

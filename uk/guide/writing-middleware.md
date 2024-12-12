@@ -3,6 +3,8 @@ layout: page
 title: Створення проміжних обробників для використання у Express застосунках
 menu: guide
 lang: uk
+description: Learn how to write custom middleware functions for Express.js applications,
+  including examples and best practices for enhancing request and response handling.
 ---
 
 # Створення проміжних обробників для використання у Express застосунках
@@ -142,4 +144,4 @@ When you make a request to the root of the app, the app now displays the timesta
 
 Because you have access to the request object, the response object, the next middleware function in the stack, and the whole Node.js API, the possibilities with middleware functions are endless.
 
-For more information about Express middleware, see: [Using Express middleware](/guide/using-middleware.html).
+For more information about Express middleware, see: [Using Express middleware]/{{page.lang}}/using-middleware.html).

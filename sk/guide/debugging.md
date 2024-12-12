@@ -3,6 +3,8 @@ layout: page
 title: Debuggovanie Express
 menu: guide
 lang: sk
+description: Learn how to enable and use debugging logs in Express.js applications
+  by setting the DEBUG environment variable for enhanced troubleshooting.
 ---
 <!---
  Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
@@ -10,12 +12,6 @@ lang: sk
 -->
 
 # Debuggovanie Express
-
-Express interne používa k logovaniu informácií ohľadom route matchingu, použitých middleware funkciách, aplikačného módu a toku request response cyklu modul [debug](https://www.npmjs.com/package/debug).
-
-<div class="doc-box doc-info" markdown="1">
-`debug` je ako rozšírena verzia `console.log`, ale narozdiel od `console.log`, nemusíte zakomentovávať volania `debug` v produkčnom kóde. Logovanie je vypnuté defaultne a je možné ho zapnúť použitím `DEBUG` environment premennej.
-</div>
 
 Ak chcete vidieť všetky interné logy Express-u, nastavte pri spúštaní vašej aplikácie environment premennú `DEBUG` na hodnotu
 `express:*`.
@@ -113,5 +109,3 @@ Pomocou čiarkou oddeleného zoznamu názvov môžete špecifikovať viac ako je
 ```console
 $ DEBUG=http,mail,express:* node index.js
 ```
-
-Pre viac informácií ohľadom `debug` modulu si pozrite [debug](https://www.npmjs.com/package/debug).

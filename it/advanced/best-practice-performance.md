@@ -3,6 +3,8 @@ layout: page
 title: Best Practice sulle prestazioni utilizzando Express in fase di produzione
 menu: advanced
 lang: it
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # Best practice sulla produzione: prestazioni e affidabilità
@@ -84,7 +86,7 @@ Prima di leggere questi argomenti, è necessario avere una conoscenza base della
 
 Per ulteriori informazioni sulle nozioni di base della gestione degli errori, consultare:
 
-* [Gestione degli errori in Node.js](https://www.joyent.com/developers/node/design/errors)
+* [Gestione degli errori in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
 * [Come creare applicazioni Node solide: Gestione degli errori](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (blog di StrongLoop)
 
 #### Cosa non fare
@@ -243,7 +245,7 @@ I process manager più noti per Node sono i seguenti:
 * [PM2](https://github.com/Unitech/pm2)
 * [Forever](https://www.npmjs.com/package/forever)
 
-Per un paragone a livello di funzioni dei tre process manager, consultare l'indirizzo [http://strong-pm.io/compare/](http://strong-pm.io/compare/). Per informazioni più dettagliate su tutti e tre i process manager, consultare [Process manager per le applicazioni Express](/{{ page.lang }}/advanced/pm.html).
+Per un paragone a livello di funzioni dei tre process manager, consultare l'indirizzo [http://strong-pm.io/compare/](http://strong-pm.io/compare/). 
 
 L'utilizzo di questi process manager sarà sufficiente per far restare attiva l'applicazione, anche se dovesse capitare che si arresti in modo anomalo.
 
@@ -434,7 +436,7 @@ A prescindere da quanto sia ottimizzata un'applicazione, una singola istanza è 
 
 Un servizio di bilanciamento del carico è solitamente un proxy inverso che gestisce il traffico a e d più istanze di applicazione e server. È possibile impostare facilmente un servizio di bilanciamento del carico per l'applicazione utilizzando [Nginx](http://nginx.org/en/docs/http/load_balancing.html) or [HAProxy](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts).
 
-Con il servizio di bilanciamento del carico, è possibile che sia necessario garantire che le richieste associate a un ID sessione particolare si connettano al processo che le ha originate. Questo processo è noto come *affinità sessione* o *sessioni delicate*. Si consiglia di utilizzare un data store, ad esempio Redis, per i dati sessione (a seconda dell'applicazione). Per informazioni, consultare [Utilizzo di più nodi](https://socket.io/docs/using-multiple-nodes).
+Con il servizio di bilanciamento del carico, è possibile che sia necessario garantire che le richieste associate a un ID sessione particolare si connettano al processo che le ha originate. Questo processo è noto come *affinità sessione* o *sessioni delicate*. Si consiglia di utilizzare un data store, ad esempio Redis, per i dati sessione (a seconda dell'applicazione). Per informazioni, consultare [Utilizzo di più nodi](https://socket.io/docs/v4/using-multiple-nodes/).
 
 #### Utilizzo di StrongLoop PM con un servizio di bilanciamento del carico Nginx
 

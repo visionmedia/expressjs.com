@@ -3,6 +3,8 @@ layout: page
 title: Migrando para o Express 4
 menu: guide
 lang: pt-br
+description: A guide to migrating your Express.js applications from version 3 to 4,
+  covering changes in middleware, routing, and how to update your codebase effectively.
 ---
 
 # Migrando para o Express 4

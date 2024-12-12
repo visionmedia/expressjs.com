@@ -3,6 +3,8 @@ layout: home
 title: Express - Node.js 웹 애플리케이션 프레임워크
 menu: home
 lang: ko
+description: Express is a fast, unopinionated, minimalist web framework for Node.js,
+  providing a robust set of features for web and mobile applications.
 ---
 <section id="home-content">
   {% include header/header-{{ page.lang }}.html %}
@@ -37,7 +39,6 @@ lang: ko
     </div>
 
     <div id="frameworks">
-      <h3>Frameworks</h3> <a href="resources/frameworks.html">많은 유명한 프레임워크들이</a> Express를 기반으로 하고 있습니다.
     </div>
   </div>
 

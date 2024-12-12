@@ -3,6 +3,8 @@ layout: page
 title: 実稼働環境における Express の使用におけるパフォーマンスに関するベスト・プラクティス
 menu: advanced
 lang: ja
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # 実稼働環境におけるベスト・プラクティス: パフォーマンスと信頼性
@@ -81,7 +83,7 @@ Node アプリケーションは、キャッチされていない例外が発生
 
 エラー処理のその他の基礎については、下記を参照してください。
 
-* [Error Handling in Node.js](https://www.joyent.com/developers/node/design/errors)
+* [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
 * [Building Robust Node Applications: Error Handling](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop ブログ)
 
 #### 実行してはならないこと
@@ -228,7 +230,7 @@ Node 向けの最も一般的なプロセス・マネージャーは次のとお
 * [PM2](https://github.com/Unitech/pm2)
 * [Forever](https://www.npmjs.com/package/forever)
 
-3 つのプロセス・マネージャーの各機能の比較については、[http://strong-pm.io/compare/](http://strong-pm.io/compare/) を参照してください。3 つすべての詳細な紹介については、[Express アプリケーション用のプロセス・マネージャー](/{{ page.lang }}/advanced/pm.html) を参照してください。
+3 つのプロセス・マネージャーの各機能の比較については、[http://strong-pm.io/compare/](http://strong-pm.io/compare/) を参照してください。
 
 これらのプロセス・マネージャーのいずれかを使用すれば、時々異常終了してもアプリケーションの稼働状態を維持するのに十分です。
 
@@ -444,7 +446,7 @@ For more information on clustering with PM2, see [Cluster Mode](https://pm2.keym
 
 ロード・バランサーは通常、複数のアプリケーション・インスタンスやサーバーとの間のトラフィックを調整するリバース・プロキシーです。[Nginx](http://nginx.org/en/docs/http/load_balancing.html) や [HAProxy](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts) を使用して、アプリケーション用にロード・バランサーを簡単にセットアップできます。
 
-ロード・バランシングでは、特定のセッション ID に関連する要求が発信元のプロセスに接続することを確認する必要があります。これは、*セッション・アフィニティー* または*スティッキー・セッション* と呼ばれ、セッション・データに Redis などのデータ・ストアを使用する上記の提案によって対応できます (ご使用のアプリケーションによって異なります)。説明については、[Using multiple nodes](https://socket.io/docs/using-multiple-nodes) を参照してください。
+ロード・バランシングでは、特定のセッション ID に関連する要求が発信元のプロセスに接続することを確認する必要があります。これは、*セッション・アフィニティー* または*スティッキー・セッション* と呼ばれ、セッション・データに Redis などのデータ・ストアを使用する上記の提案によって対応できます (ご使用のアプリケーションによって異なります)。説明については、[Using multiple nodes](https://socket.io/docs/v4/using-multiple-nodes/) を参照してください。
 
 ### リバース・プロキシーを使用する
 

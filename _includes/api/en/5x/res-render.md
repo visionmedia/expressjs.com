@@ -8,14 +8,12 @@ Optional parameters:
 
 The `view` argument is a string that is the file path of the view file to render. This can be an absolute path, or a path relative to the `views` setting. If the path does not contain a file extension, then the `view engine` setting determines the file extension. If the path does contain a file extension, then Express will load the module for the specified template engine (via `require()`) and render it using the loaded module's `__express` function.
 
-For more information, see [Using template engines with Express](/guide/using-template-engines.html).
+For more information, see [Using template engines with Express](/{{page.lang}}/guide/using-template-engines.html).
 
-**NOTE:** The `view` argument performs file system operations like reading a file from disk and evaluating Node.js modules, and as so for security reasons should not contain input from the end-user.
+{% include admonitions/note.html content="The `view` argument performs file system operations like reading a file from disk and evaluating Node.js modules, and as so for security reasons should not contain input from the end-user." %}
 
-<div class="doc-box doc-notice" markdown="1">
-The local variable `cache` enables view caching. Set it to `true`,
-to cache the view during development; view caching is enabled in production by default.
-</div>
+{% include admonitions/caution.html content="The local variable `cache` enables view caching. Set it to `true`,
+to cache the view during development; view caching is enabled in production by default." %}
 
 ```js
 // send the rendered view to the client

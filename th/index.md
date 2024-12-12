@@ -3,6 +3,8 @@ layout: home
 title: Express - เว็บแอปพลิเคชันเฟรมเวอร์คสำหรับ Node.js
 menu: home
 lang: th
+description: Express is a fast, unopinionated, minimalist web framework for Node.js,
+  providing a robust set of features for web and mobile applications.
 ---
 <section id="home-content">
   {% include header/header-{{ page.lang }}.html %}
@@ -39,7 +41,6 @@ lang: th
     </div>
 
     <div id="frameworks">
-      <h3>เฟรมเวอร์ค</h3> <a href="{{ page.lang }}/resources/frameworks.html">เฟรมเวอร์คยอดนิยมมากยาย</a> ที่มีพื้นฐานจาก Express.
     </div>
   </div>
 

@@ -3,6 +3,8 @@ layout: page
 title: 位於 Proxy 背後的 Express
 menu: guide
 lang: zh-tw
+description: Learn how to configure Express.js applications to work correctly behind
+  reverse proxies, including using the trust proxy setting to handle client IP addresses.
 ---
 
 # 位於 Proxy 背後的 Express

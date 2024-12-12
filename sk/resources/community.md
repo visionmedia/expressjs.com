@@ -3,6 +3,8 @@ layout: page
 title: Express komunita
 menu: resources
 lang: sk
+description: Connect with the Express.js community, learn about the technical committee,
+  find resources, explore community-contributed modules, and get involved in discussions.
 ---
 <!---
  Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
@@ -10,20 +12,6 @@ lang: sk
 -->
 
 # Komunita
-
-## Mailová skupina
-
-Pridajte sa k 2000 Express používateľom alebo sa pozrite na viac než 5000
-[Google Group](https://groups.google.com/group/express-js) diskusií.
-
-## Gitter
-
-[Strongloop/express chatroom](https://gitter.im/expressjs/express) je skvelým miestom pre developerov zaujímajúcich sa a diskutujúcich o Express-e.
-
-## IRC kanál
-
-Stovky developerov nájdete každý deň na #express kanály.
-Ak máte otázky ohľadom frameworku, spýtajte sa.
 
 # Príklady
 

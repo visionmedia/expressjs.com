@@ -3,6 +3,9 @@ layout: page
 title: Express 常见问题及解答
 menu: starter
 lang: zh-cn
+description: Find answers to frequently asked questions about Express.js, including
+  topics on application structure, models, authentication, template engines, error
+  handling, and more.
 ---
 
 # 常见问题及解答

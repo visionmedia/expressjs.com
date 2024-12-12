@@ -3,6 +3,8 @@ layout: page
 title: 프로덕션 환경의 Express를 위한 보안 우수 사례
 menu: advanced
 lang: ko
+description: Discover crucial security best practices for Express apps in production,
+  including using TLS, input validation, secure cookies, and preventing vulnerabilities.
 ---
 
 # 프로덕션 우수 사례: 보안
@@ -13,7 +15,7 @@ __"프로덕션 (production)"__ 이라는 용어는 소프트웨어 라이프사
 
 개발 환경 및 프로덕션 환경은 일반적으로 서로 다르게 설정되며 두 환경의 요구사항은 크게 다릅니다. 개발 환경에서는 좋은 것일지라도 프로덕션 환경에서는 허용되지 않을 수도 있습니다. 예를 들면, 개발 환경에서는 디버깅을 위해 상세한 오류 로깅이 선호될 수 있지만, 이러한 행동은 프로덕션 환경에서 보안 우려사항이 될 수 있습니다. 그리고 개발 환경에서는 확장성, 신뢰성 및 성능에 대해 걱정할 필요가 없지만, 이러한 요인들은 프로덕션 환경에서 매우 중요해집니다.
 
-{% include note.html content="Express의 보안 취약점을 발견하신것 같다면,
+{% include admonitions/note.html content="Express의 보안 취약점을 발견하신것 같다면,
 [Security Policies and Procedures](/en/resources/contributing.html#security-policies-and-procedures)를 따라주십시오.
 " %}
 
@@ -91,7 +93,7 @@ app.disable('x-powered-by')
 
 `helmet.js`를 사용하는 경우에는 사용자를 대신하여 `helmet.js`가 위의 작업을 실행합니다.
 
-{% include note.html content="`X-Powered-By header`를 비활성화하는 행위는 고수준의 공격자가 앱이 Express를 사용하고 있는지 확인하는 걸 막을 수 없습니다. 일반적인 취약점은 막을지 모르지만, 앱이 Express를 사용하고 있는지 알아내는 다른 방법은 많이 있습니다. "%}
+{% include admonitions/note.html content="`X-Powered-By header`를 비활성화하는 행위는 고수준의 공격자가 앱이 Express를 사용하고 있는지 확인하는 걸 막을 수 없습니다. 일반적인 취약점은 막을지 모르지만, 앱이 Express를 사용하고 있는지 알아내는 다른 방법은 많이 있습니다. "%}
 
 <a name="use-cookies-securely"></a>
 ## 쿠키를 안전하게 사용
@@ -180,26 +182,18 @@ $ cd your-app
 $ snyk test
 ```
 
-Use this command to open a wizard that walks you through the process of applying updates or patches to fix the vulnerabilities that were found:
-아래 명령으로 찾은 취약점을 고치는 패치나 업데이트를 받는 설치 마법사를 실행합니다.
-
-```console
-$ snyk wizard
-```
-
 <a name="avoid-other-known-vulnerabilities"></a>
 ## 그 외의 알려져 있는 취약점 회피
 
 Express에, 또는 앱에 사용되는 다른 모듈에 영향을 미칠 수 있는 [Node Security Project](https://npmjs.com/advisories)의 보안 권고문에 항상 주의를 기울이십시오.  일반적으로 Node Security Project는 Node의 보안과 관련된 지식 및 도구에 대한 훌륭한 자원입니다.
 
-마지막으로, 다른 모든 웹 앱과 마찬가지로 Express 앱은 다양한 웹 기반 공격에 취약할 수 있습니다. 알려져 있는 [웹 취약성](https://www.owasp.org/index.php/Top_10_2013-Top_10)을 숙지한 후 이러한 취약성을 피하기 위한 예방 조치를 취하십시오.
+마지막으로, 다른 모든 웹 앱과 마찬가지로 Express 앱은 다양한 웹 기반 공격에 취약할 수 있습니다. 알려져 있는 [웹 취약성](https://www.owasp.org/www-project-top-ten/)을 숙지한 후 이러한 취약성을 피하기 위한 예방 조치를 취하십시오.
 
 <a name="additional-considerations"></a>
 ## 추가적인 고려사항
 
 유용한 [Node.js Security Checklist](https://blog.risingstack.com/node-js-security-checklist/)에서 발췌한 몇 가지 추가적인 권장사항은 다음과 같습니다. 아래의 권장사항에 대한 모든 상세 정보를 확인하려면 해당 블로그 게시물을 참조하십시오.
 
-* [csurf](https://www.npmjs.com/package/csurf) 미들웨어를 이용하여 교차 사이트 요청 위조(CSRF)로부터 보호하십시오.
 * 항상 사용자 입력을 필터링하고 사용자 입력에서 민감한 데이터를 제거하여 XSS(Cross-site scripting) 및 명령 인젝션 공격으로부터 보호하십시오.
 * 매개변수화된 조회 또는 준비된 명령문을 이용하여 SQL 인젝션 공격으로부터 방어하십시오.
 * 오픈 소스 방식의 [sqlmap](http://sqlmap.org/) 도구를 이용하여 앱 내의 SQL 인젝션 취약성을 발견하십시오.

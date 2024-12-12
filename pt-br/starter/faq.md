@@ -3,6 +3,9 @@ layout: page
 title: Pergunta mais Frequentes do Express
 menu: starter
 lang: pt-br
+description: Find answers to frequently asked questions about Express.js, including
+  topics on application structure, models, authentication, template engines, error
+  handling, and more.
 ---
 
 # Perguntas mais frequentes
@@ -30,7 +33,7 @@ simplificam alguns desses padrões:
 ## Como eu defino modelos?
 
 O Express não tem noção de banco de dados. Este conceito é
-deixado para módulos do Node de terceiros, permitindo que você fazer
+deixado para módulos do Node de terceiros, permitindo que você faça
 a interface com praticamente qualquer banco de dados.
 
 Consulte [LoopBack](http://loopback.io) para

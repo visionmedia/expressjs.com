@@ -3,6 +3,8 @@ layout: page
 title: 프로덕션 환경에서의 Express 사용을 위한 성능 우수 사례
 menu: advanced
 lang: ko
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # 프로덕션 우수 사례: 성능 및 신뢰성
@@ -85,13 +87,13 @@ Node 앱은 처리되지 않은 예외가 발생할 때 충돌이 발생합니�
 모든 예외를 처리하도록 보장하려면 다음의 기법을 사용하십시오.
 
 * [try-catch 사용](#try-catch)
-* [프미스 사용](#promises)
+* [프로미스 사용](#promises)
 
 이 주제에 대해 자세히 살펴보기 전에 먼저 Node/Express의 오류 처리, 즉 오류 우선(error-first) 콜백의 사용 및 미들웨어를 통한 오류의 전파에 대한 기본적인 사항을 이해해야 합니다. Node는 비동기식 함수로부터 오류를 리턴하기 위해 "오류 우선 콜백" 방식을 사용하며, 여기서 콜백 함수의 첫 번째 매개변수는 오류 오브젝트이고 그 후속 매개변수에 결과 데이터가 뒤따릅니다. 오류가 없음을 나타낼 때는 첫 번째 매개변수로 널(null)을 전달합니다. 의미 있는 방식으로 오류를 처리하려면 콜백 함수는 이에 맞게 오류 우선 콜백 방식을 따라야 합니다. 그리고 Express에서의 우수 사례는 next() 함수를 사용하여 미들웨어 체인을 통해 오류를 전파하는 것입니다.
 
 오류 처리의 기본사항 대한 자세한 내용은 다음을 참조하십시오.
 
-* [Error Handling in Node.js](https://www.joyent.com/developers/node/design/errors)
+* [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
 * [Building Robust Node Applications: Error Handling](https://strongloop.com/strongblog/robust-node-applications-error-handling/)(StrongLoop 블로그)
 
 #### 수행하지 않아야 하는 항목
@@ -251,7 +253,7 @@ StrongLoop Process Manager를 이용하는 경우에는 [StrongLoop PM을 서비
 * [PM2](https://github.com/Unitech/pm2)
 * [Forever](https://www.npmjs.com/package/forever)
 
-위 세 개의 프로세스 관리자에 대한 기능별 비교를 확인하려면 [http://strong-pm.io/compare/](http://strong-pm.io/compare/)를 참조하십시오. 세 프로세스 관리자 모두에 대한 자세한 내용은 [Express 앱용 프로세스 관리자](/{{ page.lang }}/advanced/pm.html)를 참조하십시오.
+위 세 개의 프로세스 관리자에 대한 기능별 비교를 확인하려면 [http://strong-pm.io/compare/](http://strong-pm.io/compare/)를 참조하십시오. 
 
 이러한 프로세스 관리자 중 어느 하나를 사용하면, 때때로 앱에서 충돌이 발생하는 경우에도, 충분히 앱이 지속적으로 작동하도록 할 수 있습니다.
 
@@ -473,7 +475,7 @@ PM2의 클러스터링에 관한 추가 정보는 PM2 문서의 [Cluster Mode](h
 
 로드 밸런서는 일반적으로 여러 애플리케이션 인스턴스 및 서버에 대한 트래픽을 오케스트레이션하는 역방향 프록시입니다. [Nginx](http://nginx.org/en/docs/http/load_balancing.html) 또는 [HAProxy](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts)를 이용하면 앱에 대한 로드 밸런서를 쉽게 설정할 수 있습니다.
 
-로드 밸런싱을 이용하는 경우, 특정한 세션 ID와 연관된 요청이 해당 요청을 발생시킨 프로세스에 연결되도록 해야 할 수도 있습니다. 이러한 경우는 *세션 선호도(session affinity)* 또는 *스티키 세션(sticky session)*으로 알려져 있으며, 세션 데이터를 위해 Redis와 같은 데이터 저장소를 사용하는 위의 제안을 통해 처리할 수도 있습니다(애플리케이션에 따라 다름). 토론을 위해서는 [Using multiple nodes](https://socket.io/docs/using-multiple-nodes)를 참조하십시오.
+로드 밸런싱을 이용하는 경우, 특정한 세션 ID와 연관된 요청이 해당 요청을 발생시킨 프로세스에 연결되도록 해야 할 수도 있습니다. 이러한 경우는 *세션 선호도(session affinity)* 또는 *스티키 세션(sticky session)*으로 알려져 있으며, 세션 데이터를 위해 Redis와 같은 데이터 저장소를 사용하는 위의 제안을 통해 처리할 수도 있습니다(애플리케이션에 따라 다름). 토론을 위해서는 [Using multiple nodes](https://socket.io/docs/v4/using-multiple-nodes/)를 참조하십시오.
 
 #### Nginx 로드 밸런서와 함께 StrongLoop PM 사용
 

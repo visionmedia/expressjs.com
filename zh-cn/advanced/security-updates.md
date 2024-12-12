@@ -3,12 +3,15 @@ layout: page
 title: Express 安全性更新
 menu: advanced
 lang: zh-cn
+description: Review the latest security updates and patches for Express.js, including
+  detailed vulnerability lists for different versions to help maintain a secure application.
 ---
 
 # 安全更新
 
 <div class="doc-box doc-notice" markdown="1">
-Node.js 漏洞直接影响 Express。因此，请[监视 Node.js 漏洞](http://blog.nodejs.org/vulnerability/)并确保使用最新稳定版的 Node.js。
+Node.js 漏洞直接影响 Express。因此，请[监视 Node.js 漏洞](https://nodejs.org
+/en/blog/vulnerability/)并确保使用最新稳定版的 Node.js。
 </div>
 
 以下列举了在指定版本更新中修复的 Express 漏洞。

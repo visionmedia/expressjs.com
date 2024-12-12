@@ -3,6 +3,8 @@ layout: page
 title: Mejores prácticas de seguridad para Express en producción
 menu: advanced
 lang: es
+description: Discover crucial security best practices for Express apps in production,
+  including using TLS, input validation, secure cookies, and preventing vulnerabilities.
 ---
 
 # Mejores prácticas de producción: seguridad
@@ -13,7 +15,7 @@ El término *"producción"* hace referencia a la etapa del ciclo de vida del sof
 
 Los entornos de desarrollo y producción se configuran normalmente de forma diferente y tiene requisitos también muy diferentes. Lo que funciona en el desarrollo puede que no sea aceptable en la producción. Por ejemplo, en un entorno de desarrollo, puede que desee el registro detallado de errores a efecto de depuración, mientras que el mismo comportamiento puede suponer un problema de seguridad en un entorno de producción. De la misma forma, en el desarrollo, no es necesario preocuparse por la escalabilidad, la fiabilidad y el rendimiento, mientras que estos son clave en la producción.
 
-{% include note.html content="Si crees haber encontrado una vulnerabilidad de seguridad en Express, por favor mira nuestras [Políticas de Seguridad y Procedimientos](/en/resources/contributing.html#security-policies-and-procedures).
+{% include admonitions/note.html content="Si crees haber encontrado una vulnerabilidad de seguridad en Express, por favor mira nuestras [Políticas de Seguridad y Procedimientos](/en/resources/contributing.html#security-policies-and-procedures).
 " %}
 
 Las mejores prácticas de seguridad para aplicaciones Express en producción incluyen:
@@ -187,24 +189,17 @@ Usa este comando para comprobar tu aplicación contra vulnerabilidades:
 $ snyk test
 ```
 
-Usa este comando para abrir un asistente que te guiará mediante el proceso de aplicar actualizaciones o parches para arreglar las vulnerabilidades que hayan sido encontradas:
-
-```console
-$ snyk wizard
-```
-
 ## Evitar otras vulnerabilidades conocidas
 
 Esté atento a las advertencias de [Node Security Project](https://npmjs.com/advisories) que puedan afectar a Express u otros módulos que utilice la aplicación.  En general, Node Security Project es un excelente recurso de herramientas e información sobre la seguridad de Node.
 
-Por último, las aplicaciones de Express, como cualquier otra aplicación web, son vulnerables a una amplia variedad de ataques basados en web. Familiarícese con las [vulnerabilidades web](https://www.owasp.org/index.php/Top_10_2013-Top_10) conocidas y tome precauciones para evitarlas.
+Por último, las aplicaciones de Express, como cualquier otra aplicación web, son vulnerables a una amplia variedad de ataques basados en web. Familiarícese con las [vulnerabilidades web](https://www.owasp.org/www-project-top-ten/) conocidas y tome precauciones para evitarlas.
 
 ## Consideraciones adicionales
 
 A continuación, se muestran algunas recomendaciones para la excelente lista de comprobación [Node.js Security Checklist](https://blog.risingstack.com/node-js-security-checklist/).  Consulte el post de este blog para ver todos los detalles de estas recomendaciones:
 
 * Implemente el límite de velocidad para evitar ataques de fuerza bruta contra la autenticación.  Una forma de hacerlo es utilizar [StrongLoop API Gateway](https://strongloop.com/node-js/api-gateway/) para forzar una política de limitación de velocidad.  También puede utilizar middleware como [express-limiter](https://www.npmjs.com/package/express-limiter), aunque para ello deberá modificar el código de alguna forma.
-* Utilice el middleware [csurf](https://www.npmjs.com/package/csurf) para protegerse contra la falsificación de solicitudes entre sitios (CSRF).
 * Filtre y sanee siempre la entrada de usuario para protegerse contra los ataques de scripts entre sitios (XSS) e inyección de mandatos.
 * Defiéndase contra los ataques de inyección de SQL utilizando consultas parametrizadas o sentencias preparadas.
 * Utilice la herramienta [sqlmap](http://sqlmap.org/) de código abierto para detectar vulnerabilidades de inyección de SQL en la aplicación.

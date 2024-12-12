@@ -3,6 +3,8 @@ layout: page
 title: Mejores prácticas de rendimiento cuando se utiliza Express en producción
 menu: advanced
 lang: es
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # Mejores prácticas de producción: rendimiento y fiabilidad
@@ -86,7 +88,7 @@ Antes de profundizar en estos temas, deberá tener unos conocimientos básicos d
 
 Para obtener más información sobre los aspectos básicos del manejo de errores, consulte:
 
--   [Error Handling in Node.js](https://www.joyent.com/developers/node/design/errors)
+-   [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
 -   [Building Robust Node Applications: Error Handling](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (blog StrongLoop)
 
 #### Qué no debe hacer
@@ -242,7 +244,7 @@ Los gestores de procesos más conocidos para Node son los siguientes:
 -   [PM2](https://github.com/Unitech/pm2)
 -   [Forever](https://www.npmjs.com/package/forever)
 
-Para ver una comparación característica a característica de los tres gestores de procesos, consulte [http://strong-pm.io/compare/](http://strong-pm.io/compare/). Para ver una introducción más detallada de los tres, consulte [Gestores de procesos para las aplicaciones Express](/{{ page.lang }}/advanced/pm.html).
+Para ver una comparación característica a característica de los tres gestores de procesos, consulte [http://strong-pm.io/compare/](http://strong-pm.io/compare/). 
 
 El uso de cualquiera de estos gestores de procesos bastará para mantener activa la aplicación, aunque se bloquee cada cierto tiempo.
 
@@ -434,7 +436,7 @@ Independientemente de lo optimizada que esté una aplicación, una única instan
 
 Un equilibrador de carga normalmente es un proxy inverso que orquesta el tráfico hacia y desde los servidores y las instancias de aplicación. Puede configurar fácilmente un equilibrador de carga para la aplicación utilizando [Nginx](http://nginx.org/en/docs/http/load_balancing.html) o [HAProxy](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts).
 
-Con el equilibrio de carga, deberá asegurarse de que las solicitudes asociadas con un determinado ID de sesión se conecten al proceso que las ha originado. Esto se conoce como _afinidad de sesiones_ o _sesiones adhesivas_, y puede solucionarse con la recomendación anterior de utilizar un almacén de datos como, por ejemplo, Redis para los datos de sesión (dependiendo de la aplicación). Para obtener más información, consulte [Using multiple nodes](https://socket.io/docs/using-multiple-nodes).
+Con el equilibrio de carga, deberá asegurarse de que las solicitudes asociadas con un determinado ID de sesión se conecten al proceso que las ha originado. Esto se conoce como _afinidad de sesiones_ o _sesiones adhesivas_, y puede solucionarse con la recomendación anterior de utilizar un almacén de datos como, por ejemplo, Redis para los datos de sesión (dependiendo de la aplicación). Para obtener más información, consulte [Using multiple nodes](https://socket.io/docs/v4/using-multiple-nodes/).
 
 #### Mediante StrongLoop PM con un equilibrador de carga Nginx
 

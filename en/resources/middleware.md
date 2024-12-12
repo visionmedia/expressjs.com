@@ -1,6 +1,7 @@
 ---
 layout: middleware
 title: Express middleware
+description: Explore a list of Express.js middleware modules maintained by the Express team and the community, including built-in middleware and popular third-party modules.
 menu: resources
 lang: en
 redirect_from: "/resources/middleware.html"
@@ -20,7 +21,6 @@ The Express middleware modules listed here are maintained by the
 | [cookie-parser](/resources/middleware/cookie-parser.html) | Parse cookie header and populate `req.cookies`. See also [cookies](https://github.com/jed/cookies) and [keygrip](https://github.com/jed/keygrip). | express.cookieParser|
 | [cookie-session](/resources/middleware/cookie-session.html) | Establish cookie-based sessions.| express.cookieSession |
 | [cors](/resources/middleware/cors.html) | Enable cross-origin resource sharing (CORS) with various options.| NA
-| [csurf](/resources/middleware/csurf.html) | Protect from CSRF exploits.|express.csrf |
 | [errorhandler](/resources/middleware/errorhandler.html) |Development error-handling/debugging. |express.errorHandler |
 | [method-override](/resources/middleware/method-override.html) |Override HTTP methods using header. |express.methodOverride |
 | [morgan](/resources/middleware/morgan.html) | HTTP request logger. | express.logger |
@@ -43,13 +43,13 @@ These are some additional popular middleware modules.
 |---------------------------|---------------------|
 | [cls-rtracer](https://github.com/puzpuzpuz/cls-rtracer) | Middleware for CLS-based request id generation. An out-of-the-box solution for adding request ids into your logs.|
 | [connect-image-optimus](https://github.com/msemenistyi/connect-image-optimus) | Optimize image serving. Switches images to `.webp` or `.jxr`, if possible.|
+| [error-handler-json](https://github.com/mifi/error-handler-json) | An error handler for JSON APIs (fork of `api-error-handler`.)|
 | [express-debug](https://github.com/devoidfury/express-debug) | Development tool that adds information about template variables (locals), current session, and so on.|
 | [express-partial-response](https://github.com/nemtsov/express-partial-response) | Filters out parts of JSON responses based on the `fields` query-string; by using Google API's Partial Response.|
 | [express-simple-cdn](https://github.com/jamiesteven/express-simple-cdn) | Use a CDN for static assets, with multiple host support.|
 | [express-slash](https://github.com/ericf/express-slash) | Handles routes with and without trailing slashes.|
-| [express-stormpath](https://github.com/stormpath/stormpath-express) | User storage, authentication, authorization, SSO, and data security.|
 | [express-uncapitalize](https://github.com/jamiesteven/express-uncapitalize) | Redirects HTTP requests containing uppercase to a canonical lowercase form.|
-| [helmet](https://github.com/helmetjs/helmet) |Helps secure your apps by setting various HTTP headers.|
+| [helmet](https://github.com/helmetjs/helmet) | Helps secure your apps by setting various HTTP headers.|
 | [join-io](https://github.com/coderaiser/join-io) | Joins files on the fly to reduce the requests count.|
 | [passport](https://github.com/jaredhanson/passport) | Authentication using "strategies" such as OAuth, OpenID and many others.  See [http://passportjs.org/](http://passportjs.org/) for more information.|
 | [static-expiry](https://github.com/paulwalker/connect-static-expiry) | Fingerprint URLs or caching headers for static assets.|

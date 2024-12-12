@@ -3,16 +3,11 @@ layout: page
 title: Отладка Express
 menu: guide
 lang: ru
+description: Learn how to enable and use debugging logs in Express.js applications
+  by setting the DEBUG environment variable for enhanced troubleshooting.
 ---
 
 # Отладка Express
-
-В Express используется внутренний модуль [debug](https://www.npmjs.com/package/debug) для
-регистрации информации о сопоставлениях маршрутов, используемых функциях промежуточной обработки, режиме приложения и выполнении цикла "запрос-ответ".
-
-<div class="doc-box doc-info" markdown="1">
-`debug` можно сравнить с расширенной версией `console.log`, но, в отличие от `console.log`, в рабочем коде не нужно добавлять символы комментария к протоколам `debug`. Ведение протокола по умолчанию выключено, но его можно условно активировать с помощью среды переменной `DEBUG`.
-</div>
 
 Для просмотра всех внутренних протоколов, используемых в Express, при запуске приложения задайте для переменной среды `DEBUG` значение `express:*`.
 
@@ -109,5 +104,3 @@ $ DEBUG=sample-app:* node ./bin/www
 ```console
 $ DEBUG=http,mail,express:* node index.js
 ```
-
-Дополнительная информация о модуле `debug` приведена на странице [debug](https://www.npmjs.com/package/debug).

@@ -3,6 +3,8 @@ layout: page
 title: Express 数据库集成
 menu: guide
 lang: zh-cn
+description: Discover how to integrate various databases with Express.js applications,
+  including setup examples for MongoDB, MySQL, PostgreSQL, and more.
 ---
 
 # 数据库集成

@@ -3,6 +3,8 @@ layout: page
 title: Canlı Ortamda Express için En İyi Güvenlik Pratikleri
 menu: advanced
 lang: tr
+description: Discover crucial security best practices for Express apps in production,
+  including using TLS, input validation, secure cookies, and preventing vulnerabilities.
 ---
 
 # En İyi Canlı Ortam Pratikleri: Güvenlik
@@ -13,7 +15,7 @@ _"canlı ortam"_ terimi, bir uygulama veya API'nin genel olarak son kullanıcıl
 
 Canlı ve geliştirme ortamları genel olarak farklı şekilde kurulurlar ve çok farklı gereksinimleri vardır. Geliştirme ortamında iyi olan bir şey canlı ortamda kabul edilebilir olmayabilir. Örneğin, geliştirme ortamında hata ayıklama için ayrıntılı hataların loglanmasını isteyebilirsiniz, ancak aynı şey canlı ortamda güvenlik açığı oluşturabilir. Ve geliştirme ortamında ölçeklenebilirlik, güvenilirlik ve performans hakkında endişe etmenize gerek yok iken, bu konular canlı ortamda kritikleşir.
 
-{% include note.html content="Express'te bir güvenlik açığı keşfettiğinizi düşünüyorsanız, lütfen bakınız
+{% include admonitions/note.html content="Express'te bir güvenlik açığı keşfettiğinizi düşünüyorsanız, lütfen bakınız
 [Güvenlik Politikaları ve Prosedürleri](https://github.com/expressjs/express/blob/master/Security.md).
 " %}
 
@@ -86,7 +88,7 @@ app.disable('x-powered-by')
 
 Eğer `helmet.js` kullanıyorsanız, bunu sizin için halleder.
 
-{% include note.html content="X-Powered-By başlığının devre dışı bırakılması, tecrübeli bir saldırganın bir uygulamanın Express çalıştırdığını belirlemesini önlemez. Bu, sıradan bir istismarı engelleyebilir, ancak bir uygulamanın Express çalıştırdığını belirlemenin başka yolları da var. "%}
+{% include admonitions/note.html content="X-Powered-By başlığının devre dışı bırakılması, tecrübeli bir saldırganın bir uygulamanın Express çalıştırdığını belirlemesini önlemez. Bu, sıradan bir istismarı engelleyebilir, ancak bir uygulamanın Express çalıştırdığını belirlemenin başka yolları da var. "%}
 
 ## Çerezleri güvenli kullanın
 
@@ -182,23 +184,16 @@ Uygulamanızı güvenlik açıklarına karşı test etmek için bu komutu kullan
 $ snyk test
 ```
 
-Bulunan güvenlik açıklarını düzeltmek için güncelleme veya yama uygulama sürecinde size yol gösteren bir sihirbazı açmak için bu komutu kullanın:
-
-```console
-$ snyk wizard
-```
-
 ## Bilinen diğer güvenlik açıklarından kaçının
 
 Express'i veya uygulamanızın kullandığı diğer modülleri etkileyen [Snyk](https://snyk.io/vuln/) ve [Node Security Project](https://npmjs.com/advisories) tavsiyelerini takipte kalın. Genel olarak, bu veritabanları Node güvenliği hakkında bilgi ve araçlar için mükemmel kaynaklardır.
 
-Son olarak, Express uygulamaları - diğer web uygulamaları gibi - çeşitli web tabanlı saldırılara karşı savunmasız olabilir. [Web güvenlik açıkları](https://www.owasp.org/index.php/Top_10-2017_Top_10) hakkında kendinizi bilgilendirin ve onlardan kaçınmak için önlemler alın.
+Son olarak, Express uygulamaları - diğer web uygulamaları gibi - çeşitli web tabanlı saldırılara karşı savunmasız olabilir. [Web güvenlik açıkları](https://www.owasp.org/www-project-top-ten/) hakkında kendinizi bilgilendirin ve onlardan kaçınmak için önlemler alın.
 
 ## Ek hususlar
 
 İşte mükemmel [Node.js Güvenlik Kontrol Listesi](https://blog.risingstack.com/node-js-security-checklist/)'nden bazı ek öneriler. Bu önerilerle ilgili tüm ayrıntılar için o blog gönderisine bakın:
 
-* Siteler arası istek sahteciliği'ne (CSRF) karşı korumak için [csurf](https://www.npmjs.com/package/csurf) ara yazılımını kullanın.
 * Siteler arası komut dosyası oluşturma (XSS) ve komut enjeksiyon saldırılarına karşı korumak için kullanıcı girişini her zaman filtreleyin ve sanitize edin.
 * Parametreli sorgular veya hazırlanmış ifadeler kullanarak SQL enjeksiyon saldırılarına karşı savunma yapın.
 * Uygulamanızdaki SQL enjeksion güvenlik açıklarını tespit etmek için açık kaynak olan [sqlmap](http://sqlmap.org/) aracını kullanın.

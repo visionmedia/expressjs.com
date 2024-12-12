@@ -3,6 +3,8 @@ layout: page
 title: Промежуточные обработчики в Express
 menu: resources
 lang: ru
+description: Explore a list of Express.js middleware modules maintained by the Express
+  team and the community, including built-in middleware and popular third-party modules.
 ---
 
 # Промежуточные обработчики сторонних поставщиков ПО
@@ -19,7 +21,6 @@ lang: ru
   - [connect-timeout](https://github.com/expressjs/timeout): ранее `express.timeout`
   - [cookie-parser](https://github.com/expressjs/cookie-parser): ранее `express.cookieParser`
   - [cookie-session](https://github.com/expressjs/cookie-session): ранее `express.cookieSession`
-  - [csurf](https://github.com/expressjs/csurf): ранее `express.csrf`
   - [errorhandler](https://github.com/expressjs/errorhandler): ранее `express.errorHandler`
   - [express-debug](https://github.com/devoidfury/express-debug): простой инструмент разработки, предназначенный для добавления вкладки с информацией о переменных шаблона (локалях), текущем сеансе, полезных данных запроса и т.д. для приложения.
   - [express-partial-response](https://github.com/nemtsov/express-partial-response): Модуль промежуточного обработчика Express для отфильтровывания частей ответов JSON на основе строки запроса `fields`; используется Частичный ответ API Google.

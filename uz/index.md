@@ -3,6 +3,8 @@ layout: home
 title: Express - Node.js web-dasturlar uchun freymvork
 menu: home
 lang: uz
+description: Express is a fast, unopinionated, minimalist web framework for Node.js,
+  providing a robust set of features for web and mobile applications.
 ---
 <section id="home-content">
   {% include header/header-{{ page.lang }}.html %}
@@ -34,9 +36,8 @@ lang: uz
             <h3>Ishlab chiqaruvchanlik</h3> Express Nodedagi siz bilgan va sevgan imkoniyatlarni cheklamagan holda web-dasturlardagi eng asosiy imkoniyatlar bilan ta'minlab beradi.
         </div>
 
- 		<div id="frameworks">
-          <h3>Freymvorklar</h3> Express asosida yaratilgan ko'plab <a href="resources/frameworks.html">mashxur freymvorklar</a> .
-      </div>
+        <div id="frameworks">
+        </div>
 
     </div>
 </section>
