@@ -3,6 +3,9 @@ layout: page
 title: Express の基本的なルーティング
 menu: starter
 lang: ja
+description: Learn the fundamentals of routing in Express.js applications, including
+  how to define routes, handle HTTP methods, and create route handlers for your web
+  server.
 ---
 
 # 基本的なルーティング

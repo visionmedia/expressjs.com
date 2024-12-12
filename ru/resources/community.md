@@ -3,23 +3,11 @@ layout: page
 title: Сообщество Express
 menu: resources
 lang: ru
+description: Connect with the Express.js community, learn about the technical committee,
+  find resources, explore community-contributed modules, and get involved in discussions.
 ---
 
 # Сообщество
-
-## Список рассылки
-
-Присоединяйтесь к 2000 пользователей Express или ознакомьтесь с более чем 5000
-обсуждений в [Группе Google](https://groups.google.com/group/express-js).
-
-## Gitter
-
-[Раздел чата по expressjs/express](https://gitter.im/expressjs/express) идеален для разработчиков, активно интересующихся ежедневными обсуждениями тем, касающихся Express.
-
-## Канал IRC
-
-Сотни разработчиков ежедневно общаются на канале #express в сети freenode.
-Если у вас возникнут вопросы по данному фреймворку, присоединяйтесь - и вы быстро получите ответы на них.
 
 ## Примеры
 

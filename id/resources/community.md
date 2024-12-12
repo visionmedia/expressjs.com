@@ -3,6 +3,8 @@ layout: page
 title: Express community
 menu: resources
 lang: id
+description: Connect with the Express.js community, learn about the technical committee,
+  find resources, explore community-contributed modules, and get involved in discussions.
 ---
 
 # Community
@@ -22,15 +24,16 @@ Members of the Express technical committee are:
 
 - [@blakeembrey](https://github.com/blakeembrey) - Blake Embrey
 - [@crandmck](https://github.com/crandmck) - Rand McKinney
-- [@dougwilson](https://github.com/dougwilson) - Douglas Wilson
 - [@LinusU](https://github.com/LinusU) - Linus Unnebäck
 - [@ulisesgascon](https://github.com/ulisesGascon) - Ulises Gascón
 - [@sheplu](https://github.com/sheplu) - Jean Burellier
 - [@wesleytodd](https://github.com/wesleytodd) - Wes Todd
 - [@jonchurch](https://github.com/jonchurch) - Jon Church
+- [@ctcpip](https://github.com/ctcpip/) - Chris de Almeida
 
 **Inactive:**
 
+- [@dougwilson](https://github.com/dougwilson) - Douglas Wilson
 - [@hacksparrow](https://github.com/hacksparrow) - Hage Yaapa
 - [@jonathanong](https://github.com/jonathanong) - jongleberry
 - [@niftylettuce](https://github.com/niftylettuce) - niftylettuce
@@ -48,11 +51,6 @@ Additionally, the Express community maintains modules in these two GitHub orgs:
 
 To keep up with what is going on in the whole community, check out the [ExpressJS StatusBoard](https://expressjs.github.io/statusboard/).
 
-## Gitter
-
-The [expressjs/express chatroom](https://gitter.im/expressjs/express) is great place
-for developers interested in the everyday discussions related to Express.
-
 ## Issues
 
 If you've come across what you think is a bug, or just want to make
@@ -63,13 +61,3 @@ a feature request open a ticket in the [issue queue](https://github.com/expressj
 View dozens of Express application [examples](https://github.com/expressjs/express/tree/master/examples)
 in the repository covering everything from API design and authentication to template engine integration.
 
-## Mailing List
-
-Join over 2000 Express users or browse over 5000
-discussions in the [Google Group](https://groups.google.com/group/express-js).
-
-## IRC channel
-
-Hundreds of developers idle in #express on freenode every day.
-If you have questions about the framework, jump in for quick
-feedback.

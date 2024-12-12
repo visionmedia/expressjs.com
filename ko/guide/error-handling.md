@@ -3,6 +3,8 @@ layout: page
 title: Express 오류 처리
 menu: guide
 lang: ko
+description: Understand how Express.js handles errors in synchronous and asynchronous
+  code, and learn to implement custom error handling middleware for your applications.
 ---
 
 # 오류 처리

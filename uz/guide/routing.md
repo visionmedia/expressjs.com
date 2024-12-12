@@ -3,6 +3,8 @@ layout: page
 title: Express routerlar
 menu: guide
 lang: uz
+description: Learn how to define and use routes in Express.js applications, including
+  route methods, route paths, parameters, and using Router for modular routing.
 ---
 
 # Routerlar

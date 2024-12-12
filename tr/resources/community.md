@@ -3,25 +3,11 @@ layout: page
 title: Express community
 menu: resources
 lang: tr
+description: Connect with the Express.js community, learn about the technical committee,
+  find resources, explore community-contributed modules, and get involved in discussions.
 ---
 <div id="page-doc" markdown="1">
 # Community
-
-## Mailing List
-
-Join over 2000 Express users or browse over 5000
-discussions in the [Google Group](https://groups.google.com/group/express-js).
-
-## Gitter
-
-The [expressjs/express chatroom](https://gitter.im/expressjs/express) is great place
-for developers interested in the everyday discussions related to Express.
-
-## IRC channel
-
-Hundreds of developers idle in #express on freenode every day.
-If you have questions about the framework, jump in for quick
-feedback.
 
 ## Issues
 
@@ -38,14 +24,25 @@ The meetings are recorded; for a list of the recordings, see the [Express.js You
 
 Members of the Express technical committee are:
 
+**Active:**
+
 - [@blakeembrey](https://github.com/blakeembrey) - Blake Embrey
 - [@crandmck](https://github.com/crandmck) - Rand McKinney
+- [@LinusU](https://github.com/LinusU) - Linus Unnebäck
+- [@ulisesgascon](https://github.com/ulisesGascon) - Ulises Gascón
+- [@sheplu](https://github.com/sheplu) - Jean Burellier
+- [@wesleytodd](https://github.com/wesleytodd) - Wes Todd
+- [@jonchurch](https://github.com/jonchurch) - Jon Church
+- [@ctcpip](https://github.com/ctcpip/) - Chris de Almeida
+
+**Inactive:**
+
 - [@dougwilson](https://github.com/dougwilson) - Douglas Wilson
 - [@hacksparrow](https://github.com/hacksparrow) - Hage Yaapa
 - [@jonathanong](https://github.com/jonathanong) - jongleberry
-- [@LinusU](https://github.com/LinusU) - Linus Unnebäck
 - [@niftylettuce](https://github.com/niftylettuce) - niftylettuce
 - [@troygoode](https://github.com/troygoode) - Troy Goode
+
 
 ## Examples
 

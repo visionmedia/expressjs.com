@@ -1,0 +1,38 @@
+name: Update External Docs
+on:
+    workflow_dispatch:
+    schedule:
+        - cron:  '0 8 * * 1'
+
+permissions:
+    pull-requests: write
+    contents: write
+
+jobs:
+    update-docs:
+        runs-on: ubuntu-latest
+        if: github.repository_owner == 'expressjs'
+        steps:
+            - uses: actions/checkout@v4
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: 20
+            - name: Run scripts
+              working-directory: .github/scripts
+              run: |
+                bash ./get-contributing.sh
+                bash ./get-readmes.sh
+                node ./get-express-version.mjs  
+            - name: Create Pull Request
+              uses: gr2m/create-or-update-pull-request-action@v1
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with: 
+                commit-message: update external docs
+                title: 'Update external docs'
+                body: >
+                  This auto-generated PR updates external documentation to the expressjs.com repository.
+                labels: doc
+                team_reviewers: expressjs/docs-captains
+                branch: external-docs-${{ github.sha }}

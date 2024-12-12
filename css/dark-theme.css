@@ -1,30 +1,37 @@
+.dark-mode:root{
+  --box-fg: rgb(255, 255, 255);
+  --info-bg: rgb(23, 29, 79);
+  --info-accent: rgb(189, 195, 255);
+  --notice-bg: rgb(78, 64, 34);
+  --notice-accent: rgb(249, 232, 195);
+  --warn-bg: rgb(78, 34, 50);
+  --warn-accent: rgb(249, 195, 214);
+  --code-bg: #0d1117;
+}
+
 :root {
   --main_dark_bg: #010409;
   --second_dark_bg: #0d1117;
-  --darker_hover: #171b20;;
+  --darker_hover: #171b20;
   --dark_hover: #383838;
   --second_dark_hover: #484848;
   --dark_inner_text: #888888;
   --dark_header_text: silver;
   --dark_main_text: #e6edf3;
   --dark_bright_text: wheat;
+  --dark_smooth_text: #aeaeae;
   --dark_border: #ddd;
   --link: #259dff;
 }
 #theme-icon-container {
   position: relative;
-  float: right;
-  color: white;
-  min-width: 50px;
   color: black;
 }
 #theme-icon-container i {
   cursor: pointer;
   line-height: 30px;
 }
-#theme-icon-container .hidden-light {
-  display: none;
-}
+
 .sun-icon {
   background-image: url(/images/sun-icon.png);
   background-size: 100%;
@@ -33,15 +40,22 @@
   height: 27px;
   cursor: pointer;
 }
-#theme-icon-container .hidden-dark {
+
+html .hidden-dark {
   display: block;
 }
-html.dark-mode #theme-icon-container .hidden-light {
-  display: block;
-}
-html.dark-mode #theme-icon-container .hidden-dark {
+
+html .hidden-light {
   display: none;
 }
+
+html.dark-mode .hidden-light {
+  display: block;
+}
+html.dark-mode .hidden-dark {
+  display: none;
+}
+
 html.dark-mode #theme-icon-container {
   color: var(--dark_main_text);
   background-color: var(--second_dark_bg);
@@ -58,26 +72,46 @@ html.dark-mode #logo > a {
   color: var(--dark_main_text);
 }
 /* navbar links/drop down menu links */
-html.dark-mode #navbar ul#navmenu li a,
-html.dark-mode #navbar ul#navmenu li.dropit-trigger a {
+html.dark-mode #navbar ul#navmenu li a {
   color: var(--dark_main_text);
 }
 /* first drop down link - some js is adding current class */
 html.dark-mode #navbar ul#navmenu li a.current {
   background: transparent;
 }
-html.dark-mode #navbar ul#navmenu li a.current:hover {
+html.dark-mode #navbar ul#navmenu li a.current:hover,
+html.dark-mode .submenu-content a:hover {
   background: var(--dark_hover);
 }
-html.dark-mode .menu ul.dropit-submenu {
-  background: var(--dark_bg);
-}
-/* drop down menu links  */
-html.dark-mode #navbar .menu ul.dropit-submenu a:hover {
-  background: var(--dark_hover);
-}
-html.dark-mode #navbar #navmenu li {
+
+html.dark-mode #navmenu > li {
   background: var(--second_dark_bg);
+}
+
+html.dark-mode #navbar #q {
+  border-color: #979797;
+}
+
+html.dark-mode #navbar .algolia-autocomplete #q:focus-visible,
+html.dark-mode #navbar .algolia-autocomplete #q:focus {
+  border-color: var(--dark_border);
+}
+
+/* drop down menu links  */
+
+html.dark-mode #navbar #navmenu li ul {
+  background: var(--second_dark_bg);
+}
+
+html.dark-mode #navbar .submenu-content li a:hover {
+  background: var(--dark_hover);
+  color: var(--dark_main_text);
+}
+
+@media all and (max-width: 1110px) {
+  html.dark-mode #navbar #navmenu li ul {
+    background: var(--main_dark_bg);
+  }
 }
 /* search bar */
 html.dark-mode #navbar > span.algolia-autocomplete > input {
@@ -106,7 +140,7 @@ html.dark-mode #navbar > span.algolia-autocomplete > input::placeholder {
 }
 :lang(uz) span.algolia-autocomplete > input,
 :lang(ru) span.algolia-autocomplete > input,
-:lang(de) span.algolia-autocomplete > input, 
+:lang(de) span.algolia-autocomplete > input,
 :lang(fr) span.algolia-autocomplete > input {
   max-width: 100%;
 }
@@ -116,29 +150,11 @@ html.dark-mode #navbar ul#navmenu > span.algolia-autocomplete > input::placehold
 html.dark-mode div#overlay {
   opacity: 0.5;
 }
-@media (max-width: 899px) {
-  #theme-icon-container {
-    bottom: 35px;
-  }
-  /* mobile menu main links hover */
-  html.dark-mode div#navbar ul#navmenu .dropit-trigger:hover {
-    background: var(--dark_hover);
-  }
-    /* mobile menu inner links hover */
-  html.dark-mode div#navbar .menu ul.dropit-submenu a:hover {
-    background: var(--second_dark_hover);
-    color: var(--dark_main_text) !important;
-  }
-}
-html.dark-mode .doc-box.doc-info,
-html.dark-mode .doc-box.doc-notice,
-html.dark-mode .doc-box.doc-warn {
-  color: var(--dark_main_text);
-  background: var(--main_dark_bg);
-}
+
 html.dark-mode .doc-box.doc-info pre.language-javascript {
   background: var(--main_dark_bg);
 }
+
 html.dark-mode h1,
 html.dark-mode h2,
 html.dark-mode h3,
@@ -153,6 +169,9 @@ html.dark-mode pre {
 /* index.html */
 html.dark-mode #description .express > a {
   color: var(--dark_main_text);
+}
+html.dark-mode #description .description {
+  color: var(--dark_smooth_text);
 }
 html.dark-mode #install-command {
   background: var(--main_dark_bg);
@@ -192,8 +211,8 @@ html.dark-mode #api-doc > h3 {
 html.dark-mode #api-doc section h5 {
   color: var(--dark_header_text);
 }
-/* 
-overriding search-bar results drop down  
+/*
+overriding search-bar results drop down
 */
 html.dark-mode .ds-dropdown-menu .ds-dataset-1 {
   background-color: var(--dark_bg);
@@ -249,19 +268,23 @@ html.dark-mode .blog-post{
   background-color: initial;
   border: 1px solid var(--dark_border);
   transition: 0.3s;
-} 
+}
 html.dark-mode .blog-post:hover{
   background-color: var(--darker_hover);
 }
 html.dark-mode .blog-title > a{
   color: var(--dark_main_text);
-} 
+}
 html.dark-mode .blog-excerpt{
   color: var(--dark_bright_text);
-} 
+}
 html.dark-mode #blog-side-menu-container h3 a{
   color: var(--dark_header_text);
 }
 html.dark-mode #blog-side-menu > li > a{
   color: var(--dark_inner_text);
+}
+
+html.dark-mode pre code {
+  background-color: inherit;
 }

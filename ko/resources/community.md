@@ -3,25 +3,11 @@ layout: page
 title: Express 커뮤니티
 menu: resources
 lang: ko
+description: Connect with the Express.js community, learn about the technical committee,
+  find resources, explore community-contributed modules, and get involved in discussions.
 ---
 
 # 커뮤니티
-
-## 메일링 리스트
-
-[Google Group](https://groups.google.com/group/express-js)에서
-2,000명 이상의 Express 사용자와 만나거나 5,000건 이상의 토론을 둘러보십시오.
-
-## Gitter
-
-[expressjs/express chatroom](https://gitter.im/expressjs/express)은 Express와 관련된
-일상적인 토론에 관심이 있는 개발자들에게 매우 적합한 곳입니다.
-
-## IRC 채널
-
-매일 수백 명의 개발자들이 Freenode의 #express에서 시간을 보내고 있습니다.
-프레임워크에 대한 질문이 있는 경우에는 채팅에 참여하여
-신속하게 피드백을 얻으십시오.
 
 ## 예제
 

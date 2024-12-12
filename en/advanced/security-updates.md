@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Express security updates
+description: Review the latest security updates and patches for Express.js, including detailed vulnerability lists for different versions to help maintain a secure application.
 menu: advanced
 lang: en
 redirect_from: "/advanced/security-updates.html"
@@ -44,9 +45,11 @@ The list below enumerates the Express vulnerabilities that were fixed in the spe
 ## 3.x
 
   <div class="doc-box doc-warn" markdown="1">
-  **Express 3.x IS NO LONGER MAINTAINED**
+  **Express 3.x IS END-OF-LIFE AND NO LONGER MAINTAINED**
 
-  Known and unknown security issues in 3.x have not been addressed since the last update (1 August, 2015). Using the 3.x line should not be considered secure.
+  Known and unknown security and performance issues in 3.x have not been addressed since the last update (1 August, 2015). It is highly recommended to use the latest version of Express.
+
+  If you are unable to upgrade past 3.x, please consider [Commercial Support Options](/{{ page.lang }}/support#commercial-support-options).
   </div>
 
   * 3.19.1

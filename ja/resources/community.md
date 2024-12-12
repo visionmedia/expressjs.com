@@ -3,22 +3,11 @@ layout: page
 title: Express のコミュニティー
 menu: resources
 lang: ja
+description: Connect with the Express.js community, learn about the technical committee,
+  find resources, explore community-contributed modules, and get involved in discussions.
 ---
 
 # コミュニティー
-
-## メーリング・リスト
-
-[Google グループ](https://groups.google.com/group/express-js)で、2000 名を超える Express ユーザーの中に参加したり、5000 件を超えるディスカッションを参照したりすることができます。
-
-## Gitter
-
-[expressjs/express chatroom](https://gitter.im/expressjs/express) は、Express に関連する日常的なディスカッションに参加したい開発者に適しています。
-
-## IRC チャネル
-
-毎日、数百名の開発者が #express on freenode で時間を過ごしています。
-フレームワークに関する質問がある場合は、すぐに参加してください。フィードバックを素早く得られます。
 
 ## 例
 

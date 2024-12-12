@@ -31,7 +31,7 @@ var compression = require('compression')
 ### compression([options])
 
 Returns the compression middleware using the given `options`. The middleware
-will attempt to compress response bodies for all request that traverse through
+will attempt to compress response bodies for all requests that traverse through
 the middleware, based on the given `options`.
 
 This middleware will never compress responses that include a `Cache-Control`
@@ -138,6 +138,12 @@ The default value is `zlib.Z_DEFAULT_WINDOWBITS`, or `15`.
 
 See [Node.js documentation](http://nodejs.org/api/zlib.html#zlib_memory_usage_tuning)
 regarding the usage.
+
+##### enforceEncoding
+
+This is the default encoding to use when the client does not specify an encoding in the request's [Accept-Encoding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) header.
+
+The default value is `identity`.
 
 #### .filter
 
