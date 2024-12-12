@@ -134,7 +134,7 @@
                   </li>
               </ul>
           </li>
-          <li><a href="/en/support" id="support-menu"{% if page.menu == 'support' %} class="active"{% endif %}>Support</a></li>
+          <li><a href="/{{ page.lang }}/support" id="support-menu"{% if page.menu == 'support' %} class="active"{% endif %}>Support</a></li>
           <li>
               <ul id="blog-menu" class="menu">
                   <li><a href="{{site.posts.first.url}}"{% if page.menu == 'blog' %} class="active"{% endif %}>Blog</a>
@@ -152,17 +152,7 @@
                   </li>
               </ul>
           </li>
-          <!--
-          <li>
-              <ul id="changelog-menu" class="menu">
-                  <li><a href="/{{ page.lang }}/changelog/4x.html"{% if page.menu == 'changelog' %} class="active"{% endif %}>Changelog</a>
-                      <ul>
-                          <li><a href="/{{ page.lang }}/changelog/4x.html">4.x</a></li>
-                      </ul>
-                  </li>
-              </ul>
-          </li>
-        -->
+       
       </ul>
       <div id="theme-icon-container" class="theme-toggle default-theme" title="toggle darkmode">
         <i class="fa fa-moon-o fa-2x hidden-dark"></i>
