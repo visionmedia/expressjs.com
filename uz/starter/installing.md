@@ -3,6 +3,8 @@ layout: page
 title: Expressni o'rnatish
 menu: starter
 lang: uz
+description: Learn how to install Express.js in your Node.js environment, including
+  setting up your project directory and managing dependencies with npm.
 ---
 
 # O'rnatish

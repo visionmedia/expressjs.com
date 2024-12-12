@@ -3,6 +3,8 @@ layout: page
 title: Express security aktualizácie
 menu: advanced
 lang: sk
+description: Review the latest security updates and patches for Express.js, including
+  detailed vulnerability lists for different versions to help maintain a secure application.
 ---
 <!---
  Copyright (c) 2016 StrongLoop, IBM, and Express Contributors

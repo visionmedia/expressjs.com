@@ -3,6 +3,8 @@ layout: page
 title: Menampilkan file statis di Express
 menu: starter
 lang: id
+description: Understand how to serve static files like images, CSS, and JavaScript
+  in Express.js applications using the built-in 'static' middleware.
 ---
 
 # Menampilkan file statis di Express

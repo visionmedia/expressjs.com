@@ -3,6 +3,8 @@ layout: page
 title: Express 错误处理
 menu: guide
 lang: zh-cn
+description: Understand how Express.js handles errors in synchronous and asynchronous
+  code, and learn to implement custom error handling middleware for your applications.
 ---
 
 # 错误处理

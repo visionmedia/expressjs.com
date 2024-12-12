@@ -3,6 +3,8 @@ layout: page
 title: Migrating to Express 5
 menu: guide
 lang: id
+description: A comprehensive guide to migrating your Express.js applications from
+  version 4 to 5, detailing breaking changes, deprecated methods, and new improvements.
 ---
 # Moving to Express 5
 
@@ -13,7 +15,7 @@ Express 5.0 is still in the beta release stage, but here is a preview of the cha
 To install the latest beta and to preview Express 5, enter the following command in your application root directory:
 
 ```console
-$ npm install "express@>={{ site.data.express.next_version }}" --save
+$ npm install "express@^{{ site.data.express.next_version }}" --save
 ```
 
 You can then run your automated tests to see what fails, and fix problems according to the updates listed below. After addressing test failures, run your app to see what errors occur. You'll find out right away if the app uses any methods or properties that are not supported.

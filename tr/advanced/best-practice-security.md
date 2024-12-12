@@ -3,6 +3,8 @@ layout: page
 title: Canlı Ortamda Express için En İyi Güvenlik Pratikleri
 menu: advanced
 lang: tr
+description: Discover crucial security best practices for Express apps in production,
+  including using TLS, input validation, secure cookies, and preventing vulnerabilities.
 ---
 
 # En İyi Canlı Ortam Pratikleri: Güvenlik

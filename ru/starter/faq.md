@@ -3,6 +3,9 @@ layout: page
 title: Часто задаваемые вопросы (FAQ) по Express
 menu: starter
 lang: ru
+description: Find answers to frequently asked questions about Express.js, including
+  topics on application structure, models, authentication, template engines, error
+  handling, and more.
 ---
 
 # Часто задаваемые вопросы (FAQ)

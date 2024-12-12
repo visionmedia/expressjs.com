@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Express-Community
+description: Connect with the Express.js community, learn about the technical committee, find resources, explore community-contributed modules, and get involved in discussions.
 menu: resources
 lang: de
 ---

@@ -3,6 +3,8 @@ layout: page
 title: Použitie template enginov v Express
 menu: guide
 lang: sk
+description: Discover how to integrate and use template engines like Pug, Handlebars,
+  and EJS with Express.js to render dynamic HTML pages efficiently.
 ---
 <!---
  Copyright (c) 2016 StrongLoop, IBM, and Express Contributors

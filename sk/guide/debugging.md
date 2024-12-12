@@ -3,6 +3,8 @@ layout: page
 title: Debuggovanie Express
 menu: guide
 lang: sk
+description: Learn how to enable and use debugging logs in Express.js applications
+  by setting the DEBUG environment variable for enhanced troubleshooting.
 ---
 <!---
  Copyright (c) 2016 StrongLoop, IBM, and Express Contributors

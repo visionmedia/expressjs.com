@@ -3,6 +3,8 @@ layout: page
 title: Express za proxy
 menu: guide
 lang: sk
+description: Learn how to configure Express.js applications to work correctly behind
+  reverse proxies, including using the trust proxy setting to handle client IP addresses.
 ---
 <!---
  Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
