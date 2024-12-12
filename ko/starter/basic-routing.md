@@ -3,6 +3,9 @@ layout: page
 title: Express 기본 라우팅
 menu: starter
 lang: ko
+description: Learn the fundamentals of routing in Express.js applications, including
+  how to define routes, handle HTTP methods, and create route handlers for your web
+  server.
 ---
 
 # 기본 라우팅

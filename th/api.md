@@ -2,6 +2,8 @@
 layout: 4x-api
 title: Express 4.x - การอ้างอิง API
 lang: th
+description: Access the API reference for Express.js detailing all modules, methods,
+  and properties for building web applications with this version.
 ---
 <div id="api-doc" markdown="1">
 

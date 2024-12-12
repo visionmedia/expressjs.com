@@ -3,6 +3,8 @@ layout: page
 title: Кращі практики безпеки для Express в експлуатації
 menu: advanced
 lang: uk
+description: Discover crucial security best practices for Express apps in production,
+  including using TLS, input validation, secure cookies, and preventing vulnerabilities.
 ---
 
 # Кращі практики експлуатації: Безпека
@@ -20,7 +22,7 @@ This article discusses some security best practices for Express applications dep
 
 ## Don't use deprecated or vulnerable versions of Express
 
-Express 2.x and 3.x are no longer maintained. Security and performance issues in these versions won't be fixed. Do not use them!  If you haven't moved to version 4, follow the [migration guide](/{{ page.lang }}/guide/migrating-4.html).
+Express 2.x and 3.x are no longer maintained. Security and performance issues in these versions won't be fixed. Do not use them!  If you haven't moved to version 4, follow the [migration guide](/{{ page.lang }}/guide/migrating-4.html) or consider [Commercial Support Options](/{{ page.lang }}/support#commercial-support-options).
 
 Also ensure you are not using any of the vulnerable Express versions listed on the [Security updates page](/{{ page.lang }}/advanced/security-updates.html). If you are, update to one of the stable releases, preferably the latest.
 
@@ -157,12 +159,6 @@ Use this command to test your application for vulnerabilities:
 
 ```console
 $ snyk test
-```
-
-Use this command to open a wizard that walks you through the process of applying updates or patches to fix the vulnerabilities that were found:
-
-```console
-$ snyk wizard
 ```
 
 ## Additional considerations

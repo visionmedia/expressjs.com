@@ -2,7 +2,7 @@
 
 Routes an HTTP request, where METHOD is the HTTP method of the request, such as GET,
 PUT, POST, and so on, in lowercase. Thus, the actual methods are `app.get()`,
-`app.post()`, `app.put()`, and so on.  See [Routing methods](#routing-methods) below for the complete list.
+`app.post()`, `app.put()`, and so on. See [Routing methods](#routing-methods) below for the complete list.
 
 {% include api/en/5x/routing-args.html %}
 
@@ -59,4 +59,4 @@ The method, `app.all()`, is not derived from any HTTP method and loads middlewar
 the specified path for _all_ HTTP request methods.
 For more information, see [app.all](#app.all).
 
-For more information on routing, see the [routing guide](/guide/routing.html).
+For more information on routing, see the [routing guide](/{{page.lang}}/guide/routing.html).

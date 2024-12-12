@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Security Best Practices for Express in Production
+description: Discover crucial security best practices for Express apps in production, including using TLS, input validation, secure cookies, and preventing vulnerabilities.
 menu: advanced
 lang: en
 redirect_from: "/advanced/best-practice-security.html"
@@ -14,7 +15,7 @@ The term _"production"_ refers to the stage in the software lifecycle when an ap
 
 Development and production environments are usually set up differently and have vastly different requirements. What's fine in development may not be acceptable in production. For example, in a development environment you may want verbose logging of errors for debugging, while the same behavior can become a security concern in a production environment. And in development, you don't need to worry about scalability, reliability, and performance, while those concerns become critical in production.
 
-{% include note.html content="If you believe you have discovered a security vulnerability in Express, please see
+{% include admonitions/note.html content="If you believe you have discovered a security vulnerability in Express, please see
 [Security Policies and Procedures](/en/resources/contributing.html#security-policies-and-procedures).
 " %}
 
@@ -22,17 +23,21 @@ Security best practices for Express applications in production include:
 
 - [Don’t use deprecated or vulnerable versions of Express](#dont-use-deprecated-or-vulnerable-versions-of-express)
 - [Use TLS](#use-tls)
+- [Do not trust user input](#do-not-trust-user-input)
+  - [Prevent open redirects](#prevent-open-redirects)
 - [Use Helmet](#use-helmet)
+- [Reduce fingerprinting](#reduce-fingerprinting)
 - [Use cookies securely](#use-cookies-securely)
+  - [Don't use the default session cookie name](#dont-use-the-default-session-cookie-name)
+  - [Set cookie security options](#set-cookie-security-options)
 - [Prevent brute-force attacks against authorization](#prevent-brute-force-attacks-against-authorization)
 - [Ensure your dependencies are secure](#ensure-your-dependencies-are-secure)
-- [Avoid other known vulnerabilities](#avoid-other-known-vulnerabilities)
+  - [Avoid other known vulnerabilities](#avoid-other-known-vulnerabilities)
 - [Additional considerations](#additional-considerations)
-
 
 ## Don't use deprecated or vulnerable versions of Express
 
-Express 2.x and 3.x are no longer maintained. Security and performance issues in these versions won't be fixed. Do not use them!  If you haven't moved to version 4, follow the [migration guide](/{{ page.lang }}/guide/migrating-4.html).
+Express 2.x and 3.x are no longer maintained. Security and performance issues in these versions won't be fixed. Do not use them! If you haven't moved to version 4, follow the [migration guide](/{{ page.lang }}/guide/migrating-4.html) or consider [Commercial Support Options](/{{ page.lang }}/support#commercial-support-options).
 
 Also ensure you are not using any of the vulnerable Express versions listed on the [Security updates page](/{{ page.lang }}/advanced/security-updates.html). If you are, update to one of the stable releases, preferably the latest.
 
@@ -40,9 +45,36 @@ Also ensure you are not using any of the vulnerable Express versions listed on t
 
 If your app deals with or transmits sensitive data, use [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) to secure the connection and the data. This technology encrypts data before it is sent from the client to the server, thus preventing some common (and easy) hacks. Although Ajax and POST requests might not be visibly obvious and seem "hidden" in browsers, their network traffic is vulnerable to [packet sniffing](https://en.wikipedia.org/wiki/Packet_analyzer) and [man-in-the-middle attacks](https://en.wikipedia.org/wiki/Man-in-the-middle_attack).
 
-You may be familiar with Secure Socket Layer (SSL) encryption. [TLS is simply the next progression of SSL](https://msdn.microsoft.com/en-us/library/windows/desktop/aa380515(v=vs.85).aspx). In other words, if you were using SSL before, consider upgrading to TLS.  In general, we recommend Nginx to handle TLS.  For a good reference to configure TLS on Nginx (and other servers), see [Recommended Server Configurations (Mozilla Wiki)](https://wiki.mozilla.org/Security/Server_Side_TLS#Recommended_Server_Configurations).
+You may be familiar with Secure Socket Layer (SSL) encryption. [TLS is simply the next progression of SSL](https://msdn.microsoft.com/en-us/library/windows/desktop/aa380515(v=vs.85).aspx). In other words, if you were using SSL before, consider upgrading to TLS. In general, we recommend Nginx to handle TLS. For a good reference to configure TLS on Nginx (and other servers), see [Recommended Server Configurations (Mozilla Wiki)](https://wiki.mozilla.org/Security/Server_Side_TLS#Recommended_Server_Configurations).
 
 Also, a handy tool to get a free TLS certificate is [Let's Encrypt](https://letsencrypt.org/about/), a free, automated, and open certificate authority (CA) provided by the [Internet Security Research Group (ISRG)](https://www.abetterinternet.org/).
+
+## Do not trust user input
+
+For web applications, one of the most critical security requirements is proper user input validation and handling. This comes in many forms and we will not cover all of them here.
+Ultimately, the responsibility for validating and correctly handling the types of user input your application accepts is yours.
+
+### Prevent open redirects
+
+An example of potentially dangerous user input is an _open redirect_, where an application accepts a URL as user input (often in the URL query, for example `?url=https://example.com`) and uses `res.redirect` to set the `location` header and
+return a 3xx status. 
+
+An application must validate that it supports redirecting to the incoming URL to avoid sending users to malicious links such as phishing websites, among other risks. 
+
+Here is an example of checking URLs before using `res.redirect` or `res.location`:
+
+```js
+app.use((req, res) => {
+  try {
+    if (new Url(req.query.url).host !== 'example.com') {
+      return res.status(400).end(`Unsupported redirect to host: ${req.query.url}`)
+    }
+  } catch (e) {
+    return res.status(400).end(`Invalid url: ${req.query.url}`)
+  }
+  res.redirect(req.query.url)
+})
+```
 
 ## Use Helmet
 
@@ -73,27 +105,27 @@ app.use(helmet())
 // ...
 ```
 
-### Reduce Fingerprinting
+## Reduce fingerprinting
 
-It can help to provide an extra layer of obsecurity to reduce server fingerprinting.
-Though not a security issue itself, a method to improve the overall posture of a web
-server is to take measures to reduce the ability to fingerprint the software being
-used on the server. Server software can be fingerprinted by kwirks in how they
-respond to specific requests.
+It can help to provide an extra layer of security to reduce the ability of attackers to determine
+the software that a server uses, known as "fingerprinting." Though not a security issue itself, 
+reducing the ability to fingerprint an application improves its overall security posture. 
+Server software can be fingerprinted by quirks in how it responds to specific requests, for example in 
+the HTTP response headers. 
 
-By default, Express.js sends the `X-Powered-By` response header banner. This can be
-disabled using the `app.disable()` method:
+By default, Express sends the `X-Powered-By` response header that you can 
+disable using the `app.disable()` method:
 
 ```js
 app.disable('x-powered-by')
 ```
 
-{% include note.html content="Disabling the `X-Powered-By header` does not prevent
-a sophisticated attacker from determining that an app is running Express.  It may
+{% include admonitions/note.html content="Disabling the `X-Powered-By header` does not prevent
+a sophisticated attacker from determining that an app is running Express. It may
 discourage a casual exploit, but there are other ways to determine an app is running
-Express. "%}
+Express." %}
 
-Express.js also sends it's own formatted 404 Not Found messages and own formatter error
+Express also sends its own formatted "404 Not Found" messages and formatter error
 response messages. These can be changed by
 [adding your own not found handler](/en/starter/faq.html#how-do-i-handle-404-responses)
 and
@@ -123,13 +155,13 @@ There are two main middleware cookie session modules:
 * [express-session](https://www.npmjs.com/package/express-session) that replaces `express.session` middleware built-in to Express 3.x.
 * [cookie-session](https://www.npmjs.com/package/cookie-session) that replaces `express.cookieSession` middleware built-in to Express 3.x.
 
-The main difference between these two modules is how they save cookie session data.  The [express-session](https://www.npmjs.com/package/express-session) middleware stores session data on the server; it only saves the session ID in the cookie itself, not session data.  By default, it uses in-memory storage and is not designed for a production environment.  In production, you'll need to set up a scalable session-store; see the list of [compatible session stores](https://github.com/expressjs/session#compatible-session-stores).
+The main difference between these two modules is how they save cookie session data. The [express-session](https://www.npmjs.com/package/express-session) middleware stores session data on the server; it only saves the session ID in the cookie itself, not session data. By default, it uses in-memory storage and is not designed for a production environment. In production, you'll need to set up a scalable session-store; see the list of [compatible session stores](https://github.com/expressjs/session#compatible-session-stores).
 
-In contrast, [cookie-session](https://www.npmjs.com/package/cookie-session) middleware implements cookie-backed storage: it serializes the entire session to the cookie, rather than just a session key.  Only use it when session data is relatively small and easily encoded as primitive values (rather than objects).  Although browsers are supposed to support at least 4096 bytes per cookie, to ensure you don't exceed the limit, don't exceed a size of 4093 bytes per domain.  Also, be aware that the cookie data will be visible to the client, so if there is any reason to keep it secure or obscure, then express-session may be a better choice.
+In contrast, [cookie-session](https://www.npmjs.com/package/cookie-session) middleware implements cookie-backed storage: it serializes the entire session to the cookie, rather than just a session key. Only use it when session data is relatively small and easily encoded as primitive values (rather than objects). Although browsers are supposed to support at least 4096 bytes per cookie, to ensure you don't exceed the limit, don't exceed a size of 4093 bytes per domain. Also, be aware that the cookie data will be visible to the client, so if there is any reason to keep it secure or obscure, then `express-session` may be a better choice.
 
 ### Don't use the default session cookie name
 
-Using the default session cookie name can open your app to attacks.  The security issue posed is similar to `X-Powered-By`: a potential attacker can use it to fingerprint the server and target attacks accordingly.
+Using the default session cookie name can open your app to attacks. The security issue posed is similar to `X-Powered-By`: a potential attacker can use it to fingerprint the server and target attacks accordingly.
 
 To avoid this problem, use generic cookie names; for example using [express-session](https://www.npmjs.com/package/express-session) middleware:
 
@@ -178,16 +210,16 @@ app.use(session({
 Make sure login endpoints are protected to make private data more secure.
 
 A simple and powerful technique is to block authorization attempts using two metrics:
-1. The first is number of consecutive failed attempts by the same user name and IP address. 
-1. The second is number of failed attempts from an IP address over some long period of time. For example, block an IP address if it makes 100 failed attempts in one day.
+1. The number of consecutive failed attempts by the same user name and IP address. 
+1. The number of failed attempts from an IP address over some long period of time. For example, block an IP address if it makes 100 failed attempts in one day.
 
-[rate-limiter-flexible](https://github.com/animir/node-rate-limiter-flexible) package provides tools to make this technique easy and fast.  You can find [an example of brute-force protection in the documentation](https://github.com/animir/node-rate-limiter-flexible/wiki/Overall-example#login-endpoint-protection)
+[rate-limiter-flexible](https://github.com/animir/node-rate-limiter-flexible) package provides tools to make this technique easy and fast. You can find [an example of brute-force protection in the documentation](https://github.com/animir/node-rate-limiter-flexible/wiki/Overall-example#login-endpoint-protection)
 
 ## Ensure your dependencies are secure
 
-Using npm to manage your application's dependencies is powerful and convenient.  But the packages that you use may contain critical security vulnerabilities that could also affect your application.  The security of your app is only as strong as the "weakest link" in your dependencies.
+Using npm to manage your application's dependencies is powerful and convenient. But the packages that you use may contain critical security vulnerabilities that could also affect your application. The security of your app is only as strong as the "weakest link" in your dependencies.
 
-Since npm@6, npm automatically reviews every install request. Also you can use 'npm audit' to analyze your dependency tree.
+Since npm@6, npm automatically reviews every install request. Also, you can use `npm audit` to analyze your dependency tree.
 
 ```console
 $ npm audit
@@ -208,21 +240,15 @@ Use this command to test your application for vulnerabilities:
 $ snyk test
 ```
 
-Use this command to open a wizard that walks you through the process of applying updates or patches to fix the vulnerabilities that were found:
+### Avoid other known vulnerabilities
 
-```console
-$ snyk wizard
-```
+Keep an eye out for [Node Security Project](https://npmjs.com/advisories) or [Snyk](https://snyk.io/vuln/) advisories that may affect Express or other modules that your app uses. In general, these databases are excellent resources for knowledge and tools about Node security.
 
-## Avoid other known vulnerabilities
-
-Keep an eye out for [Node Security Project](https://npmjs.com/advisories) or [Snyk](https://snyk.io/vuln/) advisories that may affect Express or other modules that your app uses.  In general, these databases are excellent resources for knowledge and tools about Node security.
-
-Finally, Express apps - like any other web apps - can be vulnerable to a variety of web-based attacks. Familiarize yourself with known [web vulnerabilities](https://www.owasp.org/www-project-top-ten/) and take precautions to avoid them.
+Finally, Express apps&mdash;like any other web apps&mdash;can be vulnerable to a variety of web-based attacks. Familiarize yourself with known [web vulnerabilities](https://www.owasp.org/www-project-top-ten/) and take precautions to avoid them.
 
 ## Additional considerations
 
-Here are some further recommendations from the excellent [Node.js Security Checklist](https://blog.risingstack.com/node-js-security-checklist/).  Refer to that blog post for all the details on these recommendations:
+Here are some further recommendations from the excellent [Node.js Security Checklist](https://blog.risingstack.com/node-js-security-checklist/). Refer to that blog post for all the details on these recommendations:
 
 * Always filter and sanitize user input to protect against cross-site scripting (XSS) and command injection attacks.
 * Defend against SQL injection attacks by using parameterized queries or prepared statements.

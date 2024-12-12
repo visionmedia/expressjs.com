@@ -3,12 +3,15 @@ layout: page
 title: Обновления системы безопасности Express
 menu: advanced
 lang: ru
+description: Review the latest security updates and patches for Express.js, including
+  detailed vulnerability lists for different versions to help maintain a secure application.
 ---
 
 # Обновления системы безопасности
 
 <div class="doc-box doc-notice" markdown="1">
-Уязвимости Node.js оказывают непосредственное влияние на Express. Поэтому необходимо [пристально отслеживать уязвимости Node.js](http://blog.nodejs.org/vulnerability/) и обязательно использовать только последнюю, стабильную версию Node.js.
+Уязвимости Node.js оказывают непосредственное влияние на Express. Поэтому необходимо [пристально отслеживать уязвимости Node.js](https://nodejs.org
+/en/blog/vulnerability/) и обязательно использовать только последнюю, стабильную версию Node.js.
 </div>
 
 В приведенном ниже списке перечислены уязвимости Express, которые были устранены в указанном обновлении версии.

@@ -3,15 +3,11 @@ layout: page
 title: Express のデバッグ
 menu: guide
 lang: ja
+description: Learn how to enable and use debugging logs in Express.js applications
+  by setting the DEBUG environment variable for enhanced troubleshooting.
 ---
 
 # Express のデバッグ
-
-Express は、[debug](https://www.npmjs.com/package/debug) モジュールを内部的に使用して、ルートの一致、使用中のミドルウェア関数、アプリケーション・モード、および要求と応答のサイクルのフローに関する情報をログに記録します。
-
-<div class="doc-box doc-info" markdown="1">
-`debug` は、`console.log` の拡張版のようなものですが、`console.log` とは異なり、実動コードで `debug` ログをコメント化する必要はありません。ロギングはデフォルトでオフになっており、`DEBUG` 環境変数を使用して条件付きでオンにすることができます。
-</div>
 
 Express で使用されているすべての内部ログを表示するには、アプリケーションの起動時に `DEBUG` 環境変数を `express:*` に設定します。
 
@@ -108,5 +104,3 @@ $ DEBUG=sample-app:* node ./bin/www
 ```console
 $ DEBUG=http,mail,express:* node index.js
 ```
-
-`debug` の詳細については、[debug](https://www.npmjs.com/package/debug) を参照してください。

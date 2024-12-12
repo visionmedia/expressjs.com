@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Leistungsspezifische Best Practices für Express-Anwendungen in Produktionsumgebungen
+description: Discover performance and reliability best practices for Express apps in production, covering code optimizations and environment setups for optimal performance.
 menu: advanced
 lang: de
 ---
@@ -84,7 +85,7 @@ Um näher auf diese Themen eingehen zu können, müssen Sie sich ein grundlegend
 
 Weitere Informationen zu den Grundlagen der Fehlerbehandlung siehe:
 
-* [Fehlerbehandlung in Node.js](https://www.joyent.com/developers/node/design/errors)
+* [Fehlerbehandlung in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
 * [Aufbau leistungsfähiger Node-Anwendungen: Fehlerbehandlung](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop-Blog)
 
 #### Was Sie unterlassen sollten
@@ -242,7 +243,7 @@ Die gängigsten Prozessmanager für Node sind:
 * [PM2](https://github.com/Unitech/pm2)
 * [Forever](https://www.npmjs.com/package/forever)
 
-Einen Vergleich der Features und Funktionen dieser Prozessmanager finden Sie hier: [http://strong-pm.io/compare/](http://strong-pm.io/compare/). Eine ausführliche Einführung in diese drei Prozessmanager finden Sie hier: [Prozessmanager für Express-Anwendungen](/{{ page.lang }}/advanced/pm.html).
+Einen Vergleich der Features und Funktionen dieser Prozessmanager finden Sie hier: [http://strong-pm.io/compare/](http://strong-pm.io/compare/). 
 
 Die Verwendung eines dieser Prozessmanager reicht aus, um Ihre Anwendung betriebsbereit zu halten, selbst wenn sie hin und wieder abstürzt.
 
@@ -433,7 +434,7 @@ Unabhängig davon, wie gut eine Anwendung optimiert wurde, kann eine Einzelinsta
 
 Ein Load Balancer ist in der Regel ein Reverse Proxy, der den Datenverkehr zu und von mehreren Anwendungsinstanzen und Servern koordiniert. Sie können ohne großen Aufwand einen Load Balancer für Ihre Anwendung einrichten. Verwenden Sie hierzu [Nginx](http://nginx.org/en/docs/http/load_balancing.html) oder [HAProxy](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts).
 
-Bei einer solchen Lastverteilung müssen Sie sicherstellen, dass Anforderungen, die einer bestimmten Sitzungs-ID zugeordnet sind, mit dem Prozess verbunden sind, von dem sie ursprünglich stammen. Dies wird auch als *Sitzungsaffinität* oder *Affine Sitzungen* bezeichnet und kann durch den obigen Vorschlag, einen Datenspeicher wie Redis für Sitzungsdaten zu verwenden (je nach Anwendung), umgesetzt werden. Eine Beschreibung hierzu siehe [Mehrere Knoten verwenden](https://socket.io/docs/using-multiple-nodes).
+Bei einer solchen Lastverteilung müssen Sie sicherstellen, dass Anforderungen, die einer bestimmten Sitzungs-ID zugeordnet sind, mit dem Prozess verbunden sind, von dem sie ursprünglich stammen. Dies wird auch als *Sitzungsaffinität* oder *Affine Sitzungen* bezeichnet und kann durch den obigen Vorschlag, einen Datenspeicher wie Redis für Sitzungsdaten zu verwenden (je nach Anwendung), umgesetzt werden. Eine Beschreibung hierzu siehe [Mehrere Knoten verwenden](https://socket.io/docs/v4/using-multiple-nodes/).
 
 #### StrongLoop Process Manager mit einem Nginx Load Balancer verwenden
 

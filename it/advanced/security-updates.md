@@ -3,12 +3,15 @@ layout: page
 title: Aggiornamenti sulla sicurezza Express
 menu: advanced
 lang: it
+description: Review the latest security updates and patches for Express.js, including
+  detailed vulnerability lists for different versions to help maintain a secure application.
 ---
 
 # Aggiornamenti sulla sicurezza
 
 <div class="doc-box doc-notice" markdown="1">
-Le vulnerabilità di Node.js influenzano direttamente Express. Pertanto, [verificare sempre le vulnerabilità Node.js](http://blog.nodejs.org/vulnerability/) e assicurarsi di utilizzare l'ultima versione corretta di Node.js.
+Le vulnerabilità di Node.js influenzano direttamente Express. Pertanto, [verificare sempre le vulnerabilità Node.js](https://nodejs.org
+/en/blog/vulnerability/) e assicurarsi di utilizzare l'ultima versione corretta di Node.js.
 </div>
 
 L'elenco seguente mostra le vulnerabilità di Express che sono state corrette nell'aggiornamento della versione specificato.

@@ -10,18 +10,18 @@ To preview the website locally:
 
 1. Install the [jekyll-redirect-from](https://github.com/jekyll/jekyll-redirect-from) gem:
 
-   ```
+   ```sh
    $ gem install jekyll-redirect-from
    ```
    
-1. clone this repository by running the following command:
-   ```
+1. Clone this repository by running the following command:
+   ```sh
    $ git clone https://github.com/expressjs/expressjs.com.git
    ```
 
-1. navigate to the cloned repository directory and run the following command:
+1. Navigate to the cloned repository directory and run the following command:
 
-   ```
+   ```sh
    $ bundle install
    ```
 
@@ -29,11 +29,21 @@ To preview the website locally:
 
 1. Run Jekyll using the following command:
 
-   ```
+   ```sh
    $ bundle exec jekyll serve
    ```
 
    Then, load <http://localhost:4000> in your browser.
+
+## Local Setup using Docker
+
+>[!TIP]
+> You can run `make help` to obtain detailed information on how to use our make commands.
+
+0. Ensure that you have Docker and Make installed.
+1. Run `make build` to build the project.
+2. Run `make serve` to serve the project, this include live reloading so any change will be reflected (it can take a while, check the logs).
+3. Run `make clean` to remove the docker images and resources generated.
 
 ## Formatting
 

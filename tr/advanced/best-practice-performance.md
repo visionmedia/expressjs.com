@@ -3,7 +3,9 @@ layout: page
 title: Üretim (Production) ortamında Express kullanarak en iyi performans pratikleri
 menu: advanced
 lang: tr
-redirect_from: "/advanced/best-practice-performance.html"
+redirect_from: /advanced/best-practice-performance.html
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # Üretim ortamı en iyi pratikleri: performans ve güvenilirlik
@@ -83,7 +85,7 @@ Bu konulara girmeden önce Node/Express istisna işleme ile ilgili temel bir anl
 
 Hata işleme temelleri hakkında daha fazla bilgi için bakınız: 
 
-* [Node.js'te Hata İşleme](https://www.joyent.com/developers/node/design/errors)
+* [Node.js'te Hata İşleme](https://www.tritondatacenter.com/node-js/production/design/errors)
 * [Güçlü Node Uygulamaları Yazmak: Hata İşleme](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop blogu)
 
 #### Ne yapmamalı
@@ -228,7 +230,7 @@ Node için en popüler süreç yöneticileri aşağıdakilerdir:
 * [PM2](https://github.com/Unitech/pm2)
 * [Forever](https://www.npmjs.com/package/forever)
 
-Bu üç süreç yöneticisinin özellik bazında bir karşılaştırması için bakınız [http://strong-pm.io/compare/](http://strong-pm.io/compare/). Her üçü ile ilgili daha detaylı bir giriş için bakınız [Express uygulamaları için süreç yöneticileri](/{{ page.lang }}/advanced/pm.html).
+Bu üç süreç yöneticisinin özellik bazında bir karşılaştırması için bakınız [http://strong-pm.io/compare/](http://strong-pm.io/compare/). 
 
 Uygulamanız zaman zaman patlasa bile, bu süreç yöneticilerinden birini kullanmanız uygulamanızı ayakta tutmak için yeterli olacaktır.
 
@@ -443,7 +445,7 @@ Bir uygulama ne kadar optimize edilmiş olursa olsun, tek bir örnek yalnızca s
 
 Yük dengeleyici, genellikle birden çok uygulama örneği ve sunucusuna gelen ve giden trafiği düzenleyen bir ters proxy'dir. [Nginx](http://nginx.org/en/docs/http/load_balancing.html) veya [HAProxy](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts) kullanarak uygulamanız için bir yük dengeleyiciyi kolayca kurabilirsiniz.
 
-Yük dengeleyici kullanırken, belirli bir oturum kimliğiyle ilişkili isteklerin, onları oluşturan sürece bağlanmasını sağlamanız gerekebilir. Bu, _oturum yakınlığı (session affinity)_, veya _yapışkan oturumlar (sticky sessions)_ olarak bilinir, ve oturum verileri için Redis gibi bir veri deposunun kullanılması için yukarıdaki öneri ile ele alınabilir (uygulamanıza bağlı olarak). Tartışma için bakınız [Birden çok node kullanmak](https://socket.io/docs/using-multiple-nodes).
+Yük dengeleyici kullanırken, belirli bir oturum kimliğiyle ilişkili isteklerin, onları oluşturan sürece bağlanmasını sağlamanız gerekebilir. Bu, _oturum yakınlığı (session affinity)_, veya _yapışkan oturumlar (sticky sessions)_ olarak bilinir, ve oturum verileri için Redis gibi bir veri deposunun kullanılması için yukarıdaki öneri ile ele alınabilir (uygulamanıza bağlı olarak). Tartışma için bakınız [Birden çok node kullanmak](https://socket.io/docs/v4/using-multiple-nodes/).
 
 ### Ters proxy kullan
 

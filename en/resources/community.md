@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Express community
+description: Connect with the Express.js community, learn about the technical committee, find resources, explore community-contributed modules, and get involved in discussions.
 menu: resources
 lang: en
 redirect_from: "/resources/community.html"
@@ -23,12 +24,16 @@ Members of the Express technical committee are:
 
 - [@blakeembrey](https://github.com/blakeembrey) - Blake Embrey
 - [@crandmck](https://github.com/crandmck) - Rand McKinney
-- [@dougwilson](https://github.com/dougwilson) - Douglas Wilson
 - [@LinusU](https://github.com/LinusU) - Linus Unnebäck
+- [@ulisesgascon](https://github.com/ulisesGascon) - Ulises Gascón
+- [@sheplu](https://github.com/sheplu) - Jean Burellier
 - [@wesleytodd](https://github.com/wesleytodd) - Wes Todd
+- [@jonchurch](https://github.com/jonchurch) - Jon Church
+- [@ctcpip](https://github.com/ctcpip/) - Chris de Almeida
 
 **Inactive:**
 
+- [@dougwilson](https://github.com/dougwilson) - Douglas Wilson
 - [@hacksparrow](https://github.com/hacksparrow) - Hage Yaapa
 - [@jonathanong](https://github.com/jonathanong) - jongleberry
 - [@niftylettuce](https://github.com/niftylettuce) - niftylettuce
@@ -37,20 +42,14 @@ Members of the Express technical committee are:
 ## Express is made of many modules
 
 Our vibrant community has created a large variety of extensions,
-[middleware modules](/{{ page.lang }}/resources/middleware.html) and
-[higher-level frameworks](frameworks.html).
+[middleware modules](/{{ page.lang }}/resources/middleware.html) and higher-level frameworks.
 
 Additionally, the Express community maintains modules in these two GitHub orgs:
 
 - [jshttp](https://jshttp.github.io/) modules providing useful utility functions; see [Utility modules](/{{ page.lang }}/resources/utils.html).
 - [pillarjs](https://pillarjs.github.io/): low-level modules that Express uses internally.
 
-To keep up with what is going on in the whole community, check out the [ExpressJS StatusBoard](https://expressjs.github.com/statusboard).
-
-## Gitter
-
-The [expressjs/express chatroom](https://gitter.im/expressjs/express) is great place
-for developers interested in the everyday discussions related to Express.
+To keep up with what is going on in the whole community, check out the [ExpressJS StatusBoard](https://expressjs.github.io/statusboard/).
 
 ## Issues
 
@@ -62,13 +61,34 @@ a feature request open a ticket in the [issue queue](https://github.com/expressj
 View dozens of Express application [examples](https://github.com/expressjs/express/tree/master/examples)
 in the repository covering everything from API design and authentication to template engine integration.
 
-## Mailing List
+## Github Discussions
 
-Join over 2000 Express users or browse over 5000
-discussions in the [Google Group](https://groups.google.com/group/express-js).
+The [GitHub Discussions](https://github.com/expressjs/discussions) section is an excellent space to engage in conversations about the development and maintenance of Express, as well as to share ideas and discuss topics related to its usage.
 
-## IRC channel
 
-Hundreds of developers idle in #express on freenode every day.
-If you have questions about the framework, jump in for quick
-feedback.
+# Branding of Express.js
+
+## Express.js Logo
+
+Express is a project of the OpenJS Foundation. Please review the [trademark policy](https://trademark-policy.openjsf.org/) for information about permissible use of Express.js logos and marks.
+
+<div class="logo-table">
+    <div>
+        <h3>Logotype</h3>
+        <a href="/images/brand/logotype-light.svg" class="hidden-dark">
+            <img src="/images/brand/logotype-light.svg" width="250" height="56"/>
+        </a>
+        <a href="/images/brand/logotype-dark.svg" class="hidden-light">
+            <img src="/images/brand/logotype-dark.svg" width="250" height="56"/>
+        </a>
+    </div>
+    <div>
+        <h3>Logomark</h3>
+        <a href="/images/brand/logo-light.svg" class="hidden-dark">
+            <img src="/images/brand/logo-light.svg" width="96.5" height="56"/>
+        </a>
+        <a href="/images/brand/logo-dark.svg" class="hidden-light">
+            <img src="/images/brand/logo-dark.svg" width="96.5" height="56"/>
+        </a>
+    </div>
+<div>

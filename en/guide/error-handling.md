@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Express error handling
+description: Understand how Express.js handles errors in synchronous and asynchronous code, and learn to implement custom error handling middleware for your applications.
 menu: guide
 lang: en
 redirect_from: "/guide/error-handling.html"
@@ -75,8 +76,8 @@ app.get('/', [
 ])
 ```
 
-In the above example `next` is provided as the callback for `fs.writeFile`,
-which is called with or without errors. If there is no error the second
+In the above example, `next` is provided as the callback for `fs.writeFile`,
+which is called with or without errors. If there is no error, the second
 handler is executed, otherwise Express catches and processes the error.
 
 You must catch errors that occur in asynchronous code invoked by route handlers or
@@ -136,9 +137,9 @@ app.get('/', [
 The above example has a couple of trivial statements from the `readFile`
 call. If `readFile` causes an error, then it passes the error to Express, otherwise you
 quickly return to the world of synchronous error handling in the next handler
-in the chain. Then, the example above tries to process the data. If this fails then the
+in the chain. Then, the example above tries to process the data. If this fails, then the
 synchronous error handler will catch it. If you had done this processing inside
-the `readFile` callback then the application might exit and the Express error
+the `readFile` callback, then the application might exit and the Express error
 handlers would not run.
 
 Whichever method you use, if you want Express error handlers to be called in and the
@@ -169,7 +170,7 @@ response:
 
 If you call `next()` with an error after you have started writing the
 response (for example, if you encounter an error while streaming the
-response to the client) the Express default error handler closes the
+response to the client), the Express default error handler closes the
 connection and fails the request.
 
 So when you add a custom error handler, you must delegate to
@@ -188,6 +189,8 @@ function errorHandler (err, req, res, next) {
 
 Note that the default error handler can get triggered if you call `next()` with an error
 in your code more than once, even if custom error handling middleware is in place.
+
+Other error handling middleware can be found at [Express middleware](/{{ page.lang }}/resources/middleware.html).
 
 ## Writing error handlers
 
@@ -251,7 +254,7 @@ function logErrors (err, req, res, next) {
 
 Also in this example, `clientErrorHandler` is defined as follows; in this case, the error is explicitly passed along to the next one.
 
-Notice that when _not_ calling "next" in an error-handling function, you are responsible for writing (and ending) the response. Otherwise those requests will "hang" and will not be eligible for garbage collection.
+Notice that when _not_ calling "next" in an error-handling function, you are responsible for writing (and ending) the response. Otherwise, those requests will "hang" and will not be eligible for garbage collection.
 
 ```js
 function clientErrorHandler (err, req, res, next) {
@@ -272,7 +275,7 @@ function errorHandler (err, req, res, next) {
 }
 ```
 
-If you have a route handler with multiple callback functions you can use the `route` parameter to skip to the next route handler.  For example:
+If you have a route handler with multiple callback functions, you can use the `route` parameter to skip to the next route handler. For example:
 
 ```js
 app.get('/a_route_behind_paywall',

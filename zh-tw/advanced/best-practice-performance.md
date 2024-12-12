@@ -3,6 +3,8 @@ layout: page
 title: 在正式作業中使用 Express 的效能最佳作法
 menu: advanced
 lang: zh-tw
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # 正式作業最佳作法：效能和可靠性
@@ -85,7 +87,7 @@ Node 應用程式一旦遇到未捕捉到的異常狀況，就會當機。如果
 
 如需進一步瞭解錯誤處理的基本概念，請參閱：
 
-* [Error Handling in Node.js](https://www.joyent.com/developers/node/design/errors)
+* [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
 * [Building Robust Node Applications: Error Handling](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop blog)
 
 #### 禁止事項
@@ -247,7 +249,7 @@ Node 應用程式一旦遇到未捕捉到的異常狀況，就會當機。首要
 * [PM2](https://github.com/Unitech/pm2)
 * [Forever](https://www.npmjs.com/package/forever)
 
-有關這三種程序管理程式的特性比較，請參閱 [http://strong-pm.io/compare/](http://strong-pm.io/compare/)。如需這三種的詳細介紹，請參閱 [Express 應用程式的程序管理程式](/{{ page.lang }}/advanced/pm.html)。
+有關這三種程序管理程式的特性比較，請參閱 [http://strong-pm.io/compare/](http://strong-pm.io/compare/)。
 
 即使您的應用程式不時發生當機，這些程序管理程式不論哪一個都足以讓您的應用程式維持作用中。
 
@@ -439,7 +441,7 @@ $ slc ctl -C http://prod.foo.com:8701 set-size my-app 8
 
 負載平衡器通常是一個反向 Proxy，負責協調與多個應用程式實例和伺服器之間的資料流量。利用 [Nginx](http://nginx.org/en/docs/http/load_balancing.html) 或 [HAProxy](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts)，就能輕鬆設定您應用程式的負載平衡器。
 
-如果進行負載平衡，您可能得確定與特定階段作業 ID 相關聯的要求，會連接至發出該要求的程序。這就是所謂的*階段作業親緣性*或*組合階段作業*，如果要解決此情況，可按照上述建議，使用 Redis 等之類的資料儲存庫來儲存階段作業資料（視您的應用程式而定）。相關討論請參閱[使用多個節點](https://socket.io/docs/using-multiple-nodes)。
+如果進行負載平衡，您可能得確定與特定階段作業 ID 相關聯的要求，會連接至發出該要求的程序。這就是所謂的*階段作業親緣性*或*組合階段作業*，如果要解決此情況，可按照上述建議，使用 Redis 等之類的資料儲存庫來儲存階段作業資料（視您的應用程式而定）。相關討論請參閱[使用多個節點](https://socket.io/docs/v4/using-multiple-nodes/)。
 
 #### StrongLoop PM 與 Nginx 負載平衡器搭配使用
 

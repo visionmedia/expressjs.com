@@ -3,6 +3,8 @@ layout: home
 title: Express - це фреймворк для веб-застосунків, побудованих на Node.js
 menu: home
 lang: uk
+description: Express is a fast, unopinionated, minimalist web framework for Node.js,
+  providing a robust set of features for web and mobile applications.
 ---
 <section id="home-content">
   {% include header/header-{{ page.lang }}.html %}
@@ -34,8 +36,9 @@ lang: uk
           <h3>Продуктивність</h3> Express забезпечує тонкий прошарок базової функціональності для веб-застосунків, що не спотворює звичну та зручну функціональність Node.js.
       </div>
 
-      <div id="frameworks">
-          <h3>Фреймворки</h3> Багато <a href="resources/frameworks.html">популярних фреймворків</a> грунтуються на Express.
+      <div id="middleware">
+        <h3>Проміжні модулі</h3>
+        Express — це легкий та гнучкий фреймворк для маршрутизації з мінімальним набором функцій, покликаний бути розширеним використовуючи <a href="{{ page.lang }}/resources/middleware.html">проміжні Express-модулі</a>.
       </div>
   </div>
 

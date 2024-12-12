@@ -3,6 +3,8 @@ layout: 4x-api
 title: Express 4.x - Справочник по API
 menu: api
 lang: ru
+description: Access the API reference for Express.js 4.x, detailing all modules, methods,
+  and properties for building web applications with this version.
 ---
 <div id="api-doc" markdown="1">
 

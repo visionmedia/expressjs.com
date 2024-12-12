@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Express FAQ
+description: Find answers to frequently asked questions about Express.js, including topics on application structure, models, authentication, template engines, error handling, and more.
 menu: starter
 lang: en
 redirect_from: "/starter/faq.html"
@@ -37,7 +38,7 @@ See [LoopBack](http://loopback.io) for an Express-based framework that is center
 ## How can I authenticate users?
 
 Authentication is another opinionated area that Express does not
-venture into.  You may use any authentication scheme you wish.
+venture into. You may use any authentication scheme you wish.
 For a simple username / password scheme, see [this example](https://github.com/expressjs/express/tree/master/examples/auth).
 
 
@@ -89,5 +90,10 @@ You don't! There's no need to "render" HTML with the `res.render()` function.
 If you have a specific file, use the `res.sendFile()` function.
 If you are serving many assets from a directory, use the `express.static()`
 middleware function.
+
+## What version of Node.js does Express require?
+
+* [Express 4.x](/{{ page.lang }}/4x/api.html) requires Node.js 0.10 or higher.
+* [Express 5.x](/{{ page.lang }}/5x/api.html) requires Node.js 18 or higher.
 
 ###  [Previous: More examples ](/{{ page.lang }}/starter/examples.html)

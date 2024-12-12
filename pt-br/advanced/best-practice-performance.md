@@ -3,6 +3,8 @@ layout: page
 title: Melhores Práticas de Desempenho Usando o Express em Produção
 menu: advanced
 lang: pt-br
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # Melhores Práticas de Produção: desempenho e confiabilidade
@@ -122,9 +124,8 @@ convenção de retorno de chamada erros-first para tratar o erro de forma signif
 
 Para obter mais informações sobre os fundamentos de manipulação de erros, consulte:
 
-* [Manipulação de Erros no Node.js](https://www.joyent.com/developers/node/design/errors)
-* [Construindo
-Aplicativos Node Robustos: Manipulação de Erros](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (blog do StrongLoop)
+* [Manipulação de Erros no Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
+* [Construindo Aplicativos Node Robustos: Manipulação de Erros](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (blog do StrongLoop)
 
 #### O que não fazer
 
@@ -335,9 +336,7 @@ seguintes:
 * [Forever](https://www.npmjs.com/package/forever)
 
 Para uma comparação recurso por recurso dos três gerenciadores
-de processos, consulte [http://strong-pm.io/compare/](http://strong-pm.io/compare/). Para
-obter uma introdução mais detalhada para todos os três, consulte [Gerenciadores de Processos para aplicativos do
-Express](/{{ page.lang }}/advanced/pm.html).
+de processos, consulte [http://strong-pm.io/compare/](http://strong-pm.io/compare/). 
 
 Usando qualquer um desses gerenciadores de processos será o
 suficiente para manter seu aplicativo funcionando, mesmo se ele cair
@@ -626,8 +625,7 @@ conectam ao processo que as originou. Isto é conhecido como
 pegajosas*, e podem ser endereçadas pela sugestão acima para
 usar um armazenamento de dados como o Redis para os dados da sessão
 (dependendo do seu aplicativo). Para uma discussão, consulte por
-[Usando
-múltiplos nós](https://socket.io/docs/using-multiple-nodes).
+[Usando múltiplos nós](https://socket.io/docs/v4/using-multiple-nodes/).
 
 #### Usando o StrongLoop PM com um balanceador de carga Nginx
 

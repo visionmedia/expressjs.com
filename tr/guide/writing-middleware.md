@@ -3,7 +3,9 @@ layout: page
 title: Express uygulamalarında kullanılacak ara yazılım yazmak
 menu: guide
 lang: tr
-redirect_from: "/guide/writing-middleware.html"
+redirect_from: /guide/writing-middleware.html
+description: Learn how to write custom middleware functions for Express.js applications,
+  including examples and best practices for enhancing request and response handling.
 ---
 # Express uygulamalarında kullanılacak ara yazılım yazmak
 

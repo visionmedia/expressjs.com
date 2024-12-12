@@ -3,6 +3,8 @@ layout: home
 title: Express - Node.js Web 应用程序框架
 menu: home
 lang: zh-cn
+description: Express is a fast, unopinionated, minimalist web framework for Node.js,
+  providing a robust set of features for web and mobile applications.
 ---
 <section id="home-content">
   {% include header/header-{{ page.lang }}.html %}
@@ -34,11 +36,6 @@ Express 文档英文以外的语言版本包括：[西班牙语](/es)、[日语]
 
       <div id="performance">
           <h3>性能</h3> Express 提供精简的基本 Web 应用程序功能，而不会隐藏您了解和青睐的 Node.js 功能。</div>
-
-      <div id="frameworks">
-          <h3>框架</h3> 许多基于 Express 的 <a href="resources/frameworks.html">流行框架</a> 。
-      </div>
-
   </div>
 
 </section>

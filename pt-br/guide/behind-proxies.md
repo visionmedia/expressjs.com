@@ -3,6 +3,8 @@ layout: page
 title: Express atrás de proxies
 menu: guide
 lang: pt-br
+description: Learn how to configure Express.js applications to work correctly behind
+  reverse proxies, including using the trust proxy setting to handle client IP addresses.
 ---
 
 # Express atrás de proxies

@@ -3,13 +3,16 @@ layout: page
 title: Express のセキュリティー更新
 menu: advanced
 lang: ja
+description: Review the latest security updates and patches for Express.js, including
+  detailed vulnerability lists for different versions to help maintain a secure application.
 ---
 
 # セキュリティー更新
 
 <div class="doc-box doc-notice" markdown="1">
 
-Node.js の脆弱性は Express に直接影響を与えます。そのため、[Node.js の脆弱性の監視を続けて](http://blog.nodejs.org/vulnerability/)、必ず、安定した最新バージョンの Node.js を使用してください。
+Node.js の脆弱性は Express に直接影響を与えます。そのため、[Node.js の脆弱性の監視を続けて](https://nodejs.org
+/en/blog/vulnerability/)、必ず、安定した最新バージョンの Node.js を使用してください。
 
 </div>
 

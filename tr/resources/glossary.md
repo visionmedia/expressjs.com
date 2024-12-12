@@ -3,6 +3,8 @@ layout: page
 title: Express glossary
 menu: resources
 lang: tr
+description: A comprehensive glossary of terms related to Express.js, Node.js, middleware,
+  routing, and other key concepts to help you understand and use Express effectively.
 ---
 <div id="page-doc" markdown="1">
 # Glossary
@@ -37,7 +39,9 @@ A software platform that is used to build scalable network applications. Node.js
 
 ### open-source, open source
 
-When used as an adjective, hyphenate; for example: "This is open-source software." See [Open-source software on Wikipedia](http://en.wikipedia.org/wiki/Open-source_software). Note: Although it is common not to hyphenate this term, we are using the standard English rules for hyphenating a compound adjective.
+When used as an adjective, hyphenate; for example: "This is open-source software." See [Open-source software on Wikipedia](http://en.wikipedia.org/wiki/Open-source_software). 
+
+{% include admonitions/note.html content="Although it is common not to hyphenate this term, we are using the standard English rules for hyphenating a compound adjective." %}
 
 ### request
 

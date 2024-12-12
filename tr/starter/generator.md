@@ -3,6 +3,8 @@ layout: page
 title: Express uygulama oluşturucu
 menu: starter
 lang: tr
+description: Learn how to use the Express application generator tool to quickly create
+  a skeleton for your Express.js applications, streamlining setup and configuration.
 ---
 # Express uygulama oluşturucu
 

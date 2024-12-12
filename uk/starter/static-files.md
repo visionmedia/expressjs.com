@@ -3,6 +3,8 @@ layout: page
 title: Обробка статичних файлів в Express
 menu: starter
 lang: uk
+description: Understand how to serve static files like images, CSS, and JavaScript
+  in Express.js applications using the built-in 'static' middleware.
 ---
 
 # Обробка статичних файлів в Express

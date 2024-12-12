@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Express application generator
+description: Learn how to use the Express application generator tool to quickly create a skeleton for your Express.js applications, streamlining setup and configuration.
 menu: starter
 lang: en
 redirect_from: "/starter/generator.html"
@@ -95,7 +96,7 @@ PS> $env:DEBUG='myapp:*'; npm start
 ```
 
 
-Then load `http://localhost:3000/` in your browser to access the app.
+Then, load `http://localhost:3000/` in your browser to access the app.
 
 The generated app has the following directory structure:
 

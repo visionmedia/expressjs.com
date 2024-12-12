@@ -1,6 +1,6 @@
 <h3 id='app.use'>app.use([path,] callback [, callback...])</h3>
 
-Mounts the specified [middleware](/guide/using-middleware.html) function or functions
+Mounts the specified [middleware](/{{page.lang}}/guide/using-middleware.html) function or functions
 at the specified path:
 the middleware function is executed when the base of the requested path matches `path`.
 
@@ -12,7 +12,7 @@ A route will match any path that follows its path immediately with a "`/`".
 For example: `app.use('/apple', ...)` will match "/apple", "/apple/images",
 "/apple/images/news", and so on.
 
-Since `path` defaults to "/", middleware mounted without a path will be executed for every request to the app.  
+Since `path` defaults to "/", middleware mounted without a path will be executed for every request to the app.
 For example, this middleware function will be executed for _every_ request to the app:
 
 ```js
@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 
 Sub-apps will:
 
-* Not inherit the value of settings that have a default value.  You must set the value in the sub-app.
+* Not inherit the value of settings that have a default value. You must set the value in the sub-app.
 * Inherit the value of settings with no default value.
 
 For details, see [Application settings](/en/5x/api.html#app.settings.table).
@@ -49,7 +49,7 @@ app.get('/', (req, res) => {
 
 **Error-handling middleware**
 
-Error-handling middleware always takes _four_ arguments.  You must provide four arguments to identify it as an error-handling middleware function. Even if you don't need to use the `next` object, you must specify it to maintain the signature. Otherwise, the `next` object will be interpreted as regular middleware and will fail to handle errors. For details about error-handling middleware, see: [Error handling](/{{ page.lang }}/guide/error-handling.html).
+Error-handling middleware always takes _four_ arguments. You must provide four arguments to identify it as an error-handling middleware function. Even if you don't need to use the `next` object, you must specify it to maintain the signature. Otherwise, the `next` object will be interpreted as regular middleware and will fail to handle errors. For details about error-handling middleware, see: [Error handling](/{{ page.lang }}/guide/error-handling.html).
 
 Define error-handling middleware functions in the same way as other middleware functions, except with four arguments instead of three, specifically with the signature `(err, req, res, next)`):
 
@@ -142,7 +142,6 @@ app.use(['/abcd', '/xyza', /\/lmn|\/pqr/], (req, res, next) => {
 
 The following table provides some simple examples of middleware functions that
 can be used as the `callback` argument to `app.use()`, `app.METHOD()`, and `app.all()`.
-Even though the examples are for `app.use()`, they are also valid for `app.use()`, `app.METHOD()`, and `app.all()`.
 
 <table class="doctable" border="1">
 
@@ -176,6 +175,7 @@ app.use(router)
 ```
 
 An Express app is valid middleware.
+
 ```js
 const subApp = express()
 subApp.get('/', (req, res, next) => {
@@ -259,7 +259,7 @@ app.use(mw1, [mw2, r1, r2], subApp)
 
 </table>
 
-Following are some examples of using the [express.static](/guide/using-middleware.html#middleware.built-in)
+Following are some examples of using the [express.static](/{{page.lang}}/guide/using-middleware.html#middleware.built-in)
 middleware in an Express app.
 
 Serve static content for the app from the "public" directory in the application directory:

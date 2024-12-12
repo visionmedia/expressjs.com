@@ -3,6 +3,8 @@ layout: page
 title: Usando mecanismos de modelo com o Express
 menu: guide
 lang: pt-br
+description: Discover how to integrate and use template engines like Pug, Handlebars,
+  and EJS with Express.js to render dynamic HTML pages efficiently.
 ---
 
 # Usando mecanismos de modelo com o Express

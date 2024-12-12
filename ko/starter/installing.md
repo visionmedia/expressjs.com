@@ -3,6 +3,8 @@ layout: page
 title: Express 설치
 menu: starter
 lang: ko
+description: Learn how to install Express.js in your Node.js environment, including
+  setting up your project directory and managing dependencies with npm.
 ---
 
 # 설치

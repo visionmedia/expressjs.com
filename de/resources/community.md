@@ -1,24 +1,12 @@
 ---
 layout: page
 title: Express-Community
+description: Connect with the Express.js community, learn about the technical committee, find resources, explore community-contributed modules, and get involved in discussions.
 menu: resources
 lang: de
 ---
 
 # Community
-
-## Mailing-Liste
-
-Werden Sie Teil von über 2000 Express-Benutzern oder durchsuchen Sie über 5000
-Diskussionen in der [Google Group](https://groups.google.com/group/express-js).
-
-## Gitter
-
-Der [expressjs/express-Chatroom](https://gitter.im/expressjs/express) eignet sich besonders für Entwickler, die sich für die täglichen Diskussionen zu Express interessieren.
-
-## IRC-Channel
-
-Hunderte von Entwicklern, die jeden Tag in #express auf freenode auf Ihre Fragen warten. Wenn Sie Fragen zum Framework haben, schauen Sie doch einfach vorbei und holen Sie sich dazu geeignetes Feedback.
 
 ## Beispiele
 

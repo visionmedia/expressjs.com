@@ -1,8 +1,11 @@
 ---
 layout: page
-title: Meilleures pratiques en termes de performances pour l'utilisation d'Express en production
+title: Meilleures pratiques en termes de performances pour l'utilisation d'Express
+  en production
 menu: advanced
 lang: fr
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # Meilleures pratiques en production : performances et fiabilité
@@ -84,7 +87,7 @@ Avant de s'immerger dans les rubriques qui suivent, il est conseillé de posséd
 
 Pour plus d'informations sur les bases du traitement des erreurs, voir :
 
-* [Error Handling in Node.js](https://www.joyent.com/developers/node/design/errors)
+* [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
 * [Building Robust Node Applications: Error Handling](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (blogue StrongLoop)
 
 #### A ne pas faire
@@ -243,7 +246,7 @@ Les gestionnaires de processus les plus populaires pour Node sont les suivants :
 * [PM2](https://github.com/Unitech/pm2)
 * [Forever](https://www.npmjs.com/package/forever)
 
-Pour obtenir une comparaison détaillée de ces trois gestionnaires de processus, voir [http://strong-pm.io/compare/](http://strong-pm.io/compare/). Pour obtenir une présentation détaillée, voir [Gestionnaires de processus pour les applications Express](/{{ page.lang }}/advanced/pm.html).
+Pour obtenir une comparaison détaillée de ces trois gestionnaires de processus, voir [http://strong-pm.io/compare/](http://strong-pm.io/compare/). 
 
 L'utilisation de l'un de ces trois gestionnaires de processus suffira à garder votre application active, même si elle plantera de temps en temps.
 
@@ -434,7 +437,7 @@ Quel que soit le niveau d'optimisation d'une application, une instance unique ne
 
 Un équilibreur de charge est généralement un proxy inverse qui orchestre le trafic entrant et sortant de plusieurs instances d'application et serveurs. Vous pouvez facilement configurer un équilibreur de charge pour votre application à l'aide de [Nginx](http://nginx.org/en/docs/http/load_balancing.html) ou de [HAProxy](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts).
 
-Avec l'équilibrage de charge, vous devrez peut-être vérifier que les demandes associées à un ID de session spécifique sont connectées au processus dont elles sont issues. Ce procédé est appelé *affinité de session* (ou *sessions persistantes*) et peut être effectué en utilisant un magasin de données tel que Redis pour les données de session (en fonction de votre application), comme décrit ci-dessus. Pour en savoir plus, voir [Using multiple nodes](https://socket.io/docs/using-multiple-nodes).
+Avec l'équilibrage de charge, vous devrez peut-être vérifier que les demandes associées à un ID de session spécifique sont connectées au processus dont elles sont issues. Ce procédé est appelé *affinité de session* (ou *sessions persistantes*) et peut être effectué en utilisant un magasin de données tel que Redis pour les données de session (en fonction de votre application), comme décrit ci-dessus. Pour en savoir plus, voir [Using multiple nodes](https://socket.io/docs/v4/using-multiple-nodes/).
 
 #### Utilisation de StrongLoop PM avec un équilibreur de charge Nginx
 

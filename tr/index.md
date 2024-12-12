@@ -3,6 +3,8 @@ layout: home
 title: Express - Node.js Web Uygulama Çatısı
 menu: home
 lang: tr
+description: Express is a fast, unopinionated, minimalist web framework for Node.js,
+  providing a robust set of features for web and mobile applications.
 ---
 <section id="home-content">
   {% include header/header-{{ page.lang }}.html %}
@@ -37,7 +39,6 @@ lang: tr
     </div>
 
     <div id="frameworks">
-      <h3>Çatılar</h3> Birçok <a href="resources/frameworks.html">popüler çatı</a> Express tabanlıdır.
     </div>
   </div>
 

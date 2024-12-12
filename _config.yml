@@ -1,9 +1,19 @@
 # Site settings
 
+defaults:
+  -
+    scope:
+      path: "_posts" 
+      type: "posts"
+    values:
+      layout: "post"
+      menu: blog
+      lang: en
+
 # Build settings
 markdown: kramdown
 
-gems:
+plugins:
   - jekyll-redirect-from
 
 kramdown:
@@ -12,6 +22,10 @@ kramdown:
   syntax_highlighter_opts:
     disable : true
 
-exclude: [uk/CHANGELOG.md]
+exclude: 
+  - [uk/CHANGELOG.md]
+  - vendor/bundle
+  - node_modules/
+
 
 github: [metadata]

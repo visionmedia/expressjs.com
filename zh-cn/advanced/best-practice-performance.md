@@ -3,6 +3,8 @@ layout: page
 title: 在生产环境中使用 Express 的性能最佳实践
 menu: advanced
 lang: zh-cn
+description: Discover performance and reliability best practices for Express apps
+  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # 生产环境最佳实践：性能和可靠性
@@ -76,7 +78,7 @@ Node 应用程序在遇到未捕获的异常时会崩溃。不处理异常并采
 
 有关错误处理基本知识的更多信息，请参阅：
 
-* [Error Handling in Node.js](https://www.joyent.com/developers/node/design/errors)
+* [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
 * [Building Robust Node Applications: Error Handling](https://strongloop.com/strongblog/robust-node-applications-error-handling/)（StrongLoop 博客）
 
 #### 请勿执行以下操作
@@ -235,7 +237,7 @@ Node 的最流行进程管理器包括：
 * [PM2](https://github.com/Unitech/pm2)
 * [Forever](https://www.npmjs.com/package/forever)
 
-要了解对这三种进程管理器的逐个功能的比较，请参阅 [http://strong-pm.io/compare/](http://strong-pm.io/compare/)。有关这所有三种进程管理器的更详细介绍，请参阅 [Express 应用程序的进程管理器](/{{ page.lang }}/advanced/pm.html)。
+要了解对这三种进程管理器的逐个功能的比较，请参阅 [http://strong-pm.io/compare/](http://strong-pm.io/compare/)。
 
 即使应用程序会不时崩溃，使用其中任何进程管理器都足以使其成功启动。
 
@@ -425,7 +427,7 @@ $ slc ctl -C http://prod.foo.com:8701 set-size my-app 8
 
 负载均衡器通常是逆向代理，用于编排进出多个应用程序实例和服务器的流量。可以使用 [Nginx](http://nginx.org/en/docs/http/load_balancing.html) 或 [HAProxy](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts) 轻松地为应用程序设置负载均衡器。
 
-对于负载均衡功能，可能必须确保与特定会话标识关联的请求连接到产生请求的进程。这称为*会话亲缘关系*或者*粘性会话*，可通过以上的建议来做到这一点：将 Redis 之类的数据存储器用于会话数据（取决于您的应用程序）。要了解相关讨论，请参阅 [Using multiple nodes](https://socket.io/docs/using-multiple-nodes)。
+对于负载均衡功能，可能必须确保与特定会话标识关联的请求连接到产生请求的进程。这称为*会话亲缘关系*或者*粘性会话*，可通过以上的建议来做到这一点：将 Redis 之类的数据存储器用于会话数据（取决于您的应用程序）。要了解相关讨论，请参阅 [Using multiple nodes](https://socket.io/docs/v4/using-multiple-nodes/)。
 
 #### 将 StrongLoop PM 与 Nginx 负载均衡器一起使用
 
