@@ -79,7 +79,7 @@ Route paths, in combination with a request method, define the endpoints at which
 {% include admonitions/caution.html content=note-dollar-character %}
 
 {% capture note-path-to-regexp %}
-  Express uses [path-to-regexp](https://www.npmjs.com/package/path-to-regexp) for matching the route paths; see the path-to-regexp documentation for all the possibilities in defining route paths.
+  Express uses [path-to-regexp](https://www.npmjs.com/package/path-to-regexp) for matching the route paths; see the path-to-regexp documentation for all the possibilities in defining route paths. [Express Playground Router](https://bjohansebas.github.io/playground-router/) is a handy tool for testing basic Express routes, although it does not support pattern matching.
 {% endcapture %}
 
 {% include admonitions/note.html content=note-path-to-regexp %}
