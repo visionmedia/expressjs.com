@@ -757,6 +757,10 @@ footer {
   text-decoration: none;
 }
 
+#language-picker-menu {
+  display: none;
+}
+
 /* secondary menu */
 
 #menu,
@@ -992,6 +996,7 @@ h2 a {
   #logo {
     position: static;
     width: 100%;
+    margin-left: 60px;
   }
 
   #logo a {
@@ -1031,6 +1036,33 @@ h2 a {
 
   #doc-langs {
     font-size: 11px;
+  }
+
+  .header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: -10px;
+  }
+
+  #language-picker-menu #navmenu>li:first-child {
+    display: flex !important;
+  }
+
+  #language-picker-menu #navmenu {
+    max-height: 70vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    text-align: center;
+  }
+
+  #language-picker-menu {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
   }
 }
 
