@@ -1,5 +1,8 @@
 :root {
-  --gbl-grey-txt-one: #aeaeae;
+  /* [#7e7e7e] */
+  --global-grey-text: #aeaeae;
+  /* [#259dff] */
+  --global-link:#2b8fe0;
 }
 .light-mode:root {
   /* background (main) */
@@ -7,18 +10,22 @@
   /* text (general) */
   --lightm-fg: #383838;
   /* background  (sub sections in - h1,h2, code blocks, announcement, etc) */
+  /* [#eee] */
   --lightm-card-bg: #f0f1f3;
-  /* text (h1,h2, code blocks, announcement, etc) */
+  /* header text (h1,h2, code blocks, announcement, etc) */
+  /* [#444, #333] */  
   --lightm-card-fg: #383838;
-  /* text (side menus h3...)  */
-  --lightm-submenu-grey: #888;
+  /* text (api side menus h3...)  */
+  /* [666] */
+  --lightm-menu-grey: #888;
   /* (hover background) */
   --lightm-hover-bg: #484848;
-  /* (hover foreground) */
+  /* #ddd (hover foreground) */
   --lightm-hover-fg: #fafafa;
   /* borders) */
   --lightm-border: #d9e1e4;
   /* (Links) */
+  /* [#259dff] */
   --lightm-link: #0e78ce;
   --box-fg: rgb(24, 24, 24);
   --info-bg: rgb(207, 212, 252);
@@ -35,17 +42,18 @@
   /* (background) */
   --bg: #0c0c0c;
   /* (general texts) */
-  --fg: #fafafa;
-  --card: #181818;
-  /* (header, code blocks, announcement, etc) */
-  --card-foreground: #71717a;
+  --darkm-fg: #fafafa;
+  /* [--second_dark_bg] */
+  --darkm-card-bg: #181818;
+  /* text (header, h1, h2 code blocks, announcement, etc) */
+  --darkm-card-fg: #f7f4f4;
   /* (hover background) */
   --hover-bg: #484848;
   /* (hover foreground) */
   --hover-fg: #fafafa;
-  --border: #d9e1e4;
+  --darkm-border: #d9e1e4;
   /* (Links) */
-  --darkm-link: #2b8fe0;
+  --darkm-link: var(--global-link);
   --box-fg: rgb(255, 255, 255);
   --info-bg: rgb(23, 29, 79);
   --info-accent: rgb(189, 195, 255);
@@ -60,7 +68,9 @@
   --dark_hover: #383838;
   --second_dark_hover: #484848;
   --dark_inner_text: #888888;
-  --dark_header_text: silver;
+  /* #prev dark_header_text */
+  /* for side menus */
+  --darkm-menu-grey: silver;
   --dark_main_text: #e6edf3;
   --dark_bright_text: wheat;
   --dark_border: #ddd;

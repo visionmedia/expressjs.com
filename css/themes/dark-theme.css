@@ -74,16 +74,19 @@ html.dark-mode #navmenu > li {
 html.dark-mode #navbar #q {
   border-color: #979797;
 }
+html.dark-mode #navbar a.active {
+  color: var(--darkm-card-fg);
+}
 
 html.dark-mode #navbar .algolia-autocomplete #q:focus-visible,
 html.dark-mode #navbar .algolia-autocomplete #q:focus {
-  border-color: var(--dark_border);
+  border-color: var(--darkm-border);
 }
 
 /* drop down menu links  */
 
 html.dark-mode #navbar #navmenu li ul {
-  background: var(--second_dark_bg);
+  background: var(--darkm-card-bg);
 }
 
 html.dark-mode #navbar .submenu-content li a:hover {
@@ -104,6 +107,7 @@ html.dark-mode #navbar > span.algolia-autocomplete > input,
 html.dark-mode #navbar > span.algolia-autocomplete > input::placeholder {
   color: var(--dark_main_text);
 }
+/* CHECK THIS EXISTS */
 /* search bar french */
 :lang(fr) html.dark-mode #navbar ul#navmenu > span.algolia-autocomplete > input {
   background-color: var(--second_dark_bg);
@@ -148,6 +152,10 @@ html.dark-mode strong,
 html.dark-mode th  {
   color: var(--dark_main_text);
 }
+html.dark-mode p code, td code {
+  color:var(--darkm-card-fg);
+}
+
 html.dark-mode pre {
   background: var(--second_dark_bg);
 }
@@ -195,19 +203,19 @@ html.dark-mode table tr:first-child th {
 }
 /* api pages */
 html.dark-mode #menu li > * {
-  color: var(--dark_main_text);
+  color: var(--darkm-menu-grey);
 }
 html.dark-mode #menu li ul li > em {
-  color: var(--dark_header_text);
+  color: var(--darkm-fg);
 }
 html.dark-mode #menu li ul li > a {
   color: var(--dark_inner_text);
 }
 html.dark-mode #api-doc > h3 {
-  color: var(--dark_header_text);
+  color: var(--darkm-menu-grey);
 }
 html.dark-mode #api-doc section h5 {
-  color: var(--dark_header_text);
+  color: var(--darkm-menu-grey);
 }
 /*
 overriding search-bar results drop down
@@ -232,7 +240,7 @@ html.dark-mode
   .ds-suggestions
   .algolia-docsearch-suggestion--wrapper
   .algolia-docsearch-suggestion--subcategory-column {
-  color: var(--dark_header_text);
+  color: var(--darkm-menu-grey);
 }
 html.dark-mode
   .ds-dropdown-menu
@@ -276,8 +284,8 @@ html.dark-mode .blog-title > a{
 html.dark-mode .blog-excerpt{
   color: var(--dark_bright_text);
 }
-html.dark-mode #blog-side-menu-container h3 a{
-  color: var(--dark_header_text);
+html.dark-mode #blog-side-menu-container > h3 > a {
+  color: var(--darkm-card-fg);
 }
 html.dark-mode #blog-side-menu > li > a{
   color: var(--dark_inner_text);

@@ -1,15 +1,16 @@
 @import "../values.css";
 body {
     color: var(--lightm-fg);
+    background: var(--lightm-bg);
 }
 h1, h2, h3 {
-    color: var(--header);
+    color: var(--lightm-card-fg);
 }
 p em {
-    color: var(--header);
+    color: var(--lightm-card-fg);
 }
 strong, th {
-    color: var(--header);
+    color: var(--lightm-card-fg);
 }
 #overlay {
     background: var(--hover-bg);
@@ -29,12 +30,16 @@ strong, th {
   }
 #api-doc > h3, 
 #api-doc h5 {
-    color: var(--lightm-submenu-grey)
+    color: var(--lightm-menu-grey)
   }
 /* li code,   */
 code {
     color:var(--lightm-card-fg);
+    background-color: var(--lightm-card-bg);
 }
+p code, td code {
+    color:var(--lightm-card-fg);
+  }
 a {
     color: var(--lightm-link);
 }
@@ -51,7 +56,39 @@ a {
 header{
     background: var(--lightm-card-bg);
 }
-#navmenu>li {
-    background: var(--lightm-card-bg);
+.algolia-autocomplete #q:focus-visible,
+.algolia-autocomplete #q:focus {
+  border-color:var(--lightm-card-fg);
+}
+/* change from default blue */
+#menu em {
+    color: var(--lightm-fg);
+}
+#menu a {
+    color: var(--lightm-menu-grey);
+}
+#navbar .submenu-content a:hover {
+    color: var(--lightm-bg);
+}
+#navbar a {
+    color: var(--lightm-menu-grey);
+  }
+#navbar a.active {
+    color: var(--lightm-card-fg);
+}
+#blog-side-menu-container > h3 > a  {
+    color: var(--lightm-card-fg)
+  }
+.doc-box pre[class*="language-"] {
+    background: var(--lightm-bg)
+}
+  
+@media all and (max-width: 1110px) {
+    #navmenu>li {
+        background: var(--lightm-card-bg);
 
+    }
+    .submenu-content {
+    background: var(--lightm-hover-fg);
+    }
 }

@@ -12,7 +12,6 @@
 
 body {
   font: 400 14px/1.6 "Open Sans", sans-serif;
-  background: var(--lightm-bg);
   margin: 0;
   padding: 0;
 }
@@ -32,7 +31,6 @@ h1 {
 
 h1, h2, h3 {
   margin: 5px 0;
-  color: var(--lightm-card-fg);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -263,11 +261,11 @@ a {
   position: relative;
   top: -5px;
   font: 100 4.1em "Helvetica Neue", "Open Sans", sans-serif;
-  color: var(--gbl-grey-txt-one);
+  color: var(--global-grey-text);
   line-height: .87;
 }
 
-/* don't think this exists - check at end */
+/* TODO: don't think this exists - check at end */
 #description em {
   font-style: normal;
   font-weight: 100;
@@ -304,12 +302,6 @@ header {
   box-shadow: 0 0 4px #eee;
 }
 
-/* code */
-
-p code, td code {
-  color:var(--card-bg);
-}
-
 pre {
   color: #555;
   font-size: 14px;
@@ -328,7 +320,6 @@ pre code {
 }
 
 code {
-  background-color: var(--code-bg);
   margin-block: -.125rem;
   font-size: 13px;
   padding: .125rem .375rem;
@@ -478,7 +469,7 @@ html[xmlns] .clearfix {
 }
 
 .doc-box pre[class*="language-"] {
-  background: none repeat scroll 0 0 var(--lightm-bg);
+  background: none repeat scroll 0 0;
 }
 
 /* English pages use backticks for code blocks */
@@ -634,7 +625,6 @@ footer {
   }
 
 }
-
 /* navigation */
 
 #navbar {
@@ -643,13 +633,8 @@ footer {
   align-items: center;
 }
 
-#navbar a {
-  color: #666;
-}
-
 #navbar a.active {
   font-weight: bold;
-  color: var(--lightm-card-fg);
 }
 
 #navbar ul {
@@ -714,8 +699,7 @@ footer {
 }
 
 #navbar .submenu-content a:hover {
-  background: #259dff;
-  color: var(--lightm-bg);
+  background: var(--global-link);
   text-decoration: none;
 }
 
@@ -748,12 +732,8 @@ footer {
   list-style: none;
   padding: 0;
 }
-
-#menu em,
-#tags-side-menu em,
-#blog-side-menu em{
+#menu em {
   font-weight: bold;
-  color: var(--lightm-grey-card-fg);
 }
 
 #menu li {
@@ -788,12 +768,6 @@ footer {
   color: #666
 }
 
-#blog-side-menu-container > h3 > a  {
-  color: var(--lightm-card-fg)
-}
-
-
-
 #menu ul a,
 #tags-side-menu ul a {
   color: #555;
@@ -809,6 +783,7 @@ footer {
   color: #259dff;
 }
 
+/* can't find this in proj*/
 h2 a {
   color: var(--lightm-card-fg) !important;
 }
@@ -835,10 +810,6 @@ h2 a {
   outline: none;
 }
 
-.algolia-autocomplete #q:focus-visible,
-.algolia-autocomplete #q:focus {
-  border-color:var(--card-bg);
-}
 
 /* search-bar desktop re-sizing */
 @media all and (min-width: 950px) {
@@ -1280,7 +1251,8 @@ blockquote {
     left: 0;
     padding: 0;
     top: 57px;
-    background: var(--lightm-bg);
+    /* doesn't do anything */
+    /* background: var(--lightm-bg); */
     width: 100%;
     position: absolute;
     display: none;
@@ -1314,8 +1286,8 @@ blockquote {
     position: static;
     display: none;
     margin-top: 7px;
-    background: #ddd;
-    color:var(--card-bg);
+    /* doesn't do anything */
+    /* color:var(--lightm-card-fg); */
     padding: 0;
     margin: 0;
     border: none;
