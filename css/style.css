@@ -261,11 +261,10 @@ a {
   position: relative;
   top: -5px;
   font: 100 4.1em "Helvetica Neue", "Open Sans", sans-serif;
-  color: var(--global-grey-text);
   line-height: .87;
 }
 
-/* TODO: don't think this exists - check at end */
+/* TODO: don't think this exists - not found in search files*/
 #description em {
   font-style: normal;
   font-weight: 100;
@@ -294,21 +293,18 @@ header {
   justify-content: space-between;
   padding-inline: 45px;
   z-index: 100;
-  border-bottom: 1px solid #ddd;
 }
 
-.scroll header {
-  border-bottom: 1px solid #ddd;
-  box-shadow: 0 0 4px #eee;
-}
-
+/* No pre tags without child exist */
 pre {
-  color: #555;
-  font-size: 14px;
-  line-height: 1.4;
-  padding: 16px;
+  /* these are all overwitten */
+  /* color: #555; */
+  /* this font-size is overwritten */
+  /* font-size: 14px; */
+  /* line-height: 1.4; */
+  /* padding: 16px; */
+  /* overflow: auto; */
   border-radius: 3px;
-  overflow: auto;
   border: 1px solid #ddd;
 }
 
@@ -327,7 +323,7 @@ code {
   border-radius: 6px;
 }
 
-/* top button */
+/* scroll to top button */
 
 .scroll #top {
   opacity: .2;
@@ -335,13 +331,13 @@ code {
 
 #top {
   line-height: 0;
-  background: black;
   border-radius: 2px;
   position: fixed;
   bottom: 15px;
   right: 15px;
   padding: 8px;
   text-decoration: none;
+  /* color has no effect */
   color: white;
   opacity: 0;
   transition: opacity 300ms;
@@ -414,9 +410,11 @@ html[xmlns] .clearfix {
 
 .doctable, section table {
   margin: 1em 1em 1em 0;
-  border: 1px solid #c6c6c6;
+  border-width: 1px;
+  border-style: solid;
   border-collapse: collapse;
-  empty-cells: show;
+  /* has no effect - dev tools */
+  /* empty-cells: show; */
   width: 100%;
 }
 
@@ -424,11 +422,11 @@ html[xmlns] .clearfix {
   padding: 7px;
   line-height: 120%;
   vertical-align: top;
-  border: 1px solid #c6c6c6;
+  border-width: 1px; 
+  border-style: solid;
 }
 
 .doctable tr th, section table tr th {
-  background-color: #dadada;
   font-size: 110%;
 }
 
@@ -448,7 +446,6 @@ html[xmlns] .clearfix {
 
 .doc-box {
   padding: 16px;
-  color: var(--box-fg);
   border-radius: 0 6px 6px 0;
   margin-top: 1rem;
 }

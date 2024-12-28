@@ -28,6 +28,9 @@ strong, th {
     /* background: var(--lightm-bg); */
     border-color: var(--lightm-border);
   }
+#description .description { 
+    color: var(--lightm-grey-fg);
+}
 #api-doc > h3, 
 #api-doc h5 {
     color: var(--lightm-menu-grey)
@@ -55,7 +58,13 @@ a {
     
 header{
     background: var(--lightm-card-bg);
+    /* change from  ddd  */
+    border-bottom: 1px solid var(--lightm-hover-fg);
+
 }
+.scroll header {
+    box-shadow: 0 0 4px var(--lightm-card-bg);
+  }
 .algolia-autocomplete #q:focus-visible,
 .algolia-autocomplete #q:focus {
   border-color:var(--lightm-card-fg);
@@ -82,7 +91,21 @@ header{
 .doc-box pre[class*="language-"] {
     background: var(--lightm-bg)
 }
-  
+.doc-box {
+    color: var(--lightm-box-fg);
+}
+#top {
+    background: var(--lightm-box-fg);
+}
+.doctable, section table {
+    border-color: var(--lightm-border);
+}
+.doctable td, .doctable th, section table td, section table th {
+    border-color: var(--lightm-border);
+}
+.doctable tr th, section table tr th {
+    background: var(--lightm-card-bg);
+}
 @media all and (max-width: 1110px) {
     #navmenu>li {
         background: var(--lightm-card-bg);

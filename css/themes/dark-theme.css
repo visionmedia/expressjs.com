@@ -45,9 +45,26 @@ html.dark-mode > body {
   background: var(--main_dark_bg);
   color: var(--dark_main_text);
 }
+This should go in another PR
+html.dark-mode .scroll header {
+  box-shadow: 0 0 4px var(--darkm-card-fg);
+}
+/* style changes - not design related
+- could not see on darkmode
+ */
+html.dark-mode .scroll #top {
+  border: 1px solid var(--darkm-border); 
+ opacity: 0.5;
+}
+html.dark-mode #top:hover {
+  border: 1px solid var(--darkm-border); 
+ opacity: 1;
+}
+
 html.dark-mode header {
   background-color: var(--second_dark_bg);
   color: var(--dark_main_text);
+  border-bottom: 1px solid var(--darkm-hover-fg);
 }
 html.dark-mode #logo > a {
   color: var(--dark_main_text);
@@ -143,6 +160,18 @@ html.dark-mode .doc-box.doc-info pre.language-javascript {
   background: var(--main_dark_bg);
 }
 
+html.dark-mode {
+  & .doctable, section table {
+  border-color: var(--darkm-border);
+  }
+  & .doctable td, .doctable th, section table td, section table th {
+    border-color: var(--darkm-border);
+  }
+  & .doctable tr th, section table tr th {
+    /* replaces --second_dark_bg */
+    background: var(--darkm-card-bg);
+  } 
+}
 html.dark-mode h1,
 html.dark-mode h2,
 html.dark-mode h3,
@@ -157,19 +186,19 @@ html.dark-mode p code, td code {
 }
 
 html.dark-mode pre {
-  background: var(--second_dark_bg);
+  background: var(--darkm-card-bg);
 }
 /* index.html */
 html.dark-mode #description .express > a {
   color: var(--dark_main_text);
 }
 html.dark-mode #description .description {
-  color: var(--dark_smooth_text);
+  color: var(--darkm-grey-fg);
 }
-html.dark-mode #install-command {
-      /* check if needed */
+/* not needed */
+/* html.dark-mode #install-command { */
   /* background: var(--main_dark_bg); */
-}
+/* } */
 html.dark-mode #announcements {
   background: var(--main_dark_bg);
   border-color: var(--notice-light-border);
@@ -196,11 +225,11 @@ html.dark-mode [class*='language-'] {
 html.dark-mode .token.operator {
   background: inherit;
 }
-/* debugging.htlm */
-html.dark-mode table tr:first-child th {
+/* debugging.htlm - removing this see doctable section */
+/* html.dark-mode table tr:first-child th {
   background-color: var(--second_dark_bg);
   color: var(--dark_main_text);
-}
+} */
 /* api pages */
 html.dark-mode #menu li > * {
   color: var(--darkm-menu-grey);

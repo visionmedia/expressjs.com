@@ -1,10 +1,10 @@
 :root {
-  /* [#7e7e7e] */
-  --global-grey-text: #aeaeae;
   /* [#259dff] */
   --global-link:#2b8fe0;
 }
 .light-mode:root {
+  /* [#7e7e7e, dadada] */
+  --lightm-grey-fg: #aeaeae; /* %68 */
   /* background (main) */
   --lightm-bg: #ffffff;
   /* text (general) */
@@ -14,20 +14,22 @@
   --lightm-card-bg: #f0f1f3;
   /* header text (h1,h2, code blocks, announcement, etc) */
   /* [#444, #333] */  
-  --lightm-card-fg: #383838;
+  --lightm-card-fg: #383838; /* %22 */
   /* text (api side menus h3...)  */
   /* [666] */
-  --lightm-menu-grey: #888;
+  --lightm-menu-grey: #888; /* %53 */
   /* (hover background) */
-  --lightm-hover-bg: #484848;
+  --lightm-hover-bg: #484848; /* %28 */
   /* #ddd (hover foreground) */
   --lightm-hover-fg: #fafafa;
   /* borders) */
+    /* [#c6c6c6 #eee] */
   --lightm-border: #d9e1e4;
   /* (Links) */
   /* [#259dff] */
   --lightm-link: #0e78ce;
-  --box-fg: rgb(24, 24, 24);
+  /* maybe same as lightm-card-fg? */
+  --lightm-box-fg: rgb(24, 24, 24);
   --info-bg: rgb(207, 212, 252);
   --info-accent: rgb(15, 28, 138);
   --notice-light-bg: #fdfae6;
@@ -39,6 +41,8 @@
   --code-bg: #f0f1f3;
 }
 .dark-mode:root {
+  /* [#7e7e7e] */
+  --darkm-grey-fg: #b3b3b3; /* %70 */
   /* (background) */
   --bg: #0c0c0c;
   /* (general texts) */
@@ -50,7 +54,7 @@
   /* (hover background) */
   --hover-bg: #484848;
   /* (hover foreground) */
-  --hover-fg: #fafafa;
+  --darkm-hover-fg: #fafafa;
   --darkm-border: #d9e1e4;
   /* (Links) */
   --darkm-link: var(--global-link);
