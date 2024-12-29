@@ -295,17 +295,15 @@ header {
   z-index: 100;
 }
 
-/* No pre tags without child exist */
+/* No pre tags without child exist, but styles still apply on non-en - uz static-files */
 pre {
-  /* these are all overwitten */
-  /* color: #555; */
-  /* this font-size is overwritten */
-  /* font-size: 14px; */
-  /* line-height: 1.4; */
-  /* padding: 16px; */
-  /* overflow: auto; */
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 16px;
+  overflow: auto;
   border-radius: 3px;
-  border: 1px solid #ddd;
+  border-style: solid;
+  border-width: 1px;
 }
 
 pre code {
@@ -483,7 +481,6 @@ html[xmlns] .clearfix {
 
 .page pre.plain-text, .page code.plain-text {
   padding-top: 0 !important;
-  color: #000;
 }
 
 
@@ -657,14 +654,14 @@ footer {
   left: 50%;
   transform: translate(-50%);
   margin: auto;
-  box-shadow: 0px 1px 3px #00000026;
   z-index: 1000;
   min-width: 230px;
   width: fit-content;
-  background-color: #fcfcfa;
-  border: 1px solid #b2b2b2;
+  border-width: 1px; 
+  border-style: solid;
   border-radius: 12px;
-  list-style: none;
+  /* overwritten in #navbar ul */
+  /* list-style: none; */
   padding: 0;
   display: none;
 }
@@ -691,7 +688,6 @@ footer {
 
 .submenu-content li a {
   display: block;
-  color: #777;
   padding: 2px 20px 2px 20px;
 }
 
@@ -736,6 +732,7 @@ footer {
 #menu li {
   list-style: none;
 }
+
 #tags-side-menu li {
   list-style: none;
   font-size: 15px;
@@ -761,23 +758,13 @@ footer {
   font-size: 13px;
 }
 
-#blog-side-menu > li > a {
-  color: #666
-}
-
 #menu ul a,
 #tags-side-menu ul a {
-  color: #555;
   padding-right: 7px;
 }
 #tags-side-menu ul a{
   font-size: 13px;
   font-weight:initial;
-}
-
-#menu ul a.active,
-#tags-side-menu ul a.active {
-  color: #259dff;
 }
 
 /* can't find this in proj*/

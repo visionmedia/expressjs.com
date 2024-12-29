@@ -10,7 +10,7 @@
   /* text (general) */
   --lightm-fg: #383838;
   /* background  (sub sections in - h1,h2, code blocks, announcement, etc) */
-  /* [#eee] */
+  /* [#eee, fcfcfa] */
   --lightm-card-bg: #f0f1f3;
   /* header text (h1,h2, code blocks, announcement, etc) */
   /* [#444, #333] */  
@@ -52,7 +52,7 @@
   /* text (header, h1, h2 code blocks, announcement, etc) */
   --darkm-card-fg: #f7f4f4;
   /* (hover background) */
-  --hover-bg: #484848;
+  --darkm-hover-bg: #484848;
   /* (hover foreground) */
   --darkm-hover-fg: #fafafa;
   --darkm-border: #d9e1e4;

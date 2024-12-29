@@ -80,6 +80,11 @@ html.dark-mode #navbar ul#navmenu li a {
   background: transparent;
 } */
 /* html.dark-mode #navbar ul#navmenu li a.current:hover, */
+html.dark-mode .submenu-content {
+  box-shadow: 1px 2px var(--darkm-hover-bg);
+  background-color: var(--darkm-card-bg);
+  border-color: var(--darkm-border);
+}
 html.dark-mode .submenu-content a:hover {
   background: var(--dark_hover);
 }
@@ -102,9 +107,9 @@ html.dark-mode #navbar .algolia-autocomplete #q:focus {
 
 /* drop down menu links  */
 
-html.dark-mode #navbar #navmenu li ul {
+/* html.dark-mode #navbar #navmenu li ul {
   background: var(--darkm-card-bg);
-}
+} */
 
 html.dark-mode #navbar .submenu-content li a:hover {
   background: var(--dark_hover);
@@ -153,7 +158,7 @@ html.dark-mode #navbar ul#navmenu > span.algolia-autocomplete > input::placehold
 }
 html.dark-mode div#overlay {
   opacity: 0.5;
-  background: var(--lightm-bg);
+  background: var(--darkm-fg);
 }
 
 html.dark-mode .doc-box.doc-info pre.language-javascript {
@@ -187,6 +192,12 @@ html.dark-mode p code, td code {
 
 html.dark-mode pre {
   background: var(--darkm-card-bg);
+  border-color:var(--darkm-border)
+}
+html.dark-mode {
+  & .page pre.plain-text, .page code.plain-text {
+    color: var(--darkm-card-fg);
+  }
 }
 /* index.html */
 html.dark-mode #description .express > a {
@@ -245,6 +256,9 @@ html.dark-mode #api-doc > h3 {
 }
 html.dark-mode #api-doc section h5 {
   color: var(--darkm-menu-grey);
+}
+html.dark-mode #menu ul a.active {
+  color: var(--darkm-link)
 }
 /*
 overriding search-bar results drop down
@@ -317,7 +331,7 @@ html.dark-mode #blog-side-menu-container > h3 > a {
   color: var(--darkm-card-fg);
 }
 html.dark-mode #blog-side-menu > li > a{
-  color: var(--dark_inner_text);
+  color: var(--darkm-menu-grey);
 }
 
 html.dark-mode pre code {
