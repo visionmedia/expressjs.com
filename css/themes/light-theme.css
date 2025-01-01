@@ -1,135 +1,167 @@
 @import "../values.css";
-body {
-    color: var(--lightm-fg);
-    background: var(--lightm-bg);
-}
-h1, h2, h3 {
-    color: var(--lightm-card-fg);
-}
-p em {
-    color: var(--lightm-card-fg);
-}
-strong, th {
-    color: var(--lightm-card-fg);
-}
-#overlay {
-    background: var(--lightm-hover-bg);
-
-}
-#announcements {
-    background: var(--notice-light-bg);
-    border-color: var(--notice-light-border);
-    &p:first-child{
-        background-image: url(/images/announcement-icon.png);
+html.light-mode {
+    body {
+        color: var(--lightm-fg);
+        background: var(--lightm-bg);
     }
-}
-#install-command {
-    /* not needed */
-    /* background: var(--lightm-bg); */
-    border-color: var(--lightm-border);
-  }
-#description .description { 
-    color: var(--lightm-grey-fg);
-}
-#api-doc > h3, 
-#api-doc h5 {
-    color: var(--lightm-menu-grey)
-  }
-/* li code,   */
-code {
-    color:var(--lightm-card-fg);
-    background-color: var(--lightm-card-bg);
-}
-p code, td code {
-    color:var(--lightm-card-fg);
-  }
-a {
-    color: var(--lightm-link);
-}
-#logo .express {
-    color: var(--lightm-card-fg)
-}
-#description .express > a {
-    color: var(--lightm-card-fg);
-}
-#description .express a#express-version {
-    color: var(--lightm-link);
-}
+    h1, h2, h3 {
+        color: var(--lightm-card-fg);
+    }
+    p em {
+        color: var(--lightm-card-fg);
+    }
+    strong, th {
+        color: var(--lightm-card-fg);
+    }
+    #overlay {
+        background: var(--lightm-hover-bg);
     
-header{
-    background: var(--lightm-card-bg);
-    /* change from  ddd  */
-    border-bottom: 1px solid var(--lightm-hover-fg);
-
-}
-.scroll header {
-    box-shadow: 0 0 4px var(--lightm-card-bg);
-}
-pre {
-    border-color: var(--lightm-border);
-}
-.algolia-autocomplete #q:focus-visible,
-.algolia-autocomplete #q:focus {
-  border-color:     var(--lightm-card-fg);
-}
-/* change from default blue */
-#menu em {
-    color: var(--lightm-fg);
-}
-#menu a {
-    color: var(--lightm-menu-grey);
-}
-#menu ul a.active {
-  color: var(--lightm-link)
-}
-.light-mode .submenu-content {
-   box-shadow: 1px 2px var(--lightm-card-bg);
-   background-color: var(--lightm-hover-fg);
-   border-color: var(--lightm-border);
-   border-width: 2px; 
-
-}
-#navbar .submenu-content a:hover {
-    color: var(--lightm-bg);
-}
-#navbar a {
-    color: var(--lightm-menu-grey);
-  }
-#navbar a.active {
-    color: var(--lightm-card-fg);
-}
-#blog-side-menu-container > h3 > a  {
-    color: var(--lightm-card-fg)
-  }
-.doc-box pre[class*="language-"] {
-    background: var(--lightm-bg)
-}
-.doc-box {
-    color: var(--lightm-box-fg);
-}
-#top {
-    background: var(--lightm-box-fg);
-}
-/* doc specific */
-.doctable, section table {
-    border-color: var(--lightm-border);
-}
-.doctable td, .doctable th, section table td, section table th {
-    border-color: var(--lightm-border);
-}
-.doctable tr th, section table tr th {
-    background: var(--lightm-card-bg);
-}
-/* blog */
-#blog-side-menu > li > a {
-    color: var(--lightm-menu-grey);
-  }
-@media all and (max-width: 1110px) {
-    #navmenu>li {
+    }
+    #announcements {
+        background: var(--notice-light-bg);
+        border-color: var(--notice-light-border);
+        &p:first-child{
+            background-image: url(/images/announcement-icon.png);
+        }
+    }
+    #install-command {
+        /* not needed */
+        /* background: var(--lightm-bg); */
+        border-color: var(--lightm-border);
+      }
+    #description .description { 
+        color: var(--lightm-grey-fg);
+    }
+    #api-doc > h3, 
+    #api-doc h5 {
+        color: var(--lightm-menu-grey)
+      }
+    /* li code,   */
+    code {
+        color:var(--lightm-card-fg);
+        background-color: var(--lightm-card-bg);
+    }
+    p code, td code {
+        color:var(--lightm-card-fg);
+      }
+    a {
+        color: var(--lightm-link);
+    }
+    #logo .express {
+        color: var(--lightm-card-fg)
+    }
+    #description .express > a {
+        color: var(--lightm-card-fg);
+    }
+    #description .express a#express-version {
+        color: var(--lightm-link);
+    }
+        
+    header{
         background: var(--lightm-card-bg);
-
+        /* change from  ddd  */
+        border-bottom: 1px solid var(--lightm-hover-fg);
+    
+    }
+    .scroll header {
+        box-shadow: 0 0 4px var(--lightm-card-bg);
+    }
+    pre {
+        border-color: var(--lightm-border);
+    }
+    .algolia-autocomplete #q:focus-visible,
+    .algolia-autocomplete #q:focus {
+      border-color:     var(--lightm-card-fg);
+    }
+    /* change from default blue */
+    #menu em {
+        color: var(--lightm-fg);
+    }
+    #menu a {
+        color: var(--lightm-menu-grey);
+    }
+    #menu ul a.active {
+      color: var(--lightm-link)
     }
     .submenu-content {
-    background: var(--lightm-hover-fg);
+       box-shadow: 1px 2px var(--lightm-card-bg);
+       background-color: var(--lightm-hover-fg);
+       border-color: var(--lightm-border);
+       border-width: 2px; 
+    
+    }
+    #navbar .submenu-content a:hover {
+        color: var(--lightm-bg);
+    }
+    #navbar a {
+        color: var(--lightm-menu-grey);
+      }
+    #navbar a.active {
+        color: var(--lightm-card-fg);
+    }
+    #blog-side-menu-container > h3 > a  {
+        color: var(--lightm-card-fg)
+      }
+    .doc-box pre[class*="language-"] {
+        background: var(--lightm-bg)
+    }
+    .doc-box {
+        color: var(--lightm-box-fg);
+    }
+    #top {
+        background: var(--lightm-box-fg);
+    }
+    /* doc specific */
+    .doctable, section table {
+        border-color: var(--lightm-border);
+    }
+    .doctable td, .doctable th, section table td, section table th {
+        border-color: var(--lightm-border);
+    }
+    .doctable tr th, section table tr th {
+        background: var(--lightm-card-bg);
+    }
+    .doc-notice {
+        border-left-color: var(--notice-accent);
+        background: var(--notice-bg);
+    }
+    .doc-notice a{
+        color: var(--notice-accent);
+    }
+    .doc-info {
+        background: var(--info-bg);
+        border-left-color:var(--info-accent);
+    }
+    .doc-info a{
+        color: var(--info-accent);
+    }
+    .doc-info-title {
+        color: var(--info-accent);
+    }
+    .doc-warn {
+        background: var(--warn-bg);
+        border-left-color: var(--warn-accent);
+    }
+    .doc-warn-title {
+        color: var(--warn-accent);
+    }
+    .doc-warn a {
+        color: var(--warn-accent);
+    }
+    #close-i18n-notice-box {
+        color: var(--notice-accent);
+    }
+    /* blog */
+    #blog-side-menu > li > a {
+        color: var(--lightm-menu-grey);
+      }
+    @media all and (max-width: 1110px) {
+        #navmenu>li {
+            background: var(--lightm-card-bg);
+    
+        }
+        .submenu-content {
+        background: var(--lightm-hover-fg);
+        }
     }
 }

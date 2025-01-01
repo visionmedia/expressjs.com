@@ -485,45 +485,33 @@ html[xmlns] .clearfix {
 
 
 .doc-notice {
-  background: var(--notice-bg);
-  border-left: 3px solid var(--notice-accent);
+  border-left-width: 3px;
+  border-left-style: solid; 
 }
 
 .doc-notice a{
-  color: var(--notice-accent);
   text-decoration: underline;
 }
 
 .doc-info {
-  background: var(--info-bg);
-  border-left: 3px solid var(--info-accent);
+  border-left-width: 3px;
+  border-left-style: solid; 
 }
 
 .doc-info a{
-  color: var(--info-accent);
   text-decoration: underline;
 }
 
 .doc-info-title {
-  color: var(--info-accent);
   font-weight: 600;
 }
 
 .doc-warn {
-  background: var(--warn-bg);
-  border-left: 3px solid var(--warn-accent);
-}
-
-.doc-warn-title {
-  color: var(--warn-accent);
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  border-left-width: 3px;
+  border-left-style: solid;
 }
 
 .doc-warn a {
-  color: var(--warn-accent);
   text-decoration: underline;
 }
 
@@ -536,7 +524,6 @@ html[xmlns] .clearfix {
   position: absolute;
   top: 3px;
   right: 4px;
-  color: var(--notice-accent);
   cursor: pointer;
 }
 

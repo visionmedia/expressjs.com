@@ -176,6 +176,36 @@ html.dark-mode {
     /* replaces --second_dark_bg */
     background: var(--darkm-card-bg);
   } 
+  .doc-notice {
+    border-left-color: var(--notice-accent);
+    background: var(--notice-bg);
+  }
+  .doc-notice a{
+    color: var(--notice-accent);
+  }
+  .doc-info {
+    background: var(--info-bg);
+    border-left-color:var(--info-accent);
+  }
+  .doc-info a{
+    color: var(--info-accent);
+  }
+  .doc-info-title {
+    color: var(--info-accent);
+  }
+  .doc-warn {
+    background: var(--warn-bg);
+    border-left-color: var(--warn-accent);
+  }
+  .doc-warn-title {
+    color: var(--warn-accent);
+  }
+  .doc-warn a {
+    color: var(--warn-accent);
+  }
+  #close-i18n-notice-box {
+    color: var(--notice-accent);
+  }
 }
 html.dark-mode h1,
 html.dark-mode h2,
