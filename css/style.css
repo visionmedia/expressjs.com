@@ -538,7 +538,6 @@ html[xmlns] .clearfix {
   padding: 3px 5px;
   border-radius: 3px;
   cursor: pointer;
-  color: var(--box-fg);
 }
 
 #mobile-menu {
@@ -599,7 +598,7 @@ footer {
   gap: 20px;
   font-size: 20px;
 }
-
+/* index announcement-icon */
 @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
   #announcements p:first-child {
     background-image: url(/images/announcement-icon@2x.png);
@@ -977,10 +976,31 @@ h2 a {
 
 .callout {position: relative;}
 
-#mw-fig { border-collapse: separate; padding: 0; border: 0; width: 960px; margin-bottom: 20px;}
-#mw-fig-imgcell {margin: 0; padding: 0px; border: 0; width: 410px;}
-#mw-fig-img {margin: 0px; padding: 0px; width: 410px; height: 308px;}
-.mw-fig-callouts {margin: 0; padding: 0 0 0 5px; border: 0; width: 550px;}
+#mw-fig { 
+  border-collapse: separate; 
+  padding: 0; 
+  border: 0; 
+  width: 960px; 
+  margin-bottom: 20px;}
+#mw-fig-imgcell {
+  margin: 0;
+  padding: 0px;
+  border: 0;
+  width: 410px;
+}
+#mw-fig-img {
+  margin: 0px;
+  padding: 0px;
+  width: 410px;
+  height: 308px;
+}
+
+.mw-fig-callouts {
+  margin: 0;
+  padding: 0 0 0 5px;
+  border: 0;
+  width: 550px;
+}
 
 /* For middleware pages */
 
@@ -1028,20 +1048,19 @@ h2 a {
 }
 .blog-post {
   width: 100%;
-  background-color: #eee;
   display: flex;
   padding: 10px;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 2px 3px #E0E0E0;
   border-radius: 5px;
-  border: 1px solid #808080;
+  border-width: 1px;
+  border-style: solid;
   transition: 0.1s;
 }
-.blog-post:hover {
+/* .blog-post:hover {
   background-color: #D3D3D3;
   border: 1px solid #303030;
-}
+} */
 .blog-post img {
   max-width: 100%;
   max-height: 100%;
@@ -1144,11 +1163,11 @@ html.dark-mode .no-release {
   color: #abc8c3;
 }
 
-.supported {
-  color: green !important;
+strong.supported {
+  color: var(--supported-fg) ;
 }
-.eol {
-  color: red !important;
+strong.eol {
+  color: var(--eol-fg) ;
 }
 
 .logo-table {

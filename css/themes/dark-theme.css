@@ -45,7 +45,7 @@ html.dark-mode > body {
   background: var(--main_dark_bg);
   color: var(--dark_main_text);
 }
-This should go in another PR
+/* This should go in another PR */
 html.dark-mode .scroll header {
   box-shadow: 0 0 4px var(--darkm-card-fg);
 }
@@ -344,12 +344,15 @@ html.dark-mode .ds-suggestion.ds-cursor .algolia-docsearch-suggestion--content{
   background-color: var(--dark_hover);
 }
 html.dark-mode .blog-post{
-  background-color: initial;
-  border: 1px solid var(--dark_border);
+  background-color: var(--darkm-card-bg);
+  border: 1px solid var(--darkm-border);
   transition: 0.3s;
+  box-shadow: 2px 3px var(--darkm-hover-fg);
 }
 html.dark-mode .blog-post:hover{
-  background-color: var(--darker_hover);
+  background-color: var(--darkm-hover-bg);
+  border-color: var(--darkm-hover-fg);
+  box-shadow: 1px 2px var(--darkm-hover-fg);;
 }
 html.dark-mode .blog-title > a{
   color: var(--dark_main_text);
@@ -363,7 +366,9 @@ html.dark-mode #blog-side-menu-container > h3 > a {
 html.dark-mode #blog-side-menu > li > a{
   color: var(--darkm-menu-grey);
 }
-
 html.dark-mode pre code {
   background-color: inherit;
+}
+html.dark-mode .button {
+  color: var(--box-fg);
 }

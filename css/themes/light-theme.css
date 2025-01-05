@@ -14,7 +14,7 @@ html.light-mode {
         color: var(--lightm-card-fg);
     }
     #overlay {
-        background: var(--lightm-hover-bg);
+        background: var(--lightm-hover-border);
     
     }
     #announcements {
@@ -99,9 +99,6 @@ html.light-mode {
     #navbar a.active {
         color: var(--lightm-card-fg);
     }
-    #blog-side-menu-container > h3 > a  {
-        color: var(--lightm-card-fg)
-      }
     .doc-box pre[class*="language-"] {
         background: var(--lightm-bg)
     }
@@ -151,10 +148,32 @@ html.light-mode {
     #close-i18n-notice-box {
         color: var(--notice-accent);
     }
+    .blog-title a {
+        color: var(--lightm-card-fg)
+    }
     /* blog */
     #blog-side-menu > li > a {
         color: var(--lightm-menu-grey);
+    }
+    #blog-side-menu-container > h3 > a  {
+        color: var(--lightm-card-fg)
+    }
+    .blog-post {
+        color: var(--lightm-card-fg);    
+        background-color: var(--lightm-card-bg);
+        border-color: var(--lightm-menu-grey);
+        box-shadow: 2px 3px var(--lightm-card-bg);
+
+    }
+    .blog-post:hover {
+        background-color: var(--lightm-hover-bg);
+        border-color: var(--lightm-hover-border);
+        box-shadow: 2px 3px var(--lightm-menu-grey);
       }
+    /* general */
+    .button {
+        color: var(--lightm-box-fg);
+    }
     @media all and (max-width: 1110px) {
         #navmenu>li {
             background: var(--lightm-card-bg);
