@@ -21,7 +21,7 @@ Central to the project’s growth was the [Express Forward Plan](https://github.
 
 In parallel, the [Security Working Group](https://github.com/expressjs/discussions/issues/165) took shape. Express.js, widely recognized for its importance to the broader Node.js landscape, formally introduced a [security triage team](https://github.com/expressjs/security-wg#security-triage-team) dedicated to proactively identifying and resolving vulnerabilities. This forward-thinking approach was bolstered by the adoption of a [Threat Model for Express.js](https://github.com/expressjs/express/pull/5526), underscoring the project’s commitment to robust, future-proof security.
 
-As if these achievements weren’t enough, Express.js proudly reached [Impact Project status](https://github.com/expressjs/discussions/issues/281) under the OpenJS Foundation. This acknowledgment affirmed the significance of the framework to the JavaScript ecosystem and showcased the community’s tireless efforts in ensuring its enduring relevance.
+As if these achievements weren’t enough, Express.js proudly reached [Impact Project status](https://github.com/openjs-foundation/cross-project-council/pull/1404) under the OpenJS Foundation. This acknowledgment affirmed the significance of the framework to the JavaScript ecosystem and showcased the community’s tireless efforts in ensuring its enduring relevance.
 
 ### Technical Advancements and the Release of Express 5.0
 
