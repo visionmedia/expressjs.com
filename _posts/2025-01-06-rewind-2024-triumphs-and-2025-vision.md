@@ -52,6 +52,7 @@ While 2024 laid a sturdy bedrock, the Express.js Technical Committee is not rest
 At the forefront of this plan is the automation of npm releases, an endeavor designed to free maintainers from manual steps and human error. By streamlining the publishing process, the project can achieve faster turnaround times for patches and new features, preserving the stability that developers have come to expect from Express.js. It’s an internal shift with massive external benefits: smoother upgrades, more frequent releases, and a deeper reservoir of confidence for users.
 
 ### Introducing Scoped Packages
+
 Express.js will also explore a transition toward scoped packages. By clearly delineating which modules fall under the Express.js umbrella, the maintainers hope to reduce confusion and foster an environment more conducive to organized expansion. As new packages and features are proposed, scoping will make it simpler to track official tools and ensure that community contributions meet consistent quality standards.
 
 ### Strengthening Security Reporting and Procedures
