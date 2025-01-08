@@ -2,7 +2,7 @@
 title: "A New Chapter for Express.js: Triumphs of 2024 and an ambitious 2025"
 tags: news, rewind, 2024
 author: Express Technical Committee
-description: Explore the transformative journey of Express.js in 2024, marked by governance improvements, the long-awaited release of Express 5.0, and heightened security measures. Dive into the ambitious plans for 2025, including performance optimizations, scoped packages, and a bold roadmap for sustained growth in the Node.js ecosystem.
+description: Explore the transformative journey of Express.js in 2024, marked by governance improvements, the long-awaited release of Express 5.0, and heightened security measures. Look into the ambitious plans for 2025, including performance optimizations, scoped packages, and a bold roadmap for sustained growth in the Node.js ecosystem.
 ---
 
 
@@ -27,8 +27,7 @@ As if these achievements weren’t enough, Express.js proudly reached [Impact Pr
 
 Naturally, 2024 will forever be remembered as the year when Express.js finally introduced its much-anticipated [Express 5.0](https://expressjs.com/2024/10/15/v5-release.html). After more than a decade of community discussions and behind-the-scenes experimentation, this release brought modern features and a future-oriented architecture to the framework, acting as a catalyst for the next chapter of Express.js development.
 
-But the story did not end there. Even before the dust settled on Express 5.0, the community had begun charting the course for [Express 6.0](https://github.com/expressjs/discussions/issues/267), reflecting an unwavering commitment to innovation. Guiding critical decisions throughout 2024 were new [decision framework](https://github.com/expressjs/discussions/issues/285), which helped the Technical Committee tackle pressing matters such as [engine usage](https://github.com/expressjs/discussions/issues/286) and [dependency management](https://github.com/expressjs/discussions/issues/279). Collectively, these measures fostered transparency and agility, ensuring that Express.js continues to evolve in response to the community’s most urgent needs.
-
+But the story did not end there. Even before the release of Express 5.0 was fully established, the community had already begun charting the course for [Express 6.0](https://github.com/expressjs/discussions/issues/267), reflecting an unwavering commitment to innovation. Guiding critical decisions throughout 2024 were new [decision framework](https://github.com/expressjs/discussions/issues/285), which helped the Technical Committee tackle pressing matters such as [engine usage](https://github.com/expressjs/discussions/issues/286) and [dependency management](https://github.com/expressjs/discussions/issues/279). Collectively, these measures fostered transparency and agility, ensuring that Express.js continues to evolve in response to the community’s most urgent needs.
 
 ### Maintenance, Tooling, and Collaboration
 
