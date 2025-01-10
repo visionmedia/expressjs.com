@@ -38,7 +38,7 @@ app.listen(port, () => {
 
 <section id="announcements">
   {% include announcement/announcement-pt-br.md %}
-</section>
+
 
 <section id="intro">
 
@@ -61,3 +61,4 @@ app.listen(port, () => {
       aumentados por meio do uso do módulo Express <a href="{{ page.lang }}/resources/middleware.html">middleware</a>.
     </div>
   </div>
+</section>
