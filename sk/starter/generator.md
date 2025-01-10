@@ -6,10 +6,6 @@ lang: sk
 description: Learn how to use the Express application generator tool to quickly create
   a skeleton for your Express.js applications, streamlining setup and configuration.
 ---
-<!---
- Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
- License: MIT
--->
 
 # Express generátor
 

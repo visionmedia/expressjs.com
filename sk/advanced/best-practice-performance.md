@@ -6,10 +6,6 @@ lang: sk
 description: Discover performance and reliability best practices for Express apps
   in production, covering code optimizations and environment setups for optimal performance.
 ---
-<!---
- Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
- License: MIT
--->
 
 # Osvedčené postupy pre Express v produkcii: výkonnosť a spoľahlivosť
 

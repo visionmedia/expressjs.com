@@ -6,10 +6,6 @@ lang: sk
 description: A guide to migrating your Express.js applications from version 3 to 4,
   covering changes in middleware, routing, and how to update your codebase effectively.
 ---
-<!---
- Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
- License: MIT
--->
 
 # Prechod na Express 4
 
