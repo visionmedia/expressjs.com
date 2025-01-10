@@ -38,7 +38,7 @@ app.listen(port, () => {
 
 <section id="announcements">
   {% include announcement/announcement-pt-br.md %}
-
+</section>
 
 <section id="intro">
 
