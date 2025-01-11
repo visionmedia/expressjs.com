@@ -1,122 +1,123 @@
 @import "../values.css";
 html.light-mode {
-    body {
-        color: var(--lightm-fg);
-        background: var(--lightm-bg);
+    /* body {
+        color: var(--fg);
+        background: var(--bg);
     }
     h1, h2, h3 {
-        color: var(--lightm-card-fg);
-    }
-    p em {
-        color: var(--lightm-card-fg);
-    }
-    strong, th {
-        color: var(--lightm-card-fg);
-    }
+        color: var(--card-fg);
+    } */
+    /* p em {
+        color: var(--card-fg);
+    } */
+    /* strong, th {
+        color: var(--card-fg);
+    } */
+     /* use image 1 here */
     #overlay {
-        background: var(--lightm-hover-border);
+        background: var(--hover-border);
     
     }
-    #announcements {
-        background: var(--notice-light-bg);
-        border-color: var(--notice-light-border);
+    /* #announcements {
+        background: var(--notice-bg);
+        border-color: var(--notice-border);
         &p:first-child{
             background-image: url(/images/announcement-icon.png);
         }
-    }
-    #install-command {
+    } */
+    /* #install-command { */
         /* not needed */
-        /* background: var(--lightm-bg); */
-        border-color: var(--lightm-border);
-      }
-    #description .description { 
-        color: var(--lightm-grey-fg);
-    }
-    #api-doc > h3, 
-    #api-doc h5 {
-        color: var(--lightm-menu-grey)
-      }
-    /* li code,   */
+        /* background: var(--bg); */
+        /* border-color: var(--border); */
+      /* } */
+    /* #description .description { 
+        color: var(--grey-fg);
+    } */
+    /* #api-doc > h3,  */
+    /* #api-doc h5 {
+        color: var(--menu-grey)
+      } */
+    /* li code - no instances exist   */
     code {
-        color:var(--lightm-card-fg);
-        background-color: var(--lightm-card-bg);
+        color:var(--card-fg);
+        background-color: var(--card-bg);
     }
-    p code, td code {
-        color:var(--lightm-card-fg);
-      }
-    a {
+    /* p code, td code {
+        color:var(--card-fg);
+      } */
+    /* a {
         color: var(--lightm-link);
-    }
-    #logo .express {
-        color: var(--lightm-card-fg)
-    }
-    #description .express > a {
-        color: var(--lightm-card-fg);
-    }
-    #description .express a#express-version {
+    } */
+    /* #logo .express {
+        color: var(--card-fg)
+    } */
+    /* #description .express > a {
+        color: var(--card-fg);
+    } */
+    /* #description .express a#express-version {
         color: var(--lightm-link);
-    }
+    } */
         
-    header{
-        background: var(--lightm-card-bg);
+    /* header{
+        background: var(--card-bg);
         /* change from  ddd  */
-        border-bottom: 1px solid var(--lightm-hover-fg);
+        border-bottom: 1px solid var(--hover-fg);
     
-    }
-    .scroll header {
-        box-shadow: 0 0 4px var(--lightm-card-bg);
-    }
-    pre {
-        border-color: var(--lightm-border);
-    }
+    } */
+    /* .scroll header {
+        box-shadow: 0 0 4px var(--card-bg);
+    } */
+    /* pre {
+        border-color: var(--border);
+    } */
     .algolia-autocomplete #q:focus-visible,
     .algolia-autocomplete #q:focus {
-      border-color:     var(--lightm-card-fg);
+      border-color:     var(--card-fg);
     }
     /* change from default blue */
     #menu em {
-        color: var(--lightm-fg);
+        color: var(--fg);
     }
     #menu a {
-        color: var(--lightm-menu-grey);
+        color: var(--menu-grey);
     }
     #menu ul a.active {
       color: var(--lightm-link)
     }
     .submenu-content {
-       box-shadow: 1px 2px var(--lightm-card-bg);
-       background-color: var(--lightm-hover-fg);
-       border-color: var(--lightm-border);
+       box-shadow: 1px 2px var(--card-bg);
+       background-color: var(--hover-fg);
+       border-color: var(--border);
        border-width: 2px; 
     
     }
     #navbar .submenu-content a:hover {
-        color: var(--lightm-bg);
+        color: var(--bg);
     }
     #navbar a {
-        color: var(--lightm-menu-grey);
+        color: var(--menu-grey);
       }
     #navbar a.active {
-        color: var(--lightm-card-fg);
+        color: var(--card-fg);
     }
     .doc-box pre[class*="language-"] {
-        background: var(--lightm-bg)
+        background: var(--bg)
     }
     .doc-box {
-        color: var(--lightm-box-fg);
+        color: var(--box-fg);
     }
     #top {
-        background: var(--lightm-box-fg);
+        background: var(--box-fg);
     }
     /* doc specific */
     .doctable, section table {
-        border-color: var(--lightm-border);
+        border-color: var(--border);
     }
     .doctable td, .doctable th, section table td, section table th {
-        border-color: var(--lightm-border);
+        border-color: var(--border);
     }
     .doctable tr th, section table tr th {
-        background: var(--lightm-card-bg);
+        background: var(--card-bg);
     }
     .doc-notice {
         border-left-color: var(--notice-accent);
@@ -149,38 +150,38 @@ html.light-mode {
         color: var(--notice-accent);
     }
     .blog-title a {
-        color: var(--lightm-card-fg)
+        color: var(--card-fg)
     }
     /* blog */
     #blog-side-menu > li > a {
-        color: var(--lightm-menu-grey);
+        color: var(--menu-grey);
     }
     #blog-side-menu-container > h3 > a  {
-        color: var(--lightm-card-fg)
+        color: var(--card-fg)
     }
     .blog-post {
-        color: var(--lightm-card-fg);    
-        background-color: var(--lightm-card-bg);
-        border-color: var(--lightm-menu-grey);
-        box-shadow: 2px 3px var(--lightm-card-bg);
+        color: var(--card-fg);    
+        background-color: var(--card-bg);
+        border-color: var(--menu-grey);
+        box-shadow: 2px 3px var(--card-bg);
 
     }
     .blog-post:hover {
-        background-color: var(--lightm-hover-bg);
-        border-color: var(--lightm-hover-border);
-        box-shadow: 2px 3px var(--lightm-menu-grey);
+        background-color: var(--hover-bg);
+        border-color: var(--hover-border);
+        box-shadow: 2px 3px var(--menu-grey);
       }
     /* general */
     .button {
-        color: var(--lightm-box-fg);
+        color: var(--box-fg);
     }
     @media all and (max-width: 1110px) {
         #navmenu>li {
-            background: var(--lightm-card-bg);
+            background: var(--card-bg);
     
         }
         .submenu-content {
-        background: var(--lightm-hover-fg);
+        background: var(--hover-fg);
         }
     }
 }

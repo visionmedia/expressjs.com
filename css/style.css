@@ -12,8 +12,10 @@
 
 body {
   font: 400 14px/1.6 "Open Sans", sans-serif;
+  background: var(--bg);
   margin: 0;
   padding: 0;
+  color: var(--fg);
 }
 
 body.no-scroll{
@@ -31,7 +33,9 @@ h1 {
 
 h1, h2, h3 {
   margin: 5px 0;
+  color: var(--card-fg);
   -webkit-font-smoothing: antialiased;
+
 }
 
 .content h1 {
@@ -40,11 +44,17 @@ h1, h2, h3 {
 
 p em {
   font-weight: bold;
+  color: var(--card-fg);
 }
+
 
 p {
   margin: 10px 0;
   line-height: 1.35em;
+}
+
+strong, th {
+  color: var(--card-fg);
 }
 
 #overlay {
@@ -92,8 +102,8 @@ main.home {
 #announcements {
   margin-top: 40px;
   padding: 0 16px;
-  border-width: 1px;
-  border-style: solid;
+  background: var(--notice-bg);
+  border: 1px solid var(--notice-border);
   border-radius: 3px;
   font-size: 0.9em;
 }
@@ -115,7 +125,7 @@ main.home {
   font-weight: normal;
   margin-right: 12px;
 }
-
+/* icon moved to moz-min-device-pixel-ratio media */
 #announcements p:first-child {
   font-weight: bold;
   padding-left: 20px;
@@ -128,8 +138,7 @@ main.home {
 #install-command {
   font-family: Consolas, Monaco, "Andale Mono", monospace;
   padding: 5px 10px;
-  border-width: 1px;
-  border-style: solid;
+  border: 1px solid var(--border);
   border-radius: 3px;
   max-width: 375px;
 }
@@ -144,6 +153,8 @@ span.block-section {
   display: block;
 }
 
+/* li code - no instances exist   */
+
 #intro h3 {
   font-size: 25px;
   margin-bottom: 10px;
@@ -152,12 +163,13 @@ span.block-section {
 #api-doc section {
   padding-left: 20px;
 }
-
+/* use image 2 */
 #api-doc > h3 {
   padding-top: 10px;
   padding-bottom: 5px;
   font-weight: bold;
   font-size: 24px;
+  color: var(--menu-grey)
 }
 
 #api-doc h2 {
@@ -181,6 +193,7 @@ span.block-section {
 #api-doc h5 {
   font-size: 14px;
   font-weight: bold;
+  color: var(--menu-grey)
 }
 
 /* scroll */
@@ -208,6 +221,7 @@ span.block-section {
 /* links */
 
 a {
+  color: var(--link);
   text-decoration: none;
 }
 
@@ -221,10 +235,7 @@ a {
  padding-top: 120px;
  z-index: -1;
 }
-/* don't think it exists anymore */
-/* .current {
-  background: #e0f5ff;
-} */
+/* .current - no instances found */
 
 /* logo */
 
@@ -237,6 +248,7 @@ a {
   display: block;
   font: 25px "Helvetica Neue", "Open Sans", sans-serif;
   font-weight: 100;
+  color: var(--card-fg)
 }
 
 #description .express {
@@ -246,10 +258,15 @@ a {
   margin-bottom: .25em;
 }
 
-#express-version {
+#description .express > a {
+  color: var(--card-fg);
+}
+
+#description .express a#express-version {
   font-size: 0.2em;
   margin-left: 0.5em;
   font-weight: 400;
+  color: var(--link);
 }
 
 #description {
@@ -262,16 +279,10 @@ a {
   top: -5px;
   font: 100 4.1em "Helvetica Neue", "Open Sans", sans-serif;
   line-height: .87;
+  color: var(--grey-fg);
 }
 
-/* TODO: don't think this exists - not found in search files*/
-#description em {
-  font-style: normal;
-  font-weight: 100;
-  font-size: 9px;
-  color: #999;
-  margin-left: 5px;
-}
+/* #description em - no instances found */
 
 #doc-langs {
   text-align: center;
@@ -286,6 +297,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
+  background: var(--card-bg);
   width: 100%;
   height: 57px;
   display: flex;
@@ -293,17 +305,47 @@ header {
   justify-content: space-between;
   padding-inline: 45px;
   z-index: 100;
+  border-bottom: 1px solid var(--hover-fg);
 }
+/* bottom border makes no diff */
+.scroll header {
+    box-shadow: 0 0 4px var(--card-bg);
+}
+p code, td code {
+  color:var(--card-fg);
+}
+/* styles sapply on non-en static-files.html [class*='language-'] {
+  text-shadow: 0 1px var(--second_dark_bg);
+}index */
 
-/* No pre tags without child exist, but styles still apply on non-en - uz static-files */
-pre {
+/* all pre tags instances have code children - get rid of importants - override prism white bg */
+pre,
+/* api docs code blocks */
+pre[class*="language-"]:has(code)[class*="language-"],
+/* en code blocks */
+.en-doc pre:has(code)[class*="language-"],
+/* non-en code blocks */
+.non-en-doc pre:has(code)[class*="language-"],
+/* non-en plain text blocks */
+.non-en-doc pre:has(code)[class="plain-text"]  {
+  background: var(--card-bg);
+  border-color:var(--border);  
   font-size: 14px;
   line-height: 1.4;
   padding: 16px;
   overflow: auto;
   border-radius: 3px;
-  border-style: solid;
-  border-width: 1px;
+  border: 1px solid var(--border);
+  & code[class*='language-'] {
+    text-shadow: 0 1px var(--card-bg);
+  }
+
+}
+/* non-en only - override prism  */
+.non-en-doc pre:has(code)[class*="language-"],
+.non-en-doc pre:has(code)[class="plain-text"] {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 pre code {
@@ -311,9 +353,12 @@ pre code {
   overflow: scroll;
   word-break: break-all;
   background-color: inherit;
+
 }
 
 code {
+  color:var(--card-fg);
+  background-color: var(--card-bg);
   margin-block: -.125rem;
   font-size: 13px;
   padding: .125rem .375rem;
@@ -468,20 +513,21 @@ html[xmlns] .clearfix {
 }
 
 /* English pages use backticks for code blocks */
-.en-doc .page pre[class*="language-"] {
+/* this is no longer required */
+/* .en-doc .page pre[class*="language-"] {
   padding-top: 10px !important;
-}
+} */
 
 /* Non-English pages use pre and code tags for code blocks */
-.non-en-doc .page pre[class*="language-"] {
+/* .non-en-doc .page pre[class*="language-"] {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
-}
+} */
 
 
-.page pre.plain-text, .page code.plain-text {
+/* .page pre.plain-text, .page code.plain-text {
   padding-top: 0 !important;
-}
+} */
 
 
 .doc-notice {
@@ -601,7 +647,7 @@ footer {
 /* index announcement-icon */
 @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
   #announcements p:first-child {
-    background-image: url(/images/announcement-icon@2x.png);
+    background-image: var(--announcment-icon);
   }
 
 }
@@ -755,7 +801,7 @@ footer {
 
 /* can't find this in proj*/
 h2 a {
-  color: var(--lightm-card-fg) !important;
+  color: var(--card-fg) !important;
 }
 
 /* search */
@@ -1242,7 +1288,7 @@ blockquote {
     padding: 0;
     top: 57px;
     /* doesn't do anything */
-    /* background: var(--lightm-bg); */
+    /* background: var(--bg); */
     width: 100%;
     position: absolute;
     display: none;
@@ -1277,7 +1323,7 @@ blockquote {
     display: none;
     margin-top: 7px;
     /* doesn't do anything */
-    /* color:var(--lightm-card-fg); */
+    /* color:var(--card-fg); */
     padding: 0;
     margin: 0;
     border: none;
