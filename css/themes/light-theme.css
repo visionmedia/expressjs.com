@@ -1,5 +1,8 @@
 @import "../values.css";
 html.light-mode {
+    #top {
+        background: var(--box-fg);
+    }
     /* body {
         color: var(--fg);
         background: var(--bg);
@@ -38,10 +41,10 @@ html.light-mode {
         color: var(--menu-grey)
       } */
     /* li code - no instances exist   */
-    code {
+    /* code {
         color:var(--card-fg);
         background-color: var(--card-bg);
-    }
+    } */
     /* p code, td code {
         color:var(--card-fg);
       } */
@@ -58,12 +61,11 @@ html.light-mode {
         color: var(--lightm-link);
     } */
         
-    /* header{
+     /* header{
         background: var(--card-bg);
-        /* change from  ddd  */
         border-bottom: 1px solid var(--hover-fg);
     
-    } */
+    }  */
     /* .scroll header {
         box-shadow: 0 0 4px var(--card-bg);
     } */
@@ -94,78 +96,80 @@ html.light-mode {
     #navbar .submenu-content a:hover {
         color: var(--bg);
     }
-    #navbar a {
+    /* #navbar a {
         color: var(--menu-grey);
-      }
-    #navbar a.active {
+      } */
+    /* #navbar a.active {
         color: var(--card-fg);
-    }
-    .doc-box pre[class*="language-"] {
+    } */
+    /* code inside doc-box slovak migrating-4x (seemed wrong) */
+
+    /* .doc-box pre[class*="language-"] {
         background: var(--bg)
-    }
-    .doc-box {
+    } */
+    /* .doc-box {
         color: var(--box-fg);
-    }
-    #top {
+    } */
+    /* #top {
         background: var(--box-fg);
-    }
+    } */
     /* doc specific */
-    .doctable, section table {
+    /* .doctable, section table {
         border-color: var(--border);
     }
     .doctable td, .doctable th, section table td, section table th {
         border-color: var(--border);
-    }
-    .doctable tr th, section table tr th {
+    } */
+    /* .doctable tr th, section table tr th {
         background: var(--card-bg);
-    }
-    .doc-notice {
+    } */
+    /* .doc-notice {
         border-left-color: var(--notice-accent);
         background: var(--notice-bg);
-    }
-    .doc-notice a{
+    } */
+    /* .doc-notice a{
         color: var(--notice-accent);
-    }
-    .doc-info {
+    } */
+    /* .doc-info {
         background: var(--info-bg);
         border-left-color:var(--info-accent);
-    }
-    .doc-info a{
+    } */
+    /* .doc-info a{
         color: var(--info-accent);
-    }
-    .doc-info-title {
+    } */
+    /* .doc-info-title {
         color: var(--info-accent);
-    }
-    .doc-warn {
+    } */
+    /* .doc-warn {
         background: var(--warn-bg);
         border-left-color: var(--warn-accent);
-    }
-    .doc-warn-title {
+    } */
+    /* .doc-warn-title {
         color: var(--warn-accent);
-    }
-    .doc-warn a {
+    } */
+    /* .doc-warn a {
         color: var(--warn-accent);
-    }
-    #close-i18n-notice-box {
+    } */
+    /* #close-i18n-notice-box {
         color: var(--notice-accent);
-    }
-    .blog-title a {
+    } */
+    /* .blog-title a {
         color: var(--card-fg)
-    }
+    } */
     /* blog */
-    #blog-side-menu > li > a {
+    /* #blog-side-menu > li > a {
         color: var(--menu-grey);
-    }
-    #blog-side-menu-container > h3 > a  {
+    } */
+    /* #blog-side-menu-container > h3 > a  {
         color: var(--card-fg)
-    }
-    .blog-post {
-        color: var(--card-fg);    
+    } */
+    /* .blog-post { */
+        /* color: var(--card-fg);    
         background-color: var(--card-bg);
         border-color: var(--menu-grey);
-        box-shadow: 2px 3px var(--card-bg);
+        box-shadow: 2px 3px var(--card-bg); */
 
-    }
+    /* } */
     .blog-post:hover {
         background-color: var(--hover-bg);
         border-color: var(--hover-border);

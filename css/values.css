@@ -16,7 +16,7 @@
   /* [#eee, fcfcfa] */
   --card-bg: #f0f1f3; /* %95 */
   /* header text (h1,h2, code blocks, announcement, etc) */
-  /* [#444, #333] */  
+  /* [#444, #333, #555] */  
   --card-fg: #383838; /* %22 */
   /* text (api side menus h3...)  */
   /* [666, 808080] also dark border */
@@ -38,9 +38,9 @@
   --box-fg: #181818;
   --info-bg: #cfd4fc;
   --info-accent: #0f1c8a;
-  --notice-bg: #fdfae6;
-  --notice-border: #ebdbb7;
-  --notice-accent: #73520d;
+  /* --notice-bg: #fdfae6; */
+  --notice-bg: #fceac5;
+  --notice-accent: #523800;
   --warn-bg: #fad1df;
   --warn-accent: #8a0f3a;
   --code-bg: #f0f1f3;
@@ -58,11 +58,14 @@
   /* [--second_dark_bg] */
   --card-bg: #181818;
   /* text (header, h1, h2 code blocks, announcement, etc) */
+  /* [555] */
   --card-fg: #f7f4f4;
-  /* (hover background) */
-  --darkm-hover-bg: #404040;
-  /* (hover foreground) */
-  --hover-fg: #fafafa; /* %98 */ 
+  /* (hover background) */  
+  --darkm-hover-bg: #262626;
+  /* (new hover foreground) */
+  --hover-fg: #f2f2f2;
+  /* (old hover foreground) */
+  --hover-border: #fafafa; /* %98 */ 
   --border: #d9e1e4; /* %87 */
   /* (Links) */
   --darkm-link: var(--global-link);
@@ -71,7 +74,6 @@
   --info-accent: #bdc3ff;
   --notice-bg: #4e4022;
   --notice-accent: #f9e8c3;
-  --notice-border: #ebdbb7;
   --warn-bg: #4e2232;
   --warn-accent: #f9c3d6;
   --code-bg: #0d1117;

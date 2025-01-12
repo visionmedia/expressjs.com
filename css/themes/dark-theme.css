@@ -41,6 +41,9 @@ html.dark-mode #theme-icon-container {
   color: var(--dark_main_text);
   background-color: var(--second_dark_bg);
 }
+html.dark-mode #top {
+  border: 2px solid var(--border); 
+}
 /* html.dark-mode > body {
   background: var(--main_dark_bg);
   color: var(--dark_main_text);
@@ -52,14 +55,14 @@ html.dark-mode #theme-icon-container {
 - could not see on darkmode
 */
 /* This should go in another PR */
-html.dark-mode .scroll #top {
+/* html.dark-mode .scroll #top {
   border: 1px solid var(--border); 
  opacity: 0.5;
 }
 html.dark-mode #top:hover {
   border: 1px solid var(--border); 
  opacity: 1;
-}
+} */
 
 /* html.dark-mode header {
   background-color: var(--second_dark_bg);
@@ -70,9 +73,9 @@ html.dark-mode #top:hover {
   color: var(--dark_main_text);
 } */
 /* navbar links/drop down menu links */
-html.dark-mode #navbar ul#navmenu li a {
+/* html.dark-mode #navbar ul#navmenu li a {
   color: var(--dark_main_text);
-}
+} */
 /* don't think it exists anymore */
 
 /* first drop down link - some js is adding current clas  s */
@@ -89,16 +92,16 @@ html.dark-mode .submenu-content a:hover {
   background: var(--dark_hover);
 }
 
-html.dark-mode #navmenu > li {
+/* html.dark-mode #navmenu > li {
   background: var(--second_dark_bg);
-}
+} */
 
 html.dark-mode #navbar #q {
   border-color: #979797;
 }
-html.dark-mode #navbar a.active {
+/* html.dark-mode #navbar a.active {
   color: var(--card-fg);
-}
+} */
 
 html.dark-mode #navbar .algolia-autocomplete #q:focus-visible,
 html.dark-mode #navbar .algolia-autocomplete #q:focus {
@@ -161,51 +164,50 @@ html.dark-mode div#overlay {
   background: var(--fg);
 }
 
-html.dark-mode .doc-box.doc-info pre.language-javascript {
+/* html.dark-mode .doc-box.doc-info pre.language-javascript {
   background: var(--main_dark_bg);
-}
+} */
 
 html.dark-mode {
-  & .doctable, section table {
+  /* & .doctable, section table {
   border-color: var(--border);
-  }
-  & .doctable td, .doctable th, section table td, section table th {
+  } */
+  /* & .doctable td, .doctable th, section table td, section table th {
     border-color: var(--border);
-  }
-  & .doctable tr th, section table tr th {
-    /* replaces --second_dark_bg */
+  } */
+  /* & .doctable tr th, section table tr th {
     background: var(--card-bg);
-  } 
-  .doc-notice {
+  }  */
+  /* .doc-notice {
     border-left-color: var(--notice-accent);
     background: var(--notice-bg);
-  }
-  .doc-notice a{
+  } */
+  /* .doc-notice a{
     color: var(--notice-accent);
-  }
-  .doc-info {
+  } */
+  /* .doc-info {
     background: var(--info-bg);
     border-left-color:var(--info-accent);
-  }
-  .doc-info a{
+  } */
+  /* .doc-info a{
     color: var(--info-accent);
-  }
-  .doc-info-title {
+  } */
+  /* .doc-info-title {
     color: var(--info-accent);
-  }
-  .doc-warn {
+  } */
+  /* .doc-warn {
     background: var(--warn-bg);
     border-left-color: var(--warn-accent);
-  }
-  .doc-warn-title {
+  } */
+  /* .doc-warn-title {
     color: var(--warn-accent);
-  }
-  .doc-warn a {
+  } */
+  /* .doc-warn a {
     color: var(--warn-accent);
-  }
-  #close-i18n-notice-box {
+  } */
+  /* #close-i18n-notice-box {
     color: var(--notice-accent);
-  }
+  } */
 }
 /* html.dark-mode h1,
 html.dark-mode h2,
@@ -213,10 +215,10 @@ html.dark-mode h3, */
 /* html.dark-mode em, */
 /* html.dark-mode strong,   */
 /* html.dark-mode th   */
-html.dark-mode code
+/* html.dark-mode code
 {
   color: var(--dark_main_text);
-}
+} */
 /* html.dark-mode p code, td code {
   color:var(--card-fg);
 } */
@@ -273,9 +275,9 @@ html.dark-mode .token.operator {
   color: var(--dark_main_text);
 } */
 /* api pages */
-html.dark-mode #menu li > * {
+/* html.dark-mode #menu li > * {
   color: var(--menu-grey);
-}
+} */
 html.dark-mode #menu li ul li > em {
   color: var(--fg);
 }
@@ -345,31 +347,31 @@ html.dark-mode .ds-suggestion.ds-cursor .algolia-docsearch-suggestion--content{
   background-color: var(--dark_hover);
 }
 html.dark-mode .blog-post{
-  background-color: var(--card-bg);
-  border: 1px solid var(--border);
-  transition: 0.3s;
+  /* background-color: var(--card-bg); */
+  /* border: 1px solid var(--border); */
+  /* transition: 0.3s; */
   box-shadow: 2px 3px var(--hover-fg);
 }
 html.dark-mode .blog-post:hover{
   background-color: var(--darkm-hover-bg);
-  border-color: var(--hover-fg);
+  border-color: var(--hover-border);
   box-shadow: 1px 2px var(--hover-fg);;
 }
-html.dark-mode .blog-title > a{
+/* html.dark-mode .blog-title > a{
   color: var(--dark_main_text);
-}
+} */
 html.dark-mode .blog-excerpt{
   color: var(--dark_bright_text);
 }
-html.dark-mode #blog-side-menu-container > h3 > a {
+/* html.dark-mode #blog-side-menu-container > h3 > a {
   color: var(--card-fg);
-}
-html.dark-mode #blog-side-menu > li > a{
+} */
+/* html.dark-mode #blog-side-menu > li > a{
   color: var(--menu-grey);
-}
-html.dark-mode pre code {
+} */
+/* html.dark-mode pre code {
   background-color: inherit;
-}
-html.dark-mode .button {
+} */
+/* html.dark-mode .button {
   color: var(--box-fg);
-}
+} */

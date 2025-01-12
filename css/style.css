@@ -103,9 +103,13 @@ main.home {
   margin-top: 40px;
   padding: 0 16px;
   background: var(--notice-bg);
-  border: 1px solid var(--notice-border);
+  border: 1px solid var(--notice-accent);
   border-radius: 3px;
   font-size: 0.9em;
+  & a {
+    color: var(--notice-accent);
+    text-decoration: underline;
+  }
 }
 
 #announcements ul {
@@ -265,8 +269,8 @@ a {
 #description .express a#express-version {
   font-size: 0.2em;
   margin-left: 0.5em;
-  font-weight: 400;
   color: var(--link);
+  font-weight: 400;
 }
 
 #description {
@@ -278,8 +282,8 @@ a {
   position: relative;
   top: -5px;
   font: 100 4.1em "Helvetica Neue", "Open Sans", sans-serif;
-  line-height: .87;
   color: var(--grey-fg);
+  line-height: .87;
 }
 
 /* #description em - no instances found */
@@ -327,9 +331,9 @@ pre[class*="language-"]:has(code)[class*="language-"],
 /* non-en code blocks */
 .non-en-doc pre:has(code)[class*="language-"],
 /* non-en plain text blocks */
-.non-en-doc pre:has(code)[class="plain-text"]  {
+.non-en-doc pre:has(code).plain-text  {
+  color: var(--card-fg);
   background: var(--card-bg);
-  border-color:var(--border);  
   font-size: 14px;
   line-height: 1.4;
   padding: 16px;
@@ -343,7 +347,8 @@ pre[class*="language-"]:has(code)[class*="language-"],
 }
 /* non-en only - override prism  */
 .non-en-doc pre:has(code)[class*="language-"],
-.non-en-doc pre:has(code)[class="plain-text"] {
+.non-en-doc pre:has(code).plain-text,
+.non-en-doc pre code.plain-text   {
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -356,23 +361,32 @@ pre code {
 
 }
 
-code {
+html code[class*="language-"] {
   color:var(--card-fg);
   background-color: var(--card-bg);
   margin-block: -.125rem;
   font-size: 13px;
   padding: .125rem .375rem;
-  line-height: 28px;
+  /* this is too high - overwritten by prism */
+  /* line-height: 28px; */
   border-radius: 6px;
 }
 
 /* scroll to top button */
 
+added styling to each mode to up scroll
 .scroll #top {
-  opacity: .2;
+  border: 1px solid var(--border); 
+  opacity: .5;
+}
+
+#top:hover {
+  border: 2px solid var(--border); 
+  opacity: 1;
 }
 
 #top {
+  opacity: .2;
   line-height: 0;
   border-radius: 2px;
   position: fixed;
@@ -380,9 +394,7 @@ code {
   right: 15px;
   padding: 8px;
   text-decoration: none;
-  /* color has no effect */
-  color: white;
-  opacity: 0;
+  /* color - had no effect */
   transition: opacity 300ms;
 }
 
@@ -453,11 +465,9 @@ html[xmlns] .clearfix {
 
 .doctable, section table {
   margin: 1em 1em 1em 0;
-  border-width: 1px;
-  border-style: solid;
+  border: 1px solid var(--border);
   border-collapse: collapse;
-  /* has no effect - dev tools */
-  /* empty-cells: show; */
+  /* empty cells had no effect - dev tools*/
   width: 100%;
 }
 
@@ -465,11 +475,11 @@ html[xmlns] .clearfix {
   padding: 7px;
   line-height: 120%;
   vertical-align: top;
-  border-width: 1px; 
-  border-style: solid;
+  border: 1px solid var(--border);
 }
 
 .doctable tr th, section table tr th {
+  background: var(--card-bg);
   font-size: 110%;
 }
 
@@ -489,6 +499,7 @@ html[xmlns] .clearfix {
 
 .doc-box {
   padding: 16px;
+  color: var(--box-fg);
   border-radius: 0 6px 6px 0;
   margin-top: 1rem;
 }
@@ -507,7 +518,6 @@ html[xmlns] .clearfix {
 .doc-box p:last-child {
   margin: 0;
 }
-
 .doc-box pre[class*="language-"] {
   background: none repeat scroll 0 0;
 }
@@ -524,40 +534,47 @@ html[xmlns] .clearfix {
   padding-bottom: 0 !important;
 } */
 
-
+/* override in pre tags above  */
 /* .page pre.plain-text, .page code.plain-text {
   padding-top: 0 !important;
 } */
 
 
 .doc-notice {
-  border-left-width: 3px;
-  border-left-style: solid; 
+  background: var(--notice-bg);
+  border-left: 3px solid var(--notice-accent);
 }
 
 .doc-notice a{
+  color: var(--notice-accent);
   text-decoration: underline;
 }
 
 .doc-info {
-  border-left-width: 3px;
-  border-left-style: solid; 
+  background: var(--info-bg);
+  border-left-color: 3px solid var(--info-accent);
 }
 
 .doc-info a{
+  color: var(--info-accent);
   text-decoration: underline;
 }
 
 .doc-info-title {
+  color: var(--info-accent);
   font-weight: 600;
 }
 
 .doc-warn {
-  border-left-width: 3px;
-  border-left-style: solid;
+  background: var(--warn-bg);
+  border-left-color: 3px solid var(--warn-accent);
+}
+.doc-warn-title {
+  color: var(--warn-accent);
 }
 
 .doc-warn a {
+  color: var(--warn-accent);
   text-decoration: underline;
 }
 
@@ -570,6 +587,7 @@ html[xmlns] .clearfix {
   position: absolute;
   top: 3px;
   right: 4px;
+  color: var(--notice-accent);
   cursor: pointer;
 }
 
@@ -584,6 +602,7 @@ html[xmlns] .clearfix {
   padding: 3px 5px;
   border-radius: 3px;
   cursor: pointer;
+  color: var(--box-fg);
 }
 
 #mobile-menu {
@@ -659,8 +678,13 @@ footer {
   align-items: center;
 }
 
+#navbar a {
+  color: var(--card-fg);
+}
+
 #navbar a.active {
   font-weight: bold;
+  color: var(--fg);
 }
 
 #navbar ul {
@@ -752,7 +776,9 @@ footer {
   max-width: 100%;
   margin-bottom: 5px;
 }
-
+#blog-side-menu-container > h3 > a  {
+  color: var(--fg)
+}
 #blog-side-menu {
   list-style: none;
   padding: 0;
@@ -786,6 +812,7 @@ footer {
 #menu > li > a,
 #tags-side-menu > li > a,
 #blog-side-menu > li > a {
+  color: var(--menu-grey);
   font-weight: bold;
   font-size: 13px;
 }
@@ -1094,19 +1121,21 @@ h2 a {
 }
 .blog-post {
   width: 100%;
+  background-color: var(--card-bg);
   display: flex;
   padding: 10px;
   flex-direction: column;
   justify-content: space-between;
   border-radius: 5px;
-  border-width: 1px;
-  border-style: solid;
-  transition: 0.1s;
+  border: 1px solid var(--border);
+  box-shadow: 2px 3px var(--hover-fg);
+  transition: 0.3s;
 }
-/* .blog-post:hover {
-  background-color: #D3D3D3;
-  border: 1px solid #303030;
-} */
+.blog-post:hover {
+  background-color: var(--hover-bg);
+  border: 1px solid var(--hover-border);
+  box-shadow: 2px 3px var(--menu-grey);
+}
 .blog-post img {
   max-width: 100%;
   max-height: 100%;
@@ -1129,7 +1158,7 @@ h2 a {
   padding-right: .2em;
 }
 .blog-title a {
-  color: #000;
+  color: var(--card-fg)
 }
 .blog-excerpt {
   color: initial;
