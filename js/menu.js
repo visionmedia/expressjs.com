@@ -70,6 +70,8 @@ for (const el of languageItems) {
 			languagePickerMenu?.classList.remove("opens");
 			overlay?.classList.remove("blurs");
 			document.body.classList.remove("no-scroll");
+
+			window.location.href = href;
 		}
 	});
 }
