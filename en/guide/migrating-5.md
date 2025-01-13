@@ -15,7 +15,7 @@ Express 5 is not very different from Express 4; although it maintains the same b
 To install this version, you need to have a Node.js version 18 or higher. Then, execute the following command in your application directory:
 
 ```console
-$ npm install "express@>={{ site.data.express.next_version }}" --save
+$ npm install "express@^{{ site.data.express.next_version }}"
 ```
 
 You can then run your automated tests to see what fails, and fix problems according to the updates listed below. After addressing test failures, run your app to see what errors occur. You'll find out right away if the app uses any methods or properties that are not supported.
@@ -45,6 +45,7 @@ You can then run your automated tests to see what fails, and fix problems accord
   <li><a href="#path-syntax">Path route matching syntax</a></li>
   <li><a href="#rejected-promises">Rejected promises handled from middleware and handlers</a></li>
   <li><a href="#express.urlencoded">express.urlencoded</a></li>
+  <li><a href="#app.listen">app.listen</a></li>
   <li><a href="#app.router">app.router</a></li>
   <li><a href="#req.body">req.body</a></li>
   <li><a href="#req.host">req.host</a></li>
@@ -158,6 +159,20 @@ Details of how Express handles errors is covered in the [error handling document
 <h4 id="express.urlencoded">express.urlencoded</h4>
 
 The `express.urlencoded` method makes the `extended` option `false` by default.
+
+<h4 id="app.listen">app.listen</h4>
+
+In Express 5, the `app.listen` method will invoke the user-provided callback function (if provided) when the server receives an error event. In Express 4, such errors would be thrown. This change shifts error-handling responsibility to the callback function in Express 5. If there is an error, it will be passed to the callback as an argument.
+For example:
+
+```js
+const server = app.listen(8080, '0.0.0.0', (error) => {
+  if (error) {
+    throw error // e.g. EADDRINUSE
+  }
+  console.log(`Listening on ${JSON.stringify(server.address())}`)
+})
+```
 
 <h4 id="app.router">app.router</h4>
 

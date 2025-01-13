@@ -68,7 +68,7 @@ Node.js 4.0+ または io.js 2.1.0+ を使用している場合、アプリケ�
 
 #### アプリケーション・アクティビティー
 
-アプリケーション・アクティビティー (例えば、トラフィックまたは API 呼び出しのトラッキング) のロギングを実行する場合は、`console.log()` を使用するのではなく、[Winston](https://www.npmjs.com/package/winston) や [Bunyan](https://www.npmjs.com/package/bunyan) などのロギング・ライブラリーを使用します。これらの 2 つのライブラリーの詳細な比較については、StrongLoop ブログ投稿の [Comparing Winston and Bunyan Node.js Logging](https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/) を参照してください。
+アプリケーション・アクティビティー (例えば、トラフィックまたは API 呼び出しのトラッキング) のロギングを実行する場合は、`console.log()` を使用するのではなく、[Winston](https://www.npmjs.com/package/winston) や [Bunyan](https://www.npmjs.com/package/bunyan) などのロギング・ライブラリーを使用します。これらの 2 つのライブラリーの詳細な比較については、StrongLoop ブログ投稿の [Comparing Winston and Bunyan Node.js Logging](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/) を参照してください。
 
 ### 例外を適切に処理する
 
@@ -84,7 +84,7 @@ Node アプリケーションは、キャッチされていない例外が発生
 エラー処理のその他の基礎については、下記を参照してください。
 
 * [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
-* [Building Robust Node Applications: Error Handling](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop ブログ)
+* [Building Robust Node Applications: Error Handling](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop ブログ)
 
 #### 実行してはならないこと
 
@@ -157,8 +157,8 @@ app.get('/', wrap(async (req, res, next) => {
 
 Promise を使用するエラー処理の詳細については、下記を参照してください。
 
-* [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
-* [Promises in Node.js with Q – An Alternative to Callbacks](https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
+* [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
+* [Promises in Node.js with Q – An Alternative to Callbacks](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
 
 ## 環境/セットアップで実行する処理
 

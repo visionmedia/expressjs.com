@@ -7,10 +7,6 @@ description: Find answers to frequently asked questions about Express.js, includ
   topics on application structure, models, authentication, template engines, error
   handling, and more.
 ---
-<!---
- Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
- License: MIT
--->
 
 # FAQ
 

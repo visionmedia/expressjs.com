@@ -19,6 +19,7 @@
   --dark_header_text: silver;
   --dark_main_text: #e6edf3;
   --dark_bright_text: wheat;
+  --dark_smooth_text: #aeaeae;
   --dark_border: #ddd;
   --link: #259dff;
 }
@@ -139,7 +140,7 @@ html.dark-mode #navbar > span.algolia-autocomplete > input::placeholder {
 }
 :lang(uz) span.algolia-autocomplete > input,
 :lang(ru) span.algolia-autocomplete > input,
-:lang(de) span.algolia-autocomplete > input, 
+:lang(de) span.algolia-autocomplete > input,
 :lang(fr) span.algolia-autocomplete > input {
   max-width: 100%;
 }
@@ -168,6 +169,9 @@ html.dark-mode pre {
 /* index.html */
 html.dark-mode #description .express > a {
   color: var(--dark_main_text);
+}
+html.dark-mode #description .description {
+  color: var(--dark_smooth_text);
 }
 html.dark-mode #install-command {
   background: var(--main_dark_bg);
@@ -207,8 +211,8 @@ html.dark-mode #api-doc > h3 {
 html.dark-mode #api-doc section h5 {
   color: var(--dark_header_text);
 }
-/* 
-overriding search-bar results drop down  
+/*
+overriding search-bar results drop down
 */
 html.dark-mode .ds-dropdown-menu .ds-dataset-1 {
   background-color: var(--dark_bg);
@@ -264,16 +268,16 @@ html.dark-mode .blog-post{
   background-color: initial;
   border: 1px solid var(--dark_border);
   transition: 0.3s;
-} 
+}
 html.dark-mode .blog-post:hover{
   background-color: var(--darker_hover);
 }
 html.dark-mode .blog-title > a{
   color: var(--dark_main_text);
-} 
+}
 html.dark-mode .blog-excerpt{
   color: var(--dark_bright_text);
-} 
+}
 html.dark-mode #blog-side-menu-container h3 a{
   color: var(--dark_header_text);
 }
@@ -283,4 +287,4 @@ html.dark-mode #blog-side-menu > li > a{
 
 html.dark-mode pre code {
   background-color: inherit;
-} 
+}

@@ -96,7 +96,7 @@ exemplo, rastreamento de tráfico ou chamadas de API), ao invés de
 usar o `console.log()`, use uma biblioteca de
 registro de logs como [Winston](https://www.npmjs.com/package/winston) ou [Bunyan](https://www.npmjs.com/package/bunyan). Para
 obter uma comparação detalhada dessas duas bibliotecas, consulte a postagem do blog do StrongLoop
-[Comparando o registro de logs no Node.js usando Winston e Bunyan](https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
+[Comparando o registro de logs no Node.js usando Winston e Bunyan](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
 
 <a name="exceptions"></a>
 
@@ -125,7 +125,7 @@ convenção de retorno de chamada erros-first para tratar o erro de forma signif
 Para obter mais informações sobre os fundamentos de manipulação de erros, consulte:
 
 * [Manipulação de Erros no Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
-* [Construindo Aplicativos Node Robustos: Manipulação de Erros](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (blog do StrongLoop)
+* [Construindo Aplicativos Node Robustos: Manipulação de Erros](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/robust-node-applications-error-handling/) (blog do StrongLoop)
 
 #### O que não fazer
 
@@ -225,8 +225,8 @@ Para obter mais informações sobre o manipulação de erros usando
 promessas, consulte:
 
 * [Manipulando Erros
-Assíncronos no Express com Promessas, Geradores e ES7](https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
-* [Promessas no Node.js com o Q – Uma Alternativa a Retornos de Chamada](https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
+Assíncronos no Express com Promessas, Geradores e ES7](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
+* [Promessas no Node.js com o Q – Uma Alternativa a Retornos de Chamada](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
 
 <a name="env"></a>
 

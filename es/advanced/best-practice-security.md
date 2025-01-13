@@ -199,7 +199,7 @@ Por último, las aplicaciones de Express, como cualquier otra aplicación web, s
 
 A continuación, se muestran algunas recomendaciones para la excelente lista de comprobación [Node.js Security Checklist](https://blog.risingstack.com/node-js-security-checklist/).  Consulte el post de este blog para ver todos los detalles de estas recomendaciones:
 
-* Implemente el límite de velocidad para evitar ataques de fuerza bruta contra la autenticación.  Una forma de hacerlo es utilizar [StrongLoop API Gateway](https://strongloop.com/node-js/api-gateway/) para forzar una política de limitación de velocidad.  También puede utilizar middleware como [express-limiter](https://www.npmjs.com/package/express-limiter), aunque para ello deberá modificar el código de alguna forma.
+* Implemente el límite de velocidad para evitar ataques de fuerza bruta contra la autenticación.  Una forma de hacerlo es utilizar [StrongLoop API Gateway](https://web.archive.org/web/20240000000000/https://strongloop.com/node-js/api-gateway/) para forzar una política de limitación de velocidad.  También puede utilizar middleware como [express-limiter](https://www.npmjs.com/package/express-limiter), aunque para ello deberá modificar el código de alguna forma.
 * Filtre y sanee siempre la entrada de usuario para protegerse contra los ataques de scripts entre sitios (XSS) e inyección de mandatos.
 * Defiéndase contra los ataques de inyección de SQL utilizando consultas parametrizadas o sentencias preparadas.
 * Utilice la herramienta [sqlmap](http://sqlmap.org/) de código abierto para detectar vulnerabilidades de inyección de SQL en la aplicación.
