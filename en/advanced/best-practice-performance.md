@@ -120,43 +120,6 @@ app.get('/search', (req, res) => {
 
 However, try-catch works only for synchronous code. Because the Node platform is primarily asynchronous (particularly in a production environment), try-catch won't catch a lot of exceptions.
 
-#### Use promises
-
-Promises will handle any exceptions (both explicit and implicit) in asynchronous code blocks that use `then()`. Just add `.catch(next)` to the end of promise chains. For example:
-
-```js
-app.get('/', (req, res, next) => {
-  // do some sync stuff
-  queryDb()
-    .then((data) => makeCsv(data)) // handle data
-    .then((csv) => { /* handle csv */ })
-    .catch(next)
-})
-
-app.use((err, req, res, next) => {
-  // handle error
-})
-```
-
-Now, all errors asynchronous and synchronous get propagated to the error middleware.
-
-However, there are two caveats:
-
-1.  All your asynchronous code must return promises (except emitters). If a particular library does not return promises, convert the base object by using a helper function like [util.promisify](https://nodejs.org/api/util.html#util_util_promisify_original).
-2.  Event emitters (like `streams`) can still cause uncaught exceptions. So make sure you are handling the error event properly; for example:
-
-```js
-app.get('/', async (req, res, next) => {
-  const company = await getCompanyById(req.query.id)
-  const stream = getLogoStreamById(company.id)
-  stream.on('error', next).pipe(res)
-})
-```
-
-If `getCompanyById` throws an error or rejects, `next` will be called with either the thrown error or the rejected value. If no rejected value is provided, `next` will be called with a default Error object provided by the Express router.
-
-For more information about error-handling, see our guide on [error handling in Express](https://expressjs.com/en/guide/error-handling).
-
 ## Things to do in your environment / setup 
 {#in-environment}
 
