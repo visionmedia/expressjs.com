@@ -19,7 +19,7 @@ The [Express application generator](/{{ page.lang }}/starter/generator.html) use
 
 See [Template Engines (Express wiki)](https://github.com/expressjs/express/wiki#template-engines)
 for a list of template engines you can use with Express.
-See also [Comparing JavaScript Templating Engines: Jade, Mustache, Dust and More](https://strongloop.com/strongblog/compare-javascript-templates-jade-mustache-dust/).
+See also [Comparing JavaScript Templating Engines: Jade, Mustache, Dust and More](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-javascript-templates-jade-mustache-dust/).
 
 To render template files, set the following [application setting properties](/{{ page.lang }}/4x/api.html#app.set):
 
