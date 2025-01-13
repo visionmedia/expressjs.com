@@ -71,7 +71,7 @@ Si realiza el registro a efectos de depuración, en lugar de utilizar `console.l
 
 #### Para la actividad de la aplicación
 
-Si está registrando la actividad de la aplicación (por ejemplo, realizando un seguimiento del tráfico o las llamadas de API), en lugar de utilizar `console.log()`, utilice una biblioteca de registro como [Winston](https://www.npmjs.com/package/winston) o [Bunyan](https://www.npmjs.com/package/bunyan). Para ver una comparación detallada de estas dos bibliotecas, consulte el post del blog StrongLoop [Comparing Winston and Bunyan Node.js Logging](https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
+Si está registrando la actividad de la aplicación (por ejemplo, realizando un seguimiento del tráfico o las llamadas de API), en lugar de utilizar `console.log()`, utilice una biblioteca de registro como [Winston](https://www.npmjs.com/package/winston) o [Bunyan](https://www.npmjs.com/package/bunyan). Para ver una comparación detallada de estas dos bibliotecas, consulte el post del blog StrongLoop [Comparing Winston and Bunyan Node.js Logging](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
 
 <a name="exceptions"></a>
 
@@ -89,7 +89,7 @@ Antes de profundizar en estos temas, deberá tener unos conocimientos básicos d
 Para obtener más información sobre los aspectos básicos del manejo de errores, consulte:
 
 -   [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
--   [Building Robust Node Applications: Error Handling](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (blog StrongLoop)
+-   [Building Robust Node Applications: Error Handling](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/robust-node-applications-error-handling/) (blog StrongLoop)
 
 #### Qué no debe hacer
 
@@ -164,9 +164,9 @@ app.get('/', wrap(async (req, res, next) => {
 }))
 ```
 
-La función `wrap()` es un envoltorio que toma las promesas rechazadas y llama a `next()` con el error como primer argumento. Para más detalles, vea [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/).
+La función `wrap()` es un envoltorio que toma las promesas rechazadas y llama a `next()` con el error como primer argumento. Para más detalles, vea [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/).
 
-Para más información acerca del manejo de errores utilizando promesas, vea [Promises in Node.js with Q – An Alternative to Callbacks](https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/).
+Para más información acerca del manejo de errores utilizando promesas, vea [Promises in Node.js with Q – An Alternative to Callbacks](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/).
 
 ## Cosas que hacer en el entorno / configuración
 

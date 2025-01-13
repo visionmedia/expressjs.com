@@ -61,7 +61,7 @@ app.use(compression())
 
 #### 出于应用程序活动目的
 
-如果要对应用程序活动进行日志记录（例如，跟踪流量或 API 调用），请使用 [Winston](https://www.npmjs.com/package/winston) 或 [Bunyan](https://www.npmjs.com/package/bunyan) 之类的日志记录库，而不要使用 `console.log()`。要了解这两个库的详细对比，请参阅 StrongLoop 博客帖子 [Comparing Winston and Bunyan Node.js Logging](https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/)。
+如果要对应用程序活动进行日志记录（例如，跟踪流量或 API 调用），请使用 [Winston](https://www.npmjs.com/package/winston) 或 [Bunyan](https://www.npmjs.com/package/bunyan) 之类的日志记录库，而不要使用 `console.log()`。要了解这两个库的详细对比，请参阅 StrongLoop 博客帖子 [Comparing Winston and Bunyan Node.js Logging](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/)。
 
 <a name="exceptions"></a>
 
@@ -79,7 +79,7 @@ Node 应用程序在遇到未捕获的异常时会崩溃。不处理异常并采
 有关错误处理基本知识的更多信息，请参阅：
 
 * [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
-* [Building Robust Node Applications: Error Handling](https://strongloop.com/strongblog/robust-node-applications-error-handling/)（StrongLoop 博客）
+* [Building Robust Node Applications: Error Handling](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/robust-node-applications-error-handling/)（StrongLoop 博客）
 
 #### 请勿执行以下操作
 
@@ -156,8 +156,8 @@ app.get('/', wrap(async (req, res, next) => {
 
 有关使用 Promise 来处理错误的更多信息，请参阅：
 
-* [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
-* [Promises in Node.js with Q – An Alternative to Callbacks](https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
+* [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
+* [Promises in Node.js with Q – An Alternative to Callbacks](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
 
 <a name="env"></a>
 
