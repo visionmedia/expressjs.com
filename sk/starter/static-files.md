@@ -6,10 +6,6 @@ lang: sk
 description: Understand how to serve static files like images, CSS, and JavaScript
   in Express.js applications using the built-in 'static' middleware.
 ---
-<!---
- Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
- License: MIT
--->
 
 # Servovanie statických súborov pomocou Express
 
