@@ -216,7 +216,6 @@ In addition to restarting your app when it crashes, a process manager can enable
 The most popular process managers for Node are as follows:
 
 * [PM2](https://github.com/Unitech/pm2)
-* [Forever](https://www.npmjs.com/package/forever)
 
 
 Using any of these process managers will suffice to keep your application up, even if it does crash from time to time.
