@@ -70,7 +70,7 @@ app.use(compression())
 #### 為了應用程式活動
 
 如果您要記載應用程式活動（例如，追蹤資料流量或 API 呼叫），則不要使用 `console.log()`，請改用 [Winston](https://www.npmjs.com/package/winston) 或
-[Bunyan](https://www.npmjs.com/package/bunyan) 之類的記載程式庫。如需這兩種程式庫的詳細比較，請參閱 StrongLoop 部落格文章 [Comparing Winston and Bunyan Node.js Logging](https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/)。
+[Bunyan](https://www.npmjs.com/package/bunyan) 之類的記載程式庫。如需這兩種程式庫的詳細比較，請參閱 StrongLoop 部落格文章 [Comparing Winston and Bunyan Node.js Logging](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/)。
 
 <a name="exceptions"></a>
 
@@ -88,7 +88,7 @@ Node 應用程式一旦遇到未捕捉到的異常狀況，就會當機。如果
 如需進一步瞭解錯誤處理的基本概念，請參閱：
 
 * [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
-* [Building Robust Node Applications: Error Handling](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop blog)
+* [Building Robust Node Applications: Error Handling](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop blog)
 
 #### 禁止事項
 
@@ -164,8 +164,8 @@ app.get('/', wrap(async (req, res, next) => {
 
 如需使用 promise 來處理錯誤的相關資訊，請參閱：
 
-* [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
-* [Promises in Node.js with Q – An Alternative to Callbacks](https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
+* [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
+* [Promises in Node.js with Q – An Alternative to Callbacks](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
 
 <a name="env"></a>
 

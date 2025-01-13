@@ -14,7 +14,7 @@ description: Discover how to integrate and use template engines like Pug, Handle
 部分主流的模板引擎 [Pug](https://pugjs.org/api/getting-started.html)、[Mustache](https://www.npmjs.com/package/mustache) 和 [EJS](https://www.npmjs.com/package/ejs) 均可被使用於 Express 中。[Express 應用程式產生器](http://expressjs.com/en/starter/generator.html)預設採用 [Jade](https://www.npmjs.com/package/jade)，但也支援包含上述的多種模板引擎。
 
 您可以參閱 [Express Wiki](https://github.com/expressjs/express/wiki#template-engines) 以得知在 Express 中可使用的模板引擎，亦可參閱這篇文章
-：[Comparing JavaScript Templating Engines: Jade, Mustache, Dust and More](https://strongloop.com/strongblog/compare-javascript-templates-jade-mustache-dust/)。
+：[Comparing JavaScript Templating Engines: Jade, Mustache, Dust and More](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-javascript-templates-jade-mustache-dust/)。
 
 <div class="doc-box doc-notice" markdown="1">
 **注意**：Jade 已改名為 [Pug](https://www.npmjs.com/package/pug)。您仍可繼續於應用程式中使用 Jade，它仍能良好運作。然而，若您想取得其最新的版本，則必須在應用程式中將其取代為 Pug。
