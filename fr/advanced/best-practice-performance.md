@@ -70,7 +70,7 @@ Si vous utilisez la journalisation à des fins de débogage, utilisez un module 
 
 #### Pour journaliser l'activité de votre application
 
-Si vous journalisez l'activité de votre application (par exemple, pour suivre le trafic ou les appels API), utilisez une bibliothèque de journalisation telle que [Winston](https://www.npmjs.com/package/winston) ou [Bunyan](https://www.npmjs.com/package/bunyan) plutôt que d'utiliser `console.log()`. Pour obtenir une comparaison détaillée de ces deux bibliothèques, consultez l'article StrongLoop intitulé [Comparing Winston and Bunyan Node.js Logging](https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
+Si vous journalisez l'activité de votre application (par exemple, pour suivre le trafic ou les appels API), utilisez une bibliothèque de journalisation telle que [Winston](https://www.npmjs.com/package/winston) ou [Bunyan](https://www.npmjs.com/package/bunyan) plutôt que d'utiliser `console.log()`. Pour obtenir une comparaison détaillée de ces deux bibliothèques, consultez l'article StrongLoop intitulé [Comparing Winston and Bunyan Node.js Logging](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
 
 <a name="exceptions"></a>
 
@@ -88,7 +88,7 @@ Avant de s'immerger dans les rubriques qui suivent, il est conseillé de posséd
 Pour plus d'informations sur les bases du traitement des erreurs, voir :
 
 * [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
-* [Building Robust Node Applications: Error Handling](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (blogue StrongLoop)
+* [Building Robust Node Applications: Error Handling](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/robust-node-applications-error-handling/) (blogue StrongLoop)
 
 #### A ne pas faire
 
@@ -165,8 +165,8 @@ app.get('/', wrap(async (req, res, next) => {
 
 Pour plus d'informations sur le traitement des erreurs à l'aide de promesses, voir :
 
-* [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
-* [Promises in Node.js with Q – An Alternative to Callbacks](https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
+* [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
+* [Promises in Node.js with Q – An Alternative to Callbacks](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
 
 <a name="env"></a>
 

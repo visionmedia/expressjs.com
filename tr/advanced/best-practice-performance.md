@@ -70,7 +70,7 @@ Hata ayıklama amacıyla loglama yapıyorsanız, o zaman `console.log()` yerine 
 
 #### Uygulama aktivitesi için
 
-Uygulama aktivitesini logluyorsanız (örneğin trafik izleme veya API çağrıları), `console.log()` yerine [Winston](https://www.npmjs.com/package/winston) veya [Bunyan](https://www.npmjs.com/package/bunyan) gibi bir loglama kütüphanesi kullanın. Bu iki kütüphanenin detaylı bir karşılaştırması için, StrongLoop blog yazısına bakınız [Winston ve Bunyan Node.js Loglama Karşılaştırması](https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
+Uygulama aktivitesini logluyorsanız (örneğin trafik izleme veya API çağrıları), `console.log()` yerine [Winston](https://www.npmjs.com/package/winston) veya [Bunyan](https://www.npmjs.com/package/bunyan) gibi bir loglama kütüphanesi kullanın. Bu iki kütüphanenin detaylı bir karşılaştırması için, StrongLoop blog yazısına bakınız [Winston ve Bunyan Node.js Loglama Karşılaştırması](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
 
 ### İstisnaları düzgün işle
 
@@ -86,7 +86,7 @@ Bu konulara girmeden önce Node/Express istisna işleme ile ilgili temel bir anl
 Hata işleme temelleri hakkında daha fazla bilgi için bakınız: 
 
 * [Node.js'te Hata İşleme](https://www.tritondatacenter.com/node-js/production/design/errors)
-* [Güçlü Node Uygulamaları Yazmak: Hata İşleme](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop blogu)
+* [Güçlü Node Uygulamaları Yazmak: Hata İşleme](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop blogu)
 
 #### Ne yapmamalı
 
@@ -156,9 +156,9 @@ app.get('/', wrap(async (req, res, next) => {
 }))
 ```
 
-`wrap()` fonksiyonu ret edilen promise'ları yakalayıp birinci argümanı hata olarak `next()` fonkisyonunu çağıran bir sarıcıdır (wrapper). Detaylar için, bakınız [Express'te Promise, Generator ve ES7 ile Asenkron Hata Ele Alma](https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/#cleaner-code-with-generators).
+`wrap()` fonksiyonu ret edilen promise'ları yakalayıp birinci argümanı hata olarak `next()` fonkisyonunu çağıran bir sarıcıdır (wrapper). Detaylar için, bakınız [Express'te Promise, Generator ve ES7 ile Asenkron Hata Ele Alma](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/#cleaner-code-with-generators).
 
-Promise'lerle hata ele alma ile ilgili daha fazla bilgi için bakınız [Node.js'te Q ile Promis'ler – Geri çağrımalara Bir Alternatif](https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/).
+Promise'lerle hata ele alma ile ilgili daha fazla bilgi için bakınız [Node.js'te Q ile Promis'ler – Geri çağrımalara Bir Alternatif](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/).
 
 ## Ortamınızda / kurulumunuzda yapılacak şeyler {#in-environment}
 
