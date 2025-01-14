@@ -6,10 +6,6 @@ lang: sk
 description: A comprehensive guide to migrating your Express.js applications from
   version 4 to 5, detailing breaking changes, deprecated methods, and new improvements.
 ---
-<!---
- Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
- License: MIT
--->
 
 # Prechod na Express 5
 

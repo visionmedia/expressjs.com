@@ -7,10 +7,6 @@ description: Learn the fundamentals of routing in Express.js applications, inclu
   how to define routes, handle HTTP methods, and create route handlers for your web
   server.
 ---
-<!---
- Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
- License: MIT
--->
 
 # Základný routing
 
