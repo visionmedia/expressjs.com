@@ -86,16 +86,16 @@ html.light-mode {
     #menu ul a.active {
       color: var(--lightm-link)
     }
-    .submenu-content {
+    /* .submenu-content {
        box-shadow: 1px 2px var(--card-bg);
        background-color: var(--hover-fg);
        border-color: var(--border);
        border-width: 2px; 
     
-    }
-    #navbar .submenu-content a:hover {
+    } */
+    /* #navbar .submenu-content a:hover {
         color: var(--bg);
-    }
+    } */
     /* #navbar a {
         color: var(--menu-grey);
       } */
@@ -170,22 +170,22 @@ html.light-mode {
         box-shadow: 2px 3px var(--card-bg); */
 
     /* } */
-    .blog-post:hover {
+    /* .blog-post:hover {
         background-color: var(--hover-bg);
         border-color: var(--hover-border);
         box-shadow: 2px 3px var(--menu-grey);
-      }
+      } */
     /* general */
     .button {
         color: var(--box-fg);
     }
     @media all and (max-width: 1110px) {
-        #navmenu>li {
+        /* #navmenu>li {
             background: var(--card-bg);
     
-        }
-        .submenu-content {
+        } */
+        /* .submenu-content {
         background: var(--hover-fg);
-        }
+        } */
     }
 }
