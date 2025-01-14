@@ -55,6 +55,19 @@ $(function(){
   var parentMenuSelector;
   var lastApiPrefix;
 
+  if (document.readyState !== 'loading') {
+    const languageElement = document.getElementById('languageData');
+    const languagesData = languageElement ? JSON.parse(languageElement.dataset.languages) : [];
+
+    const langDisplay = document.getElementById('current-lang');
+
+    if (langDisplay) {
+      const currentLanguage = window.location.pathname.split('/')[1];
+      const matchedLang = languagesData.find(lang => lang.code === currentLanguage);
+      langDisplay.textContent = matchedLang ? matchedLang.name : 'English';
+    }  
+  }
+
   $(window).bind('load resize', function() {
 
     $('#menu').css('height', ($(this).height() - 150) + 'px');
