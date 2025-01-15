@@ -14,7 +14,7 @@ Versions that are EOL (end-of-life) _may_ receive updates for critical security 
 
 | Major Version | Minimum Node.js Version | Support Start Date | Support End Date |
 | -- | -- | -- | -- |
-| [**v5.x**{: .supported }](/{{page.lang}}/5x/api.html) | 18.0.0 | September 2024 | **ongoing**{: .supported } |
+| [**v5.x**{: .supported }](/{{page.lang}}/5x/api.html) | 18 | September 2024 | **ongoing**{: .supported } |
 | [**v4.x**{: .supported }](/{{page.lang}}/4x/api.html) | 0.10.0 | April 2014 | **ongoing**{: .supported } |
 | [**v3.x**{: .eol }](/{{page.lang}}/3x/api.html) | 0.8.0 | October 2012 | July 2015 |
 | [**v2.x**{: .eol }](/{{page.lang}}/2x/) | 0.4.1 | March 2011 | July 2012 |
