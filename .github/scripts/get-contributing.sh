@@ -50,7 +50,7 @@ while IFS= read -r line; do
     # remove the top 1# headers from cat'd file
       sed -En '/^##|^[^#]/,$p' | \
       # remove GH specific tags staring w '[!NOTE\] and next line
-      sed -E '/^>\[!NOTE\]*/{N;d}' | \
+      sed -E '/^>\[!NOTE\]*/{N;d;}' | \
       # remove any lines with 'Not the Express JS Framework'
       sed -E '/Not the Express JS Framework/I,$d' | \
       # remove GH specific md tags

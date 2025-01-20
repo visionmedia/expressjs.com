@@ -2,12 +2,13 @@
 
 ### The Official Documentation of the Express JS Framework
 
+This is the contribution documentation for the [Expressjs.com](https://github.com/expressjs/expressjs.com) website.
+
 >[!NOTE]
-> This is not the repo for Express JS framework. To contribute to the _[Express JS framework](https://github.com/expressjs/express)_ itself, check this out the [Express JS Github repo](https://github.com/expressjs/express), or the [Contributing to Express](https://expressjs.com/en/resources/contributing.html) page.
+> This is not the repo for Express JS framework. To contribute to the _[Express JS framework](https://github.com/expressjs/express_)_, check out the [Github repo contributing page](https://github.com/expressjs/express/blob/master/Contributing.md) or the website's [Contributing to Express](https://expressjs.com/en/resources/contributing.html) page.
 
-If you want to contribute to the [Expressjs.com](https://github.com/expressjs/expressjs.com) site, you're in the right place. 
 
-#### Need some ideas? These are some of our most typical issues.
+#### Need some ideas? These are some typical issues.
 
 1.  **Website issues**: 
 If you see anything on the site that could use a tune-up, think about how to fix it.
@@ -34,7 +35,7 @@ Fix anything related to site content or typos.
 > [!IMPORTANT]
 > All translation submissions are currently paused. See this [notice](#notice-we-have-paused-all-translation-contributions) for more information.
 
-   - Check out the [Contributing translations](#contributing-translations) section below for a guide to contributing to translations.
+   - Check out the [Contributing translations](#contributing-translations) section below for a contributing guide.
 
 #### Want to work on a backlog issue?
 
@@ -62,8 +63,9 @@ So you've found a problem that you want to fix, or have a site enhancement you w
 
 #### Step 2: Get the Application Code Base
 
-Clone the repo and get the code:
-- `git clone https://github.com/expressjs/expressjs.com.git`
+Clone the repo and get the code
+
+    git clone https://github.com/expressjs/expressjs.com.git
 
 Now that you've got the code you're ready to start making your changes! 
 

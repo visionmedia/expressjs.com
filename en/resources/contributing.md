@@ -9,7 +9,7 @@ redirect_from: "/resources/community.html"
 
 # Contributing to Express
 
-### Looking to contribute to expressjs.com? Click [here](#expressjs-website-contributing).
+### Looking to contribute to Expressjs.com? Click [here](#expressjs-website-contributing).
 
 Express and the other projects in the [expressjs organization on GitHub](https://github.com/expressjs) are projects of the [OpenJs Foundation](https://openjsf.org/).
 These projects are governed under the general policies and guidelines of the Node.js Foundation along with the additional guidelines below.
