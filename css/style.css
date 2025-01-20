@@ -1052,7 +1052,7 @@ h2 a {
   }
 
   #language-picker-menu #navmenu>li:first-child {
-    display: flex !important;
+    display: flex;
   }
 
   #language-picker-menu #navmenu {
