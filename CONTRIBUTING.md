@@ -63,13 +63,13 @@ So you've found a problem that you want to fix, or have a site enhancement you w
 
 #### Step 2: Get the Application Code Base
 
-Clone the repo and get the code
+Clone the repo and get the code:
 
     git clone https://github.com/expressjs/expressjs.com.git
 
-Now that you've got the code you're ready to start making your changes! 
+After you've got the code you're ready to start making your changes! 
 
-But just in case you need a little extra explanation, this section outlines the main sections of the code base, where most changes are likely to be made.  
+But just in case you need a little extra explanation, this section below outlines the main sections of the code base, where most changes are likely to be made.  
 
 **Markdown Page Files**: 
 - These files render to html and make up the individual pages of the site. Most of the site's documentation text content is written in `md` files.
