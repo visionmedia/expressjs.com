@@ -70,7 +70,7 @@ app.use(compression())
 
 #### В целях регистрации работы приложения
 
-Для регистрации работы приложения (например, учета переданных данных или отслеживания вызовов API-функций) можно вместо `console.log()` воспользоваться библиотекой регистрации типа [Winston](https://www.npmjs.com/package/winston) или [Bunyan](https://www.npmjs.com/package/bunyan). Подробное сравнение двух библиотек проведено в корпоративном блоге StrongLoop [Сравнение протоколирования Node.js с использованием Winston и Bunyan](https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
+Для регистрации работы приложения (например, учета переданных данных или отслеживания вызовов API-функций) можно вместо `console.log()` воспользоваться библиотекой регистрации типа [Winston](https://www.npmjs.com/package/winston) или [Bunyan](https://www.npmjs.com/package/bunyan). Подробное сравнение двух библиотек проведено в корпоративном блоге StrongLoop [Сравнение протоколирования Node.js с использованием Winston и Bunyan](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
 
 <a name="exceptions"></a>
 
@@ -88,7 +88,7 @@ app.use(compression())
 Более подробная информация об основных принципах обработки ошибок приведена в разделе:
 
 * [Обработка ошибок в Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
-* [Разработка устойчивых к сбоям приложений Node: обработка ошибок](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (корпоративный блог StrongLoop)
+* [Разработка устойчивых к сбоям приложений Node: обработка ошибок](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/robust-node-applications-error-handling/) (корпоративный блог StrongLoop)
 
 #### Чего не нужно делать
 
@@ -165,8 +165,8 @@ app.get('/', wrap(async (req, res, next) => {
 
 Дополнительная информация об обработке ошибок с использованием промисов приведена в разделе:
 
-* [Обработка ошибок асинхронного кода в Express с использованием промисов, генераторов и ES7](https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
-* [Промисы в Node.js с Q - альтернатива функции обратного вызова](https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
+* [Обработка ошибок асинхронного кода в Express с использованием промисов, генераторов и ES7](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
+* [Промисы в Node.js с Q - альтернатива функции обратного вызова](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
 
 <a name="env"></a>
 

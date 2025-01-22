@@ -6,10 +6,6 @@ lang: sk
 description: Discover performance and reliability best practices for Express apps
   in production, covering code optimizations and environment setups for optimal performance.
 ---
-<!---
- Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
- License: MIT
--->
 
 # Osvedčené postupy pre Express v produkcii: výkonnosť a spoľahlivosť
 
@@ -73,7 +69,7 @@ Ak používate na debugovanie logovanie pomocou `console.log()`, používajte ra
 
 #### Logovanie aktivít aplikácie
 
-Ak používate logovanie na sledovanie aktivít aplikácie (napr. sledovanie traffic-u, príp. API volaní), používajte namiesto `console.log()` logovacie knižnice, ako sú napr. [Winston](https://www.npmjs.com/package/winston) či [Bunyan](https://www.npmjs.com/package/bunyan). Ak vás zaujíma detailnejšie porovnanie týchto dvoch knižníc, prečítajte si tento blog post: [Comparing Winston and Bunyan Node.js Logging](https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
+Ak používate logovanie na sledovanie aktivít aplikácie (napr. sledovanie traffic-u, príp. API volaní), používajte namiesto `console.log()` logovacie knižnice, ako sú napr. [Winston](https://www.npmjs.com/package/winston) či [Bunyan](https://www.npmjs.com/package/bunyan). Ak vás zaujíma detailnejšie porovnanie týchto dvoch knižníc, prečítajte si tento blog post: [Comparing Winston and Bunyan Node.js Logging](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
 
 <a name="exceptions"></a>
 
@@ -91,7 +87,7 @@ Predtým, ako sa hlbšie pustíme do týchto tém, mali by ste mať základné z
 Pre viac informácií ohľadom základov error handlingu sa pozrite na:
 
 * [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
-* [Building Robust Node Applications: Error Handling](https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop blog)
+* [Building Robust Node Applications: Error Handling](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop blog)
 
 #### Čo nerobiť
 
@@ -169,8 +165,8 @@ app.get('/', wrap(async (req, res, next) => {
 
 Pre viac informácií ohľadom error handling-u použitím promises si prečítajte:
 
-* [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
-* [Promises in Node.js with Q – An Alternative to Callbacks](https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
+* [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
+* [Promises in Node.js with Q – An Alternative to Callbacks](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
 
 <a name="env"></a>
 

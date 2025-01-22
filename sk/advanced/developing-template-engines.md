@@ -6,10 +6,6 @@ lang: sk
 description: Learn how to develop custom template engines for Express.js using app.engine(),
   with examples on creating and integrating your own template rendering logic.
 ---
-<!---
- Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
- License: MIT
--->
 
 # Vývoj template enginov pre Express
 

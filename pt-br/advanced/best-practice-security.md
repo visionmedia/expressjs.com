@@ -222,7 +222,7 @@ de Verificação de Segurança do Node.js](https://blog.risingstack.com/node-js-
 
 * Implemente limitações de tráfego para evitar ataques de força
 bruta contra a autenticação.  Uma forma de fazer isso é usar o [Gateway
-da API do StrongLoop](https://strongloop.com/node-js/api-gateway/) para impingir políticas de limitação de tráfego.  Alternativamente,
+da API do StrongLoop](https://web.archive.org/web/20240000000000/https://strongloop.com/node-js/api-gateway/) para impingir políticas de limitação de tráfego.  Alternativamente,
 é possível usar um middleware como o [express-limiter](https://www.npmjs.com/package/express-limiter),
 mas fazer isso  irá requerer que você modifique seu código de alguma forma.
 * Sempre filtrar e limpar a entrada do usuário para se proteger de ataques de cross-site scripting (XSS) e injeção de comando.
