@@ -16,7 +16,7 @@ Versions that are EOL (end-of-life) _may_ receive updates for critical security 
 | [**v5.x**{: .no-release }](/{{page.lang}}/5x/api.html) | **not yet released**{: .no-release } | **not yet released**{: .no-release } |
 | [**v4.x**{: .supported }](/{{page.lang}}/4x/api.html) | April 2014 | **ongoing**{: .supported } |
 | [**v3.x**{: .eol }](/{{page.lang}}/3x/api.html) | October 2012 | July 2015 |
-| [**v2.x**{: .eol }](/{{page.lang}}/2x/) | March 2011 | July 2012 |
+| [**v2.x**{: .eol }](/2x/) | March 2011 | July 2012 |
 | **v1.x**{: .eol } | December 2010 | March 2011 |
 | **v0.14.x**{: .eol } | December 2010 | December 2010 |
 
