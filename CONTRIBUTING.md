@@ -81,7 +81,7 @@ But just in case you need a little extra explanation, this section below outline
   - These are used to import text content for reuse across pages, such as the API documentation, e.g., `_includes > api > en > 5x`, which is included in every language.
   - These are used to include the page components that make up site-wide user interface and periphery structure, e.g., Header, Footer, etc.
 - `_layouts` are the templates used to wrap the site's individual pages. 
-  - These are used to display the structure of the site's periphery, such as the header and footer, and for injecting and displaying individual markdown pages inside the `{{ content }}` tag.
+  - These are used to display the structure of the site's periphery, such as the header and footer, and for injecting and displaying individual markdown pages inside the `content` tag.
 
 **Blog Markdown Files**
 - These files make up the individual blog posts. If you want to contribute a blog post please
