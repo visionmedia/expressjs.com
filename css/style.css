@@ -345,6 +345,7 @@ pre[class*="language-"]:has(code)[class*="language-"],
   }
 
 }
+
 /* non-en only - override prism  */
 .non-en-doc pre:has(code)[class*="language-"],
 .non-en-doc pre:has(code).plain-text,
@@ -396,6 +397,7 @@ html code[class*="language-"] {
   text-decoration: none;
   /* color - had no effect */
   transition: opacity 300ms;
+  border: 2px solid var(--border);  
 }
 
 #top:hover {
@@ -442,6 +444,10 @@ html[xmlns] .clearfix {
 
 #boxes h3 {
   line-height: 1.25em;
+  color: var(--card-fg);
+  background: none;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 #boxes div {
@@ -449,11 +455,11 @@ html[xmlns] .clearfix {
   text-align: center;
 }
 
-#boxes h3 {
+/* #boxes h3 {
   background: none;
   margin-top: 0;
   padding-top: 0;
-}
+} */
 
 #boxes section p {
   width: 100%;
@@ -784,10 +790,14 @@ footer {
   list-style: none;
   padding: 0;
 }
+
+#menu ul a.active {
+color: var(--fg)  
+}
 #menu em {
   font-weight: bold;
+  color: var(--card-fg);
 }
-
 #menu li {
   list-style: none;
 }
@@ -809,6 +819,8 @@ footer {
   height: auto;
   padding: 0;
 }
+#menu a {
+  color: var(--menu-grey);}
 
 #menu > li > a,
 #tags-side-menu > li > a,
@@ -839,21 +851,33 @@ h2 a {
   height: 2.5em;
   max-width: 100%;
   padding: 5px;
-}
+} 
 
 .algolia-autocomplete {
   max-width: 9em;
+  > input {
+    color: var(--fg);
+    background-color: var(--bg);
+  }
+  > input::placeholder {
+    color: var(--fg);
+  }
 }
 
-.algolia-autocomplete #q {
+.algolia-autocomplete
+  #q {
   display: initial;
   border-radius: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   transition: color .3s ease;
   padding-inline: 12px;
   outline: none;
+  &:focus-visible,
+  &:focus {
+    border-color: var(--hover-border);
+    border-width: 2px;
+  }
 }
-
 
 /* search-bar desktop re-sizing */
 @media all and (min-width: 950px) {

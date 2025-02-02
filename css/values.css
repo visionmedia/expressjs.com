@@ -63,6 +63,7 @@
   --card-fg: #f7f4f4;
   /* (hover background) */  
   --hover-bg: #262626;
+  --hover-links-bg: #383838;
   /* (new hover foreground) */
   --hover-fg: #f2f2f2;
   /* (old hover foreground) */

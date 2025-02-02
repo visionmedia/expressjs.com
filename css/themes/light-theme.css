@@ -3,78 +3,9 @@ html.light-mode {
     #top {
         background: var(--box-fg);
     }
-    /* body {
-        color: var(--fg);
-        background: var(--bg);
-    }
-    h1, h2, h3 {
-        color: var(--card-fg);
-    } */
-    /* p em {
-        color: var(--card-fg);
-    } */
-    /* strong, th {
-        color: var(--card-fg);
-    } */
-     /* use image 1 here */
     #overlay {
         background: var(--hover-border);
     
-    }
-    /* #announcements {
-        background: var(--notice-bg);
-        border-color: var(--notice-border);
-        &p:first-child{
-            background-image: url(/images/announcement-icon.png);
-        }
-    } */
-    /* #install-command { */
-        /* not needed */
-        /* background: var(--bg); */
-        /* border-color: var(--border); */
-      /* } */
-    /* #description .description { 
-        color: var(--grey-fg);
-    } */
-    /* #api-doc > h3,  */
-    /* #api-doc h5 {
-        color: var(--menu-grey)
-      } */
-    /* li code - no instances exist   */
-    /* code {
-        color:var(--card-fg);
-        background-color: var(--card-bg);
-    } */
-    /* p code, td code {
-        color:var(--card-fg);
-      } */
-    /* a {
-        color: var(--lightm-link);
-    } */
-    /* #logo .express {
-        color: var(--card-fg)
-    } */
-    /* #description .express > a {
-        color: var(--card-fg);
-    } */
-    /* #description .express a#express-version {
-        color: var(--lightm-link);
-    } */
-        
-     /* header{
-        background: var(--card-bg);
-        border-bottom: 1px solid var(--hover-fg);
-    
-    }  */
-    /* .scroll header {
-        box-shadow: 0 0 4px var(--card-bg);
-    } */
-    /* pre {
-        border-color: var(--border);
-    } */
-    .algolia-autocomplete #q:focus-visible,
-    .algolia-autocomplete #q:focus {
-      border-color:     var(--card-fg);
     }
     /* change from default blue */
     #menu em {

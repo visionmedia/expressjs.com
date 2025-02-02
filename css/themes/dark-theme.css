@@ -27,12 +27,10 @@ html .hidden-light {
   display: none;
 }
 
-/* html.dark-mode a{
-  color: var(--darkm-link)
-} */
 html.dark-mode .hidden-light {
   display: block;
 }
+
 html.dark-mode .hidden-dark {
   display: none;
 }
@@ -41,82 +39,19 @@ html.dark-mode #theme-icon-container {
   color: var(--dark_main_text);
   background-color: var(--second_dark_bg);
 }
-html.dark-mode #top {
-  border: 2px solid var(--border); 
-}
-/* html.dark-mode > body {
-  background: var(--main_dark_bg);
-  color: var(--dark_main_text);
-} */
-/* html.dark-mode .scroll header {
-  box-shadow: 0 0 4px var(--card-fg);
-} */
-/* style changes - not design related
-- could not see on darkmode
-*/
-/* This should go in another PR */
-/* html.dark-mode .scroll #top {
-  border: 1px solid var(--border); 
- opacity: 0.5;
-}
-html.dark-mode #top:hover {
-  border: 1px solid var(--border); 
- opacity: 1;
-} */
 
-/* html.dark-mode header {
-  background-color: var(--second_dark_bg);
-  color: var(--dark_main_text);
-  border-bottom: 1px solid var(--hover-fg);
-} */
-/* html.dark-mode #logo > a {
-  color: var(--dark_main_text);
-} */
-/* navbar links/drop down menu links */
-/* html.dark-mode #navbar ul#navmenu li a {
-  color: var(--dark_main_text);
-} */
-/* don't think it exists anymore */
-
-/* first drop down link - some js is adding current clas  s */
-/* html.dark-mode #navbar ul#navmenu li a.current {
-  background: transparent;
-} */
-/* html.dark-mode #navbar ul#navmenu li a.current:hover, */
 html.dark-mode .submenu-content {
   box-shadow: 1px 2px var(--hover-bg);
   background-color: var(--card-bg);
   border-color: var(--border);
 }
-html.dark-mode .submenu-content a:hover {
-  background: var(--dark_hover);
-}
 
-/* html.dark-mode #navmenu > li {
-  background: var(--second_dark_bg);
-} */
-
-html.dark-mode #navbar #q {
-  border-color: #979797;
-}
-/* html.dark-mode #navbar a.active {
-  color: var(--card-fg);
-} */
-
-html.dark-mode #navbar .algolia-autocomplete #q:focus-visible,
-html.dark-mode #navbar .algolia-autocomplete #q:focus {
-  border-color: var(--border);
-}
-
-/* drop down menu links  */
-
-/* html.dark-mode #navbar #navmenu li ul {
-  background: var(--card-bg);
+/* html.dark-mode #q {
+  border-color: var(--menu-grey)
 } */
 
 html.dark-mode #navbar .submenu-content li a:hover {
-  background: var(--dark_hover);
-  color: var(--dark_main_text);
+  background: var(--hover-links-bg);
 }
 
 /* @media all and (max-width: 1110px) {
@@ -125,21 +60,21 @@ html.dark-mode #navbar .submenu-content li a:hover {
   }
 } */
 /* search bar */
-html.dark-mode #navbar > span.algolia-autocomplete > input {
+/* html.dark-mode #navbar > span.algolia-autocomplete > input {
   background-color: var(--second_dark_bg);
-}
-html.dark-mode #navbar > span.algolia-autocomplete > input,
+} */
+/* html.dark-mode #navbar > span.algolia-autocomplete > input,
 html.dark-mode #navbar > span.algolia-autocomplete > input::placeholder {
   color: var(--dark_main_text);
-}
+} */
 /* CHECK THIS EXISTS */
 /* search bar french */
-:lang(fr) html.dark-mode #navbar ul#navmenu > span.algolia-autocomplete > input {
+/* :lang(fr) html.dark-mode #navbar ul#navmenu > span.algolia-autocomplete > input {
   background-color: var(--second_dark_bg);
   color: var(--dark_main_text);
-}
+} */
 /* search bar fixes uz, ru, de, fr  */
-:lang(uz) span.algolia-autocomplete {
+/* :lang(uz) span.algolia-autocomplete {
   max-width: 8em;
   min-width: auto;
 }
@@ -155,10 +90,10 @@ html.dark-mode #navbar > span.algolia-autocomplete > input::placeholder {
 :lang(de) span.algolia-autocomplete > input,
 :lang(fr) span.algolia-autocomplete > input {
   max-width: 100%;
-}
-html.dark-mode #navbar ul#navmenu > span.algolia-autocomplete > input::placeholder {
+} */
+/* html.dark-mode #navbar ul#navmenu > span.algolia-autocomplete > input::placeholder {
   color: var(--dark_main_text);
-}
+} */
 html.dark-mode div#overlay {
   opacity: 0.5;
   background: var(--fg);
@@ -168,7 +103,7 @@ html.dark-mode div#overlay {
   background: var(--main_dark_bg);
 } */
 
-html.dark-mode {
+/* html.dark-mode { */
   /* & .doctable, section table {
   border-color: var(--border);
   } */
@@ -208,7 +143,7 @@ html.dark-mode {
   /* #close-i18n-notice-box {
     color: var(--notice-accent);
   } */
-}
+/* } */
 /* html.dark-mode h1,
 html.dark-mode h2,
 html.dark-mode h3, */
@@ -251,9 +186,9 @@ html.dark-mode h3, */
   }
 } */
 
-html.dark-mode #boxes div > h3 {
+/* html.dark-mode #boxes div > h3 {
   color: var(--dark_main_text);
-}
+} */
 /* #logo .express {
   color: var(--darkm-link )
 } */
@@ -265,7 +200,7 @@ html.dark-mode #boxes div > h3 {
 html.dark-mode [class*='language-'] {
   text-shadow: 0 1px var(--second_dark_bg);
 } */
-/* js fat arrow operator */
+/* override prism js fat arrow and equals operator */
 html.dark-mode .token.operator {
   background: inherit;
 }
@@ -278,21 +213,21 @@ html.dark-mode .token.operator {
 /* html.dark-mode #menu li > * {
   color: var(--menu-grey);
 } */
-html.dark-mode #menu li ul li > em {
+/* html.dark-mode #menu li ul li > em {
   color: var(--fg);
-}
-html.dark-mode #menu li ul li > a {
+} */
+/* html.dark-mode #menu li ul li > a {
   color: var(--dark_inner_text);
-}
+} */
 /* html.dark-mode #api-doc > h3 {
   color: var(--menu-grey);
 } */
 /* html.dark-mode #api-doc section h5 {
   color: var(--menu-grey);
 } */
-html.dark-mode #menu ul a.active {
+/* html.dark-mode #menu ul a.active {
   color: var(--darkm-link)
-}
+} */
 /*
 overriding search-bar results drop down
 */
