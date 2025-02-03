@@ -6,10 +6,6 @@ lang: sk
 description: Learn how to use middleware in Express.js applications, including application-level
   and router-level middleware, error handling, and integrating third-party middleware.
 ---
-<!---
- Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
- License: MIT
--->
 
 # Použitie middleware
 

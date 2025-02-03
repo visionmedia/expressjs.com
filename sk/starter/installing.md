@@ -6,10 +6,6 @@ lang: sk
 description: Learn how to install Express.js in your Node.js environment, including
   setting up your project directory and managing dependencies with npm.
 ---
-<!---
- Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
- License: MIT
--->
 
 # Inštalácia
 

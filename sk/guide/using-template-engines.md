@@ -6,10 +6,6 @@ lang: sk
 description: Discover how to integrate and use template engines like Pug, Handlebars,
   and EJS with Express.js to render dynamic HTML pages efficiently.
 ---
-<!---
- Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
- License: MIT
--->
 
 # Použitie template enginov v Express
 
@@ -20,7 +16,7 @@ Medzi populárne template enginy fungujúce s Express patria [Pug](https://pugjs
 [Express generátor](/{{ page.lang }}/starter/generator.html) požíva ako defaultný Pug, avšak podporuje aj mnohé ďalšie.
 
 Zoznam podporovaných template enginov nájdete tu: [Template Engines (Express wiki)](https://github.com/expressjs/express/wiki#template-engines).
-Pozrite si taktiež [Comparing JavaScript Templating Engines: Jade, Mustache, Dust and More](https://strongloop.com/strongblog/compare-javascript-templates-jade-mustache-dust/).
+Pozrite si taktiež [Comparing JavaScript Templating Engines: Jade, Mustache, Dust and More](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-javascript-templates-jade-mustache-dust/).
 
 Aby Express dokázal spracovať a vyrendrovať template súbory, musí aplikácia obsahovať [nasledujúce nastavenia](/{{ page.lang }}/4x/api.html#app.set):
 

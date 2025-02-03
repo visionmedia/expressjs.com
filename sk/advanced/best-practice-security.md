@@ -6,10 +6,6 @@ lang: sk
 description: Discover crucial security best practices for Express apps in production,
   including using TLS, input validation, secure cookies, and preventing vulnerabilities.
 ---
-<!---
- Copyright (c) 2016 StrongLoop, IBM, and Express Contributors
- License: MIT
--->
 
 # Osvedčené postupy pre Express v produkcii - Security
 
@@ -152,7 +148,7 @@ app.use(session({
 
 Tu sú ďalšie odporúčania zo skvelého [Node.js Security Checklist](https://blog.risingstack.com/node-js-security-checklist/) zoznamu. Pre viac detailov ohľadom jednotlivých odporúčaní si prečítajte samotný blog post:
 
-* Implementujte tzv. rate-limiting pre vyhnutie sa brute-force útokom voči autentifikácii.  Jednou z možností ako to dosiahnuť je použitie [StrongLoop API Gateway](https://strongloop.com/node-js/api-gateway/) k vynúteniu rate-limiting policy.  Ako alternatívu môžete použiť middleware, ako napr. [express-limiter](https://www.npmjs.com/package/express-limiter), avšak to si už vyžaduje mierny zásah do kódu vašej aplikácie.
+* Implementujte tzv. rate-limiting pre vyhnutie sa brute-force útokom voči autentifikácii.  Jednou z možností ako to dosiahnuť je použitie [StrongLoop API Gateway](https://web.archive.org/web/20240000000000/https://strongloop.com/node-js/api-gateway/) k vynúteniu rate-limiting policy.  Ako alternatívu môžete použiť middleware, ako napr. [express-limiter](https://www.npmjs.com/package/express-limiter), avšak to si už vyžaduje mierny zásah do kódu vašej aplikácie.
 * Vždy filtrujte a overte vstup od používateľa, aby ste vašu aplikáciu ochránili voči útokom typu cross-site scripting (XSS) a command injection.
 * Bránte sa voči útokom typu SQL injection použitím parametrizovaych queries, príp. prepared statements.
 * Používajte open source tool [sqlmap](http://sqlmap.org/) k detekcii SQL injection vulnerabilities vo vašej aplikácii.
