@@ -677,6 +677,9 @@ footer {
 
 }
 /* navigation */
+#theme-icon-container {
+  cursor: pointer;
+}
 
 #navbar {
   line-height: 30px;
@@ -690,7 +693,6 @@ footer {
 
 #navbar a.active {
   font-weight: bold;
-  color: var(--fg);
 }
 
 #navbar ul {
@@ -1284,12 +1286,6 @@ strong.eol {
   display: block;
 }
 
-html.dark-mode .hidden-light {
-  display: block;
-}
-html.dark-mode .hidden-dark {
-  display: none;
-}
 
 blockquote {
   margin-left: 0;
@@ -1333,10 +1329,16 @@ blockquote {
     align-items: center;
   }
 
+  #navmenu>li.open:hover {
+    background: var(--card-bg);
+    > a {
+      border-bottom: 1px solid var(--border);
+    }
+  }
   #navmenu>li:hover {
     background: var(--hover-bg);
     & ul {
-      background-color: var(--card-bg);
+      background-color: var(--bg);
     }
   }
 
