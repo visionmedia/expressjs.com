@@ -329,38 +329,6 @@ header {
   box-shadow: 0 0 4px #eee;
 }
 
-/* code */
-
-p code, td code {
-  color: #333;
-}
-
-pre {
-  color: #555;
-  font-size: 14px;
-  line-height: 1.4;
-  padding: 16px;
-  border-radius: 3px;
-  overflow: auto;
-  border: 1px solid #ddd;
-}
-
-pre code {
-  padding: 0;
-  overflow: scroll;
-  word-break: break-all;
-  background-color: inherit;
-}
-
-code {
-  background-color: var(--code-bg);
-  margin-block: -.125rem;
-  font-size: 13px;
-  padding: .125rem .375rem;
-  line-height: 28px;
-  border-radius: 6px;
-}
-
 /* top button */
 
 .scroll #top {
@@ -481,13 +449,6 @@ html[xmlns] .clearfix {
   margin-top: 1rem;
 }
 
-.doc-box pre {
-  font-size: 12px;
-  line-height: 14px;
-  padding: 0;
-  margin: 0;
-}
-
 .doc-box p {
   margin: 0 0 8px 0;
 }
@@ -495,28 +456,6 @@ html[xmlns] .clearfix {
 .doc-box p:last-child {
   margin: 0;
 }
-
-.doc-box pre[class*="language-"] {
-  background: none repeat scroll 0 0 #fff;
-}
-
-/* English pages use backticks for code blocks */
-.en-doc .page pre[class*="language-"] {
-  padding-top: 10px !important;
-}
-
-/* Non-English pages use pre and code tags for code blocks */
-.non-en-doc .page pre[class*="language-"] {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-
-.page pre.plain-text, .page code.plain-text {
-  padding-top: 0 !important;
-  color: #000;
-}
-
 
 .doc-notice {
   background: var(--notice-bg);
