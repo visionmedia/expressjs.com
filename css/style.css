@@ -141,6 +141,7 @@ main.home {
 
 #install-command {
   font-family: Consolas, Monaco, "Andale Mono", monospace;
+  /* background not required */
   padding: 5px 10px;
   border: 1px solid var(--border);
   border-radius: 3px;
@@ -167,7 +168,7 @@ span.block-section {
 #api-doc section {
   padding-left: 20px;
 }
-/* use image 2 */
+
 #api-doc > h3 {
   padding-top: 10px;
   padding-bottom: 5px;
@@ -318,10 +319,9 @@ header {
 p code, td code {
   color:var(--card-fg);
 }
-/* styles sapply on non-en static-files.html [class*='language-'] {
-  text-shadow: 0 1px var(--second_dark_bg);
-}index */
-
+/* styles sapply on non-en static-files.*/html [class*='language-'] { 
+  text-shadow: 0 1px var(--bg);
+}
 /* all pre tags instances have code children - get rid of importants - override prism white bg */
 pre,
 /* api docs code blocks */
@@ -456,10 +456,7 @@ html[xmlns] .clearfix {
 }
 
 /* #boxes h3 {
-  background: none;
-  margin-top: 0;
-  padding-top: 0;
-} */
+move above
 
 #boxes section p {
   width: 100%;
@@ -528,23 +525,7 @@ html[xmlns] .clearfix {
   background: none repeat scroll 0 0;
 }
 
-/* English pages use backticks for code blocks */
-/* this is no longer required */
-/* .en-doc .page pre[class*="language-"] {
-  padding-top: 10px !important;
-} */
-
-/* Non-English pages use pre and code tags for code blocks */
-/* .non-en-doc .page pre[class*="language-"] {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-} */
-
-/* override in pre tags above  */
-/* .page pre.plain-text, .page code.plain-text {
-  padding-top: 0 !important;
-} */
-
+/* logic moved to pre tags section above */
 
 .doc-notice {
   background: var(--notice-bg);
