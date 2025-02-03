@@ -9,7 +9,7 @@ html.light-mode {
         background: var(--hover-border);
     }
 
-    .submenu-content {
-        background-color: var(--bg);
-    }
+    /* .submenu-content {
+        background-color: var(--card-bg);
+    } */
 }

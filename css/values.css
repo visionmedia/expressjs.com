@@ -1,45 +1,32 @@
-:root {
-  /* [#259dff] */
-  --global-link:#2b8fe0;
-  --lightm-acconutment-icon: url(/images/announcement-icon.png);
-  --darkm-acconutment-icon: url(/images/announcement-icon-dark.png);
-}
 .light-mode:root {
   --announcment-icon: url(/images/announcement-icon.png);
   /* [#7e7e7e, dadada] */
   --grey-fg: #aeaeae; /* %68 */
-  /* background (main) */
+  /* background */
   --bg: #ffffff;
-  /* text (general) */
+  /* text */
   --fg: #383838;
-  /* background  (sub sections in - h1,h2, code blocks, announcement, etc) */
   /* [#eee, fcfcfa] */
   --card-bg: #f0f1f3; /* %95 */
-  /* header text (h1,h2, code blocks, announcement, etc) */
   /* [#444, #333, #555] */  
   --card-fg: #383838; /* %22 */
   /* text (api side menus h3...)  */
-  /* [666, 808080] also dark border */
+  /* [666, 808080]  */
   --menu-grey: #888; /* %53 */
-  /* (hover background) */ 
-  /* changed from hover -- too dark */
   --hover-border: #484848; /* %28 */
-  /* (new hover background) */
   /* [e9e9e9] */
   --hover-bg: #D3D3D3; /* %83 */
-  /* #ddd (hover foreground) */
+  /* [#ddd]  */
   --hover-fg: #fafafa; /* %98 */
-  /* borders) */
+  /* (borders) */
     /* [#c6c6c6 #eee] */
   --border: #d9e1e4; /* %87 */
   /* (Links) */
   /* [#259dff] */
   --link: #0e78ce;
-  /* maybe same as lightm-card-fg? */
   --box-fg: #181818;
   --info-bg: #cfd4fc;
   --info-accent: #0f1c8a;
-  /* --notice-bg: #fdfae6; */
   --notice-bg: #fceac5;
   --notice-accent: #2E1D00;
   --warn-bg: #fad1df;
@@ -54,12 +41,11 @@
   --grey-fg: #b3b3b3; /* %70 */
   /* (background) */
   --bg: #0c0c0c;
-  /* (general texts) */
+  /* (text) */
   --fg: #fafafa;
-  /* [--second_dark_bg] */
-  --card-bg: #181818;
-  /* text (header, h1, h2 code blocks, announcement, etc) */
-  /* [555] */
+  /* (second_bg) */
+  --card-bg: #181818;  
+  /* (second fg) */
   --card-fg: #f7f4f4;
   /* (hover background) */  
   --hover-bg: #262626;
@@ -69,8 +55,10 @@
   /* (old hover foreground) */
   --hover-border: #fafafa; /* %98 */ 
   --border: #d9e1e4; /* %87 */
+  /* for side menus */
+  --menu-grey: silver;
   /* (Links) */
-  --darkm-link: var(--global-link);
+  --link: #259dff;
   --box-fg: #ffffff;
   --info-bg: #171d4f;
   --info-accent: #bdc3ff;
@@ -79,19 +67,6 @@
   --warn-bg: #4e2232;
   --warn-accent: #f9c3d6;
   --code-bg: #0d1117;
-  --main_dark_bg: #010409;
-  --second_dark_bg: #0d1117;
-  --darker_hover: #171b20;
-  --dark_hover: #383838;
-  --second_dark_hover: #484848;
-  --dark_inner_text: #888888;
-  /* #prev dark_header_text */
-  /* for side menus */
-  --menu-grey: silver;
-  --dark_main_text: #e6edf3;
-  --dark_bright_text: white;
-  --dark_border: #ddd;
-  --link: #259dff;
   --supported-fg:#299009;
   --eol-fg: #ff1a1a;
 }

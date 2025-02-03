@@ -1273,7 +1273,7 @@ blockquote {
   font-weight: 600;
   font-style: italic;
   padding-left: 1.2em;
-  border-left: .25rem solid #ccc;
+  border-left: .25rem solid var(--border);
 }
 
 @media all and (max-width: 1110px) {
@@ -1301,7 +1301,7 @@ blockquote {
   }
 
   #navmenu>li {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--border);
     margin: 0;
     min-height: 47px;
     background: var(--card-bg);
@@ -1312,14 +1312,11 @@ blockquote {
 
   #navmenu>li.open:hover {
     background: var(--card-bg);
-    > a {
-      border-bottom: 1px solid var(--border);
-    }
   }
   #navmenu>li:hover {
     background: var(--hover-bg);
     & ul {
-      background-color: var(--bg);
+      background-color: var(--card-bg);
     }
   }
 
@@ -1349,6 +1346,9 @@ blockquote {
   #navbar .submenu.open {
     flex-direction: column;
     align-items: initial;
+    > a {
+      border-bottom: 1px solid var(--border);
+    }
   }
 
   .submenu.open > a {
@@ -1362,6 +1362,7 @@ blockquote {
     position: static;
     display: none;
     margin-top: 7px;
+    background-color: var(--card-bg);
     /* doesn't do anything */
     /* color:var(--card-fg); */
     padding: 0;
