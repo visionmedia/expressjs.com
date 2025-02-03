@@ -38,6 +38,23 @@ for (const el of itemsMenu) {
 		}
 	});
 }
+// mid-size desktop nav links menu
+for(const item of itemsMenu){
+// remove all active links put by markup
+	item.querySelector('a').classList.remove('active')
+}
+// set top link to active on open
+var current = itemsMenu[0].querySelector('a')
+current.classList.add('active')
+for(const item of itemsMenu){
+	item.addEventListener('click', (e) => {
+		if(e.target != current){
+			current.classList.remove('active')
+		}
+		current = e.target
+		current.classList.add('active')
+	})
+}
 
 // Mobile Menu
 
