@@ -329,6 +329,24 @@ header {
   box-shadow: 0 0 4px #eee;
 }
 
+/* code */
+
+code {
+  background-color: var(--code-bg);
+  margin-block: -.125rem;
+  font-size: 13px;
+  padding: .125rem .375rem;
+  line-height: 28px;
+  border-radius: 6px;
+}
+
+pre {
+  padding: 16px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  background-color: var(--code-bg);
+}
+
 /* top button */
 
 .scroll #top {
