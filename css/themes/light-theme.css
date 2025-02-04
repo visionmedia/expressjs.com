@@ -1,5 +1,3 @@
-@import "../values.css";
-
 html.light-mode {
     #top {
         background: var(--box-fg);
@@ -8,8 +6,4 @@ html.light-mode {
     #overlay {
         background: var(--hover-border);
     }
-
-    /* .submenu-content {
-        background-color: var(--card-bg);
-    } */
 }
