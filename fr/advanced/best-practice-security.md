@@ -54,14 +54,14 @@ $ npm install --save helmet
 
 Puis, pour l'utiliser dans votre code :
 
-<pre>
-<code class="language-javascript" translate="no">
-...
+```js
+/// ...
+
 var helmet = require('helmet');
 app.use(helmet());
-...
-</code>
-</pre>
+
+/// ...
+```
 
 ### Désactivez au minimum l'en-tête X-Powered-By
 
@@ -69,11 +69,9 @@ Si vous ne voulez pas utiliser Helmet, désactivez au minimum l'en-tête `X-Powe
 
 Il est donc conseillé de neutraliser l'en-tête à l'aide de la méthode `app.disable()` comme suit :
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.disable('x-powered-by');
-</code>
-</pre>
+```
 
 Si vous utilisez `helmet.js`, cette opération s'effectue automatiquement.
 
@@ -96,8 +94,7 @@ L'utilisation d'un nom de cookie de session par défaut risque d'ouvrir votre ap
 
 Pour éviter ce problème, utilisez des noms de cookie génériques, par exemple à l'aide du middleware [express-session](https://www.npmjs.com/package/express-session) :
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var session = require('express-session');
 app.set('trust proxy', 1) // trust first proxy
 app.use( session({
@@ -105,8 +102,7 @@ app.use( session({
    name : 'sessionId',
   })
 );
-</code>
-</pre>
+```
 
 ### Définissez des options de sécurité de cookie
 
@@ -120,8 +116,7 @@ Définissez les options de cookie suivantes pour accroître la sécurité :
 
 Exemple d'utilisation du middleware [cookie-session](https://www.npmjs.com/package/cookie-session) :
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var session = require('cookie-session');
 var express = require('express');
 var app = express();
@@ -138,8 +133,7 @@ app.use(session({
           }
   })
 );
-</code>
-</pre>
+```
 
 ## Autres considérations
 

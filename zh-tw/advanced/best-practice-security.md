@@ -54,14 +54,14 @@ $ npm install --save helmet
 
 然後在您的程式碼中使用它：
 
-<pre>
-<code class="language-javascript" translate="no">
-...
+```js
+/// ...
+
 var helmet = require('helmet');
 app.use(helmet());
-...
-</code>
-</pre>
+
+/// ...
+```
 
 ### 至少停用 X-Powered-By 標頭
 
@@ -69,11 +69,9 @@ app.use(helmet());
 
 因此最佳作法是使用 `app.disable()` 方法來關閉標頭：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.disable('x-powered-by');
-</code>
-</pre>
+```
 
 如果您使用 `helmet.js`，自會為您處理此事。
 
@@ -100,8 +98,7 @@ app.disable('x-powered-by');
 為了避免發生此問題，請使用通用 Cookie 名稱；
 例如，使用 [express-session](https://www.npmjs.com/package/express-session) 中介軟體：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var session = require('express-session');
 app.set('trust proxy', 1) // trust first proxy
 app.use( session({
@@ -109,8 +106,7 @@ app.use( session({
    name : 'sessionId',
   })
 );
-</code>
-</pre>
+```
 
 ### 設定 Cookie 安全選項
 
@@ -124,8 +120,7 @@ app.use( session({
 
 下列範例使用 [cookie-session](https://www.npmjs.com/package/cookie-session) 中介軟體：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var session = require('cookie-session');
 var express = require('express');
 var app = express();
@@ -142,8 +137,7 @@ app.use(session({
           }
   })
 );
-</code>
-</pre>
+```
 
 ## 其他注意事項
 

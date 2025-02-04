@@ -53,14 +53,14 @@ $ npm install --save helmet
 
 So verwenden Sie "Helmet" in Ihrem Code:
 
-<pre>
-<code class="language-javascript" translate="no">
-...
+```js
+/// ...
+
 var helmet = require('helmet');
 app.use(helmet());
-...
-</code>
-</pre>
+
+/// ...
+```
 
 ### Deaktivieren Sie mindestens den X-Powered-By-Header
 
@@ -68,11 +68,9 @@ Wenn Sie "Helmet" nicht verwenden wollen, sollten Sie mindestens den `X-Powered-
 
 Ein bewährtes Verfahren ist also, diesen Header mit der Methode `app.disable()` zu deaktivieren:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.disable('x-powered-by');
-</code>
-</pre>
+```
 
 Wenn Sie `helmet.js` verwenden, kümmert sich das Tool darum.
 
@@ -95,8 +93,7 @@ Die Verwendung des standardmäßigen Namens des Sitzungscookies kann Ihre Anwend
 
 Dieses Problem lässt sich vermeiden, wenn Sie allgemeine Cookienamen verwenden; z. B. durch Verwendung der [express-session](https://www.npmjs.com/package/express-session)-Middleware:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var session = require('express-session');
 app.set('trust proxy', 1) // trust first proxy
 app.use( session({
@@ -104,8 +101,7 @@ app.use( session({
    name : 'sessionId',
   })
 );
-</code>
-</pre>
+```
 
 ### Cookie-Sicherheitsoptionen festlegen
 
@@ -119,8 +115,7 @@ Legen Sie die folgenden Cookieoptionen fest, um die Sicherheit zu erhöhen:
 
 Dies ist ein Beispiel zur Verwendung der [cookie-session](https://www.npmjs.com/package/cookie-session)-Middleware:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var session = require('cookie-session');
 var express = require('express');
 var app = express();
@@ -137,8 +132,7 @@ app.use(session({
           }
   })
 );
-</code>
-</pre>
+```
 
 ## Weitere Überlegungen
 

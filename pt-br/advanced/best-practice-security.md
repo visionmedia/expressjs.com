@@ -99,14 +99,14 @@ $ npm install --save helmet
 
 Em seguida use-o no seu código:
 
-<pre>
-<code class="language-javascript" translate="no">
-...
+```js
+/// ...
+
 var helmet = require('helmet');
 app.use(helmet());
-...
-</code>
-</pre>
+
+/// ...
+```
 
 ### No mínimo, desative o cabeçalho X-Powered-By
 
@@ -119,11 +119,9 @@ especificamente direcionados a eles.
 Portanto, a melhor prática é desligar o cabeçalho com o método
 `app.disable()`:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.disable('x-powered-by');
-</code>
-</pre>
+```
 
 Se usar o `helmet.js`, ele cuida disso por você.
 
@@ -166,8 +164,7 @@ ataques de acordo com ele.
 Para evitar este problema, use nomes de cookie genéricos; por
 exemplo usando o middleware [express-session](https://www.npmjs.com/package/express-session):
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var session = require('express-session');
 app.set('trust proxy', 1) // trust first proxy
 app.use( session({
@@ -175,8 +172,7 @@ app.use( session({
    name : 'sessionId',
   })
 );
-</code>
-</pre>
+```
 
 ### Configure as opções de segurança de cookie
 
@@ -194,8 +190,7 @@ expiração para cookies persistentes.
 
 Aqui está um exemplo usando o middleware [cookie-session](https://www.npmjs.com/package/cookie-session):
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var session = require('cookie-session');
 var express = require('express');
 var app = express();
@@ -212,8 +207,7 @@ app.use(session({
           }
   })
 );
-</code>
-</pre>
+```
 
 ## Considerações adicionais
 

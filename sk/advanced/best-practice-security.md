@@ -57,14 +57,14 @@ $ npm install --save helmet
 
 Potom ho môžete použiť vo vašom kóde takto:
 
-<pre>
-<code class="language-javascript" translate="no">
-...
+```js
+/// ...
+
 var helmet = require('helmet');
 app.use(helmet());
-...
-</code>
-</pre>
+
+/// ...
+```
 
 ### Určite aspoň zakážte X-Powered-By hlavičku
 
@@ -72,11 +72,9 @@ Ak nechcete použiť Helmet, potom určite aspoň zakážte `X-Powered-By` hlavi
 
 Preto sa odporúča, vypnúť túto hlavičku pomocou `app.disable()` metódy:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.disable('x-powered-by');
-</code>
-</pre>
+```
 
 V prípade, že použijete modul `helmet.js`, ten sa o to postará.
 
@@ -123,8 +121,7 @@ Pre zlepšenie bezpečnosti nastavte nasledujúce cookie parametre:
 
 Tu je príklad použitia [cookie-session](https://www.npmjs.com/package/cookie-session) middleware modulu:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var session = require('cookie-session');
 var express = require('express');
 var app = express();
@@ -141,8 +138,7 @@ app.use(session({
           }
   })
 );
-</code>
-</pre>
+```
 
 ## Ďalšie odporúčania
 

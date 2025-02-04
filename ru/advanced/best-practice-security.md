@@ -54,14 +54,14 @@ $ npm install --save helmet
 
 Затем используйте его в своем коде:
 
-<pre>
-<code class="language-javascript" translate="no">
-...
+```js
+/// ...
+
 var helmet = require('helmet');
 app.use(helmet());
-...
-</code>
-</pre>
+
+/// ...
+```
 
 ### Как минимум, отключите заголовок X-Powered-By
 
@@ -69,11 +69,9 @@ app.use(helmet());
 
 Поэтому рекомендуется отключить данный заголовок с помощью метода `app.disable()`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.disable('x-powered-by');
-</code>
-</pre>
+```
 
 Если вы используете `helmet.js`, это будет сделано автоматически.
 
@@ -96,8 +94,7 @@ app.disable('x-powered-by');
 
 Для того чтобы избежать такой проблемы, используйте обобщенные имена cookie; например, при использовании промежуточного обработчика [express-session](https://www.npmjs.com/package/express-session):
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var session = require('express-session');
 app.set('trust proxy', 1) // trust first proxy
 app.use( session({
@@ -105,8 +102,7 @@ app.use( session({
    name : 'sessionId',
   })
 );
-</code>
-</pre>
+```
 
 ### Настройка опций защиты cookie
 
@@ -120,8 +116,7 @@ app.use( session({
 
 Ниже приведен пример с использованием промежуточного обработчика [cookie-session](https://www.npmjs.com/package/cookie-session):
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var session = require('cookie-session');
 var express = require('express');
 var app = express();
@@ -138,8 +133,7 @@ app.use(session({
           }
   })
 );
-</code>
-</pre>
+```
 
 ## Дополнительные замечания
 
