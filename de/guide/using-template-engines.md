@@ -45,13 +45,11 @@ html
 
 Dann erstellen Sie eine Weiterleitung, um die Datei `index.pug` auszugeben. Wenn die Eigenschaft `view engine` nicht festgelegt wurde, müssen Sie die Erweiterung der Datei `view` angeben. Andernfalls müssen Sie diese Erweiterung nicht angeben.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/', function (req, res) {
   res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
-</code>
-</pre>
+```
 
 Wenn Sie eine Anforderung zur Homepage ausführen, wird die Datei `index.pug` im HTML-Format ausgegeben.
 

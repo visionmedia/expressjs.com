@@ -48,13 +48,11 @@ html
 
 이후 `index.pug` 파일을 렌더링할 라우트를 작성하십시오. `view engine` 특성이 설정되어 있지 않은 경우에는 `view` 파일의 확장자를 지정해야 합니다. 해당 특성이 설정되어 있는 경우에는 확장자를 생략할 수 있습니다.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/', function (req, res) {
   res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
-</code>
-</pre>
+```
 
 홈 페이지에 대한 요청을 실행할 때, `index.pug` 파일은 HTML 형식으로 렌더링됩니다.
 

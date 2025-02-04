@@ -48,13 +48,11 @@ html
 
 Puis, créez une route pour générer le fichier `index.pug`. Si la propriété `view engine` n'est pas définie, vous devez spécifier l'extension du fichier `view`. Sinon, vous pouvez l'omettre.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/', function (req, res) {
   res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
-</code>
-</pre>
+```
 
 Lorsque vous faites une demande vers la page d'accueil, le fichier `index.pug` est généré en HTML.
 

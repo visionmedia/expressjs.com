@@ -57,13 +57,11 @@ html
 
 Potom zadefinujte route pre rendrovanie `index.pug` súboru. Ak `view engine` parameter nie je nastavený, musíte špecifikovať príponu vášho `view` súboru. V opačnom prípade ju špecifikovať netreba.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/', function (req, res) {
   res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
-</code>
-</pre>
+```
 
 Po vykonaní requestu na hlavnú stránku, sa súbor `index.pug` vyrendruje ako HTML.
 

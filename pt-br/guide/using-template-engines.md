@@ -67,13 +67,11 @@ engine` não estiver configurada, é preciso especificar a
 extensão do arquivo `view`. Caso contrário, é
 possível omití-la.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/', function (req, res) {
   res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
-</code>
-</pre>
+```
 
 Ao fazer uma solicitação à página inicial, o arquivo `index.pug` será renderizado como HTML.
 

@@ -60,13 +60,11 @@ html
 
 建立路由以呈現 `index.pug` 檔。如果未設定 `view engine` 內容，您必須指定 `view` 檔的副檔名，否則可以省略此步驟。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/', function (req, res) {
   res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
-</code>
-</pre>
+```
 
 當您向首頁發出請求時，`index.pug` 檔會以 HTML 被渲染出來。
 

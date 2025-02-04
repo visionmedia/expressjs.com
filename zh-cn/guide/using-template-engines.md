@@ -47,13 +47,11 @@ html
 
 随后创建路由以呈现 `index.pug` 文件。如果未设置 `view engine` 属性，必须指定 `view` 文件的扩展名。否则，可以将其忽略。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/', function (req, res) {
   res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
-</code>
-</pre>
+```
 
 向主页发出请求时，`index.pug` 文件将呈现为 HTML。
 
