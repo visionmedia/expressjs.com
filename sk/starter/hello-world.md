@@ -41,7 +41,7 @@ Request (požiadavka) `req` a response (odpoveď) `res` sú presne rovnaké obje
 
 Spustite aplikáciu pomocou nasledujúceho príkazu:
 
-```console
+```bash
 $ node app.js
 ```
 

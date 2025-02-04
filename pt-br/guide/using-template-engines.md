@@ -20,7 +20,7 @@ usado. Por Exemplo: `app.set('view engine', 'pug')`
 
 Em seguida instale o pacote npm correspondente ao mecanismo de modelo:
 
-```console
+```bash
 $ npm install pug --save
 ```
 

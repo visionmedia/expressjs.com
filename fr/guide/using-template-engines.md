@@ -16,7 +16,7 @@ Pour qu'Express puisse afficher le rendu des fichiers modèles, vous devez défi
 
 Ensuite, installez le package npm du moteur de modèle correspondant :
 
-```console
+```bash
 $ npm install pug --save
 ```
 

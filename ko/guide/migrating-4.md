@@ -395,7 +395,7 @@ http.createServer(app).listen(app.get('port'), function(){
 각각 최신 버전으로 업데이트하여 마이그레이션 프로세스를
 시작하십시오.
 
-```console
+```bash
 $ npm install serve-favicon morgan method-override express-session body-parser multer errorhandler express@latest pug@latest --save
 ```
 
@@ -511,7 +511,7 @@ server.listen(app.get('port'), function(){
 마이그레이션 프로세스가 완료되었으며, 이제 앱은
 Express 4 앱이 되었습니다. 확인을 위하여, 다음의 명령을 이용해 앱을 시작하십시오.
 
-```console
+```bash
 $ node .
 ```
 
@@ -530,7 +530,7 @@ Express 앱을 생성하기 위한 명령행 도구는 여전히
 Express 3 앱 생성기가 이미 시스템에 설치되어 있는 경우, 다음과 같이
 Express 3 앱 생성기의 설치를 제거해야 합니다.
 
-```console
+```bash
 $ npm uninstall -g express
 ```
 
@@ -539,7 +539,7 @@ $ npm uninstall -g express
 
 이제 다음과 같이 새 생성기를 설치하십시오.
 
-```console
+```bash
 $ npm install -g express-generator
 ```
 
@@ -562,7 +562,7 @@ $ npm install -g express-generator
 
 Express 4 앱을 작성하기 위하여 다음의 명령을 실행하십시오.
 
-```console
+```bash
 $ express app4
 ```
 
@@ -575,7 +575,7 @@ $ express app4
 
 종속 항목을 설치한 후, 다음의 명령을 이용해 앱을 시작하십시오.
 
-```console
+```bash
 $ npm start
 ```
 

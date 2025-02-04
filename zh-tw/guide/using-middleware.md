@@ -265,7 +265,7 @@ app.use(express.static('files'));
 
 下列範例說明如何安裝和載入用來剖析 Cookie 的中介軟體函數 `cookie-parser`。
 
-```console
+```bash
 $ npm install cookie-parser
 ```
 

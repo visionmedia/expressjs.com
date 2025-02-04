@@ -41,7 +41,7 @@ app.listen(port, () => {
 
 使用以下命令运行应用程序：
 
-```console
+```bash
 $ node app.js
 ```
 

@@ -42,7 +42,7 @@ app.listen(port, () => {
 
 다음의 명령을 이용하여 앱을 실행하십시오.
 
-```console
+```bash
 $ node app.js
 ```
 

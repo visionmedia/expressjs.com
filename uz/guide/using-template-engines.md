@@ -16,7 +16,7 @@ Before Express can render template files, the following application settings hav
 
 Then install the corresponding template engine npm package.
 
-```console
+```bash
 $ npm install pug --save
 ```
 

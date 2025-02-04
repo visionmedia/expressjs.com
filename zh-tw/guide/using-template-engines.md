@@ -27,7 +27,7 @@ description: Discover how to integrate and use template engines like Pug, Handle
 
 並安裝對應的模板引擎 npm 套件，例如安裝 Pug：
 
-```console
+```bash
 $ npm install pug --save
 ```
 

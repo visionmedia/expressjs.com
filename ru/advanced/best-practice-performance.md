@@ -315,13 +315,13 @@ WantedBy=multi-user.target
 
 Для установки StrongLoop PM как службы systemd выполните следующие действия:
 
-```console
+```bash
 $ sudo sl-pm-install --systemd
 ```
 
 Затем запустите службу в следующем порядке:
 
-```console
+```bash
 $ sudo /usr/bin/systemctl start strong-pm
 ```
 
@@ -385,13 +385,13 @@ respawn limit 10 10
 
 Для установки StrongLoop PM как службы Upstart 1.4 выполните следующие действия:
 
-```console
+```bash
 $ sudo sl-pm-install
 ```
 
 Затем запустите службу в следующем порядке:
 
-```console
+```bash
 $ sudo /sbin/initctl start strong-pm
 ```
 
@@ -419,7 +419,7 @@ $ sudo /sbin/initctl start strong-pm
 
 Например, если вы развернули приложение на prod.foo.com и StrongLoop PM слушает соединения на порте 8701 (значение по умолчанию), укажите размер кластера, равный восьми, используя slc:
 
-```console
+```bash
 $ slc ctl -C http://prod.foo.com:8701 set-size my-app 8
 ```
 

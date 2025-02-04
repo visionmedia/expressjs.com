@@ -394,7 +394,7 @@ Iniziare il processo di migrazione installando il middleware richiesto per l'app
 Express 4 e aggiornando Express e Pug alla versione aggiornata
 con il seguente comando:
 
-```console
+```bash
 $ npm install serve-favicon morgan method-override express-session body-parser multer errorhandler express@latest pug@latest --save
 ```
 
@@ -510,7 +510,7 @@ A meno che non sia necessario gestire direttamente il modulo `http` (socket.io/S
 Il processo di migrazione è stato completato e ora l'applicazione
 è stata aggiornata a Express 4. Per confermare, avviare l'applicazione utilizzando il seguente comando:
 
-```console
+```bash
 $ node .
 ```
 
@@ -529,7 +529,7 @@ Lo strumento della riga comandi per generare un'applicazione Express è sempre
 Se il programma di creazione dell'applicazione di Express 3 è già installato sul sistema,
 è necessario disinstallarlo:
 
-```console
+```bash
 $ npm uninstall -g express
 ```
 
@@ -538,7 +538,7 @@ potrebbe essere necessario eseguire questo comando con `sudo`.
 
 Ora, installare il nuovo programma di creazione:
 
-```console
+```bash
 $ npm install -g express-generator
 ```
 
@@ -561,7 +561,7 @@ L'utilizzo e le opzioni del comando sono rimaste quasi gli stessi, con le seguen
 
 Eseguire il seguente comando per creare un'applicazione Express 4:
 
-```console
+```bash
 $ express app4
 ```
 
@@ -574,7 +574,7 @@ Si noterà inoltre che il file `app.js` è ora un modulo Node.js, diversamente d
 
 Dopo aver installato le dipendenze, avviare l'applicazione utilizzando il seguente comando:
 
-```console
+```bash
 $ npm start
 ```
 

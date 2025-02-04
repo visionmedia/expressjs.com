@@ -324,7 +324,7 @@ Instale o módulo Node.js para a funcionalidade requerida, em seguida carregue-a
 O exemplo a seguir ilustra a instalação e carregamento da
 função de middleware para análise sintática de cookies `cookie-parser`.
 
-```console
+```bash
 $ npm install cookie-parser
 ```
 

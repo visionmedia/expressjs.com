@@ -43,7 +43,7 @@ I valori `req` (richiesta) e `res` (risposta) sono esattamente gli stessi oggett
 
 Eseguire l'applicazione con il seguente comando:
 
-```console
+```bash
 $ node app.js
 ```
 

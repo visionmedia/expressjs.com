@@ -269,7 +269,7 @@ Express 앱에 기능을 추가하려면 써드파티 미들웨어를 사용하�
 
 다음 예는 쿠키 구문 분석 미들웨어 함수인 `cookie-parser`의 설치 및 로드를 나타냅니다.
 
-```console
+```bash
 $ npm install cookie-parser
 ```
 

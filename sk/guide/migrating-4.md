@@ -371,7 +371,7 @@ Proces
 
 Proces migrácie začnite nainštalovaním všetkých potrebných middlewarov pre vašu Express 4 aplikáciu a updatom Express a Pug na ich prislúchajúce najnovšie verzie nasledujúcim príkazom:
 
-```console
+```bash
 $ npm install serve-favicon morgan method-override express-session body-parser multer errorhandler express@latest pug@latest --save
 ```
 
@@ -484,7 +484,7 @@ Pokiaľ nepotrebujete priamo pracovať s `http` modulom (socket.io/SPDY/HTTPS), 
 
 Proces migrácie je kompletný a aplikácia je teraz Express 4 aplikáciou. Pre overenie spustite aplikáciu pomocou nasledujúceho príkazu:
 
-```console
+```bash
 $ node .
 ```
 
@@ -500,7 +500,7 @@ Tento command-line tool slúžiaci na generovanie Express aplikácie je stále
 
 Ak už máte Express 3 app generátor na vašom systéme nainštalovaný, musíte ho najskôr odinštalovať:
 
-```console
+```bash
 $ npm uninstall -g express
 ```
 
@@ -509,7 +509,7 @@ môže byť potrebné spustiť tento príkaz pomocou `sudo`.
 
 Teraz nainštalujte nový generátor:
 
-```console
+```bash
 $ npm install -g express-generator
 ```
 
@@ -532,7 +532,7 @@ Prepínače a použitia príkazu zostali prevažne rovnaké, okrem nasledujúcic
 
 K vytvoreniu Express 4 aplikácie spustite nasledujúci príkaz:
 
-```console
+```bash
 $ express app4
 ```
 
@@ -542,7 +542,7 @@ Taktiež si všimnite, že súbor `app.js` je odteraz Node.js modulom, v porovna
 
 Po nainštalovaní závislostí spustite aplikáciu pomocou nasledujúceho príkazu:
 
-```console
+```bash
 $ npm start
 ```
 

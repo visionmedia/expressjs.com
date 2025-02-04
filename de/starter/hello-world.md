@@ -40,7 +40,7 @@ Die Anwendung startet einen Server und ist an Port 3000 empfangsbereit für Verb
 
 Führen Sie die Anwendung mit dem folgenden Befehl aus:
 
-```console
+```bash
 $ node app.js
 ```
 

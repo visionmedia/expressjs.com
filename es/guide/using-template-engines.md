@@ -16,9 +16,9 @@ Para que Express pueda representar archivos de plantilla, deben establecerse los
 
 A continuación, instale el paquete npm de motor de plantilla correspondiente:
 
-```console
+```bash
 $ npm install pug --save
-```console
+```bash
 
 <div class="doc-box doc-notice" markdown="1">
 Los motores de plantilla compatibles con Express como, por ejemplo, Pug exportan una función denominada `__express(filePath, options, callback)`, que es invocada por la función `res.render()` para representar el código de plantilla.

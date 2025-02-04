@@ -431,13 +431,13 @@ então reiniciar todos os aplicativos que está gerenciando.
 
 Para instalar o StrongLoop PM como um serviço do systemd:
 
-```console
+```bash
 $ sudo sl-pm-install --systemd
 ```
 
 Em seguida inicie o serviço com:
 
-```console
+```bash
 $ sudo /usr/bin/systemctl start strong-pm
 ```
 
@@ -522,13 +522,13 @@ então reiniciar todos os aplicativos que está gerenciando.
 
 Para instalar o StrongLoop PM como um serviço do Upstart 1.4:
 
-```console
+```bash
 $ sudo sl-pm-install
 ```
 
 Em seguida execute o serviço com:
 
-```console
+```bash
 $ sudo /sbin/initctl start strong-pm
 ```
 
@@ -580,7 +580,7 @@ para prod.foo.com e o StrongLoop PM está escutando na porta 8701 (a
 padrão), em seguida configurar o tamanho do cluster para oito usando
 o slc:
 
-```console
+```bash
 $ slc ctl -C http://prod.foo.com:8701 set-size my-app 8
 ```
 

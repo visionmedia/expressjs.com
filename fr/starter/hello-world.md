@@ -45,7 +45,7 @@ Les objets `req` (demande) et `res` (réponse) sont exactement les mêmes que ce
 
 Exécutez l'application avec la commande suivante :
 
-```console
+```bash
 $ node app.js
 ```
 

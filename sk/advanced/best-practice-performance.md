@@ -315,13 +315,13 @@ StrongLoop PM možete jednoducho nainštalovať ako systemd službu. Následne, 
 
 Pre inštaláciu StrongLoop PM ako systemd služby spustite:
 
-```console
+```bash
 $ sudo sl-pm-install --systemd
 ```
 
 Potom spustite službu pomocou:
 
-```console
+```bash
 $ sudo /usr/bin/systemctl start strong-pm
 ```
 
@@ -385,13 +385,13 @@ StrongLoop PM možete jednoducho nainštalovať ako Upstart službu. Následne, 
 
 Pre inštaláciu StrongLoop PM ako Upstart 1.4 služby:
 
-```console
+```bash
 $ sudo sl-pm-install
 ```
 
 Pre spustenie služby:
 
-```console
+```bash
 $ sudo /sbin/initctl start strong-pm
 ```
 
@@ -419,7 +419,7 @@ Keď StrongLoop Process Manager (PM) spúšta aplikáciu, aplikácia je spusten�
 
 Napr., predpokladajúc, že ste deployli vašu aplikáciu na prod.foo.com a StrongLoop PM počúva na porte 8701 (defaultný), tak nastavenie veľkosti clustera na osem vykonáte pomocou slc takto:
 
-```console
+```bash
 $ slc ctl -C http://prod.foo.com:8701 set-size my-app 8
 ```
 

@@ -367,7 +367,7 @@ http.createServer(app).listen(app.get('port'), function(){
 
 使用以下命令安装 Express 4 应用程序的必需中间件并将 Express 和 Pug 分别更新到其最新版本，从而开始迁移过程：
 
-```console
+```bash
 $ npm install serve-favicon morgan method-override express-session body-parser multer errorhandler express@latest pug@latest --save
 ```
 
@@ -474,7 +474,7 @@ server.listen(app.get('port'), function(){
 
 迁移过程完成，此应用程序现在是 Express 4 版本。要进行确认，可使用以下命令启动此应用程序：
 
-```console
+```bash
 $ node .
 ```
 
@@ -488,14 +488,14 @@ $ node .
 
 如果您已经在系统上安装了 Express 3 应用程序生成器，必须将其卸载：
 
-```console
+```bash
 $ npm uninstall -g express
 ```
 
 根据您的文件和目录特权的配置方式，可能需要使用 `sudo` 来运行此命令。
 立即安装新的生成器：
 
-```console
+```bash
 $ npm install -g express-generator
 ```
 
@@ -517,7 +517,7 @@ $ npm install -g express-generator
 
 执行以下命令来创建 Express 4 应用程序：
 
-```console
+```bash
 $ express app4
 ```
 
@@ -527,7 +527,7 @@ $ express app4
 
 在安装依赖项之后，可使用以下命令来启动此应用程序：
 
-```console
+```bash
 $ npm start
 ```
 

@@ -311,13 +311,13 @@ Sie können StrongLoop Process Manager problemlos als "systemd"-Service installi
 
 So installieren Sie StrongLoop Process Manager als "systemd"-Service:
 
-```console
+```bash
 $ sudo sl-pm-install --systemd
 ```
 
 Starten Sie dann den Service mit:
 
-```console
+```bash
 $ sudo /usr/bin/systemctl start strong-pm
 ```
 
@@ -381,13 +381,13 @@ Sie können StrongLoop Process Manager problemlos als "Upstart"-Service installi
 
 So installieren Sie StrongLoop Process Manager als "Upstart 1.4"-Service:
 
-```console
+```bash
 $ sudo sl-pm-install
 ```
 
 Fühen Sie dann den Service aus mit:
 
-```console
+```bash
 $ sudo /sbin/initctl start strong-pm
 ```
 
@@ -416,7 +416,7 @@ Wenn StrongLoop Process Manager (PM) eine Anwendung ausführt, wird diese automa
 
 Beispiel: Angenommen, Sie haben Ihre Anwendung auf prod.foo.com bereitgestellt, und StrongLoop PM ist auf Port 8701 (Standardport) empfangsbereit. Dann müssen Sie die Clustergröße mithilfe von "slc" auf "8" einstellen.
 
-```console
+```bash
 $ slc ctl -C http://prod.foo.com:8701 set-size my-app 8
 ```
 

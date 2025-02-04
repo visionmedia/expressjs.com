@@ -48,7 +48,7 @@ Attualmente, Helmet non è altro che una raccolta di nove funzioni middleware pi
 
 Installare Helmet come qualsiasi altro modulo:
 
-```console
+```bash
 $ npm install --save helmet
 ```
 

@@ -16,7 +16,7 @@ Prima che Express possa eseguire il rendering di file template, è necessario sp
 
 Quindi, installare il pacchetto npm del motore di template corrispondente:
 
-```console
+```bash
 $ npm install pug --save
 ```
 

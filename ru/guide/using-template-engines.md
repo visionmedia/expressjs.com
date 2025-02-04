@@ -16,7 +16,7 @@ description: Discover how to integrate and use template engines like Pug, Handle
 
 Затем установите соответствующий пакет npm шаблонизатора:
 
-```console
+```bash
 $ npm install pug --save
 ```
 

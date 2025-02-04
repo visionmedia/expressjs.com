@@ -51,7 +51,7 @@ Helmet je v skutočnosti len kolekcia deviatich menších middleware funkcií na
 
 Helmet nainštalujete rovnako, ako akýkoľvek iný modul:
 
-```console
+```bash
 $ npm install --save helmet
 ```
 

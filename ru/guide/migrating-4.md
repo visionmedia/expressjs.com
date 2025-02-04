@@ -377,7 +377,7 @@ http.createServer(app).listen(app.get('port'), function(){
 
 Процесс миграции начинается с установки обязательных промежуточных обработчиков для приложения Express 4 и обновления Express и Pug до соответствующих последних версий с помощью следующей команды:
 
-```console
+```bash
 $ npm install serve-favicon morgan method-override express-session body-parser multer errorhandler express@latest pug@latest --save
 ```
 
@@ -491,7 +491,7 @@ server.listen(app.get('port'), function(){
 Процесс миграции завершен, и данное приложение теперь является приложением версии
 Express 4. Для подтверждения запустите приложение с помощью следующей команды:
 
-```console
+```bash
 $ node .
 ```
 
@@ -507,7 +507,7 @@ $ node .
 
 Если в системе уже установлен генератор приложений Express 3, его необходимо удалить:
 
-```console
+```bash
 $ npm uninstall -g express
 ```
 
@@ -515,7 +515,7 @@ $ npm uninstall -g express
 
 Теперь установите новый генератор:
 
-```console
+```bash
 $ npm install -g express-generator
 ```
 
@@ -537,7 +537,7 @@ Express 4.
 
 Выполните следующую команду для создания приложения Express 4:
 
-```console
+```bash
 $ express app4
 ```
 
@@ -549,7 +549,7 @@ $ express app4
 
 После установки зависимостей запустите приложение с помощью следующей команды:
 
-```console
+```bash
 $ npm start
 ```
 

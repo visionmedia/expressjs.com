@@ -53,7 +53,7 @@ que desejaria fazer sem o envolvimento do Express.
 
 Execute o aplicativo com o seguinte comando:
 
-```console
+```bash
 $ node app.js
 ```
 

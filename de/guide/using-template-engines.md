@@ -15,7 +15,7 @@ Bevor über Express Vorlagendateien ausgegeben werden können, müssen die folge
 
 Installieren Sie dann das entsprechende npm-Paket für die Template-Engine:
 
-```console
+```bash
 $ npm install pug --save
 ```
 

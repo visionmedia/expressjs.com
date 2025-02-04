@@ -369,7 +369,7 @@ http.createServer(app).listen(app.get('port'), function(){
 
 開始移轉程序，作法是使用下列指令，為 Express 4 應用程式安裝必要的中介軟體，並將 Express 和 Pug 更新為其個別的最新版本：
 
-```console
+```bash
 $ npm install serve-favicon morgan method-override express-session body-parser multer errorhandler express@latest pug@latest --save
 ```
 
@@ -477,7 +477,7 @@ server.listen(app.get('port'), function(){
 
 移轉程序已完成，現在應用程式是一個 Express 4 應用程式。若要確認，請使用下列指令來啟動應用程式：
 
-```console
+```bash
 $ node .
 ```
 
@@ -491,7 +491,7 @@ $ node .
 
 如果您的系統已安裝 Express 3 應用程式產生器，必須解除安裝它：
 
-```console
+```bash
 $ npm uninstall -g express
 ```
 
@@ -499,7 +499,7 @@ $ npm uninstall -g express
 
 現在安裝新的產生器：
 
-```console
+```bash
 $ npm install -g express-generator
 ```
 
@@ -520,7 +520,7 @@ $ npm install -g express-generator
 
 執行下列指令，以建立 Express 4 應用程式：
 
-```console
+```bash
 $ express app4
 ```
 
@@ -530,7 +530,7 @@ $ express app4
 
 安裝相依關係之後，請使用下列指令來啟動應用程式：
 
-```console
+```bash
 $ npm start
 ```
 

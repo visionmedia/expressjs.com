@@ -25,7 +25,7 @@ Aby Express dokázal spracovať a vyrendrovať template súbory, musí aplikáci
 
 Potom nainštalujte vybraný template engine ako npm dependenciu. Napr. pre inštaláciu Pug spustite:
 
-```console
+```bash
 $ npm install pug --save
 ```
 

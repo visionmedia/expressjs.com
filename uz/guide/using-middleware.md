@@ -215,7 +215,7 @@ Install the node module for the required functionality and loaded it in your app
 
 In the following example, `cookie-parser`, a cookie parsing middleware is installed and loaded in the app.
 
-```console
+```bash
 $ npm install cookie-parser
 ```
 

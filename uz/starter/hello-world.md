@@ -34,7 +34,7 @@ Dastur serverni ishga tushuradi va 3000 portdagi aloqani eshitib turadi. Javob s
 
 Kodni yozib, `app.js` faylida saqlab qoying. Uni ishga tushurish uchun quyidagi buyruqni ishga tushiring:
 
-```console
+```bash
 $ node app.js
 ```
 

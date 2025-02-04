@@ -318,13 +318,13 @@ WantedBy=multi-user.target
 
 將 StrongLoop PM 安裝成 systemd 服務：
 
-```console
+```bash
 $ sudo sl-pm-install --systemd
 ```
 
 然後使用下列指令來啟動服務：
 
-```console
+```bash
 $ sudo /usr/bin/systemctl start strong-pm
 ```
 
@@ -388,13 +388,13 @@ respawn limit 10 10
 
 將 StrongLoop PM 安裝成 Upstart 1.4 服務：
 
-```console
+```bash
 $ sudo sl-pm-install
 ```
 
 然後使用下列指令來執行服務：
 
-```console
+```bash
 $ sudo /sbin/initctl start strong-pm
 ```
 
@@ -423,7 +423,7 @@ $ sudo /sbin/initctl start strong-pm
 
 舉例來說，假設您將應用程式部署至 prod.foo.com，且 StrongLoop PM 是在埠 8701（預設值）接聽，請使用 slc 將叢集大小設為 8：
 
-```console
+```bash
 $ slc ctl -C http://prod.foo.com:8701 set-size my-app 8
 ```
 

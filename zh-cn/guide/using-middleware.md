@@ -266,7 +266,7 @@ app.use(express.static('files'));
 
 以下示例演示如何安装和装入 cookie 解析中间件函数 `cookie-parser`。
 
-```console
+```bash
 $ npm install cookie-parser
 ```
 
