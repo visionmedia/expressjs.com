@@ -199,23 +199,19 @@ En développement, vous définissez généralement les variables d'environnement
 
 Avec Upstart, utilisez le mot clé `env` dans votre fichier de travail. Par exemple :
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 # /etc/init/env.conf
  env NODE_ENV=production
-</code>
-</pre>
+```
 
 Pour plus d'informations, voir [Upstart Intro, Cookbook and Best Practices](http://upstart.ubuntu.com/cookbook/#environment-variables).
 
 Avec systemd, utilisez la directive `Environment` dans votre fichier d'unité. Par exemple :
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 # /etc/systemd/system/myservice.service
 Environment=NODE_ENV=production
-</code>
-</pre>
+```
 
 Pour plus d'informations, voir [Using Environment Variables In systemd Units](https://coreos.com/os/docs/latest/using-environment-variables-in-systemd-units.html).
 
@@ -276,8 +272,7 @@ Systemd est un système Linux et un gestionnaire de services. La plupart des dis
 
 Un fichier de configuration de service systemd est appelé *fichier d'unité* et porte l'extension .service. Voici un exemple de fichier d'unité permettant de gérer une application Node directement (remplacez le texte en gras par les valeurs appropriées à votre système et votre application) :
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 [Unit]
 Description=Awesome Express App
 
@@ -305,8 +300,7 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-</code>
-</pre>
+```
 Pour plus d'informations sur systemd, voir la [page d'aide de systemd](http://www.freedesktop.org/software/systemd/man/systemd.unit.html).
 
 ##### StrongLoop PM en tant que service systemd
@@ -335,8 +329,7 @@ Un service Upstart est défini dans un fichier de configuration de travail (éga
 
 Créez un fichier nommé `myapp.conf` dans `/etc/init/` avec le contenu suivant (remplacez le texte en gras par les valeurs appropriées à votre système et votre application) :
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 # When to start the process
 start on runlevel [2345]
 
@@ -364,8 +357,7 @@ respawn
 
 # Limit restart attempt to 10 times within 10 seconds
 respawn limit 10 10
-</code>
-</pre>
+```
 
 REMARQUE : ce script nécessite Upstart 1.4 ou ultérieur, pris en charge sur Ubuntu 12.04-14.10.
 

@@ -199,23 +199,19 @@ Počas vývoja nastavujete environment premenné zvyčajne pomocou shellu, napr.
 
 Pomocou Upstart, použite kľúčové slovo `env` vo vašom job súbore. Napr.:
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 # /etc/init/env.conf
  env NODE_ENV=production
-</code>
-</pre>
+```
 
 Pre viac informácií si prečítajte [Upstart Intro, Cookbook and Best Practices](http://upstart.ubuntu.com/cookbook/#environment-variables).
 
 Pomocou systemd, použite direktívu `Environment` vo vašom unit súbore. Napr.:
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 # /etc/systemd/system/myservice.service
 Environment=NODE_ENV=production
-</code>
-</pre>
+```
 
 Pre viac informácií si prečítajte [Using Environment Variables In systemd Units](https://coreos.com/os/docs/latest/using-environment-variables-in-systemd-units.html).
 
@@ -276,8 +272,7 @@ Systemd je správca služieb používaný niektorými distribúciami Linuxu. Vä
 
 Konfiguračný súbor pre systemd sa nazýva _unit file_, ktorého názov má príponu .service. Tu je príklad súboru pre priamu správu Node aplikácie (nahradte tučný text s hodnotami vášho systéme a aplikácie):
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 [Unit]
 Description=Awesome Express App
 
@@ -305,8 +300,7 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-</code>
-</pre>
+```
 Pre viac informácií ohľadom systemd si prečítajte [systemd reference (man page)](http://www.freedesktop.org/software/systemd/man/systemd.unit.html).
 
 ##### StrongLoop PM ako systemd služba
@@ -335,8 +329,7 @@ Upstart služba je definovaná v konfiguračnom súbore (tiež nazývaný "job")
 
 Vytvorte súbor s názvom `myapp.conf` umiestnený v `/etc/init /` s nasledujúcim obsahom (nahraďte tučný text s hodnotami pre váš systém a aplikáciu):
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 # When to start the process
 start on runlevel [2345]
 
@@ -364,8 +357,7 @@ respawn
 
 # Limit restart attempt to 10 times within 10 seconds
 respawn limit 10 10
-</code>
-</pre>
+```
 
 Pozn.: Tento skript vyžaduje Upstart 1.4 príp. novší, podporovaný na Ubuntu 12.04-14.10.
 
