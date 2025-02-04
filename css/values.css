@@ -1,5 +1,4 @@
 .light-mode:root {
-  --announcment-icon: url(/images/announcement-icon.png);
   /* [#7e7e7e, dadada] */
   --grey-fg: #aeaeae;
   --bg: #ffffff;
@@ -34,7 +33,6 @@
   --eol-fg: #ff0000;
 }
 .dark-mode:root {
-  --announcment-icon: url(/images/announcement-icon-dark.png);
   /* [#7e7e7e] */
   --grey-fg: #b3b3b3;
   --bg: #0c0c0c;
