@@ -1031,10 +1031,10 @@ h2 a {
   }
 
   .header-right {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-right: -10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: -10px;
   }
 
   #language-picker-menu #navmenu>li:first-child {
