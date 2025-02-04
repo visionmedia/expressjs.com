@@ -9,6 +9,8 @@ redirect_from: "/resources/community.html"
 
 # Contributing to Express
 
+### Looking to contribute to Expressjs.com? Click [here](#expressjs-website-contributing).
+
 Express and the other projects in the [expressjs organization on GitHub](https://github.com/expressjs) are projects of the [OpenJs Foundation](https://openjsf.org/).
 These projects are governed under the general policies and guidelines of the Node.js Foundation along with the additional guidelines below.
 
@@ -237,7 +239,6 @@ dissent.  When the PR is merged, a TC member will add them to the proper GitHub/
 
 ```text
 By making a contribution to this project, I certify that:
-
  (a) The contribution was created in whole or in part by me and I
      have the right to submit it under the open source license
      indicated in the file; or
@@ -374,3 +375,7 @@ We are currently working on a new version of the security model, the most update
 If you have suggestions on how this process could be improved please submit a
 pull request.
 
+----
+# Contributing to Expressjs.com {#expressjs-website-contributing}
+
+<!-- LOCAL: expressjs/expressjs.com ../../CONTRIBUTING.md -->
