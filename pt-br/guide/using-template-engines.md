@@ -41,25 +41,21 @@ precisa especificar o mecanismo ou carregar o módulo do mecanismo de
 modelo no seu aplicativo; o Express carrega o módulo internamente,
 como mostrado abaixo (para o exemplo acima).
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.set('view engine', 'pug');
-</code>
-</pre>
+```
 
 Crie um arquivo de modelo do Pug
 chamado `index.pug` no diretório
 `views`, com o seguinte conteúdo:
 
-<pre>
-<code class="language-javascript" translate="no">
+```pug
 html
   head
     title= title
   body
     h1= message
-</code>
-</pre>
+```
 
 Em seguida crie uma rota para renderizar o arquivo
 `index.pug`. Se a propriedade `view

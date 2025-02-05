@@ -28,23 +28,19 @@ Algunos motores de plantilla no siguen esta convención. La biblioteca [Consolid
 
 Una vez establecida la propiedad view engine, no tiene que especificar el motor ni cargar el módulo de motor de plantilla en la aplicación; Express carga el módulo internamente, como se muestra a continuación (para el ejemplo anterior).
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.set('view engine', 'pug');
-</code>
-</pre>
+```
 
 Cree un archivo de plantilla Pug denominado `index.pug` en el directorio `views`, con el siguiente contenido:
 
-<pre>
-<code class="language-javascript" translate="no">
+```pug
 html
   head
     title= title
   body
     h1= message
-</code>
-</pre>
+```
 
 A continuación, cree una ruta para representar el archivo `index.pug`. Si la propiedad `view engine` no se establece, debe especificar la extensión del archivo `view`. De lo contrario, puede omitirla.
 

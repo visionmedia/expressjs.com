@@ -28,23 +28,19 @@ Alcuni motori di template non seguono questa convenzione. La libreria [Consolida
 
 Una volta specificata l'impostazione view engine, non è necessario specificare il motore o caricare il modulo del motore di template nella propria app; Express carica il modulo internamente, come mostrato di seguito (per l'esempio precedente).
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.set('view engine', 'pug');
-</code>
-</pre>
+```
 
 Creare un file di template Pug denominato `index.pug` nella directory `views`, con il seguente contenuto:
 
-<pre>
-<code class="language-javascript" translate="no">
+```pug
 html
   head
     title= title
   body
     h1= message
-</code>
-</pre>
+```
 
 Quindi, creare una route per il rendering del file `index.pug`. Se la proprietà `view engine` non è impostata, è necessario specificare l'estensione del file `view`. Altrimenti, è possibile ometterla.
 

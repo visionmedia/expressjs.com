@@ -28,23 +28,19 @@ $ npm install pug --save
 
 После указания механизма визуализации (view engine) не нужно указывать его или загружать модуль шаблонизатора в приложение; Express загружает модуль внутренними средствами, как показано далее (для примера, приведенного выше).
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.set('view engine', 'pug');
-</code>
-</pre>
+```
 
 Создайте файл шаблона Pug с именем `index.pug` в каталоге `views` со следующим содержанием:
 
-<pre>
-<code class="language-javascript" translate="no">
+```pug
 html
   head
     title= title
   body
     h1= message
-</code>
-</pre>
+```
 
 Затем создайте маршрут для вывода файла `index.pug`. Если свойство `view engine` не задано, необходимо указать расширение файла `view`. В противном случае, можно не указывать расширение.
 

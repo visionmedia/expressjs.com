@@ -25,23 +25,19 @@ Express-konforme Template-Engines wie Pug exportieren eine Funktion namens `__ex
 
 Nach der Festlegung der View-Engine muss die Engine nicht angegeben oder das Template-Engine-Modul nicht in Ihre Anwendung geladen werden. Express lädt das Modul intern (wie unten für das obige Beispiel gezeigt).
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.set('view engine', 'pug');
-</code>
-</pre>
+```
 
 Erstellen Sie eine Pug-Vorlagendatei namens `index.pug` im Verzeichnis `views` mit dem folgenden Inhalt:
 
-<pre>
-<code class="language-javascript" translate="no">
+```pug
 html
   head
     title= title
   body
     h1= message
-</code>
-</pre>
+```
 
 Dann erstellen Sie eine Weiterleitung, um die Datei `index.pug` auszugeben. Wenn die Eigenschaft `view engine` nicht festgelegt wurde, müssen Sie die Erweiterung der Datei `view` angeben. Andernfalls müssen Sie diese Erweiterung nicht angeben.
 
