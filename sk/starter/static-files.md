@@ -59,5 +59,6 @@ http://localhost:3000/static/hello.html
 Pozor však na to, že cesta ktorú poskytnete `express.static` funkcii je relatívna k priečinku, z ktorého ste spustili váš `node` proces. Ak spúšťate express aplikáciu z iného priečinka, je bezpečnejšie použiť absolútnu cestu k priečinku, ktorý chcete servovať:
 
 ```js
-app.use('/static', express.static(`${__dirname}/public`))
+const path = require('path')
+app.use('/static', express.static(path.join(__dirname, 'public')))
 ```

@@ -59,5 +59,6 @@ http://localhost:3000/static/hello.html
 No obstante, la vía de acceso que proporciona a la función `express.static` es relativa al directorio desde donde inicia el proceso `node`. Si ejecuta la aplicación Express desde cualquier otro directorio, es más seguro utilizar la vía de acceso absoluta del directorio al que desea dar servicio:
 
 ```js
-app.use('/static', express.static(`${__dirname}/public`))
+const path = require('path')
+app.use('/static', express.static(path.join(__dirname, 'public')))
 ```

@@ -59,5 +59,6 @@ http://localhost:3000/static/hello.html
 ただし、`express.static` 関数に指定するパスは、`node` プロセスを起動するディレクトリーに対して相対的です。別のディレクトリーから Express アプリケーションを実行する場合は、提供するディレクトリーの絶対パスを使用する方が安全です。
 
 ```js
-app.use('/static', express.static(`${__dirname}/public`))
+const path = require('path')
+app.use('/static', express.static(path.join(__dirname, 'public')))
 ```

@@ -59,5 +59,6 @@ http://localhost:3000/static/hello.html
 Тем не менее, путь, переданный в функцию `express.static`, указан относительно каталога, из которого запускается процесс `node`. В случае запуска приложения Express из другого каталога, безопаснее использовать абсолютный путь к каталогу для предоставления файлов:
 
 ```js
-app.use('/static', express.static(`${__dirname}/public`))
+const path = require('path')
+app.use('/static', express.static(path.join(__dirname, 'public')))
 ```

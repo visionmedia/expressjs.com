@@ -270,9 +270,11 @@ module.exports = router
 Then, load the router module in the app:
 
 ```js
-var birds = require('./birds');
-...
-app.use('/birds', birds);
+const birds = require('./birds')
+
+// ...
+
+app.use('/birds', birds)
 ```
 
 The app will now be able to handle requests to `/birds` and

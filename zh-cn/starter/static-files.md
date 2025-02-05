@@ -59,5 +59,6 @@ http://localhost:3000/static/hello.html
 然而，向 `express.static` 函数提供的路径相对于您在其中启动 `node` 进程的目录。如果从另一个目录运行 Express 应用程序，那么对于提供资源的目录使用绝对路径会更安全：
 
 ```js
-app.use('/static', express.static(`${__dirname}/public`))
+const path = require('path')
+app.use('/static', express.static(path.join(__dirname, 'public')))
 ```

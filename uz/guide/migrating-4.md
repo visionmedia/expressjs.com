@@ -182,9 +182,11 @@ module.exports = router
 Then, load the router module in the app:
 
 ```js
-var birds = require('./birds');
-...
-app.use('/birds', birds);
+var birds = require('./birds')
+
+// ...
+
+app.use('/birds', birds)
 ```
 
 The app will now be able to handle requests to `/birds` and
@@ -345,7 +347,7 @@ app.use(app.router)
 app.use(express.static(path.join(__dirname, 'public')))
 
 // development only
-if (app.get('env') == 'development') {
+if (app.get('env') === 'development') {
   app.use(express.errorHandler())
 }
 
@@ -444,6 +446,7 @@ Then, remove invalid code, load the required middleware, and make other
 changes as necessary. Then `app.js` will look like this:
 
 ```js
+var http = require('http')
 var express = require('express')
 var routes = require('./routes')
 var user = require('./routes/user')
@@ -463,7 +466,7 @@ var app = express()
 app.set('port', process.env.PORT || 3000)
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
-app.use(favicon(__dirname + '/public/favicon.ico'))
+app.use(favicon(path.join(__dirname, '/public/favicon.ico')))
 app.use(logger('dev'))
 app.use(methodOverride())
 app.use(session({
@@ -480,11 +483,12 @@ app.get('/', routes.index)
 app.get('/users', user.list)
 
 // error handling middleware should be loaded after the loading the routes
-if (app.get('env') == 'development') {
+if (app.get('env') === 'development') {
   app.use(errorHandler())
 }
 
-app.listen(app.get('port'), function () {
+var server = http.createServer(app)
+server.listen(app.get('port'), () => {
   console.log('Express server listening on port ' + app.get('port'))
 })
 ```

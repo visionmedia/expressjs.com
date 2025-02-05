@@ -93,7 +93,7 @@ If you need to skip the rest of the middleware from a router middleware stack, c
 // a middleware sub-stack which handles GET requests to /user/:id
 app.get('/user/:id', function (req, res, next) {
   // if user id is 0, skip to the next route
-  if (req.params.id == 0) next('route');
+  if (req.params.id === '0') next('route');
   // else pass the control to the next middleware in this stack
   else next(); //
 }, function (req, res, next) {
@@ -140,7 +140,7 @@ router.use('/user/:id', (req, res, next) => {
 // a middleware sub-stack which handles GET requests to /user/:id
 router.get('/user/:id', (req, res, next) => {
   // if user id is 0, skip to the next router
-  if (req.params.id == 0) next('route')
+  if (req.params.id === '0') next('route')
   // else pass the control to the next middleware in this stack
   else next() //
 }, (req, res, next) => {

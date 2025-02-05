@@ -59,5 +59,6 @@ http://localhost:3000/static/hello.html
 Проте, шлях який ви передаєте у функцію `express.static` є відносним до директорії з якої ви запускаєте ваш `node` процес. Якщо ви запускаєете додаток з іншої директорії, більш безпечним є вказувати абсолютний шлях:
 
 ```js
-app.use('/static', express.static(`${__dirname}/public`))
+const path = require('path')
+app.use('/static', express.static(path.join(__dirname, 'public')))
 ```

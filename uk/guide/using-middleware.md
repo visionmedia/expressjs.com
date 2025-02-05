@@ -105,7 +105,7 @@ This example shows a middleware sub-stack that handles GET requests to the `/use
 ```js
 app.get('/user/:id', (req, res, next) => {
   // if the user ID is 0, skip to the next route
-  if (req.params.id == 0) next('route')
+  if (req.params.id === '0') next('route')
   // otherwise pass the control to the next middleware function in this stack
   else next() //
 }, (req, res, next) => {
@@ -153,7 +153,7 @@ router.use('/user/:id', (req, res, next) => {
 // a middleware sub-stack that handles GET requests to the /user/:id path
 router.get('/user/:id', (req, res, next) => {
   // if the user ID is 0, skip to the next router
-  if (req.params.id == 0) next('route')
+  if (req.params.id === '0') next('route')
   // otherwise pass control to the next middleware function in this stack
   else next() //
 }, (req, res, next) => {

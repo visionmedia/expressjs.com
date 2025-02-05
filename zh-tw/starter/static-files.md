@@ -59,5 +59,6 @@ http://localhost:3000/static/hello.html
 不過，您提供給 `express.static` 函數的路徑，是相對於您從中啟動 `node` 程序的目錄。如果您是從另一個目錄執行 Express 應用程式，保險作法是使用您想提供之目錄的絕對路徑：
 
 ```js
-app.use('/static', express.static(`${__dirname}/public`))
+const path = require('path')
+app.use('/static', express.static(path.join(__dirname, 'public')))
 ```

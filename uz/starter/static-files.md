@@ -58,5 +58,6 @@ http://localhost:3000/static/hello.html
 Agarda siz `express.static` orqali ko'rsatgan direktoriyangiz boshqa joyda ishga tushmasa, Siz uning absolyut manzilini ko'rsatishingiz kerak bo'ladi, masalan u mana bunday bo'ladi:
 
 ```js
-app.use('/static', express.static(`${__dirname}/public`))
+const path = require('path')
+app.use('/static', express.static(path.join(__dirname, 'public')))
 ```

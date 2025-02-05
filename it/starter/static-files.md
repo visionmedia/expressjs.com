@@ -59,5 +59,6 @@ http://localhost:3000/static/hello.html
 Tuttavia, il percorso fornito per la funzione `express.static` è relativo alla directory dalla quale è possibile avviare il processo `node`. Se si esegue l'applicazione express da un'altra directory, è preferibile utilizzare il percorso assoluto della directory che si desidera gestire:
 
 ```js
-app.use('/static', express.static(`${__dirname}/public`))
+const path = require('path')
+app.use('/static', express.static(path.join(__dirname, 'public')))
 ```

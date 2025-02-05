@@ -83,5 +83,6 @@ est plus sûr d'utiliser le chemin d'accès absolu que vous voulez
 servir :
 
 ```js
-app.use('/static', express.static(`${__dirname}/public`))
+const path = require('path')
+app.use('/static', express.static(path.join(__dirname, 'public')))
 ```

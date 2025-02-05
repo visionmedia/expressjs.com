@@ -57,5 +57,6 @@ http://localhost:3000/static/hello.html
 Der Pfad, den Sie für die Funktion `express.static` angeben, ist jedoch relativ zum Verzeichnis, aus dem Sie Ihren Prozess `node` starten. Wenn Sie die Express-Anwendung aus einem anderen Verzeichnis ausführen, ist es sicherer, den absoluten Pfad des Verzeichnisses zu verwenden, das Sie bereitstellen wollen:
 
 ```js
-app.use('/static', express.static(`${__dirname}/public`))
+const path = require('path')
+app.use('/static', express.static(path.join(__dirname, 'public')))
 ```

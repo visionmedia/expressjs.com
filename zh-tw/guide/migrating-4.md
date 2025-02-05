@@ -322,7 +322,7 @@ app.use(app.router)
 app.use(express.static(path.join(__dirname, 'public')))
 
 // development only
-if (app.get('env') == 'development') {
+if (app.get('env') === 'development') {
   app.use(express.errorHandler())
 }
 
@@ -425,7 +425,7 @@ var app = express()
 app.set('port', process.env.PORT || 3000)
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
-app.use(favicon(__dirname + '/public/favicon.ico'))
+app.use(favicon(path.join(__dirname, '/public/favicon.ico')))
 app.use(logger('dev'))
 app.use(methodOverride())
 app.use(session({
@@ -442,12 +442,12 @@ app.get('/', routes.index)
 app.get('/users', user.list)
 
 // error handling middleware should be loaded after the loading the routes
-if (app.get('env') == 'development') {
+if (app.get('env') === 'development') {
   app.use(errorHandler())
 }
 
 var server = http.createServer(app)
-server.listen(app.get('port'), function () {
+server.listen(app.get('port'), () => {
   console.log('Express server listening on port ' + app.get('port'))
 })
 ```
