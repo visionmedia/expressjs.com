@@ -275,8 +275,7 @@ app.get('/example/d', [cb0, cb1], function (req, res, next) {
 
 Ниже приведен пример объединенных в цепочку обработчиков маршрутов, определенных с помощью функции `app.route()`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -287,8 +286,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h2 id="express-router">express.Router</h2>
 
@@ -323,13 +321,13 @@ module.exports = router;
 
 Потом загрузите модуль маршрутизации в приложение:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var birds = require('./birds');
-...
+
+/// ...
+
 app.use('/birds', birds);
-</code>
-</pre>
+```
 
 Данное приложение теперь сможет обрабатывать запросы, адресованные ресурсам `/birds` и
 `/birds/about`, а также вызывать специальную функцию промежуточной обработки `timeLog` данного маршрута.

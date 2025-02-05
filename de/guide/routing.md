@@ -271,8 +271,7 @@ Sie können mithilfe von `app.route()` verkettbare Routenhandler für einen Weit
 
 Dies ist ein Beispiel für verkettete Routenhandler, die mit der Funktion `app.route()` definiert werden.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -283,8 +282,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h2 id="express-router">express.Router</h2>
 
@@ -319,12 +317,12 @@ module.exports = router;
 
 Laden Sie dann das Routermodul in die Anwendung:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var birds = require('./birds');
-...
+
+/// ...
+
 app.use('/birds', birds);
-</code>
-</pre>
+```
 
 Die Anwendung kann nun Anforderungen an die Pfade `/birds` und `/birds/about` bearbeiten und ruft die Middlewarefunktion `timeLog` auf, die speziell für diese Weiterleitung bestimmt ist.

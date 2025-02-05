@@ -275,8 +275,7 @@ Poiché il percorso è specificato in una singola ubicazione, la creazione di ro
 
 Ecco un esempio di handler di route concatenati, definiti utilizzando `app.route()`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -287,8 +286,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h2 id="express-router">express.Router</h2>
 
@@ -323,12 +321,12 @@ module.exports = router;
 
 Quindi, caricare il modulo router nell'app:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var birds = require('./birds');
-...
+
+/// ...
+
 app.use('/birds', birds);
-</code>
-</pre>
+```
 
 L'app ora sarà in grado di gestire richieste a `/birds` e `/birds/about`, oltre a richiamare la funzione middleware `timeLog`, specifica per la route.

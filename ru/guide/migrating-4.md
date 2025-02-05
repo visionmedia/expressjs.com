@@ -97,14 +97,12 @@ Express представляет собой независимый веб-фре
 В версии 4 можно использовать параметр переменной для определения пути загрузки функций промежуточной обработки, после чего считать значение параметра из обработчика маршрута.
 Например:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use('/book/:id', function(req, res, next) {
   console.log('ID:', req.params.id);
   next();
 });
-</code>
-</pre>
+```
 <h3 id="routing">
 Система маршрутизации
 </h3>
@@ -124,8 +122,7 @@ app.use('/book/:id', function(req, res, next) {
 
 Ниже приведен пример объединенных в цепочку обработчиков маршрутов, определенных с помощью функции `app.route()`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -136,8 +133,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h4 id="express-router">Класс <code>express.Router</code></h4>
 
@@ -147,8 +143,7 @@ app.route('/book')
 
 Например, создайте файл маршрутизатора с именем `birds.js` в каталоге приложения со следующим содержанием:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var router = express.Router();
 
@@ -167,18 +162,17 @@ router.get('/about', function(req, res) {
 });
 
 module.exports = router;
-</code>
-</pre>
+```
 
 Потом загрузите модуль маршрутизации в приложение:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var birds = require('./birds');
-...
+
+/// ...
+
 app.use('/birds', birds);
-</code>
-</pre>
+```
 
 Данное приложение теперь сможет обрабатывать запросы, адресованные ресурсам в путях `/birds` и
 `/birds/about`, и вызывать специальный промежуточный обработчик `timeLog` данного маршрута.
@@ -314,8 +308,7 @@ Node.js 0.8.x приостановлена.</td>
 
 Рассмотрим приложение Express v.3, включающее в себя следующий файл `app.js`:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
@@ -347,15 +340,13 @@ app.get('/users', user.list);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-</code>
-</pre>
+```
 
 <h4 id=""><code>package.json</code></h4>
 
 Сопутствующий ему файл `package.json` версии 3, может выглядеть примерно так:
 
-<pre>
-<code class="language-javascript" translate="no">
+```json
 {
   "name": "application-name",
   "version": "0.0.1",
@@ -368,8 +359,7 @@ http.createServer(app).listen(app.get('port'), function(){
     "pug": "*"
   }
 }
-</code>
-</pre>
+```
 
 <h3 id="">
 Процесс
@@ -401,8 +391,7 @@ $ npm install serve-favicon morgan method-override express-session body-parser m
 
 При запуске указанной выше команды `npm` будет выполнено обновление `package.json` следующим образом:
 
-<pre>
-<code class="language-javascript" translate="no">
+```json
 {
   "name": "application-name",
   "version": "0.0.1",
@@ -422,15 +411,13 @@ $ npm install serve-favicon morgan method-override express-session body-parser m
     "serve-favicon": "^2.0.1"
   }
 }
-</code>
-</pre>
+```
 
 <h4 id=""><code>app.js</code></h4>
 
 Затем удалите недействительный код, загрузите обязательные промежуточные обработчики и внесите остальные необходимые изменения. Файл `app.js` будет иметь вид:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var http = require('http');
 var express = require('express');
 var routes = require('./routes');
@@ -474,16 +461,17 @@ var server = http.createServer(app);
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-</code>
-</pre>
+```
 
 <div class="doc-box doc-info" markdown="1">
 Если вам не нужно работать непосредственно с модулем `http` (socket.io/SPDY/HTTPS), загружать его не обязательно, а приложение можно просто запустить следующим образом:
-<pre>
-<code class="language-js" translate="no">app.listen(app.get('port'), function(){
+
+```js
+app.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
-});</code>
-</pre>
+});
+```
+
 </div>
 
 <h3 id="">Запустите приложение</h3>
@@ -568,23 +556,19 @@ Node.js, его уже нельзя запускать отдельно как �
 удалите строку `module.exports = app;` в конце файла
 `app.js`, а вместо нее вставьте следующий код:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
 });
-</code>
-</pre>
+```
 
 Убедитесь в том, что вы загрузили модуль `debug` в начало файла `app.js` с помощью следующего кода:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var debug = require('debug')('app4');
-</code>
-</pre>
+```
 
 Далее, замените `"start": "node ./bin/www"` в файле `package.json` на `"start": "node app.js"`.
 

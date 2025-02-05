@@ -278,8 +278,7 @@ app.get('/example/d', [cb0, cb1], function (req, res, next) {
 
 以下是使用 `app.route()` 定义的链式路由处理程序的示例。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -290,8 +289,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h2 id="express-router">express.Router</h2>
 
@@ -326,12 +324,12 @@ module.exports = router;
 
 接着，在应用程序中装入路由器模块：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var birds = require('./birds');
-...
+
+/// ...
+
 app.use('/birds', birds);
-</code>
-</pre>
+```
 
 此应用程序现在可处理针对 `/birds` 和 `/birds/about` 的请求，调用特定于此路由的 `timeLog` 中间件函数。

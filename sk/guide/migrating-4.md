@@ -95,14 +95,12 @@ Vo väčšine prípadov môžete jednoducho nahradiť starý Express 3 middlewar
 Vo verzii 4 môžete použiť voliteľný parameter k definovaniu path-u, kedy sa má middleware funkcia načítať a následne prečítať hodnotu parametra z route handlera.
 Napr.:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use('/book/:id', function(req, res, next) {
   console.log('ID:', req.params.id);
   next();
 });
-</code>
-</pre>
+```
 <h3 id="routing">
 Routing systém
 </h3>
@@ -121,8 +119,7 @@ Nová metóda `app.route()` vám umožňuje vytvárať zreťaziteľné route han
 
 Tu je príklad zreťazených route handlerov definovaných pomocou `app.route()` funkcie.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -133,8 +130,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h4 id="express-router"><code>express.Router</code> trieda</h4>
 
@@ -144,8 +140,7 @@ Nasledujúci príklad vytvára router ako modul, načítava v ňom middleware, d
 
 Napr., vytvorte v priečinku vašej aplikácie router súbor s názvom `birds.js` s takýmto obsahom:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var router = express.Router();
 
@@ -164,18 +159,17 @@ router.get('/about', function(req, res) {
 });
 
 module.exports = router;
-</code>
-</pre>
+```
 
 Potom tento router načítajte vo vašej aplikácii:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var birds = require('./birds');
-...
+
+/// ...
+
 app.use('/birds', birds);
-</code>
-</pre>
+```
 
 Aplikácia bude odteraz schopná obslúžiť requesty na path-och `/birds` a
 `/birds/about` a zavolá `timeLog` middleware, ktorý je špecifický pre tento route.
@@ -308,8 +302,7 @@ Applikácia vo verzii 3
 
 Majme takúto Express v.3 aplikáciu s takýmto `app.js` súborom:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
@@ -341,15 +334,13 @@ app.get('/users', user.list);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-</code>
-</pre>
+```
 
 <h4 id=""><code>package.json</code></h4>
 
 Sprievodný `package.json` pre verziu 3 by vyzeral nejak takto:
 
-<pre>
-<code class="language-javascript" translate="no">
+```json
 {
   "name": "application-name",
   "version": "0.0.1",
@@ -362,8 +353,7 @@ Sprievodný `package.json` pre verziu 3 by vyzeral nejak takto:
     "pug": "*"
   }
 }
-</code>
-</pre>
+```
 
 <h3 id="">
 Proces
@@ -395,8 +385,7 @@ V `app.js` vykonajte tieto zmeny:
 
 Spustením kódu vyššie, `npm` príkaz updatne `package.json` nasledovne:
 
-<pre>
-<code class="language-javascript" translate="no">
+```json
 {
   "name": "application-name",
   "version": "0.0.1",
@@ -416,15 +405,13 @@ Spustením kódu vyššie, `npm` príkaz updatne `package.json` nasledovne:
     "serve-favicon": "^2.0.1"
   }
 }
-</code>
-</pre>
+```
 
 <h4 id=""><code>app.js</code></h4>
 
 Potom zmažte nesprávny kód, načítajte potrebné middlewary a vykonajte ďalšie potrebné zmeny. Súbor `app.js` bude potom vyzerať takto:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var http = require('http');
 var express = require('express');
 var routes = require('./routes');
@@ -468,8 +455,7 @@ var server = http.createServer(app);
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-</code>
-</pre>
+```
 
 <div class="doc-box doc-info" markdown="1">
 Pokiaľ nepotrebujete priamo pracovať s `http` modulom (socket.io/SPDY/HTTPS), nie je nutné ho načítať a aplikáciu môžete jednoducho naštartovať týmto spôsobom:
@@ -560,23 +546,19 @@ Sú len návrhom vyrobeným generátorom, takže ich môzete zmeniť podľa vaš
 Ak sa chcete zbaviť `www` priečinka a ponechať to v starom "Express 3 formáte",
 zmažte riadok `module.exports = app;` na konci `app.js` súboru a namiesto neho vložte nasledujúci kód:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
 });
-</code>
-</pre>
+```
 
 Uistite sa, že ste načítali `debug` modul, v hornej časti vášho `app.js` súboru, použitím nasledujúceho kódu:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var debug = require('debug')('app4');
-</code>
-</pre>
+```
 
 Ďalej zmeňte v súbore `package.json` riadok `"start": "node ./bin/www"`  na `"start": "node app.js"`.
 

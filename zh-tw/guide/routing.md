@@ -280,8 +280,7 @@ app.get('/example/d', [cb0, cb1], function (req, res, next) {
 
 下列範例顯示利用 `app.route()` 所定義的路由處理程式鏈。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -292,8 +291,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h2 id="express-router">express.Router</h2>
 
@@ -330,12 +328,12 @@ module.exports = router;
 
 然後將路由器模組載入應用程式中：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var birds = require('./birds');
-...
+
+/// ...
+
 app.use('/birds', birds);
-</code>
-</pre>
+```
 
 現在，應用程式就能夠處理發給 `/birds` 和 `/birds/about` 的要求，並且呼叫該路由特定的 `timeLog` 中介軟體函數。

@@ -274,8 +274,7 @@ Como la vía de acceso se especifica en una única ubicación, la creación de r
 
 A continuación, se muestra un ejemplo de manejadores de rutas encadenados que se definen utilizando `app.route()`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -286,8 +285,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h2 id="express-router">express.Router</h2>
 
@@ -322,12 +320,12 @@ module.exports = router;
 
 A continuación, cargue el módulo de direccionador en la aplicación:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var birds = require('./birds');
-...
+
+/// ...
+
 app.use('/birds', birds);
-</code>
-</pre>
+```
 
 La aplicación ahora podrá manejar solicitudes a `/birds` y `/birds/about`, así como invocar la función de middleware `timeLog` que es específica de la ruta.

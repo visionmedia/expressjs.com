@@ -101,14 +101,12 @@ Express 4 미들웨어의 [전체 목록](https://github.com/senchalabs/connect#
 버전 4에서는 미들웨어 함수가 로드되는 경로를 정의하기 위하여 가변 매개변수를 사용할 수 있으며, 이후 라우트 핸들러로부터 매개변수의 값을 읽을 수 있습니다.
 예를 들면 다음과 같습니다.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use('/book/:id', function(req, res, next) {
   console.log('ID:', req.params.id);
   next();
 });
-</code>
-</pre>
+```
 <h3 id="routing">
 라우팅 시스템
 </h3>
@@ -132,8 +130,7 @@ app.use('/book/:id', function(req, res, next) {
 
 `app.route()` 함수를 사용하여 정의된 체인 라우트 핸들러의 예는 다음과 같습니다.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -144,8 +141,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h4 id="express-router"><code>express.Router</code> 클래스</h4>
 
@@ -160,8 +156,7 @@ app.route('/book')
 예를 들면, 다음의 내용이 입력된 `birds.js`라는 이름의 라우터 파일을
 앱 디렉토리에 작성할 수 있습니다.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var router = express.Router();
 
@@ -180,18 +175,17 @@ router.get('/about', function(req, res) {
 });
 
 module.exports = router;
-</code>
-</pre>
+```
 
 이후 앱 내에서 다음과 같이 라우터 모듈을 로드하십시오.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var birds = require('./birds');
-...
+
+/// ...
+
 app.use('/birds', birds);
-</code>
-</pre>
+```
 
 앱은 이제 `/birds` 및 `/birds/about` 경로에 대한
 요청을 처리할 수 있게 되었으며, 해당 라우트에 대한 특정한 미들웨어인
@@ -329,8 +323,7 @@ Express 4에서는 기본적으로 `json spaces` 애플리케이션 특성을 �
 
 다음과 같은 `app.js` 파일을 갖는 Express 버전 3 애플리케이션을 가정합니다.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
@@ -362,16 +355,14 @@ app.get('/users', user.list);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-</code>
-</pre>
+```
 
 <h4 id=""><code>package.json</code></h4>
 
 동반되는 버전 3의 `package.json` 파일의 내용은
   다음과 같을 수 있습니다.
 
-<pre>
-<code class="language-javascript" translate="no">
+```json
 {
   "name": "application-name",
   "version": "0.0.1",
@@ -384,8 +375,7 @@ http.createServer(app).listen(app.get('port'), function(){
     "pug": "*"
   }
 }
-</code>
-</pre>
+```
 
 <h3 id="">
 프로세스
@@ -420,8 +410,7 @@ $ npm install serve-favicon morgan method-override express-session body-parser m
 
 위의 `npm` 명령을 실행하면 `package.json`이 다음과 같이 업데이트됩니다.
 
-<pre>
-<code class="language-javascript" translate="no">
+```json
 {
   "name": "application-name",
   "version": "0.0.1",
@@ -441,16 +430,14 @@ $ npm install serve-favicon morgan method-override express-session body-parser m
     "serve-favicon": "^2.0.1"
   }
 }
-</code>
-</pre>
+```
 
 <h4 id=""><code>app.js</code></h4>
 
 이후 올바르지 않은 코드를 제거하고, 필요한 미들웨어를 로드하고,
 필요에 따라 다른 변경을 실행하십시오. `app.js` 파일의 내용은 다음과 같습니다.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var http = require('http');
 var express = require('express');
 var routes = require('./routes');
@@ -494,16 +481,17 @@ var server = http.createServer(app);
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-</code>
-</pre>
+```
 
 <div class="doc-box doc-info" markdown="1">
 `http` 모듈을 이용해 직접 작업해야 하는 경우(socket.io/SPDY/HTTPS)를 제외하면 `http` 모듈을 로드할 필요가 없으며, 다음과 같은 방법으로 간단히 앱을 시작할 수 있습니다.
-<pre>
-<code class="language-js" translate="no">app.listen(app.get('port'), function(){
+
+```js
+app.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
-});</code>
-</pre>
+});
+```
+
 </div>
 
 <h3 id="">앱 실행</h3>
@@ -599,23 +587,19 @@ Node.js 파일을 통해 시작되어야 합니다. 이 경우에서 Node.js 파
 `app.js` 파일의 끝에 있는 `module.exports = app;`가
 포함된 행을 삭제한 후 그 자리에 다음의 코드를 붙여넣으십시오.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
 });
-</code>
-</pre>
+```
 
 `debug` 모듈은 다음의 코드를 이용하여 `app.js` 파일의 맨 위에서 로드되어야 합니다.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var debug = require('debug')('app4');
-</code>
-</pre>
+```
 
 다음으로, `package.json` 파일의 `"start": "node ./bin/www"`를 `"start": "node app.js"`로 변경하십시오.
 

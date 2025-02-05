@@ -275,8 +275,7 @@ Etant donné que le chemin est spécifié à une seul emplacement, la création 
 
 Voici quelques exemples de gestionnaires de chemin de chaînage définis à l'aide de `app.route()`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -287,8 +286,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h2 id="express-router">express.Router</h2>
 
@@ -323,12 +321,12 @@ module.exports = router;
 
 Puis, chargez le module de routage dans l'application :
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var birds = require('./birds');
-...
+
+/// ...
+
 app.use('/birds', birds);
-</code>
-</pre>
+```
 
 L'application pourra dorénavant gérer des demandes dans `/birds` et `/birds/about`, et appeler la fonction middleware `timeLog` spécifique à la route.

@@ -95,14 +95,12 @@ Express 4 不再相依於 Connect，除了 `express.static` 函數，其他所�
 在第 4 版中，您可以使用變數參數，來定義中介軟體函數的載入路徑，然後從路由處理程式讀取參數值。例如：
 
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use('/book/:id', function(req, res, next) {
   console.log('ID:', req.params.id);
   next();
 });
-</code>
-</pre>
+```
 <h3 id="routing">
 路由系統
 </h3>
@@ -121,8 +119,7 @@ Apps 現在隱含地載入了路由中介軟體，因此您不用再擔心該中
 
 下列範例顯示利用 `app.route()` 函數所定義的路由處理程式鏈。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -133,8 +130,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h4 id="express-router"><code>express.Router</code> 類別</h4>
 
@@ -146,8 +142,7 @@ app.route('/book')
 
 例如，在應用程式目錄中建立一個名為 `birds.js` 的路由器檔案，內含下列內容：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var router = express.Router();
 
@@ -166,18 +161,17 @@ router.get('/about', function(req, res) {
 });
 
 module.exports = router;
-</code>
-</pre>
+```
 
 然後將路由器模組載入應用程式中：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var birds = require('./birds');
-...
+
+/// ...
+
 app.use('/birds', birds);
-</code>
-</pre>
+```
 
 現在，應用程式就能夠處理發給 `/birds` 和 `/birds/about` 路徑的要求，並且會呼叫該路由特定的 `timeLog` 中介軟體。
 
@@ -306,8 +300,7 @@ Express 4 中依預設會停用 `json spaces` 應用程式內容。
 
 假設 Express 第 3 版應用程式具有下列的 `app.js` 檔：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
@@ -339,15 +332,13 @@ app.get('/users', user.list);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-</code>
-</pre>
+```
 
 <h4 id=""><code>package.json</code></h4>
 
 附帶的第 3 版 `package.json` 檔可能類似如下：
 
-<pre>
-<code class="language-javascript" translate="no">
+```json
 {
   "name": "application-name",
   "version": "0.0.1",
@@ -360,8 +351,7 @@ http.createServer(app).listen(app.get('port'), function(){
     "pug": "*"
   }
 }
-</code>
-</pre>
+```
 
 <h3 id="">
 程序
@@ -388,8 +378,7 @@ $ npm install serve-favicon morgan method-override express-session body-parser m
 
 執行上述 `npm` 指令，將會更新 `package.json`，如下所示：
 
-<pre>
-<code class="language-javascript" translate="no">
+```json
 {
   "name": "application-name",
   "version": "0.0.1",
@@ -409,15 +398,13 @@ $ npm install serve-favicon morgan method-override express-session body-parser m
     "serve-favicon": "^2.0.1"
   }
 }
-</code>
-</pre>
+```
 
 <h4 id=""><code>app.js</code></h4>
 
 然後移除無效的程式碼、載入必要的中介軟體，並視需要進行其他的變更。`app.js` 檔看似如下：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var http = require('http');
 var express = require('express');
 var routes = require('./routes');
@@ -461,16 +448,17 @@ var server = http.createServer(app);
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-</code>
-</pre>
+```
 
 <div class="doc-box doc-info" markdown="1">
 除非您需要直接使用 `http` 模組 (socket.io/SPDY/HTTPS)，並不需要載入它，只需採下列方式就能啟動應用程式：
-<pre>
-<code class="language-js" translate="no">app.listen(app.get('port'), function(){
+
+```js
+app.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
-});</code>
-</pre>
+});
+```
+
 </div>
 
 <h3 id="">執行應用程式</h3>
@@ -543,23 +531,19 @@ $ npm start
 
 若要除去 `www` 目錄，並採用「Express 3 形式」，請刪除 `app.js` 檔尾端的 `module.exports = app;` 字行，然後在該處貼上下列程式碼：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
 });
-</code>
-</pre>
+```
 
 請使用下列程式碼，確定 `debug` 模組是載入於 `app.js` 檔頂端：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var debug = require('debug')('app4');
-</code>
-</pre>
+```
 
 然後將 `package.json` 檔中的 `"start": "node ./bin/www"` 變更為 `"start": "node app.js"`。
 

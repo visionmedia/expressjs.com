@@ -96,14 +96,12 @@ En la mayoría de los casos, sólo tiene que sustituir el middleware de la versi
 En la versión 4, puede utilizar un parámetro de variable para definir la vía de acceso donde se cargan las funciones de middleware y, a continuación, leer el valor del parámetro en el manejador de rutas.
 Por ejemplo:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use('/book/:id', function(req, res, next) {
   console.log('ID:', req.params.id);
   next();
 });
-</code>
-</pre>
+```
 <h3 id="routing">
 El sistema de direccionamiento
 </h3>
@@ -122,8 +120,7 @@ El nuevo método `app.route()` permite crear manejadores de rutas encadenables p
 
 A continuación, se muestra un ejemplo de manejadores de rutas encadenados que se definen utilizando la función `app.route()`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -134,8 +131,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h4 id="express-router">Clase <code>express.Router</code></h4>
 
@@ -145,8 +141,7 @@ El siguiente ejemplo crea un direccionador como un módulo, carga el middleware 
 
 Por ejemplo, cree un archivo de direccionador denominado `birds.js` en el directorio de la aplicación, con el siguiente contenido:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var router = express.Router();
 
@@ -165,18 +160,17 @@ router.get('/about', function(req, res) {
 });
 
 module.exports = router;
-</code>
-</pre>
+```
 
 A continuación, cargue el módulo de direccionador en la aplicación:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var birds = require('./birds');
-...
+
+/// ...
+
 app.use('/birds', birds);
-</code>
-</pre>
+```
 
 La aplicación ahora podrá manejar solicitudes a las vías de acceso `/birds` y `/birds/about`, e invocará el middleware `timeLog` que es específico de la ruta.
 
@@ -309,8 +303,7 @@ Aplicación versión 3
 
 Considere una aplicación Express v.3 con el siguiente archivo `app.js`:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
@@ -342,15 +335,13 @@ app.get('/users', user.list);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-</code>
-</pre>
+```
 
 <h4 id=""><code>package.json</code></h4>
 
 El archivo `package.json` de la versión 3 correspondiente será similar al siguiente:
 
-<pre>
-<code class="language-javascript" translate="no">
+```json
 {
   "name": "application-name",
   "version": "0.0.1",
@@ -363,8 +354,7 @@ El archivo `package.json` de la versión 3 correspondiente será similar al sigu
     "pug": "*"
   }
 }
-</code>
-</pre>
+```
 
 <h3 id="">
 Proceso
@@ -422,8 +412,7 @@ La ejecución del mandato `npm` anterior actualizará `package.json` de la sigui
 
 A continuación, elimine el código no válido, cargue el middleware necesario y realice otros cambios según sea necesario. El archivo `app.js` será parecido al siguiente:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var http = require('http');
 var express = require('express');
 var routes = require('./routes');
@@ -467,16 +456,17 @@ var server = http.createServer(app);
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-</code>
-</pre>
+```
 
 <div class="doc-box doc-info" markdown="1">
 A menos que necesite trabajar directamente con el módulo `http` (socket.io/SPDY/HTTPS), no es necesario cargarlo y la aplicación puede iniciarse simplemente de la siguiente manera:
-<pre>
-<code class="language-js" translate="no">app.listen(app.get('port'), function(){
+
+```js
+app.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
-});</code>
-</pre>
+});
+```
+
 </div>
 
 <h3 id="">Ejecutar la aplicación</h3>
@@ -551,23 +541,19 @@ sin extensión son obligatorios para crear una aplicación Express o iniciar la 
 Para eliminar el directorio `www` y dejarlo todo como en "Express 3",
 suprima la línea `module.exports = app;` al final del archivo `app.js` y pegue el siguiente código en su lugar:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
 });
-</code>
-</pre>
+```
 
 Asegúrese de cargar el módulo `debug` encima del archivo `app.js` utilizando el código siguiente:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var debug = require('debug')('app4');
-</code>
-</pre>
+```
 
 A continuación, cambie `"start": "node ./bin/www"` en el archivo `package.json` por `"start": "node app.js"`.
 

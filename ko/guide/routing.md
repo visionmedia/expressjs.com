@@ -276,8 +276,7 @@ app.get('/example/d', [cb0, cb1], function (req, res, next) {
 
 `app.route()`를 사용하여 정의된 체인 라우트 핸들러의 예는 다음과 같습니다.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -288,8 +287,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h2 id="express-router">express.Router</h2>
 
@@ -324,12 +322,12 @@ module.exports = router;
 
 이후 앱 내에서 다음과 같이 라우터 모듈을 로드하십시오.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var birds = require('./birds');
-...
+
+/// ...
+
 app.use('/birds', birds);
-</code>
-</pre>
+```
 
 앱은 이제 `/birds` 및 `/birds/about`에 대한 요청을 처리할 수 있게 되었으며, 해당 라우트에 대한 특정한 미들웨어 함수인 `timeLog`를 호출할 것입니다.

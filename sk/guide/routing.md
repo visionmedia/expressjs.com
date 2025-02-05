@@ -275,8 +275,7 @@ Pretože je route cesta špecifikovaná na jednom mieste, tvorba takýchto route
 
 Tu je príklad zreťazenia route handlerov definovaných pomocou `app.route()`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -287,8 +286,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h2 id="express-router">express.Router</h2>
 
@@ -323,12 +321,12 @@ module.exports = router;
 
 Následne načítajte tento router modul do aplikácie:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var birds = require('./birds');
-...
+
+/// ...
+
 app.use('/birds', birds);
-</code>
-</pre>
+```
 
 Aplikácia bude teraz schopná obslúžiť prichádzajúce požiadavky na ceste `/birds` a `/birds/about`, a taktiež vyvolať `timeLog` middleware funkciu, ktorá je špecifická pre tento route.

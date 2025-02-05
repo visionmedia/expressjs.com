@@ -104,14 +104,12 @@ definir o caminho onde as funções do middleware estão carregadas, e
 em seguida ler o valor do parâmetro a partir do manipulador de rota.
 Por exemplo:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use('/book/:id', function(req, res, next) {
   console.log('ID:', req.params.id);
   next();
 });
-</code>
-</pre>
+```
 <h3 id="routing">
 O sistema de roteamento
 </h3>
@@ -141,8 +139,7 @@ obter mais informações sobre rotas, consulte a [`documentação do Router()` ]
 Aqui está um exemplo de manipuladores de rotas encadeáveis que
 são definidos usando a função `app.route()`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.route('/book')
   .get(function(req, res) {
     res.send('Get a random book');
@@ -153,8 +150,7 @@ app.route('/book')
   .put(function(req, res) {
     res.send('Update the book');
   });
-</code>
-</pre>
+```
 
 <h4 id="express-router">classe <code>express.Router</code></h4>
 
@@ -172,8 +168,7 @@ Por exemplo, cria um arquivo roteador chamado
 `birds.js` no diretório do aplicativo, com o
 conteúdo a seguir:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var router = express.Router();
 
@@ -192,18 +187,17 @@ router.get('/about', function(req, res) {
 });
 
 module.exports = router;
-</code>
-</pre>
+```
 
 Em seguida, carregue o módulo roteador no aplicativo:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var birds = require('./birds');
-...
+
+/// ...
+
 app.use('/birds', birds);
-</code>
-</pre>
+```
 
 O aplicativo será agora capaz de manipular solicitações aos
 caminhos `/birds` e `/birds/about`,
@@ -346,8 +340,7 @@ Aplicativo da Versão 3
 
 Considere um aplicativo do Express v.3 com o seguinte arquivo `app.js`:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
@@ -379,16 +372,14 @@ app.get('/users', user.list);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-</code>
-</pre>
+```
 
 <h4 id=""><code>package.json</code></h4>
 
 O arquivo `package.json` que acompanha a
 versão 3 pode parecer com algo assim:
 
-<pre>
-<code class="language-javascript" translate="no">
+```json
 {
   "name": "application-name",
   "version": "0.0.1",
@@ -401,8 +392,7 @@ versão 3 pode parecer com algo assim:
     "pug": "*"
   }
 }
-</code>
-</pre>
+```
 
 <h3 id="">
 Processo
@@ -439,8 +429,7 @@ remova o código do `app.use(app.router);`.
 A execução do comando `npm` acima irá
 atualizar o `package.json` como a seguir:
 
-<pre>
-<code class="language-javascript" translate="no">
+```json
 {
   "name": "application-name",
   "version": "0.0.1",
@@ -460,16 +449,14 @@ atualizar o `package.json` como a seguir:
     "serve-favicon": "^2.0.1"
   }
 }
-</code>
-</pre>
+```
 
 <h4 id=""><code>app.js</code></h4>
 
 Em seguida, remova o código inválido, carregue o middleware
 necessário e faça outras alterações conforme necessárias. O arquivo `app.js` irá parecer com isso:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var http = require('http');
 var express = require('express');
 var routes = require('./routes');
@@ -513,19 +500,20 @@ var server = http.createServer(app);
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-</code>
-</pre>
+```
 
 <div class="doc-box doc-info" markdown="1">
 A não ser que precise trabalhar diretamente com
 o módulo `http` (socket.io/SPDY/HTTPS),
 carregá-lo não é necessário, e o aplicativo pode ser iniciado
 simplesmente desta forma:
-<pre>
-<code class="language-js" translate="no">app.listen(app.get('port'), function(){
+
+```js
+app.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
-});</code>
-</pre>
+});
+```
+
 </div>
 
 <h3 id="">Execute o aplicativo</h3>
@@ -636,24 +624,20 @@ coisas "da maneira do Express 3", exclua a linha que diz
 `app.js`, em seguida cole o seguinte código em seu
 lugar:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
 });
-</code>
-</pre>
+```
 
 Assegure-se de carregar o módulo `debug` em
 cima do arquivo `app.js` usando o seguinte código:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var debug = require('debug')('app4');
-</code>
-</pre>
+```
 
 Em seguida, mude o `"start": "node ./bin/www"`
 no arquivo `package.json` para `"start": "node
