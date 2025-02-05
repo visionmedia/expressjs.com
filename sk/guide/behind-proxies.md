@@ -57,12 +57,14 @@ Doveruj n-tému hop-u od front-facing proxy servera ako klient.
       <td>Function</td>
 <td markdown="1">
 Vlastná implementácia dôveryhodnosti. Použite to iba v prípade, ak viete čo robíte.
-<pre>
-<code class="language-js" translate="no">app.set('trust proxy', function (ip) {
-  if (ip === '127.0.0.1' || ip === '123.123.123.123') return true; // trusted IPs
-  else return false;
-});</code>
-</pre>
+
+
+```js
+app.set('trust proxy', (ip) => {
+  if (ip === '127.0.0.1' || ip === '123.123.123.123') return true // trusted IPs
+  else return false
+})
+```
 </td>
     </tr>
   </tbody>
