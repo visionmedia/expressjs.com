@@ -70,14 +70,12 @@ Error-handling middleware je rovnakým middlewarom ako všetky ostatné,
 s jediným rozdielom a to, že je vyvolaný so štyrmi argumentami, namiesto troch.
 Jeho signatúra je nasledovná `(err, req, res, next)`:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 Viac informácií sa dozviete v kapitole [Error handling](/{{ page.lang }}/guide/error-handling.html).
 

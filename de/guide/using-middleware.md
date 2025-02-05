@@ -188,14 +188,12 @@ Middleware für die Fehlerbehandlung benötigt immer *vier* Argumente. Sie müss
 
 Middlewarefunktionen für die Fehlerbehandlung werden in derselben Weise definiert wie andere Middlewarefunktionen, außer dass Fehlerbehandlungsfunktionen speziell bei Signaturen vier anstatt drei Argumente aufweisen `(err, req, res, next)`:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 Details zu Middleware für die Fehlerbehandlung siehe [Fehlerbehandlung](/{{ page.lang }}/guide/error-handling.html).
 

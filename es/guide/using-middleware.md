@@ -193,14 +193,12 @@ El middleware de manejo de errores siempre utiliza *cuatro* argumentos.  Debe pr
 
 Defina las funciones de middleware de manejo de errores de la misma forma que otras funciones de middleware, excepto con cuatro argumentos en lugar de tres, específicamente con la firma `(err, req, res, next)`:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 Para obtener detalles sobre el middleware de manejo de errores, consulte: [Manejo de errores](/{{ page.lang }}/guide/error-handling.html).
 

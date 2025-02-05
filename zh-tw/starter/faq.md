@@ -55,14 +55,12 @@ app.use(function(req, res, next) {
 
 錯誤處理中介軟體的定義方式，與其他中介軟體相同，差別在於引數是四個而非三個，具體來說，就是使用 `(err, req, res, next)` 簽章：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 如需相關資訊，請參閱[錯誤處理](/{{ page.lang }}/guide/error-handling.html)。
 

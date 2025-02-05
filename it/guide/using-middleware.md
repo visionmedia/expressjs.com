@@ -194,14 +194,12 @@ Il middleware di gestione degli errori impiega sempre *quattro* argomenti.  È n
 
 Definire le funzioni middleware di gestione degli errori nello stesso modo delle altre funzioni middleware, ma con quattro argomenti invece di tre, nello specifico con la firma `(err, req, res, next)`):
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 Per dettagli sul middleware di gestione degli errori, consultare la sezione: [Gestione degli errori](/{{ page.lang }}/guide/error-handling.html).
 

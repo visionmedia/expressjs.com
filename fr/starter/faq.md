@@ -73,14 +73,12 @@ app.use(function(req, res, next) {
 Vous pouvez définir un middleware de traitement d'erreurs de la même façon qu'un autre middleware,
 à l'exception qu'il faudra 4 arguments au lieu de 3 ; et plus particulièrement avec la signature `(err, req, res, next)` :
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 Pour plus d'informations, voir [Traitement d'erreurs](/{{ page.lang }}/guide/error-handling.html).
 

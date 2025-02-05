@@ -14,21 +14,18 @@ forma que outras funções de middleware, exceto que funções de
 manipulação de erros possuem quatro argumentos ao invés de três:
 `(err, req, res, next)`. Por exemplo:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 Você define os middlewares de manipulação de erros por
 último, após outros `app.use()` e chamads de rota; por
 exemplo:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
@@ -37,8 +34,7 @@ app.use(methodOverride());
 app.use(function(err, req, res, next) {
   // logic
 });
-</code>
-</pre>
+```
 
 Repostas de dentro de uma função de middleware podem estar em
 qualquer formato que preferir, como uma página HTML de erros, uma
@@ -53,8 +49,7 @@ erros para solicitações feitas usando o `XHR`, e
 aqueles sem, você pode usar os seguintes comandos:
 
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
@@ -63,29 +58,25 @@ app.use(methodOverride());
 app.use(logErrors);
 app.use(clientErrorHandler);
 app.use(errorHandler);
-</code>
-</pre>
+```
 
 Neste exemplo, o `logErrors` genérico pode
 escrever informações de solicitações e erros no
 `stderr`, por exemplo:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 function logErrors(err, req, res, next) {
   console.error(err.stack);
   next(err);
 }
-</code>
-</pre>
+```
 
 Também neste exemplo, o `clientErrorHandler` é
 definido como segue; neste caso, o erro é explicitamente passado para
 o próximo:
 
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 function clientErrorHandler(err, req, res, next) {
   if (req.xhr) {
     res.status(500).send({ error: 'Something failed!' });
@@ -93,20 +84,16 @@ function clientErrorHandler(err, req, res, next) {
     next(err);
   }
 }
-</code>
-</pre>
-
+```
 A função "catch-all" `errorHandler` pode ser implementada como segue:
 
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 function errorHandler(err, req, res, next) {
   res.status(500);
   res.render('error', { error: err });
 }
-</code>
-</pre>
+```
 
 Se passar qualquer coisa para a função `next()`
 (exceto a sequência de caracteres `'route'`),
@@ -121,8 +108,7 @@ Se você tiver um manipulador de rota com as funções de retorno
 de chamada é possível usar o parâmetro `route`
 para ignorar o próximo manipulador de rota. Por exemplo:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/a_route_behind_paywall',
   function checkIfPaidSubscriber(req, res, next) {
     if(!req.user.hasPaid) {
@@ -136,9 +122,7 @@ app.get('/a_route_behind_paywall',
       res.json(doc);
     });
   });
-</code>
-</pre>
-
+```
 Neste exemplo, o manipulador `getPaidContent`
 será ignorado mas qualquer manipulador remanescente no
 `app` para
@@ -186,8 +170,7 @@ desejará delegar para o mecanismo de manipulação de erros padrão no
 Express, quando os cabeçalhos já tiverem sido enviados para o cliente:
 
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 function errorHandler(err, req, res, next) {
   if (res.headersSent) {
     return next(err);
@@ -195,5 +178,4 @@ function errorHandler(err, req, res, next) {
   res.status(500);
   res.render('error', { error: err });
 }
-</code>
-</pre>
+```

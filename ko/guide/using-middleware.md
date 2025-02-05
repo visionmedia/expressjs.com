@@ -194,14 +194,12 @@ app.use('/', router);
 
 다른 미들웨어 함수와 동일반 방법으로 다음과 같이 오류 처리 미들웨어 함수를 정의할 수 있지만, 오류 처리 함수는 3개가 아닌 4개의 인수, 구체적으로 말하면 `(err, req, res, next)` 시그니처를 갖는다는 점이 다릅니다.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 오류 처리 미들웨어에 대한 상세 정보는 [오류 처리](/{{ page.lang }}/guide/error-handling.html)를 참조하십시오.
 

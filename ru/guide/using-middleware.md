@@ -194,14 +194,12 @@ app.use('/', router);
 
 Определите функции промежуточного обработчика для обработки ошибок так же, как другие функции промежуточной обработки, но с указанием не трех, а четырех аргументов в сигнатуре `(err, req, res, next)`):
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 Подробная информация о промежуточном обработчике ошибок приведена в разделе [Обработка ошибок](/{{ page.lang }}/guide/error-handling.html).
 

@@ -60,14 +60,12 @@ app.use(function(req, res, next) {
 
 Функции промежуточного обработчика для обработки ошибок определяются так же, как и другие промежуточные обработчики, но с указанием не трех, а четырех аргументов в сигнатуре `(err, req, res, next)`).
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 Дополнительная информация содержится в разделе [Обработка ошибок](/{{ page.lang }}/guide/error-handling.html).
 

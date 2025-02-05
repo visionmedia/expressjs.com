@@ -54,14 +54,12 @@ app.use(function(req, res, next) {
 
 Middleware für die Fehlerbehandlung wird in derselben Weise definiert wie andere Middleware; außer dass sie vier anstatt drei Argumente aufweist. Dies gilt speziell bei der Signatur `(err, req, res, next)`:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 Weitere Informationen siehe [Fehlerbehandlung](/{{ page.lang }}/guide/error-handling.html).
 

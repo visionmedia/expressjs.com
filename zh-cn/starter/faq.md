@@ -57,14 +57,12 @@ app.use(function(req, res, next) {
 
 错误处理中间件的定义方式与其他中间件基本相同，差别在于错误处理中间件有四个自变量而不是三个，专门具有特征符 `(err, req, res, next)`：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 有关更多信息，请参阅[错误处理](/{{ page.lang }}/guide/error-handling.html)。
 

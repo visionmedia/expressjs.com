@@ -192,14 +192,12 @@ Error-handling middleware príjma vždy _štyri_ argumenty.  Aby bolo možné id
 
 Error-handling middleware funkcie sa definujú rovnako ako ostatné middleware funkcie, len majú štyri argumenty namiesto troch, špecificky podľa signatúry `(err, req, res, next)`:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 Pre viac informácií ohľadom error-handling middlewarov si pozrite sekciu: [Error handling](/{{ page.lang }}/guide/error-handling.html).
 

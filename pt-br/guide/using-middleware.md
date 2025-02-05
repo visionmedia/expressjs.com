@@ -238,14 +238,12 @@ erros da mesma forma que outras funções de middleware, exceto que com
 quatro argumentos ao invés de três, especificamente com a assinatura
 `(err, req, res, next)`):
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 Para obter detalhes sobre middleware de manipulação de erros,
 consulte [Manipulação de erros](/{{ page.lang }}/guide/error-handling.html).

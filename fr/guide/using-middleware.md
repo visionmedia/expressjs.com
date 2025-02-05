@@ -194,14 +194,12 @@ Le middleware de traitement d'erreurs comporte toujours *quatre* arguments.  Vou
 
 Définissez les fonctions middleware de traitement d'erreurs de la même façon que d'autres fonctions middleware, à l'exception près qu'il faudra 4 arguments au lieu de 3, et plus particulièrement avec la signature `(err, req, res, next)`) :
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 Pour obtenir des détails sur le middleware de traitement d'erreurs, reportez-vous à : [Traitement d'erreurs](/{{ page.lang }}/guide/error-handling.html).
 

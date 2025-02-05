@@ -57,14 +57,12 @@ app.use(function(req, res, next) {
 
 エラー処理ミドルウェアの定義方法は、他のミドルウェアと同じですが、引数の数が 3 つではなく 4 つである点が異なります。具体的には、シグニチャー `(err、req、res、next)` です。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-</code>
-</pre>
+```
 
 詳細については、[エラー処理](/{{ page.lang }}/guide/error-handling.html)を参照してください。
 
