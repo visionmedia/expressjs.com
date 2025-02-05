@@ -60,13 +60,11 @@ e non ha riscontrato nessuna risposta da parte di quest'ultimi. L'unica cosa da 
 una funzione middleware alla parte finale dello stack (sotto tutte le altre funzioni)
 per gestire una risposta 404:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(req, res, next) {
   res.status(404).send('Sorry cant find that!');
 });
-</code>
-</pre>
+```
 
 ## In che modo è possibile impostare un gestore degli errori?
 

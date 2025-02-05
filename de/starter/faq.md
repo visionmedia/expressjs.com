@@ -42,13 +42,11 @@ Express unterstützt jede Template-Engine, die der `(path, locals, callback)`-Si
 
 In Express sind 404-Antworten nicht das Ergebnis eines Fehlers, sodass diese Antworten von der Fehlerbehandlungsroutine nicht erfasst werden. Dieses Verhalten ist damit zu erklären, dass eine 404-Antwort einfach angibt, dass keine weiteren Arbeiten auszuführen sind. In anderen Worten: Express hat alle Middlewarefunktionen und Weiterleitungen ausgeführt und festgestellt, dass keine Funktion eine Antwort zurückgegeben hat. Sie müssen also bei der Handhabung der 404-Antwort nur eine Middlewarefunktion am Ende des Stacks (unterhalb von allen anderen Funktionen) hinzufügen:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(req, res, next) {
   res.status(404).send('Sorry cant find that!');
 });
-</code>
-</pre>
+```
 
 ## Wie richte ich eine Fehlerbehandlungsroutine ein?
 

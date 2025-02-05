@@ -69,13 +69,11 @@ que nenhuma delas respondeu. Tudo que você precisa fazer é incluir
 uma função de middleware no final da pilha (abaixo de todas as outras
 funções) para manipular uma resposta 404:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(req, res, next) {
   res.status(404).send('Sorry cant find that!');
 });
-</code>
-</pre>
+```
 
 ## Como configuro um manipulador de erros?
 

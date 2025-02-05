@@ -56,13 +56,11 @@ Toto správanie je z dôvodu, že odpoveď 404 jednoducho indikuje absenciu prá
 inými slovami, Express vykonal všetky middlware funkcie a nenašiel žiaden routing,
 ktorý by na danú požiadavku vedel odpovedať. Všetko čo musíte spraviť k odchyteniu 404-ky je, že pridáte nasledovnú middleware funkciu pod všetky ostatné definície:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.use(function(req, res, next) {
   res.status(404).send('Sorry cant find that!');
 });
-</code>
-</pre>
+```
 
 ## Ako si zadefinujem error handler?
 
