@@ -45,8 +45,7 @@ description: Learn how to write custom middleware functions for Express.js appli
 
 아래에는 간단한 "Hello World" Express 애플리케이션에 대한 예가 표시되어 있으며, 이 애플리케이션을 위해 두 개의 미들웨어 함수를 정의하게 됩니다.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var app = express();
 
@@ -55,8 +54,7 @@ app.get('/', function (req, res) {
 });
 
 app.listen(3000);
-</code>
-</pre>
+```
 
 <h2>개발</h2>
 

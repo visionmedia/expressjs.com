@@ -69,8 +69,7 @@ app.get('/', function(req, res, next) {
 
 Voici un exemple d'une application Express "Hello World" simple, pour laquelle vous allez définir deux fonctions middleware :
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var app = express();
 
@@ -79,8 +78,7 @@ app.get('/', function (req, res) {
 });
 
 app.listen(3000);
-</code>
-</pre>
+```
 
 <h2>Développement</h2>
 

@@ -54,8 +54,7 @@ O exemplo a seguir mostra os elementos de uma chamada de função de middleware:
 Aqui está um exemplo de um simples aplicativo "Hello World" do
 Express, para o qual serão definidas duas funções de middleware:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var app = express();
 
@@ -64,8 +63,7 @@ app.get('/', function (req, res) {
 });
 
 app.listen(3000);
-</code>
-</pre>
+```
 
 <h2>Desenvolvimento</h2>
 

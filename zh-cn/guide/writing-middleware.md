@@ -45,8 +45,7 @@ description: Learn how to write custom middleware functions for Express.js appli
 
 以下是“Hello World”Express 应用程序的简单示例，将为其定义两个中间件函数：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var app = express();
 
@@ -55,8 +54,7 @@ app.get('/', function (req, res) {
 });
 
 app.listen(3000);
-</code>
-</pre>
+```
 
 <h2>开发</h2>
 

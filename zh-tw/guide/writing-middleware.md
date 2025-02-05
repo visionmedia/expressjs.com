@@ -45,8 +45,7 @@ description: Learn how to write custom middleware functions for Express.js appli
 
 下列範例顯示簡單的 "Hello World" Express 應用程式，您將為這個應用程式定義兩個中介軟體函數：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var app = express();
 
@@ -55,8 +54,7 @@ app.get('/', function (req, res) {
 });
 
 app.listen(3000);
-</code>
-</pre>
+```
 
 <h2>開發</h2>
 

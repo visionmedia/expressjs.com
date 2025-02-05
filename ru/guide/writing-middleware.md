@@ -45,8 +45,7 @@ description: Learn how to write custom middleware functions for Express.js appli
 
 Далее приводится пример простого приложения Ниже Express "Hello World", для которого будут определены две функции промежуточных обработчиков:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var app = express();
 
@@ -55,8 +54,7 @@ app.get('/', function (req, res) {
 });
 
 app.listen(3000);
-</code>
-</pre>
+```
 
 <h2>Разработка</h2>
 

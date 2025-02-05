@@ -49,8 +49,7 @@ Tu je príklad jednoduchej "Hello World" Express aplikácie.
 Zvyšná časť tohto článku definuje a pridáva do aplikácie dve middleware funkcie:
 jedna nazvaná `myLogger` ktorá vypíše jednoduchú log message a druhá nazvaná `requestTime` ktorá vypíše timestamp HTTP requestu.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var app = express();
 
@@ -59,8 +58,7 @@ app.get('/', function (req, res) {
 });
 
 app.listen(3000);
-</code>
-</pre>
+```
 
 <h2>Middleware funkcia myLogger</h2>
 
