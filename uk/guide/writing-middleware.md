@@ -50,7 +50,7 @@ The remainder of this article will define and add two middleware functions to th
 one called `myLogger` that prints a simple log message and another called `requestTime` that
 displays the timestamp of the HTTP request.
 
-<pre><code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var app = express();
 
@@ -59,7 +59,7 @@ app.get('/', function (req, res) {
 });
 
 app.listen(3000);
-</code></pre>
+```
 
 <h3>Middleware function myLogger</h3>
 Here is a simple example of a middleware function called "myLogger". This function just prints "LOGGED" when a request to the app passes through it. The middleware function is assigned to a variable named `myLogger`.

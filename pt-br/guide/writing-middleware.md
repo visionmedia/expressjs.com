@@ -73,14 +73,12 @@ Aqui está um exemplo simples de uma função de middleware chamada "myLogger". 
 função apenas imprime "LOGGED" quando uma solicitação para o aplicativo passa por ela. A
 função de middleware é designada para uma variável chamada `myLogger`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var myLogger = function (req, res, next) {
   console.log('LOGGED');
   next();
 };
-</code>
-</pre>
+```
 
 <div class="doc-box doc-notice" markdown="1">
 Observe a chamada acima para `next()`.  A chamada
@@ -95,8 +93,7 @@ evitar confusão, sempre use esta convenção.
 Para carregar a função de middleware, chame `app.use()`, especificando a função de middleware.
 Por exemplo, o código a seguir carrega a função de middleware do `myLogger` antes da rota para o caminho raiz (/).
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var app = express();
 
@@ -112,8 +109,7 @@ app.get('/', function (req, res) {
 });
 
 app.listen(3000);
-</code>
-</pre>
+```
 
 Sempre que o aplicativo recebe uma chamada, ele imprime a mensagem "LOGGED" no terminal.
 
@@ -132,22 +128,19 @@ O próximo exemplo inclui uma propriedade chamada
 `requestTime` ao objeto da solicitação. Iremos
 chamar esta função de middleware de "requestTime".
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var requestTime = function (req, res, next) {
   req.requestTime = Date.now();
   next();
 };
-</code>
-</pre>
+```
 
 O aplicativo agora usa a função de middleware `requestTime`. Além
 disso, a função de retorno de chamada do caminho raiz usa a
 propriedade que a função de middleware inclui no
 `req` (o objeto da solicitação).
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var app = express();
 
@@ -165,9 +158,7 @@ app.get('/', function (req, res) {
 });
 
 app.listen(3000);
-</code>
-</pre>
-
+```
 Ao fazer uma solicitação para a raiz do aplicativo, o
 aplicativo agora exibe o registro de data e hora da sua solicitação
 no navegador.
