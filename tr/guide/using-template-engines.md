@@ -29,7 +29,7 @@ Bu varsayılan olarak uygulamanın kök dizindeki `views` dizinine denk gelir.
 
 Daha sonra ise, ilgili şablon motorunun npm paketini yükleyin; örneğin Pug yüklemek için:
 
-```console
+```bash
 $ npm install pug --save
 ```
 

@@ -27,7 +27,7 @@ description: Discover how to integrate and use template engines like Pug, Handle
 
 並安裝對應的模板引擎 npm 套件，例如安裝 Pug：
 
-```console
+```bash
 $ npm install pug --save
 ```
 
@@ -40,33 +40,27 @@ $ npm install pug --save
 
 在設定模板引擎之後，您不必指定引擎或將範本引擎模組載入到應用程式中；Express 會在內部載入模組，如以下所示（針對上述範例）。
 
-<pre>
-<code class="language-javascript" translate="no">
-app.set('view engine', 'pug');
-</code>
-</pre>
+```js
+app.set('view engine', 'pug')
+```
 
 在 `views` 目錄中，建立一個名稱是 `index.pug` 並內含下列內容的 Pug 範本檔：
 
-<pre>
-<code class="language-javascript" translate="no">
+```pug
 html
   head
     title= title
   body
     h1= message
-</code>
-</pre>
+```
 
 建立路由以呈現 `index.pug` 檔。如果未設定 `view engine` 內容，您必須指定 `view` 檔的副檔名，否則可以省略此步驟。
 
-<pre>
-<code class="language-javascript" translate="no">
-app.get('/', function (req, res) {
-  res.render('index', { title: 'Hey', message: 'Hello there!'});
-});
-</code>
-</pre>
+```js
+app.get('/', (req, res) => {
+  res.render('index', { title: 'Hey', message: 'Hello there!' })
+})
+```
 
 當您向首頁發出請求時，`index.pug` 檔會以 HTML 被渲染出來。
 

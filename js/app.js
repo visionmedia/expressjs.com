@@ -20,18 +20,6 @@ $(function(){
     }
   })
 
-  // code highlight
-
-  $('code.language-js').each(function(){
-    $(this).addClass('language-javascript').removeClass('language-js')
-  })
-
-  $('code.language-sh').each(function(){
-    $(this).parent().addClass('language-sh')
-  })
-
-  Prism.highlightAll()
-
   // menu bar
 
   var headings = $('h2, h3').map(function(i, el){
