@@ -13,8 +13,7 @@ description: Learn how to define and use routes in Express.js applications, incl
 
 下列程式碼範例說明相當基本的路由。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var app = express();
 
@@ -22,8 +21,7 @@ var app = express();
 app.get('/', function(req, res) {
   res.send('hello world');
 });
-</code>
-</pre>
+```
 
 <h2 id="route-methods">路由方法</h2>
 
@@ -31,8 +29,7 @@ app.get('/', function(req, res) {
 
 下列程式碼範例說明對應用程式根目錄提出 GET 和 POST 方法時所定義的路由。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 // GET method route
 app.get('/', function (req, res) {
   res.send('GET request to the homepage');
@@ -42,8 +39,7 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res) {
   res.send('POST request to the homepage');
 });
-</code>
-</pre>
+```
 
 Express 支援下列的路由方法，這些方法對應至 HTTP 方法：`get`、
 `post`、`put`、`head`、`delete`、`options`、
@@ -57,14 +53,12 @@ Express 支援下列的路由方法，這些方法對應至 HTTP 方法：`get`�
 
 在下列範例中，不論您使用的是 GET、POST、PUT、DELETE 或 [http 模組](https://nodejs.org/api/http.html#http_http_methods)中支援的其他任何 HTTP 要求方法，都會針對傳給 "/secret" 的要求執行處理程式。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.all('/secret', function (req, res, next) {
   console.log('Accessing the secret section ...');
   next(); // pass control to the next handler
 });
-</code>
-</pre>
+```
 
 <h2 id="route-paths">路由路徑</h2>
 
@@ -82,75 +76,61 @@ app.all('/secret', function (req, res, next) {
 
 此路由路徑將符合傳送給根路由 `/` 的要求。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/', function (req, res) {
   res.send('root');
 });
-</code>
-</pre>
+```
 
 此路由路徑將符合傳送給 `/about` 的要求。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/about', function (req, res) {
   res.send('about');
 });
-</code>
-</pre>
+```
 
 此路由路徑將符合傳送給 `/random.text` 的要求。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/random.text', function (req, res) {
   res.send('random.text');
 });
-</code>
-</pre>
+```
 
 以下是以字串型樣為基礎的部分路由路徑範例。
 
 此路由路徑將符合 `acd` 和 `abcd`。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab?cd', function(req, res) {
   res.send('ab?cd');
 });
-</code>
-</pre>
+```
 
 此路由路徑將符合 `abcd`、`abbcd`、`abbbcd` 等。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab+cd', function(req, res) {
   res.send('ab+cd');
 });
-</code>
-</pre>
+```
 
 此路由路徑將符合 `abcd`、`abxcd`、`abRABDOMcd`、`ab123cd` 等。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab*cd', function(req, res) {
   res.send('ab*cd');
 });
-</code>
-</pre>
+```
 
 此路由路徑將符合 `/abe` 和 `/abcde`。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab(cd)?e', function(req, res) {
  res.send('ab(cd)?e');
 });
-</code>
-</pre>
+```
 
 <div class="doc-box doc-info" markdown="1">
  ?、+、* 和 () 字元是其正規表示式對應項目的一部分。以字串為基礎的路徑會照字面來解譯連字符號 (-) 和句點 (.)。
@@ -160,23 +140,19 @@ app.get('/ab(cd)?e', function(req, res) {
 
 只要路由名稱中有 "a"，都與這個路由路徑相符。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get(/a/, function(req, res) {
   res.send('/a/');
 });
-</code>
-</pre>
+```
 
 此路由路徑將符合 `butterfly` 和 `dragonfly`，但不符合 `butterflyman`、`dragonfly man` 等。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get(/.*fly$/, function(req, res) {
   res.send('/.*fly$/');
 });
-</code>
-</pre>
+```
 
 <h2 id="route-handlers">路由處理程式</h2>
 
@@ -188,33 +164,27 @@ app.get(/.*fly$/, function(req, res) {
 單一回呼函數可以處理路由。例如：
 
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/example/a', function (req, res) {
   res.send('Hello from A!');
 });
-</code>
-</pre>
+```
 
 多個回呼函數可以處理路由（請確定您有指定 `next` 物件）。例如：
 
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/example/b', function (req, res, next) {
   console.log('the response will be sent by the next function ...');
   next();
 }, function (req, res) {
   res.send('Hello from B!');
 });
-</code>
-</pre>
-
+```
 回呼函數陣列可以處理路由。例如：
 
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var cb0 = function (req, res, next) {
   console.log('CB0');
   next();
@@ -230,14 +200,12 @@ var cb2 = function (req, res) {
 }
 
 app.get('/example/c', [cb0, cb1, cb2]);
-</code>
-</pre>
+```
 
 獨立函數與函數陣列的組合可以處理路由。例如：
 
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var cb0 = function (req, res, next) {
   console.log('CB0');
   next();
@@ -254,8 +222,7 @@ app.get('/example/d', [cb0, cb1], function (req, res, next) {
 }, function (req, res) {
   res.send('Hello from D!');
 });
-</code>
-</pre>
+```
 
 <h2 id="response-methods">回應方法</h2>
 
@@ -303,8 +270,7 @@ app.route('/book')
 
 在應用程式目錄中建立一個名為 `birds.js` 的路由器檔案，內含下列內容：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var router = express.Router();
 
@@ -323,8 +289,7 @@ router.get('/about', function(req, res) {
 });
 
 module.exports = router;
-</code>
-</pre>
+```
 
 然後將路由器模組載入應用程式中：
 

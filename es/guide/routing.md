@@ -14,8 +14,7 @@ Para ver una introducción al direccionamiento, consulte [Direccionamiento bási
 
 El siguiente código es un ejemplo de una ruta muy básica.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var app = express();
 
@@ -23,8 +22,7 @@ var app = express();
 app.get('/', function(req, res) {
   res.send('hello world');
 });
-</code>
-</pre>
+```
 
 <h2 id="route-methods">Métodos de ruta</h2>
 
@@ -32,8 +30,7 @@ Un método de ruta se deriva de uno de los métodos HTTP y se adjunta a una inst
 
 El siguiente código es un ejemplo de las rutas que se definen para los métodos GET y POST a la raíz de la aplicación.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 // GET method route
 app.get('/', function (req, res) {
   res.send('GET request to the homepage');
@@ -43,8 +40,7 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res) {
   res.send('POST request to the homepage');
 });
-</code>
-</pre>
+```
 
 Express da soporte a los siguientes métodos de direccionamiento que se corresponden con los métodos HTTP: `get`, `post`, `put`, `head`, `delete`, `options`, `trace`, `copy`, `lock`, `mkcol`, `move`, `purge`, `propfind`, `proppatch`, `unlock`, `report`, `mkactivity`, `checkout`, `merge`, `m-search`, `notify`, `subscribe`, `unsubscribe`, `patch`, `search` y `connect`.
 
@@ -56,14 +52,12 @@ Hay un método de direccionamiento especial, `app.all()`, que no se deriva de ni
 
 En el siguiente ejemplo, el manejador se ejecutará para las solicitudes a "/secret", tanto si utiliza GET, POST, PUT, DELETE, como cualquier otro método de solicitud HTTP soportado en el [módulo http](https://nodejs.org/api/http.html#http_http_methods).
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.all('/secret', function (req, res, next) {
   console.log('Accessing the secret section ...');
   next(); // pass control to the next handler
 });
-</code>
-</pre>
+```
 
 <h2 id="route-paths">Vías de acceso de ruta</h2>
 
@@ -81,75 +75,61 @@ Estos son algunos ejemplos de vías de acceso de ruta basadas en series.
 
 Esta vía de acceso de ruta coincidirá con las solicitudes a la ruta raíz, `/`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/', function (req, res) {
   res.send('root');
 });
-</code>
-</pre>
+```
 
 Esta vía de acceso de ruta coincidirá con las solicitudes a `/about`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/about', function (req, res) {
   res.send('about');
 });
-</code>
-</pre>
+```
 
 Esta vía de acceso de ruta coincidirá con las solicitudes a `/random.text`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/random.text', function (req, res) {
   res.send('random.text');
 });
-</code>
-</pre>
+```
 
 Estos son algunos ejemplos de vías de acceso de ruta basadas en patrones de serie.
 
 Esta vía de acceso de ruta coincidirá con `acd` y `abcd`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab?cd', function(req, res) {
   res.send('ab?cd');
 });
-</code>
-</pre>
+```
 
 Esta vía de acceso de ruta coincidirá con `abcd`, `abbcd`, `abbbcd`, etc.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab+cd', function(req, res) {
   res.send('ab+cd');
 });
-</code>
-</pre>
+```
 
 Esta vía de acceso de ruta coincidirá con `abcd`, `abxcd`, `abRABDOMcd`, `ab123cd`, etc.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab*cd', function(req, res) {
   res.send('ab*cd');
 });
-</code>
-</pre>
+```
 
 Esta vía de acceso de ruta coincidirá con `/abe` y `/abcde`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab(cd)?e', function(req, res) {
  res.send('ab(cd)?e');
 });
-</code>
-</pre>
+```
 
 <div class="doc-box doc-info" markdown="1">
 Los caracteres ?, +, * y () son subconjuntos de sus contrapartidas de expresiones regulares. El guión (-) y el punto (.) se interpretan literalmente en las vías de acceso basadas en series.
@@ -159,23 +139,19 @@ Ejemplos de vías de acceso de ruta basadas en expresiones regulares:
 
 Esta vía de acceso de ruta coincidirá con cualquier valor con una "a" en el nombre de la ruta.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get(/a/, function(req, res) {
   res.send('/a/');
 });
-</code>
-</pre>
+```
 
 Esta vía de acceso de ruta coincidirá con `butterfly` y `dragonfly`, pero no con `butterflyman`, `dragonfly man`, etc.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get(/.*fly$/, function(req, res) {
   res.send('/.*fly$/');
 });
-</code>
-</pre>
+```
 
 <h2 id="route-handlers">Manejadores de rutas</h2>
 
@@ -185,31 +161,25 @@ Los manejadores de rutas pueden tener la forma de una función, una matriz de fu
 
 Una función de devolución de llamada individual puede manejar una ruta.  Por ejemplo:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/example/a', function (req, res) {
   res.send('Hello from A!');
 });
-</code>
-</pre>
+```
 
 Más de una función de devolución de llamada puede manejar una ruta (asegúrese de especificar el objeto `next`). Por ejemplo:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/example/b', function (req, res, next) {
   console.log('the response will be sent by the next function ...');
   next();
 }, function (req, res) {
   res.send('Hello from B!');
 });
-</code>
-</pre>
-
+```
 Una matriz de funciones de devolución de llamada puede manejar una ruta.  Por ejemplo:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var cb0 = function (req, res, next) {
   console.log('CB0');
   next();
@@ -225,13 +195,11 @@ var cb2 = function (req, res) {
 }
 
 app.get('/example/c', [cb0, cb1, cb2]);
-</code>
-</pre>
+```
 
 Una combinación de funciones independientes y matrices de funciones puede manejar una ruta.  Por ejemplo:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var cb0 = function (req, res, next) {
   console.log('CB0');
   next();
@@ -248,8 +216,7 @@ app.get('/example/d', [cb0, cb1], function (req, res, next) {
 }, function (req, res) {
   res.send('Hello from D!');
 });
-</code>
-</pre>
+```
 
 <h2 id="response-methods">Métodos de respuesta</h2>
 
@@ -295,8 +262,7 @@ El siguiente ejemplo crea un direccionador como un módulo, carga una función d
 
 Cree un archivo de direccionador denominado `birds.js` en el directorio de la aplicación, con el siguiente contenido:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var router = express.Router();
 
@@ -315,8 +281,7 @@ router.get('/about', function(req, res) {
 });
 
 module.exports = router;
-</code>
-</pre>
+```
 
 A continuación, cargue el módulo de direccionador en la aplicación:
 

@@ -36,8 +36,7 @@ app.get('/', function(req, res) {
 
 以下代码是为访问应用程序根目录的 GET 和 POST 方法定义的路由示例。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 // GET method route
 app.get('/', function (req, res) {
   res.send('GET request to the homepage');
@@ -47,8 +46,7 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res) {
   res.send('POST request to the homepage');
 });
-</code>
-</pre>
+```
 
 Express 支持对应于 HTTP 方法的以下路由方法：`get`、`post`、`put`、`head`、`delete`、`options`、`trace`、`copy`、`lock`、`mkcol`、`move`、`purge`、`propfind`、`proppatch`、`unlock`、`report`、`mkactivity`、`checkout`、`merge`、`m-search`、`notify`、`subscribe`、`unsubscribe`、`patch`、`search` 和 `connect`。
 
@@ -60,14 +58,12 @@ Express 支持对应于 HTTP 方法的以下路由方法：`get`、`post`、`put
 
 在以下示例中，无论您使用 GET、POST、PUT、DELETE 还是在 [http 模块](https://nodejs.org/api/http.html#http_http_methods)中支持的其他任何 HTTP 请求方法，都将为针对“/secret”的请求执行处理程序。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.all('/secret', function (req, res, next) {
   console.log('Accessing the secret section ...');
   next(); // pass control to the next handler
 });
-</code>
-</pre>
+```
 
 <h2 id="route-paths">路由路径</h2>
 
@@ -85,75 +81,61 @@ Express 使用 [path-to-regexp](https://www.npmjs.com/package/path-to-regexp) �
 
 此路由路径将请求与根路由 `/` 匹配。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/', function (req, res) {
   res.send('root');
 });
-</code>
-</pre>
+```
 
 此路由路径将请求与 `/about` 匹配。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/about', function (req, res) {
   res.send('about');
 });
-</code>
-</pre>
+```
 
 此路由路径将请求与 `/random.text` 匹配。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/random.text', function (req, res) {
   res.send('random.text');
 });
-</code>
-</pre>
+```
 
 以下是基于字符串模式的路由路径的一些示例。
 
 此路由路径将匹配 `acd` 和 `abcd`。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab?cd', function(req, res) {
   res.send('ab?cd');
 });
-</code>
-</pre>
+```
 
 此路由路径将匹配 `abcd`、`abbcd`、`abbbcd` 等。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab+cd', function(req, res) {
   res.send('ab+cd');
 });
-</code>
-</pre>
+```
 
 此路由路径将匹配 `abcd`、`abxcd`、`abRABDOMcd`、`ab123cd` 等。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab*cd', function(req, res) {
   res.send('ab*cd');
 });
-</code>
-</pre>
+```
 
 此路由路径将匹配 `/abe` 和 `/abcde`。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab(cd)?e', function(req, res) {
  res.send('ab(cd)?e');
 });
-</code>
-</pre>
+```
 
 <div class="doc-box doc-info" markdown="1">
 字符 ?、+、* 和 () 是其正则表达式同应项的子集。基于字符串的路径按字面理解连字符 (-) 和点 (.)。
@@ -163,23 +145,19 @@ app.get('/ab(cd)?e', function(req, res) {
 
 此路由路径将匹配名称中具有“a”的所有路由。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get(/a/, function(req, res) {
   res.send('/a/');
 });
-</code>
-</pre>
+```
 
 此路由路径将匹配 `butterfly` 和 `dragonfly`，但是不匹配 `butterflyman`、`dragonfly man` 等。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get(/.*fly$/, function(req, res) {
   res.send('/.*fly$/');
 });
-</code>
-</pre>
+```
 
 <h2 id="route-handlers">路由处理程序</h2>
 
@@ -189,31 +167,25 @@ app.get(/.*fly$/, function(req, res) {
 
 单个回调函数可以处理一个路由。例如：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/example/a', function (req, res) {
   res.send('Hello from A!');
 });
-</code>
-</pre>
+```
 
 多个回调函数可以处理一个路由（确保您指定 `next` 对象）。例如：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/example/b', function (req, res, next) {
   console.log('the response will be sent by the next function ...');
   next();
 }, function (req, res) {
   res.send('Hello from B!');
 });
-</code>
-</pre>
-
+```
 一组回调函数可以处理一个路由。例如：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var cb0 = function (req, res, next) {
   console.log('CB0');
   next();
@@ -229,13 +201,11 @@ var cb2 = function (req, res) {
 }
 
 app.get('/example/c', [cb0, cb1, cb2]);
-</code>
-</pre>
+```
 
 独立函数与一组函数的组合可以处理一个路由。例如：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var cb0 = function (req, res, next) {
   console.log('CB0');
   next();
@@ -252,8 +222,7 @@ app.get('/example/d', [cb0, cb1], function (req, res, next) {
 }, function (req, res) {
   res.send('Hello from D!');
 });
-</code>
-</pre>
+```
 
 <h2 id="response-methods">响应方法</h2>
 
@@ -299,8 +268,7 @@ app.route('/book')
 
 在应用程序目录中创建名为 `birds.js` 的路由器文件，其中包含以下内容：
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var router = express.Router();
 
@@ -319,8 +287,7 @@ router.get('/about', function(req, res) {
 });
 
 module.exports = router;
-</code>
-</pre>
+```
 
 接着，在应用程序中装入路由器模块：
 

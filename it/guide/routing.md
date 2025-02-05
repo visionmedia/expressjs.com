@@ -14,8 +14,7 @@ Per un'introduzione al concetto di routing, consultare la sezione [Routing di ba
 
 Il codice seguente è un esempio di una route veramente di base.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var app = express();
 
@@ -23,8 +22,7 @@ var app = express();
 app.get('/', function(req, res) {
   res.send('hello world');
 });
-</code>
-</pre>
+```
 
 <h2 id="route-methods">Metodi di route</h2>
 
@@ -32,8 +30,7 @@ Un metodo di route deriva da uno dei metodi HTTP ed è collegato ad un'istanza d
 
 Il codice seguente è un esempio di route definite per i metodi GET e POST nella root dell'app.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 // GET method route
 app.get('/', function (req, res) {
   res.send('GET request to the homepage');
@@ -43,8 +40,7 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res) {
   res.send('POST request to the homepage');
 });
-</code>
-</pre>
+```
 
 Express supporta i seguenti metodi di routing che corrispondono a metodi HTTP: `get`, `post`, `put`, `head`, `delete`, `options`, `trace`, `copy`, `lock`, `mkcol`, `move`, `purge`, `propfind`, `proppatch`, `unlock`, `report`, `mkactivity`, `checkout`, `merge`, `m-search`, `notify`, `subscribe`, `unsubscribe`, `patch`, `search` e `connect`.
 
@@ -57,14 +53,12 @@ Esiste un metodo di routing speciale, `app.all()`, che non deriva da alcun metod
 
 Nell'esempio seguente, l'handler verrà eseguito per richieste a "/secret" se si stanno utilizzando GET, POST, PUT, DELETE, o qualsiasi altro metodo di richiesta HTTP supportato nel [modulo http](https://nodejs.org/api/http.html#http_http_methods).
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.all('/secret', function (req, res, next) {
   console.log('Accessing the secret section ...');
   next(); // pass control to the next handler
 });
-</code>
-</pre>
+```
 
 <h2 id="route-paths">Percorsi di route</h2>
 
@@ -82,75 +76,61 @@ Ecco alcuni esempi di percorsi di route basati su stringhe.
 
 Questo percorso di route corrisponderà a richieste nella route root, `/`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/', function (req, res) {
   res.send('root');
 });
-</code>
-</pre>
+```
 
 Questo percorso di route corrisponderà a richieste in `/about`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/about', function (req, res) {
   res.send('about');
 });
-</code>
-</pre>
+```
 
 Questo percorso di route corrisponderà a richieste in `/random.text`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/random.text', function (req, res) {
   res.send('random.text');
 });
-</code>
-</pre>
+```
 
 Ecco alcuni esempi di percorsi di route basati su modelli di stringa.
 
 Questo percorso di route corrisponderà a `acd` e `abcd`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab?cd', function(req, res) {
   res.send('ab?cd');
 });
-</code>
-</pre>
+```
 
 Questo percorso di route corrisponderà a `abcd`, `abbcd`, `abbbcd` e così via.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab+cd', function(req, res) {
   res.send('ab+cd');
 });
-</code>
-</pre>
+```
 
 Questo percorso di route corrisponderà a `abcd`, `abxcd`, `abRABDOMcd`, `ab123cd` e così via.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab*cd', function(req, res) {
   res.send('ab*cd');
 });
-</code>
-</pre>
+```
 
 Questo percorso di route corrisponderà a `/abe` e `/abcde`.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/ab(cd)?e', function(req, res) {
  res.send('ab(cd)?e');
 });
-</code>
-</pre>
+```
 
 <div class="doc-box doc-info" markdown="1">
 I caratteri ?, +, * e () sono sottoinsiemi delle rispettive controparti di espressioni regolari. Trattino (-) e punto (.) vengono interpretati letteralmente da percorsi basati su stringhe.
@@ -160,23 +140,19 @@ Esempi di percorsi di route basati su espressioni regolari:
 
 Questo percorso di route corrisponderà a qualsiasi elemento con "a" nel nome route.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get(/a/, function(req, res) {
   res.send('/a/');
 });
-</code>
-</pre>
+```
 
 Questo percorso di route corrisponderà a `butterfly` e `dragonfly`, ma non a `butterflyman`, `dragonfly man` e così via.
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get(/.*fly$/, function(req, res) {
   res.send('/.*fly$/');
 });
-</code>
-</pre>
+```
 
 <h2 id="route-handlers">Handler di route</h2>
 
@@ -186,31 +162,25 @@ Gli handler di route possono avere il formato di una funzione, di un array di fu
 
 Una singola funzione di callback può gestire una route.  Ad esempio:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/example/a', function (req, res) {
   res.send('Hello from A!');
 });
-</code>
-</pre>
+```
 
 Più funzioni di callback possono gestire una route (assicurarsi di specificare l'oggetto `next`). Ad esempio:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 app.get('/example/b', function (req, res, next) {
   console.log('the response will be sent by the next function ...');
   next();
 }, function (req, res) {
   res.send('Hello from B!');
 });
-</code>
-</pre>
-
+```
 Un array di funzioni callback possono gestire una route.  Ad esempio:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var cb0 = function (req, res, next) {
   console.log('CB0');
   next();
@@ -226,13 +196,11 @@ var cb2 = function (req, res) {
 }
 
 app.get('/example/c', [cb0, cb1, cb2]);
-</code>
-</pre>
+```
 
 Una combinazione di funzioni indipendenti e array di funzioni può gestire una route.  Ad esempio:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var cb0 = function (req, res, next) {
   console.log('CB0');
   next();
@@ -249,8 +217,7 @@ app.get('/example/d', [cb0, cb1], function (req, res, next) {
 }, function (req, res) {
   res.send('Hello from D!');
 });
-</code>
-</pre>
+```
 
 <h2 id="response-methods">Metodi di risposta</h2>
 
@@ -296,8 +263,7 @@ Nel seguente esempio si crea un router come modulo, si carica al suo interno una
 
 Creare un file router denominato `birds.js` nella directory app, con il seguente contenuto:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var router = express.Router();
 
@@ -316,8 +282,7 @@ router.get('/about', function(req, res) {
 });
 
 module.exports = router;
-</code>
-</pre>
+```
 
 Quindi, caricare il modulo router nell'app:
 
