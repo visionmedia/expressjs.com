@@ -19,15 +19,13 @@ app.use(express.static('public'));
 
 Teraz dokážete načítať súbory obsiahnuté v `public` priečinku:
 
-<pre>
-<code class="plain-text" translate="no">
+```text
 http://localhost:3000/images/kitten.jpg
 http://localhost:3000/css/style.css
 http://localhost:3000/js/app.js
 http://localhost:3000/images/bg.png
 http://localhost:3000/hello.html
-</code>
-</pre>
+```
 
 <div class="doc-box doc-info">
 Express vyhľadáva súbory relatívne od priečinka so statickým obsahom, takže názov tohto priečinka nie je súčasťou URL.
@@ -50,15 +48,13 @@ app.use('/static', express.static('public'));
 
 Teraz môžete načítať súbory nachádzajúce sa v priečinku `public` na ceste s prefixom `/static`.
 
-<pre>
-<code class="plain-text" translate="no">
+```text
 http://localhost:3000/static/images/kitten.jpg
 http://localhost:3000/static/css/style.css
 http://localhost:3000/static/js/app.js
 http://localhost:3000/static/images/bg.png
 http://localhost:3000/static/hello.html
-</code>
-</pre>
+```
 
 Pozor však na to, že cesta ktorú poskytnete `express.static` funkcii je relatívna k priečinku, z ktorého ste spustili váš `node` proces. Ak spúšťate express aplikáciu z iného priečinka, je bezpečnejšie použiť absolútnu cestu k priečinku, ktorý chcete servovať:
 

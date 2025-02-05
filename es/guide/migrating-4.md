@@ -384,8 +384,7 @@ Realice los cambios siguientes en `app.js`:
 
 La ejecución del mandato `npm` anterior actualizará `package.json` de la siguiente manera:
 
-<pre>
-<code class="language-javascript" translate="no">
+```json
 {
   "name": "application-name",
   "version": "0.0.1",
@@ -405,8 +404,7 @@ La ejecución del mandato `npm` anterior actualizará `package.json` de la sigui
     "serve-favicon": "^2.0.1"
   }
 }
-</code>
-</pre>
+```
 
 <h4 id=""><code>app.js</code></h4>
 

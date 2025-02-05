@@ -449,12 +449,13 @@ server.listen(app.get('port'), function(){
 
 <div class="doc-box doc-info" markdown="1">
 Wenn Sie nicht direkt mit dem Modul `http` arbeiten müssen (socket.io/SPDY/HTTPS), ist das Laden des Moduls nicht erforderlich. Die Anwendung kann dann einfach wie folgt gestartet werden:
-<pre>
-<code class="language-js" translate="no">app.listen(app.get('port'), function(){
+
+```js
+app.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-</code>
-</pre>
+```
+
 </div>
 
 <h3 id="">Anwendung ausführen</h3>

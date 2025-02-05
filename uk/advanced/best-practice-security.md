@@ -57,12 +57,14 @@ $ npm install --save helmet
 
 Then to use it in your code:
 
-<pre><code class="language-javascript" translate="no">
-...
+```js
+// ...
+
 var helmet = require('helmet');
 app.use(helmet());
-...
-</code></pre>
+
+// ...
+```
 
 ### At a minimum, disable X-Powered-By header
 
@@ -70,9 +72,9 @@ If you don't want to use Helmet, then at least disable the `X-Powered-By` header
 
 So, best practice is to to turn off the header with the `app.disable()` method:
 
-<pre><code class="language-javascript" translate="no">
+```
 app.disable('x-powered-by');
-</code></pre>
+```
 
 If you use `helmet.js`, it takes care of this for you.
 
@@ -95,7 +97,7 @@ Using the default session cookie name can open your app to attacks.  The securit
 
 To avoid this problem, use generic cookie names; for example using [express-session](https://www.npmjs.com/package/express-session) middleware:
 
-<pre><code class="language-javascript" translate="no">
+```js
 var session = require('express-session');
 app.set('trust proxy', 1) // trust first proxy
 app.use( session({
@@ -103,7 +105,7 @@ app.use( session({
    name : 'sessionId',
   })
 );
-</code></pre>
+```
 
 ### Set cookie security options
 
@@ -117,7 +119,7 @@ Set the following cookie options to enhance security:
 
 Here is an example using [cookie-session](https://www.npmjs.com/package/cookie-session) middleware:
 
-<pre><code class="language-javascript" translate="no">
+```js
 var session = require('cookie-session');
 var express = require('express');
 var app = express();
@@ -134,7 +136,7 @@ app.use(session({
           }
   })
 );
-</code></pre>
+```
 
 ## Ensure your dependencies are secure
 

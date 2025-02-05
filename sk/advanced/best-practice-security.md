@@ -97,8 +97,7 @@ Používaním defaultného názvu session cookie vystavujete aplikáciu možným
 
 Aby ste sa vyhli tomuto problému, použite generické názvy cookie; napr použitím [express-session](https://www.npmjs.com/package/express-session) middlewaru:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var session = require('express-session');
 app.set('trust proxy', 1); // trust first proxy
 app.use( session({
@@ -106,8 +105,7 @@ app.use( session({
    name : 'sessionId',
   })
 );
-</code>
-</pre>
+```
 
 ### Nastavte cookie security parametre
 

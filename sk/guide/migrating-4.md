@@ -459,11 +459,12 @@ server.listen(app.get('port'), function(){
 
 <div class="doc-box doc-info" markdown="1">
 Pokiaľ nepotrebujete priamo pracovať s `http` modulom (socket.io/SPDY/HTTPS), nie je nutné ho načítať a aplikáciu môžete jednoducho naštartovať týmto spôsobom:
-<pre>
-<code class="language-js">app.listen(app.get('port'), function(){
+
+```js
+app.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
-});</code>
-</pre>
+});
+```
 </div>
 
 <h3 id="">Spustite aplikáciu</h3>

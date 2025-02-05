@@ -198,19 +198,19 @@ In development, you typically set environment variables in your interactive shel
 
 With Upstart, use the `env` keyword in your job file. For example:
 
-<pre><code class="language-sh" translate="no">
+```sh
 # /etc/init/env.conf
  env NODE_ENV=production
-</code></pre>
+```
 
 For more information, see the [Upstart Intro, Cookbook and Best Practices](http://upstart.ubuntu.com/cookbook/#environment-variables).
 
 With systemd, use the `Environment` directive in your unit file. For example:
 
-<pre><code class="language-sh" translate="no">
+```sh
 # /etc/systemd/system/myservice.service
 Environment=NODE_ENV=production
-</code></pre>
+```
 
 For more information, see [Using Environment Variables In systemd Units](https://coreos.com/os/docs/latest/using-environment-variables-in-systemd-units.html).
 
@@ -328,7 +328,7 @@ An Upstart service is defined in a job configuration file (also called a "job") 
 
 Create a file named `myapp.conf` at `/etc/init/` with the following content (replace the bold text with values for your system and app):
 
-<pre><code class="language-sh" translate="no">
+```sh
 # When to start the process
 start on runlevel [2345]
 
@@ -356,7 +356,7 @@ respawn
 
 # Limit restart attempt to 10 times within 10 seconds
 respawn limit 10 10
-</code></pre>
+```
 
 {% include admonitions/note.html content="This script requires Upstart 1.4 or newer, supported on Ubuntu 12.04-14.10." %}
 
