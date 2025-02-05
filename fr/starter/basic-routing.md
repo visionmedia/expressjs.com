@@ -37,33 +37,33 @@ Les exemples suivants illustrent la définition de routes simples.
 Réponse `Hello World!` sur la page d'accueil :
 
 ```js
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 ```
 
 Réponse à une demande POST sur la route racine (`/`), sur la page d'accueil de l'application :
 
 ```js
-app.post('/', function (req, res) {
-  res.send('Got a POST request');
-});
+app.post('/', (req, res) => {
+  res.send('Got a POST request')
+})
 ```
 
 Réponse à une demande PUT sur la route `/user` :
 
 ```js
-app.put('/user', function (req, res) {
-  res.send('Got a PUT request at /user');
-});
+app.put('/user', (req, res) => {
+  res.send('Got a PUT request at /user')
+})
 ```
 
 Réponse à une demande DELETE sur la route `/user` :
 
 ```js
-app.delete('/user', function (req, res) {
-  res.send('Got a DELETE request at /user');
-});
+app.delete('/user', (req, res) => {
+  res.send('Got a DELETE request at /user')
+})
 ```
 
 Pour plus de détails sur le routage, reportez-vous au [guide de routage](/{{ page.lang }}/guide/routing.html).

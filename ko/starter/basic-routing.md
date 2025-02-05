@@ -35,33 +35,33 @@ app.METHOD(PATH, HANDLER)
 홈 페이지에서 `Hello World!`로 응답:
 
 ```js
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 ```
 
 애플리케이션의 홈 페이지인 루트 라우트(`/`)에서 POST 요청에 응답:
 
 ```js
-app.post('/', function (req, res) {
-  res.send('Got a POST request');
-});
+app.post('/', (req, res) => {
+  res.send('Got a POST request')
+})
 ```
 
 `/user` 라우트에 대한 PUT 요청에 응답:
 
 ```js
-app.put('/user', function (req, res) {
-  res.send('Got a PUT request at /user');
-});
+app.put('/user', (req, res) => {
+  res.send('Got a PUT request at /user')
+})
 ```
 
 `/user` 라우트에 대한 DELETE 요청에 응답:
 
 ```js
-app.delete('/user', function (req, res) {
-  res.send('Got a DELETE request at /user');
-});
+app.delete('/user', (req, res) => {
+  res.send('Got a DELETE request at /user')
+})
 ```
 
 라우팅에 대한 자세한 내용을 확인하려면 [라우팅 안내서](/{{ page.lang }}/guide/routing.html)를 참조하십시오.

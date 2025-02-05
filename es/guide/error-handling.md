@@ -12,23 +12,23 @@ description: Understand how Express.js handles errors in synchronous and asynchr
 Defina las funciones de middleware de manejo de errores de la misma forma que otras funciones de middleware, excepto que las funciones de manejo de errores tienen cuatro argumentos en lugar de tres: `(err, req, res, next)`. Por ejemplo:
 
 ```js
-app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 ```
 
 El middleware de manejo de errores se define al final, después de otras llamadas de rutas y `app.use()`; por ejemplo:
 
 ```js
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
-app.use(bodyParser());
-app.use(methodOverride());
-app.use(function(err, req, res, next) {
+app.use(bodyParser())
+app.use(methodOverride())
+app.use((err, req, res, next) => {
   // logic
-});
+})
 ```
 
 Las respuestas desde una función de middleware pueden estar en el formato que prefiera, por ejemplo, una página de errores HTML, un mensaje simple o una serie JSON.
@@ -36,42 +36,42 @@ Las respuestas desde una función de middleware pueden estar en el formato que p
 A efectos de la organización (y de infraestructura de nivel superior), puede definir varias funciones de middleware de manejo de errores, de la misma forma que con las funciones de middleware normales. Por ejemplo, si desea definir un manejador de errores para las solicitudes realizadas utilizando `XHR`, y las que no lo tienen, puede utilizar los siguientes mandatos:
 
 ```js
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
-app.use(bodyParser());
-app.use(methodOverride());
-app.use(logErrors);
-app.use(clientErrorHandler);
-app.use(errorHandler);
+app.use(bodyParser())
+app.use(methodOverride())
+app.use(logErrors)
+app.use(clientErrorHandler)
+app.use(errorHandler)
 ```
 
 En este ejemplo, los `logErrors` genéricos pueden escribir información de solicitudes y errores en `stderr`, por ejemplo:
 
 ```js
-function logErrors(err, req, res, next) {
-  console.error(err.stack);
-  next(err);
+function logErrors (err, req, res, next) {
+  console.error(err.stack)
+  next(err)
 }
 ```
 
 También en este ejemplo, `clientErrorHandler` se define de la siguiente manera; en este caso, el error se pasa de forma explícita al siguiente:
 
 ```js
-function clientErrorHandler(err, req, res, next) {
+function clientErrorHandler (err, req, res, next) {
   if (req.xhr) {
-    res.status(500).send({ error: 'Something failed!' });
+    res.status(500).send({ error: 'Something failed!' })
   } else {
-    next(err);
+    next(err)
   }
 }
 ```
 La función que detecta todos los errores de `errorHandler` puede implementarse de la siguiente manera:
 
 ```js
-function errorHandler(err, req, res, next) {
-  res.status(500);
-  res.render('error', { error: err });
+function errorHandler (err, req, res, next) {
+  res.status(500)
+  res.render('error', { error: err })
 }
 ```
 
@@ -81,18 +81,18 @@ Si tiene un manejador de rutas con varias funciones de devolución de llamada, p
 
 ```js
 app.get('/a_route_behind_paywall',
-  function checkIfPaidSubscriber(req, res, next) {
-    if(!req.user.hasPaid) {
+  (req, res, next) => {
+    if (!req.user.hasPaid) {
 
       // continue handling this request
-      next('route');
+      next('route')
     }
-  }, function getPaidContent(req, res, next) {
-    PaidContent.find(function(err, doc) {
-      if(err) return next(err);
-      res.json(doc);
-    });
-  });
+  }, (req, res, next) => {
+    PaidContent.find((err, doc) => {
+      if (err) return next(err)
+      res.json(doc)
+    })
+  })
 ```
 En este ejemplo, se omitirá el manejador `getPaidContent`, pero los restantes manejadores en `app` para `/a_route_behind_paywall` continuarán ejecutándose.
 
@@ -115,11 +115,11 @@ Si invoca `next()` con un error después de haber empezado a escribir la respues
 Por lo tanto, cuando añade un manejador de errores personalizado, se recomienda delegar en los mecanismos de manejo de errores predeterminados de Express, cuando las cabeceras ya se han enviado al cliente:
 
 ```js
-function errorHandler(err, req, res, next) {
+function errorHandler (err, req, res, next) {
   if (res.headersSent) {
-    return next(err);
+    return next(err)
   }
-  res.status(500);
-  res.render('error', { error: err });
+  res.status(500)
+  res.render('error', { error: err })
 }
 ```

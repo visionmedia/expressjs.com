@@ -14,7 +14,7 @@ Statik fayllarni qayerda joylashini ko'rsatish uchun `express.static` oraliq qay
 Masalan, siz o'z rasmlaringizni, CSS, JavaScriptlarni `public` direktoriyasida saqlamoqchi bo'lsangiz unda quyidagicha bo'ladi
 
 ```js
-app.use(express.static('public'));
+app.use(express.static('public'))
 ```
 
 Undan keyin `public` direktoriyasini ko'rsatmagan holda statik fayllarni yuklashingiz mumkin bo'ladi:
@@ -34,8 +34,8 @@ Fayllar faqat statik direktoriyadan qidiriladi, faylning nomi qanday bo'lishidan
 Agar siz ko'pgina direktoriyani statik qilmoqchi bo'lsangiz unda, `express.static` oraliq qayta ishlovchisini yana foydalanishingiz mumkin:
 
 ```js
-app.use(express.static('public'));
-app.use(express.static('files'));
+app.use(express.static('public'))
+app.use(express.static('files'))
 ```
 
 Fayllar ketma-ketlik bo'yicha statik direktoriyadan joy olishda va `express.static` orqali o'rnatiladi.
@@ -43,7 +43,7 @@ Fayllar ketma-ketlik bo'yicha statik direktoriyadan joy olishda va `express.stat
 Agar siz "virtual" (huddi manzil lekin fayl sistemada mavjud emas) fayllardan oldin prefix qo'shimchalik yaratmoqchi bo'lsangiz, `express.static` ikkita argument jo'nating, qo'shimcha ma'lumotni esa [bu yerdan](/4x/api.html#app.use) olishingiz mumkin bo'ladi. Ishlatishga misol esa:
 
 ```js
-app.use('/static', express.static('public'));
+app.use('/static', express.static('public'))
 ```
 
 Endi esa `public` direktoriyansidagi statik fayllarni "/static" prefiksi orqali olinadi.
@@ -58,5 +58,5 @@ http://localhost:3000/static/hello.html
 Agarda siz `express.static` orqali ko'rsatgan direktoriyangiz boshqa joyda ishga tushmasa, Siz uning absolyut manzilini ko'rsatishingiz kerak bo'ladi, masalan u mana bunday bo'ladi:
 
 ```js
-app.use('/static', express.static(__dirname + '/public'));
+app.use('/static', express.static(`${__dirname}/public`))
 ```

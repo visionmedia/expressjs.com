@@ -92,10 +92,10 @@ In den meisten Fällen können Sie einfach nur die Middleware der alten Version 
 In Version 4 können Sie über einen Variablenparameter den Pfad definieren, in den Middlewarefunktionen geladen werden. Dann können Sie den Wert des Parameters aus dem Routenhandler laden. Beispiel:
 
 ```js
-app.use('/book/:id', function(req, res, next) {
-  console.log('ID:', req.params.id);
-  next();
-});
+app.use('/book/:id', function (req, res, next) {
+  console.log('ID:', req.params.id)
+  next()
+})
 ```
 <h3 id="routing">
 Das Routingsystem
@@ -117,15 +117,15 @@ Dies ist ein Beispiel für verkettete Routenhandler, die mit der Funktion `app.r
 
 ```js
 app.route('/book')
-  .get(function(req, res) {
-    res.send('Get a random book');
+  .get(function (req, res) {
+    res.send('Get a random book')
   })
-  .post(function(req, res) {
-    res.send('Add a book');
+  .post(function (req, res) {
+    res.send('Add a book')
   })
-  .put(function(req, res) {
-    res.send('Update the book');
-  });
+  .put(function (req, res) {
+    res.send('Update the book')
+  })
 ```
 
 <h4 id="express-router">Die Klasse <code>express.Router</code></h4>
@@ -137,34 +137,34 @@ Im folgenden Beispiel wird ein Router als Modul erstellt, Middleware in das Modu
 Beispiel: Erstellen Sie eine Routerdatei namens `birds.js` mit dem folgenden Inhalt im Anwendungsverzeichnis:
 
 ```js
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
 
 // middleware specific to this router
-router.use(function timeLog(req, res, next) {
-  console.log('Time: ', Date.now());
-  next();
-});
+router.use(function timeLog (req, res, next) {
+  console.log('Time: ', Date.now())
+  next()
+})
 // define the home page route
-router.get('/', function(req, res) {
-  res.send('Birds home page');
-});
+router.get('/', function (req, res) {
+  res.send('Birds home page')
+})
 // define the about route
-router.get('/about', function(req, res) {
-  res.send('About birds');
-});
+router.get('/about', function (req, res) {
+  res.send('About birds')
+})
 
-module.exports = router;
+module.exports = router
 ```
 
 Laden Sie dann das Routermodul in die Anwendung:
 
 ```js
-var birds = require('./birds');
+var birds = require('./birds')
 
 /// ...
 
-app.use('/birds', birds);
+app.use('/birds', birds)
 ```
 
 Die Anwendung kann nun Anforderungen an die Pfade `/birds` und `/birds/about` bearbeiten und ruft die Middleware `timeLog` auf, die speziell für diese Weiterleitung bestimmt ist.
@@ -296,37 +296,37 @@ Anwendung der Version 3
 Es wird eine Express v.3-Anwendung mit der folgenden Datei `app.js` angenommen:
 
 ```js
-var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var http = require('http');
-var path = require('path');
+var express = require('express')
+var routes = require('./routes')
+var user = require('./routes/user')
+var http = require('http')
+var path = require('path')
 
-var app = express();
+var app = express()
 
 // all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.methodOverride());
-app.use(express.session({ secret: 'your secret here' }));
-app.use(express.bodyParser());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+app.set('port', process.env.PORT || 3000)
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'pug')
+app.use(express.favicon())
+app.use(express.logger('dev'))
+app.use(express.methodOverride())
+app.use(express.session({ secret: 'your secret here' }))
+app.use(express.bodyParser())
+app.use(app.router)
+app.use(express.static(path.join(__dirname, 'public')))
 
 // development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+if (app.get('env') == 'development') {
+  app.use(express.errorHandler())
 }
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/', routes.index)
+app.get('/users', user.list)
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+http.createServer(app).listen(app.get('port'), function () {
+  console.log('Express server listening on port ' + app.get('port'))
+})
 ```
 
 <h4 id=""><code>package.json</code></h4>
@@ -402,58 +402,60 @@ Durch Ausführung des Befehls `npm` wird `package.json` wie folgt aktualisiert:
 Entfernen Sie dann ungültigen Code, laden Sie die erforderliche Middleware und nehmen Sie andere Änderungen nach Bedarf vor. Die Datei `app.js` sieht dann wie folgt aus:
 
 ```js
-var http = require('http');
-var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var path = require('path');
+var http = require('http')
+var express = require('express')
+var routes = require('./routes')
+var user = require('./routes/user')
+var path = require('path')
 
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var methodOverride = require('method-override');
-var session = require('express-session');
-var bodyParser = require('body-parser');
-var multer = require('multer');
-var errorHandler = require('errorhandler');
+var favicon = require('serve-favicon')
+var logger = require('morgan')
+var methodOverride = require('method-override')
+var session = require('express-session')
+var bodyParser = require('body-parser')
+var multer = require('multer')
+var errorHandler = require('errorhandler')
 
-var app = express();
+var app = express()
 
 // all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
-app.use(methodOverride());
-app.use(session({ resave: true,
-                  saveUninitialized: true,
-                  secret: 'uwotm8' }));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(multer());
-app.use(express.static(path.join(__dirname, 'public')));
+app.set('port', process.env.PORT || 3000)
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'pug')
+app.use(favicon(__dirname + '/public/favicon.ico'))
+app.use(logger('dev'))
+app.use(methodOverride())
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: 'uwotm8'
+}))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(multer())
+app.use(express.static(path.join(__dirname, 'public')))
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/', routes.index)
+app.get('/users', user.list)
 
 // error handling middleware should be loaded after the loading the routes
-if ('development' == app.get('env')) {
-  app.use(errorHandler());
+if (app.get('env') == 'development') {
+  app.use(errorHandler())
 }
 
-var server = http.createServer(app);
-server.listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+var server = http.createServer(app)
+server.listen(app.get('port'), function () {
+  console.log('Express server listening on port ' + app.get('port'))
+})
 ```
 
 <div class="doc-box doc-info" markdown="1">
 Wenn Sie nicht direkt mit dem Modul `http` arbeiten müssen (socket.io/SPDY/HTTPS), ist das Laden des Moduls nicht erforderlich. Die Anwendung kann dann einfach wie folgt gestartet werden:
 
 ```js
-app.listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+app.listen(app.get('port'), function () {
+  console.log('Express server listening on port ' + app.get('port'))
+})
 ```
 
 </div>
@@ -528,17 +530,17 @@ Weder das Verzeichnis `bin` noch die erweiterungslose Datei `www` ist für das E
 Um das Verzeichnis `www` zu löschen und alles im "Express 3-Stil" zu belassen, löschen Sie die Zeile mit dem Eintrag `module.exports = app;` am Ende der Datei `app.js`. Fügen Sie dann stattdessen den folgenden Code an derselben Position ein:
 
 ```js
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3000)
 
-var server = app.listen(app.get('port'), function() {
-  debug('Express server listening on port ' + server.address().port);
-});
+var server = app.listen(app.get('port'), function () {
+  debug('Express server listening on port ' + server.address().port)
+})
 ```
 
 Stellen Sie sicher, dass Sie das Modul `debug` am Anfang der Datei `app.js` laden. Verwenden Sie dazu den folgenden Code:
 
 ```js
-var debug = require('debug')('app4');
+var debug = require('debug')('app4')
 ```
 
 Ändern Sie als Nächstes `"start": "node ./bin/www"` in der Datei `package.json` in `"start": "node app.js"`.

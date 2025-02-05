@@ -61,9 +61,9 @@ Express에서 404 응답은 오류로 인해 발생하는 결과가 아니며, �
 추가하기만 하면 됩니다.
 
 ```js
-app.use(function(req, res, next) {
-  res.status(404).send('Sorry cant find that!');
-});
+app.use((req, res, next) => {
+  res.status(404).send('Sorry cant find that!')
+})
 ```
 
 ## 오류 핸들러를 어떻게 설정해야 합니까?
@@ -72,10 +72,10 @@ app.use(function(req, res, next) {
 다음과 같이 오류 처리 함수는 3개가 아닌 4개의 인수, 구체적으로 말하면 `(err, req, res, next)` 시그니처를 갖는다는 점이 다릅니다.
 
 ```js
-app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 ```
 
 자세한 정보는 [오류 처리](/{{ page.lang }}/guide/error-handling.html)를 참조하십시오.

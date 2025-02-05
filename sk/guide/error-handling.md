@@ -13,23 +13,23 @@ Middleware funkcie pre error-handling sa definujú rovnako, ako ostatné middlew
 `(err, req, res, next)`. Napr.:
 
 ```js
-app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 ```
 
 Error-handling middleware zadefinujte ako posledný, za ostatnými `app.use()` a route definíciami, napr.:
 
 ```js
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
-app.use(bodyParser());
-app.use(methodOverride());
-app.use(function(err, req, res, next) {
+app.use(bodyParser())
+app.use(methodOverride())
+app.use((err, req, res, next) => {
   // logic
-});
+})
 ```
 
 Návratové hodnoty predávané medzi jednotlivými middleware funkciami môžu byť v ľubovoľnom formáte, ako napr. stránka s HTML errorom, jednoduchá message, či JSON string.
@@ -38,42 +38,42 @@ Z dôvodu lepšej organizácie kódu je možné zadefinovať niekoľko error-han
 Napr., ak chcete zadefinovať error-handling pre `XHR` volania a pre tie ostatné, môžete použiť nasledujúci príklad:
 
 ```js
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
-app.use(bodyParser());
-app.use(methodOverride());
-app.use(logErrors);
-app.use(clientErrorHandler);
-app.use(errorHandler);
+app.use(bodyParser())
+app.use(methodOverride())
+app.use(logErrors)
+app.use(clientErrorHandler)
+app.use(errorHandler)
 ```
 
 V nasledujúcom príklade `logErrors` sú všetky errory vypísané na `stderr`, napr.:
 
 ```js
-function logErrors(err, req, res, next) {
-  console.error(err.stack);
-  next(err);
+function logErrors (err, req, res, next) {
+  console.error(err.stack)
+  next(err)
 }
 ```
 
 V nasledujúcom príklade je `clientErrorHandler` zadefinovaný tak, aby XHR errory boli explicitne odchytené; tie ostatné sa nespracovávajú a ich spracovanie je ponechané nasledujúcej middleware funkcii v poradí:
 
 ```js
-function clientErrorHandler(err, req, res, next) {
+function clientErrorHandler (err, req, res, next) {
   if (req.xhr) {
-    res.status(500).send({ error: 'Something failed!' });
+    res.status(500).send({ error: 'Something failed!' })
   } else {
-    next(err);
+    next(err)
   }
 }
 ```
 Finálna "catch-all" `errorHandler` funkcia môže byť implementovaná takto:
 
 ```js
-function errorHandler(err, req, res, next) {
-  res.status(500);
-  res.render('error', { error: err });
+function errorHandler (err, req, res, next) {
+  res.status(500)
+  res.render('error', { error: err })
 }
 ```
 
@@ -83,18 +83,18 @@ Ak váš route handler obsahuje viacero callback funkcií, môžete k preskočen
 
 ```js
 app.get('/a_route_behind_paywall',
-  function checkIfPaidSubscriber(req, res, next) {
-    if(!req.user.hasPaid) {
+  (req, res, next) => {
+    if (!req.user.hasPaid) {
 
       // continue handling this request
-      next('route');
+      next('route')
     }
-  }, function getPaidContent(req, res, next) {
-    PaidContent.find(function(err, doc) {
-      if(err) return next(err);
-      res.json(doc);
-    });
-  });
+  }, (req, res, next) => {
+    PaidContent.find((err, doc) => {
+      if (err) return next(err)
+      res.json(doc)
+    })
+  })
 ```
 V tomto príklade bude `getPaidContent` handler preskočený, ale ďalšie zostávajúce `app` handlery pre `/a_route_behind_paywall` budú vykonané.
 
@@ -117,11 +117,11 @@ V prípade, ak zavoláte `next()` spolu s errorom potom, ako ste už začali vyp
 V prípade, ak máte zadefinovaný vlastný erorr handler a budete chcieť delegovať defaultný error handling mechanizmus na Express, v prípade ak už nejaké dáta boli odoslané klientovi, môžete vykonať nasledovné:
 
 ```js
-function errorHandler(err, req, res, next) {
+function errorHandler (err, req, res, next) {
   if (res.headersSent) {
-    return next(err);
+    return next(err)
   }
-  res.status(500);
-  res.render('error', { error: err });
+  res.status(500)
+  res.render('error', { error: err })
 }
 ```

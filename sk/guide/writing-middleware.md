@@ -50,14 +50,14 @@ Zvyšná časť tohto článku definuje a pridáva do aplikácie dve middleware 
 jedna nazvaná `myLogger` ktorá vypíše jednoduchú log message a druhá nazvaná `requestTime` ktorá vypíše timestamp HTTP requestu.
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 
 <h2>Middleware funkcia myLogger</h2>
@@ -65,10 +65,10 @@ app.listen(3000);
 Tu je príklad jednoduchej middleware funkcie nazvanej "myLogger". Táto funkcia len vypíše "LOGGED", vždy keď aplikácia odchytí request. Middleware funkcia je priradená premennej nazvanej `myLogger`.
 
 ```js
-var myLogger = function (req, res, next) {
-  console.log('LOGGED');
-  next();
-};
+const myLogger = function (req, res, next) {
+  console.log('LOGGED')
+  next()
+}
 ```
 
 <div class="doc-box doc-notice" markdown="1">
@@ -82,21 +82,21 @@ Pre načítanie middleware funkcie zavolajte `app.use()`, prostredníctvom ktore
 Nasledujúci kód načíta `myLogger` middleware funkciu ešte pred route definíciou hlavnej cesty aplikácie (/).
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-var myLogger = function (req, res, next) {
-  console.log('LOGGED');
-  next();
-};
+const myLogger = function (req, res, next) {
+  console.log('LOGGED')
+  next()
+}
 
-app.use(myLogger);
+app.use(myLogger)
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 
 Vždy keď aplikácia obdrží request požiadavku, vypíše do konzoly správu "LOGGED".
@@ -112,32 +112,32 @@ Táto `myLogger` middleware funkcia len vypisuje správu a posunie spracovanie �
 Ďalej vytvoríme middleware funkciu s názvom "requestTime" a ktorá pridáva `requestTime` atribút na request objekt.
 
 ```js
-var requestTime = function (req, res, next) {
-  req.requestTime = Date.now();
-  next();
-};
+const requestTime = function (req, res, next) {
+  req.requestTime = Date.now()
+  next()
+}
 ```
 
 Aplikácia teraz používa `requestTime` middleware funkciu. Taktiež callback funkcia pre obsluhu route hlavnej stránky aplikácie používa atribút, ktorý táto middleware funkcia pridala na `req` (request objekt).
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-var requestTime = function (req, res, next) {
-  req.requestTime = Date.now();
-  next();
-};
+const requestTime = function (req, res, next) {
+  req.requestTime = Date.now()
+  next()
+}
 
-app.use(requestTime);
+app.use(requestTime)
 
-app.get('/', function (req, res) {
-  var responseText = 'Hello World!<br>';
-  responseText += '<small>Requested at: ' + req.requestTime + '</small>';
-  res.send(responseText);
-});
+app.get('/', (req, res) => {
+  let responseText = 'Hello World!<br>'
+  responseText += `<small>Requested at: ${req.requestTime}</small>`
+  res.send(responseText)
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 Po vykonaní requestu na hlavnú stránku aplikácie sa zobrazí v prehliadači timestamp vášho requestu.
 

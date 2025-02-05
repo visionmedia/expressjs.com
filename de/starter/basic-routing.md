@@ -33,33 +33,33 @@ Die folgenden Beispiele veranschaulichen das Definieren einfacher Weiterleitunge
 Antworten Sie mit `Hello World!` auf der Homepage:
 
 ```js
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 ```
 
 Antworten Sie auf POST-Anforderungen auf die Weiterleitung zum Stammverzeichnis (`/`), der Homepage der Anwendung:
 
 ```js
-app.post('/', function (req, res) {
-  res.send('Got a POST request');
-});
+app.post('/', (req, res) => {
+  res.send('Got a POST request')
+})
 ```
 
 Antworten Sie auf eine PUT-Anforderung zur Weiterleitung `/user`:
 
 ```js
-app.put('/user', function (req, res) {
-  res.send('Got a PUT request at /user');
-});
+app.put('/user', (req, res) => {
+  res.send('Got a PUT request at /user')
+})
 ```
 
 Antworten Sie auf eine DELETE-Anforderung zur Weiterleitung `/user`:
 
 ```js
-app.delete('/user', function (req, res) {
-  res.send('Got a DELETE request at /user');
-});
+app.delete('/user', (req, res) => {
+  res.send('Got a DELETE request at /user')
+})
 ```
 
 Details zum Thema Routing finden Sie in der entsprechenden [Routinganleitung](/{{ page.lang }}/guide/routing.html).

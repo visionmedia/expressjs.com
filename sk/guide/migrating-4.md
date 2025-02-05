@@ -96,10 +96,10 @@ Vo verzii 4 môžete použiť voliteľný parameter k definovaniu path-u, kedy s
 Napr.:
 
 ```js
-app.use('/book/:id', function(req, res, next) {
-  console.log('ID:', req.params.id);
-  next();
-});
+app.use('/book/:id', function (req, res, next) {
+  console.log('ID:', req.params.id)
+  next()
+})
 ```
 <h3 id="routing">
 Routing systém
@@ -121,15 +121,15 @@ Tu je príklad zreťazených route handlerov definovaných pomocou `app.route()`
 
 ```js
 app.route('/book')
-  .get(function(req, res) {
-    res.send('Get a random book');
+  .get(function (req, res) {
+    res.send('Get a random book')
   })
-  .post(function(req, res) {
-    res.send('Add a book');
+  .post(function (req, res) {
+    res.send('Add a book')
   })
-  .put(function(req, res) {
-    res.send('Update the book');
-  });
+  .put(function (req, res) {
+    res.send('Update the book')
+  })
 ```
 
 <h4 id="express-router"><code>express.Router</code> trieda</h4>
@@ -141,34 +141,34 @@ Nasledujúci príklad vytvára router ako modul, načítava v ňom middleware, d
 Napr., vytvorte v priečinku vašej aplikácie router súbor s názvom `birds.js` s takýmto obsahom:
 
 ```js
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
 
 // middleware specific to this router
-router.use(function timeLog(req, res, next) {
-  console.log('Time: ', Date.now());
-  next();
-});
+router.use(function timeLog (req, res, next) {
+  console.log('Time: ', Date.now())
+  next()
+})
 // define the home page route
-router.get('/', function(req, res) {
-  res.send('Birds home page');
-});
+router.get('/', function (req, res) {
+  res.send('Birds home page')
+})
 // define the about route
-router.get('/about', function(req, res) {
-  res.send('About birds');
-});
+router.get('/about', function (req, res) {
+  res.send('About birds')
+})
 
-module.exports = router;
+module.exports = router
 ```
 
 Potom tento router načítajte vo vašej aplikácii:
 
 ```js
-var birds = require('./birds');
+var birds = require('./birds')
 
 /// ...
 
-app.use('/birds', birds);
+app.use('/birds', birds)
 ```
 
 Aplikácia bude odteraz schopná obslúžiť requesty na path-och `/birds` a
@@ -303,37 +303,37 @@ Applikácia vo verzii 3
 Majme takúto Express v.3 aplikáciu s takýmto `app.js` súborom:
 
 ```js
-var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var http = require('http');
-var path = require('path');
+var express = require('express')
+var routes = require('./routes')
+var user = require('./routes/user')
+var http = require('http')
+var path = require('path')
 
-var app = express();
+var app = express()
 
 // all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.methodOverride());
-app.use(express.session({ secret: 'your secret here' }));
-app.use(express.bodyParser());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+app.set('port', process.env.PORT || 3000)
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'pug')
+app.use(express.favicon())
+app.use(express.logger('dev'))
+app.use(express.methodOverride())
+app.use(express.session({ secret: 'your secret here' }))
+app.use(express.bodyParser())
+app.use(app.router)
+app.use(express.static(path.join(__dirname, 'public')))
 
 // development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+if (app.get('env') == 'development') {
+  app.use(express.errorHandler())
 }
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/', routes.index)
+app.get('/users', user.list)
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+http.createServer(app).listen(app.get('port'), function () {
+  console.log('Express server listening on port ' + app.get('port'))
+})
 ```
 
 <h4 id=""><code>package.json</code></h4>
@@ -412,58 +412,60 @@ Spustením kódu vyššie, `npm` príkaz updatne `package.json` nasledovne:
 Potom zmažte nesprávny kód, načítajte potrebné middlewary a vykonajte ďalšie potrebné zmeny. Súbor `app.js` bude potom vyzerať takto:
 
 ```js
-var http = require('http');
-var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var path = require('path');
+var http = require('http')
+var express = require('express')
+var routes = require('./routes')
+var user = require('./routes/user')
+var path = require('path')
 
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var methodOverride = require('method-override');
-var session = require('express-session');
-var bodyParser = require('body-parser');
-var multer = require('multer');
-var errorHandler = require('errorhandler');
+var favicon = require('serve-favicon')
+var logger = require('morgan')
+var methodOverride = require('method-override')
+var session = require('express-session')
+var bodyParser = require('body-parser')
+var multer = require('multer')
+var errorHandler = require('errorhandler')
 
-var app = express();
+var app = express()
 
 // all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
-app.use(methodOverride());
-app.use(session({ resave: true,
-                  saveUninitialized: true,
-                  secret: 'uwotm8' }));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(multer());
-app.use(express.static(path.join(__dirname, 'public')));
+app.set('port', process.env.PORT || 3000)
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'pug')
+app.use(favicon(__dirname + '/public/favicon.ico'))
+app.use(logger('dev'))
+app.use(methodOverride())
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: 'uwotm8'
+}))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(multer())
+app.use(express.static(path.join(__dirname, 'public')))
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/', routes.index)
+app.get('/users', user.list)
 
 // error handling middleware should be loaded after the loading the routes
-if ('development' == app.get('env')) {
-  app.use(errorHandler());
+if (app.get('env') == 'development') {
+  app.use(errorHandler())
 }
 
-var server = http.createServer(app);
-server.listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+var server = http.createServer(app)
+server.listen(app.get('port'), function () {
+  console.log('Express server listening on port ' + app.get('port'))
+})
 ```
 
 <div class="doc-box doc-info" markdown="1">
 Pokiaľ nepotrebujete priamo pracovať s `http` modulom (socket.io/SPDY/HTTPS), nie je nutné ho načítať a aplikáciu môžete jednoducho naštartovať týmto spôsobom:
 
 ```js
-app.listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+app.listen(app.get('port'), function () {
+  console.log('Express server listening on port ' + app.get('port'))
+})
 ```
 </div>
 
@@ -548,17 +550,17 @@ Ak sa chcete zbaviť `www` priečinka a ponechať to v starom "Express 3 formát
 zmažte riadok `module.exports = app;` na konci `app.js` súboru a namiesto neho vložte nasledujúci kód:
 
 ```js
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3000)
 
-var server = app.listen(app.get('port'), function() {
-  debug('Express server listening on port ' + server.address().port);
-});
+var server = app.listen(app.get('port'), function () {
+  debug('Express server listening on port ' + server.address().port)
+})
 ```
 
 Uistite sa, že ste načítali `debug` modul, v hornej časti vášho `app.js` súboru, použitím nasledujúceho kódu:
 
 ```js
-var debug = require('debug')('app4');
+var debug = require('debug')('app4')
 ```
 
 Ďalej zmeňte v súbore `package.json` riadok `"start": "node ./bin/www"`  na `"start": "node app.js"`.

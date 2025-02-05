@@ -70,14 +70,14 @@ app.get('/', function(req, res, next) {
 Ecco un esempio di una semplice applicazione Express "Hello World", per cui si definiranno due funzioni middleware:
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 
 <h2>Sviluppo</h2>
@@ -85,10 +85,10 @@ app.listen(3000);
 Ecco un semplice esempio di una funzione middleware, denominata "myLogger". Questa funzione stampa semplicemente la dicitura "LOGGED" quando una richiesta all'applicazione la attraversa. La funzione middleware è assegnata ad una variabile denominata `myLogger`.
 
 ```js
-var myLogger = function (req, res, next) {
-  console.log('LOGGED');
-  next();
-};
+const myLogger = function (req, res, next) {
+  console.log('LOGGED')
+  next()
+}
 ```
 
 <div class="doc-box doc-notice" markdown="1">
@@ -100,21 +100,21 @@ Per caricare la funzione middleware, richiamare `app.use()`, specificando la fun
 Ad esempio, il seguente codice carica la funzione middleware `myLogger` prima della route al percorso root (/).
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-var myLogger = function (req, res, next) {
-  console.log('LOGGED');
-  next();
-};
+const myLogger = function (req, res, next) {
+  console.log('LOGGED')
+  next()
+}
 
-app.use(myLogger);
+app.use(myLogger)
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 
 Ogni volta che un'applicazione riceve una richiesta, viene stampato il messaggio "LOGGED" sul terminale.
@@ -128,32 +128,32 @@ La funzione middleware `myLogger` stampa semplicemente un messaggio, successivam
 Nel successivo esempio viene aggiunta una proprietà denominata `requestTime` all'oggetto richiesta. Questa funzione middleware verrà denominata "requestTime".
 
 ```js
-var requestTime = function (req, res, next) {
-  req.requestTime = Date.now();
-  next();
-};
+const requestTime = function (req, res, next) {
+  req.requestTime = Date.now()
+  next()
+}
 ```
 
 L'applicazione utilizza ora la funzione middleware `requestTime`. Inoltre, la funzione di callback della route percorso root utilizza la proprietà che la funzione middleware aggiunge a `req` (l'oggetto richiesta).
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-var requestTime = function (req, res, next) {
-  req.requestTime = Date.now();
-  next();
-};
+const requestTime = function (req, res, next) {
+  req.requestTime = Date.now()
+  next()
+}
 
-app.use(requestTime);
+app.use(requestTime)
 
-app.get('/', function (req, res) {
-  var responseText = 'Hello World!<br>';
-  responseText += '<small>Requested at: ' + req.requestTime + '</small>';
-  res.send(responseText);
-});
+app.get('/', (req, res) => {
+  let responseText = 'Hello World!<br>'
+  responseText += `<small>Requested at: ${req.requestTime}</small>`
+  res.send(responseText)
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 Quando si effettua una richiesta al root dell'applicazione, l'applicazione mostra la cronologia data e ora della richiesta nel browser.
 

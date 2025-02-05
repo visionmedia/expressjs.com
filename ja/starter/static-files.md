@@ -14,7 +14,7 @@ description: Understand how to serve static files like images, CSS, and JavaScri
 静的アセットファイルを格納しているディレクトリーの名前を `express.static` ミドルウェア関数に渡して、ファイルの直接提供を開始します。例えば、`public` というディレクトリー内のイメージ、CSS ファイル、JavaScript ファイルを提供するには、次のコードを使用します。
 
 ```js
-app.use(express.static('public'));
+app.use(express.static('public'))
 ```
 
 これで、`public` ディレクトリーに入っているファイルをロードできます。
@@ -34,8 +34,8 @@ Express は、静的ディレクトリーから相対的なファイルを検索
 複数の静的アセットディレクトリーを使用するには、`express.static` ミドルウェア関数を複数回呼び出します。
 
 ```js
-app.use(express.static('public'));
-app.use(express.static('files'));
+app.use(express.static('public'))
+app.use(express.static('files'))
 ```
 
 Express は、`express.static` ミドルウェア関数に静的ディレクトリーが設定された順序でファイルを検索します。
@@ -43,7 +43,7 @@ Express は、`express.static` ミドルウェア関数に静的ディレクト�
 `express.static` 関数によって提供されるファイルの仮想パスのプレフィックス (パスは実際にはファイル・システムに存在しません) を作成するには、次に示すように、静的ディレクトリーの[マウント・パスを指定](/{{ page.lang }}/4x/api.html#app.use)します。
 
 ```js
-app.use('/static', express.static('public'));
+app.use('/static', express.static('public'))
 ```
 
 これで、`public` ディレクトリー内のファイルを `/static` パス・プレフィックスからロードできます。
@@ -59,5 +59,5 @@ http://localhost:3000/static/hello.html
 ただし、`express.static` 関数に指定するパスは、`node` プロセスを起動するディレクトリーに対して相対的です。別のディレクトリーから Express アプリケーションを実行する場合は、提供するディレクトリーの絶対パスを使用する方が安全です。
 
 ```js
-app.use('/static', express.static(__dirname + '/public'));
+app.use('/static', express.static(`${__dirname}/public`))
 ```

@@ -35,33 +35,33 @@ app.METHOD(PATH, HANDLER)
 首頁中以 `Hello World!` 回應。
 
 ```js
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 ```
 
 對根路由 (`/`)（應用程式的首頁）發出 POST 要求時的回應：
 
 ```js
-app.post('/', function (req, res) {
-  res.send('Got a POST request');
-});
+app.post('/', (req, res) => {
+  res.send('Got a POST request')
+})
 ```
 
 對 `/user` 路由發出 PUT 要求時的回應：
 
 ```js
-app.put('/user', function (req, res) {
-  res.send('Got a PUT request at /user');
-});
+app.put('/user', (req, res) => {
+  res.send('Got a PUT request at /user')
+})
 ```
 
 對 `/user` 路由發出 DELETE 要求時的回應：
 
 ```js
-app.delete('/user', function (req, res) {
-  res.send('Got a DELETE request at /user');
-});
+app.delete('/user', (req, res) => {
+  res.send('Got a DELETE request at /user')
+})
 ```
 
 如需路由的詳細資料，請參閱[路由手冊](/{{ page.lang }}/guide/routing.html)。

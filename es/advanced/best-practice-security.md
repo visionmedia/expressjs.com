@@ -69,8 +69,8 @@ A continuación, utilícelo en el código:
 ```js
 /// ...
 
-var helmet = require('helmet');
-app.use(helmet());
+const helmet = require('helmet')
+app.use(helmet())
 
 /// ...
 ```
@@ -82,7 +82,7 @@ Si no desea utilizar Helmet, como mínimo, inhabilite la cabecera `X-Powered-By`
 Por lo tanto, se recomienda desactivar la cabecera con el método `app.disable()`:
 
 ```js
-app.disable('x-powered-by');
+app.disable('x-powered-by')
 ```
 
 Si utiliza `helmet.js`, lo hace automáticamente.
@@ -107,13 +107,13 @@ Si utiliza el nombre de cookie de sesión predeterminado, la aplicación puede q
 Para evitar este problema, utilice nombres de cookie genéricos, por ejemplo, con el middleware [express-session](https://www.npmjs.com/package/express-session):
 
 ```js
-var session = require('express-session');
+const session = require('express-session')
 app.set('trust proxy', 1) // trust first proxy
-app.use( session({
-   secret : 's3Cur3',
-   name : 'sessionId',
-  })
-);
+app.use(session({
+  secret: 's3Cur3',
+  name: 'sessionId'
+})
+)
 ```
 
 ### Establecer las opciones de seguridad de las cookies
@@ -129,22 +129,23 @@ Establezca las siguientes opciones de cookies para mejorar la seguridad:
 A continuación, se muestra un ejemplo de uso del middleware [cookie-session](https://www.npmjs.com/package/cookie-session):
 
 ```js
-var session = require('cookie-session');
-var express = require('express');
-var app = express();
+const session = require('cookie-session')
+const express = require('express')
+const app = express()
 
-var expiryDate = new Date( Date.now() + 60 * 60 * 1000 ); // 1 hour
+const expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 app.use(session({
   name: 'session',
   keys: ['key1', 'key2'],
-  cookie: { secure: true,
-            httpOnly: true,
-            domain: 'example.com',
-            path: 'foo/bar',
-            expires: expiryDate
-          }
-  })
-);
+  cookie: {
+    secure: true,
+    httpOnly: true,
+    domain: 'example.com',
+    path: 'foo/bar',
+    expires: expiryDate
+  }
+})
+)
 ```
 
 ## Prevenir ataques de fuerza bruta a la autenticación

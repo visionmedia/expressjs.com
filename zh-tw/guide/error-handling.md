@@ -13,23 +13,23 @@ description: Understand how Express.js handles errors in synchronous and asynchr
 
 
 ```js
-app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 ```
 
 您是在定義其他 `app.use()` 和路由呼叫之後，最後才定義錯誤處理中介軟體；例如：
 
 ```js
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
-app.use(bodyParser());
-app.use(methodOverride());
-app.use(function(err, req, res, next) {
+app.use(bodyParser())
+app.use(methodOverride())
+app.use((err, req, res, next) => {
   // logic
-});
+})
 ```
 
 中介軟體函數內的回應可以是任何您喜好的格式，如：HTML 錯誤頁面、簡式訊息或 JSON 字串。
@@ -37,42 +37,42 @@ app.use(function(err, req, res, next) {
 為了方便組織（和更高層次的架構），您可以定義數個錯誤處理中介軟體函數，就像您處理一般中介軟體函數一樣。舉例來說，如果您想為使用及沒有使用 `XHR` 所建立的要求，各定義一個錯誤處理程式，您可以使用下列指令：
 
 ```js
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
-app.use(bodyParser());
-app.use(methodOverride());
-app.use(logErrors);
-app.use(clientErrorHandler);
-app.use(errorHandler);
+app.use(bodyParser())
+app.use(methodOverride())
+app.use(logErrors)
+app.use(clientErrorHandler)
+app.use(errorHandler)
 ```
 
 在本例中，通用的 `logErrors` 可能將要求和錯誤資訊寫入至 `stderr`，例如：
 
 ```js
-function logErrors(err, req, res, next) {
-  console.error(err.stack);
-  next(err);
+function logErrors (err, req, res, next) {
+  console.error(err.stack)
+  next(err)
 }
 ```
 
 此外在本例中，`clientErrorHandler` 定義成如下；在此情況下，會將錯誤明確傳遞給下一個：
 
 ```js
-function clientErrorHandler(err, req, res, next) {
+function clientErrorHandler (err, req, res, next) {
   if (req.xhr) {
-    res.status(500).send({ error: 'Something failed!' });
+    res.status(500).send({ error: 'Something failed!' })
   } else {
-    next(err);
+    next(err)
   }
 }
 ```
 "catch-all" `errorHandler` 函數的實作方式如下：
 
 ```js
-function errorHandler(err, req, res, next) {
-  res.status(500);
-  res.render('error', { error: err });
+function errorHandler (err, req, res, next) {
+  res.status(500)
+  res.render('error', { error: err })
 }
 ```
 
@@ -83,18 +83,18 @@ function errorHandler(err, req, res, next) {
 
 ```js
 app.get('/a_route_behind_paywall',
-  function checkIfPaidSubscriber(req, res, next) {
-    if(!req.user.hasPaid) {
+  (req, res, next) => {
+    if (!req.user.hasPaid) {
 
       // continue handling this request
-      next('route');
+      next('route')
     }
-  }, function getPaidContent(req, res, next) {
-    PaidContent.find(function(err, doc) {
-      if(err) return next(err);
-      res.json(doc);
-    });
-  });
+  }, (req, res, next) => {
+    PaidContent.find((err, doc) => {
+      if (err) return next(err)
+      res.json(doc)
+    })
+  })
 ```
 在本例中，會跳過 `getPaidContent` 處理程式，但是會繼續執行 `app` 中 `/a_route_behind_paywall` 的其餘處理程式。
 
@@ -116,11 +116,11 @@ Express 隨附一個內建錯誤處理常式，它會處理應用程式中可能
 因此，在您新增自訂錯誤處理常式時，如果標頭已傳送給用戶端，您會希望委派給 Express 中的預設錯誤處理機制處理：
 
 ```js
-function errorHandler(err, req, res, next) {
+function errorHandler (err, req, res, next) {
   if (res.headersSent) {
-    return next(err);
+    return next(err)
   }
-  res.status(500);
-  res.render('error', { error: err });
+  res.status(500)
+  res.render('error', { error: err })
 }
 ```

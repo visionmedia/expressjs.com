@@ -14,23 +14,23 @@ Définissez les fonctions middleware de traitement d'erreurs de la même manièr
 `(err, req, res, next)`. Par exemple :
 
 ```js
-app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 ```
 
 Définissez le middleware de traitement d'erreurs en dernier, après les autres appels `app.use()` et de routes ; par exemple :
 
 ```js
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
-app.use(bodyParser());
-app.use(methodOverride());
-app.use(function(err, req, res, next) {
+app.use(bodyParser())
+app.use(methodOverride())
+app.use((err, req, res, next) => {
   // logic
-});
+})
 ```
 
 Les réponses issues d'une fonction middleware peuvent être au format de votre choix, par exemple une page d'erreur HTML, un simple message ou une chaîne JSON.
@@ -39,42 +39,42 @@ A des fins organisationnelles (et d'infrastructure de niveau supérieur), vous p
 Par exemple, si vous vouliez définir un gestionnaire d'erreurs pour les demandes réalisées avec `XHR` et pour celles réalisées sans, vous pourriez utiliser les commandes suivantes :
 
 ```js
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
-app.use(bodyParser());
-app.use(methodOverride());
-app.use(logErrors);
-app.use(clientErrorHandler);
-app.use(errorHandler);
+app.use(bodyParser())
+app.use(methodOverride())
+app.use(logErrors)
+app.use(clientErrorHandler)
+app.use(errorHandler)
 ```
 
 Dans cet exemple, les erreurs `logErrors` génériques pourraient écrire des informations de demande et d'erreur dans `stderr`, par exemple :
 
 ```js
-function logErrors(err, req, res, next) {
-  console.error(err.stack);
-  next(err);
+function logErrors (err, req, res, next) {
+  console.error(err.stack)
+  next(err)
 }
 ```
 
 Egalement dans cet exemple, `clientErrorHandler` est défini comme suit ; dans ce cas, l'erreur est explicitement transmise à la fonction suivante :
 
 ```js
-function clientErrorHandler(err, req, res, next) {
+function clientErrorHandler (err, req, res, next) {
   if (req.xhr) {
-    res.status(500).send({ error: 'Something failed!' });
+    res.status(500).send({ error: 'Something failed!' })
   } else {
-    next(err);
+    next(err)
   }
 }
 ```
 La fonction "catch-all" `errorHandler` peut être mise en oeuvre comme suit :
 
 ```js
-function errorHandler(err, req, res, next) {
-  res.status(500);
-  res.render('error', { error: err });
+function errorHandler (err, req, res, next) {
+  res.status(500)
+  res.render('error', { error: err })
 }
 ```
 
@@ -86,18 +86,18 @@ Si vous disposez d'un gestionnaire de routage avec plusieurs fonctions callback,
 
 ```js
 app.get('/a_route_behind_paywall',
-  function checkIfPaidSubscriber(req, res, next) {
-    if(!req.user.hasPaid) {
+  (req, res, next) => {
+    if (!req.user.hasPaid) {
 
       // continue handling this request
-      next('route');
+      next('route')
     }
-  }, function getPaidContent(req, res, next) {
-    PaidContent.find(function(err, doc) {
-      if(err) return next(err);
-      res.json(doc);
-    });
-  });
+  }, (req, res, next) => {
+    PaidContent.find((err, doc) => {
+      if (err) return next(err)
+      res.json(doc)
+    })
+  })
 ```
 Dans cet exemple, le gestionnaire `getPaidContent` sera ignoré, mais tous les gestionnaires restants dans `app` pour `/a_route_behind_paywall` continueront d'être exécutés.
 
@@ -128,11 +128,11 @@ les mécanismes de gestion d'erreur par défaut à Express, lorsque les en-tête
 ont déjà été envoyés au client :
 
 ```js
-function errorHandler(err, req, res, next) {
+function errorHandler (err, req, res, next) {
   if (res.headersSent) {
-    return next(err);
+    return next(err)
   }
-  res.status(500);
-  res.render('error', { error: err });
+  res.status(500)
+  res.render('error', { error: err })
 }
 ```

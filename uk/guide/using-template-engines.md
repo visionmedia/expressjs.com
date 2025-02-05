@@ -45,7 +45,7 @@ After the view engine is set, you don't have to specify the engine or load the t
 Express loads the module internally, as shown below (for the above example).
 
 ```js
-app.set('view engine', 'pug');
+app.set('view engine', 'pug')
 ```
 
 Create a Pug template file named `index.pug` in the `views` directory, with the following content:
@@ -62,9 +62,9 @@ Then create a route to render the `index.pug` file. If the `view engine` propert
 you must specify the extension of the `view` file. Otherwise, you can omit it.
 
 ```js
-app.get('/', function (req, res) {
-  res.render('index', { title: 'Hey', message: 'Hello there!'});
-});
+app.get('/', (req, res) => {
+  res.render('index', { title: 'Hey', message: 'Hello there!' })
+})
 ```
 
 When you make a request to the home page, the `index.pug` file will be rendered as HTML.

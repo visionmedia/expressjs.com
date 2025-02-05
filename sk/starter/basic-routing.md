@@ -35,33 +35,33 @@ Nasledujúce priklady ilustrujú definovanie jednoduchých route-ov.
 Odpoveď s textom `Hello World!` na hlavnej stránke:
 
 ```js
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 ```
 
 Odpoveď na POST request na hlavný route (`/`), hlavnú stránku aplikácie:
 
 ```js
-app.post('/', function (req, res) {
-  res.send('Got a POST request');
-});
+app.post('/', (req, res) => {
+  res.send('Got a POST request')
+})
 ```
 
 Odpoveď na PUT request na route `/user`:
 
 ```js
-app.put('/user', function (req, res) {
-  res.send('Got a PUT request at /user');
-});
+app.put('/user', (req, res) => {
+  res.send('Got a PUT request at /user')
+})
 ```
 
 Odpoveď na DELETE request na route `/user`:
 
 ```js
-app.delete('/user', function (req, res) {
-  res.send('Got a DELETE request at /user');
-});
+app.delete('/user', (req, res) => {
+  res.send('Got a DELETE request at /user')
+})
 ```
 
 Viac informácií ohľadom routing-u nájdete v [routing príručke](/{{ page.lang }}/guide/routing.html).

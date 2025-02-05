@@ -70,9 +70,9 @@ uma função de middleware no final da pilha (abaixo de todas as outras
 funções) para manipular uma resposta 404:
 
 ```js
-app.use(function(req, res, next) {
-  res.status(404).send('Sorry cant find that!');
-});
+app.use((req, res, next) => {
+  res.status(404).send('Sorry cant find that!')
+})
 ```
 
 ## Como configuro um manipulador de erros?
@@ -82,10 +82,10 @@ que outros middlewares, exceto que com quatro argumentos ao invés de
 três; especificamente com a assinatura `(err, req, res, next)`:
 
 ```js
-app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 ```
 
 Para obter mais informações, consulte [Manipulação de erros](/{{ page.lang }}/guide/error-handling.html).

@@ -61,9 +61,9 @@ una funzione middleware alla parte finale dello stack (sotto tutte le altre funz
 per gestire una risposta 404:
 
 ```js
-app.use(function(req, res, next) {
-  res.status(404).send('Sorry cant find that!');
-});
+app.use((req, res, next) => {
+  res.status(404).send('Sorry cant find that!')
+})
 ```
 
 ## In che modo è possibile impostare un gestore degli errori?
@@ -72,10 +72,10 @@ app.use(function(req, res, next) {
 ad eccezione delle funzioni di gestione degli errori che hanno quattro argomenti invece di tre; nello specifico la firma `(err, req, res, next)`:
 
 ```js
-app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 ```
 
 Per ulteriori informazioni, consultare [Gestione degli errori](/{{ page.lang }}/guide/error-handling.html).

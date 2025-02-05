@@ -20,7 +20,7 @@ para entregar imagens, arquivos CSS, e arquivos JavaScript em um
 diretório chamado `public`:
 
 ```js
-app.use(express.static('public'));
+app.use(express.static('public'))
 ```
 
 Agora, é possível carregar os arquivos que estão no diretório `public`:
@@ -42,8 +42,8 @@ Para usar vários diretórios de ativos estáticos, chame a função
 de middleware `express.static` várias vezes:
 
 ```js
-app.use(express.static('public'));
-app.use(express.static('files'));
+app.use(express.static('public'))
+app.use(express.static('files'))
 ```
 
 O Express consulta os arquivos na ordem em que você configurar
@@ -57,7 +57,7 @@ entregues pela função `express.static`,
 diretório estático, como mostrado abaixo:
 
 ```js
-app.use('/static', express.static('public'));
+app.use('/static', express.static('public'))
 ```
 
 Agora, é possível carregar os arquivos que estão no diretório
@@ -79,5 +79,5 @@ seguro utilizar o caminho absoluto do diretório para o qual deseja
 entregar.
 
 ```js
-app.use('/static', express.static(__dirname + '/public'));
+app.use('/static', express.static(`${__dirname}/public`))
 ```

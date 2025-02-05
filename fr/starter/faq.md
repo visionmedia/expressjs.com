@@ -61,9 +61,9 @@ d'ajouter une fonction middleware à la toute fin de la pile (en-dessous de tout
 pour gérer une réponse 404 :
 
 ```js
-app.use(function(req, res, next) {
-  res.status(404).send('Sorry cant find that!');
-});
+app.use((req, res, next) => {
+  res.status(404).send('Sorry cant find that!')
+})
 ```
 
 ## Comment puis-je configurer un gestionnaire d'erreurs ?
@@ -72,10 +72,10 @@ Vous pouvez définir un middleware de traitement d'erreurs de la même façon qu
 à l'exception qu'il faudra 4 arguments au lieu de 3 ; et plus particulièrement avec la signature `(err, req, res, next)` :
 
 ```js
-app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 ```
 
 Pour plus d'informations, voir [Traitement d'erreurs](/{{ page.lang }}/guide/error-handling.html).

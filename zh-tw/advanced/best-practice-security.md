@@ -57,8 +57,8 @@ $ npm install --save helmet
 ```js
 /// ...
 
-var helmet = require('helmet');
-app.use(helmet());
+const helmet = require('helmet')
+app.use(helmet())
 
 /// ...
 ```
@@ -70,7 +70,7 @@ app.use(helmet());
 因此最佳作法是使用 `app.disable()` 方法來關閉標頭：
 
 ```js
-app.disable('x-powered-by');
+app.disable('x-powered-by')
 ```
 
 如果您使用 `helmet.js`，自會為您處理此事。
@@ -99,13 +99,13 @@ app.disable('x-powered-by');
 例如，使用 [express-session](https://www.npmjs.com/package/express-session) 中介軟體：
 
 ```js
-var session = require('express-session');
+const session = require('express-session')
 app.set('trust proxy', 1) // trust first proxy
-app.use( session({
-   secret : 's3Cur3',
-   name : 'sessionId',
-  })
-);
+app.use(session({
+  secret: 's3Cur3',
+  name: 'sessionId'
+})
+)
 ```
 
 ### 設定 Cookie 安全選項
@@ -121,22 +121,23 @@ app.use( session({
 下列範例使用 [cookie-session](https://www.npmjs.com/package/cookie-session) 中介軟體：
 
 ```js
-var session = require('cookie-session');
-var express = require('express');
-var app = express();
+const session = require('cookie-session')
+const express = require('express')
+const app = express()
 
-var expiryDate = new Date( Date.now() + 60 * 60 * 1000 ); // 1 hour
+const expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 app.use(session({
   name: 'session',
   keys: ['key1', 'key2'],
-  cookie: { secure: true,
-            httpOnly: true,
-            domain: 'example.com',
-            path: 'foo/bar',
-            expires: expiryDate
-          }
-  })
-);
+  cookie: {
+    secure: true,
+    httpOnly: true,
+    domain: 'example.com',
+    path: 'foo/bar',
+    expires: expiryDate
+  }
+})
+)
 ```
 
 ## 其他注意事項

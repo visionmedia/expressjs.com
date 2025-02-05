@@ -21,7 +21,7 @@ servir des images, des fichiers CSS et des fichiers JavaScript dans
 un répertoire nommé `public` :
 
 ```js
-app.use(express.static('public'));
+app.use(express.static('public'))
 ```
 
 Maintenant, vous pouvez charger les fichiers qui sont dans le
@@ -45,8 +45,8 @@ utilisez la fonction middleware
 `express.static` plusieurs fois :
 
 ```js
-app.use(express.static('public'));
-app.use(express.static('files'));
+app.use(express.static('public'))
+app.use(express.static('files'))
 ```
 
 Express recherche les fichiers dans l'ordre dans lequel vous
@@ -60,7 +60,7 @@ chemin de montage](/{{ page.lang }}/4x/api.html#app.use) pour le répertoire sta
 ci-dessous :
 
 ```js
-app.use('/static', express.static('public'));
+app.use('/static', express.static('public'))
 ```
 
 Maintenant, vous pouvez charger les fichiers qui sont dans le
@@ -83,5 +83,5 @@ est plus sûr d'utiliser le chemin d'accès absolu que vous voulez
 servir :
 
 ```js
-app.use('/static', express.static(__dirname + '/public'));
+app.use('/static', express.static(`${__dirname}/public`))
 ```

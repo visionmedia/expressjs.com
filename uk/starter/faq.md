@@ -57,9 +57,9 @@ Express підтримує будь-які шаблонізатори, що уз
 формування 404-тої відповіді:
 
 ```js
-app.use(function(req, res, next) {
-  res.status(404).send('Вибачте, такої сторінки не існує!');
-});
+app.use((req, res, next) => {
+  res.status(404).send('Вибачте, такої сторінки не існує!')
+})
 ```
 
 ## Як можна встановити обробника помилок?
@@ -68,10 +68,10 @@ app.use(function(req, res, next) {
 тільки передається до них чотири параметра, а не три; точніше, вони мають таку сигнатуру `(err, req, res, next)`:
 
 ```js
-app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Щось поламалось!');
-});
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Щось поламалось!')
+})
 ```
 
 Більш детально, можна проглянути розділ [обробка помилок](/{{ page.lang }}/guide/error-handling.html).

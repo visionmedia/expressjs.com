@@ -15,13 +15,13 @@ Para ver una introducción al direccionamiento, consulte [Direccionamiento bási
 El siguiente código es un ejemplo de una ruta muy básica.
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
 // respond with "hello world" when a GET request is made to the homepage
-app.get('/', function(req, res) {
-  res.send('hello world');
-});
+app.get('/', (req, res) => {
+  res.send('hello world')
+})
 ```
 
 <h2 id="route-methods">Métodos de ruta</h2>
@@ -32,14 +32,14 @@ El siguiente código es un ejemplo de las rutas que se definen para los métodos
 
 ```js
 // GET method route
-app.get('/', function (req, res) {
-  res.send('GET request to the homepage');
-});
+app.get('/', (req, res) => {
+  res.send('GET request to the homepage')
+})
 
 // POST method route
-app.post('/', function (req, res) {
-  res.send('POST request to the homepage');
-});
+app.post('/', (req, res) => {
+  res.send('POST request to the homepage')
+})
 ```
 
 Express da soporte a los siguientes métodos de direccionamiento que se corresponden con los métodos HTTP: `get`, `post`, `put`, `head`, `delete`, `options`, `trace`, `copy`, `lock`, `mkcol`, `move`, `purge`, `propfind`, `proppatch`, `unlock`, `report`, `mkactivity`, `checkout`, `merge`, `m-search`, `notify`, `subscribe`, `unsubscribe`, `patch`, `search` y `connect`.
@@ -53,10 +53,10 @@ Hay un método de direccionamiento especial, `app.all()`, que no se deriva de ni
 En el siguiente ejemplo, el manejador se ejecutará para las solicitudes a "/secret", tanto si utiliza GET, POST, PUT, DELETE, como cualquier otro método de solicitud HTTP soportado en el [módulo http](https://nodejs.org/api/http.html#http_http_methods).
 
 ```js
-app.all('/secret', function (req, res, next) {
-  console.log('Accessing the secret section ...');
-  next(); // pass control to the next handler
-});
+app.all('/secret', (req, res, next) => {
+  console.log('Accessing the secret section ...')
+  next() // pass control to the next handler
+})
 ```
 
 <h2 id="route-paths">Vías de acceso de ruta</h2>
@@ -76,25 +76,25 @@ Estos son algunos ejemplos de vías de acceso de ruta basadas en series.
 Esta vía de acceso de ruta coincidirá con las solicitudes a la ruta raíz, `/`.
 
 ```js
-app.get('/', function (req, res) {
-  res.send('root');
-});
+app.get('/', (req, res) => {
+  res.send('root')
+})
 ```
 
 Esta vía de acceso de ruta coincidirá con las solicitudes a `/about`.
 
 ```js
-app.get('/about', function (req, res) {
-  res.send('about');
-});
+app.get('/about', (req, res) => {
+  res.send('about')
+})
 ```
 
 Esta vía de acceso de ruta coincidirá con las solicitudes a `/random.text`.
 
 ```js
-app.get('/random.text', function (req, res) {
-  res.send('random.text');
-});
+app.get('/random.text', (req, res) => {
+  res.send('random.text')
+})
 ```
 
 Estos son algunos ejemplos de vías de acceso de ruta basadas en patrones de serie.
@@ -102,33 +102,33 @@ Estos son algunos ejemplos de vías de acceso de ruta basadas en patrones de ser
 Esta vía de acceso de ruta coincidirá con `acd` y `abcd`.
 
 ```js
-app.get('/ab?cd', function(req, res) {
-  res.send('ab?cd');
-});
+app.get('/ab?cd', (req, res) => {
+  res.send('ab?cd')
+})
 ```
 
 Esta vía de acceso de ruta coincidirá con `abcd`, `abbcd`, `abbbcd`, etc.
 
 ```js
-app.get('/ab+cd', function(req, res) {
-  res.send('ab+cd');
-});
+app.get('/ab+cd', (req, res) => {
+  res.send('ab+cd')
+})
 ```
 
 Esta vía de acceso de ruta coincidirá con `abcd`, `abxcd`, `abRABDOMcd`, `ab123cd`, etc.
 
 ```js
-app.get('/ab*cd', function(req, res) {
-  res.send('ab*cd');
-});
+app.get('/ab*cd', (req, res) => {
+  res.send('ab*cd')
+})
 ```
 
 Esta vía de acceso de ruta coincidirá con `/abe` y `/abcde`.
 
 ```js
-app.get('/ab(cd)?e', function(req, res) {
- res.send('ab(cd)?e');
-});
+app.get('/ab(cd)?e', (req, res) => {
+  res.send('ab(cd)?e')
+})
 ```
 
 <div class="doc-box doc-info" markdown="1">
@@ -140,17 +140,17 @@ Ejemplos de vías de acceso de ruta basadas en expresiones regulares:
 Esta vía de acceso de ruta coincidirá con cualquier valor con una "a" en el nombre de la ruta.
 
 ```js
-app.get(/a/, function(req, res) {
-  res.send('/a/');
-});
+app.get(/a/, (req, res) => {
+  res.send('/a/')
+})
 ```
 
 Esta vía de acceso de ruta coincidirá con `butterfly` y `dragonfly`, pero no con `butterflyman`, `dragonfly man`, etc.
 
 ```js
-app.get(/.*fly$/, function(req, res) {
-  res.send('/.*fly$/');
-});
+app.get(/.*fly$/, (req, res) => {
+  res.send('/.*fly$/')
+})
 ```
 
 <h2 id="route-handlers">Manejadores de rutas</h2>
@@ -162,60 +162,60 @@ Los manejadores de rutas pueden tener la forma de una función, una matriz de fu
 Una función de devolución de llamada individual puede manejar una ruta.  Por ejemplo:
 
 ```js
-app.get('/example/a', function (req, res) {
-  res.send('Hello from A!');
-});
+app.get('/example/a', (req, res) => {
+  res.send('Hello from A!')
+})
 ```
 
 Más de una función de devolución de llamada puede manejar una ruta (asegúrese de especificar el objeto `next`). Por ejemplo:
 
 ```js
-app.get('/example/b', function (req, res, next) {
-  console.log('the response will be sent by the next function ...');
-  next();
-}, function (req, res) {
-  res.send('Hello from B!');
-});
+app.get('/example/b', (req, res, next) => {
+  console.log('the response will be sent by the next function ...')
+  next()
+}, (req, res) => {
+  res.send('Hello from B!')
+})
 ```
 Una matriz de funciones de devolución de llamada puede manejar una ruta.  Por ejemplo:
 
 ```js
-var cb0 = function (req, res, next) {
-  console.log('CB0');
-  next();
+const cb0 = function (req, res, next) {
+  console.log('CB0')
+  next()
 }
 
-var cb1 = function (req, res, next) {
-  console.log('CB1');
-  next();
+const cb1 = function (req, res, next) {
+  console.log('CB1')
+  next()
 }
 
-var cb2 = function (req, res) {
-  res.send('Hello from C!');
+const cb2 = function (req, res) {
+  res.send('Hello from C!')
 }
 
-app.get('/example/c', [cb0, cb1, cb2]);
+app.get('/example/c', [cb0, cb1, cb2])
 ```
 
 Una combinación de funciones independientes y matrices de funciones puede manejar una ruta.  Por ejemplo:
 
 ```js
-var cb0 = function (req, res, next) {
-  console.log('CB0');
-  next();
+const cb0 = function (req, res, next) {
+  console.log('CB0')
+  next()
 }
 
-var cb1 = function (req, res, next) {
-  console.log('CB1');
-  next();
+const cb1 = function (req, res, next) {
+  console.log('CB1')
+  next()
 }
 
-app.get('/example/d', [cb0, cb1], function (req, res, next) {
-  console.log('the response will be sent by the next function ...');
-  next();
-}, function (req, res) {
-  res.send('Hello from D!');
-});
+app.get('/example/d', [cb0, cb1], (req, res, next) => {
+  console.log('the response will be sent by the next function ...')
+  next()
+}, (req, res) => {
+  res.send('Hello from D!')
+})
 ```
 
 <h2 id="response-methods">Métodos de respuesta</h2>
@@ -243,15 +243,15 @@ A continuación, se muestra un ejemplo de manejadores de rutas encadenados que s
 
 ```js
 app.route('/book')
-  .get(function(req, res) {
-    res.send('Get a random book');
+  .get((req, res) => {
+    res.send('Get a random book')
   })
-  .post(function(req, res) {
-    res.send('Add a book');
+  .post((req, res) => {
+    res.send('Add a book')
   })
-  .put(function(req, res) {
-    res.send('Update the book');
-  });
+  .put((req, res) => {
+    res.send('Update the book')
+  })
 ```
 
 <h2 id="express-router">express.Router</h2>
@@ -263,34 +263,34 @@ El siguiente ejemplo crea un direccionador como un módulo, carga una función d
 Cree un archivo de direccionador denominado `birds.js` en el directorio de la aplicación, con el siguiente contenido:
 
 ```js
-var express = require('express');
-var router = express.Router();
+const express = require('express')
+const router = express.Router()
 
 // middleware that is specific to this router
-router.use(function timeLog(req, res, next) {
-  console.log('Time: ', Date.now());
-  next();
-});
+router.use((req, res, next) => {
+  console.log('Time: ', Date.now())
+  next()
+})
 // define the home page route
-router.get('/', function(req, res) {
-  res.send('Birds home page');
-});
+router.get('/', (req, res) => {
+  res.send('Birds home page')
+})
 // define the about route
-router.get('/about', function(req, res) {
-  res.send('About birds');
-});
+router.get('/about', (req, res) => {
+  res.send('About birds')
+})
 
-module.exports = router;
+module.exports = router
 ```
 
 A continuación, cargue el módulo de direccionador en la aplicación:
 
 ```js
-var birds = require('./birds');
+const birds = require('./birds')
 
 /// ...
 
-app.use('/birds', birds);
+app.use('/birds', birds)
 ```
 
 La aplicación ahora podrá manejar solicitudes a `/birds` y `/birds/about`, así como invocar la función de middleware `timeLog` que es específica de la ruta.

@@ -46,14 +46,14 @@ description: Learn how to write custom middleware functions for Express.js appli
 아래에는 간단한 "Hello World" Express 애플리케이션에 대한 예가 표시되어 있으며, 이 애플리케이션을 위해 두 개의 미들웨어 함수를 정의하게 됩니다.
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 
 <h2>개발</h2>
@@ -61,10 +61,10 @@ app.listen(3000);
 아래에는 "myLogger"라는 이름의 미들웨어 함수에 대한 간단한 예가 표시되어 있습니다. 이 함수는 앱에 대한 요청이 해당 함수를 거쳐 전달될 때 단순히 "LOGGED"를 인쇄합니다. 이 미들웨어 함수는 `myLogger`라는 이름의 변수에 지정되어 있습니다.
 
 ```js
-var myLogger = function (req, res, next) {
-  console.log('LOGGED');
-  next();
-};
+const myLogger = function (req, res, next) {
+  console.log('LOGGED')
+  next()
+}
 ```
 
 <div class="doc-box doc-notice" markdown="1">
@@ -76,21 +76,21 @@ var myLogger = function (req, res, next) {
 예를 들면, 다음의 코드는 루트 경로(/)로 라우팅하기 전에 `myLogger` 미들웨어 함수를 로드합니다.
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-var myLogger = function (req, res, next) {
-  console.log('LOGGED');
-  next();
-};
+const myLogger = function (req, res, next) {
+  console.log('LOGGED')
+  next()
+}
 
-app.use(myLogger);
+app.use(myLogger)
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 
 앱이 요청을 수신할 때마다, 앱은 "LOGGED"라는 메시지를 터미널에 인쇄합니다.
@@ -104,32 +104,32 @@ app.listen(3000);
 다음 예에서는 `requestTime`라는 특성을 요청 오브젝트에 추가합니다. 이 미들웨어 함수는 "requestTime"이라고 명명하겠습니다.
 
 ```js
-var requestTime = function (req, res, next) {
-  req.requestTime = Date.now();
-  next();
-};
+const requestTime = function (req, res, next) {
+  req.requestTime = Date.now()
+  next()
+}
 ```
 
 이제 앱은 `requestTime` 미들웨어 함수를 사용합니다. 또한 루트 경로 라우트의 콜백 함수는 미들웨어 함수가 `req`(요청 오브젝트)에 추가하는 특성을 사용합니다.
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-var requestTime = function (req, res, next) {
-  req.requestTime = Date.now();
-  next();
-};
+const requestTime = function (req, res, next) {
+  req.requestTime = Date.now()
+  next()
+}
 
-app.use(requestTime);
+app.use(requestTime)
 
-app.get('/', function (req, res) {
-  var responseText = 'Hello World!<br>';
-  responseText += '<small>Requested at: ' + req.requestTime + '</small>';
-  res.send(responseText);
-});
+app.get('/', (req, res) => {
+  let responseText = 'Hello World!<br>'
+  responseText += `<small>Requested at: ${req.requestTime}</small>`
+  res.send(responseText)
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 앱의 루트에 대한 요청을 실행할 때, 앱은 이제 요청의 타임스탬프를 브라우저에 표시합니다.
 

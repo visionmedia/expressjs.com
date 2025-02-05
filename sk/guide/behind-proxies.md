@@ -38,10 +38,10 @@ IP adresa, subnet, alebo pole IP adries a subnet-ov (podsietí), ktorým má apl
 IP adresy môžete nastaviť ktorýmkoľvek z nasledujúcich spôsobov:
 
 ```js
-app.set('trust proxy', 'loopback'); // specify a single subnet
-app.set('trust proxy', 'loopback, 123.123.123.123'); // specify a subnet and an address
-app.set('trust proxy', 'loopback, linklocal, uniquelocal'); // specify multiple subnets as CSV
-app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']); // specify multiple subnets as an array
+app.set('trust proxy', 'loopback') // specify a single subnet
+app.set('trust proxy', 'loopback, 123.123.123.123') // specify a subnet and an address
+app.set('trust proxy', 'loopback, linklocal, uniquelocal') // specify multiple subnets as CSV
+app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']) // specify multiple subnets as an array
 ```
 
 Pri zadaní IP adresy alebo subnet-ov, sú tieto vylúčené z procesu vyhodnocovania a nedôveryhodná IP adresa najbližsie k aplikačnému serveru je vyhodnotená ako IP adresa klienta.

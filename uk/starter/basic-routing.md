@@ -37,33 +37,33 @@ app.METHOD(PATH, HANDLER)
 Визначення маршруту, що відповідає на GET-запити до головної сторінки, в результаті чого друкується `Hello World!`:
 
 ```js
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 ```
 
 Визначення маршруту, що відповідає на POST-запити до кореневого маршруту (`/`), тобто до головної сторінки:
 
 ```js
-app.post('/', function (req, res) {
-  res.send('Маємо POST-запит');
-});
+app.post('/', (req, res) => {
+  res.send('Маємо POST-запит')
+})
 ```
 
 Визначення маршруту, що відповідає на PUT-запити до `/user`:
 
 ```js
-app.put('/user', function (req, res) {
-  res.send('Маємо PUT-запит до /user');
-});
+app.put('/user', (req, res) => {
+  res.send('Маємо PUT-запит до /user')
+})
 ```
 
 Визначення маршруту, що відповідає на DELETE-запити до `/user`:
 
 ```js
-app.delete('/user', function (req, res) {
-  res.send('Маємо DELETE-запит до /user');
-});
+app.delete('/user', (req, res) => {
+  res.send('Маємо DELETE-запит до /user')
+})
 ```
 
 Більш детально про маршрутизацію описано на сторінці [гід маршрутизації](/{{ page.lang }}/guide/routing.html).

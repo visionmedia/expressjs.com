@@ -15,13 +15,13 @@ Pour une introduction au routage, voir [Basic routing](/{{ page.lang }}/starter/
 Le code suivant est un exemple de routage très basique.
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
 // respond with "hello world" when a GET request is made to the homepage
-app.get('/', function(req, res) {
-  res.send('hello world');
-});
+app.get('/', (req, res) => {
+  res.send('hello world')
+})
 ```
 
 <h2 id="route-methods">Méthodes de routage</h2>
@@ -32,14 +32,14 @@ Le code suivant est un exemple de routes qui sont définies pour les méthodes G
 
 ```js
 // GET method route
-app.get('/', function (req, res) {
-  res.send('GET request to the homepage');
-});
+app.get('/', (req, res) => {
+  res.send('GET request to the homepage')
+})
 
 // POST method route
-app.post('/', function (req, res) {
-  res.send('POST request to the homepage');
-});
+app.post('/', (req, res) => {
+  res.send('POST request to the homepage')
+})
 ```
 
 Express prend en charge les méthodes de routage suivantes qui correspondent aux méthodes HTTP : `get`, `post`, `put`, `head`, `delete`, `options`, `trace`, `copy`, `lock`, `mkcol`, `move`, `purge`, `propfind`, `proppatch`, `unlock`, `report`, `mkactivity`, `checkout`, `merge`, `m-search`, `notify`, `subscribe`, `unsubscribe`, `patch`, `search`, and `connect`.
@@ -54,10 +54,10 @@ Il existe une méthode de routage spéciale, `app.all()`, qui n'est pas dérivé
 Dans l'exemple suivant, le gestionnaire sera exécuté pour les demandes de "/secret", que vous utilisiez GET, POST, PUT, DELETE ou toute autre méthode de demande HTTP prise en charge dans le [module http](https://nodejs.org/api/http.html#http_http_methods).
 
 ```js
-app.all('/secret', function (req, res, next) {
-  console.log('Accessing the secret section ...');
-  next(); // pass control to the next handler
-});
+app.all('/secret', (req, res, next) => {
+  console.log('Accessing the secret section ...')
+  next() // pass control to the next handler
+})
 ```
 
 <h2 id="route-paths">Chemins de routage</h2>
@@ -77,25 +77,25 @@ Il s'agit d'exemples de chemins de routage basés sur des chaînes.
 Ce chemin de routage fera correspondre des demandes à la route racine, `/`.
 
 ```js
-app.get('/', function (req, res) {
-  res.send('root');
-});
+app.get('/', (req, res) => {
+  res.send('root')
+})
 ```
 
 Ce chemin de routage fera correspondre des demandes à `/about`.
 
 ```js
-app.get('/about', function (req, res) {
-  res.send('about');
-});
+app.get('/about', (req, res) => {
+  res.send('about')
+})
 ```
 
 Ce chemin de routage fera correspondre des demandes à `/random.text`.
 
 ```js
-app.get('/random.text', function (req, res) {
-  res.send('random.text');
-});
+app.get('/random.text', (req, res) => {
+  res.send('random.text')
+})
 ```
 
 Il s'agit d'exemples de chemins de routage basés sur des masques de chaîne.
@@ -103,33 +103,33 @@ Il s'agit d'exemples de chemins de routage basés sur des masques de chaîne.
 Ce chemin de routage fait correspondre `acd` et `abcd`.
 
 ```js
-app.get('/ab?cd', function(req, res) {
-  res.send('ab?cd');
-});
+app.get('/ab?cd', (req, res) => {
+  res.send('ab?cd')
+})
 ```
 
 Ce chemin de routage fait correspondre `abcd`, `abbcd`, `abbbcd`, etc.
 
 ```js
-app.get('/ab+cd', function(req, res) {
-  res.send('ab+cd');
-});
+app.get('/ab+cd', (req, res) => {
+  res.send('ab+cd')
+})
 ```
 
 Ce chemin de routage fait correspondre `abcd`, `abxcd`, `abRABDOMcd`, `ab123cd`, etc.
 
 ```js
-app.get('/ab*cd', function(req, res) {
-  res.send('ab*cd');
-});
+app.get('/ab*cd', (req, res) => {
+  res.send('ab*cd')
+})
 ```
 
 Ce chemin de routage fait correspondre `/abe` et `/abcde`.
 
 ```js
-app.get('/ab(cd)?e', function(req, res) {
- res.send('ab(cd)?e');
-});
+app.get('/ab(cd)?e', (req, res) => {
+  res.send('ab(cd)?e')
+})
 ```
 
 <div class="doc-box doc-info" markdown="1">
@@ -141,17 +141,17 @@ Exemples de chemins de routage basés sur des expressions régulières :
 Ce chemin de routage fera correspondre tout élément dont le nom de chemin comprend la lettre "a".
 
 ```js
-app.get(/a/, function(req, res) {
-  res.send('/a/');
-});
+app.get(/a/, (req, res) => {
+  res.send('/a/')
+})
 ```
 
 Ce chemin de routage fera correspondre `butterfly` et `dragonfly`, mais pas `butterflyman`, `dragonfly man`, etc.
 
 ```js
-app.get(/.*fly$/, function(req, res) {
-  res.send('/.*fly$/');
-});
+app.get(/.*fly$/, (req, res) => {
+  res.send('/.*fly$/')
+})
 ```
 
 <h2 id="route-handlers">Gestionnaires de routage</h2>
@@ -163,60 +163,60 @@ Les gestionnaires de route se trouvent sous la forme d'une fonction, d'un tablea
 Une fonction de rappel unique peut traiter une route.  Par exemple :
 
 ```js
-app.get('/example/a', function (req, res) {
-  res.send('Hello from A!');
-});
+app.get('/example/a', (req, res) => {
+  res.send('Hello from A!')
+})
 ```
 
 Plusieurs fonctions de rappel peuvent traiter une route (n'oubliez pas de spécifier l'objet `next`). Par exemple :
 
 ```js
-app.get('/example/b', function (req, res, next) {
-  console.log('the response will be sent by the next function ...');
-  next();
-}, function (req, res) {
-  res.send('Hello from B!');
-});
+app.get('/example/b', (req, res, next) => {
+  console.log('the response will be sent by the next function ...')
+  next()
+}, (req, res) => {
+  res.send('Hello from B!')
+})
 ```
 Un tableau de fonctions de rappel peut traiter une route.  Par exemple :
 
 ```js
-var cb0 = function (req, res, next) {
-  console.log('CB0');
-  next();
+const cb0 = function (req, res, next) {
+  console.log('CB0')
+  next()
 }
 
-var cb1 = function (req, res, next) {
-  console.log('CB1');
-  next();
+const cb1 = function (req, res, next) {
+  console.log('CB1')
+  next()
 }
 
-var cb2 = function (req, res) {
-  res.send('Hello from C!');
+const cb2 = function (req, res) {
+  res.send('Hello from C!')
 }
 
-app.get('/example/c', [cb0, cb1, cb2]);
+app.get('/example/c', [cb0, cb1, cb2])
 ```
 
 Une combinaison de fonctions indépendantes et des tableaux de fonctions peuvent gérer une route.  Par exemple :
 
 ```js
-var cb0 = function (req, res, next) {
-  console.log('CB0');
-  next();
+const cb0 = function (req, res, next) {
+  console.log('CB0')
+  next()
 }
 
-var cb1 = function (req, res, next) {
-  console.log('CB1');
-  next();
+const cb1 = function (req, res, next) {
+  console.log('CB1')
+  next()
 }
 
-app.get('/example/d', [cb0, cb1], function (req, res, next) {
-  console.log('the response will be sent by the next function ...');
-  next();
-}, function (req, res) {
-  res.send('Hello from D!');
-});
+app.get('/example/d', [cb0, cb1], (req, res, next) => {
+  console.log('the response will be sent by the next function ...')
+  next()
+}, (req, res) => {
+  res.send('Hello from D!')
+})
 ```
 
 <h2 id="response-methods">Méthodes de réponse</h2>
@@ -244,15 +244,15 @@ Voici quelques exemples de gestionnaires de chemin de chaînage définis à l'ai
 
 ```js
 app.route('/book')
-  .get(function(req, res) {
-    res.send('Get a random book');
+  .get((req, res) => {
+    res.send('Get a random book')
   })
-  .post(function(req, res) {
-    res.send('Add a book');
+  .post((req, res) => {
+    res.send('Add a book')
   })
-  .put(function(req, res) {
-    res.send('Update the book');
-  });
+  .put((req, res) => {
+    res.send('Update the book')
+  })
 ```
 
 <h2 id="express-router">express.Router</h2>
@@ -264,34 +264,34 @@ L'exemple suivant créé une routeur en tant que module, charge une fonction mid
 Créez un fichier de routage nommé `birds.js` dans le répertoire app, avec le contenu suivant :
 
 ```js
-var express = require('express');
-var router = express.Router();
+const express = require('express')
+const router = express.Router()
 
 // middleware that is specific to this router
-router.use(function timeLog(req, res, next) {
-  console.log('Time: ', Date.now());
-  next();
-});
+router.use((req, res, next) => {
+  console.log('Time: ', Date.now())
+  next()
+})
 // define the home page route
-router.get('/', function(req, res) {
-  res.send('Birds home page');
-});
+router.get('/', (req, res) => {
+  res.send('Birds home page')
+})
 // define the about route
-router.get('/about', function(req, res) {
-  res.send('About birds');
-});
+router.get('/about', (req, res) => {
+  res.send('About birds')
+})
 
-module.exports = router;
+module.exports = router
 ```
 
 Puis, chargez le module de routage dans l'application :
 
 ```js
-var birds = require('./birds');
+const birds = require('./birds')
 
 /// ...
 
-app.use('/birds', birds);
+app.use('/birds', birds)
 ```
 
 L'application pourra dorénavant gérer des demandes dans `/birds` et `/birds/about`, et appeler la fonction middleware `timeLog` spécifique à la route.

@@ -16,11 +16,11 @@ A route is a combination of a URI, a HTTP request method (GET, POST, and so on),
 The following is an example of a very basic route.
 
 ```js
-var express = require('express')
-var app = express()
+const express = require('express')
+const app = express()
 
 // respond with "hello world" when a GET request is made to the homepage
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
   res.send('hello world')
 })
 ```
@@ -33,12 +33,12 @@ The following is an example of routes defined for the GET and the POST methods t
 
 ```js
 // GET method route
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
   res.send('GET request to the homepage')
 })
 
 // POST method route
-app.post('/', function (req, res) {
+app.post('/', (req, res) => {
   res.send('POST request to the homepage')
 })
 ```
@@ -55,7 +55,7 @@ There is a special routing method, `app.all()`, which is not derived from any HT
 In the following example, the handler will be executed for requests to "/secret" whether using GET, POST, PUT, DELETE, or any other HTTP request method.
 
 ```js
-app.all('/secret', function (req, res, next) {
+app.all('/secret', (req, res, next) => {
   console.log('Accessing the secret section ...')
   next() // pass control to the next handler
 })
@@ -73,17 +73,17 @@ Examples of route paths based on strings:
 
 ```js
 // with match request to the root
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
   res.send('root')
 })
 
 // will match requests to /about
-app.get('/about', function (req, res) {
+app.get('/about', (req, res) => {
   res.send('about')
 })
 
 // will match request to /random.text
-app.get('/random.text', function (req, res) {
+app.get('/random.text', (req, res) => {
   res.send('random.text')
 })
 ```
@@ -92,23 +92,23 @@ Examples of route paths based on string patterns:
 
 ```js
 // will match acd and abcd
-app.get('/ab?cd', function(req, res) {
+app.get('/ab?cd', (req, res) => {
   res.send('ab?cd')
 })
 
 // will match abcd, abbcd, abbbcd, and so on
-app.get('/ab+cd', function(req, res) {
+app.get('/ab+cd', (req, res) => {
   res.send('ab+cd')
 })
 
 // will match abcd, abxcd, abRABDOMcd, ab123cd, and so on
-app.get('/ab*cd', function(req, res) {
+app.get('/ab*cd', (req, res) => {
   res.send('ab*cd')
 })
 
 // will match /abe and /abcde
-app.get('/ab(cd)?e', function(req, res) {
- res.send('ab(cd)?e')
+app.get('/ab(cd)?e', (req, res) => {
+  res.send('ab(cd)?e')
 })
 ```
 
@@ -120,12 +120,12 @@ Examples of route paths based on regular expressions:
 
 ```js
 // will match anything with an a in the route name:
-app.get(/a/, function(req, res) {
+app.get(/a/, (req, res) => {
   res.send('/a/')
 })
 
 // will match butterfly, dagonfly; but not butterflyman, dragonfly man, and so on
-app.get(/.*fly$/, function(req, res) {
+app.get(/.*fly$/, (req, res) => {
   res.send('/.*fly$/')
 })
 ```
@@ -139,7 +139,7 @@ Route handlers can come in the form of a function, an array of functions, or var
 A route can be handled using a single callback function:
 
 ```js
-app.get('/example/a', function (req, res) {
+app.get('/example/a', (req, res) => {
   res.send('Hello from A!')
 })
 ```
@@ -147,10 +147,10 @@ app.get('/example/a', function (req, res) {
 A route can be handled using a more than one callback function (make sure to specify the `next` object):
 
 ```js
-app.get('/example/b', function (req, res, next) {
+app.get('/example/b', (req, res, next) => {
   console.log('response will be sent by the next function ...')
   next()
-}, function (req, res) {
+}, (req, res) => {
   res.send('Hello from B!')
 })
 ```
@@ -158,17 +158,17 @@ app.get('/example/b', function (req, res, next) {
 A route can be handled using an array of callback functions:
 
 ```js
-var cb0 = function (req, res, next) {
+const cb0 = function (req, res, next) {
   console.log('CB0')
   next()
 }
 
-var cb1 = function (req, res, next) {
+const cb1 = function (req, res, next) {
   console.log('CB1')
   next()
 }
 
-var cb2 = function (req, res) {
+const cb2 = function (req, res) {
   res.send('Hello from C!')
 }
 
@@ -178,20 +178,20 @@ app.get('/example/c', [cb0, cb1, cb2])
 A route can be handled using a combination of array of functions and independent functions:
 
 ```js
-var cb0 = function (req, res, next) {
+const cb0 = function (req, res, next) {
   console.log('CB0')
   next()
 }
 
-var cb1 = function (req, res, next) {
+const cb1 = function (req, res, next) {
   console.log('CB1')
   next()
 }
 
-app.get('/example/d', [cb0, cb1], function (req, res, next) {
+app.get('/example/d', [cb0, cb1], (req, res, next) => {
   console.log('response will be sent by the next function ...')
   next()
-}, function (req, res) {
+}, (req, res) => {
   res.send('Hello from D!')
 })
 ```
@@ -223,14 +223,14 @@ Here is an example of chained route handlers defined using `app.route()`.
 
 ```js
 app.route('/book')
-  .get(function(req, res) {
-    res.send('Get a random book');
+  .get((req, res) => {
+    res.send('Get a random book')
   })
-  .post(function(req, res) {
-    res.send('Add a book');
+  .post((req, res) => {
+    res.send('Add a book')
   })
-  .put(function(req, res) {
-    res.send('Update the book');
+  .put((req, res) => {
+    res.send('Update the book')
   })
 ```
 
@@ -247,24 +247,24 @@ Create a router file named `birds.js` in the app directory,
 with the following content:
 
 ```js
-var express = require('express');
-var router = express.Router();
+const express = require('express')
+const router = express.Router()
 
 // middleware specific to this router
-router.use(function timeLog(req, res, next) {
-  console.log('Time: ', Date.now());
-  next();
+router.use((req, res, next) => {
+  console.log('Time: ', Date.now())
+  next()
 })
 // define the home page route
-router.get('/', function(req, res) {
-  res.send('Birds home page');
+router.get('/', (req, res) => {
+  res.send('Birds home page')
 })
 // define the about route
-router.get('/about', function(req, res) {
-  res.send('About birds');
+router.get('/about', (req, res) => {
+  res.send('About birds')
 })
 
-module.exports = router;
+module.exports = router
 ```
 
 Then, load the router module in the app:

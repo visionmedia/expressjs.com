@@ -46,14 +46,14 @@ description: Learn how to write custom middleware functions for Express.js appli
 以下是“Hello World”Express 应用程序的简单示例，将为其定义两个中间件函数：
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 
 <h2>开发</h2>
@@ -61,10 +61,10 @@ app.listen(3000);
 以下是称为“myLogger”的中间件函数的简单示例。此函数仅在应用程序的请求通过它时显示“LOGGED”。中间件函数会分配给名为 `myLogger` 的变量。
 
 ```js
-var myLogger = function (req, res, next) {
-  console.log('LOGGED');
-  next();
-};
+const myLogger = function (req, res, next) {
+  console.log('LOGGED')
+  next()
+}
 ```
 
 <div class="doc-box doc-notice" markdown="1">
@@ -76,21 +76,21 @@ var myLogger = function (req, res, next) {
 例如，以下代码在根路径 (/) 的路由之前装入 `myLogger` 中间件函数。
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-var myLogger = function (req, res, next) {
-  console.log('LOGGED');
-  next();
-};
+const myLogger = function (req, res, next) {
+  console.log('LOGGED')
+  next()
+}
 
-app.use(myLogger);
+app.use(myLogger)
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 
 应用程序每次收到请求时，会在终端上显示消息“LOGGED”。
@@ -104,32 +104,32 @@ app.listen(3000);
 下一个示例将名为 `requestTime` 的属性添加到请求对象。我们将此中间件函数命名为“requestTime”。
 
 ```js
-var requestTime = function (req, res, next) {
-  req.requestTime = Date.now();
-  next();
-};
+const requestTime = function (req, res, next) {
+  req.requestTime = Date.now()
+  next()
+}
 ```
 
 现在，该应用程序使用 `requestTime` 中间件函数。此外，根路径路由的回调函数使用由中间件函数添加到 `req`（请求对象）的属性。
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-var requestTime = function (req, res, next) {
-  req.requestTime = Date.now();
-  next();
-};
+const requestTime = function (req, res, next) {
+  req.requestTime = Date.now()
+  next()
+}
 
-app.use(requestTime);
+app.use(requestTime)
 
-app.get('/', function (req, res) {
-  var responseText = 'Hello World!<br>';
-  responseText += '<small>Requested at: ' + req.requestTime + '</small>';
-  res.send(responseText);
-});
+app.get('/', (req, res) => {
+  let responseText = 'Hello World!<br>'
+  responseText += `<small>Requested at: ${req.requestTime}</small>`
+  res.send(responseText)
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 您向应用程序根发出请求时，此应用程序当前在浏览器中显示请求的时间戳记。
 

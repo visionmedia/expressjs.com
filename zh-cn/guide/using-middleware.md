@@ -40,42 +40,42 @@ Express 应用程序可以使用以下类型的中间件：
 此示例显示没有安装路径的中间件函数。应用程序每次收到请求时执行该函数。
 
 ```js
-var app = express();
+const app = express()
 
-app.use(function (req, res, next) {
-  console.log('Time:', Date.now());
-  next();
-});
+app.use((req, res, next) => {
+  console.log('Time:', Date.now())
+  next()
+})
 ```
 
 此示例显示安装在 `/user/:id` 路径中的中间件函数。在 `/user/:id` 路径中为任何类型的 HTTP 请求执行此函数。
 
 ```js
-app.use('/user/:id', function (req, res, next) {
-  console.log('Request Type:', req.method);
-  next();
-});
+app.use('/user/:id', (req, res, next) => {
+  console.log('Request Type:', req.method)
+  next()
+})
 ```
 
 此示例显示一个路由及其处理程序函数（中间件系统）。此函数处理针对 `/user/:id` 路径的 GET 请求。
 
 ```js
-app.get('/user/:id', function (req, res, next) {
-  res.send('USER');
-});
+app.get('/user/:id', (req, res, next) => {
+  res.send('USER')
+})
 ```
 
 以下是在安装点使用安装路径装入一系列中间件函数的示例。
 它演示一个中间件子堆栈，用于显示针对 `/user/:id` 路径的任何类型 HTTP 请求的信息。
 
 ```js
-app.use('/user/:id', function(req, res, next) {
-  console.log('Request URL:', req.originalUrl);
-  next();
-}, function (req, res, next) {
-  console.log('Request Type:', req.method);
-  next();
-});
+app.use('/user/:id', (req, res, next) => {
+  console.log('Request URL:', req.originalUrl)
+  next()
+}, (req, res, next) => {
+  console.log('Request Type:', req.method)
+  next()
+})
 ```
 
 路由处理程序使您可以为一个路径定义多个路由。以下示例为针对 `/user/:id` 路径的 GET 请求定义两个路由。第二个路由不会导致任何问题，但是永远都不会被调用，因为第一个路由结束了请求/响应循环。
@@ -83,17 +83,17 @@ app.use('/user/:id', function(req, res, next) {
 此示例显示一个中间件子堆栈，用于处理针对 `/user/:id` 路径的 GET 请求。
 
 ```js
-app.get('/user/:id', function (req, res, next) {
-  console.log('ID:', req.params.id);
-  next();
-}, function (req, res, next) {
-  res.send('User Info');
-});
+app.get('/user/:id', (req, res, next) => {
+  console.log('ID:', req.params.id)
+  next()
+}, (req, res, next) => {
+  res.send('User Info')
+})
 
 // handler for the /user/:id path, which prints the user ID
-app.get('/user/:id', function (req, res, next) {
-  res.end(req.params.id);
-});
+app.get('/user/:id', (req, res, next) => {
+  res.end(req.params.id)
+})
 ```
 
 要跳过路由器中间件堆栈中剩余的中间件函数，请调用 `next('route')` 将控制权传递给下一个路由。
@@ -102,20 +102,20 @@ app.get('/user/:id', function (req, res, next) {
 此示例显示一个中间件子堆栈，用于处理针对 `/user/:id` 路径的 GET 请求。
 
 ```js
-app.get('/user/:id', function (req, res, next) {
+app.get('/user/:id', (req, res, next) => {
   // if the user ID is 0, skip to the next route
-  if (req.params.id == 0) next('route');
+  if (req.params.id == 0) next('route')
   // otherwise pass the control to the next middleware function in this stack
-  else next(); //
-}, function (req, res, next) {
+  else next() //
+}, (req, res, next) => {
   // render a regular page
-  res.render('regular');
-});
+  res.render('regular')
+})
 
 // handler for the /user/:id path, which renders a special page
-app.get('/user/:id', function (req, res, next) {
-  res.render('special');
-});
+app.get('/user/:id', (req, res, next) => {
+  res.render('special')
+})
 ```
 
 <h2 id='middleware.router'>路由器层中间件</h2>
@@ -123,49 +123,49 @@ app.get('/user/:id', function (req, res, next) {
 路由器层中间件的工作方式与应用层中间件基本相同，差异之处在于它绑定到 `express.Router()` 的实例。
 
 ```js
-var router = express.Router();
+const router = express.Router()
 ```
 使用 `router.use()` 和 `router.METHOD()` 函数装入路由器层中间件。
 以下示例代码使用路由器层中间件复制以上为应用层中间件显示的中间件系统：
 
 ```js
-var app = express();
-var router = express.Router();
+const app = express()
+const router = express.Router()
 
 // a middleware function with no mount path. This code is executed for every request to the router
-router.use(function (req, res, next) {
-  console.log('Time:', Date.now());
-  next();
-});
+router.use((req, res, next) => {
+  console.log('Time:', Date.now())
+  next()
+})
 
 // a middleware sub-stack shows request info for any type of HTTP request to the /user/:id path
-router.use('/user/:id', function(req, res, next) {
-  console.log('Request URL:', req.originalUrl);
-  next();
-}, function (req, res, next) {
-  console.log('Request Type:', req.method);
-  next();
-});
+router.use('/user/:id', (req, res, next) => {
+  console.log('Request URL:', req.originalUrl)
+  next()
+}, (req, res, next) => {
+  console.log('Request Type:', req.method)
+  next()
+})
 
 // a middleware sub-stack that handles GET requests to the /user/:id path
-router.get('/user/:id', function (req, res, next) {
+router.get('/user/:id', (req, res, next) => {
   // if the user ID is 0, skip to the next router
-  if (req.params.id == 0) next('route');
+  if (req.params.id == 0) next('route')
   // otherwise pass control to the next middleware function in this stack
-  else next(); //
-}, function (req, res, next) {
+  else next() //
+}, (req, res, next) => {
   // render a regular page
-  res.render('regular');
-});
+  res.render('regular')
+})
 
 // handler for the /user/:id path, which renders a special page
-router.get('/user/:id', function (req, res, next) {
-  console.log(req.params.id);
-  res.render('special');
-});
+router.get('/user/:id', (req, res, next) => {
+  console.log(req.params.id)
+  res.render('special')
+})
 
 // mount the router on the app
-app.use('/', router);
+app.use('/', router)
 ```
 <h2 id='middleware.error-handling'>错误处理中间件</h2>
 
@@ -176,10 +176,10 @@ app.use('/', router);
 错误处理中间件函数的定义方式与其他中间件函数基本相同，差别在于错误处理函数有四个自变量而不是三个，专门具有特征符 `(err, req, res, next)`：
 
 ```js
-app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 ```
 
 有关错误处理中间件的详细信息，请参阅：[错误处理](/{{ page.lang }}/guide/error-handling.html)。
@@ -210,7 +210,7 @@ Express 中唯一内置的中间件函数是 `express.static`。此函数基于 
 以下示例将使用了 `express.static` 中间件，并且提供了一个详细的'options'对象（作为示例）：
 
 ```js
-var options = {
+const options = {
   dotfiles: 'ignore',
   etag: false,
   extensions: ['htm', 'html'],
@@ -218,19 +218,19 @@ var options = {
   maxAge: '1d',
   redirect: false,
   setHeaders: function (res, path, stat) {
-    res.set('x-timestamp', Date.now());
+    res.set('x-timestamp', Date.now())
   }
 }
 
-app.use(express.static('public', options));
+app.use(express.static('public', options))
 ```
 
 对于每个应用程序，可以有多个静态目录：
 
 ```js
-app.use(express.static('public'));
-app.use(express.static('uploads'));
-app.use(express.static('files'));
+app.use(express.static('public'))
+app.use(express.static('uploads'))
+app.use(express.static('files'))
 ```
 
 有关 `serve-static` 函数及其选项的更多详细信息，请参阅：[serve-static](https://github.com/expressjs/serve-static) 文档。
@@ -248,12 +248,12 @@ $ npm install cookie-parser
 ```
 
 ```js
-var express = require('express');
-var app = express();
-var cookieParser = require('cookie-parser');
+const express = require('express')
+const app = express()
+const cookieParser = require('cookie-parser')
 
 // load the cookie-parsing middleware
-app.use(cookieParser());
+app.use(cookieParser())
 ```
 
 有关 Express 常用的第三方中间件函数的部分列表，请参阅：[第三方中间件](../resources/middleware.html)。

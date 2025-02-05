@@ -14,7 +14,7 @@ Para el servicio de archivos estáticos como, por ejemplo, imágenes, archivos C
 Pase el nombre del directorio que contiene los activos estáticos a la función de middleware `express.static` para empezar directamente el servicio de los archivos. Por ejemplo, utilice el siguiente código para el servicio de imágenes, archivos CSS y archivos JavaScript en un directorio denominado `public`:
 
 ```js
-app.use(express.static('public'));
+app.use(express.static('public'))
 ```
 
 Ahora, puede cargar los archivos que hay en el directorio `public`:
@@ -34,8 +34,8 @@ Express busca los archivos relativos al directorio estático, por lo que el nomb
 Para utilizar varios directorios de activos estáticos, invoque la función de middleware `express.static` varias veces:
 
 ```js
-app.use(express.static('public'));
-app.use(express.static('files'));
+app.use(express.static('public'))
+app.use(express.static('files'))
 ```
 
 Express busca los archivos en el orden en el que se definen los directorios estáticos con la función de middleware `express.static`.
@@ -43,7 +43,7 @@ Express busca los archivos en el orden en el que se definen los directorios est�
 Para crear un prefijo de vía de acceso virtual (donde la vía de acceso no existe realmente en el sistema de archivos) para los archivos a los que da servicio la función `express.static`, [especifique una vía de acceso de montaje](/{{ page.lang }}/4x/api.html#app.use) para el directorio estático, como se muestra a continuación:
 
 ```js
-app.use('/static', express.static('public'));
+app.use('/static', express.static('public'))
 ```
 
 Ahora, puede cargar los archivos que hay en el directorio `public` desde el prefijo de vía de acceso `/static`.
@@ -59,5 +59,5 @@ http://localhost:3000/static/hello.html
 No obstante, la vía de acceso que proporciona a la función `express.static` es relativa al directorio desde donde inicia el proceso `node`. Si ejecuta la aplicación Express desde cualquier otro directorio, es más seguro utilizar la vía de acceso absoluta del directorio al que desea dar servicio:
 
 ```js
-app.use('/static', express.static(__dirname + '/public'));
+app.use('/static', express.static(`${__dirname}/public`))
 ```

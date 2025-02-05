@@ -35,33 +35,33 @@ app.METHOD(PATH, HANDLER)
 Ответ `Hello World!` на домашней странице:
 
 ```js
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 ```
 
 Ответ на запрос POST в корневом маршруте (`/`), на домашней странице приложения:
 
 ```js
-app.post('/', function (req, res) {
-  res.send('Got a POST request');
-});
+app.post('/', (req, res) => {
+  res.send('Got a POST request')
+})
 ```
 
 Ответ на запрос PUT, адресованный маршруту `/user`:
 
 ```js
-app.put('/user', function (req, res) {
-  res.send('Got a PUT request at /user');
-});
+app.put('/user', (req, res) => {
+  res.send('Got a PUT request at /user')
+})
 ```
 
 Ответ на запрос DELETE, адресованный маршруту `/user`:
 
 ```js
-app.delete('/user', function (req, res) {
-  res.send('Got a DELETE request at /user');
-});
+app.delete('/user', (req, res) => {
+  res.send('Got a DELETE request at /user')
+})
 ```
 
 Дополнительная информация о маршрутизации приведена в [руководстве по маршрутизации](/{{ page.lang }}/guide/routing.html).

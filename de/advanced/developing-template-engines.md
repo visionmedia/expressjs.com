@@ -13,18 +13,18 @@ Verwenden Sie die Methode `app.engine(ext, callback)`, um Ihre eigene Template-E
 Der folgende Code ist ein Beispiel für die Implementierung einer sehr einfachen Template-Engine für die Ausgabe von `.ntl`-Dateien.
 
 ```js
-var fs = require('fs'); // this engine requires the fs module
-app.engine('ntl', function (filePath, options, callback) { // define the template engine
-  fs.readFile(filePath, function (err, content) {
-    if (err) return callback(new Error(err));
+const fs = require('fs') // this engine requires the fs module
+app.engine('ntl', (filePath, options, callback) => { // define the template engine
+  fs.readFile(filePath, (err, content) => {
+    if (err) return callback(new Error(err))
     // this is an extremely simple template engine
-    var rendered = content.toString().replace('#title#', '<title>'+ options.title +'</title>')
-    .replace('#message#', '<h1>'+ options.message +'</h1>');
-    return callback(null, rendered);
-  });
-});
-app.set('views', './views'); // specify the views directory
-app.set('view engine', 'ntl'); // register the template engine
+    const rendered = content.toString().replace('#title#', `<title>${options.title}</title>`)
+      .replace('#message#', `<h1>${options.message}</h1>`)
+    return callback(null, rendered)
+  })
+})
+app.set('views', './views') // specify the views directory
+app.set('view engine', 'ntl') // register the template engine
 ```
 
 Ihre Anwendung ist jetzt in der Lage, `.ntl`-Dateien auszugeben. Erstellen Sie im Verzeichnis `views` eine Datei namens `index.ntl` mit dem folgenden Inhalt.
@@ -35,8 +35,8 @@ Ihre Anwendung ist jetzt in der Lage, `.ntl`-Dateien auszugeben. Erstellen Sie i
 ```
 Erstellen Sie dann in Ihrer Anwendung die folgende Route.
 ```js
-app.get('/', function (req, res) {
-  res.render('index', { title: 'Hey', message: 'Hello there!'});
-});
+app.get('/', (req, res) => {
+  res.render('index', { title: 'Hey', message: 'Hello there!' })
+})
 ```
 Wenn Sie eine Anforderung zur Homepage einleiten, wird `index.ntl` im HTML-Format ausgegeben.

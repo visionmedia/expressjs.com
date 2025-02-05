@@ -14,23 +14,23 @@ description: Understand how Express.js handles errors in synchronous and asynchr
 갖는다는 점이 다릅니다. 예를 들면 다음과 같습니다.
 
 ```js
-app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 ```
 
 오류 처리 미들웨어는 다른 `app.use()` 및 라우트 호출을 정의한 후에 마지막으로 정의해야 하며, 예를 들면 다음과 같습니다.
 
 ```js
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
-app.use(bodyParser());
-app.use(methodOverride());
-app.use(function(err, req, res, next) {
+app.use(bodyParser())
+app.use(methodOverride())
+app.use((err, req, res, next) => {
   // logic
-});
+})
 ```
 
 미들웨어 함수 내부로부터의 응답은 HTML 오류 페이지, 단순한 메시지 또는 JSON 문자열 등 여러분이 선호하는 모든 형식일 수 있습니다.
@@ -41,43 +41,43 @@ app.use(function(err, req, res, next) {
 그렇지 않은 요청에 대한 오류 처리를 정의하려는 경우, 다음과 같은 명령을 사용할 수 있습니다.
 
 ```js
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
-app.use(bodyParser());
-app.use(methodOverride());
-app.use(logErrors);
-app.use(clientErrorHandler);
-app.use(errorHandler);
+app.use(bodyParser())
+app.use(methodOverride())
+app.use(logErrors)
+app.use(clientErrorHandler)
+app.use(errorHandler)
 ```
 
 이 예에서 일반 `logErrors`는 요청 및 오류 정보를 `stderr`에
 기록할 수도 있으며, 예를 들면 다음과 같습니다.
 
 ```js
-function logErrors(err, req, res, next) {
-  console.error(err.stack);
-  next(err);
+function logErrors (err, req, res, next) {
+  console.error(err.stack)
+  next(err)
 }
 ```
 
 또한 이 예에서 `clientErrorHandler`는 다음과 같이 정의되며, 이 경우 오류는 명시적으로 그 다음 항목으로 전달됩니다.
 
 ```js
-function clientErrorHandler(err, req, res, next) {
+function clientErrorHandler (err, req, res, next) {
   if (req.xhr) {
-    res.status(500).send({ error: 'Something failed!' });
+    res.status(500).send({ error: 'Something failed!' })
   } else {
-    next(err);
+    next(err)
   }
 }
 ```
 "모든 오류를 처리하는(catch-all)" `errorHandler` 함수는 다음과 같이 구현될 수 있습니다.
 
 ```js
-function errorHandler(err, req, res, next) {
-  res.status(500);
-  res.render('error', { error: err });
+function errorHandler (err, req, res, next) {
+  res.status(500)
+  res.render('error', { error: err })
 }
 ```
 
@@ -87,18 +87,18 @@ function errorHandler(err, req, res, next) {
 
 ```js
 app.get('/a_route_behind_paywall',
-  function checkIfPaidSubscriber(req, res, next) {
-    if(!req.user.hasPaid) {
+  (req, res, next) => {
+    if (!req.user.hasPaid) {
 
       // continue handling this request
-      next('route');
+      next('route')
     }
-  }, function getPaidContent(req, res, next) {
-    PaidContent.find(function(err, doc) {
-      if(err) return next(err);
-      res.json(doc);
-    });
-  });
+  }, (req, res, next) => {
+    PaidContent.find((err, doc) => {
+      if (err) return next(err)
+      res.json(doc)
+    })
+  })
 ```
 이 예에서 `getPaidContent` 핸들러의 실행은 건너뛰지만, `/a_route_behind_paywall`에 대한 `app` 내의 나머지 핸들러는 계속하여 실행됩니다.
 
@@ -127,12 +127,12 @@ Express는 내장된 오류 핸들러와 함께 제공되며, 내장 오류 핸�
 다음과 같이 Express 내의 기본 오류 처리 메커니즘에 위임해야 합니다:
 
 ```js
-function errorHandler(err, req, res, next) {
+function errorHandler (err, req, res, next) {
   if (res.headersSent) {
-    return next(err);
+    return next(err)
   }
-  res.status(500);
-  res.render('error', { error: err });
+  res.status(500)
+  res.render('error', { error: err })
 }
 ```
 

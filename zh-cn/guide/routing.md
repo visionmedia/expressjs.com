@@ -19,13 +19,13 @@ description: Learn how to define and use routes in Express.js applications, incl
 以下代码是非常基本的路由示例。
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
 // 当对主页发出 GET 请求时，响应“hello world”
-app.get('/', function(req, res) {
-  res.send('hello world');
-});
+app.get('/', (req, res) => {
+  res.send('hello world')
+})
 ```
 
 <h2 id="route-methods">路由方法</h2>
@@ -36,14 +36,14 @@ app.get('/', function(req, res) {
 
 ```js
 // GET method route
-app.get('/', function (req, res) {
-  res.send('GET request to the homepage');
-});
+app.get('/', (req, res) => {
+  res.send('GET request to the homepage')
+})
 
 // POST method route
-app.post('/', function (req, res) {
-  res.send('POST request to the homepage');
-});
+app.post('/', (req, res) => {
+  res.send('POST request to the homepage')
+})
 ```
 
 Express 支持对应于 HTTP 方法的以下路由方法：`get`、`post`、`put`、`head`、`delete`、`options`、`trace`、`copy`、`lock`、`mkcol`、`move`、`purge`、`propfind`、`proppatch`、`unlock`、`report`、`mkactivity`、`checkout`、`merge`、`m-search`、`notify`、`subscribe`、`unsubscribe`、`patch`、`search` 和 `connect`。
@@ -57,10 +57,10 @@ Express 支持对应于 HTTP 方法的以下路由方法：`get`、`post`、`put
 在以下示例中，无论您使用 GET、POST、PUT、DELETE 还是在 [http 模块](https://nodejs.org/api/http.html#http_http_methods)中支持的其他任何 HTTP 请求方法，都将为针对“/secret”的请求执行处理程序。
 
 ```js
-app.all('/secret', function (req, res, next) {
-  console.log('Accessing the secret section ...');
-  next(); // pass control to the next handler
-});
+app.all('/secret', (req, res, next) => {
+  console.log('Accessing the secret section ...')
+  next() // pass control to the next handler
+})
 ```
 
 <h2 id="route-paths">路由路径</h2>
@@ -80,25 +80,25 @@ Express 使用 [path-to-regexp](https://www.npmjs.com/package/path-to-regexp) �
 此路由路径将请求与根路由 `/` 匹配。
 
 ```js
-app.get('/', function (req, res) {
-  res.send('root');
-});
+app.get('/', (req, res) => {
+  res.send('root')
+})
 ```
 
 此路由路径将请求与 `/about` 匹配。
 
 ```js
-app.get('/about', function (req, res) {
-  res.send('about');
-});
+app.get('/about', (req, res) => {
+  res.send('about')
+})
 ```
 
 此路由路径将请求与 `/random.text` 匹配。
 
 ```js
-app.get('/random.text', function (req, res) {
-  res.send('random.text');
-});
+app.get('/random.text', (req, res) => {
+  res.send('random.text')
+})
 ```
 
 以下是基于字符串模式的路由路径的一些示例。
@@ -106,33 +106,33 @@ app.get('/random.text', function (req, res) {
 此路由路径将匹配 `acd` 和 `abcd`。
 
 ```js
-app.get('/ab?cd', function(req, res) {
-  res.send('ab?cd');
-});
+app.get('/ab?cd', (req, res) => {
+  res.send('ab?cd')
+})
 ```
 
 此路由路径将匹配 `abcd`、`abbcd`、`abbbcd` 等。
 
 ```js
-app.get('/ab+cd', function(req, res) {
-  res.send('ab+cd');
-});
+app.get('/ab+cd', (req, res) => {
+  res.send('ab+cd')
+})
 ```
 
 此路由路径将匹配 `abcd`、`abxcd`、`abRABDOMcd`、`ab123cd` 等。
 
 ```js
-app.get('/ab*cd', function(req, res) {
-  res.send('ab*cd');
-});
+app.get('/ab*cd', (req, res) => {
+  res.send('ab*cd')
+})
 ```
 
 此路由路径将匹配 `/abe` 和 `/abcde`。
 
 ```js
-app.get('/ab(cd)?e', function(req, res) {
- res.send('ab(cd)?e');
-});
+app.get('/ab(cd)?e', (req, res) => {
+  res.send('ab(cd)?e')
+})
 ```
 
 <div class="doc-box doc-info" markdown="1">
@@ -144,17 +144,17 @@ app.get('/ab(cd)?e', function(req, res) {
 此路由路径将匹配名称中具有“a”的所有路由。
 
 ```js
-app.get(/a/, function(req, res) {
-  res.send('/a/');
-});
+app.get(/a/, (req, res) => {
+  res.send('/a/')
+})
 ```
 
 此路由路径将匹配 `butterfly` 和 `dragonfly`，但是不匹配 `butterflyman`、`dragonfly man` 等。
 
 ```js
-app.get(/.*fly$/, function(req, res) {
-  res.send('/.*fly$/');
-});
+app.get(/.*fly$/, (req, res) => {
+  res.send('/.*fly$/')
+})
 ```
 
 <h2 id="route-handlers">路由处理程序</h2>
@@ -166,60 +166,60 @@ app.get(/.*fly$/, function(req, res) {
 单个回调函数可以处理一个路由。例如：
 
 ```js
-app.get('/example/a', function (req, res) {
-  res.send('Hello from A!');
-});
+app.get('/example/a', (req, res) => {
+  res.send('Hello from A!')
+})
 ```
 
 多个回调函数可以处理一个路由（确保您指定 `next` 对象）。例如：
 
 ```js
-app.get('/example/b', function (req, res, next) {
-  console.log('the response will be sent by the next function ...');
-  next();
-}, function (req, res) {
-  res.send('Hello from B!');
-});
+app.get('/example/b', (req, res, next) => {
+  console.log('the response will be sent by the next function ...')
+  next()
+}, (req, res) => {
+  res.send('Hello from B!')
+})
 ```
 一组回调函数可以处理一个路由。例如：
 
 ```js
-var cb0 = function (req, res, next) {
-  console.log('CB0');
-  next();
+const cb0 = function (req, res, next) {
+  console.log('CB0')
+  next()
 }
 
-var cb1 = function (req, res, next) {
-  console.log('CB1');
-  next();
+const cb1 = function (req, res, next) {
+  console.log('CB1')
+  next()
 }
 
-var cb2 = function (req, res) {
-  res.send('Hello from C!');
+const cb2 = function (req, res) {
+  res.send('Hello from C!')
 }
 
-app.get('/example/c', [cb0, cb1, cb2]);
+app.get('/example/c', [cb0, cb1, cb2])
 ```
 
 独立函数与一组函数的组合可以处理一个路由。例如：
 
 ```js
-var cb0 = function (req, res, next) {
-  console.log('CB0');
-  next();
+const cb0 = function (req, res, next) {
+  console.log('CB0')
+  next()
 }
 
-var cb1 = function (req, res, next) {
-  console.log('CB1');
-  next();
+const cb1 = function (req, res, next) {
+  console.log('CB1')
+  next()
 }
 
-app.get('/example/d', [cb0, cb1], function (req, res, next) {
-  console.log('the response will be sent by the next function ...');
-  next();
-}, function (req, res) {
-  res.send('Hello from D!');
-});
+app.get('/example/d', [cb0, cb1], (req, res, next) => {
+  console.log('the response will be sent by the next function ...')
+  next()
+}, (req, res) => {
+  res.send('Hello from D!')
+})
 ```
 
 <h2 id="response-methods">响应方法</h2>
@@ -247,15 +247,15 @@ app.get('/example/d', [cb0, cb1], function (req, res, next) {
 
 ```js
 app.route('/book')
-  .get(function(req, res) {
-    res.send('Get a random book');
+  .get((req, res) => {
+    res.send('Get a random book')
   })
-  .post(function(req, res) {
-    res.send('Add a book');
+  .post((req, res) => {
+    res.send('Add a book')
   })
-  .put(function(req, res) {
-    res.send('Update the book');
-  });
+  .put((req, res) => {
+    res.send('Update the book')
+  })
 ```
 
 <h2 id="express-router">express.Router</h2>
@@ -267,34 +267,34 @@ app.route('/book')
 在应用程序目录中创建名为 `birds.js` 的路由器文件，其中包含以下内容：
 
 ```js
-var express = require('express');
-var router = express.Router();
+const express = require('express')
+const router = express.Router()
 
 // middleware that is specific to this router
-router.use(function timeLog(req, res, next) {
-  console.log('Time: ', Date.now());
-  next();
-});
+router.use((req, res, next) => {
+  console.log('Time: ', Date.now())
+  next()
+})
 // define the home page route
-router.get('/', function(req, res) {
-  res.send('Birds home page');
-});
+router.get('/', (req, res) => {
+  res.send('Birds home page')
+})
 // define the about route
-router.get('/about', function(req, res) {
-  res.send('About birds');
-});
+router.get('/about', (req, res) => {
+  res.send('About birds')
+})
 
-module.exports = router;
+module.exports = router
 ```
 
 接着，在应用程序中装入路由器模块：
 
 ```js
-var birds = require('./birds');
+const birds = require('./birds')
 
 /// ...
 
-app.use('/birds', birds);
+app.use('/birds', birds)
 ```
 
 此应用程序现在可处理针对 `/birds` 和 `/birds/about` 的请求，调用特定于此路由的 `timeLog` 中间件函数。

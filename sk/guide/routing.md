@@ -15,13 +15,13 @@ Základné informácie o routing-u sa dozviete v sekcii [Základný routing](/{{
 Tu je príklad, ako zadefinovať základný routing.
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
 // respond with "hello world" when a GET request is made to the homepage
-app.get('/', function(req, res) {
-  res.send('hello world');
-});
+app.get('/', (req, res) => {
+  res.send('hello world')
+})
 ```
 
 <h2 id="route-methods">Route metódy</h2>
@@ -32,14 +32,14 @@ Nasledujúci kód je ukážkou definície routing-u pre GET a POST metódy hlavn
 
 ```js
 // GET method route
-app.get('/', function (req, res) {
-  res.send('GET request to the homepage');
-});
+app.get('/', (req, res) => {
+  res.send('GET request to the homepage')
+})
 
 // POST method route
-app.post('/', function (req, res) {
-  res.send('POST request to the homepage');
-});
+app.post('/', (req, res) => {
+  res.send('POST request to the homepage')
+})
 ```
 
 Express podporuje tieto routing metódy korešpondujúce k HTTP metódam: `get`, `post`, `put`, `head`, `delete`, `options`, `trace`, `copy`, `lock`, `mkcol`, `move`, `purge`, `propfind`, `proppatch`, `unlock`, `report`, `mkactivity`, `checkout`, `merge`, `m-search`, `notify`, `subscribe`, `unsubscribe`, `patch`, `search` a `connect`.
@@ -54,10 +54,10 @@ Existuje špeciálna routing metóda `app.all()`, ktorá nie je odvodená zo ži
 Na nasledujúcom príklade je ukážka handler funkcie, ktorá bude vykonaná pri requeste na "/secret" bez ohľadu nato, či bude použitá GET, POST, PUT, DELETE, alebo akákoľvek iná HTTP request metóda podporovaná [http modulom](https://nodejs.org/api/http.html#http_http_methods).
 
 ```js
-app.all('/secret', function (req, res, next) {
-  console.log('Accessing the secret section ...');
-  next(); // pass control to the next handler
-});
+app.all('/secret', (req, res, next) => {
+  console.log('Accessing the secret section ...')
+  next() // pass control to the next handler
+})
 ```
 
 <h2 id="route-paths">Route cesty</h2>
@@ -77,25 +77,25 @@ Tu je niekoľko príkladov route ciest na základe stringov.
 Táto route cesta sa spáruje s requestom na hlavný route, `/`.
 
 ```js
-app.get('/', function (req, res) {
-  res.send('root');
-});
+app.get('/', (req, res) => {
+  res.send('root')
+})
 ```
 
 Táto route cesta sa spáruje s requestom na `/about`.
 
 ```js
-app.get('/about', function (req, res) {
-  res.send('about');
-});
+app.get('/about', (req, res) => {
+  res.send('about')
+})
 ```
 
 Táto route cesta sa spáruje s requestom na `/random.text`.
 
 ```js
-app.get('/random.text', function (req, res) {
-  res.send('random.text');
-});
+app.get('/random.text', (req, res) => {
+  res.send('random.text')
+})
 ```
 
 Tu je niekoľko príkladov route ciest na základe stringových patternov.
@@ -103,33 +103,33 @@ Tu je niekoľko príkladov route ciest na základe stringových patternov.
 Táto route cesta sa spáruje s requestom `acd` a `abcd`.
 
 ```js
-app.get('/ab?cd', function(req, res) {
-  res.send('ab?cd');
-});
+app.get('/ab?cd', (req, res) => {
+  res.send('ab?cd')
+})
 ```
 
 Táto route cesta sa spáruje s requestom `abcd`, `abbcd`, `abbbcd`, atď.
 
 ```js
-app.get('/ab+cd', function(req, res) {
-  res.send('ab+cd');
-});
+app.get('/ab+cd', (req, res) => {
+  res.send('ab+cd')
+})
 ```
 
 Táto route cesta sa spáruje s requestom `abcd`, `abxcd`, `abRANDOMcd`, `ab123cd`, atď.
 
 ```js
-app.get('/ab*cd', function(req, res) {
-  res.send('ab*cd');
-});
+app.get('/ab*cd', (req, res) => {
+  res.send('ab*cd')
+})
 ```
 
 Táto route cesta sa spáruje s requestom `/abe` a `/abcde`.
 
 ```js
-app.get('/ab(cd)?e', function(req, res) {
- res.send('ab(cd)?e');
-});
+app.get('/ab(cd)?e', (req, res) => {
+  res.send('ab(cd)?e')
+})
 ```
 
 <div class="doc-box doc-info" markdown="1">
@@ -141,17 +141,17 @@ Príklady definícií route ciest s využitím regulárnych výrazov:
 Táto route cesta bude spárovaná s každým requestom obsahujúcim "a".
 
 ```js
-app.get(/a/, function(req, res) {
-  res.send('/a/');
-});
+app.get(/a/, (req, res) => {
+  res.send('/a/')
+})
 ```
 
 Táto route cesta sa spáruje s requestom `butterfly` a `dragonfly`, ale nie `butterflyman`, `dragonfly man`, atď.
 
 ```js
-app.get(/.*fly$/, function(req, res) {
-  res.send('/.*fly$/');
-});
+app.get(/.*fly$/, (req, res) => {
+  res.send('/.*fly$/')
+})
 ```
 
 <h2 id="route-handlers">Route handler</h2>
@@ -163,60 +163,60 @@ Route handler môže byť definovaný ako funkcia, pole funkcií či kombinácia
 Jedna callback funkcia pre obsluhu spracovania:
 
 ```js
-app.get('/example/a', function (req, res) {
-  res.send('Hello from A!');
-});
+app.get('/example/a', (req, res) => {
+  res.send('Hello from A!')
+})
 ```
 
 Môžete použiť aj viac ako jednu callback funkciu (nezabudnite špecifikovať `next` objekt). Napríklad:
 
 ```js
-app.get('/example/b', function (req, res, next) {
-  console.log('the response will be sent by the next function ...');
-  next();
-}, function (req, res) {
-  res.send('Hello from B!');
-});
+app.get('/example/b', (req, res, next) => {
+  console.log('the response will be sent by the next function ...')
+  next()
+}, (req, res) => {
+  res.send('Hello from B!')
+})
 ```
 Môžete použiť aj pole callback funkcií.  Napr.:
 
 ```js
-var cb0 = function (req, res, next) {
-  console.log('CB0');
-  next();
+const cb0 = function (req, res, next) {
+  console.log('CB0')
+  next()
 }
 
-var cb1 = function (req, res, next) {
-  console.log('CB1');
-  next();
+const cb1 = function (req, res, next) {
+  console.log('CB1')
+  next()
 }
 
-var cb2 = function (req, res) {
-  res.send('Hello from C!');
+const cb2 = function (req, res) {
+  res.send('Hello from C!')
 }
 
-app.get('/example/c', [cb0, cb1, cb2]);
+app.get('/example/c', [cb0, cb1, cb2])
 ```
 
 Tu je ukážka kombinácia nezávislých funkcií a poľa funkcií:
 
 ```js
-var cb0 = function (req, res, next) {
-  console.log('CB0');
-  next();
+const cb0 = function (req, res, next) {
+  console.log('CB0')
+  next()
 }
 
-var cb1 = function (req, res, next) {
-  console.log('CB1');
-  next();
+const cb1 = function (req, res, next) {
+  console.log('CB1')
+  next()
 }
 
-app.get('/example/d', [cb0, cb1], function (req, res, next) {
-  console.log('the response will be sent by the next function ...');
-  next();
-}, function (req, res) {
-  res.send('Hello from D!');
-});
+app.get('/example/d', [cb0, cb1], (req, res, next) => {
+  console.log('the response will be sent by the next function ...')
+  next()
+}, (req, res) => {
+  res.send('Hello from D!')
+})
 ```
 
 <h2 id="response-methods">Response metódy</h2>
@@ -244,15 +244,15 @@ Tu je príklad zreťazenia route handlerov definovaných pomocou `app.route()`.
 
 ```js
 app.route('/book')
-  .get(function(req, res) {
-    res.send('Get a random book');
+  .get((req, res) => {
+    res.send('Get a random book')
   })
-  .post(function(req, res) {
-    res.send('Add a book');
+  .post((req, res) => {
+    res.send('Add a book')
   })
-  .put(function(req, res) {
-    res.send('Update the book');
-  });
+  .put((req, res) => {
+    res.send('Update the book')
+  })
 ```
 
 <h2 id="express-router">express.Router</h2>
@@ -264,34 +264,34 @@ Nasledujúci príklad demonštruje vytvorenie router modulu, načítanie middlew
 V priečinku aplikácie vytvorte router súbor nazvaný `birds.js` s takýmto obsahom:
 
 ```js
-var express = require('express');
-var router = express.Router();
+const express = require('express')
+const router = express.Router()
 
 // middleware that is specific to this router
-router.use(function timeLog(req, res, next) {
-  console.log('Time: ', Date.now());
-  next();
-});
+router.use((req, res, next) => {
+  console.log('Time: ', Date.now())
+  next()
+})
 // define the home page route
-router.get('/', function(req, res) {
-  res.send('Birds home page');
-});
+router.get('/', (req, res) => {
+  res.send('Birds home page')
+})
 // define the about route
-router.get('/about', function(req, res) {
-  res.send('About birds');
-});
+router.get('/about', (req, res) => {
+  res.send('About birds')
+})
 
-module.exports = router;
+module.exports = router
 ```
 
 Následne načítajte tento router modul do aplikácie:
 
 ```js
-var birds = require('./birds');
+const birds = require('./birds')
 
 /// ...
 
-app.use('/birds', birds);
+app.use('/birds', birds)
 ```
 
 Aplikácia bude teraz schopná obslúžiť prichádzajúce požiadavky na ceste `/birds` a `/birds/about`, a taktiež vyvolať `timeLog` middleware funkciu, ktorá je špecifická pre tento route.

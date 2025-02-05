@@ -14,18 +14,18 @@ description: Learn how to develop custom template engines for Express.js using a
 下列程式碼範例說明如何實作一個相當簡單的範本引擎，以呈現 `.ntl` 檔。
 
 ```js
-var fs = require('fs'); // this engine requires the fs module
-app.engine('ntl', function (filePath, options, callback) { // define the template engine
-  fs.readFile(filePath, function (err, content) {
-    if (err) return callback(new Error(err));
+const fs = require('fs') // this engine requires the fs module
+app.engine('ntl', (filePath, options, callback) => { // define the template engine
+  fs.readFile(filePath, (err, content) => {
+    if (err) return callback(new Error(err))
     // this is an extremely simple template engine
-    var rendered = content.toString().replace('#title#', '<title>'+ options.title +'</title>')
-    .replace('#message#', '<h1>'+ options.message +'</h1>');
-    return callback(null, rendered);
-  });
-});
-app.set('views', './views'); // specify the views directory
-app.set('view engine', 'ntl'); // register the template engine
+    const rendered = content.toString().replace('#title#', `<title>${options.title}</title>`)
+      .replace('#message#', `<h1>${options.message}</h1>`)
+    return callback(null, rendered)
+  })
+})
+app.set('views', './views') // specify the views directory
+app.set('view engine', 'ntl') // register the template engine
 ```
 
 現在，您的應用程式能夠呈現 `.ntl` 檔。請在 `views` 目錄中建立一個名稱是 `index.ntl` 的檔案，內含下列內容。
@@ -37,8 +37,8 @@ app.set('view engine', 'ntl'); // register the template engine
 然後在應用程式中建立下列路由。
 
 ```js
-app.get('/', function (req, res) {
-  res.render('index', { title: 'Hey', message: 'Hello there!'});
-});
+app.get('/', (req, res) => {
+  res.render('index', { title: 'Hey', message: 'Hello there!' })
+})
 ```
 當您向首頁提出要求時，`index.ntl` 會呈現成 HTML。

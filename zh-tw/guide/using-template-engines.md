@@ -41,7 +41,7 @@ $ npm install pug --save
 在設定模板引擎之後，您不必指定引擎或將範本引擎模組載入到應用程式中；Express 會在內部載入模組，如以下所示（針對上述範例）。
 
 ```js
-app.set('view engine', 'pug');
+app.set('view engine', 'pug')
 ```
 
 在 `views` 目錄中，建立一個名稱是 `index.pug` 並內含下列內容的 Pug 範本檔：
@@ -57,9 +57,9 @@ html
 建立路由以呈現 `index.pug` 檔。如果未設定 `view engine` 內容，您必須指定 `view` 檔的副檔名，否則可以省略此步驟。
 
 ```js
-app.get('/', function (req, res) {
-  res.render('index', { title: 'Hey', message: 'Hello there!'});
-});
+app.get('/', (req, res) => {
+  res.render('index', { title: 'Hey', message: 'Hello there!' })
+})
 ```
 
 當您向首頁發出請求時，`index.pug` 檔會以 HTML 被渲染出來。

@@ -46,14 +46,14 @@ description: Learn how to write custom middleware functions for Express.js appli
 Далее приводится пример простого приложения Ниже Express "Hello World", для которого будут определены две функции промежуточных обработчиков:
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 
 <h2>Разработка</h2>
@@ -61,10 +61,10 @@ app.listen(3000);
 Ниже приводится простой пример промежуточного обработчика "myLogger". Эта функция печатает слово "LOGGED" при прохождении запроса, адресованного приложению, через приложение. Данная функция промежуточного обработчика присвоена переменной с именем `myLogger`.
 
 ```js
-var myLogger = function (req, res, next) {
-  console.log('LOGGED');
-  next();
-};
+const myLogger = function (req, res, next) {
+  console.log('LOGGED')
+  next()
+}
 ```
 
 <div class="doc-box doc-notice" markdown="1">
@@ -76,21 +76,21 @@ var myLogger = function (req, res, next) {
 Например, приведенный ниже код загружает функцию промежуточного обработчика `myLogger` перед маршрутом к корневому расположению (/).
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-var myLogger = function (req, res, next) {
-  console.log('LOGGED');
-  next();
-};
+const myLogger = function (req, res, next) {
+  console.log('LOGGED')
+  next()
+}
 
-app.use(myLogger);
+app.use(myLogger)
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 
 Каждый раз при получении запроса приложение выводит на терминал сообщение "LOGGED".
@@ -104,32 +104,32 @@ app.listen(3000);
 В следующем примере выполняется добавление свойства `requestTime` в объект запроса. Назовем эту функцию промежуточного обработчика "requestTime".
 
 ```js
-var requestTime = function (req, res, next) {
-  req.requestTime = Date.now();
-  next();
-};
+const requestTime = function (req, res, next) {
+  req.requestTime = Date.now()
+  next()
+}
 ```
 
 Теперь приложением используется функция промежуточного обработчика `requestTime`. Кроме того, функция обратного вызова маршрута корневого расположения (пути) использует свойство, добавленную функций промежуточного обработчика в `req` (объект запроса).
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-var requestTime = function (req, res, next) {
-  req.requestTime = Date.now();
-  next();
-};
+const requestTime = function (req, res, next) {
+  req.requestTime = Date.now()
+  next()
+}
 
-app.use(requestTime);
+app.use(requestTime)
 
-app.get('/', function (req, res) {
-  var responseText = 'Hello World!<br>';
-  responseText += '<small>Requested at: ' + req.requestTime + '</small>';
-  res.send(responseText);
-});
+app.get('/', (req, res) => {
+  let responseText = 'Hello World!<br>'
+  responseText += `<small>Requested at: ${req.requestTime}</small>`
+  res.send(responseText)
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 Если запрос адресован корневому каталогу приложения, приложение выводит на экран системное время запроса в браузере.
 

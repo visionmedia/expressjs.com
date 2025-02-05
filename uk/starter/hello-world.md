@@ -20,8 +20,8 @@ description: Get started with Express.js by building a simple 'Hello World' appl
 В директорії `myapp`, створіть файл з ім’ям `app.js` та додайте наступний код:
 
 ```js
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

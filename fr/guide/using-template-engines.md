@@ -29,7 +29,7 @@ Certaines moteurs de modèles ne suivent pas cette convention. La bibliothèque 
 Une fois le moteur de vue défini, vous n'avez pas à spécifier le moteur ou à charger le module de moteur de modèles dans votre application ; Express charge le module en interne, comme indiqué ci-dessous (pour l'exemple ci-dessus).
 
 ```js
-app.set('view engine', 'pug');
+app.set('view engine', 'pug')
 ```
 
 Créez un fichier de modèle Pug nommé `index.pug` dans le répertoire `views`, avec le contenu suivant :
@@ -45,9 +45,9 @@ html
 Puis, créez une route pour générer le fichier `index.pug`. Si la propriété `view engine` n'est pas définie, vous devez spécifier l'extension du fichier `view`. Sinon, vous pouvez l'omettre.
 
 ```js
-app.get('/', function (req, res) {
-  res.render('index', { title: 'Hey', message: 'Hello there!'});
-});
+app.get('/', (req, res) => {
+  res.render('index', { title: 'Hey', message: 'Hello there!' })
+})
 ```
 
 Lorsque vous faites une demande vers la page d'accueil, le fichier `index.pug` est généré en HTML.

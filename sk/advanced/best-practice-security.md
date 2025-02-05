@@ -60,8 +60,8 @@ Potom ho môžete použiť vo vašom kóde takto:
 ```js
 /// ...
 
-var helmet = require('helmet');
-app.use(helmet());
+const helmet = require('helmet')
+app.use(helmet())
 
 /// ...
 ```
@@ -73,7 +73,7 @@ Ak nechcete použiť Helmet, potom určite aspoň zakážte `X-Powered-By` hlavi
 Preto sa odporúča, vypnúť túto hlavičku pomocou `app.disable()` metódy:
 
 ```js
-app.disable('x-powered-by');
+app.disable('x-powered-by')
 ```
 
 V prípade, že použijete modul `helmet.js`, ten sa o to postará.
@@ -98,13 +98,13 @@ Používaním defaultného názvu session cookie vystavujete aplikáciu možným
 Aby ste sa vyhli tomuto problému, použite generické názvy cookie; napr použitím [express-session](https://www.npmjs.com/package/express-session) middlewaru:
 
 ```js
-var session = require('express-session');
-app.set('trust proxy', 1); // trust first proxy
-app.use( session({
-   secret : 's3Cur3',
-   name : 'sessionId',
-  })
-);
+const session = require('express-session')
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 's3Cur3',
+  name: 'sessionId'
+})
+)
 ```
 
 ### Nastavte cookie security parametre
@@ -120,22 +120,23 @@ Pre zlepšenie bezpečnosti nastavte nasledujúce cookie parametre:
 Tu je príklad použitia [cookie-session](https://www.npmjs.com/package/cookie-session) middleware modulu:
 
 ```js
-var session = require('cookie-session');
-var express = require('express');
-var app = express();
+const session = require('cookie-session')
+const express = require('express')
+const app = express()
 
-var expiryDate = new Date( Date.now() + 60 * 60 * 1000 ); // 1 hour
+const expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 app.use(session({
   name: 'session',
   keys: ['key1', 'key2'],
-  cookie: { secure: true,
-            httpOnly: true,
-            domain: 'example.com',
-            path: 'foo/bar',
-            expires: expiryDate
-          }
-  })
-);
+  cookie: {
+    secure: true,
+    httpOnly: true,
+    domain: 'example.com',
+    path: 'foo/bar',
+    expires: expiryDate
+  }
+})
+)
 ```
 
 ## Ďalšie odporúčania

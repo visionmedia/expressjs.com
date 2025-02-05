@@ -57,9 +57,9 @@ inými slovami, Express vykonal všetky middlware funkcie a nenašiel žiaden ro
 ktorý by na danú požiadavku vedel odpovedať. Všetko čo musíte spraviť k odchyteniu 404-ky je, že pridáte nasledovnú middleware funkciu pod všetky ostatné definície:
 
 ```js
-app.use(function(req, res, next) {
-  res.status(404).send('Sorry cant find that!');
-});
+app.use((req, res, next) => {
+  res.status(404).send('Sorry cant find that!')
+})
 ```
 
 ## Ako si zadefinujem error handler?
@@ -69,10 +69,10 @@ s jediným rozdielom a to, že je vyvolaný so štyrmi argumentami, namiesto tro
 Jeho signatúra je nasledovná `(err, req, res, next)`:
 
 ```js
-app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 ```
 
 Viac informácií sa dozviete v kapitole [Error handling](/{{ page.lang }}/guide/error-handling.html).

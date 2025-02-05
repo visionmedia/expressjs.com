@@ -56,8 +56,8 @@ So verwenden Sie "Helmet" in Ihrem Code:
 ```js
 /// ...
 
-var helmet = require('helmet');
-app.use(helmet());
+const helmet = require('helmet')
+app.use(helmet())
 
 /// ...
 ```
@@ -69,7 +69,7 @@ Wenn Sie "Helmet" nicht verwenden wollen, sollten Sie mindestens den `X-Powered-
 Ein bewährtes Verfahren ist also, diesen Header mit der Methode `app.disable()` zu deaktivieren:
 
 ```js
-app.disable('x-powered-by');
+app.disable('x-powered-by')
 ```
 
 Wenn Sie `helmet.js` verwenden, kümmert sich das Tool darum.
@@ -94,13 +94,13 @@ Die Verwendung des standardmäßigen Namens des Sitzungscookies kann Ihre Anwend
 Dieses Problem lässt sich vermeiden, wenn Sie allgemeine Cookienamen verwenden; z. B. durch Verwendung der [express-session](https://www.npmjs.com/package/express-session)-Middleware:
 
 ```js
-var session = require('express-session');
+const session = require('express-session')
 app.set('trust proxy', 1) // trust first proxy
-app.use( session({
-   secret : 's3Cur3',
-   name : 'sessionId',
-  })
-);
+app.use(session({
+  secret: 's3Cur3',
+  name: 'sessionId'
+})
+)
 ```
 
 ### Cookie-Sicherheitsoptionen festlegen
@@ -116,22 +116,23 @@ Legen Sie die folgenden Cookieoptionen fest, um die Sicherheit zu erhöhen:
 Dies ist ein Beispiel zur Verwendung der [cookie-session](https://www.npmjs.com/package/cookie-session)-Middleware:
 
 ```js
-var session = require('cookie-session');
-var express = require('express');
-var app = express();
+const session = require('cookie-session')
+const express = require('express')
+const app = express()
 
-var expiryDate = new Date( Date.now() + 60 * 60 * 1000 ); // 1 hour
+const expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 app.use(session({
   name: 'session',
   keys: ['key1', 'key2'],
-  cookie: { secure: true,
-            httpOnly: true,
-            domain: 'example.com',
-            path: 'foo/bar',
-            expires: expiryDate
-          }
-  })
-);
+  cookie: {
+    secure: true,
+    httpOnly: true,
+    domain: 'example.com',
+    path: 'foo/bar',
+    expires: expiryDate
+  }
+})
+)
 ```
 
 ## Weitere Überlegungen

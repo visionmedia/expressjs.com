@@ -42,7 +42,7 @@ modelo no seu aplicativo; o Express carrega o módulo internamente,
 como mostrado abaixo (para o exemplo acima).
 
 ```js
-app.set('view engine', 'pug');
+app.set('view engine', 'pug')
 ```
 
 Crie um arquivo de modelo do Pug
@@ -64,9 +64,9 @@ extensão do arquivo `view`. Caso contrário, é
 possível omití-la.
 
 ```js
-app.get('/', function (req, res) {
-  res.render('index', { title: 'Hey', message: 'Hello there!'});
-});
+app.get('/', (req, res) => {
+  res.render('index', { title: 'Hey', message: 'Hello there!' })
+})
 ```
 
 Ao fazer uma solicitação à página inicial, o arquivo `index.pug` será renderizado como HTML.
