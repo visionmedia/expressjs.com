@@ -192,11 +192,9 @@ Jediným vstavaným  middlewarom v Express je `express.static` funkcia. Tento mi
 
 Signatúra tejto funkcie je:
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 express.static(root, [options])
-</code>
-</pre>
+```
 
 Parameter `root` špecifikuje hlavný adresár z ktorého bude statický obsah servovaný.
 

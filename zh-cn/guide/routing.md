@@ -18,8 +18,7 @@ description: Learn how to define and use routes in Express.js applications, incl
 
 以下代码是非常基本的路由示例。
 
-<pre>
-<code class="language-javascript" translate="no">
+```js
 var express = require('express');
 var app = express();
 
@@ -27,8 +26,7 @@ var app = express();
 app.get('/', function(req, res) {
   res.send('hello world');
 });
-</code>
-</pre>
+```
 
 <h2 id="route-methods">路由方法</h2>
 

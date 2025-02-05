@@ -44,28 +44,28 @@ library follows this convention by mapping all of the popular Node.js template e
 After the view engine is set, you don't have to specify the engine or load the template engine module in your app;
 Express loads the module internally, as shown below (for the above example).
 
-<pre><code class="language-javascript" translate="no">
+```js
 app.set('view engine', 'pug');
-</code></pre>
+```
 
 Create a Pug template file named `index.pug` in the `views` directory, with the following content:
 
-<pre><code class="language-javascript" translate="no">
+```pug
 html
   head
     title= title
   body
     h1= message
-</code></pre>
+```
 
 Then create a route to render the `index.pug` file. If the `view engine` property is not set,
 you must specify the extension of the `view` file. Otherwise, you can omit it.
 
-<pre><code class="language-javascript" translate="no">
+```js
 app.get('/', function (req, res) {
   res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
-</code></pre>
+```
 
 When you make a request to the home page, the `index.pug` file will be rendered as HTML.
 
