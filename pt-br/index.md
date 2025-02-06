@@ -16,7 +16,25 @@ description: Express is a fast, unopinionated, minimalist web framework for Node
     </section>
     <div id="install-command">$ npm install express --save</div>
   </div>
+  
+  <div id="homepage-rightpane" class="pane" markdown="1">
+
+```js
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Olá Mundo!')
+})
+
+app.listen(port, () => {
+  console.log(`App de exemplo esta rodando na porta ${port}`)
+})
+```
+  </div>
 </section>
+
 <section id="announcements">
   {% include announcement/announcement-pt-br.md %}
 </section>

@@ -11,16 +11,19 @@ defaults:
       lang: en
 
 # Build settings
-markdown: kramdown
 
 plugins:
   - jekyll-redirect-from
 
+highlighter: rouge
+# library used for syntax highlighting
+
+markdown: kramdown
 kramdown:
-  input: GFM
-  hard_wrap: false
-  syntax_highlighter_opts:
-    disable : true
+ math_engine: mathjax
+ input: GFM
+ hard_wrap: false
+ syntax_highlighter: rouge
 
 exclude: 
   - [uk/CHANGELOG.md]

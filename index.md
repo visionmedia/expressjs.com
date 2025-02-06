@@ -16,6 +16,24 @@ redirect_from: "/en/index.html"
     </section>
     <div id="install-command">$ npm install express --save</div>
   </div>
+
+  <div id="homepage-rightpane" class="pane" markdown="1">
+    
+```javascript
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+```
+
+  </div>
 </section>
 <section id="announcements">
   {% include announcement/announcement-en.md %}
