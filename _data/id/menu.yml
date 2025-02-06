@@ -2,40 +2,40 @@
 home: Home
 
 # Getting started
-getting_started: Getting started
-installing: Installing
+getting_started: Mulai
+installing: Menginstal
 hello_world: Hello world
 generator: Express generator
-basic_routing: Basic routing
-static_files: Static files
-examples: More examples
+basic_routing: Dasar routing
+static_files: File statis
+examples: Contoh lainnya
 faq: FAQ
 
 # Guide
-guide: Guide
+guide: Panduan
 routing: Routing
-writing_middleware: Writing middleware
-using_middleware: Using middleware
-overriding_express_api: Overriding the Express API
-using_template_engines: Using template engines
-error_handling: Error handling
+writing_middleware: Membuat middleware
+using_middleware: Menggunakan middleware
+overriding_express_api: Mengganti Express API
+using_template_engines: Menggunakan template engines
+error_handling: Penanganan Error
 debugging: Debugging
 behind_proxies: Express behind proxies
-migrating_4: Moving to Express 4
-migrating_5: Moving to Express 5
-database_integration: Database integration
+migrating_4: Pindah to Express 4
+migrating_5: Pindah to Express 5
+database_integration: Integrasi Database
 
 # API reference
 
-api: API reference
+api: Referensi API
 5x: 5.x
 4x: 4.x
 3x: 3.x (deprecated)
 2x: 2.x (deprecated)
 
 # Advanced topics
-advanced: Advanced topics
-developing_template_engines: Building template engines
+advanced: Topik lanjutan
+developing_template_engines: Membangun template engines
 security_updates: Security updates
 best_practice_security: Security best practices
 best_practice_performance: Performance best practices

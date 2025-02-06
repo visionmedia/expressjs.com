@@ -2,47 +2,47 @@
 home: Home
 
 # Getting started
-getting_started: Getting started
-installing: Installing
+getting_started: Introduzione
+installing: Installazione
 hello_world: Hello world
-generator: Express generator
-basic_routing: Basic routing
-static_files: Static files
+generator: Programma di creazione Express
+basic_routing: Routing di base
+static_files: File statici
 examples: More examples
 faq: FAQ
 
 # Guide
 guide: Guide
 routing: Routing
-writing_middleware: Writing middleware
-using_middleware: Using middleware
+writing_middleware: Scrittura del middleware
+using_middleware: Utilizzo del middleware
 overriding_express_api: Overriding the Express API
-using_template_engines: Using template engines
-error_handling: Error handling
+using_template_engines: Utilizzo dei motori di template
+error_handling: Gestione degli errori
 debugging: Debugging
-behind_proxies: Express behind proxies
-migrating_4: Moving to Express 4
-migrating_5: Moving to Express 5
-database_integration: Database integration
+behind_proxies: Express con i proxy
+migrating_4: Passaggio a Express 4
+migrating_5: Passaggio a Express 5
+database_integration: Integrazione database
 
 # API reference
 
-api: API reference
+api: Riferimento API
 5x: 5.x
 4x: 4.x
-3x: 3.x (deprecated)
-2x: 2.x (deprecated)
+3x: 3.x (deprecato)
+2x: 2.x (deprecato)
 
 # Advanced topics
-advanced: Advanced topics
-developing_template_engines: Building template engines
-security_updates: Security updates
-best_practice_security: Security best practices
-best_practice_performance: Performance best practices
+advanced: Argomenti avanzati
+developing_template_engines: Motori di template
+security_updates: Aggiornamenti sulla sicurezza
+best_practice_security: Best practice sulla sicurezza
+best_practice_performance: Best practice sulle prestazioni
 healthcheck_graceful_shutdown: Health checks & shutdown
 
 # Resources
-resources: Resources
+resources: Risorse
 glossary: Glossary
 middleware: Middleware
 community: Community

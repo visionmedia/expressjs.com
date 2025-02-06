@@ -1,60 +1,60 @@
 # Home
-home: Home
+home: Página Inicial
 
 # Getting started
-getting_started: Getting started
-installing: Installing
+getting_started: Introdução
+installing: Instalação
 hello_world: Hello world
-generator: Express generator
-basic_routing: Basic routing
-static_files: Static files
-examples: More examples
+generator: Gerador do Express
+basic_routing: Roteamento Básico
+static_files: Arquivos Estáticos
+examples: Perguntas mais frequentes
 faq: FAQ
 
 # Guide
 guide: Guide
-routing: Routing
-writing_middleware: Writing middleware
-using_middleware: Using middleware
+routing: Roteamento
+writing_middleware: Escrevendo o middleware
+using_middleware: Usando o middleware
 overriding_express_api: Overriding the Express API
-using_template_engines: Using template engines
-error_handling: Error handling
-debugging: Debugging
-behind_proxies: Express behind proxies
-migrating_4: Moving to Express 4
-migrating_5: Moving to Express 5
-database_integration: Database integration
+using_template_engines: Usando o mecanismo de modelo
+error_handling: Manipulação de erros
+debugging: Depuração
+behind_proxies: Express atrás de proxies
+migrating_4: Migrando para o Express 4
+migrating_5: Migrando para o Express 5
+database_integration: Integração de Banco de dados
 
 # API reference
 
-api: API reference
+api: Referência da API
 5x: 5.x
 4x: 4.x
-3x: 3.x (deprecated)
-2x: 2.x (deprecated)
+3x: 3.x (descontinuada)
+2x: 2.x (descontinuada)
 
 # Advanced topics
-advanced: Advanced topics
-developing_template_engines: Building template engines
-security_updates: Security updates
-best_practice_security: Security best practices
-best_practice_performance: Performance best practices
+advanced: Tópicos Avançados
+developing_template_engines: Mecanismos de modelo
+security_updates: Atualizações de segurança
+best_practice_security: Melhores práticas de segurança
+best_practice_performance: Melhores práticas de desempenho
 healthcheck_graceful_shutdown: Health checks & shutdown
 
 # Resources
-resources: Resources
-glossary: Glossary
+resources: Recursos
+glossary: Glossário
 middleware: Middleware
-community: Community
+community: Comunidade
 utils: Utility modules
 contributing: Contributing to Express
 changelog: Release Change Log
 
 # Support
-support: Support
+support: Suporte
 
 # Blog
 blog: Blog
-latest_post: Latest post
-all_posts: All posts
-write_post: Write a Post
+latest_post: Ultimos post
+all_posts: Todos posts
+write_post: Escreva um Post

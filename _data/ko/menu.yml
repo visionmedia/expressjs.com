@@ -1,51 +1,51 @@
 # Home
-home: Home
+home: 홈
 
 # Getting started
-getting_started: Getting started
-installing: Installing
+getting_started: 시작하기
+installing: 설치
 hello_world: Hello world
-generator: Express generator
-basic_routing: Basic routing
-static_files: Static files
+generator: Express 생성기
+basic_routing: 기본 라우팅
+static_files: 정적 파일
 examples: More examples
-faq: FAQ
+faq: 자주 묻는 질문(FAQ)
 
 # Guide
-guide: Guide
-routing: Routing
-writing_middleware: Writing middleware
-using_middleware: Using middleware
+guide: Gu안내서ide
+routing: 라우팅
+writing_middleware: 미들웨어 작성
+using_middleware: 미들웨어 사용
 overriding_express_api: Overriding the Express API
-using_template_engines: Using template engines
-error_handling: Error handling
-debugging: Debugging
-behind_proxies: Express behind proxies
-migrating_4: Moving to Express 4
-migrating_5: Moving to Express 5
-database_integration: Database integration
+using_template_engines: 템플리트 엔진 사용
+error_handling: 오류 처리
+debugging: 디버깅
+behind_proxies: 프록시 환경에서 Express 사용
+migrating_4: Express 4로의 이전
+migrating_5: Express 5로의 이전
+database_integration: 데이터베이스 통합
 
 # API reference
 
-api: API reference
+api: API 참조
 5x: 5.x
 4x: 4.x
-3x: 3.x (deprecated)
-2x: 2.x (deprecated)
+3x: 3.x(더 이상 사용되지 않음)
+2x: 2.x(더 이상 사용되지 않음)
 
 # Advanced topics
-advanced: Advanced topics
-developing_template_engines: Building template engines
-security_updates: Security updates
-best_practice_security: Security best practices
-best_practice_performance: Performance best practices
+advanced: 고급 주제
+developing_template_engines: 템플리트 엔진
+security_updates: 보안 업데이트
+best_practice_security: 보안 우수 사례
+best_practice_performance: 성능 우수 사례
 healthcheck_graceful_shutdown: Health checks & shutdown
 
 # Resources
-resources: Resources
-glossary: Glossary
-middleware: Middleware
-community: Community
+resources: 자원
+glossary: 용어집
+middleware: 미들웨어
+community: 커뮤니티
 utils: Utility modules
 contributing: Contributing to Express
 changelog: Release Change Log

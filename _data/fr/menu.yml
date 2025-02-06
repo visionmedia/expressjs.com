@@ -1,51 +1,51 @@
 # Home
-home: Home
+home: Accueil
 
 # Getting started
-getting_started: Getting started
+getting_started: Mise en route
 installing: Installing
 hello_world: Hello world
-generator: Express generator
-basic_routing: Basic routing
-static_files: Static files
+generator: Générateur Express
+basic_routing: Routage de base
+static_files: Fichiers statiques
 examples: More examples
 faq: FAQ
 
 # Guide
 guide: Guide
-routing: Routing
-writing_middleware: Writing middleware
-using_middleware: Using middleware
+routing: Routage
+writing_middleware: Ecriture de middleware
+using_middleware: Utilisation de middleware
 overriding_express_api: Overriding the Express API
-using_template_engines: Using template engines
-error_handling: Error handling
-debugging: Debugging
-behind_proxies: Express behind proxies
-migrating_4: Moving to Express 4
-migrating_5: Moving to Express 5
-database_integration: Database integration
+using_template_engines: Utilisation de moteurs de modèles
+error_handling: Traitement d'erreurs
+debugging: Débogage
+behind_proxies: Express derrière Proxys
+migrating_4: Migration vers Express 4
+migrating_5: Migration vers Express 5
+database_integration: Intégration de bases de données
 
 # API reference
 
 api: API reference
 5x: 5.x
 4x: 4.x
-3x: 3.x (deprecated)
-2x: 2.x (deprecated)
+3x: 3.x (obsolète)
+2x: 2.x (obsolète)
 
 # Advanced topics
-advanced: Advanced topics
-developing_template_engines: Building template engines
-security_updates: Security updates
-best_practice_security: Security best practices
-best_practice_performance: Performance best practices
+advanced: Rubriques avancées
+developing_template_engines: Moteurs de modèles
+security_updates: Mises à jour de sécurité
+best_practice_security: Meilleures pratiques en termes de sécurité
+best_practice_performance: Meilleures pratiques en termes de performances
 healthcheck_graceful_shutdown: Health checks & shutdown
 
 # Resources
-resources: Resources
-glossary: Glossary
+resources: Ressources
+glossary: Glossaire
 middleware: Middleware
-community: Community
+community: Communauté
 utils: Utility modules
 contributing: Contributing to Express
 changelog: Release Change Log

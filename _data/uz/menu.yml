@@ -1,37 +1,37 @@
 # Home
-home: Home
+home: Bosh sahifa
 
 # Getting started
-getting_started: Getting started
-installing: Installing
+getting_started: Boshlang'ich ishlar
+installing: O'rnatish
 hello_world: Hello world
 generator: Express generator
-basic_routing: Basic routing
-static_files: Static files
+basic_routing: Oddiy routing
+static_files: Statik fayllar
 examples: More examples
 faq: FAQ
 
 # Guide
-guide: Guide
+guide: Qo'llanma
 routing: Routing
-writing_middleware: Writing middleware
-using_middleware: Using middleware
+writing_middleware: Middleware yozish
+using_middleware: Middleware ishlatish
 overriding_express_api: Overriding the Express API
-using_template_engines: Using template engines
-error_handling: Error handling
-debugging: Debugging
-behind_proxies: Express behind proxies
-migrating_4: Moving to Express 4
-migrating_5: Moving to Express 5
-database_integration: Database integration
+using_template_engines: Template engine ishlatish
+error_handling: Xatolarni qayta ishlash
+debugging: Debug qilish
+behind_proxies: Express proksilar bilan
+migrating_4: Express 4ga o'tish
+migrating_5: Express 5ga o'tish
+database_integration: Ma'lumotlar omboriga ulash
 
 # API reference
 
-api: API reference
+api: API qo'llanma
 5x: 5.x
 4x: 4.x
-3x: 3.x (deprecated)
-2x: 2.x (deprecated)
+3x: 3.x (eskirgan)
+2x: 2.x (eskirgan)
 
 # Advanced topics
 advanced: Advanced topics
