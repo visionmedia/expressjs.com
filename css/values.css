@@ -1,23 +1,15 @@
 .light-mode:root {
-  /* [#7e7e7e, dadada] */
   --grey-fg: #aeaeae;
   --bg: #ffffff;
   --fg: #383838;
-  /* [#eee, fcfcfa] */
   --card-bg: #f0f1f3; 
-  /* [#444, #333, #555] */  
   --card-fg: #383838; 
   /* text (api side menus h3...)  */
-  /* [666, 808080]  */
   --menu-grey: #888; 
   --hover-border: #484848; 
-  /* [e9e9e9] */
   --hover-bg: #D3D3D3; 
-  /* [#ddd]  */
   --hover-fg: #fafafa;
-    /* [#c6c6c6 #eee] */
   --border: #d9e1e4; 
-  /* [#259dff] */
   --link: #0e78ce;
     /* docs related */
   --box-fg: #181818;
@@ -33,8 +25,6 @@
   --eol-fg: #ff0000;
 }
 .dark-mode:root {
-  /* [#7e7e7e] */
-  --grey-fg: #b3b3b3;
   --bg: #0c0c0c;
   --fg: #fafafa;
   --card-bg: #181818;  

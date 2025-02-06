@@ -33,11 +33,6 @@ html.dark-mode {
     background: var(--fg);
   }
 
-  /* override prism js fat arrow and equals operator */
-  .token.operator {
-    background: inherit;
-  }
-
   .ds-dropdown-menu .ds-dataset-1 {
     background-color: var(--bg);
   }
