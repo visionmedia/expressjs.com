@@ -139,7 +139,6 @@ main.home {
 
 #install-command {
   font-family: Consolas, Monaco, "Andale Mono", monospace;
-  /* background not required */
   padding: 5px 10px;
   border: 1px solid var(--border);
   border-radius: 3px;
@@ -155,8 +154,6 @@ main.home {
 span.block-section {
   display: block;
 }
-
-/* li code - no instances exist   */
 
 #intro h3 {
   font-size: 25px;
@@ -238,7 +235,6 @@ a {
  padding-top: 120px;
  z-index: -1;
 }
-/* .current - no instances found */
 
 /* logo */
 
@@ -285,8 +281,6 @@ a {
   line-height: .87;
 }
 
-/* #description em - no instances found */
-
 #doc-langs {
   text-align: center;
   font-size: 12px;
@@ -316,7 +310,7 @@ header {
   z-index: 100;
   border-bottom: 1px solid var(--hover-fg);
 }
-/* bottom border makes no diff */
+
 .scroll header {
     box-shadow: 0 0 4px var(--card-bg);
 }
@@ -328,8 +322,6 @@ code {
   margin-block: -.125rem;
   font-size: 13px;
   padding: .125rem .375rem;
-  /* this is too high - overwritten by prism */
-  /* line-height: 28px; */
   border-radius: 6px;
 }
 
@@ -342,7 +334,6 @@ pre {
 
 /* top button */
 
-/* added styling to each mode to up scroll - maybe pic */
 .scroll #top {
   border: 1px solid var(--border); 
   opacity: .5;
@@ -362,7 +353,6 @@ pre {
   right: 15px;
   padding: 8px;
   text-decoration: none;
-  /* color - had no effect */
   transition: opacity 300ms;
   border: 2px solid var(--border);  
 }
@@ -416,16 +406,12 @@ html[xmlns] .clearfix {
   list-style: none;
 }
 
-/* #boxes h3 {
-move above
-
 /* doc specific */
 
 .doctable, section table {
   margin: 1em 1em 1em 0;
   border: 1px solid var(--border);
   border-collapse: collapse;
-  /* empty cells had no effect - dev tools*/
   width: 100%;
 }
 
@@ -593,6 +579,7 @@ footer {
   gap: 20px;
   font-size: 20px;
 }
+
 /* navigation */
 #theme-icon-container {
   cursor: pointer;
@@ -642,8 +629,6 @@ footer {
   border: 1px solid var(--border);
   border-radius: 12px;
   background-color: var(--bg);
-  /* overwritten in #navbar ul */
-  /* list-style: none; */
   padding: 0;
   display: none;
 }
@@ -685,7 +670,6 @@ footer {
 /* secondary menu */
 
 #menu,
-#tags-side-menu,
 #blog-side-menu-container {
   position: fixed;
   margin: 0;
@@ -729,20 +713,12 @@ color: var(--fg)
   list-style: none;
 }
 
-#tags-side-menu li {
-  list-style: none;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-#menu ul,
-#tags-side-menu ul {
+#menu ul {
   height: 0;
   overflow: hidden;
 }
 
-#menu ul.active,
-#tags-side-menu ul.active {
+#menu ul.active {
   height: auto;
   padding: 0;
 }
@@ -750,20 +726,14 @@ color: var(--fg)
   color: var(--menu-grey);}
 
 #menu > li > a,
-#tags-side-menu > li > a,
 #blog-side-menu > li > a {
   color: var(--menu-grey);
   font-weight: bold;
   font-size: 13px;
 }
 
-#menu ul a,
-#tags-side-menu ul a {
+#menu ul a {
   padding-right: 7px;
-}
-#tags-side-menu ul a{
-  font-size: 13px;
-  font-weight:initial;
 }
 
 /* can't find this in proj*/
@@ -896,7 +866,6 @@ h2 a {
   }
 
   #menu,
-  #tags-side-menu,
   #blog-side-menu-container {
     display: none;
   }
@@ -1090,6 +1059,7 @@ h2 a {
 #mw-list ul li {
  margin-left: -20px;
 }
+
 /* Blog page styles*/
 #blog-doc {
   margin: 0 10px;
@@ -1298,8 +1268,6 @@ blockquote {
     left: 0;
     padding: 0;
     top: 57px;
-    /* doesn't do anything */
-    /* background: var(--bg); */
     width: 100%;
     position: absolute;
     display: none;
@@ -1337,8 +1305,6 @@ blockquote {
     display: none;
     margin-top: 7px;
     background-color: var(--card-bg);
-    /* doesn't do anything */
-    /* color:var(--card-fg); */
     padding: 0;
     margin: 0;
     border: none;
