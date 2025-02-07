@@ -1,10 +1,10 @@
 ---
 layout: page
 title: Express "Merhaba Dünya" örneği
+description: Get started with Express.js by building a simple 'Hello World' application, demonstrating the basic setup and server creation for beginners.
 menu: starter
 lang: tr
-description: Get started with Express.js by building a simple 'Hello World' application,
-  demonstrating the basic setup and server creation for beginners.
+redirect_from: /starter/hello-world.html
 ---
 
 # Merhaba Dünya Örneği
@@ -29,8 +29,7 @@ app.listen(port, () => {
 
 Bu uygulama bir sunucu çalıştırır ve gelen bağlantılar için 3000 portunu dinler. (`/`) kök dizinine gelen isteklere "Hello World!" ile yanıt verir. Bunun haricindeki tüm adreslere, **404 Not Found** hatası verecektir.
 
-
-### Bilgisayarınızda Çalıştırmak
+### Running Locally
 
 İlk olarak `myapp` adında bir dizin oluşturun, o dizine geçin ve `npm init` komutunu çalıştırın. Sonra `express`i [bu sayfada](/{{ page.lang }}/starter/installing.html) gösterildiği gibi bir bağımlılık olarak kurun.
 
@@ -47,7 +46,6 @@ Uygulamayı aşağıdaki komutla çalıştırın:
 $ node app.js
 ```
 
-Sonucu görmek için sunucunuzda `http://localhost:3000/` adresini ziyaret edin.
+Then, load `http://localhost:3000/` in a browser to see the output.
 
-###  [Önceki: Kurulum ](/{{ page.lang }}/starter/installing.html)&nbsp;&nbsp;&nbsp;&nbsp;[Sonraki: Express Oluşturucu ](/{{ page.lang }}/starter/generator.html)
-
+### [Önceki: Kurulum ](/{{ page.lang }}/starter/installing.html)&nbsp;&nbsp;&nbsp;&nbsp;[Sonraki: Express Oluşturucu ](/{{ page.lang }}/starter/generator.html)
