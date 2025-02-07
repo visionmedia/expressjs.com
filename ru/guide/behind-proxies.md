@@ -1,39 +1,45 @@
 ---
 layout: page
 title: Express за прокси
+description: Learn how to configure Express.js applications to work correctly behind reverse proxies, including using the trust proxy setting to handle client IP addresses.
 menu: guide
 lang: ru
-description: Learn how to configure Express.js applications to work correctly behind
-  reverse proxies, including using the trust proxy setting to handle client IP addresses.
+redirect_from: /guide/behind-proxies.html
 ---
 
 # Express за прокси
 
-При запуске приложения Express за прокси-сервером, необходимо указать (с помощью [app.set()](/{{ page.lang }}/4x/api.html#app.set)) для переменной приложения `trust proxy` одно из значений, приведенных в таблице ниже.
+When running an Express app behind a reverse proxy, some of the Express APIs may return different values than expected. In order to adjust for this, the `trust proxy` application setting may be used to expose information provided by the reverse proxy in the Express APIs. The most common issue is express APIs that expose the client's IP address may instead show an internal IP address of the reverse proxy.
 
 <div class="doc-box doc-info" markdown="1">
-Хотя приложение будет запущено и без указания значения переменной приложения `trust proxy`, отсутствие заданного значения `trust proxy` приведет к некорректной регистрации IP-адреса прокси в качестве клиентского IP-адреса.
+When configuring the `trust proxy` setting, it is important to understand the exact setup of the reverse proxy. Since this setting will trust values provided in the request, it is important that the combination of the setting in Express matches how the reverse proxy operates.
 </div>
+
+При запуске приложения Express за прокси-сервером, необходимо указать (с помощью [app.set()](/{{ page.lang }}/4x/api.html#app.set)) для переменной приложения `trust proxy` одно из значений, приведенных в таблице ниже.
 
 <table class="doctable" border="1" markdown="1">
   <thead><tr><th>Тип</th><th>Значение</th></tr></thead>
   <tbody>
     <tr>
-      <td>Булевский</td>
+      <td>Boolean</td>
 <td markdown="1">
 Если указано значение `true`, клиентским IP-адресом считается первая слева запись в заголовке `X-Forwarded-*`.
 
 Если указано значение `false`, приложение считается имеющим прямой выход в Интернет, и IP-адрес клиента будет производным от `req.connection.remoteAddress`. Это значение используется по умолчанию.
+
+<div class="doc-box doc-warn" markdown="1">
+When setting to `true`, it is important to ensure that the last reverse proxy trusted is removing/overwriting all of the following HTTP headers: `X-Forwarded-For`, `X-Forwarded-Host`, and `X-Forwarded-Proto`, otherwise it may be possible for the client to provide any value.
+</div>
 </td>
     </tr>
     <tr>
-      <td>IP-адреса</td>
+      <td>IP addresses</td>
 <td markdown="1">
-IP-адрес, подсеть или массив IP-адресов и подсетей, считающихся надежными. В приведенном ниже списке перечислены предварительно заданные имена подсетей:
+An IP address, subnet, or an array of IP addresses and subnets to trust as being a reverse proxy. The following list shows the pre-configured subnet names:
 
-* loopback - `127.0.0.1/8`, `::1/128`
-* linklocal - `169.254.0.0/16`, `fe80::/10`
-* uniquelocal - `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, `fc00::/7`
+- loopback - `127.0.0.1/8`, `::1/128`
+- linklocal - `169.254.0.0/16`, `fe80::/10`
+- uniquelocal - `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, `fc00::/7`
 
 IP-адреса можно задать любым из указанных ниже способов:
 
@@ -44,20 +50,24 @@ app.set('trust proxy', 'loopback, linklocal, uniquelocal') // specify multiple s
 app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']) // specify multiple subnets as an array
 ```
 
-Если IP-адреса или подсети указаны, они исключаются из процесса определения адреса, и незащищенный IP-адрес, ближайший к серверу приложений, будет определен как IP-адрес клиента.
+Если IP-адреса или подсети указаны, они исключаются из процесса определения адреса, и незащищенный IP-адрес, ближайший к серверу приложений, будет определен как IP-адрес клиента. This works by checking if `req.socket.remoteAddress` is trusted. If so, then each address in `X-Forwarded-For` is checked from right to left until the first non-trusted address.
+
 </td>
     </tr>
     <tr>
       <td>Число</td>
 <td markdown="1">
-Считать защищенным `n`-й элемент пути от прокси-сервера со стороны клиента, в качестве клиента.
+Use the address that is at most `n` number of hops away from the Express application. `req.socket.remoteAddress` is the first hop, and the rest are looked for in the `X-Forwarded-For` header from right to left. A value of `0` means that the first untrusted address would be `req.socket.remoteAddress`, i.e. there is no reverse proxy.
+
+<div class="doc-box doc-warn" markdown="1">
+When using this setting, it is important to ensure there are not multiple, different-length paths to the Express application such that the client can be less than the configured number of hops away, otherwise it may be possible for the client to provide any value.
+</div>
 </td>
     </tr>
     <tr>
-      <td>Функция</td>
+      <td>Function</td>
 <td markdown="1">
-Реализация нестандартного механизма защиты. Используйте этот метод, только если вы уверены в своих знаниях.
-
+Custom trust implementation.
 
 ```js
 app.set('trust proxy', (ip) => {
@@ -65,12 +75,13 @@ app.set('trust proxy', (ip) => {
   else return false
 })
 ```
+
 </td>
     </tr>
   </tbody>
 </table>
 
-Установка значения, отличного от `false`, для `trust proxy` ведет к трем существенным изменениям:
+Enabling `trust proxy` will have the following impact:
 
 <ul>
   <li markdown="1">Значение [req.hostname](/{{ page.lang }}/api.html#req.hostname) является производным от значения, указанного в заголовке `X-Forwarded-Host`, который может быть задан клиентом или прокси.
