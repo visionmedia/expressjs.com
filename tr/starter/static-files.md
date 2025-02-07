@@ -1,11 +1,12 @@
 ---
 layout: page
 title: Express ile statik dosyalar
+description: Understand how to serve static files like images, CSS, and JavaScript in Express.js applications using the built-in 'static' middleware.
 menu: starter
 lang: tr
-description: Understand how to serve static files like images, CSS, and JavaScript
-  in Express.js applications using the built-in 'static' middleware.
+redirect_from: /starter/static-files.html
 ---
+
 # Express ile statik dosyaları sunmak
 
 Görseller, CSS dosyaları ve JavaScript dosyaları gibi statik dosyaları sunmak için, Express'te bulunan `express.static` ara katmanını kullanın.
@@ -16,7 +17,7 @@ Fonksiyonun yapısı şu şekildedir:
 express.static(root, [options])
 ```
 
-`root` argümanı statik dosyaların bulunduğu ana dizine karşılık gelir. 
+`root` argümanı statik dosyaların bulunduğu ana dizine karşılık gelir.
 `options` argümanı hakkında detaylı bilgi için, [express.static](/{{page.lang}}/4x/api.html#express.static) sayfasını ziyaret edin.
 
 Örneğin, `public` dizininde bulunan görselleri, CSS dosyalarını ve JavaScript dosyalarını sunmak için bunu kullanın:
@@ -35,9 +36,7 @@ http://localhost:3000/images/bg.png
 http://localhost:3000/hello.html
 ```
 
-<div class="doc-box doc-info">
-Express statik dosyaların yerlerine ana dizine bağlı olarak bakar. Bu yüzden statik dosyaları barındıran ana dizin URL'de bulunmaz.
-</div>
+<div class="doc-box doc-info">Express statik dosyaların yerlerine ana dizine bağlı olarak bakar. Bu yüzden statik dosyaları barındıran ana dizin URL'de bulunmaz.</div>
 
 Birden fazla statik dosya dizini kullanmak için `express.static` fonksiyonun birden fazla kullanabilirsiniz.
 
@@ -48,11 +47,10 @@ app.use(express.static('files'))
 
 Express statik dosyalara `express.static` ile tanımladığınız sırayla bakar.
 
-<div class="doc-box doc-info" markdown="1">NOT: En iyi sonuç için, statik dosyaları sunarken performansı artırmak için [reverse proxy](/{{page.lang}}/advanced/ önbelleği kullanın.
-</div>
+NOT: En iyi sonuç için, statik dosyaları sunarken performansı artırmak için [reverse proxy](/{{page.lang}}/advanced/ önbelleği kullanın.{% endcapture %}
+{% include admonitions/note.html content=alert_content %}
 
 `express.static` ile sunulan dosyalar için sanal bir yol (statik dizinin aslında gerçekte bulunmadığı) yaratmak için, statik dizine aşağıdaki gibi bir [path tanımlayın](/{{ page.lang }}/4x/api.html#app.use).
-
 
 ```js
 app.use('/static', express.static('public'))
