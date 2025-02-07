@@ -1,11 +1,10 @@
 ---
 layout: page
 title: Express basic routing
+description: Learn the fundamentals of routing in Express.js applications, including how to define routes, handle HTTP methods, and create route handlers for your web server.
 menu: starter
 lang: th
-description: Learn the fundamentals of routing in Express.js applications, including
-  how to define routes, handle HTTP methods, and create route handlers for your web
-  server.
+redirect_from: /starter/basic-routing.html
 ---
 
 # เส้นทางเบื้องต้น
@@ -28,7 +27,9 @@ app.METHOD(PATH, HANDLER)
 - `HANDLER` เป็นฟังชันส์ที่กระทำเมื่อเส้นทางถูกจับคู่.
 
 <div class="doc-box doc-notice" markdown="1">
+This tutorial assumes that an instance of `express` named `app` is created and the server is running. 
 การสอนนี้จะสมมติว่าอินสแตนซ์ของ `express` ชื่อว่า `app` จะถูกสร้างขึ้นเมื่อรันเซิร์ฟเวอร์ ถ้าไม่คุ้นเคยกับการสร้าง app และโครงสร้างของมัน ดูเพิ่มเติมได้ที่ [ตัวอย่าง Hello world](/{{ page.lang }}/starter/hello-world.html)
+
 </div>
 
 ตัวอย่างดังต่อไปนี้จะแสดงให้เห็นการกำหนดเส้นทางอย่างง่าย
@@ -64,4 +65,7 @@ app.delete('/user', (req, res) => {
   res.send('Got a DELETE request at /user')
 })
 ```
+
 สำหรับข้อมูลเพิ่มเติมเกี่ยวกับการกำหนดเส้นทาง ดูได้ที่ [คำแนะนำการกำหนดเส้นทาง](/{{ page.lang }}/guide/routing.html)
+
+### [Previous: Express application generator ](/{{ page.lang }}/starter/generator.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: Serving static files in Express ](/{{ page.lang }}/starter/static-files.html)
