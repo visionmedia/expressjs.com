@@ -1,64 +1,59 @@
 ---
-layout: page
+layout: middleware
 title: Express 中介軟體
+description: Explore a list of Express.js middleware modules maintained by the Express team and the community, including built-in middleware and popular third-party modules.
 menu: resources
 lang: zh-tw
-description: Explore a list of Express.js middleware modules maintained by the Express
-  team and the community, including built-in middleware and popular third-party modules.
+redirect_from: /resources/middleware.html
+module: mw-home
 ---
 
-# 協力廠商中介軟體
+## Express middleware
 
-以下是部分的 Express 中介軟體模組：
+The Express middleware modules listed here are maintained by the
+[Expressjs team](https://github.com/orgs/expressjs/people).
 
-  - [body-parser](https://github.com/expressjs/body-parser)：即先前的 `express.bodyParser`、`json` 和 `urlencoded`。另請參閱：
-    - [body](https://github.com/raynos/body)
-    - [co-body](https://github.com/visionmedia/co-body)
-    - [raw-body](https://github.com/stream-utils/raw-body)
-  - [compression](https://github.com/expressjs/compression)：即先前的 `express.compress`
-  - [connect-image-optimus](https://github.com/msemenistyi/connect-image-optimus)：可提供最佳影像的 Connect/Express 中介軟體模組。如果可能的話，請將影像切換成 `.webp` 或 `.jxr`。
-  - [connect-timeout](https://github.com/expressjs/timeout)：即先前的 `express.timeout`
-  - [cookie-parser](https://github.com/expressjs/cookie-parser)：即先前的 `express.cookieParser`
-  - [cookie-session](https://github.com/expressjs/cookie-session)：即先前的 `express.cookieSession`
-  - [errorhandler](https://github.com/expressjs/errorhandler)：即先前的 `express.errorHandler`
-  - [express-debug](https://github.com/devoidfury/express-debug)：低調的開發工具，可在您的應用程式中新增標籤，內含範本變數 (locals)、現行階段作業、有用的要求資料等相關資訊。
-  - [express-partial-response](https://github.com/nemtsov/express-partial-response)：Express 中介軟體模組，會根據 `fields` 查詢字串，使用 Google API 的 Partial Response 來濾除 JSON 回應部分。
-  - [express-session](https://github.com/expressjs/session)：即先前的 `express.session`
-  - [express-simple-cdn](https://github.com/jamiesteven/express-simple-cdn)：Express 中介軟體模組，會將 CDN 用於靜態資產，並支援多部主機（例如：cdn1.host.com、cdn2.host.com）。
-  - [express-slash](https://github.com/ericf/express-slash)：Express 中介軟體模組，供嚴格看待尾端斜線的人員使用。
-  - [express-stormpath](https://github.com/stormpath/stormpath-express)：Express 中介軟體模組，供使用者執行儲存、鑑別、授權、SSO 和資料安全。
-  - [express-uncapitalize](https://github.com/jamiesteven/express-uncapitalize)：中介軟體模組，可將含有大寫的 HTTP 要求重新導向至標準小寫形式。
-  - [helmet](https://github.com/helmetjs/helmet)：此模組會設定各種 HTTP 標頭，有助於保護您應用程式的安全。
-  - [join-io](https://github.com/coderaiser/join-io "join-io")：此模組會即時結合檔案，來減少要求計數。
-  - [method-override](https://github.com/expressjs/method-override)：即先前的 `express.methodOverride`
-  - [morgan](https://github.com/expressjs/morgan)：即先前的 `logger`
-  - [passport](https://github.com/jaredhanson/passport)：鑑別用的 Express 中介軟體模組。
-  - [response-time](https://github.com/expressjs/response-time)：即先前的 `express.responseTime`
-  - [serve-favicon](https://github.com/expressjs/serve-favicon)：即先前的 `express.favicon`
-  - [serve-index](https://github.com/expressjs/serve-index)：即先前的 `express.directory`
-  - [serve-static](https://github.com/expressjs/serve-static)：此模組可提供靜態內容。
-  - [static-expiry](https://github.com/paulwalker/connect-static-expiry)：靜態資產的加指紋 URL 或「快取標頭」，還支援一或多個外部網域。
-  - [vhost](https://github.com/expressjs/vhost)：即先前的 `express.vhost`
-  - [view-helpers](https://github.com/madhums/node-view-helpers)：Express 中介軟體模組，可提供一般 helper 方法給視圖。
-  - [sriracha-admin](https://github.com/hdngr/siracha)：Express 中介軟體模組，可為 Mongoose 動態產生管理網站。
+| Middleware module                                                                       | Description                                                                                                                                                                       | Replaces built-in function (Express 3)                                     |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| [co-body](https://github.com/visionmedia/co-body)                                       | Parse HTTP request body. [raw-body](https://github.com/stream-utils/raw-body)                                                                                     | [body](https://github.com/raynos/body)                                                        |
+| [compression](/resources/middleware/compression.html)                                   | Compress HTTP responses.                                                                                                                                          | [compression](https://github.com/expressjs/compression)：即先前的 `express.compress`               |
+| [connect-rid](/resources/middleware/connect-rid.html)                                   | Generate unique request ID.                                                                                                                                       | NA                                                                                            |
+| [cookie-parser](https://github.com/expressjs/cookie-parser)：即先前的 `express.cookieParser` | Parse cookie header and populate `req.cookies`. See also [cookies](https://github.com/jed/cookies) and [keygrip](https://github.com/jed/keygrip). | express.cookieParser                                                          |
+| [cookies](https://github.com/jed/cookies) 和 [keygrip](https://github.com/jed/keygrip)   | Establish cookie-based sessions.                                                                                                                                  | [cookie-session](https://github.com/expressjs/cookie-session)：即先前的 `express.cookieSession`    |
+| [cors](/resources/middleware/cors.html)                                                 | Enable cross-origin resource sharing (CORS) with various options.                                                                              | NA                                                                                            |
+| [errorhandler](/resources/middleware/errorhandler.html)                                 | Development error-handling/debugging.                                                                                                                             | [errorhandler](https://github.com/expressjs/errorhandler)：即先前的 `express.errorHandler`         |
+| [method-override](/resources/middleware/method-override.html)                           | Override HTTP methods using header.                                                                                                                               | [method-override](https://github.com/expressjs/method-override)：即先前的 `express.methodOverride` |
+| [morgan](/resources/middleware/morgan.html)                                             | HTTP request logger.                                                                                                                                              | [morgan](https://github.com/expressjs/morgan)：即先前的 `logger`                                   |
+| [multer](https://github.com/expressjs/multer)                                           | Handle multi-part form data.                                                                                                                                      | express.multipart                                                             |
+| [connect-timeout](https://github.com/expressjs/timeout)：即先前的 `express.timeout`          | Record HTTP response time.                                                                                                                                        | [response-time](https://github.com/expressjs/response-time)：即先前的 `express.responseTime`       |
+| [serve-favicon](https://github.com/expressjs/serve-favicon)：即先前的 `express.favicon`      | Serve a favicon.                                                                                                                                                  | express.query                                                                 |
+| [serve-index](/resources/middleware/serve-index.html)                                   | Serve directory listing for a given path.                                                                                                                         | page                                                                                          |
+| [serve-static](/resources/middleware/serve-static.html)                                 | Serve static files.                                                                                                                                               | express.staticCache                                                           |
+| [session](/resources/middleware/session.html)                                           | Establish server-based sessions (development only).                                                                                            | [express-session](https://github.com/expressjs/session)：即先前的 `express.session`                |
+| [timeout](/resources/middleware/timeout.html)                                           | Set a timeout period for HTTP request processing.                                                                                                                 | express.limit                                                                 |
+| [vhost](https://github.com/expressjs/vhost)：即先前的 `express.vhost`                        | Create virtual domains.                                                                                                                                           | [expressjs](https://github.com/expressjs)                                                     |
 
-Connect/Express 團隊不再支援 Connect 先前隨附的一些中介軟體模組。這些模組會以替代模組取代，或者應以更好的模組取代。請使用下列其中一個替代項目：
+## Additional middleware modules
 
-  - express.cookieParser
-    - [cookies](https://github.com/jed/cookies) 和 [keygrip](https://github.com/jed/keygrip)
-  - express.limit
-    - [raw-body](https://github.com/stream-utils/raw-body)
-  - express.multipart
-    - [connect-busboy](https://github.com/mscdex/connect-busboy)
-    - [multer](https://github.com/expressjs/multer)
-    - [connect-multiparty](https://github.com/superjoe30/connect-multiparty)
-  - express.query
-    - [qs](https://github.com/visionmedia/node-querystring)
-  - express.staticCache
-    - [st](https://github.com/isaacs/st)
-    - [connect-static](https://github.com/andrewrk/connect-static)
+These are some additional popular middleware modules.
 
-如需其他的中介軟體模組，請參閱：
+{% include community-caveat.html %}
 
- - [http-framework](https://github.com/Raynos/http-framework/wiki/Modules)
- - [expressjs](https://github.com/expressjs)
+| Middleware&nbsp;module                                                                                                                                                                    | Description                                                                                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [cls-rtracer](https://github.com/puzpuzpuz/cls-rtracer)                                                                                                                                                       | Middleware for CLS-based request id generation. An out-of-the-box solution for adding request ids into your logs.                                                                    |
+| [connect-image-optimus](https://github.com/msemenistyi/connect-image-optimus)：可提供最佳影像的 Connect/Express 中介軟體模組。如果可能的話，請將影像切換成 `.webp` 或 `.jxr`。                                                                | Optimize image serving. Switches images to `.webp` or `.jxr`, if possible.                                                                                                           |
+| [body-parser](https://github.com/expressjs/body-parser)：即先前的 `express.bodyParser`、`json` 和 `urlencoded`。另請參閱：                                                                                                 | An error handler for JSON APIs (fork of `api-error-handler`.)                                                                                                                     |
+| [express-debug](https://github.com/devoidfury/express-debug)：低調的開發工具，可在您的應用程式中新增標籤，內含範本變數 (locals)、現行階段作業、有用的要求資料等相關資訊。                                                                    | Development tool that adds information about template variables (locals), current session, and so on.                                                                             |
+| [express-partial-response](https://github.com/nemtsov/express-partial-response)                                                                                                                               | [express-partial-response](https://github.com/nemtsov/express-partial-response)：Express 中介軟體模組，會根據 `fields` 查詢字串，使用 Google API 的 Partial Response 來濾除 JSON 回應部分。                                                     |
+| [express-simple-cdn](https://github.com/jamiesteven/express-simple-cdn)：Express 中介軟體模組，會將 CDN 用於靜態資產，並支援多部主機（例如：cdn1.host.com、cdn2.host.com）。 | Use a CDN for static assets, with multiple host support.                                                                                                                                             |
+| [express-slash](https://github.com/ericf/express-slash)：Express 中介軟體模組，供嚴格看待尾端斜線的人員使用。                                                                                                                        | Handles routes with and without trailing slashes.                                                                                                                                                    |
+| [express-uncapitalize](https://github.com/jamiesteven/express-uncapitalize)：中介軟體模組，可將含有大寫的 HTTP 要求重新導向至標準小寫形式。                                                                                                | Redirects HTTP requests containing uppercase to a canonical lowercase form.                                                                                                                          |
+| [helmet](https://github.com/helmetjs/helmet)：此模組會設定各種 HTTP 標頭，有助於保護您應用程式的安全。                                                                                                                                  | Helps secure your apps by setting various HTTP headers.                                                                                                                                              |
+| [join-io](https://github.com/coderaiser/join-io)                                                                                                                                                              | Joins files on the fly to reduce the requests count.                                                                                                                                                 |
+| [passport](https://github.com/jaredhanson/passport)：鑑別用的 Express 中介軟體模組。                                                                                                                                      | Authentication using "strategies" such as OAuth, OpenID and many others.  See [http://passportjs.org/](http://passportjs.org/) for more information. |
+| [connect-static](https://github.com/andrewrk/connect-static)                                                                                                                                                  | Fingerprint URLs or caching headers for static assets.                                                                                                                                               |
+| [view-helpers](https://github.com/madhums/node-view-helpers)：Express 中介軟體模組，可提供一般 helper 方法給視圖。                                                                                                               | Common helper methods for views.                                                                                                                                                                     |
+| [st](https://github.com/isaacs/st)                                                                                                                                                                            | [sriracha-admin](https://github.com/hdngr/siracha)：Express 中介軟體模組，可為 Mongoose 動態產生管理網站。                                                                                                                              |
+
+[http-framework](https://github.com/Raynos/http-framework/wiki/Modules)
