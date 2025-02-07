@@ -1,18 +1,29 @@
 ---
 layout: page
 title: Express routing
+description: Learn how to define and use routes in Express.js applications, including route methods, route paths, parameters, and using Router for modular routing.
 menu: guide
 lang: sk
-description: Learn how to define and use routes in Express.js applications, including
-  route methods, route paths, parameters, and using Router for modular routing.
+redirect_from: /guide/routing.html
 ---
 
 # Routing
 
-_Routing_ definuje tzv. koncové body aplikácie (URI) a spôsob, akým odpovedajú na requesty klientov.
-Základné informácie o routing-u sa dozviete v sekcii [Základný routing](/{{ page.lang }}/starter/basic-routing.html).
+_Routing_ refers to how an application's endpoints (URIs) respond to client requests.
+For an introduction to routing, see [Basic routing](/{{ page.lang }}/starter/basic-routing.html).
 
-Tu je príklad, ako zadefinovať základný routing.
+You define routing using methods of the Express `app` object that correspond to HTTP methods;
+for example, `app.get()` to handle GET requests and `app.post` to handle POST requests. For a full list,
+see [app.METHOD](/{{ page.lang }}/5x/api.html#app.METHOD). You can also use [app.all()](/{{ page.lang }}/5x/api.html#app.all) to handle all HTTP methods and [app.use()](/{{ page.lang }}/5x/api.html#app.use) to
+specify middleware as the callback function (See [Using middleware](/{{ page.lang }}/guide/using-middleware.html) for details).
+
+These routing methods specify a callback function (sometimes called "handler functions") called when the application receives a request to the specified route (endpoint) and HTTP method. In other words, the application "listens" for requests that match the specified route(s) and method(s), and when it detects a match, it calls the specified callback function.
+
+In fact, the routing methods can have more than one callback function as arguments.
+With multiple callback functions, it is important to provide `next` as an argument to the callback function and then call `next()` within the body of the function to hand off control
+to the next callback.
+
+Route metóda je odvodená z niektorej HTTP metódy a pripojená k inštancii `express` triedy.
 
 ```js
 const express = require('express')
@@ -24,11 +35,11 @@ app.get('/', (req, res) => {
 })
 ```
 
-<h2 id="route-methods">Route metódy</h2>
+<h2 id="route-methods">Route methods</h2>
 
-Route metóda je odvodená z niektorej HTTP metódy a pripojená k inštancii `express` triedy.
+Express podporuje tieto routing metódy korešpondujúce k HTTP metódam: `get`, `post`, `put`, `head`, `delete`, `options`, `trace`, `copy`, `lock`, `mkcol`, `move`, `purge`, `propfind`, `proppatch`, `unlock`, `report`, `mkactivity`, `checkout`, `merge`, `m-search`, `notify`, `subscribe`, `unsubscribe`, `patch`, `search` a `connect`.
 
-Nasledujúci kód je ukážkou definície routing-u pre GET a POST metódy hlavnej stránky aplikácie.
+The following code is an example of routes that are defined for the `GET` and the `POST` methods to the root of the app.
 
 ```js
 // GET method route
@@ -42,16 +53,10 @@ app.post('/', (req, res) => {
 })
 ```
 
-Express podporuje tieto routing metódy korešpondujúce k HTTP metódam: `get`, `post`, `put`, `head`, `delete`, `options`, `trace`, `copy`, `lock`, `mkcol`, `move`, `purge`, `propfind`, `proppatch`, `unlock`, `report`, `mkactivity`, `checkout`, `merge`, `m-search`, `notify`, `subscribe`, `unsubscribe`, `patch`, `search` a `connect`.
+Express supports methods that correspond to all HTTP request methods: `get`, `post`, and so on.
+For a full list, see [app.METHOD](/{{ page.lang }}/5x/api.html#app.METHOD).
 
-<div class="doc-box doc-info" markdown="1">
-Tie routing metódy, ktorých názov nie je validným názvom pre JavaScript premennú, zapisujte pomocou zátvorkovej notácie. Napr.:
-`app['m-search']('/', function ...`
-</div>
-
-Existuje špeciálna routing metóda `app.all()`, ktorá nie je odvodená zo žiadnej HTTP metódy. Táto metóda sa používa ako middleware funkcia pre konkrétny koncový bod a všetky jej request metódy.
-
-Na nasledujúcom príklade je ukážka handler funkcie, ktorá bude vykonaná pri requeste na "/secret" bez ohľadu nato, či bude použitá GET, POST, PUT, DELETE, alebo akákoľvek iná HTTP request metóda podporovaná [http modulom](https://nodejs.org/api/http.html#http_http_methods).
+There is a special routing method, `app.all()`, used to load middleware functions at a path for _all_ HTTP request methods. For example, the following handler is executed for requests to the route `"/secret"` whether using `GET`, `POST`, `PUT`, `DELETE`, or any other HTTP request method supported in the [http module](https://nodejs.org/api/http.html#http_http_methods).
 
 ```js
 app.all('/secret', (req, res, next) => {
@@ -60,21 +65,30 @@ app.all('/secret', (req, res, next) => {
 })
 ```
 
-<h2 id="route-paths">Route cesty</h2>
+<h2 id="route-paths">Route paths</h2>
 
-Route cesty (route paths) definujú v kombinácii s request metódami koncové body, voči ktorým je možné vykonať request. Route cesty je možné definovať ako stringy, stringové patterny, alebo ako regulárne výrazy.
+Route paths, in combination with a request method, define the endpoints at which requests can be made. Route paths can be strings, string patterns, or regular expressions.
 
-<div class="doc-box doc-info" markdown="1">
-  Express používa pre spárovanie (matching) route cesty npm modul [path-to-regexp](https://www.npmjs.com/package/path-to-regexp); pre všetky možnosti definície route ciest si pozrite dokumentáciu k path-to-regexp modulu. [Express Route Tester](http://forbeslindesay.github.io/express-route-tester/) je užitočný nástroj pre testovanie základných Express route ciest, hoci nepodporuje pattern matching.
-</div>
-
-<div class="doc-box doc-warn" markdown="1">
-Query stringy nie sú súčasťou route ciest.
-</div>
+{% capture caution-character %} In express 5, the characters `?`, `+`, `*`, `[]`, and `()` are handled differently than in version 4, please review the [migration guide](/{{ page.lang }}/guide/migrating-5.html#path-syntax) for more information.{% endcapture %}
 
 Tu je niekoľko príkladov route ciest na základe stringov.
 
-Táto route cesta sa spáruje s requestom na hlavný route, `/`.
+{% capture note-dollar-character %}In express 4, regular expression characters such as `$` need to be escaped with a `\`.
+{% endcapture %}
+
+{% include admonitions/caution.html content=note-dollar-character %}
+
+{% capture note-path-to-regexp %}
+Express uses [path-to-regexp](https://www.npmjs.com/package/path-to-regexp) for matching the route paths; see the path-to-regexp documentation for all the possibilities in defining route paths. [Express Playground Router](https://bjohansebas.github.io/playground-router/) is a handy tool for testing basic Express routes, although it does not support pattern matching.
+{% endcapture %}
+
+{% include admonitions/note.html content=note-path-to-regexp %}
+
+{% include admonitions/warning.html content="Query strings are not part of the route path." %}
+
+### Route paths based on strings
+
+Tu je niekoľko príkladov route ciest na základe stringových patternov.
 
 ```js
 app.get('/', (req, res) => {
@@ -82,7 +96,7 @@ app.get('/', (req, res) => {
 })
 ```
 
-Táto route cesta sa spáruje s requestom na `/about`.
+This route path will match requests to `/about`.
 
 ```js
 app.get('/about', (req, res) => {
@@ -90,7 +104,7 @@ app.get('/about', (req, res) => {
 })
 ```
 
-Táto route cesta sa spáruje s requestom na `/random.text`.
+This route path will match requests to `/random.text`.
 
 ```js
 app.get('/random.text', (req, res) => {
@@ -98,9 +112,13 @@ app.get('/random.text', (req, res) => {
 })
 ```
 
-Tu je niekoľko príkladov route ciest na základe stringových patternov.
+### Route paths based on string patterns
 
-Táto route cesta sa spáruje s requestom `acd` a `abcd`.
+{% capture caution-string-patterns %} The string patterns in Express 5 no longer work. Please refer to the [migration guide](/{{ page.lang }}/guide/migrating-5.html#path-syntax) for more information.{% endcapture %}
+
+{% include admonitions/caution.html content=caution-string-patterns %}
+
+This route path will match `acd` and `abcd`.
 
 ```js
 app.get('/ab?cd', (req, res) => {
@@ -108,7 +126,7 @@ app.get('/ab?cd', (req, res) => {
 })
 ```
 
-Táto route cesta sa spáruje s requestom `abcd`, `abbcd`, `abbbcd`, atď.
+Táto route cesta bude spárovaná s každým requestom obsahujúcim "a".
 
 ```js
 app.get('/ab+cd', (req, res) => {
@@ -116,7 +134,7 @@ app.get('/ab+cd', (req, res) => {
 })
 ```
 
-Táto route cesta sa spáruje s requestom `abcd`, `abxcd`, `abRANDOMcd`, `ab123cd`, atď.
+Táto route cesta sa spáruje s requestom `butterfly` a `dragonfly`, ale nie `butterflyman`, `dragonfly man`, atď.
 
 ```js
 app.get('/ab*cd', (req, res) => {
@@ -124,7 +142,7 @@ app.get('/ab*cd', (req, res) => {
 })
 ```
 
-Táto route cesta sa spáruje s requestom `/abe` a `/abcde`.
+This route path will match `/abe` and `/abcde`.
 
 ```js
 app.get('/ab(cd)?e', (req, res) => {
@@ -132,13 +150,9 @@ app.get('/ab(cd)?e', (req, res) => {
 })
 ```
 
-<div class="doc-box doc-info" markdown="1">
-Znaky ?, +, *, a () sú podmnožinami ich regulárnych výrazov. Pomlčka (-) a bodka (.) sa reprezentujú ako text.
-</div>
+### Route paths based on regular expressions
 
-Príklady definícií route ciest s využitím regulárnych výrazov:
-
-Táto route cesta bude spárovaná s každým requestom obsahujúcim "a".
+Jedna callback funkcia pre obsluhu spracovania:
 
 ```js
 app.get(/a/, (req, res) => {
@@ -146,7 +160,7 @@ app.get(/a/, (req, res) => {
 })
 ```
 
-Táto route cesta sa spáruje s requestom `butterfly` a `dragonfly`, ale nie `butterflyman`, `dragonfly man`, atď.
+This route path will match `butterfly` and `dragonfly`, but not `butterflyman`, `dragonflyman`, and so on.
 
 ```js
 app.get(/.*fly$/, (req, res) => {
@@ -154,13 +168,69 @@ app.get(/.*fly$/, (req, res) => {
 })
 ```
 
-<h2 id="route-handlers">Route handler</h2>
+<h2 id="route-parameters">Route parameters</h2>
 
-Pre spracovanie requestu je možné zadefinovať viacero callback funkcií správajúcich sa ako [middleware](/{{ page.lang }}/guide/using-middleware.html). Jedinou výnimkou je, že tieto callback-y môžu samé vyvolať `next('route')` a tak vynechať zostávajúce definície callback-ov. Tento mechanizmus môžete použiť k stanoveniu podmienok spracovania a následne potom "odovzdať" riadenie ďalším route definíciám v prípade, že nie je dôvod ho ďalej spracovávať v aktuálnej route definícii.
+Route parameters are named URL segments that are used to capture the values specified at their position in the URL. The captured values are populated in the `req.params` object, with the name of the route parameter specified in the path as their respective keys.
 
-Route handler môže byť definovaný ako funkcia, pole funkcií či kombinácia oboch, ako na nasledujúcich príkladoch.
+```
+Route path: /users/:userId/books/:bookId
+Request URL: http://localhost:3000/users/34/books/8989
+req.params: { "userId": "34", "bookId": "8989" }
+```
 
-Jedna callback funkcia pre obsluhu spracovania:
+To define routes with route parameters, simply specify the route parameters in the path of the route as shown below.
+
+```js
+app.get('/users/:userId/books/:bookId', (req, res) => {
+  res.send(req.params)
+})
+```
+
+<div class="doc-box doc-notice" markdown="1">
+The name of route parameters must be made up of "word characters" ([A-Za-z0-9_]).
+</div>
+
+Since the hyphen (`-`) and the dot (`.`) are interpreted literally, they can be used along with route parameters for useful purposes.
+
+```
+Route path: /flights/:from-:to
+Request URL: http://localhost:3000/flights/LAX-SFO
+req.params: { "from": "LAX", "to": "SFO" }
+```
+
+```
+Route path: /plantae/:genus.:species
+Request URL: http://localhost:3000/plantae/Prunus.persica
+req.params: { "genus": "Prunus", "species": "persica" }
+```
+
+Tu je príklad zreťazenia route handlerov definovaných pomocou `app.route()`.
+
+{% include admonitions/caution.html content=warning-regexp %}
+
+To have more control over the exact string that can be matched by a route parameter, you can append a regular expression in parentheses (`()`):
+
+```
+Route path: /user/:userId(\d+)
+Request URL: http://localhost:3000/user/42
+req.params: {"userId": "42"}
+```
+
+{% include admonitions/warning.html content="Because the regular expression is usually part of a literal string, be sure to escape any `\` characters with an additional backslash, for example `\\d+`." %}
+
+{% capture warning-version %}
+In Express 4.x, <a href="https://github.com/expressjs/express/issues/2495">the `*` character in regular expressions is not interpreted in the usual way</a>. As a workaround, use `{0,}` instead of `*`. This will likely be fixed in Express 5.
+{% endcapture %}
+
+{% include admonitions/warning.html content=warning-version %}
+
+<h2 id="route-handlers">Route handlers</h2>
+
+You can provide multiple callback functions that behave like [middleware](/{{ page.lang }}/guide/using-middleware.html) to handle a request. The only exception is that these callbacks might invoke `next('route')` to bypass the remaining route callbacks. You can use this mechanism to impose pre-conditions on a route, then pass control to subsequent routes if there's no reason to proceed with the current route.
+
+Aplikácia bude teraz schopná obslúžiť prichádzajúce požiadavky na ceste `/birds` a `/birds/about`, a taktiež vyvolať `timeLog` middleware funkciu, ktorá je špecifická pre tento route.
+
+A single callback function can handle a route. For example:
 
 ```js
 app.get('/example/a', (req, res) => {
@@ -168,7 +238,7 @@ app.get('/example/a', (req, res) => {
 })
 ```
 
-Môžete použiť aj viac ako jednu callback funkciu (nezabudnite špecifikovať `next` objekt). Napríklad:
+More than one callback function can handle a route (make sure you specify the `next` object). For example:
 
 ```js
 app.get('/example/b', (req, res, next) => {
@@ -178,7 +248,8 @@ app.get('/example/b', (req, res, next) => {
   res.send('Hello from B!')
 })
 ```
-Môžete použiť aj pole callback funkcií.  Napr.:
+
+An array of callback functions can handle a route. For example:
 
 ```js
 const cb0 = function (req, res, next) {
@@ -198,7 +269,7 @@ const cb2 = function (req, res) {
 app.get('/example/c', [cb0, cb1, cb2])
 ```
 
-Tu je ukážka kombinácia nezávislých funkcií a poľa funkcií:
+A combination of independent functions and arrays of functions can handle a route. For example:
 
 ```js
 const cb0 = function (req, res, next) {
@@ -219,28 +290,28 @@ app.get('/example/d', [cb0, cb1], (req, res, next) => {
 })
 ```
 
-<h2 id="response-methods">Response metódy</h2>
+<h2 id="response-methods">Response methods</h2>
 
-Metódy response objektu (`res`) v nasledujúcej tabuľke dokážu odoslať odpoveť klientovi a ukončiť request-response cyklus. Ak žiadna z týchto metód nebude zavolaná z route handler-a, request klienta zostane "visieť" nespracovaný.
+The methods on the response object (`res`) in the following table can send a response to the client, and terminate the request-response cycle. If none of these methods are called from a route handler, the client request will be left hanging.
 
-| Method               | Description
-|----------------------|--------------------------------------
-| [res.download()](/{{ page.lang }}/4x/api.html#res.download)   | Ponúkne súbor na stianutie.
-| [res.end()](/{{ page.lang }}/4x/api.html#res.end)        | Ukončí proces odpovede.
-| [res.json()](/{{ page.lang }}/4x/api.html#res.json)       | Odošle odpoveď ako JSON.
-| [res.jsonp()](/{{ page.lang }}/4x/api.html#res.jsonp)      | Odošle JSON odpoveď s podporou JSONP.
-| [res.redirect()](/{{ page.lang }}/4x/api.html#res.redirect)   | Presmeruje request.
-| [res.render()](/{{ page.lang }}/4x/api.html#res.render)     | Vyrendruje view template.
-| [res.send()](/{{ page.lang }}/4x/api.html#res.send)       | Odošle odpoveď rôzneho typu.
-| [res.sendFile()](/{{ page.lang }}/4x/api.html#res.sendFile)     | Odošle súbor ako octet stream.
-| [res.sendStatus()](/{{ page.lang }}/4x/api.html#res.sendStatus) | Nastaví status kód odpovede a odošle jej textovú reprezentáciu ako telo odpovede.
+| Method                                                                                                                                                                                                                    | Description                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| [res.download()](/{{ page.lang }}/5x/api.html#res.download)     | Prompt a file to be downloaded.                                                       |
+| [res.end()](/{{ page.lang }}/5x/api.html#res.end)               | End the response process.                                                             |
+| [res.json()](/{{ page.lang }}/5x/api.html#res.json)             | Send a JSON response.                                                                 |
+| [res.jsonp()](/{{ page.lang }}/5x/api.html#res.jsonp)           | Send a JSON response with JSONP support.                                              |
+| [res.redirect()](/{{ page.lang }}/5x/api.html#res.redirect)     | Redirect a request.                                                                   |
+| [res.render()](/{{ page.lang }}/5x/api.html#res.render)         | Render a view template.                                                               |
+| [res.send()](/{{ page.lang }}/5x/api.html#res.send)             | Send a response of various types.                                                     |
+| [res.sendFile()](/{{ page.lang }}/5x/api.html#res.sendFile)     | Send a file as an octet stream.                                                       |
+| [res.sendStatus()](/{{ page.lang }}/5x/api.html#res.sendStatus) | Set the response status code and send its string representation as the response body. |
 
 <h2 id="app-route">app.route()</h2>
 
-Pomocou `app.route()` dokážete vytvoriť zreťaziteľné route handlery pre konkrétnu route cestu.
-Pretože je route cesta špecifikovaná na jednom mieste, tvorba takýchto routes je užitočná a znižuje redundanciu a preklepy. Pre viac informácií o použití route pozrite: [Router() dokumentáciu](/{{ page.lang }}/4x/api.html#router).
+You can create chainable route handlers for a route path by using `app.route()`.
+Because the path is specified at a single location, creating modular routes is helpful, as is reducing redundancy and typos. For more information about routes, see: [Router() documentation](/{{ page.lang }}/5x/api.html#router).
 
-Tu je príklad zreťazenia route handlerov definovaných pomocou `app.route()`.
+Here is an example of chained route handlers that are defined by using `app.route()`.
 
 ```js
 app.route('/book')
@@ -257,21 +328,23 @@ app.route('/book')
 
 <h2 id="express-router">express.Router</h2>
 
-Ak chcete vytvoriť modulárne a zreťazitelné route handlery použite `express.Router` triedu. `Router` inštancia je kompletný middleware a routing systém; z tohto dôvodu sa často označuje ako "mini-app".
+Use the `express.Router` class to create modular, mountable route handlers. A `Router` instance is a complete middleware and routing system; for this reason, it is often referred to as a "mini-app".
 
-Nasledujúci príklad demonštruje vytvorenie router modulu, načítanie middleware funkcie, špecifikuje niekoľko route definícií a ukazuje pripojenie router modulu na cestu (path) v hlavnej aplikácii.
+The following example creates a router as a module, loads a middleware function in it, defines some routes, and mounts the router module on a path in the main app.
 
-V priečinku aplikácie vytvorte router súbor nazvaný `birds.js` s takýmto obsahom:
+Create a router file named `birds.js` in the app directory, with the following content:
 
 ```js
 const express = require('express')
 const router = express.Router()
 
 // middleware that is specific to this router
-router.use((req, res, next) => {
+const timeLog = (req, res, next) => {
   console.log('Time: ', Date.now())
   next()
-})
+}
+router.use(timeLog)
+
 // define the home page route
 router.get('/', (req, res) => {
   res.send('Birds home page')
@@ -284,14 +357,20 @@ router.get('/about', (req, res) => {
 module.exports = router
 ```
 
-Následne načítajte tento router modul do aplikácie:
+Then, load the router module in the app:
 
 ```js
 const birds = require('./birds')
 
-/// ...
+// ...
 
 app.use('/birds', birds)
 ```
 
-Aplikácia bude teraz schopná obslúžiť prichádzajúce požiadavky na ceste `/birds` a `/birds/about`, a taktiež vyvolať `timeLog` middleware funkciu, ktorá je špecifická pre tento route.
+The app will now be able to handle requests to `/birds` and `/birds/about`, as well as call the `timeLog` middleware function that is specific to the route.
+
+But if the parent route `/birds` has path parameters, it will not be accessible by default from the sub-routes. To make it accessible, you will need to pass the `mergeParams` option to the Router constructor [reference](/{{ page.lang }}/5x/api.html#app.use).
+
+```js
+const router = express.Router({ mergeParams: true })
+```
