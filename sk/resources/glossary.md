@@ -1,59 +1,59 @@
 ---
 layout: page
 title: Express slovník
+description: A comprehensive glossary of terms related to Express.js, Node.js, middleware, routing, and other key concepts to help you understand and use Express effectively.
 menu: resources
 lang: sk
-description: A comprehensive glossary of terms related to Express.js, Node.js, middleware,
-  routing, and other key concepts to help you understand and use Express effectively.
+redirect_from: /resources/glossary.html
 ---
 
 # Slovník
 
-<div class="doc-box doc-warn">Toto je pracovná verzia</div>
+### application
 
-### aplikácia
-
-Vo všeobecnosti je to jeden, či viacej programov navrhnutých k vykonávaniu operácií za špecifickým účelom. V kontexte Express-u je to program, používajúci Express API fungujúceho na Node.js platforme. Pozrite sa na [app object](/{{ page.lang }}/api.html#express).
+In general, one or more programs that are designed to carry out operations for a specific purpose.  In the context of Express, a program that uses the Express API running on the Node.js platform.  Might also refer to an [app object](/{{ page.lang }}/api.html#express).
 
 ### API
 
-Application programming interface. Hláskujte po písmenkách.
+Application programming interface. Spell out the abbreviation when it is first used.
 
 ### Express
 
-Express je minimalistický, flexibilný, webový framework pre Node.js aplikácie. Vo všeobecnosti, názov "Express" je preferovaný pred "Express.js," ktorý je ale taktiež zaužívaný a akceptovaný.
+A fast, un-opinionated, minimalist web framework for Node.js applications. In general, "Express" is preferred to "Express.js," though the latter is acceptable.
 
 ### libuv
 
-Multi-platformová knižnica zameriavajúca sa na asynchrónne I/O, primárne navrhnutá pre použitie s Node.js.
+A multi-platform support library which focuses on asynchronous I/O, primarily developed for use by Node.js.
 
 ### middleware
 
-Je funkcia vyvolaná Express routing layer-om ešte pred zavolaním finálneho request handlera a preto "sedí" v strede medzi samotným requestom a routom.  Zopár ďalších bodov terminológie týkajúcej sa middleware:
+A function that is invoked by the Express routing layer before the final request handler, and thus sits in the middle between a raw request and the final intended route. A few fine points of terminology around middleware:
 
-  * `var foo = require('middleware')` je zavolaný _requirnutím_ alebo _použitím_ Node.js modulu. Potom, výraz `var mw = foo()` typicky vracia middleware.
-  * `app.use(mw)` je zavolaný _pridaním middlewaru do globálneho stacku spracovania_.
-  * `app.get('/foo', mw, function (req, res) { ... })` je zavolaný pridaním middlewaru do stacku spracovania "GET /foo"_.
+- `var foo = require('middleware')` is called _requiring_ or _using_ a Node.js module. Then the statement `var mw = foo()` typically returns the middleware.
+- `app.use(mw)` is called _adding the middleware to the global processing stack_.
+- `app.get('/foo', mw, function (req, res) { ... })` is called _adding the middleware to the "GET /foo" processing stack_.
 
 ### Node.js
 
-Sofvérová platforma používaná na budovanie škálovateľných aplikácií. Node.js používa JavaScript ako svoj skriptovací jazyk a dosahuje vysokú priepustnosť pomocou neblokujúcich I/O operácií a single-thread event loop-u.  Pozrite sa na [nodejs.org](https://nodejs.org/en/). **Pozn. používania**: Pôvodne, "Node.js," neskor už len "Node".
+A software platform that is used to build scalable network applications. Node.js uses JavaScript as its scripting language, and achieves high throughput via non-blocking I/O and a single-threaded event loop. See [nodejs.org](https://nodejs.org/en/). **Usage note**: Initially, "Node.js," thereafter "Node".
 
 ### open-source, open source
 
-Keď je použitý vo význame prídavného mena, používa sa pomlčka; Napr." Toto je open-source softvér". Pozrite sa na [Open-source software on Wikipedia](http://en.wikipedia.org/wiki/Open-source_software). Pozn.: Hoci sa bežne pomlčka nepoužíva, v tejto dokumentácii sú použité pravidlá angličtiny, kde sa zložené prídavné mená spájajú pomlčkou.
+When used as an adjective, hyphenate; for example: "This is open-source software." See [Open-source software on Wikipedia](http://en.wikipedia.org/wiki/Open-source_software).
+
+{% include admonitions/note.html content="Although it is common not to hyphenate this term, we are using the standard English rules for hyphenating a compound adjective." %}
 
 ### request
 
-HTTP request. Klient zašle HTTP request message na server, ktorý vráti response. Request musí používať niektorú z [request metód](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods) ako je GET, POST a pod..
+An HTTP request. A client submits an HTTP request message to a server, which returns a response.  The request must use one of several [request methods](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods) such as GET, POST, and so on.
 
 ### response
 
-HTTP response. Server vracia klientovi HTTP response message. Response obsahuje informáciu o stave spracovania requestu a taktiež môže obsahovať message body.
+An HTTP response. A server returns an HTTP response message to the client. The response contains completion status information about the request and might also contain requested content in its message body.
 
 ### route
 
-Časť URL identifikujúca resource. Napr. v prípade `http://foo.com/products/id` je route "/products/id".
+Part of a URL that identifies a resource. For example, in `http://foo.com/products/id`, "/products/id" is the route.
 
 ### router
 
