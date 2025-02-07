@@ -1,12 +1,12 @@
 ---
 layout: page
 title: Express yol atama
+description: Learn the fundamentals of routing in Express.js applications, including how to define routes, handle HTTP methods, and create route handlers for your web server.
 menu: starter
 lang: tr
-description: Learn the fundamentals of routing in Express.js applications, including
-  how to define routes, handle HTTP methods, and create route handlers for your web
-  server.
+redirect_from: /starter/basic-routing.html
 ---
+
 # Basit yol atama
 
 Yol atama, bir uygulamanın belrili bir adreste belirli bir HTTP methodu ile (GET, POST gibi) gelen isteğe ne şekilde cevap vereceğine karşılık gelir.
@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 })
 ```
 
-Kök dizine (`/`) gelen POST isteğine bir cevap verin:
+Respond to POST request on the root route (`/`), the application's home page:
 
 ```js
 app.post('/', (req, res) => {
@@ -66,4 +66,4 @@ app.delete('/user', (req, res) => {
 
 Yol atama ile ilgili daha fazla detay için, [yol atama](/{{ page.lang }}/guide/routing.html) sayfasını ziyaret edin.
 
-###  [Previous: Express application generator ](/{{ page.lang }}/starter/generator.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: Serving static files in Express ](/{{ page.lang }}/starter/static-files.html)
+### [Previous: Express application generator ](/{{ page.lang }}/starter/generator.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: Serving static files in Express ](/{{ page.lang }}/starter/static-files.html)
