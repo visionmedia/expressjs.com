@@ -1,13 +1,13 @@
 ---
 layout: page
 title: Express Sıkça Sorulan Sorular
+description: Find answers to frequently asked questions about Express.js, including topics on application structure, models, authentication, template engines, error handling, and more.
 menu: starter
 lang: tr
-description: Find answers to frequently asked questions about Express.js, including
-  topics on application structure, models, authentication, template engines, error
-  handling, and more.
+redirect_from: /starter/faq.html
 ---
-# Sıkça Sorulan Sorular
+
+# FAQ
 
 ## Uygulamamın yapısı nasıl olmalı?
 
@@ -15,13 +15,13 @@ Bu soruya verilebilecek kesin bir cevap yoktur. Cevap, uygulamanızın boyutuna 
 
 Yollar ve diğer uygulamaya özel mantık istediğiniz yapıda, istediğiniz kadar dosyanın içinde barınabilir. Örnek olarak şunlara göz atabilirsiniz:
 
-* [Route listings](https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-L47)
-* [Route map](https://github.com/expressjs/express/blob/4.13.1/examples/route-map/index.js#L52-L66)
-* [MVC style controllers](https://github.com/expressjs/express/tree/master/examples/mvc)
+- [Route listings](https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-L47)
+- [Route map](https://github.com/expressjs/express/blob/4.13.1/examples/route-map/index.js#L52-L66)
+- [MVC style controllers](https://github.com/expressjs/express/tree/master/examples/mvc)
 
 Ayrıca, bu dizaynlardan bazılarını basitleştiren, üçüncü parti bir Express uzantısı bulunmaktadır:
 
-* [Resourceful routing](https://github.com/expressjs/express-resource)
+- [Resourceful routing](https://github.com/expressjs/express-resource)
 
 ## Nasıl model tanımlarım?
 
@@ -31,11 +31,13 @@ Model üzerine Express tabanlı bir framework için [LoopBack](http://loopback.i
 
 ## Kimlik doğrulamasını nasıl sağlarım?
 
-Kimlik doğrulama Express'in bulundurmayı tercih etmediği başka bir konu. İstediğiniz herhangi bir kimlik doğrulama planını kullanabilirsiniz. Basit kullanıcı adı / şifre planı için [bu örneğe](https://github.com/expressjs/express/tree/master/examples/auth) göz atın.
+Kimlik doğrulama Express'in bulundurmayı tercih etmediği başka bir konu. İstediğiniz herhangi bir kimlik doğrulama planını kullanabilirsiniz.
+Basit kullanıcı adı / şifre planı için [bu örneğe](https://github.com/expressjs/express/tree/master/examples/auth) göz atın.
 
 ## Express hangi görünüm (view) motorlarını destekliyor?
 
-Express `(path, locals, callback)` kalıbını sağlayan herhangi bir görünüm motorunu destekler. Şablon motoru arayüzlerini ve önbelleklemeyi normalleştirmek için, [consolidate.js](https://github.com/visionmedia/consolidate.js)'e göz atın. Listelenmeyen görünüm motorları da Express'in yapısına uygun olabilir.
+Express `(path, locals, callback)` kalıbını sağlayan herhangi bir görünüm motorunu destekler.
+Şablon motoru arayüzlerini ve önbelleklemeyi normalleştirmek için, [consolidate.js](https://github.com/visionmedia/consolidate.js)'e göz atın. Listelenmeyen görünüm motorları da Express'in yapısına uygun olabilir.
 
 Daha fazla bilgi için, [Express ile görünüm motorlarını kullanmak](/{{page.lang}}/guide/using-template-engines.html).
 
@@ -51,9 +53,10 @@ app.use((req, res, next) => {
 
 Yolları dinamik olarak `express.Router()`'ın bir örneği üzerine tanımlayın, böylece tanımlarınızın yerine ara katman fonksiyonları geçmez.
 
-## Hata işleyici fonksiyonları nasıl kullanabilirim?
+## How do I setup an error handler?
 
-Hata ile ilgili ara katman fonksiyonları da tıpkı diğer ara katman fonksiyonları gibi tanımlanır. Aradaki tek fark üç argüman yerine şu şekilde dört argüman kullanılmasıdır `(err, req, res, next)`:
+You define error-handling middleware in the same way as other middleware,
+except with four arguments instead of three; specifically with the signature `(err, req, res, next)`:
 
 ```js
 app.use((err, req, res, next) => {
@@ -66,6 +69,13 @@ Daha fazla bilgi için, [Hata işleme](/{{ page.lang }}/guide/error-handling.htm
 
 ## Yalın HTML dosyalarını nasıl işlerim?
 
-Yalın HTML için `res.render()` fonksiyonun kullanmak zorunda değilsiniz. Eğer dosyanız belirli ise, `res.sendFile()` fonksiyonunu kullanın. Eğer bir dizinden birden çok içerik sunuyorsanız, `express.static()` ara katman fonksiyonunu kullanın.
+You don't! Yalın HTML için `res.render()` fonksiyonun kullanmak zorunda değilsiniz.
+Eğer dosyanız belirli ise, `res.sendFile()` fonksiyonunu kullanın.
+Eğer bir dizinden birden çok içerik sunuyorsanız, `express.static()` ara katman fonksiyonunu kullanın.
 
-###  [Önceki: Statik Dosyalar ](/{{ page.lang }}/starter/static-files.html)
+## What version of Node.js does Express require?
+
+- [Express 4.x](/{{ page.lang }}/4x/api.html) requires Node.js 0.10 or higher.
+- [Express 5.x](/{{ page.lang }}/5x/api.html) requires Node.js 18 or higher.
+
+### [Previous: More examples ](/{{ page.lang }}/starter/examples.html)
