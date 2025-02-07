@@ -1,51 +1,54 @@
 ---
 layout: page
 title: Встановлення Express
+description: Learn how to install Express.js in your Node.js environment, including setting up your project directory and managing dependencies with npm.
 menu: starter
 lang: uk
-description: Learn how to install Express.js in your Node.js environment, including
-  setting up your project directory and managing dependencies with npm.
+redirect_from: /starter/installing.html
 ---
 
 # Встановлення
 
 Припускаючи, що у вас вже встановлено [Node.js](https://nodejs.org/), створіть робочу директорію, де буде ваш застосунок:
 
+- [Express 4.x](/{{ page.lang }}/4x/api.html) requires Node.js 0.10 or higher.
+- [Express 5.x](/{{ page.lang }}/5x/api.html) requires Node.js 18 or higher.
+
 ```bash
 $ mkdir myapp
 $ cd myapp
 ```
 
-Використовуйте команду `npm init` для створення файлу `package.json`.
-Більш докладно про роботу `package.json` написано в [Specifics of npm's package.json handling](https://docs.npmjs.com/files/package.json).
+Use the `npm init` command to create a `package.json` file for your application.
+For more information on how `package.json` works, see [Specifics of npm's package.json handling](https://docs.npmjs.com/files/package.json).
 
 ```bash
 $ npm init
 ```
 
-Під час виконання цієї команди, у вас спитається про деякі моменти (ім’я та версія вашого застосунку і т.д.).
-Ви можете просто натискати Enter, щоб приймати запропоновані початкові варіанти для більшості пунктів, за виключенням цього:
+This command prompts you for a number of things, such as the name and version of your application.
+For now, you can simply hit RETURN to accept the defaults for most of them, with the following exception:
 
-```bash
+```
 entry point: (index.js)
 ```
 
-Введіть `app.js`, або будь-яке інше ім’я для головного файла. Якщо ви хочете залишити запропоноване ім’я `index.js`,
-натискайте Enter.
+Enter `app.js`, or whatever you want the name of the main file to be. If you want it to be `index.js`, hit RETURN to accept the suggested default file name.
 
-Тепер встановіть Express в новоствореній директорії та збережіть його в списку залежностей:
-
-```bash
-$ npm install express --save
-```
-
-Щоб встановити Express без додавання його в список залежностей, не передавайте параметр `--save`:
+Now, install Express in the `myapp` directory and save it in the dependencies list. For example:
 
 ```bash
 $ npm install express
 ```
 
+To install Express temporarily and not add it to the dependencies list:
+
+```bash
+$ npm install express --no-save
+```
+
 <div class="doc-box doc-info" markdown="1">
-Модулі Node.js, встановлені з параметром `--save`, додаються до списку `залежностей` у файл `package.json`, що знаходиться в корені робочого каталогу.
-Цей список використовується при запуску команди `npm install` щоб автоматично встановлювати вказані там модулі.
+By default with version npm 5.0+, `npm install` adds the module to the `dependencies` list in the `package.json` file; with earlier versions of npm, you must specify the `--save` option explicitly. Then, afterwards, running `npm install` in the app directory will automatically install modules in the dependencies list.
 </div>
+
+### [Next: Hello World ](/{{ page.lang }}/starter/hello-world.html)
