@@ -1,96 +1,98 @@
 ---
 layout: page
 title: Express FAQ
+description: Find answers to frequently asked questions about Express.js, including topics on application structure, models, authentication, template engines, error handling, and more.
 menu: starter
 lang: uz
-description: Find answers to frequently asked questions about Express.js, including
-  topics on application structure, models, authentication, template engines, error
-  handling, and more.
+redirect_from: /starter/faq.html
 ---
 
 # FAQ
 
 ## Dasturim uchun qanday struktura tanlashim kerak?
 
-Bu savolga bitta javob yo'q. Bu dasturingiz hajmi va dasturchilar jamosiga bog'liq bo'ladi. Tobora moslashuvchan bo'lish uchun, Express struktura yaratishga hech qanday cheklovlar qo'ymaydi.
+There is no definitive answer to this question. The answer depends
+on the scale of your application and the team that is involved. To be as
+flexible as possible, Express makes no assumptions in terms of structure.
 
-Dasturning marshrutizatsiya va boshqa logika qismi ko'plab fayllarda joylashgan bo'lishi mumkin, struktura esa siz hohlagan holda yaratish imkoniyati mavjud. Ilhomlanish uchun quyidagi strukturalarni ko'rishingiz mumkin:
+Routes and other application-specific logic can live in as many files
+as you wish, in any directory structure you prefer. View the following
+examples for inspiration:
 
-* [Marshrutlarni e'lon qilish](https://github.com/expressjs/express/blob/master/examples/route-separation/index.js#L19)
-* [Marshrutlarni haritasi](https://github.com/expressjs/express/blob/master/examples/route-map/index.js#L47)
-* [MVC ko'rinishida kontrollerlar](https://github.com/expressjs/express/tree/master/examples/mvc)
+- [Marshrutlarni e'lon qilish](https://github.com/expressjs/express/blob/master/examples/route-separation/index.js#L19)
+- [Marshrutlarni haritasi](https://github.com/expressjs/express/blob/master/examples/route-map/index.js#L47)
+- [MVC ko'rinishida kontrollerlar](https://github.com/expressjs/express/tree/master/examples/mvc)
 
 Bundan tashqari, Express uchun qo'shimcha yordam beruvchi shablonlar mavjud:
 
-* [Resourceful marshrutizatsiya](https://github.com/expressjs/express-resource)
-* [Namespaced marshrutizatsiya](https://github.com/expressjs/express-namespace)
+- [Resourceful marshrutizatsiya](https://github.com/expressjs/express-resource)
 
 ## Modellarni qanday aniqlashim mumkin?
 
-Express qaysi ma'lumotlar ombori bilan ishlashni keltirilmagan. Siz hohlagan Node modullarni ishlatishingiz mumkin bo'ladi, bu esa sizga hohlagan ma'lumotlar omborini ishlatish imkonini beradi.
+Express has no notion of a database. This concept is
+left up to third-party Node modules, allowing you to
+interface with nearly any database.
 
 [LoopBack](http://loopback.io) ko'ring, Express asosida modellar bilan ishlash uchun yaratilgan freymvork.
 
 ## Qanday qilish foydalanuvchini autenfikatsiya qilishim mumkin?
 
-Bu ham Express o'ziga olmaydigan qismi hisoblanadi. Siz hohlagan autenfikatsiya tizimini ishlatishingiz mumkin bo'ladi.
-Oddiy username / password sxemasini ishlatish uchun [ushbu misolni](https://github.com/expressjs/express/tree/master/examples/auth) ko'ring.
+Authentication is another opinionated area that Express does not
+venture into. You may use any authentication scheme you wish.
+For a simple username / password scheme, see [this example](https://github.com/expressjs/express/tree/master/examples/auth).
 
 ## Express qaysi shablonizator ishlatadi?
 
-Express `(path, locals, callback)` signaturasini maqullaydigan barcha shablonizatorni ishlatishi mumkin.
-Iterfey shablonizator va keshirovaniyani normalashtirish uchun, [consolidate.js](https://github.com/visionmedia/consolidate.js) ni ko'ring.
+Express supports any template engine that conforms with the `(path, locals, callback)` signature.
+To normalize template engine interfaces and caching, see the
+[consolidate.js](https://github.com/visionmedia/consolidate.js)
+project for support. Unlisted template engines might still support the Express signature.
 
-## Qanday qilib bir necha direktoriyalarni statik fayllarga aylantirishim mumkin?
+For more information, see [Using template engines with Express](/{{page.lang}}/guide/using-template-engines.html).
 
-Siz oraliq qayta ishlovchilarni bir necha marta ishatishingiz mumkin. Quyidagilar keltirilgan oraliq qayta ishlovchida, `GET /javascripts/jquery.js` ni olishga so'rov jo'natilganda, avvalo `./public/javascripts/jquery.js`ni tekshiradi;
-Agarda ushbu fayl direktoriyada topilmasa, undan keyingi oraliq qayta ishlovchida ko'rsatilgan direktoriyani `./files/javascripts/jquery.js` tekshiradi.
+## How do I handle 404 responses?
 
-```js
-app.use(express.static('public'))
-app.use(express.static('files'))
-```
-
-## Statik fayllarni tarqatish qanday qilib manzil prefiksini ko'rsatsam bo'ladi?
-
-Asosiy Connect "mounting" yordamida "prefiks" aniqlab qaysi middleware ishga tushishini ko'rsatish mumkin bo'ladi.
-Bu usul effektiv ishlaydi huddi prefiks hech qachon manzil qismi bo'lmagandek.
-Masalan, bizga `GET /files/javascripts/jquery.js` kerak bo'lsa.
-Siz `/files` prefiksini o'rnatib, `/javascripts/jquery.js`ni `req.url` aniqlashingiz mumkin, shu bilan tarqatish uchun middleware ko'rsatishingiz mumkin:
-
-```js
-app.use('/public', express.static('public'))
-```
-
-## Siz qanday qilib 404 xatoni qayta ishlaysiz?
-
-Expressda, 404 xatosi, natija xatosi hisoblanmaydi. Shuning uchun ham xatolarni qayta ishlovchi middleware 404ni qayta ishlay olmaydi. Chunki 404 qo'shimcha ish yo'qligidan dalolat beradi;
-Boshqa qilib aytganda, Express hamma oraliq qayta ishlovchi(middleware)  / routerlarni(routes)larni ishga tushuradi,
-va ularda hech biri ish haqida natija beramangani aniqlanadi.
-Buning uchun siz eng oxirida(hammasidan keyin) 404ni qayta ishlash oraliq qayta ishlovchi ko'rsatishingiz kerak bo'ladi:
+In Express, 404 responses are not the result of an error, so
+the error-handler middleware will not capture them. This behavior is
+because a 404 response simply indicates the absence of additional work to do;
+in other words, Express has executed all middleware functions and routes,
+and found that none of them responded. All you need to
+do is add a middleware function at the very bottom of the stack (below all other functions)
+to handle a 404 response:
 
 ```js
 app.use((req, res, next) => {
-  res.send(404, 'Sorry cant find that!')
+  res.status(404).send("Sorry can't find that!")
 })
 ```
 
-## Xato qayta ishlovchisini qanday aniqlaysiz?
+Add routes dynamically at runtime on an instance of `express.Router()`
+so the routes are not superseded by a middleware function.
 
-Siz xatolarni qayta ishlovchi middlewareni ko'rsatishingiz mumkin, shu bilan qolgan qayta ishlovchisi(middleware)ga
-uchta argumentlar o'rniga to'rtta argument jo'natishingiz kerak; u quyidagicha `(err, req, res, next)`:
+## How do I setup an error handler?
+
+You define error-handling middleware in the same way as other middleware,
+except with four arguments instead of three; specifically with the signature `(err, req, res, next)`:
 
 ```js
 app.use((err, req, res, next) => {
   console.error(err.stack)
-  res.send(500, 'Something broke!')
+  res.status(500).send('Something broke!')
 })
 ```
 
-Batafsil ma'lumot uchun [Xatolarni qayta ishlash](/{{page.lang}}/guide/error-handling.html) o'qing.
+For more information, see [Error handling](/{{ page.lang }}/guide/error-handling.html).
 
-## Qanday qilib plain HTMLni render qilishim mumkin?
+## Xato qayta ishlovchisini qanday aniqlaysiz?
 
-Siz buni qilishingiz kerak emas! HTMLni `res.render()` orqali "render" qilish kerak emas.
-Agar sizda shunday fayl bo'lsa, `res.sendFile()` ishlating.
-Agar siz ko'pgina bunday fayllarni ishlatsangiz `express.static()` qayta ishlovchisi(middleware)ni ishlatishingiz mumkin.
+You don't! There's no need to "render" HTML with the `res.render()` function.
+If you have a specific file, use the `res.sendFile()` function.
+If you are serving many assets from a directory, use the `express.static()`
+middleware function.
+
+## What version of Node.js does Express require?
+
+- [Express 4.x](/{{ page.lang }}/4x/api.html) requires Node.js 0.10 or higher.
+- [Express 5.x](/{{ page.lang }}/5x/api.html) requires Node.js 18 or higher.
+
+### Qanday qilib plain HTMLni render qilishim mumkin?
