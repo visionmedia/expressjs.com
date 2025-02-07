@@ -1,65 +1,58 @@
 ---
 layout: page
 title: Express middleware
+description: Explore a list of Express.js middleware modules maintained by the Express team and the community, including built-in middleware and popular third-party modules.
 menu: resources
 lang: sk
-description: Explore a list of Express.js middleware modules maintained by the Express
-  team and the community, including built-in middleware and popular third-party modules.
+redirect_from: /resources/middleware.html
+module: mw-home
 ---
 
-# Third-party middleware
+## Express middleware
 
 Tu je zoznam niektorých Express middleware modulov:
 
-  - [body-parser](https://github.com/expressjs/body-parser): kedysi `express.bodyParser`, `json` a `urlencoded`.
-  Pozrite sa taktiež na:
-  - [body](https://github.com/raynos/body)
-  - [co-body](https://github.com/visionmedia/co-body)
-  - [raw-body](https://github.com/stream-utils/raw-body)
-  - [compression](https://github.com/expressjs/compression):  kedysi `express.compress`
-  - [connect-image-optimus](https://github.com/msemenistyi/connect-image-optimus): Connect/Express middleware moduly pre optimálne servovanie obrázkov. V prípade podpory transformuje obrázky na `.webp` príp. `.jxr`.
-  - [connect-timeout](https://github.com/expressjs/timeout): kedysi `express.timeout`
-  - [cookie-parser](https://github.com/expressjs/cookie-parser): kedysi `express.cookieParser`
-  - [cookie-session](https://github.com/expressjs/cookie-session): kedysi `express.cookieSession`
-  - [errorhandler](https://github.com/expressjs/errorhandler): kedysi `express.errorHandler`
-  - [express-debug](https://github.com/devoidfury/express-debug): nenápadný development tool, ktorý pridá panel s informáciami ohľadom template premenných, aktuálnej session, informácie o request dátach a ďalšie užitočné informácie.
-  - [express-partial-response](https://github.com/nemtsov/express-partial-response): Express middleware modul slúžiaci k odfiltrovaniu častí JSON odpovedi na podľa hodnoty query parametra `fields`.
-  - [express-session](https://github.com/expressjs/session): predtým `express.session`
-  - [express-simple-cdn](https://github.com/jamiesteven/express-simple-cdn): Express middleware modul pre používanie CDN na statické assety s podporou viacerých hostov (napr.: cdn1.host.com, cdn2.host.com).
-  - [express-slash](https://github.com/ericf/express-slash): Express middleware modul pre ľudí ktorí to s trailing slashes myslia vážne.
-  - [express-stormpath](https://github.com/stormpath/stormpath-express): Express middleware modul pre ukladanie, autentifikáciu, autorizáciu, SSO a bezpečnosť dát.
-  - [express-uncapitalize](https://github.com/jamiesteven/express-uncapitalize): middleware modul slúžiaci na presmerovávanie HTTP requestov obsahujúcich uppercase na canonical lowercase formu.
-  - [helmet](https://github.com/helmetjs/helmet): modul ktorý vám pomôže zabezpečiť vašu aplikáciu pomocou nastavenia rozličných HTTP hlavičiek.
-  - [join-io](https://github.com/coderaiser/join-io "join-io"): modul slúžiaci na spájanie súborov "on the fly" kvoli zredukovaniu počtu volaní.
-  - [method-override](https://github.com/expressjs/method-override): kedysi `express.methodOverride`
-  - [morgan](https://github.com/expressjs/morgan):  kedysi `logger`
-  - [passport](https://github.com/jaredhanson/passport): Express middleware modul slúžiaci na autentifikáciu.
-  - [response-time](https://github.com/expressjs/response-time): kedysi `express.responseTime`
-  - [serve-favicon](https://github.com/expressjs/serve-favicon): kedysi `express.favicon`
-  - [serve-index](https://github.com/expressjs/serve-index): kedysi `express.directory`
-  - [serve-static](https://github.com/expressjs/serve-static): modul pre servovanie statického obsahu.
-  - [static-expiry](https://github.com/paulwalker/connect-static-expiry): modul na tvorbu tzv. fingerprinted URL a caching hlavičiek pre statický obsah s podporou jednej i viacerých domén.
-  - [vhost](https://github.com/expressjs/vhost): kedysi `express.vhost`
-  - [view-helpers](https://github.com/madhums/node-view-helpers): Express middleware modul poskytujúci bežné helper metódy pre views.
-  - [sriracha-admin](https://github.com/hdngr/siracha): Express middleware modul ktorý dynamicky generuje admin stránky pre Mongoose.
+| Middleware module                                             | Description                                                                                                                                                                                                                              | Replaces built-in function (Express 3) |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| [body-parser](/resources/middleware/body-parser.html)         | Parse HTTP request body. See also: [body](https://github.com/raynos/body), [co-body](https://github.com/visionmedia/co-body), and  [raw-body](https://github.com/stream-utils/raw-body). | express.bodyParser                        |
+| [compression](/resources/middleware/compression.html)         | Compress HTTP responses.                                                                                                                                                                                                 | express.compress                          |
+| [connect-rid](/resources/middleware/connect-rid.html)         | Generate unique request ID.                                                                                                                                                                                              | NA                                                        |
+| [cookie-parser](/resources/middleware/cookie-parser.html)     | Parse cookie header and populate `req.cookies`. See also [cookies](https://github.com/jed/cookies) and [keygrip](https://github.com/jed/keygrip).                                                        | express.cookieParser                      |
+| [cookie-session](/resources/middleware/cookie-session.html)   | Establish cookie-based sessions.                                                                                                                                                                                         | express.cookieSession                     |
+| [cors](/resources/middleware/cors.html)                       | Enable cross-origin resource sharing (CORS) with various options.                                                                                                                                     | NA                                                        |
+| [errorhandler](/resources/middleware/errorhandler.html)       | Development error-handling/debugging.                                                                                                                                                                                    | express.errorHandler                      |
+| [method-override](/resources/middleware/method-override.html) | Override HTTP methods using header.                                                                                                                                                                                      | express.methodOverride                    |
+| [morgan](/resources/middleware/morgan.html)                   | HTTP request logger.                                                                                                                                                                                                     | express.logger                            |
+| [multer](/resources/middleware/multer.html)                   | Handle multi-part form data.                                                                                                                                                                                             | express.bodyParser                        |
+| [response-time](/resources/middleware/response-time.html)     | Record HTTP response time.                                                                                                                                                                                               | express.responseTime                      |
+| [serve-favicon](/resources/middleware/serve-favicon.html)     | Serve a favicon.                                                                                                                                                                                                         | express.favicon                           |
+| [serve-index](/resources/middleware/serve-index.html)         | Serve directory listing for a given path.                                                                                                                                                                                | express.directory                         |
+| [serve-static](/resources/middleware/serve-static.html)       | Serve static files.                                                                                                                                                                                                      | express.static                            |
+| [session](/resources/middleware/session.html)                 | Establish server-based sessions (development only).                                                                                                                                                   | express.session                           |
+| [timeout](/resources/middleware/timeout.html)                 | Set a timeout period for HTTP request processing.                                                                                                                                                                        | express.timeout                           |
+| [vhost](/resources/middleware/vhost.html)                     | Create virtual domains.                                                                                                                                                                                                  | express.vhost                             |
 
-Niektoré middleware moduly, ktoré kedysi boli súčasťou Connect-u už viac nie sú podporované Connect/Express tímom. Tieto moduly boli, alebo by mali byť, nahradené alternatívnymi lepšími modulmi. Používajte niektoré z nasledujúcich alternatív:
+## Additional middleware modules
 
-  - express.cookieParser
-    - [cookies](https://github.com/jed/cookies) a [keygrip](https://github.com/jed/keygrip)
-  - express.limit
-    - [raw-body](https://github.com/stream-utils/raw-body)
-  - express.multipart
-    - [connect-busboy](https://github.com/mscdex/connect-busboy)
-    - [multer](https://github.com/expressjs/multer)
-    - [connect-multiparty](https://github.com/superjoe30/connect-multiparty)
-  - express.query
-    - [qs](https://github.com/visionmedia/node-querystring)
-  - express.staticCache
-    - [st](https://github.com/isaacs/st)
-    - [connect-static](https://github.com/andrewrk/connect-static)
+These are some additional popular middleware modules.
 
 Ďalšie middleware moduly nájdete tu:
 
- - [http-framework](https://github.com/Raynos/http-framework/wiki/Modules)
- - [expressjs](https://github.com/expressjs)
+| Middleware&nbsp;module                                      | Description                                                                                                                                                                                                          |
+| ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [cls-rtracer](https://github.com/puzpuzpuz/cls-rtracer)                         | Middleware for CLS-based request id generation. An out-of-the-box solution for adding request ids into your logs.                                                                    |
+| [connect-image-optimus](https://github.com/msemenistyi/connect-image-optimus)   | Optimize image serving. Switches images to `.webp` or `.jxr`, if possible.                                                                                                           |
+| [error-handler-json](https://github.com/mifi/error-handler-json)                | An error handler for JSON APIs (fork of `api-error-handler`.)                                                                                                                     |
+| [express-debug](https://github.com/devoidfury/express-debug)                    | Development tool that adds information about template variables (locals), current session, and so on.                                                                             |
+| [express-partial-response](https://github.com/nemtsov/express-partial-response) | Filters out parts of JSON responses based on the `fields` query-string; by using Google API's Partial Response.                                                                                      |
+| [express-simple-cdn](https://github.com/jamiesteven/express-simple-cdn)         | Use a CDN for static assets, with multiple host support.                                                                                                                                             |
+| [express-slash](https://github.com/ericf/express-slash)                         | Handles routes with and without trailing slashes.                                                                                                                                                    |
+| [express-uncapitalize](https://github.com/jamiesteven/express-uncapitalize)     | Redirects HTTP requests containing uppercase to a canonical lowercase form.                                                                                                                          |
+| [helmet](https://github.com/helmetjs/helmet)                                    | Helps secure your apps by setting various HTTP headers.                                                                                                                                              |
+| [join-io](https://github.com/coderaiser/join-io)                                | Joins files on the fly to reduce the requests count.                                                                                                                                                 |
+| [passport](https://github.com/jaredhanson/passport)                             | Authentication using "strategies" such as OAuth, OpenID and many others.  See [http://passportjs.org/](http://passportjs.org/) for more information. |
+| [static-expiry](https://github.com/paulwalker/connect-static-expiry)            | Fingerprint URLs or caching headers for static assets.                                                                                                                                               |
+| [view-helpers](https://github.com/madhums/node-view-helpers)                    | Common helper methods for views.                                                                                                                                                                     |
+| [sriracha-admin](https://github.com/hdngr/siracha)                              | Dynamically generate an admin site for Mongoose.                                                                                                                                                     |
+
+For more middleware modules, see [http-framework](https://github.com/Raynos/http-framework#modules).
