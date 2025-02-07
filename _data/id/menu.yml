@@ -1,6 +1,5 @@
 # Home
 home: Home
-
 # Getting started
 getting_started: Mulai
 installing: Menginstal
@@ -10,7 +9,6 @@ basic_routing: Dasar routing
 static_files: File statis
 examples: Contoh lainnya
 faq: FAQ
-
 # Guide
 guide: Panduan
 routing: Routing
@@ -24,15 +22,12 @@ behind_proxies: Express behind proxies
 migrating_4: Pindah to Express 4
 migrating_5: Pindah to Express 5
 database_integration: Integrasi Database
-
 # API reference
-
 api: Referensi API
 5x: 5.x
 4x: 4.x
 3x: 3.x (deprecated)
 2x: 2.x (deprecated)
-
 # Advanced topics
 advanced: Topik lanjutan
 developing_template_engines: Membangun template engines
@@ -40,7 +35,6 @@ security_updates: Security updates
 best_practice_security: Security best practices
 best_practice_performance: Performance best practices
 healthcheck_graceful_shutdown: Health checks & shutdown
-
 # Resources
 resources: Resources
 glossary: Glossary
@@ -49,10 +43,8 @@ community: Community
 utils: Utility modules
 contributing: Contributing to Express
 changelog: Release Change Log
-
 # Support
 support: Support
-
 # Blog
 blog: Blog
 latest_post: Latest post
