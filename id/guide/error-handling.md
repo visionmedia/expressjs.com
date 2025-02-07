@@ -1,11 +1,12 @@
 ---
 layout: page
 title: Express error handling
+description: Understand how Express.js handles errors in synchronous and asynchronous code, and learn to implement custom error handling middleware for your applications.
 menu: guide
 lang: id
-description: Understand how Express.js handles errors in synchronous and asynchronous
-  code, and learn to implement custom error handling middleware for your applications.
+redirect_from: /guide/error-handling.html
 ---
+
 # Error Handling
 
 _Error Handling_ refers to how Express catches and processes errors that
@@ -118,7 +119,6 @@ because the catch handler is given the error as the first argument.
 You could also use a chain of handlers to rely on synchronous error
 catching, by reducing the asynchronous code to something trivial. For example:
 
-
 ```js
 app.get('/', [
   function (req, res, next) {
@@ -161,12 +161,12 @@ Set the environment variable `NODE_ENV` to `production`, to run the app in produ
 When an error is written, the following information is added to the
 response:
 
-* The `res.statusCode` is set from `err.status` (or `err.statusCode`). If
+- The `res.statusCode` is set from `err.status` (or `err.statusCode`). If
   this value is outside the 4xx or 5xx range, it will be set to 500.
-* The `res.statusMessage` is set according to the status code.
-* The body will be the HTML of the status code message when in production
+- The `res.statusMessage` is set according to the status code.
+- The body will be the HTML of the status code message when in production
   environment, otherwise will be `err.stack`.
-* Any headers specified in an `err.headers` object.
+- Any headers specified in an `err.headers` object.
 
 If you call `next()` with an error after you have started writing the
 response (for example, if you encounter an error while streaming the
