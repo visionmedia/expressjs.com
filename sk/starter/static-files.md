@@ -1,23 +1,32 @@
 ---
 layout: page
 title: Servovanie statických súborov pomocou Express
+description: Understand how to serve static files like images, CSS, and JavaScript in Express.js applications using the built-in 'static' middleware.
 menu: starter
 lang: sk
-description: Understand how to serve static files like images, CSS, and JavaScript
-  in Express.js applications using the built-in 'static' middleware.
+redirect_from: /starter/static-files.html
 ---
 
 # Servovanie statických súborov pomocou Express
 
 Na servovanie statických súborov ako sú obrázky, CSS a JavaScript súbory používajte vstavaný `express.static` middleware.
 
-Pre priame servovanie statického obsahu zavolajte `express.static` middleware s parametrom predstavujúcim názov priečinka obsahujúceho statické súbory. Napr., pre servovanie obrázkov, CSS a JavaScript súborov z priečinka `public` použite:
+The function signature is:
+
+```js
+express.static(root, [options])
+```
+
+The `root` argument specifies the root directory from which to serve static assets.
+For more information on the `options` argument, see [express.static](/{{page.lang}}/4x/api.html#express.static).
+
+For example, use the following code to serve images, CSS files, and JavaScript files in a directory named `public`:
 
 ```js
 app.use(express.static('public'))
 ```
 
-Teraz dokážete načítať súbory obsiahnuté v `public` priečinku:
+V prípade, že chcete použiť viacero priečinkov so statickým obsahom, zavolajte `express.static` funkciu osobitne pre každý priečinok:
 
 ```text
 http://localhost:3000/images/kitten.jpg
@@ -28,25 +37,30 @@ http://localhost:3000/hello.html
 ```
 
 <div class="doc-box doc-info">
-Express vyhľadáva súbory relatívne od priečinka so statickým obsahom, takže názov tohto priečinka nie je súčasťou URL.
+Express looks up the files relative to the static directory, so the name of the static directory is not part of the URL.
 </div>
 
-V prípade, že chcete použiť viacero priečinkov so statickým obsahom, zavolajte `express.static` funkciu osobitne pre každý priečinok:
+Ak potrebujete vytvoriť virtuálny prefix pre cestu k statickým súborom (kde taká cesta (path) v skutočnosti na súborovom systéme neexistuje) servovaným pomocou `express.static` funkcie, [špecifikujte cestu](/{{ page.lang }}/4x/api.html#app.use) k statickému obsahu nasledovne:
 
 ```js
 app.use(express.static('public'))
 app.use(express.static('files'))
 ```
 
-Express vyhľadáva súbory v jednotlivých adresároch podľa toho, v akom poradí sú zadefinované pomocou použitia `express.static` funkcie.
+Teraz môžete načítať súbory nachádzajúce sa v priečinku `public` na ceste s prefixom `/static`.
 
-Ak potrebujete vytvoriť virtuálny prefix pre cestu k statickým súborom (kde taká cesta (path) v skutočnosti na súborovom systéme neexistuje) servovaným pomocou `express.static` funkcie, [špecifikujte cestu](/{{ page.lang }}/4x/api.html#app.use) k statickému obsahu nasledovne:
+{% capture alert_content %}
+For best results, [use a reverse proxy](/{{page.lang}}/advanced/best-practice-performance.html#use-a-reverse-proxy) cache to improve performance of serving static assets.
+{% endcapture %}
+{% include admonitions/note.html content=alert_content %}
+
+To create a virtual path prefix (where the path does not actually exist in the file system) for files that are served by the `express.static` function, [specify a mount path](/{{ page.lang }}/4x/api.html#app.use) for the static directory, as shown below:
 
 ```js
 app.use('/static', express.static('public'))
 ```
 
-Teraz môžete načítať súbory nachádzajúce sa v priečinku `public` na ceste s prefixom `/static`.
+Now, you can load the files that are in the `public` directory from the `/static` path prefix.
 
 ```text
 http://localhost:3000/static/images/kitten.jpg
@@ -56,9 +70,13 @@ http://localhost:3000/static/images/bg.png
 http://localhost:3000/static/hello.html
 ```
 
-Pozor však na to, že cesta ktorú poskytnete `express.static` funkcii je relatívna k priečinku, z ktorého ste spustili váš `node` proces. Ak spúšťate express aplikáciu z iného priečinka, je bezpečnejšie použiť absolútnu cestu k priečinku, ktorý chcete servovať:
+However, the path that you provide to the `express.static` function is relative to the directory from where you launch your `node` process. If you run the express app from another directory, it's safer to use the absolute path of the directory that you want to serve:
 
 ```js
 const path = require('path')
 app.use('/static', express.static(path.join(__dirname, 'public')))
 ```
+
+For more details about the `serve-static` function and its options, see  [serve-static](/resources/middleware/serve-static.html).
+
+### [Previous: Basic Routing ](/{{ page.lang }}/starter/basic-routing.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: More examples ](/{{ page.lang }}/starter/examples.html)
