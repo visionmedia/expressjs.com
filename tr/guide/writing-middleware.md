@@ -1,12 +1,12 @@
 ---
 layout: page
 title: Express uygulamalarında kullanılacak ara yazılım yazmak
+description: Learn how to write custom middleware functions for Express.js applications, including examples and best practices for enhancing request and response handling.
 menu: guide
 lang: tr
 redirect_from: /guide/writing-middleware.html
-description: Learn how to write custom middleware functions for Express.js applications,
-  including examples and best practices for enhancing request and response handling.
 ---
+
 # Express uygulamalarında kullanılacak ara yazılım yazmak
 
 <h2>Genel bakış</h2>
@@ -15,21 +15,21 @@ _Ara yazılım_ fonksiyonları uygulamanın istek-yanıt döngüsünde (`req`) [
 
 Ara yazılım fonksiyonları aşağıdaki görevleri yerine getirebilir:
 
-* Herhangi bir kodu çalıştırma.
-* İstek ve yanıt objelerine değişiklik yapma.
-* İstek-yanıt döngüsünü sonlandırma.
-* Yığındaki bir sonraki ara yazılımı çağırma.
+- Herhangi bir kodu çalıştırma.
+- İstek ve yanıt objelerine değişiklik yapma.
+- İstek-yanıt döngüsünü sonlandırma.
+- Call the next middleware in the stack.
 
 Eğer şimdiki ara yazılım fonksiyonu istek-yanıt döngüsünü sonlandırmazsa, bir sonraki ara yazılım fonksiyonuna kontrolü vermek için `next` fonksiyounu çağrılmalı. Aksi takdirde, istek havada kalır.
 
 Aşağıdaki şekil bir ara yazılım fonksiyon çağrısının öğelerini gösterir:
 
 <table id="mw-fig">
-<tr><td id="mw-fig-imgcell">
+<tbody><tr><td id="mw-fig-imgcell">
 <img src="/images/express-mw.png" id="mw-fig-img" />
 </td>
 <td class="mw-fig-callouts">
-<div class="callout" id="callout1">Ara yazılım fonsiyonunu uyglandığı HTTP metodu.</div>
+<div class="callout" id="callout1">Ara yazılım fonsiyonunu uyglandığı HTTP metodu.</div></tbody>
 
 <div class="callout" id="callout2">Ara yazılım fonksiyonunun uygulandığı yol (rota).</div>
 
@@ -47,7 +47,8 @@ Express 5 ile başlayarak, Promise döndüren ara yazılım fonksiyonları redde
 
 <h2>Örnek</h2>
 
-Aşağıdaki basit bir "Merhaba Dünya" Ekspres uygulaması örneği. Bu yazının kalanında uygulamaya üç ara yazılım fonksiyonu tanımlanıp eklenecektir: basit bir log mesajı yazdıran `myLogger`, HTTP isteğinin zaman damgasını (timestamp) gösteren `requestTime`, ve gelen çerezleri doğrulayan `validateCookies`.
+Aşağıdaki basit bir "Merhaba Dünya" Ekspres uygulaması örneği.
+Bu yazının kalanında uygulamaya üç ara yazılım fonksiyonu tanımlanıp eklenecektir: basit bir log mesajı yazdıran `myLogger`, HTTP isteğinin zaman damgasını (timestamp) gösteren `requestTime`, ve gelen çerezleri doğrulayan `validateCookies`.
 
 ```js
 const express = require('express')
@@ -60,7 +61,7 @@ app.get('/', (req, res) => {
 app.listen(3000)
 ```
 
-<h3>myLogger ara yazlım fonksiyonu</h3>
+<h3>Middleware function myLogger</h3>
 İşte "myLogger" adında basit bir ara yazılım fonksiyonu. Uygulamaya gelen bir istek bu fonksiyondan geçtiğinde sadece "LOGGED" yazdırır. Bu ara yazılım fonksiyonu, `myLogger` adında bir değişkene atanmıştır.
 
 ```js
@@ -71,7 +72,9 @@ const myLogger = function (req, res, next) {
 ```
 
 <div class="doc-box doc-notice" markdown="1">
-Yukarıdaki örnekte `next()` çağrısına dikkat edin. Bu fonksiyonu çağırmak, uygulamadaki bir sonraki ara yazılım fonksiyonunu çağırır. `next()` fonskiyonu Express API veya Node.js'in bir parçası değil, ara yazılım fonksiyonuna geçilen üçüncü argümandır. `next()` fonksiyonu herhangi bir şekilde adlandırılabilir, ancak orta anlayışa göre her zaman "next" olarak adlandırıldı. Karışıklıktan kaçınmak için her zaman bu şekilde kullanın.
+Yukarıdaki örnekte `next()` çağrısına dikkat edin. Bu fonksiyonu çağırmak, uygulamadaki bir sonraki ara yazılım fonksiyonunu çağırır.
+`next()` fonskiyonu Express API veya Node.js'in bir parçası değil, ara yazılım fonksiyonuna geçilen üçüncü argümandır. `next()` fonksiyonu herhangi bir şekilde adlandırılabilir, ancak orta anlayışa göre her zaman "next" olarak adlandırıldı.
+Karışıklıktan kaçınmak için her zaman bu şekilde kullanın.
 </div>
 
 Ara yazılım fonksiyonunu yüklemek için, ara yazılım fonksiyonunu belirterek `app.use()` metodunu çağırın.
@@ -188,7 +191,7 @@ app.listen(3000)
 
 Express ara yazılımı ile ilgili daha fazla bilgi için, bakınız: [Express ara yazılımı kullanmak](/{{ page.lang }}/guide/using-middleware.html).
 
-<h2>Yapılandırılabilir ara yazılım</h2>
+<h2>Configurable middleware</h2>
 
 Ara yazılımınızın yapılandırılabilir olmasını istiyorsanız, seçenekler objesi veya diğer parametreleri kabul eden ve girdi parametrelerine göre ara yazılım implementasyonunu döndüren bir fonksiyon dışarıya aktarın.
 
@@ -203,7 +206,7 @@ module.exports = function (options) {
 }
 ```
 
-Bu ara yazılım şimdi aşağıdaki gibi kullanılabilir.
+The middleware can now be used as shown below.
 
 ```js
 const mw = require('./my-middleware.js')
