@@ -1,45 +1,69 @@
 ---
 layout: page
 title: Express asosiy marshrutizatsiya
+description: Learn the fundamentals of routing in Express.js applications, including how to define routes, handle HTTP methods, and create route handlers for your web server.
 menu: starter
 lang: uz
-description: Learn the fundamentals of routing in Express.js applications, including
-  how to define routes, handle HTTP methods, and create route handlers for your web
-  server.
+redirect_from: /starter/basic-routing.html
 ---
 
 # Asosiy marshrutizatsiya
-Ushbu material Expressda asosiy marshrutizatsiyalar bilan ishlash haqidadir. Marshrutizatsiya dasturda HTTP so'rovlarga (GET, POST va b.sh) murojat qilinganda, ma'lum bir manzilga(endpoint) qanday javob berishini aniqlaydi.
+
+_Routing_ refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).
 
 Har bir marshrut(route) bir yoki ko'plar qayta ishlovchi funksiyalarga ega.
 
 Marshrutni aniqlash quyidagi ko'rinishga ega `app.METHOD(PATH, HANDLER)`, bu yerda `app` `express`ning ekzamplyari, `METHOD` esa [HTTP request method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol), `PATH` esa saytdagi manzili va `HANDLER` esa marshrut chaqirilganda bajariladinga funksiya.
-<div class="doc-box doc-notice" markdown="1">
-Ushbu qo'llanmani foydalanishdan oldin `express` obyektidan ekzamplyar olib, uni `app` deb atang va serverni ishga tushuring.  Agar siz bu bilan tanish bo'lmasangiz, unda [Hello world misol](/starter/hello-world.html) qo'llanmanisini o'qib chiqing.
-</div>
+
+```js
+app.METHOD(PATH, HANDLER)
+```
 
 Quyidagi kodlar marshrutizatsiyaga bir necha misollar keltirilgan.
 
+- `app` is an instance of `express`.
+- `METHOD` is an [HTTP request method](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods), in lowercase.
+- `PATH` is a path on the server.
+- `HANDLER` is the function executed when the route is matched.
+
+<div class="doc-box doc-notice" markdown="1">
+This tutorial assumes that an instance of `express` named `app` is created and the server is running. If you are not familiar with creating an app and starting it, see the [Hello world example](/{{ page.lang }}/starter/hello-world.html).
+</div>
+
+The following examples illustrate defining simple routes.
+
+Respond with `Hello World!` on the homepage:
+
 ```js
-// Bosh sahifada "Hello World!" javobini qaytaradi.
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+```
 
-// Bosh sahifada POST so'rovni qabul qilish.
+Respond to POST request on the root route (`/`), the application's home page:
+
+```js
 app.post('/', (req, res) => {
   res.send('Got a POST request')
 })
+```
 
-// /user manzilida PUT so'rovni qabul qilish.
+Respond to a PUT request to the `/user` route:
+
+```js
 app.put('/user', (req, res) => {
   res.send('Got a PUT request at /user')
 })
+```
 
-// /user mazilida DELETE so'rovni qabul qilish.
+Respond to a DELETE request to the `/user` route:
+
+```js
 app.delete('/user', (req, res) => {
   res.send('Got a DELETE request at /user')
 })
 ```
 
-Marshrutizatsiya haqida to'liq ma'lumot olish uchun, ma'lumotnoma orqali [Marshrutizatsiya](/{{page.lang}}/guide/routing.html) bo'limini o'qib chiqing.
+For more details about routing, see the [routing guide](/{{ page.lang }}/guide/routing.html).
+
+### [Previous: Express application generator ](/{{ page.lang }}/starter/generator.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: Serving static files in Express ](/{{ page.lang }}/starter/static-files.html)
