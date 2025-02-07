@@ -1,11 +1,10 @@
 ---
 layout: page
 title: Üretim (Production) ortamında Express kullanarak en iyi performans pratikleri
+description: Discover performance and reliability best practices for Express apps in production, covering code optimizations and environment setups for optimal performance.
 menu: advanced
 lang: tr
 redirect_from: /advanced/best-practice-performance.html
-description: Discover performance and reliability best practices for Express apps
-  in production, covering code optimizations and environment setups for optimal performance.
 ---
 
 # Üretim ortamı en iyi pratikleri: performans ve güvenilirlik
@@ -16,28 +15,27 @@ Bu makalede üretim ortamına dağıtılımış Express uygulamaları için en i
 
 Bu konu açıkça her iki geleneksel geliştirme ve operasyonları da kapsayarak "devops" dünyasına girer. Buna göre, buradaki bilgiler iki kısma ayrılmıştır:
 
-* Kodunuzda yapılacak şeyler (geliştirme kısmı):
-  * [gzip sıkıştırma kullan](#use-gzip-compression)
-  * [Senkron fonksiyonlar kullan](#dont-use-synchronous-functions)
-  * [Loglamayı doğru yap](#do-logging-correctly)
-  * [İstisnaları düzgün işle](#handle-exceptions-properly)
-
-* Ortamınızda / kurulumunuzda yapılacak şeyler (operasyon kısmı):
-  * [NODE_ENV değerini "production" olarak ayarla](#set-node_env-to-production)
-  * [Uygulamanızın otomatik olarak yeniden başlatıldığından emin ol](#ensure-your-app-automatically-restarts)
-  * [Uygulamanızı bir kümede (cluster) koş](#run-your-app-in-a-cluster)
-  * [İstek sonuçlarını önbelleğe al (cache)](#cache-request-results)
-  * [Bir yük dengeleyicisi (load balancer) kullan](#use-a-load-balancer)
-  * [Bir ters proxy kullan (reverse proxy)](#use-a-reverse-proxy)
+- Kodunuzda yapılacak şeyler (geliştirme kısmı):
+  - [gzip sıkıştırma kullan](#use-gzip-compression)
+  - [Senkron fonksiyonlar kullan](#dont-use-synchronous-functions)
+  - [Loglamayı doğru yap](#do-logging-correctly)
+  - [İstisnaları düzgün işle](#handle-exceptions-properly)
+- Ortamınızda / kurulumunuzda yapılacak şeyler (operasyon kısmı):
+  - [NODE_ENV değerini "production" olarak ayarla](#set-node_env-to-production)
+  - [Uygulamanızın otomatik olarak yeniden başlatıldığından emin ol](#ensure-your-app-automatically-restarts)
+  - [Uygulamanızı bir kümede (cluster) koş](#run-your-app-in-a-cluster)
+  - [İstek sonuçlarını önbelleğe al (cache)](#cache-request-results)
+  - [Bir yük dengeleyicisi (load balancer) kullan](#use-a-load-balancer)
+  - [Bir ters proxy kullan (reverse proxy)](#use-a-reverse-proxy)
 
 ## Kodunuzda yapılacak şeyler {#in-code}
 
 Uygulamanızın performansını iyileştirmek için yapabileceğiniz bazı şeyler:
 
-* [gzip sıkıştırma kullan](#use-gzip-compression)
-* [Senkron fonksiyonlar kullanma](#dont-use-synchronous-functions)
-* [Loglamayı doğru yap](#do-logging-correctly)
-* [İstisnaları düzgün işle](#handle-exceptions-properly)
+- [gzip sıkıştırma kullan](#use-gzip-compression)
+- [Senkron fonksiyonlar kullanma](#dont-use-synchronous-functions)
+- [Loglamayı doğru yap](#do-logging-correctly)
+- [İstisnaları düzgün işle](#handle-exceptions-properly)
 
 ### gzip sıkıştırma kullan
 
@@ -72,21 +70,21 @@ Hata ayıklama amacıyla loglama yapıyorsanız, o zaman `console.log()` yerine 
 
 Uygulama aktivitesini logluyorsanız (örneğin trafik izleme veya API çağrıları), `console.log()` yerine [Winston](https://www.npmjs.com/package/winston) veya [Bunyan](https://www.npmjs.com/package/bunyan) gibi bir loglama kütüphanesi kullanın. Bu iki kütüphanenin detaylı bir karşılaştırması için, StrongLoop blog yazısına bakınız [Winston ve Bunyan Node.js Loglama Karşılaştırması](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
 
-### İstisnaları düzgün işle
+### Handle exceptions properly
 
 Node uygulamaları yakalanmamış istisnalar ile karşılaştıklarında patlarlar. İstisnaları işlememe ve gerekli aksiyonları almama Express uygulamanızın patlamasına ve çevrimdışına çıkmasına neden olur. Aşağıdaki [Uygulamanızın otomatik olarak yeniden başlatıldığından emin olma](#ensure-your-app-automatically-restarts) tavsiyesine uyarsanız, o zaman uygulamanız bir çökmeden tekrar ayağa kalkabilir. Neyse ki Express uygulamalarının tipik olarak kısa bir başlama süresi var. Yine de patlamalardan kaçınmak gerekir ve bunu yapmak için de istisnaları uygun bir şekilde işlemeniz gerek.
 
 Tüm istisnaları işlediğinizden emin olmak için, aşağıdaki teknikleri kullanın:
 
-* [try-catch](#use-try-catch)
-* [promises](#use-promises)
+- [try-catch](#use-try-catch)
+- [promises](#use-promises)
 
 Bu konulara girmeden önce Node/Express istisna işleme ile ilgili temel bir anlayışa sahip olmanız lazım: hata-öncellikli geri çağırmaları kullanmak ve hataları ara yazılımda yaymak. Node, asenkron fonksiyonlardan hataları dönmek için "hata-öncellikli geri çağırma" anlayışını kullanır, bu fonksiyonlarda birinci parametre hata objesi ve ondan sonraki parametreleri ise sonuç verileri takip eder. Hata olmadığını belirtmek için ilk parametreye null geçin. İstisnaları anlamlı bir şekilde işlemek için bu geri çağırma fonksiyonlarının hata-öncellikli geri çağırma anlayışını takip etmesi gerek. Ve Express'te ara yazılım zincirinde hataları yaymak için en iyi yöntem `next()` fonksiyonunu kullanmaktır.
 
-Hata işleme temelleri hakkında daha fazla bilgi için bakınız: 
+Hata işleme temelleri hakkında daha fazla bilgi için bakınız:
 
-* [Node.js'te Hata İşleme](https://www.tritondatacenter.com/node-js/production/design/errors)
-* [Güçlü Node Uygulamaları Yazmak: Hata İşleme](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop blogu)
+- [Node.js'te Hata İşleme](https://www.tritondatacenter.com/node-js/production/design/errors)
+- [Güçlü Node Uygulamaları Yazmak: Hata İşleme](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop blogu)
 
 #### Ne yapmamalı
 
@@ -102,7 +100,8 @@ Try-catch senkron kodda oluşan istisnaları yakalamak için kullanabileceğiniz
 
 [Tanımsız değişkenlerde referans hataları](http://www.jshint.com/docs/options/#undef) gibi kapalı (implicit) istisnaları bulmak için [JSHint](http://jshint.com/) veya [JSLint](http://www.jslint.com/) gibi araçları kullanabilirsiniz.
 
-Buradaki örnek potansyel bir süreç-patlatıcı istisnayı ele alman try-catch kullanımını gösterir. Bu ara yazılım fonksiyonu JSON objesi olan "params" adında bir sorgu alanı parametresi alıyor.
+Buradaki örnek potansyel bir süreç-patlatıcı istisnayı ele alman try-catch kullanımını gösterir.
+Bu ara yazılım fonksiyonu JSON objesi olan "params" adında bir sorgu alanı parametresi alıyor.
 
 ```js
 app.get('/search', (req, res) => {
@@ -139,7 +138,7 @@ app.use((err, req, res, next) => {
 })
 ```
 
-Şimdi bütün hatalar, asenkron ve senkron olmak üzere, hata işleyici ara yazılıma gider. 
+Şimdi bütün hatalar, asenkron ve senkron olmak üzere, hata işleyici ara yazılıma gider.
 
 Ancak, iki uyarı var:
 
@@ -156,7 +155,8 @@ app.get('/', wrap(async (req, res, next) => {
 }))
 ```
 
-`wrap()` fonksiyonu ret edilen promise'ları yakalayıp birinci argümanı hata olarak `next()` fonkisyonunu çağıran bir sarıcıdır (wrapper). Detaylar için, bakınız [Express'te Promise, Generator ve ES7 ile Asenkron Hata Ele Alma](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/#cleaner-code-with-generators).
+`wrap()` fonksiyonu ret edilen promise'ları yakalayıp birinci argümanı hata olarak `next()` fonkisyonunu çağıran bir sarıcıdır (wrapper).
+Detaylar için, bakınız [Express'te Promise, Generator ve ES7 ile Asenkron Hata Ele Alma](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/#cleaner-code-with-generators).
 
 Promise'lerle hata ele alma ile ilgili daha fazla bilgi için bakınız [Node.js'te Q ile Promis'ler – Geri çağrımalara Bir Alternatif](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/).
 
@@ -164,12 +164,12 @@ Promise'lerle hata ele alma ile ilgili daha fazla bilgi için bakınız [Node.js
 
 Uygulamanızın performansını iyileştirmek için sistem ortamınızda yapabileceğiniz bazı şeyler:
 
-* [NODE_ENV değerini "production" olarak ayarla](#set-node_env-to-production)
-* [Uygulamanızın otomatik olarak yeniden başlatıldığından emin ol](#ensure-your-app-automatically-restarts)
-* [Uygulamanızı bir kümede (cluster) koş](#run-your-app-in-a-cluster)
-* [İstek sonuçlarını önbelleğe al (cache)](#cache-request-results)
-* [Bir yük dengeleyicisi (load balancer) kullan](#use-a-load-balancer)
-* [Bir ters proxy kullan (reverse proxy)](#use-a-reverse-proxy)
+- [NODE_ENV değerini "production" olarak ayarla](#set-node_env-to-production)
+- [Uygulamanızın otomatik olarak yeniden başlatıldığından emin ol](#ensure-your-app-automatically-restarts)
+- [Uygulamanızı bir kümede (cluster) koş](#run-your-app-in-a-cluster)
+- [İstek sonuçlarını önbelleğe al (cache)](#cache-request-results)
+- [Bir yük dengeleyicisi (load balancer) kullan](#use-a-load-balancer)
+- [Bir ters proxy kullan (reverse proxy)](#use-a-reverse-proxy)
 
 ### NODE_ENV değerini "production" olarak ayarla
 
@@ -177,9 +177,9 @@ NODE_ENV ortam değişkeni bir uygulamanın hangi ortamda koştuğunu belirtir (
 
 NODE_ENV "production" olarak ayarlandığında Express:
 
-* Görüntü şablonlarını önbelleğe atar.
-* CSS uzantılarından oluşturulan CSS dosyalarını önbelleğe atar.
-* Daha az ayrıntılı hata mesajları üretir.
+- Görüntü şablonlarını önbelleğe atar.
+- CSS uzantılarından oluşturulan CSS dosyalarını önbelleğe atar.
+- Daha az ayrıntılı hata mesajları üretir.
 
 Yapılan [testler](http://apmblog.dynatrace.com/2015/07/22/the-drastic-effects-of-omitting-node_env-in-your-express-js-applications/) sadece bunu yaparak uygulamanın performansının üç kat arttığını gösteriyor!
 
@@ -209,8 +209,8 @@ Daha fazla bilgi için bakınız [Systemd Ünitelerindeki Ortam Değişkenlerini
 
 Üretim ortamında hiçbir zaman uygulamanızın çevrimdışı kalmasını istemezsiniz. Bu, uygulamanızın veya sunucunun kendisinin patlaması durumunda yeniden başlatıldığından emin olmanız gerektiği anlamına gelir. Bu olaylardan hiçbirinin olmamasını ummanıza rağmen, gerçekçi olarak her iki olasılığı da hesaba katarak:
 
-* Patladığında uygulamayı (ve Node'u) yeniden başlatmak için bir süreç yöneticisi kullanmak.
-* İşletim sisteminiz tarafından sağlanan init system'i kullanarak, işletim sistemi çöktüğünde yeniden başlatmak. Init system'i bir süreç yöneticisi olmadan da kullanabilirsiniz.
+- Patladığında uygulamayı (ve Node'u) yeniden başlatmak için bir süreç yöneticisi kullanmak.
+- İşletim sisteminiz tarafından sağlanan init system'i kullanarak, işletim sistemi çöktüğünde yeniden başlatmak. Init system'i bir süreç yöneticisi olmadan da kullanabilirsiniz.
 
 Node uygulamaları yakalanmayan bir istisna ile karşılaştıklarında patlarlar. En başta yapmanız gereken şey uygulamanızın iyi test edilmiş olmasını ve bütün istisnaları (detaylar için bakınız [istisnaları düzgün bir şekilde ele almak](#handle-exceptions-properly)) ele aldığını sağlamaktır. Ancak yine de tedbir olarak, uygulamanız patlarsa ve patladığında, yeniden başlatılacağını sağlayan bir mekanizmayı yapmak.
 
@@ -220,28 +220,28 @@ Geliştirme ortamında, uygulamanızı basitçe komut satırından `node server.
 
 Uygulamanızın patladığında tekrar başlatılmasına ek olarak, bir süreç yöneticisi aşağıdakileri yapabilmenizi sağlar:
 
-* Çalışma zamanı performansı ve kaynak tüketimi hakkında içgörüler elde edebilme.
-* Performansı iyileştirmek için ayarları dinamik olarak değiştirme.
-* Cluster kontrolü (StrongLoop PM ve pm2).
+- Çalışma zamanı performansı ve kaynak tüketimi hakkında içgörüler elde edebilme.
+- Performansı iyileştirmek için ayarları dinamik olarak değiştirme.
+- Cluster kontrolü (StrongLoop PM ve pm2).
 
 Node için en popüler süreç yöneticileri aşağıdakilerdir:
 
-* [StrongLoop Süreç Yöneticisi](http://strong-pm.io/)
-* [PM2](https://github.com/Unitech/pm2)
-* [Forever](https://www.npmjs.com/package/forever)
+- [StrongLoop Süreç Yöneticisi](http://strong-pm.io/)
+- [PM2](https://github.com/Unitech/pm2)
+- [Forever](https://www.npmjs.com/package/forever)
 
-Bu üç süreç yöneticisinin özellik bazında bir karşılaştırması için bakınız [http://strong-pm.io/compare/](http://strong-pm.io/compare/). 
+Bu üç süreç yöneticisinin özellik bazında bir karşılaştırması için bakınız [http://strong-pm.io/compare/](http://strong-pm.io/compare/).
 
 Uygulamanız zaman zaman patlasa bile, bu süreç yöneticilerinden birini kullanmanız uygulamanızı ayakta tutmak için yeterli olacaktır.
 
 Ancak, StrongLoop süreç yöneticisi özellikle üretim dağıtımını hedefleyen birçok özelliğe sahiptir. Bunları ve ilgili StrongLoop araçlarını aşağıdakileri yapmak için kullanabilirsiniz:
 
-* Uygulamanızı lokal olarak derleyip paketlemek, ve daha sonra güvenli bir şekilde üretim sisteminize dağıtmak.
-* Herhangi bir nedenden dolayı uygulamanız patladığında otomatik olarak yeniden başlatmak.
-* Kümelerinizi (cluster) uzaktan yönetmek.
-* Performansı iyileştirmek ve bellek sızıntılarını teşhis etmek için CPU profillerini ve heap anlık görüntülerini görüntülemek.
-* Uygulamanız için performans ölçülerini görüntülemek.
-* Nginx yük dengeleyici için entegre kontrol ile birden çok ana bilgisayara kolayca ölçeklendirmek.
+- Uygulamanızı lokal olarak derleyip paketlemek, ve daha sonra güvenli bir şekilde üretim sisteminize dağıtmak.
+- Herhangi bir nedenden dolayı uygulamanız patladığında otomatik olarak yeniden başlatmak.
+- Kümelerinizi (cluster) uzaktan yönetmek.
+- Performansı iyileştirmek ve bellek sızıntılarını teşhis etmek için CPU profillerini ve heap anlık görüntülerini görüntülemek.
+- Uygulamanız için performans ölçülerini görüntülemek.
+- Nginx yük dengeleyici için entegre kontrol ile birden çok ana bilgisayara kolayca ölçeklendirmek.
 
 Aşağıda anlatıldığı gibi, init systeminizi kullanarak StronLoop süreç yöneticisini işletim sistemi servisi olarak yüklediğinizde, sistem tekrar başlatıldığında bu da tekrar başlatılacaktır. Dolayısıyla, uygulamanızın süreçlerini ve kümelerini sonsuza dek beraber ayakta tutacaktır.
 
@@ -251,8 +251,8 @@ Güvenilirliğin bir sonraki katmanı, sunucu yeniden başladığında uygulaman
 
 Express uygulamanızda init system'i kullanmanın iki yolu var:
 
-* Uygulamanızı bir süreç yöneticisinde koşun, ve süreç yöneticisini bir servis olarak init system'le yükleyin. Süreç yöneticisi, uygulamanız patladığında yeniden başlatacaktır, ve işletim sistemi de yeniden başlatıldığında, init system süreç yöneticisini başlatacaktır. Tavsiye edilen yaklaşım budur.
-* Uygulamanızı (ve Node'u) direkt olarak init system ile koşun. Bu biraz daha basittir, ama süreç yöneticisini kullanmanın verdiği ek avantajları elde etmiyorsunuz.
+- Uygulamanızı bir süreç yöneticisinde koşun, ve süreç yöneticisini bir servis olarak init system'le yükleyin. Süreç yöneticisi, uygulamanız patladığında yeniden başlatacaktır, ve işletim sistemi de yeniden başlatıldığında, init system süreç yöneticisini başlatacaktır. Tavsiye edilen yaklaşım budur.
+- Uygulamanızı (ve Node'u) direkt olarak init system ile koşun. Bu biraz daha basittir, ama süreç yöneticisini kullanmanın verdiği ek avantajları elde etmiyorsunuz.
 
 ##### Systemd
 
@@ -289,6 +289,7 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 ```
+
 Systemd ile ilgili daha fazla bilgi için bakınız [systemd referansı (kılavuz)](http://www.freedesktop.org/software/systemd/man/systemd.unit.html).
 
 ##### systemd servisi olarak StrongLoop PM (süreç yöneticisi)
@@ -347,15 +348,15 @@ respawn
 respawn limit 10 10
 ```
 
-NOT: Bu kod Ubuntu 12.04-14.10'da desteklenen Upstart 1.4 ve üstüne ihtiyaç duyar.
+{% include admonitions/note.html content="This script requires Upstart 1.4 or newer, supported on Ubuntu 12.04-14.10." %}
 
 Job, sistem başladığında koşması için yapılandırıldığından uygulamanız da işletim sistemiyle beraber başlayacak, ve sistem çöktüğünde veya uygulama patladığında otomatik olarak yeniden başlatılacaktır.
 
 Uygulamanın otomatik olarak yeniden başlatılmasının yanından, Upstart aşağıdaki komutları da kullanmanızı sağlar:
 
-* `start myapp` – Uygulamayı başlat
-* `restart myapp` – Uygulamayı yeniden başlat
-* `stop myapp` – Uygulamayı durdur
+- `start myapp` – Uygulamayı başlat
+- `restart myapp` – Uygulamayı yeniden başlat
+- `stop myapp` – Uygulamayı durdur
 
 Upstart ile ilgili daha fazla bilgi için bakınız [Upstart Giriş, Kılavuz and En İyi Pratikler](http://upstart.ubuntu.com/cookbook).
 
@@ -375,7 +376,7 @@ Daha sonra servisi koşmak için:
 $ sudo /sbin/initctl start strong-pm
 ```
 
-NOT: Upstart 1.4'ü desteklemeyen sistemlerde bu komutlar biraz farklıdır. Daha fazla bilgi için bakınız [Production hostu kurmak (StrongLoop dökümantasyonu)](https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-RHELLinux5and6,Ubuntu10.04-.10,11.04-.10).
+NOT: Upstart 1.4'ü desteklemeyen sistemlerde bu komutlar biraz farklıdır. Daha fazla bilgi için bakınız [Production hostu kurmak (StrongLoop dökümantasyonu)](https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-RHELLinux5and6,Ubuntu10.04-.10,11.04-.10). %}
 
 ### Uygulamanızı bir kümede (cluster) koş
 
@@ -407,7 +408,7 @@ StrongLoop ile kümeleme hakkında daha fazla bilgi için, StrongLoop dökümant
 
 #### PM2 kullan
 
-Uygulamanızı PM2 ile dağıtırsanız, uygulamanızın kodunu _değiştirmeden_ kümelemenin avantajından yararlanabilirsiniz. İlk önce [uygulamanızın durumsuz (stateless)](http://pm2.keymetrics.io/docs/usage/specifics/#stateless-apps) olmasını sağlamalısınız, yani süreçte herhangi bir lokal veri saklanmamalıdır (oturum, websocket vb. bağlantılar).
+Uygulamanızı PM2 ile dağıtırsanız, uygulamanızın kodunu _değiştirmeden_ kümelemenin avantajından yararlanabilirsiniz.  İlk önce [uygulamanızın durumsuz (stateless)](http://pm2.keymetrics.io/docs/usage/specifics/#stateless-apps) olmasını sağlamalısınız, yani süreçte herhangi bir lokal veri saklanmamalıdır (oturum, websocket vb. bağlantılar).
 
 PM2 ile bir uygulama koşulduğunda, seçtiğiniz örnek sayısıyla beraber bir kümede çalıştırmak için **küme modu**nu etkinleştirebilirsiniz, makinedeki mevcut CPU sayısıyla eşleştirilmesi gibi. Uygulamayı durdurmadan `pm2` komut satırı aracını kullanarak kümedeki süreç sayısını elle değiştirebilirsiniz.
 
@@ -452,5 +453,3 @@ Yük dengeleyici kullanırken, belirli bir oturum kimliğiyle ilişkili istekler
 Bir ters proxy, bir web uygulamasının önünde oturur ve istekleri uygulamaya yeniden yönlendirmenin yanı sıra istekler üzerinde destekleyici işlemler gerçekleştirir. Diğer şeylerin yanı sıra hata sayfalarını, sıkıştırmayı, önbelleğe almayı, dosyaları sunmayı ve yük dengelemeyi de işleyebilir.
 
 Handing over tasks that do not require knowledge of application state to a reverse proxy frees up Express to perform specialized application tasks. For this reason, it is recommended to run Express behind a reverse proxy like [Nginx](https://www.nginx.com/) or [HAProxy](http://www.haproxy.org/) in production.
-
-Uygulama durumu (state) bilgisi gerektirmeyen görevleri bir ters proxy'ye devretmek, özel uygulama görevlerini gerçekleştirmek için Express'i serbest bırakır. Bu nedenle, üretim ortamında Express'i [Nginx](https://www.nginx.com/) veya [HAProxy](http://www.haproxy.org/) gibi bir ters proxy'nin arkasında koşmak tavsiye edilir.
