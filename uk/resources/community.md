@@ -1,17 +1,20 @@
 ---
 layout: page
 title: Спільнота Express
+description: Долучайтеся до спільноти Express.js, ознайомтеся з діяльністю технічного комітету, знаходьте корисні ресурси, досліджуйте створені спільнотою модулі та приєднуйтеся до обговорень.
 menu: resources
 lang: uk
-description: Долучайтеся до спільноти Express.js, ознайомтеся з діяльністю технічного комітету, знаходьте корисні ресурси, досліджуйте створені спільнотою модулі та приєднуйтеся до обговорень.
+redirect_from: /resources/community.html
 ---
 
 # Спільнота
 
 ## Технічний комітет
 
-Технічний комітет Express зустрічається онлайн раз на два тижні (за потреби) для обговорення розробки та підтримки Express, а також інших питань, пов'язаних із проєктом. Зазвичай, кожна зустріч оголошується в
-[expressjs/discussions](https://github.com/expressjs/discussions/issues) з посиланням для приєднання або перегляду зустрічі, яка відкрита для всіх охочих.
+The Express technical committee meets online every two weeks (as needed) to discuss development and maintenance of Express,
+and other issues relevant to the Express project. Each meeting is typically announced in an
+[expressjs/discussions issue](https://github.com/expressjs/discussions/issues) with a link to join or view the meeting, which is
+open to all observers.
 
 Зустрічі записуються; переглянути список записів можна на [YouTube-каналі Express.js](https://www.youtube.com/channel/UCYjxjAeH6TRik9Iwy5nXw7g).
 
@@ -59,16 +62,16 @@ description: Долучайтеся до спільноти Express.js, озна
 
 Розділ [GitHub-обговорень](https://github.com/expressjs/discussions) — це чудове місце для участі в розмовах про розробку та підтримку Express, обміну ідеями та обговоренням тем, пов'язаних з його використанням.
 
-
 # Бренд Express.js
 
 ## Логотип Express.js
 
-Express — це проєкт OpenJS Foundation. Будь-ласка, ознайомтеся з [політикою використання торгової марки](https://trademark-policy.openjsf.org/) для отримання інформації про дозволене використання логотипів та знаків Express.js.
+Express is a project of the OpenJS Foundation. Please review the [trademark policy](https://trademark-policy.openjsf.org/) for information about permissible use of Express.js logos and marks.
 
 <div class="logo-table">
     <div>
         <h3>Логотип</h3>
+        
         <a href="/images/brand/logotype-light.svg" class="hidden-dark">
             <img src="/images/brand/logotype-light.svg" width="250" height="56"/>
         </a>
@@ -78,6 +81,7 @@ Express — це проєкт OpenJS Foundation. Будь-ласка, ознай
     </div>
     <div>
         <h3>Логомарка</h3>
+        
         <a href="/images/brand/logo-light.svg" class="hidden-dark">
             <img src="/images/brand/logo-light.svg" width="96.5" height="56"/>
         </a>
