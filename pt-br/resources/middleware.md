@@ -1,76 +1,58 @@
 ---
-layout: page
+layout: middleware
 title: Middleware do Express
+description: Explore a list of Express.js middleware modules maintained by the Express team and the community, including built-in middleware and popular third-party modules.
 menu: resources
 lang: pt-br
-description: Explore a list of Express.js middleware modules maintained by the Express
-  team and the community, including built-in middleware and popular third-party modules.
+redirect_from: /resources/middleware.html
+module: mw-home
 ---
 
-# Middleware de Terceiros
+## Express middleware
 
 Aqui estão alguns módulos middleware do Express:
 
+| Middleware module                                                                                                                                    | Description                                                                                                                                                                       | Replaces built-in function (Express 3)                                                               |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| [body-parser](https://github.com/expressjs/body-parser): anteriormente `express.bodyParser`, `json`, e `urlencoded`. | Parse HTTP request body. [raw-body](https://github.com/stream-utils/raw-body)                                                                                     | [body](https://github.com/raynos/body)                                                                                  |
+| [compression](/resources/middleware/compression.html)                                                                                                | Compress HTTP responses.                                                                                                                                          | [compression](https://github.com/expressjs/compression): anteriormente `express.compress`               |
+| [connect-rid](/resources/middleware/connect-rid.html)                                                                                                | Generate unique request ID.                                                                                                                                       | NA                                                                                                                      |
+| [cookie-parser](https://github.com/expressjs/cookie-parser): anteriormente `express.cookieParser`                                    | Parse cookie header and populate `req.cookies`. See also [cookies](https://github.com/jed/cookies) and [keygrip](https://github.com/jed/keygrip). | express.cookieParser                                                                                    |
+| [cookies](https://github.com/jed/cookies) e [keygrip](https://github.com/jed/keygrip)                                                                | Establish cookie-based sessions.                                                                                                                                  | [cookie-session](https://github.com/expressjs/cookie-session): anteriormente `express.cookieSession`    |
+| [cors](/resources/middleware/cors.html)                                                                                                              | Enable cross-origin resource sharing (CORS) with various options.                                                                              | NA                                                                                                                      |
+| [errorhandler](/resources/middleware/errorhandler.html)                                                                                              | Development error-handling/debugging.                                                                                                                             | Middleware de Terceiros                                                                                                 |
+| [method-override](/resources/middleware/method-override.html)                                                                                        | Override HTTP methods using header.                                                                                                                               | [method-override](https://github.com/expressjs/method-override): anteriormente `express.methodOverride` |
+| [morgan](/resources/middleware/morgan.html)                                                                                                          | HTTP request logger.                                                                                                                                              | [morgan](https://github.com/expressjs/morgan):  anteriormente `logger`                                  |
+| [multer](https://github.com/expressjs/multer)                                                                                                        | Handle multi-part form data.                                                                                                                                      | express.multipart                                                                                       |
+| [connect-timeout](https://github.com/expressjs/timeout): anteriormente `express.timeout`                                             | Record HTTP response time.                                                                                                                                        | [response-time](https://github.com/expressjs/response-time): anteriormente `express.responseTime`       |
+| [serve-favicon](https://github.com/expressjs/serve-favicon): anteriormente `express.favicon`                                         | Serve a favicon.                                                                                                                                                  | express.query                                                                                           |
+| [serve-index](/resources/middleware/serve-index.html)                                                                                                | Serve directory listing for a given path.                                                                                                                         | page                                                                                                                    |
+| [serve-static](/resources/middleware/serve-static.html)                                                                                              | Serve static files.                                                                                                                                               | express.staticCache                                                                                     |
+| [session](/resources/middleware/session.html)                                                                                                        | Establish server-based sessions (development only).                                                                                            | [express-session](https://github.com/expressjs/session): anteriormente `express.session`                |
+| [timeout](/resources/middleware/timeout.html)                                                                                                        | Set a timeout period for HTTP request processing.                                                                                                                 | express.limit                                                                                           |
+| [vhost](https://github.com/expressjs/vhost): anteriormente `express.vhost`                                                           | Create virtual domains.                                                                                                                                           | [serve-index](https://github.com/expressjs/serve-index): anteriormente `express.directory`              |
 
-  - [body-parser](https://github.com/expressjs/body-parser): anteriormente `express.bodyParser`, `json`, e `urlencoded`.
-  Consulte também:
-    - [body](https://github.com/raynos/body)
-    - [co-body](https://github.com/visionmedia/co-body)
-    - [raw-body](https://github.com/stream-utils/raw-body)
-  - [compression](https://github.com/expressjs/compression): anteriormente `express.compress`
-  - [connect-image-optimus](https://github.com/msemenistyi/connect-image-optimus): Módulos de middleware do Connect/Express para entrega otimizada de imagens. Alterna imagens para `.webp` ou `.jxr`, se possível.
-  - [connect-timeout](https://github.com/expressjs/timeout): anteriormente `express.timeout`
-  - [cookie-parser](https://github.com/expressjs/cookie-parser): anteriormente `express.cookieParser`
-  - [cookie-session](https://github.com/expressjs/cookie-session): anteriormente `express.cookieSession`
-  - [errorhandler](https://github.com/expressjs/errorhandler): anteriormente `express.errorHandler`
-  - [express-debug](https://github.com/devoidfury/express-debug): ferramenta não obstrutiva de desenvolvimento que inclui uma guia com informações sobre variáveis de modelo (locais), sessão corrente, dados de solicitação úteis e mais para o seu aplicativo.
-  - [express-partial-response](https://github.com/nemtsov/express-partial-response): módulo de middleware do Express para filtrar partes das respostas JSON baseado nos `fields` da sequência de consultas; usando a Resposta parcial da API do Google.
+## Para obter mais módulos middleware, consulte:
 
-  - [express-session](https://github.com/expressjs/session): anteriormente `express.session`
-  - [express-simple-cdn](https://github.com/jamiesteven/express-simple-cdn): Módulo middleware do Express para usar um CDN para ativos estáticos, com suporte a múltiplos hosts (Por exemplo: cdn1.host.com, cdn2.host.com).
-  - [express-slash](https://github.com/ericf/express-slash): Módulo middleware do Express para pessoas rigorosas quanto ao uso de barras no fim.
+These are some additional popular middleware modules.
 
-  - [express-stormpath](https://github.com/stormpath/stormpath-express): Módulo middleware do Express para armazenamento de usuário, autenticação, autorização,SSO e segurança de dados.
+{% include community-caveat.html %}
 
-  - [express-uncapitalize](https://github.com/jamiesteven/express-uncapitalize): módulo middleware para redirecionamento de solicitações HTTP contendo letras maiúsculas para a forma canônica minúscula.
+| Middleware&nbsp;module                                                                                           | Description                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [cls-rtracer](https://github.com/puzpuzpuz/cls-rtracer)                                                                              | Middleware for CLS-based request id generation. An out-of-the-box solution for adding request ids into your logs.                                                                                                                                                                                                           |
+| [connect-image-optimus](https://github.com/msemenistyi/connect-image-optimus)                                                        | [connect-image-optimus](https://github.com/msemenistyi/connect-image-optimus): Módulos de middleware do Connect/Express para entrega otimizada de imagens. Alterna imagens para `.webp` ou `.jxr`, se possível.                                                                                             |
+| [errorhandler](https://github.com/expressjs/errorhandler): anteriormente `express.errorHandler`                      | An error handler for JSON APIs (fork of `api-error-handler`.)                                                                                                                                                                                                                                                            |
+| [express-debug](https://github.com/devoidfury/express-debug)                                                                         | Development tool that adds information about template variables (locals), current session, and so on.                                                                                                                                                                                                                    |
+| [express-partial-response](https://github.com/nemtsov/express-partial-response)                                                      | [express-partial-response](https://github.com/nemtsov/express-partial-response): módulo de middleware do Express para filtrar partes das respostas JSON baseado nos `fields` da sequência de consultas; usando a Resposta parcial da API do Google.                                                                         |
+| [express-simple-cdn](https://github.com/jamiesteven/express-simple-cdn)                                                              | [express-simple-cdn](https://github.com/jamiesteven/express-simple-cdn): Módulo middleware do Express para usar um CDN para ativos estáticos, com suporte a múltiplos hosts (Por exemplo: cdn1.host.com, cdn2.host.com). |
+| [expressjs](https://github.com/expressjs)                                                                                            | Handles routes with and without trailing slashes.                                                                                                                                                                                                                                                                                           |
+| [express-uncapitalize](https://github.com/jamiesteven/express-uncapitalize)                                                          | [express-uncapitalize](https://github.com/jamiesteven/express-uncapitalize): módulo middleware para redirecionamento de solicitações HTTP contendo letras maiúsculas para a forma canônica minúscula.                                                                                                                       |
+| [st](https://github.com/isaacs/st)                                                                                                   | [helmet](https://github.com/helmetjs/helmet): módulo para ajudar a proteger seus aplicativos configurando vários cabeçalhos HTTP.                                                                                                                                                                                           |
+| [join-io](https://github.com/coderaiser/join-io)                                                                                     | [join-io](https://github.com/coderaiser/join-io "join-io"): módulo para junção de arquivos em tempo de execução para reduzir a contagem de solicitações.                                                                                                                                                                    |
+| [passport](https://github.com/jaredhanson/passport): módulo middleware do Express para autenticação. | Authentication using "strategies" such as OAuth, OpenID and many others.  See [http://passportjs.org/](http://passportjs.org/) for more information.                                                                                                                                        |
+| [connect-static](https://github.com/andrewrk/connect-static)                                                                         | [static-expiry](https://github.com/paulwalker/connect-static-expiry): URLs identificadas ou Armazenamento em cache de Cabeçalhos para ativos estáticos incluindo suporte para um ou mais domínios externos.                                                                                                                 |
+| [view-helpers](https://github.com/madhums/node-view-helpers)                                                                         | Common helper methods for views.                                                                                                                                                                                                                                                                                                            |
+| [sriracha-admin](https://github.com/hdngr/siracha)                                                                                   | [sriracha-admin](https://github.com/hdngr/siracha): módulo middleware do Express que gera dinamicamente um site de administração para o Mongoose.                                                                                                                                                                           |
 
-  - [helmet](https://github.com/helmetjs/helmet): módulo para ajudar a proteger seus aplicativos configurando vários cabeçalhos HTTP.
-  - [join-io](https://github.com/coderaiser/join-io "join-io"): módulo para junção de arquivos em tempo de execução para reduzir a contagem de solicitações.
-  - [method-override](https://github.com/expressjs/method-override): anteriormente `express.methodOverride`
-  - [morgan](https://github.com/expressjs/morgan):  anteriormente `logger`
-  - [passport](https://github.com/jaredhanson/passport): módulo middleware do Express para autenticação.
-  - [response-time](https://github.com/expressjs/response-time): anteriormente `express.responseTime`
-  - [serve-favicon](https://github.com/expressjs/serve-favicon): anteriormente `express.favicon`
-  - [serve-index](https://github.com/expressjs/serve-index): anteriormente `express.directory`
-  - [serve-static](https://github.com/expressjs/serve-static): módulo para entregar conteúdo estático.
-  - [static-expiry](https://github.com/paulwalker/connect-static-expiry): URLs identificadas ou Armazenamento em cache de Cabeçalhos para ativos estáticos incluindo suporte para um ou mais domínios externos.
-
-  - [vhost](https://github.com/expressjs/vhost): anteriormente `express.vhost`
-  - [view-helpers](https://github.com/madhums/node-view-helpers): módulo middleware do Express que fornece métodos auxiliares comuns para as visualizações.
-
-  - [sriracha-admin](https://github.com/hdngr/siracha): módulo middleware do Express que gera dinamicamente um site de administração para o Mongoose.
-
-Alguns módulos de middleware anteriormente incluídos com o
-Connect não são mais suportados pelo time Connect/Express. Estes
-módulos foram substituídos por um módulo alternativo, ou devem ser
-substituídos por um módulo melhor. Use uma das alternativas a seguir:
-
-
-  - express.cookieParser
-    - [cookies](https://github.com/jed/cookies) e [keygrip](https://github.com/jed/keygrip)
-  - express.limit
-    - [raw-body](https://github.com/stream-utils/raw-body)
-  - express.multipart
-    - [connect-busboy](https://github.com/mscdex/connect-busboy)
-    - [multer](https://github.com/expressjs/multer)
-    - [connect-multiparty](https://github.com/superjoe30/connect-multiparty)
-  - express.query
-    - [qs](https://github.com/visionmedia/node-querystring)
-  - express.staticCache
-    - [st](https://github.com/isaacs/st)
-    - [connect-static](https://github.com/andrewrk/connect-static)
-
-Para obter mais módulos middleware, consulte:
-
- - [http-framework](https://github.com/Raynos/http-framework/wiki/Modules)
- - [expressjs](https://github.com/expressjs)
+[http-framework](https://github.com/Raynos/http-framework/wiki/Modules)
