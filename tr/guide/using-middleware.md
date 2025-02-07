@@ -1,13 +1,13 @@
 ---
 layout: page
 title: Express ara yazılımı kullanmak
+description: Learn how to use middleware in Express.js applications, including application-level and router-level middleware, error handling, and integrating third-party middleware.
 menu: guide
 lang: tr
-description: Learn how to use middleware in Express.js applications, including application-level
-  and router-level middleware, error handling, and integrating third-party middleware.
+redirect_from: /guide/using-middleware.html
 ---
-<div id="page-doc" markdown="1">
-# Ara yazılım kullanmak
+
+# Using middleware
 
 Express, kendine özgü minimal bir işlevselliği olan bir yönlendirme ve ara yazılım web çatısıdır: Bir Express uygulaması aslında bir dizi ara yazılım fonksiyon çağrısıdır.
 
@@ -15,21 +15,20 @@ _Middleware_ fonksiyonları, uygulamanın istek-yanıt döngüsündeki [istek ob
 
 Ara yazılım fonksiyonları aşağıdaki görevleri yapabilir:
 
-* Herhangi bir kodu koşma
-* İstek ve yanıt objelerine değişiklik yapma
-* İstek-yanıt döngüsünü bitirme
-* Kümedeki bir sonraki ara yazılım fonksiyonunu çağırma
+- Herhangi bir kodu koşma
+- İstek ve yanıt objelerine değişiklik yapma
+- İstek-yanıt döngüsünü bitirme
+- Call the next middleware function in the stack.
 
 Şimdiki ara yazılım fonksiyonu istek-yanıt döngüsünü bitirmezse, bir sonraki ara yazılım fonksiyonuna kontrol vermek için `next()` metodunu çağırmalı. Aksi takdirde istek boşta asılı kalacaktır.
 
 Bir Express uygulaması aşağıdaki ara yazılım türlerini kullanabilir:
 
- - [Uygulama-düzeyi ara yazılım](#middleware.application)
- - [Rota-düzeyi ara yazılım](#middleware.router)
- - [Hata-işleme ara yazılım](#middleware.error-handling)
- - [Gömülü ara yazılım](#middleware.built-in)
- - [Üçüncü-parti ara yazılım](#middleware.third-party)
-
+- [Uygulama-düzeyi ara yazılım](#middleware.application)
+- [Rota-düzeyi ara yazılım](#middleware.router)
+- [Hata-işleme ara yazılım](#middleware.error-handling)
+- [Gömülü ara yazılım](#middleware.built-in)
+- [Üçüncü-parti ara yazılım](#middleware.third-party)
 
 Uygulama-düzeyi ve yönlendirici-düzeyi ara yazılımı bir opsiyonlu hedef yol ile yükleyebilirsiniz.
 Hedef bir yolda, bir ara katman yazılımı alt kümesi oluşturacak bir ara yazılım fonksiyonlar dizisi de yükleyebilirsiniz.
@@ -97,10 +96,11 @@ app.get('/user/:id', (req, res, next) => {
 })
 ```
 
-Geriye kalan ara yazılım fonksiyonlarını yönlendirici ara yazılım kümesinden es geçmek için, `next('route')` metodunu çağırarak bir sonraki rotaya kontrolu verin.
-**NOT**: `next('route')` metodu sadece `app.METHOD()` veya `router.METHOD()` fonksiyonlarını kullanarak yüklenen ara yazılım fonksiyonları için geçerlidir.
+Kümedeki bir sonraki ara yazılım fonksiyonunu çağırma
 
-Bu örnek `/user/:id` yolu için yapılan GET isteklerini işleyen bir ara yazılım alt-kümesini gösterir.
+**NOT**: `next('route')` metodu sadece `app.METHOD()` veya `router.METHOD()` fonksiyonlarını kullanarak yüklenen ara yazılım fonksiyonları için geçerlidir. %}
+
+Bu örnek, `/user/:id` yoluna yapılan GET isteklerini işleyen bir ara yazılım alt-kümesini gösterir.
 
 ```js
 app.get('/user/:id', (req, res, next) => {
@@ -119,13 +119,35 @@ app.get('/user/:id', (req, res, next) => {
 })
 ```
 
-<h2 id='middleware.router'>Yönlendirici-düzeyi ara yazılım</h2>
+Middleware can also be declared in an array for reusability.
+
+Bu örnek `express.static` ara yazılım fonksiyonunu ayrıntılı bir seçenekler objesiyle kullanımını gösterir:
+
+```js
+function logOriginalUrl (req, res, next) {
+  console.log('Request URL:', req.originalUrl)
+  next()
+}
+
+function logMethod (req, res, next) {
+  console.log('Request Type:', req.method)
+  next()
+}
+
+const logStuff = [logOriginalUrl, logMethod]
+app.get('/user/:id', logStuff, (req, res, next) => {
+  res.send('User Info')
+})
+```
+
+<h2 id='middleware.router'>Router-level middleware</h2>
 
 Yönlendirici-düzeyi ara yazılımı, uygulama-düzeyi ara yazılımı ile aynı şekilde çalışır; ama `express.Router()` sınıfının bir örneğine bağlıdır.
 
 ```js
 const router = express.Router()
 ```
+
 `router.use()` ve `router.METHOD()` fonksiyonlarını kullanarak yönlendirici-düzeyi ara yazılımı yükle.
 
 Aşağıdaki örnek kod, yukarıda uygulama-düzeyi ara yazılım için gösterilen ara yazılım sistemini, yönlendirici-düzeyi ara yazılım kullanarak kopyalar:
@@ -172,7 +194,7 @@ app.use('/', router)
 
 Yönlendiricinin kalan ara yazılım fonksiyonlarını geçmek için, yönlendirici örneğinden kontrolü almak için `next('router')` metodunu çağırın.
 
-Bu örnek, `/user/:id` yoluna yapılan GET isteklerini işleyen bir ara yazılım alt-kümesini gösterir.
+Bu örnek `/user/:id` yolu için yapılan GET isteklerini işleyen bir ara yazılım alt-kümesini gösterir.
 
 ```js
 const app = express()
@@ -194,14 +216,13 @@ app.use('/admin', router, (req, res) => {
 })
 ```
 
-<h2 id='middleware.error-handling'>Hata-işleyici ara yazılım</h2>
+<h2 id='middleware.error-handling'>Error-handling middleware</h2>
 
 <div class="doc-box doc-notice" markdown="1">
 Hata-işleyici ara yazılımı her zaman _dört_ argüman alır. Bir hata-işleyici ara yazılım fonksiyonunu tanımlayabilmek için dört argüman sağlamalısınız. `next` objesini kullanmaya ihtiyacınız yoksa bile, metod imzasını koruyabilmek için tanımlamalısınız. Aksi takdirde, `next` objesi normal bir ara yazılım gibi değerlendirilecek ve hataları işlemede başarısız olacaktır.
 </div>
 
 Hata-işleme ara yazılım fonksiyonlarını diğer ara yazılım fonksiyonları gibi tanımla, ancak istisna olarak üç argüman yerine 4 ile, özellikle `(err, req, res, next)` imzasıyla:
-
 
 ```js
 app.use((err, req, res, next) => {
@@ -212,50 +233,15 @@ app.use((err, req, res, next) => {
 
 Hata-işleyici ara yazılım hakkında daha fazla detay için bakınız [Hata-işleme](/{{ page.lang }}/guide/error-handling.html).
 
-<h2 id='middleware.built-in'>Gömülü ara yazılım</h2>
+<h2 id='middleware.built-in'>Built-in middleware</h2>
 
-4.x sürümünden başlayarak, Express [Connect](https://github.com/senchalabs/connect) ara yazılımına bağımlı değil.
-`express.static` hariç, Express ile daha önce dahil edilen tüm ara katman yazılımı fonksiyonları artık ayrı modüllerde. Lütfen bakınız [ara yazılım fonksiyonları listesi](https://github.com/senchalabs/connect#middleware).
+4.x sürümünden başlayarak, Express [Connect](https://github.com/senchalabs/connect) ara yazılımına bağımlı değil. `express.static` hariç, Express ile daha önce dahil edilen tüm ara katman yazılımı fonksiyonları artık ayrı modüllerde. Lütfen bakınız [ara yazılım fonksiyonları listesi](https://github.com/senchalabs/connect#middleware).
 
-Express'teki tek gömülü ara yazılım fonksiyonu `express.static` fonksiyonudur. Bu fonksiyon [serve-static](https://github.com/expressjs/serve-static)'e dayanır, ve HTML dosyaları, görüntüler vb. gibi statik dosyaları sunmaktan sorumludur.
+Express has the following built-in middleware functions:
 
-Fonksiyon imzası böyledir:
-
-```js
-express.static(root, [options])
-```
-
-`root` argümanı statik dosyaların sunulacağı kök dizini belirtir.
-
-`options` argümanı ve bu ara yazılım fonksiyonu hakkında daha detaylı bilgi için, bakınız [express.static](/en/4x/api.html#express.static).
-
-Bu örnek `express.static` ara yazılım fonksiyonunu ayrıntılı bir seçenekler objesiyle kullanımını gösterir:
-
-```js
-const options = {
-  dotfiles: 'ignore',
-  etag: false,
-  extensions: ['htm', 'html'],
-  index: false,
-  maxAge: '1d',
-  redirect: false,
-  setHeaders (res, path, stat) {
-    res.set('x-timestamp', Date.now())
-  }
-}
-
-app.use(express.static('public', options))
-```
-
-Her bir uygulama için birden fazla statik dizine sahip olabilirsiniz:
-
-```js
-app.use(express.static('public'))
-app.use(express.static('uploads'))
-app.use(express.static('files'))
-```
-
-`serve-static` fonksiyonu ve seçenekleri hakkında daha detaylı bilgi için, [serve-static](https://github.com/expressjs/serve-static) dökümantasyonuna bakınız.
+- Bu fonksiyon [serve-static](https://github.com/expressjs/serve-static)'e dayanır, ve HTML dosyaları, görüntüler vb. gibi statik dosyaları sunmaktan sorumludur.
+- [express.json](/en/4x/api.html#express.json) parses incoming requests with JSON payloads. **NOTE: Available with Express 4.16.0+**
+- [express.urlencoded](/en/4x/api.html#express.urlencoded) parses incoming requests with URL-encoded payloads.  **NOTE: Available with Express 4.16.0+**
 
 <h2 id='middleware.third-party'>Üçüncü-parti ara yazılım</h2>
 
@@ -279,4 +265,3 @@ app.use(cookieParser())
 ```
 
 Express ile yaygın olarak kullanılan üçüncü-parti ara yazılım fonksiyonlarının kısmi bir listesi için, bakınız: [Üçüncü-parti ara yazılım](../resources/middleware.html).
-</div>
