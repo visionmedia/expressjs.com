@@ -1,11 +1,12 @@
 ---
 layout: page
 title: Migrating to Express 4
+description: A guide to migrating your Express.js applications from version 3 to 4, covering changes in middleware, routing, and how to update your codebase effectively.
 menu: guide
 lang: th
-description: A guide to migrating your Express.js applications from version 3 to 4,
-  covering changes in middleware, routing, and how to update your codebase effectively.
+redirect_from: /guide/migrating-4.html
 ---
+
 # Moving to Express 4
 
 <h2 id="overview">Overview</h2>
@@ -33,8 +34,8 @@ There are several significant changes in Express 4:
 
 See also:
 
-* [New features in 4.x.](https://github.com/expressjs/express/wiki/New-features-in-4.x)
-* [Migrating from 3.x to 4.x.](https://github.com/expressjs/express/wiki/Migrating-from-3.x-to-4.x)
+- [New features in 4.x.](https://github.com/expressjs/express/wiki/New-features-in-4.x)
+- [Migrating from 3.x to 4.x.](https://github.com/expressjs/express/wiki/Migrating-from-3.x-to-4.x)
 
 <h3 id="core-changes">
 Changes to Express core and middleware system
@@ -55,7 +56,7 @@ middleware that is required to run your app. Simply follow these steps:
 The following table lists Express 3 middleware and their counterparts in Express 4.
 
 <table class="doctable" border="1">
-<tr><th>Express 3</th><th>Express 4</th></tr>
+<tbody><tr><th>Express 3</th><th>Express 4</th></tr>
 <tr><td><code>express.bodyParser</code></td>
 <td><a href="https://github.com/expressjs/body-parser">body-parser</a> +
 <a href="https://github.com/expressjs/multer">multer</a></td></tr>
@@ -87,7 +88,7 @@ The following table lists Express 3 middleware and their counterparts in Express
 <td><a href="https://github.com/expressjs/serve-index">serve-index</a></td></tr>
 <tr><td><code>express.static</code></td>
 <td><a href="https://github.com/expressjs/serve-static">serve-static</a></td></tr>
-</table>
+</tbody></table>
 
 Here is the [complete list](https://github.com/senchalabs/connect#middleware) of Express 4 middleware.
 
@@ -106,6 +107,7 @@ app.use('/book/:id', (req, res, next) => {
   next()
 })
 ```
+
 <h3 id="routing">
 The routing system
 </h3>
@@ -118,8 +120,9 @@ The way you define routes is unchanged, but the routing system has two
 new features to help organize your routes:
 
 {: .doclist }
-* A new method, `app.route()`, to create chainable route handlers for a route path.
-* A new class, `express.Router`, to create modular mountable route handlers.
+
+- A new method, `app.route()`, to create chainable route handlers for a route path.
+- A new class, `express.Router`, to create modular mountable route handlers.
 
 <h4 id="app-route"><code>app.route()</code> method</h4>
 
@@ -197,7 +200,7 @@ Other changes
 The following table lists other small but important changes in Express 4:
 
 <table class="doctable" border="1">
-<tr>
+<tbody><tr>
 <th>Object</th>
 <th>Description</th>
 </tr>
@@ -307,7 +310,7 @@ Functionality is now limited to setting the basic cookie value. Use
 `res.cookie()` for added functionality.
 </td>
 </tr>
-</table>
+</tbody></table>
 
 <h2 id="example-migration">Example app migration</h2>
 
@@ -359,7 +362,7 @@ http.createServer(app).listen(app.get('port'), () => {
 <h4 id=""><code>package.json</code></h4>
 
 The accompanying version 3 `package.json` file might look
-  something like this:
+something like this:
 
 ```json
 {
@@ -391,15 +394,15 @@ $ npm install serve-favicon morgan method-override express-session body-parser m
 Make the following changes to `app.js`:
 
 1. The built-in Express middleware functions `express.favicon`,
-    `express.logger`, `express.methodOverride`,
-    `express.session`, `express.bodyParser` and
-    `express.errorHandler` are no longer available on the
-    `express` object.  You must install their alternatives
-    manually and load them in the app.
+   `express.logger`, `express.methodOverride`,
+   `express.session`, `express.bodyParser` and
+   `express.errorHandler` are no longer available on the
+   `express` object. You must install their alternatives
+   manually and load them in the app.
 
 2. You no longer need to load the `app.router` function.
-    It is not a valid Express 4 app object, so remove the
-    `app.use(app.router);` code.
+   It is not a valid Express 4 app object, so remove the
+   `app.use(app.router);` code.
 
 3. Make sure that the middleware functions are loaded in the correct order - load `errorHandler` after loading the app routes.
 
@@ -492,6 +495,7 @@ app.listen(app.get('port'), () => {
   console.log('Express server listening on port ' + app.get('port'))
 })
 ```
+
 </div>
 
 <h3 id="">Run the app</h3>
@@ -504,14 +508,14 @@ $ node .
 ```
 
 Load [http://localhost:3000](http://localhost:3000)
-  and see the home page being rendered by Express 4.
+and see the home page being rendered by Express 4.
 
 <h2 id="app-gen">Upgrading to the Express 4 app generator</h2>
 
 The command-line tool to generate an Express app is still
-  `express`, but to upgrade to the new version, you must uninstall
-  the Express 3 app generator and then install the new
-  `express-generator`.
+`express`, but to upgrade to the new version, you must uninstall
+the Express 3 app generator and then install the new
+`express-generator`.
 
 <h3 id="">Installing </h3>
 
@@ -521,6 +525,7 @@ you must uninstall it:
 ```bash
 $ npm uninstall -g express
 ```
+
 Depending on how your file and directory privileges are configured,
 you might need to run this command with `sudo`.
 
@@ -541,9 +546,10 @@ Express 4 generator.
 Command options and use largely remain the same, with the following exceptions:
 
 {: .doclist }
-* Removed the `--sessions` option.
-* Removed the `--jshtml` option.
-* Added the `--hogan` option to support [Hogan.js](http://twitter.github.io/hogan.js/).
+
+- Removed the `--sessions` option.
+- Removed the `--jshtml` option.
+- Added the `--hogan` option to support [Hogan.js](http://twitter.github.io/hogan.js/).
 
 <h3 id="">Example</h3>
 
@@ -603,6 +609,6 @@ var debug = require('debug')('app4')
 Next, change `"start": "node ./bin/www"` in the `package.json` file to `"start": "node app.js"`.
 
 You have now moved the functionality of `./bin/www` back to
-`app.js`.  This change is not recommended, but the exercise helps you
+`app.js`. This change is not recommended, but the exercise helps you
 to understand how the `./bin/www` file works, and why the `app.js` file
 no longer starts on its own.
