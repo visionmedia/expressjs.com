@@ -1,28 +1,29 @@
 ---
 layout: page
 title: Express database integration
+description: Discover how to integrate various databases with Express.js applications, including setup examples for MongoDB, MySQL, PostgreSQL, and more.
 menu: guide
 lang: id
-description: Discover how to integrate various databases with Express.js applications,
-  including setup examples for MongoDB, MySQL, PostgreSQL, and more.
+redirect_from: /guide/database-integration.html
 ---
+
 # Database integration
 
 Adding the capability to connect databases to Express apps is just a matter of loading an appropriate Node.js driver for the database in your app. This document briefly explains how to add and use some of the most popular Node.js modules for database systems in your Express app:
 
-* [Cassandra](#cassandra)
-* [Couchbase](#couchbase)
-* [CouchDB](#couchdb)
-* [LevelDB](#leveldb)
-* [MySQL](#mysql)
-* [MongoDB](#mongodb)
-* [Neo4j](#neo4j)
-* [Oracle](#oracle)
-* [PostgreSQL](#postgresql)
-* [Redis](#redis)
-* [SQL Server](#sql-server)
-* [SQLite](#sqlite)
-* [Elasticsearch](#elasticsearch)
+- [Cassandra](#cassandra)
+- [Couchbase](#couchbase)
+- [CouchDB](#couchdb)
+- [LevelDB](#leveldb)
+- [MySQL](#mysql)
+- [MongoDB](#mongodb)
+- [Neo4j](#neo4j)
+- [Oracle](#oracle)
+- [PostgreSQL](#postgresql)
+- [Redis](#redis)
+- [SQL Server](#sql-server)
+- [SQLite](#sqlite)
+- [Elasticsearch](#elasticsearch)
 
 <div class="doc-box doc-notice" markdown="1">
 These database drivers are among many that are available. For other options,
@@ -193,7 +194,7 @@ connection.end()
 $ npm install mongodb
 ```
 
-### Example (v2.*)
+### Example (v2.\*)
 
 ```js
 const MongoClient = require('mongodb').MongoClient
@@ -209,7 +210,7 @@ MongoClient.connect('mongodb://localhost:27017/animals', (err, db) => {
 })
 ```
 
-### Example (v3.*)
+### Example (v3.\*)
 
 ```js
 const MongoClient = require('mongodb').MongoClient
@@ -226,7 +227,6 @@ MongoClient.connect('mongodb://localhost:27017/animals', (err, client) => {
   })
 })
 ```
-
 
 If you want an object model driver for MongoDB, look at [Mongoose](https://github.com/LearnBoost/mongoose).
 
@@ -265,7 +265,7 @@ session.readTransaction((tx) => {
 
 ### Installation
 
- NOTE: [See installation prerequisites](https://github.com/oracle/node-oracledb#-installation).
+NOTE: [See installation prerequisites](https://github.com/oracle/node-oracledb#-installation).
 
 ```bash
 $ npm install oracledb
