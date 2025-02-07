@@ -1,10 +1,10 @@
 ---
 layout: page
 title: Генератор структури застосунків Express
+description: Learn how to use the Express application generator tool to quickly create a skeleton for your Express.js applications, streamlining setup and configuration.
 menu: starter
 lang: uk
-description: Learn how to use the Express application generator tool to quickly create
-  a skeleton for your Express.js applications, streamlining setup and configuration.
+redirect_from: /starter/generator.html
 ---
 
 # Генератор структури застосунків Express
@@ -42,6 +42,28 @@ $ express -h
 В наступному прикладі створюється каркас застосунку Express з іменем _myapp_ в поточній директорії:
 
 ```bash
+$ express -h
+
+  Usage: express [options] [dir]
+
+  Options:
+
+    -h, --help          output usage information
+        --version       output the version number
+    -e, --ejs           add ejs engine support
+        --hbs           add handlebars engine support
+        --pug           add pug engine support
+    -H, --hogan         add hogan.js engine support
+        --no-view       generate without view engine
+    -v, --view <engine> add view <engine> support (ejs|hbs|hjs|jade|pug|twig|vash) (defaults to jade)
+    -c, --css <engine>  add stylesheet <engine> support (less|stylus|compass|sass) (defaults to plain css)
+        --git           add .gitignore
+    -f, --force         force on non-empty directory
+```
+
+For example, the following creates an Express app named _myapp_. The app will be created in a folder named _myapp_ in the current working directory and the view engine will be set to <a href="https://pugjs.org/" target="_blank" title="Pug documentation">Pug</a>:
+
+```bash
 $ express --view=pug myapp
 
    create : myapp
@@ -63,28 +85,34 @@ $ express --view=pug myapp
    create : myapp/bin/www
 ```
 
-Після чого треба встановити залежності:
+На MacOS чи Linux, запустіть застосунок такою командою:
 
 ```bash
 $ cd myapp
 $ npm install
 ```
 
-На MacOS чи Linux, запустіть застосунок такою командою:
+На Windows, запускайте так:
 
 ```bash
 $ DEBUG=myapp:* npm start
 ```
 
-На Windows, запускайте так:
+Тепер вводьте в адресному рядку браузера `http://localhost:3000/`.
 
 ```bash
 > set DEBUG=myapp:* & npm start
 ```
 
-Тепер вводьте в адресному рядку браузера `http://localhost:3000/`.
+On Windows PowerShell, use this command:
 
-Згенерований застосунок має наступну структуру директорій:
+```bash
+PS> $env:DEBUG='myapp:*'; npm start
+```
+
+Then, load `http://localhost:3000/` in your browser to access the app.
+
+The generated app has the following directory structure:
 
 ```bash
 .
@@ -109,6 +137,7 @@ $ DEBUG=myapp:* npm start
 ```
 
 <div class="doc-box doc-info" markdown="1">
-Створена структура за допомогою генератора є лише однією із багатьох можливих варіантів структури застосунків Express.
-Не обмежуйте себе лише такою структурою, змінюйте її під свої потреби.
+The app structure created by the generator is just one of many ways to structure Express apps. Feel free to use this structure or modify it to best suit your needs.
 </div>
+
+### [Previous: Hello World ](/{{ page.lang }}/starter/hello-world.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: Basic routing](/{{ page.lang }}/starter/basic-routing.html)
