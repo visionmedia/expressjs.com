@@ -776,7 +776,7 @@ h2 a {
   .ds-dropdown-menu .ds-dataset-1 {
     background-color: var(--bg);
     .ds-suggestions {
-      background-color: var(--bg);
+      /* background-color: var(--bg); */
       color: var(--fg);
     }
     .ds-suggestion a {
@@ -804,8 +804,13 @@ h2 a {
         color: var(--link);
         background-color: initial;
       }
-      
     }
+    .algolia-docsearch-suggestion {
+        background-color: initial;
+      }
+      .algolia-docsearch-suggestion--content .algolia-docsearch-suggestion--no-results{
+        background-color: initial; 
+      }
     
   }
    .ds-suggestion.ds-cursor .algolia-docsearch-suggestion--title,
