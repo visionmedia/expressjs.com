@@ -20,10 +20,6 @@ lang: de
   </div>
 </section>
 
-<!--<section id="doc-langs" markdown="1">
-  Die Express-Dokumentation ist auch in anderen Sprachen verfügbar: [Spanisch](/es), [Japanisch](/ja), [Russisch](/ru), [Chinesisch](/zh-cn), [Koreanisch](/ko), [Portugiesisch](/pt-br).
-</section>-->
-
 <section id="intro">
 
   <div id="boxes" class="clearfix">
