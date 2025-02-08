@@ -1,4 +1,4 @@
-.light-mode:root {
+:root.light-mode {
   --grey-fg: #aeaeae;
   --bg: #ffffff;
   --fg: #383838;
@@ -24,7 +24,7 @@
   --supported-fg: #009000;
   --eol-fg: #ff0000;
 }
-.dark-mode:root {
+:root.dark-mode {
   --bg: #0c0c0c;
   --fg: #fafafa;
   --card-bg: #181818;  
