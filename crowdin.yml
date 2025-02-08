@@ -1,0 +1,7 @@
+files:
+  - source: /en/**/*.*
+    ignore:
+      - /en/blog/**/*.*
+    translation: /%two_letters_code%/**/%original_file_name%
+  - source: /_data/en/**/*.*
+    translation: /_data/%two_letters_code%/**/%original_file_name%

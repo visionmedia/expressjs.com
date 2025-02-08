@@ -333,6 +333,10 @@ pre {
   background-color: var(--code-bg);
 }
 
+pre code {
+  padding: 0;
+}
+
 /* top button */
 
 .scroll #top {
