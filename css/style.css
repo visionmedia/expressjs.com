@@ -705,12 +705,12 @@ footer {
 #blog-side-menu-container {
   position: fixed;
   margin: 0;
-  padding: 0 10px 0 0;
+  padding: 0;
   top: 153px;
-  left: 30px;
+  right: 0;
   height: 500px;
   text-align: left;
-  font-size: 13px;
+  font-size: 1rem;
   overflow-y: auto;
 }
 
@@ -840,9 +840,82 @@ h2 a {
   }
 }
 
+/* table of content btn */
+#menu-toggle {
+  cursor: pointer;
+  display: none;
+  margin-block: 1.5rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  opacity: 0;
+}
+
+/* responsive */
+
+@media all and (max-width: 1440px) {
+  #menu,
+  #tags-side-menu,
+  #blog-side-menu-container {
+    position: sticky;
+    max-height: 0;
+    top: 57px;
+    left: 0;
+    background-color: #eee;
+    z-index: 100;
+  }
+
+  #menu.open {
+    max-height: 50vh;
+    padding: 1rem;
+  }
+
+  #menu-toggle.show{
+    display: block;
+    opacity: 1;
+  }
+
+  #menu-toggle.position-fixed {
+    position: fixed;
+    right: 1rem;
+    top: 57px;
+    margin-block: 1rem;
+    border-radius: 50%;
+    background-color: #eeeeee56;
+    padding: 1rem;
+    border: 1px solid rgb(202, 199, 199);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content {
+    margin: 57px 3% 7%;
+  }
+
+  #menu li {
+    cursor: pointer;
+    border-bottom: 1px solid #cdcdcd;
+  }
+
+  #overlay.blurs{
+    display: block;
+  }
+}
+
 /* responsive */
 
 @media all and (max-width: 1110px) {
+  #menu,
+  #tags-side-menu,
+  #blog-side-menu-container {
+    position: fixed;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .content {
+    margin: 80px 3% 7%;
+  }
+
   #boxes {
     grid-template-columns: 1fr 1fr;
   }
@@ -906,12 +979,6 @@ h2 a {
     font-size: 16px;
     line-height: 18px;
     font-weight: normal;
-  }
-
-  #menu,
-  #tags-side-menu,
-  #blog-side-menu-container {
-    display: none;
   }
 
   .content {
@@ -1019,6 +1086,16 @@ h2 a {
 @media all and (max-width: 540px) {
   #boxes {
     grid-template-columns: 1fr;
+  }
+
+  #menu-toggle.position-fixed {
+    left: 0;
+    top: 57px;
+    margin-block: 0rem;
+    width: 100vw;
+    padding: 0.5rem;
+    border-radius: 0;
+    background-color: #eeeeeec9;
   }
 }
 

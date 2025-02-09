@@ -278,3 +278,11 @@ html.dark-mode #blog-side-menu-container h3 a{
 html.dark-mode #blog-side-menu > li > a{
   color: var(--dark_inner_text);
 }
+
+@media all and (max-width: 1440px) {
+  html.dark-mode #menu,
+  #tags-side-menu,
+  #blog-side-menu-container {
+    background-color: var(--second_dark_bg);
+  }
+}

@@ -1,5 +1,5 @@
 <ul id="menu">
-
+    <li><em>On this page</em>
     <li id="express-api"><a href="#express">express()</a>
     <ul id="express-menu">
         <li><em>Methods</em></li>
@@ -204,4 +204,6 @@
             </li>
         </ul>
     </li>
+    </li>
 </ul>
+<button id="menu-toggle" title="show table of content">Table of content &#x25BC</button>
