@@ -22,7 +22,7 @@ This defaults to the `views` directory in the application root directory.
 
 Then install the corresponding template engine npm package; for example to install Pug:
 
-```console
+```bash
 $ npm install pug --save
 ```
 

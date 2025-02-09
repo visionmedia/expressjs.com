@@ -48,20 +48,20 @@ Helmet n'est actuellement qu'une collection de neuf fonctions middleware plus pe
 
 Installez Helmet comme n'importe quel autre module :
 
-```console
+```bash
 $ npm install --save helmet
 ```
 
 Puis, pour l'utiliser dans votre code :
 
-<pre>
-<code class="language-javascript" translate="no">
-...
-var helmet = require('helmet');
-app.use(helmet());
-...
-</code>
-</pre>
+```js
+/// ...
+
+const helmet = require('helmet')
+app.use(helmet())
+
+/// ...
+```
 
 ### Désactivez au minimum l'en-tête X-Powered-By
 
@@ -69,11 +69,9 @@ Si vous ne voulez pas utiliser Helmet, désactivez au minimum l'en-tête `X-Powe
 
 Il est donc conseillé de neutraliser l'en-tête à l'aide de la méthode `app.disable()` comme suit :
 
-<pre>
-<code class="language-javascript" translate="no">
-app.disable('x-powered-by');
-</code>
-</pre>
+```js
+app.disable('x-powered-by')
+```
 
 Si vous utilisez `helmet.js`, cette opération s'effectue automatiquement.
 
@@ -96,17 +94,15 @@ L'utilisation d'un nom de cookie de session par défaut risque d'ouvrir votre ap
 
 Pour éviter ce problème, utilisez des noms de cookie génériques, par exemple à l'aide du middleware [express-session](https://www.npmjs.com/package/express-session) :
 
-<pre>
-<code class="language-javascript" translate="no">
-var session = require('express-session');
+```js
+const session = require('express-session')
 app.set('trust proxy', 1) // trust first proxy
-app.use( session({
-   secret : 's3Cur3',
-   name : 'sessionId',
-  })
-);
-</code>
-</pre>
+app.use(session({
+  secret: 's3Cur3',
+  name: 'sessionId'
+})
+)
+```
 
 ### Définissez des options de sécurité de cookie
 
@@ -120,26 +116,25 @@ Définissez les options de cookie suivantes pour accroître la sécurité :
 
 Exemple d'utilisation du middleware [cookie-session](https://www.npmjs.com/package/cookie-session) :
 
-<pre>
-<code class="language-javascript" translate="no">
-var session = require('cookie-session');
-var express = require('express');
-var app = express();
+```js
+const session = require('cookie-session')
+const express = require('express')
+const app = express()
 
-var expiryDate = new Date( Date.now() + 60 * 60 * 1000 ); // 1 hour
+const expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 app.use(session({
   name: 'session',
   keys: ['key1', 'key2'],
-  cookie: { secure: true,
-            httpOnly: true,
-            domain: 'example.com',
-            path: 'foo/bar',
-            expires: expiryDate
-          }
-  })
-);
-</code>
-</pre>
+  cookie: {
+    secure: true,
+    httpOnly: true,
+    domain: 'example.com',
+    path: 'foo/bar',
+    expires: expiryDate
+  }
+})
+)
+```
 
 ## Autres considérations
 

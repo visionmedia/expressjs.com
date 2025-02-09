@@ -251,7 +251,7 @@ When running an application with PM2, you can enable **cluster mode** to run it 
 
 To enable cluster mode, start your application like so:
 
-```console
+```bash
 # Start 4 worker processes
 $ pm2 start npm --name my-app -i 4 -- start
 # Auto-detect number of available CPUs and start that many worker processes
@@ -262,7 +262,7 @@ This can also be configured within a PM2 process file (`ecosystem.config.js` or 
 
 Once running, the application can be scaled like so:
 
-```console
+```bash
 # Add 3 more workers
 $ pm2 scale my-app +3
 # Scale to a specific number of workers

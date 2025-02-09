@@ -48,20 +48,20 @@ Helmet 实际上只使用以下九个较小中间件函数的集合，这些功�
 
 像安装其他模块一样安装 Helmet：
 
-```console
+```bash
 $ npm install --save helmet
 ```
 
 然后将其用于您的代码：
 
-<pre>
-<code class="language-javascript" translate="no">
-...
-var helmet = require('helmet');
-app.use(helmet());
-...
-</code>
-</pre>
+```js
+/// ...
+
+const helmet = require('helmet')
+app.use(helmet())
+
+/// ...
+```
 
 ### 至少禁用 X-Powered-By 头
 
@@ -69,11 +69,9 @@ app.use(helmet());
 
 所以，最佳实践是使用 `app.disable()` 方法禁用此头：
 
-<pre>
-<code class="language-javascript" translate="no">
-app.disable('x-powered-by');
-</code>
-</pre>
+```js
+app.disable('x-powered-by')
+```
 
 如果使用 `helmet.js`，它会为您执行此功能。
 
@@ -96,17 +94,15 @@ app.disable('x-powered-by');
 
 为避免此问题，请使用通用 cookie 名称；例如，使用 [express-session](https://www.npmjs.com/package/express-session) 中间件：
 
-<pre>
-<code class="language-javascript" translate="no">
-var session = require('express-session');
+```js
+const session = require('express-session')
 app.set('trust proxy', 1) // trust first proxy
-app.use( session({
-   secret : 's3Cur3',
-   name : 'sessionId',
-  })
-);
-</code>
-</pre>
+app.use(session({
+  secret: 's3Cur3',
+  name: 'sessionId'
+})
+)
+```
 
 ### 设置 cookie 安全性选项
 
@@ -120,26 +116,25 @@ app.use( session({
 
 以下是使用 [cookie-session](https://www.npmjs.com/package/cookie-session) 中间件的示例：
 
-<pre>
-<code class="language-javascript" translate="no">
-var session = require('cookie-session');
-var express = require('express');
-var app = express();
+```js
+const session = require('cookie-session')
+const express = require('express')
+const app = express()
 
-var expiryDate = new Date( Date.now() + 60 * 60 * 1000 ); // 1 hour
+const expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 app.use(session({
   name: 'session',
   keys: ['key1', 'key2'],
-  cookie: { secure: true,
-            httpOnly: true,
-            domain: 'example.com',
-            path: 'foo/bar',
-            expires: expiryDate
-          }
-  })
-);
-</code>
-</pre>
+  cookie: {
+    secure: true,
+    httpOnly: true,
+    domain: 'example.com',
+    path: 'foo/bar',
+    expires: expiryDate
+  }
+})
+)
+```
 
 ## 其他注意事项
 

@@ -151,9 +151,6 @@ html.dark-mode div#overlay {
   opacity: 0.5;
 }
 
-html.dark-mode .doc-box.doc-info pre.language-javascript {
-  background: var(--main_dark_bg);
-}
 
 html.dark-mode h1,
 html.dark-mode h2,
@@ -162,9 +159,6 @@ html.dark-mode code,
 html.dark-mode em,
 html.dark-mode strong  {
   color: var(--dark_main_text);
-}
-html.dark-mode pre {
-  background: var(--second_dark_bg);
 }
 /* index.html */
 html.dark-mode #description .express > a {
@@ -283,8 +277,4 @@ html.dark-mode #blog-side-menu-container h3 a{
 }
 html.dark-mode #blog-side-menu > li > a{
   color: var(--dark_inner_text);
-}
-
-html.dark-mode pre code {
-  background-color: inherit;
 }
