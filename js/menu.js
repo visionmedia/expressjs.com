@@ -48,6 +48,8 @@ const menu = document.querySelector("#navmenu");
 const overlay = document.querySelector("#overlay");
 const navButton = document.querySelector("#nav-button");
 const languagePickerButton = document.querySelector("#language-picker-button");
+const toggleBtn = document.getElementById("menu-toggle");
+const menuList = document.getElementById("menu");
 
 for (const el of linkItemsMenu) {
 	el.addEventListener("click", (e) => {
@@ -83,6 +85,7 @@ navButton?.addEventListener("click", () => {
 		languagePickerMenu?.classList.remove("opens");
 		menu?.classList.toggle("opens");
 	} else {
+		updateTocVisibility();
 		menu?.classList.toggle("opens");
 		overlay?.classList.toggle("blurs");
 		document.body.classList.toggle("no-scroll");
@@ -96,6 +99,7 @@ languagePickerButton?.addEventListener("click", () => {
 		menu?.classList.remove("opens");
 		languagePickerMenu?.classList.toggle("opens");
 	} else {
+		updateTocVisibility();
 		languagePickerMenu?.classList.toggle("opens");
 		overlay?.classList.toggle("blurs");
 		document.body.classList.toggle("no-scroll");
@@ -109,6 +113,11 @@ overlay?.addEventListener("click", () => {
 	if (languagePickerMenu?.classList.contains("opens")) {
 		languagePickerMenu.classList.remove("opens");
 	}
+	if(menuList?.classList.contains("open")) {
+		toggleBtn?.classList.add("show");
+		menuList?.classList.remove("open");
+		menu.disabled = "false";
+	}
 	overlay.classList.remove("blurs");
 	document.body.classList.remove("no-scroll");
 });
@@ -120,9 +129,7 @@ document
 // TOC
 const tocScreen = window.matchMedia("(max-width: 1440px)");
 let isTocScreen = tocScreen.matches;
-const toggleBtn = document.getElementById("menu-toggle");
-const menuList = document.getElementById("menu");
-// ! important note add scroll observer element common to all pages that include TOC component 👇🏻 remove id to "scroll-obsever"
+// ! important note add scroll observer element common to all pages that include TOC component 👇🏻 remove id to "scroll-observer"
 const firstHeader = document.getElementById("express");
 let observer;
 
@@ -143,8 +150,10 @@ function createScrollObserver() {
 }
 
 // Update button visibility based on screen size
-function updateButtonVisibility() {
+function updateTocVisibility() {
 	if (isTocScreen) {
+	  overlay.classList.remove("blurs")
+	  menuList.classList.remove("open");
 	  toggleBtn?.classList.add("show");
 	  createScrollObserver();
 	} else {
@@ -175,12 +184,12 @@ function handleIntersect(entries) {
 };
 
 // Show button on page load
-updateButtonVisibility();
+updateTocVisibility();
 
 // Listen for changes in screen size
 tocScreen.addEventListener("change", (event) => {
   isTocScreen = event.matches;
-  updateButtonVisibility();
+  updateTocVisibility();
 });
 
 // Toggle menu on button click
@@ -188,19 +197,17 @@ toggleBtn?.addEventListener("click", () => {
   menuList?.classList.toggle("open");
   overlay?.classList.toggle("blurs");
   document.body.classList.toggle("no-scroll");
-  if (isTocScreen) {
-    toggleBtn?.classList.remove("show");
-  }
+  toggleBtn?.classList.remove("show");
 });
 
 // Close menu on link click
 document.querySelectorAll("#menu a").forEach((link) => {
   link.addEventListener("click", function () {
-    menuList?.classList.remove("open");
-    overlay?.classList.remove("blurs");
-    document.body.classList.remove("no-scroll");
-    if (isTocScreen) {
-      toggleBtn?.classList.add("show");
-    }
+   if(isTocScreen) {
+		menuList?.classList.remove("open");
+		overlay?.classList.remove("blurs");
+		document.body.classList.remove("no-scroll");
+		toggleBtn?.classList.add("show");
+   }
   });
 });
