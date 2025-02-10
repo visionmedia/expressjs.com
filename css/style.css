@@ -351,6 +351,7 @@ pre code {
   right: 15px;
   padding: 8px;
   text-decoration: none;
+  opacity: 0;
   transition: opacity 300ms;
   border: 2px solid var(--border);  
 }
