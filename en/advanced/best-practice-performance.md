@@ -98,8 +98,6 @@ We also don't recommend using [domains](https://nodejs.org/api/domain.html). It 
 
 Try-catch is a JavaScript language construct that you can use to catch exceptions in synchronous code. Use try-catch, for example, to handle JSON parsing errors as shown below.
 
-Use a tool such as [JSHint](http://jshint.com/) or [JSLint](http://www.jslint.com/) to help you find implicit exceptions like [reference errors on undefined variables](http://www.jshint.com/docs/options/#undef).
-
 Here is an example of using try-catch to handle a potential process-crashing exception.
 This middleware function accepts a query field parameter named "params" that is a JSON object.
 
@@ -120,6 +118,34 @@ app.get('/search', (req, res) => {
 
 However, try-catch works only for synchronous code. Because the Node platform is primarily asynchronous (particularly in a production environment), try-catch won't catch a lot of exceptions.
 
+#### Use promises
+
+When an error is thrown in an `async` function or a rejected promise is awaited inside an `async` function, those errors will be passed to the error handler as if calling `next(err)`
+
+```js
+app.get('/', (req, res, next) => {
+  const data = await userData() // If this promise fails, it will automatically call `next(err)` to handle the error.
+
+  res.send(data)
+})
+
+app.use((error, req, res, next) => {
+  res.status(error.status ?? 500).send({ error: error.message })
+})
+```
+
+Also, you can use asynchronous functions for your middleware, and the router will handle errors if the promise fails, for example:
+
+```js
+app.use(async (req, res, next) => {
+  req.locals.user = await getUser(req);
+
+  next(); // This will be called if the promise does not throw an error.
+});
+```
+
+Best practice is to handle errors as close to the site as possible. So while this is now handled in the router, it’s best to catch the error in the middleware and handle it without relying on separate error-handling middleware
+
 ## Things to do in your environment / setup 
 {#in-environment}
 
@@ -134,7 +160,7 @@ Here are some things you can do in your system environment to improve your app's
 
 ### Set NODE_ENV to "production"
 
-The NODE_ENV environment variable specifies the environment in which an application is running (usually, development or production). One of the simplest things you can do to improve performance is to set NODE_ENV to "production."
+The NODE_ENV environment variable specifies the environment in which an application is running (usually, development or production). One of the simplest things you can do to improve performance is to set NODE_ENV to "production".
 
 Setting NODE_ENV to "production" makes Express:
 
