@@ -338,12 +338,11 @@ pre code {
 }
 
 #top:hover {
-  border: 2px solid var(--border); 
+  border: 1px solid var(--border); 
   opacity: 1;
 }
 
 #top {
-  opacity: .2;
   line-height: 0;
   border-radius: 2px;
   position: fixed;

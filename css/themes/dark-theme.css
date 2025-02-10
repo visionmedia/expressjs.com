@@ -22,7 +22,7 @@ html.dark-mode {
   }
 
   #navmenu>li:hover {
-    & ul {
+    ul {
       background-color: var(--card-bg);
     }
   }
@@ -32,7 +32,7 @@ html.dark-mode {
     opacity: 0.5;
     background: var(--fg);
   }
-  
+
   .blog-excerpt {
     color: var(--notice-accent);
   }
