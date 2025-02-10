@@ -270,11 +270,11 @@ Use the [`mime-types` package](https://github.com/jshttp/mime-types) to work wit
 
 ```js
 // v4
-const mimeType = express.static.mime.lookup('json')
+express.static.mime.lookup('json')
 
 // v5
 const mime = require('mime-types')
-const mimeType = mime.lookup('json')
+mime.lookup('json')
 ```
 
 <h3>Changed</h3>
