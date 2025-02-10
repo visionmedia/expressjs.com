@@ -26,13 +26,7 @@ html.dark-mode {
       background-color: var(--card-bg);
     }
   }
-
-  /* overlay on dropdown menu  */
-  div#overlay {
-    opacity: 0.5;
-    background: var(--fg);
-  }
-
+  
   .blog-excerpt {
     color: var(--notice-accent);
   }
