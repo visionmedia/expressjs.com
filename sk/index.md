@@ -42,9 +42,3 @@ description: Express is a fast, unopinionated, minimalist web framework for Node
   </div>
 
 </section>
-
-<!--
-<section id="announcements">
-  {% include announcement/announcement-{{ page.lang }}.md %}
-</section>
--->

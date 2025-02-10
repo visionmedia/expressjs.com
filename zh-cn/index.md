@@ -39,9 +39,3 @@ Express 文档英文以外的语言版本包括：[西班牙语](/es)、[日语]
   </div>
 
 </section>
-
-<!--
-<section id="announcements">
-  {% include announcement/announcement-{{ page.lang }}.md %}
-</section>
--->
