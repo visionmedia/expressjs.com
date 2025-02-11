@@ -58,7 +58,7 @@ Helmet は、実際には、セキュリティー関連の HTTP ヘッダーを�
 
 その他のモジュールと同様に Helmet をインストールします。
 
-```console
+```bash
 $ npm install --save helmet
 ```
 
@@ -152,7 +152,7 @@ npm を使用したアプリケーションの依存関係の管理は、強力�
 
 npm@6以降、npmはすべてのインストール要求を自動的に確認します。また、'npm audit'を使用して依存関係ツリーを分析することもできます。
 
-```console
+```bash
 $ npm audit
 ```
 
@@ -160,14 +160,14 @@ $ npm audit
 
 Snykは、[Snykのオープンソース脆弱性データベース](https://snyk.io/vuln/)に対して、依存関係の既知の脆弱性に対するアプリケーションをチェックする[コマンドラインツール](https://www.npmjs.com/package/snyk)と[Github integration](https://snyk.io/docs/github)を提供しています。 次のようにCLIをインストールします。
 
-```console
+```bash
 $ npm install -g snyk
 $ cd your-app
 ```
 
 このコマンドを使用して、アプリケーションの脆弱性をテストします。
 
-```console
+```bash
 $ snyk test
 ```
 

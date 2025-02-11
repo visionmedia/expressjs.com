@@ -309,6 +309,12 @@ a {
   margin: 3px 0;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 header {
   position: fixed;
   top: 0;
@@ -319,7 +325,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 45px;
+  padding-inline: 25px;
   z-index: 100;
   border-bottom: 1px solid #ddd;
 }
@@ -331,27 +337,6 @@ header {
 
 /* code */
 
-p code, td code {
-  color: #333;
-}
-
-pre {
-  color: #555;
-  font-size: 14px;
-  line-height: 1.4;
-  padding: 16px;
-  border-radius: 3px;
-  overflow: auto;
-  border: 1px solid #ddd;
-}
-
-pre code {
-  padding: 0;
-  overflow: scroll;
-  word-break: break-all;
-  background-color: inherit;
-}
-
 code {
   background-color: var(--code-bg);
   margin-block: -.125rem;
@@ -359,6 +344,17 @@ code {
   padding: .125rem .375rem;
   line-height: 28px;
   border-radius: 6px;
+}
+
+pre {
+  padding: 16px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  background-color: var(--code-bg);
+}
+
+pre code {
+  padding: 0;
 }
 
 /* top button */
@@ -495,28 +491,6 @@ html[xmlns] .clearfix {
 .doc-box p:last-child {
   margin: 0;
 }
-
-.doc-box pre[class*="language-"] {
-  background: none repeat scroll 0 0 #fff;
-}
-
-/* English pages use backticks for code blocks */
-.en-doc .page pre[class*="language-"] {
-  padding-top: 10px !important;
-}
-
-/* Non-English pages use pre and code tags for code blocks */
-.non-en-doc .page pre[class*="language-"] {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-
-.page pre.plain-text, .page code.plain-text {
-  padding-top: 0 !important;
-  color: #000;
-}
-
 
 .doc-notice {
   background: var(--notice-bg);
@@ -689,7 +663,7 @@ footer {
   margin: auto;
   box-shadow: 0px 1px 3px #00000026;
   z-index: 1000;
-  min-width: 230px;
+  min-width: max-content;
   width: fit-content;
   background-color: #fcfcfa;
   border: 1px solid #b2b2b2;
@@ -729,6 +703,10 @@ footer {
   background: #259dff;
   color: #fff;
   text-decoration: none;
+}
+
+#language-picker-menu {
+  display: none;
 }
 
 /* secondary menu */
@@ -978,6 +956,7 @@ h2 a {
   #logo {
     position: static;
     width: 100%;
+    margin-left: 60px;
   }
 
   #logo a {
@@ -1017,6 +996,33 @@ h2 a {
 
   #doc-langs {
     font-size: 11px;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: -10px;
+  }
+
+  #language-picker-menu #navmenu>li:first-child {
+    display: flex;
+  }
+
+  #language-picker-menu #navmenu {
+    max-height: 70vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    text-align: center;
+  }
+
+  #language-picker-menu {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
   }
 }
 
@@ -1350,6 +1356,7 @@ blockquote {
     overflow-y: auto;
     overflow-x: hidden;
     transform: none;
+    cursor: pointer;
   }
 
   .submenu-content li > a {
