@@ -334,7 +334,7 @@ Gracias por mejorar la seguridad de Express. We appreciate your efforts and
 responsible disclosure and will make every effort to acknowledge your
 contributions.
 
-Reporte errores de seguridad enviando un correo electrónico al mantenedor principal en el archivo Readme.md.
+Report security bugs by emailing `express-security@lists.openjsf.org`.
 
 Para asegurar la respuesta oportuna a su informe, por favor asegúrese de que la totalidad
 del informe está contenida en el cuerpo del correo electrónico y no solo detrás de un enlace
