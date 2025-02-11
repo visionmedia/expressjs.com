@@ -51,3 +51,15 @@
   font-weight: bold;
   color: var(--menu-grey)
 }
+
+/* ---- Special Styles ----  */
+
+#app-settings-property {
+  width: 200px;
+}
+
+@media all and (max-width: 420px) {
+  #app-settings-property {
+    width: auto;
+  }
+}

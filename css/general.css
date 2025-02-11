@@ -289,10 +289,6 @@ html[xmlns] .clearfix {
 
 /* general */
 
-#app-settings-property {
-  width: 200px;
-}
-
 .button {
   display: block;
   padding: 3px 5px;
@@ -382,12 +378,6 @@ h2 a {
 
   #doc-langs {
     font-size: 11px;
-  }
-}
-
-@media all and (max-width: 420px) {
-  #app-settings-property {
-    width: auto;
   }
 }
 
