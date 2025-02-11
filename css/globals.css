@@ -463,3 +463,199 @@ header {
     display: block;
   }
 }
+
+/* -------- Footer -------- */
+
+footer {
+  font-size: 12px;
+  margin: 60px 5% 30px;
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+}
+
+#footer-content {
+  width: 100%;
+  justify-content: space-between;
+  gap: 32px;
+  display: flex;
+}
+
+#footer-copyright {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+#footer-copyright a {
+  width: fit-content;
+}
+
+#footer-copyright img {
+  max-width: 125px;
+}
+
+#footer-policy {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 8px;
+  justify-content: center;
+  font-size: 15px;
+}
+
+#footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+}
+
+@media all and (max-width: 1110px) {
+  #footer-content {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #footer-copyright>a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* ---- i18n footer section ---- */
+
+#doc-langs {
+  text-align: center;
+  font-size: 12px;
+}
+
+#doc-langs p {
+  margin: 3px 0;
+}
+
+@media all and (max-width: 1110px) {
+  #doc-langs {
+    font-size: 11px;
+  }
+}
+
+/* -------- Search -------- */
+
+#q {
+  display: none;
+  height: 2.5em;
+  max-width: 100%;
+  padding: 5px;
+}
+
+.algolia-autocomplete {
+  max-width: 9em;
+
+  >input {
+    color: var(--fg);
+    background-color: var(--bg);
+  }
+
+  >input::placeholder {
+    color: var(--fg);
+  }
+
+  #q {
+    display: initial;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: color .3s ease;
+    padding-inline: 12px;
+    outline: none;
+
+    &:focus-visible,
+    &:focus {
+      border-color: var(--hover-border);
+      border-width: 2px;
+    }
+  }
+}
+
+#navbar {
+  .ds-dropdown-menu .ds-dataset-1 {
+    background-color: var(--bg);
+
+    .ds-suggestions {
+      /* background-color: var(--bg); */
+      color: var(--fg);
+    }
+
+    .ds-suggestion a {
+      background-color: var(--bg);
+      color: var(--fg);
+    }
+
+    .ds-suggestion a {
+      background-color: var(--bg);
+      color: var(--fg);
+    }
+
+    .algolia-docsearch-suggestion--category-header {
+      color: var(--fg);
+    }
+
+    .algolia-docsearch-suggestion--wrapper {
+      background-color: var(--bg);
+
+      .algolia-docsearch-suggestion--subcategory-column {
+        color: var(--menu-grey);
+
+      }
+
+      .algolia-docsearch-suggestion--title,
+      .algolia-docsearch-suggestion--text {
+        color: var(--fg);
+      }
+
+      .algolia-docsearch-suggestion--highlight {
+        color: var(--link);
+        background-color: initial;
+      }
+    }
+
+    .algolia-docsearch-suggestion {
+      background-color: initial;
+    }
+
+    .algolia-docsearch-suggestion--content .algolia-docsearch-suggestion--no-results {
+      background-color: initial;
+    }
+
+  }
+
+  .ds-suggestion.ds-cursor .algolia-docsearch-suggestion--title,
+  .ds-suggestion.ds-cursor .algolia-docsearch-suggestion--content {
+    background-color: var(--hover-bg);
+  }
+}
+
+@media all and (max-width: 1110px) {
+  #home-menu {
+    display: block;
+    position: absolute;
+    top: 7px;
+  }
+
+  .algolia-autocomplete {
+    display: none !important;
+  }
+}
+
+@media all and (min-width: 950px) {
+  .algolia-autocomplete {
+    margin-right:15px;
+    max-width: 12em;
+  }
+}
