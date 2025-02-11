@@ -1,0 +1,7 @@
+strong.supported {
+  color: var(--supported-fg);
+}
+
+strong.eol {
+  color: var(--eol-fg);
+}
