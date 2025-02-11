@@ -20,9 +20,7 @@ h1 {
   line-height: 36px;
 }
 
-#api-doc h1 {
-  font-weight: normal;
-}
+
 
 h1, h2, h3 {
   margin: 5px 0;
@@ -65,42 +63,6 @@ span.block-section {
   display: block;
 }
 
-#api-doc section {
-  padding-left: 20px;
-}
-
-#api-doc > h3 {
-  padding-top: 10px;
-  padding-bottom: 5px;
-  font-weight: bold;
-  font-size: 24px;
-  color: var(--menu-grey)
-}
-
-#api-doc h2 {
-  font-weight: bold;
-  font-size: 29px;
-  margin: 40px 0 20px;
-}
-
-#api-doc section h3 {
-  padding-top: 10px;
-  padding-bottom: 5px;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-#api-doc h4 {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-#api-doc h5 {
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--menu-grey)
-}
-
 /* scroll */
 
 *::-webkit-scrollbar {
@@ -135,7 +97,7 @@ a {
   padding-top: 40px;
 }
 
-#api-doc *:target, #page-doc *:target {
+#page-doc *:target {
  margin-top: -120px;
  padding-top: 120px;
  z-index: -1;
@@ -424,10 +386,6 @@ h2 a {
   .table-scroller {
     width: 100%;
     overflow: scroll;
-  }
-
-  #api-doc section {
-    padding-left: 0;
   }
 
   code {

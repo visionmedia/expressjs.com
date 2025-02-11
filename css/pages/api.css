@@ -1,0 +1,53 @@
+#api-doc *:target {
+  margin-top: -120px;
+  padding-top: 120px;
+  z-index: -1;
+}
+
+#api-doc section {
+  padding-left: 20px;
+}
+
+@media all and (max-width: 1110px) {
+  #api-doc section {
+    padding-left: 0;
+  }
+}
+
+/* ---- Titles ---- */
+
+#api-doc h1 {
+  font-weight: normal;
+}
+
+#api-doc>h3 {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  font-weight: bold;
+  font-size: 24px;
+  color: var(--menu-grey)
+}
+
+#api-doc h2 {
+  font-weight: bold;
+  font-size: 29px;
+  margin: 40px 0 20px;
+}
+
+#api-doc section h3 {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#api-doc h4 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#api-doc h5 {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--menu-grey)
+}
