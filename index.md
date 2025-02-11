@@ -36,7 +36,7 @@ app.listen(port, () => {
   </div>
 </section>
 <section id="announcements">
-  {% include announcement/announcement-en.md %}
+  {% include announcement.html %}
 </section>
 
 <section id="intro">

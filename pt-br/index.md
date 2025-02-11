@@ -35,10 +35,6 @@ app.listen(port, () => {
   </div>
 </section>
 
-<section id="announcements">
-  {% include announcement/announcement-pt-br.md %}
-</section>
-
 <section id="intro">
 
   <div id="boxes" class="clearfix">
