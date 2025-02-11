@@ -23,23 +23,6 @@
   --dark_border: #ddd;
   --link: #259dff;
 }
-#theme-icon-container {
-  position: relative;
-  color: black;
-}
-#theme-icon-container i {
-  cursor: pointer;
-  line-height: 30px;
-}
-
-.sun-icon {
-  background-image: url(/images/sun-icon.png);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  width: 27px;
-  height: 27px;
-  cursor: pointer;
-}
 
 html .hidden-dark {
   display: block;
