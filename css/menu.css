@@ -402,3 +402,64 @@ header {
     display: none;
   }
 }
+
+/* ----------------- Side Menu --------------------- */
+
+#menu {
+  position: fixed;
+  margin: 0;
+  padding: 0 10px 0 0;
+  top: 153px;
+  left: 30px;
+  height: 500px;
+  text-align: left;
+  font-size: 13px;
+  overflow-y: auto;
+}
+
+#menu ul a.active {
+  color: var(--fg)
+}
+
+#menu em {
+  font-weight: bold;
+  color: var(--card-fg);
+}
+
+#menu li {
+  list-style: none;
+}
+
+#menu ul {
+  height: 0;
+  overflow: hidden;
+}
+
+#menu ul.active {
+  height: auto;
+  padding: 0;
+}
+
+#menu a {
+  color: var(--menu-grey);
+}
+
+#menu>li>a {
+  color: var(--menu-grey);
+  font-weight: bold;
+  font-size: 13px;
+}
+
+#menu ul a {
+  padding-right: 7px;
+}
+
+@media all and (max-width: 1110px) {
+  #menu {
+    display: none;
+  }
+
+  .menu ul {
+    display: block;
+  }
+}
