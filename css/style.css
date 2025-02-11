@@ -705,13 +705,19 @@ footer {
 #blog-side-menu-container {
   position: fixed;
   margin: 0;
-  padding: 0;
+  padding-inline-start: 0.5rem;
   top: 153px;
   right: 0;
   height: 500px;
   text-align: left;
   font-size: 1rem;
   overflow-y: auto;
+}
+
+#menu li > * {
+  &:is(:hover,:active,:focus) {
+    color: var(--main_dark_bg);
+  }
 }
 
 #blog-side-menu-container {
@@ -760,7 +766,7 @@ footer {
 #tags-side-menu > li > a,
 #blog-side-menu > li > a {
   font-weight: bold;
-  font-size: 13px;
+  font-size: 1rem;
 }
 
 #blog-side-menu > li > a {
@@ -840,6 +846,18 @@ h2 a {
   }
 }
 
+/* api doc */
+#api-doc {
+  width: 60vw;
+}
+
+/* toc title */
+.toc-title {
+  display: block;
+  font-size: 1rem;
+}
+
+
 /* table of content btn */
 #menu-toggle {
   cursor: pointer;
@@ -848,72 +866,41 @@ h2 a {
   font-size: 1rem;
   padding: 0.5rem;
   opacity: 0;
+  border: 1px solid #000;
+  border-radius: 0.3rem;
+  color: #000;
+  background-color: #fff;
+  transition: opacity 0.2s ease;
+
+  &:is(:hover, :active, :focus) {
+    background-color: #ebf2f5;
+  }
 }
 
 /* responsive */
 
 @media all and (max-width: 1440px) {
+  .content {
+    padding-left: 175px;
+  }
+
   #menu,
   #tags-side-menu,
   #blog-side-menu-container {
-    position: sticky;
-    max-height: 0;
-    top: 57px;
-    left: 0;
-    background-color: #eee;
-    z-index: 100;
-  }
-
-  #menu.open {
-    max-height: 50vh;
-    padding: 1rem;
-  }
-
-  #menu-toggle.show{
-    display: block;
-    opacity: 1;
-  }
-
-  #menu-toggle.position-fixed {
-    position: fixed;
-    right: 1rem;
-    top: 57px;
-    margin-block: 1rem;
-    border-radius: 50%;
-    background-color: #eeeeee56;
-    padding: 1rem;
-    border: 1px solid rgb(202, 199, 199);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .content {
-    margin: 57px 3% 7%;
-  }
-
-  #menu li {
-    cursor: pointer;
-    border-bottom: 1px solid #cdcdcd;
-  }
-
-  #overlay.blurs{
-    display: block;
+    top: 75px;
   }
 }
 
-/* responsive */
+@media all and (max-width: 1200px) {
+  .content {
+    padding-left: 150px;
+  }
+}
 
 @media all and (max-width: 1110px) {
-  #menu,
-  #tags-side-menu,
-  #blog-side-menu-container {
-    position: fixed;
-    border-bottom: 1px solid #ddd;
-  }
-
   .content {
     margin: 80px 3% 7%;
+    padding-left: 80px;
   }
 
   #boxes {
@@ -979,10 +966,6 @@ h2 a {
     font-size: 16px;
     line-height: 18px;
     font-weight: normal;
-  }
-
-  .content {
-    padding-left: 0;
   }
 
   #home-content {
@@ -1082,6 +1065,89 @@ h2 a {
   }
 }
 
+/* toc */
+@media all and (max-width: 800px) {
+  .content {
+    padding-left: 0;
+  }
+
+  #api-doc {
+    width: fit-content;
+  }
+
+  #menu,
+  #tags-side-menu,
+  #blog-side-menu-container {
+    position: fixed;
+    max-height: 0;
+    top: 57px;
+    left: 0;
+    background-color: #eee;
+    z-index: 100;
+    padding-inline: 0.5rem;
+    transition: max-height 0.4s ease;
+  }
+
+  #menu.open {
+    max-height: 75vh;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+
+  #menu-toggle.show {
+    display: block;
+    opacity: 1;
+  }
+
+  #menu-toggle.position-fixed {
+    position: fixed;
+    right: 1rem;
+    top: 57px;
+    margin-block: 1rem;
+    border-radius: 50%;
+    padding: 1rem;
+    background-color: #ffffffac;
+    border: 1px solid rgb(202, 199, 199);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:is(:hover, :active, :focus) {
+      background-color: #acbaf2ac;
+    }
+  }
+
+  #menu li {
+    cursor: pointer;
+
+    &>a {
+      display: block;
+      padding-block: 0.3rem;
+      padding-inline: 0.5rem;
+
+      &:is(:hover, :active, :focus) {
+        background-color: #dfdcdc;
+      }
+    }
+  }
+
+  #menu li ul :not(:last-child) {
+    border-bottom: 1px solid #cdcdcd;
+  }
+
+  #overlay.blurs {
+    display: block;
+  }
+
+  #menu li ul li>em {
+    font-size: 0.8rem;
+  }
+
+  .toc-title {
+    display: none;
+  }
+}
+
 
 @media all and (max-width: 540px) {
   #boxes {
@@ -1090,12 +1156,10 @@ h2 a {
 
   #menu-toggle.position-fixed {
     left: 0;
-    top: 57px;
     margin-block: 0rem;
     width: 100vw;
     padding: 0.5rem;
     border-radius: 0;
-    background-color: #eeeeeec9;
   }
 }
 
@@ -1106,6 +1170,22 @@ h2 a {
 
   #description .express {
     display: none;
+  }
+
+  #menu-toggle.position-fixed {
+    width: 105vw;
+  }
+}
+
+@media all and (max-width: 390px) {
+  #menu-toggle.position-fixed {
+    width: 110vw;
+  }
+}
+
+@media all and (max-width: 350px) {
+  #menu-toggle.position-fixed {
+    width: 140vw;
   }
 }
 

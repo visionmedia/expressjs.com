@@ -192,12 +192,13 @@ html.dark-mode table tr:first-child th {
 /* api pages */
 html.dark-mode #menu li > * {
   color: var(--dark_main_text);
+  
+  &:is(:hover,:active,:focus) {
+    color: var(--link);
+  }
 }
 html.dark-mode #menu li ul li > em {
   color: var(--dark_header_text);
-}
-html.dark-mode #menu li ul li > a {
-  color: var(--dark_inner_text);
 }
 html.dark-mode #api-doc > h3 {
   color: var(--dark_header_text);
@@ -279,10 +280,9 @@ html.dark-mode #blog-side-menu > li > a{
   color: var(--dark_inner_text);
 }
 
-@media all and (max-width: 1440px) {
+@media all and (max-width: 800px) {
   html.dark-mode #menu,
-  #tags-side-menu,
-  #blog-side-menu-container {
+  html.dark-mode #tags-side-menu,
+  html.dark-mode #blog-side-menu-container {
     background-color: var(--second_dark_bg);
-  }
 }
