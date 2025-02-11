@@ -47,12 +47,6 @@ strong, th {
   color: var(--card-fg);
 }
 
-main.home {
-  max-width: 75rem;
-  margin: 40px auto 2%;
-  padding-inline: 5%;
-}
-
 .content {
   margin: 153px 3% 7%;
   max-width: 1090px;

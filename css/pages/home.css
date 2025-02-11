@@ -1,5 +1,11 @@
 /* ---- Home Structure ---- */
 
+main.home {
+  max-width: 75rem;
+  margin: 40px auto 2%;
+  padding-inline: 5%;
+}
+
 #home-content {
   display: flex;
 }
