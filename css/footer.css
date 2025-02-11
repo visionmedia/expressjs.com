@@ -60,3 +60,20 @@ footer {
     justify-content: center;
   }
 }
+
+/* ---- i18n footer section ---- */
+
+#doc-langs {
+  text-align: center;
+  font-size: 12px;
+}
+
+#doc-langs p {
+  margin: 3px 0;
+}
+
+@media all and (max-width: 1110px) {
+  #doc-langs {
+    font-size: 11px;
+  }
+}

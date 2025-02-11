@@ -103,15 +103,6 @@ a {
  z-index: -1;
 }
 
-#doc-langs {
-  text-align: center;
-  font-size: 12px;
-}
-
-#doc-langs p {
-  margin: 3px 0;
-}
-
 /* code */
 
 code {
@@ -360,10 +351,6 @@ h2 a {
 
   .content {
     padding-left: 0;
-  }
-
-  #doc-langs {
-    font-size: 11px;
   }
 }
 
