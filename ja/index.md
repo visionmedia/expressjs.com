@@ -26,11 +26,6 @@ description: Express is a fast, unopinionated, minimalist web framework for Node
   {% include announcement/announcement-{{ page.lang }}.md %}
 </section>
 -->
-<section id="doc-langs" markdown="1">
-
-  Express の資料は、他の言語 ([スペイン語](/es)、[日本語](/ja)、[ロシア語](/ru)、[中国語](/zh-cn)、[韓国語](/ko)、[ポルトガル語](/pt-br)) でも提供されています。
-
-</section>
 
 <section id="intro">
 

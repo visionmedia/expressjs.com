@@ -21,10 +21,6 @@ description: Express is a fast, unopinionated, minimalist web framework for Node
   </div>
 </section>
 
-<!--<section id="doc-langs" markdown="1">
-  La documentation Express est disponible en : [espagnol](/es), [japonais](/ja), [russe](/ru), [chinois](/zh-cn), [coréen](/ko) et [portugais](/pt-br).
-</section>-->
-
 <section id="intro">
 
   <div id="boxes" class="clearfix">
