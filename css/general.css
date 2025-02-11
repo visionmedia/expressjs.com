@@ -11,22 +11,49 @@ body {
   color: var(--fg);
 }
 
-body.no-scroll{
+body.no-scroll {
   overflow: hidden;
 }
+
+/* ---- Content ---- */
+
+.content {
+  margin: 153px 3% 7%;
+  max-width: 1090px;
+  padding-left: 225px;
+}
+
+#page-doc *:target {
+  margin-top: -120px;
+  padding-top: 120px;
+  z-index: -1;
+}
+
+@media all and (max-width: 1110px) {
+  .content {
+    padding-left: 0;
+  }
+}
+
+/* ---- Paragraph ---- */
 
 h1 {
   font-size: 30px;
   line-height: 36px;
 }
 
-
-
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 5px 0;
   color: var(--card-fg);
   -webkit-font-smoothing: antialiased;
 
+}
+
+.h2:target {
+  display: block;
+  padding-top: 40px;
 }
 
 .content h1 {
@@ -43,21 +70,32 @@ p {
   line-height: 1.35em;
 }
 
-strong, th {
-  color: var(--card-fg);
+
+@media all and (max-width: 1110px) {
+  h1 {
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  h2 {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  h3 {
+    font-size: 16px;
+    line-height: 23px;
+    word-break: break-all;
+  }
+
+  h4 {
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+  }
 }
 
-.content {
-  margin: 153px 3% 7%;
-  max-width: 1090px;
-  padding-left: 225px;
-}
-
-span.block-section {
-  display: block;
-}
-
-/* scroll */
+/* ---- scroll ---- */
 
 *::-webkit-scrollbar {
   background-color: opacity(var(--box-fg), 0.145);
@@ -79,25 +117,14 @@ span.block-section {
   background-color: var(--menu-grey);
 }
 
-/* links */
+/* ---- links ---- */
 
 a {
   color: var(--link);
   text-decoration: none;
 }
 
-.h2:target {
-  display: block;
-  padding-top: 40px;
-}
-
-#page-doc *:target {
- margin-top: -120px;
- padding-top: 120px;
- z-index: -1;
-}
-
-/* code */
+/* ---- code ---- */
 
 code {
   background-color: var(--code-bg);
@@ -119,7 +146,18 @@ pre code {
   padding: 0;
 }
 
-/* top button */
+pre,
+code {
+  white-space: pre-wrap !important;
+}
+
+@media all and (max-width: 1110px) {
+  code {
+    word-break: break-all;
+  }
+}
+
+/* ---- top button ---- */
 
 .scroll #top {
   opacity: .5;
@@ -140,13 +178,13 @@ pre code {
   text-decoration: none;
   opacity: 0;
   transition: opacity 300ms;
-  border: 1px solid var(--border); 
+  border: 1px solid var(--border);
   background-color: var(--card-bg);
   color: var(--card-fg);
   display: none;
 }
 
-/* clearfix */
+/* ---- clearfix ---- */
 
 .clearfix:after {
   content: ".";
@@ -169,25 +207,28 @@ html[xmlns] .clearfix {
   height: 1%;
 }
 
+/* ---- Tables ---- */
 
-
-/* doc specific */
-
-.doctable, section table {
+.doctable,
+section table {
   margin: 1em 1em 1em 0;
   border: 1px solid var(--border);
   border-collapse: collapse;
   width: 100%;
 }
 
-.doctable td, .doctable th, section table td, section table th {
+.doctable td,
+.doctable th,
+section table td,
+section table th {
   padding: 7px;
   line-height: 120%;
   vertical-align: top;
   border: 1px solid var(--border);
 }
 
-.doctable tr th, section table tr th {
+.doctable tr th,
+section table tr th {
   background: var(--card-bg);
   font-size: 110%;
 }
@@ -196,7 +237,8 @@ html[xmlns] .clearfix {
   margin-top: 0;
 }
 
-.doctable td p, li p {
+.doctable td p,
+li p {
   width: 100% !important;
 }
 
@@ -204,7 +246,18 @@ html[xmlns] .clearfix {
   margin: 20px 0
 }
 
-/* doc boxes */
+th {
+  color: var(--card-fg);
+}
+
+@media all and (max-width: 1110px) {
+  .table-scroller {
+    width: 100%;
+    overflow: scroll;
+  }
+}
+
+/* ---- Admonitions ----*/
 
 .doc-box {
   padding: 16px;
@@ -226,7 +279,7 @@ html[xmlns] .clearfix {
   border-left: 3px solid var(--notice-accent);
 }
 
-.doc-notice a{
+.doc-notice a {
   color: var(--notice-accent);
   text-decoration: underline;
 }
@@ -236,7 +289,7 @@ html[xmlns] .clearfix {
   border-left: 3px solid var(--info-accent);
 }
 
-.doc-info a{
+.doc-info a {
   color: var(--info-accent);
   text-decoration: underline;
 }
@@ -250,6 +303,7 @@ html[xmlns] .clearfix {
   background: var(--warn-bg);
   border-left: 3px solid var(--warn-accent);
 }
+
 .doc-warn-title {
   color: var(--warn-accent);
 }
@@ -258,6 +312,8 @@ html[xmlns] .clearfix {
   color: var(--warn-accent);
   text-decoration: underline;
 }
+
+/* ---- i18n alert ---- */
 
 #i18n-notice-box {
   margin: 100px 3% 20px 3%;
@@ -272,25 +328,7 @@ html[xmlns] .clearfix {
   cursor: pointer;
 }
 
-/* general */
-
-.button {
-  display: block;
-  padding: 3px 5px;
-  border-radius: 3px;
-  cursor: pointer;
-  color: var(--box-fg);
-}
-
-pre, code {
-  white-space: pre-wrap !important;
-}
-
-
-/* can't find this in proj*/
-h2 a {
-  color: var(--card-fg) !important;
-}
+/* ---- 404 page ---- */
 
 .content-404 {
   height: 70vh;
@@ -305,52 +343,7 @@ h2 a {
   font-size: 16px;
 }
 
-/* responsive */
-
-@media all and (max-width: 1110px) {
-  .table-scroller {
-    width: 100%;
-    overflow: scroll;
-  }
-
-  code {
-    word-break: break-all;
-  }
-
-  ul {
-    padding-left: 5%;
-  }
-
-  h1 {
-    font-size: 22px;
-    line-height: 26px;
-  }
-
-  h2 {
-    font-size: 18px;
-    line-height: 25px;
-  }
-
-  h3 {
-    font-size: 16px;
-    line-height: 23px;
-    word-break: break-all;
-  }
-
-  h4 {
-    font-size: 16px;
-    line-height: 18px;
-    font-weight: normal;
-  }
-
-  .content {
-    padding-left: 0;
-  }
-}
-
-.hidden-dark {
-  display: block;
-}
+/* ---- Individual Elements ---- */
 
 blockquote {
   margin-left: 0;
@@ -358,4 +351,22 @@ blockquote {
   font-style: italic;
   padding-left: 1.2em;
   border-left: .25rem solid var(--border);
+}
+
+@media all and (max-width: 1110px) {
+  ul {
+    padding-left: 5%;
+  }
+}
+
+.button {
+  display: block;
+  padding: 3px 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--box-fg);
+}
+
+strong {
+  color: var(--card-fg);
 }
