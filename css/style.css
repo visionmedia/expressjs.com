@@ -334,12 +334,11 @@ pre code {
 /* top button */
 
 .scroll #top {
-  border: 1px solid var(--border); 
   opacity: .5;
+  display: initial
 }
 
-#top:hover {
-  border: 1px solid var(--border); 
+.scroll #top:hover {
   opacity: 1;
 }
 
@@ -353,11 +352,10 @@ pre code {
   text-decoration: none;
   opacity: 0;
   transition: opacity 300ms;
-  border: 2px solid var(--border);  
-}
-
-#top:hover {
-  opacity: 1;
+  border: 1px solid var(--border); 
+  background-color: var(--card-bg);
+  color: var(--card-fg);
+  display: none;
 }
 
 /* clearfix */
