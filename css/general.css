@@ -20,7 +20,7 @@ h1 {
   line-height: 36px;
 }
 
-#intro h3, #api-doc h1 {
+#api-doc h1 {
   font-weight: normal;
 }
 
@@ -55,78 +55,6 @@ main.home {
   padding-inline: 5%;
 }
 
-#home-content {
-  display: flex;
-}
-
-.en-doc #home-content {
-  margin-top: 150px;
-}
-
-#homepage-leftpane {
-  min-width: 500px;
-  margin-right: 30px;
-  font-size: 90%;
-  padding-top: 13px;
-}
-
-#homepage-rightpane {
-  min-width: 500px;
-  padding: 25px 30px 0px 0px;
-}
-
-#homepage-rightpane iframe {
-  min-width: 100%;
-  min-height: 273px;
-}
-
-#announcements {
-  margin-top: 40px;
-  padding: 0 16px;
-  background: var(--notice-bg);
-  border: 1px solid var(--notice-accent);
-  border-radius: 3px;
-  font-size: 0.9em;
-  & a {
-    color: var(--notice-accent);
-    text-decoration: underline;
-  }
-}
-
-#announcements ul {
-  padding-left: 0;
-}
-
-#announcements li {
-  list-style: none;
-  margin-bottom: 16px;
-}
-
-#announcements p {
-  margin: 6px 0;
-}
-
-#announcements time {
-  font-weight: normal;
-  margin-right: 12px;
-}
-
-.announcement-title {
-  font-weight: bold;
-  margin-bottom: 11px;
-  display: flex;
-  align-items: center;
-  column-gap: 8px
-}
-
-#install-command {
-  font-family: Consolas, Monaco, "Andale Mono", monospace;
-  padding: 5px 10px;
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  max-width: 375px;
-}
-
 .content {
   margin: 153px 3% 7%;
   max-width: 1090px;
@@ -135,11 +63,6 @@ main.home {
 
 span.block-section {
   display: block;
-}
-
-#intro h3 {
-  font-size: 25px;
-  margin-bottom: 10px;
 }
 
 #api-doc section {
@@ -216,37 +139,6 @@ a {
  margin-top: -120px;
  padding-top: 120px;
  z-index: -1;
-}
-
-#description .express {
-  display: block;
-  font: 4.5em "Helvetica Neue", "Open Sans", sans-serif;
-  font-weight: 100;
-  margin-bottom: .25em;
-}
-
-#description .express > a {
-  color: var(--card-fg);
-}
-
-#description .express a#express-version {
-  font-size: 0.2em;
-  margin-left: 0.5em;
-  color: var(--link);
-  font-weight: 400;
-}
-
-#description {
-  margin-bottom: 43px;
-  -webkit-font-smoothing: antialiased;
-}
-
-#description .description {
-  position: relative;
-  top: -5px;
-  font: 100 4.1em "Helvetica Neue", "Open Sans", sans-serif;
-  color: var(--menu-grey);
-  line-height: .87;
 }
 
 #doc-langs {
@@ -330,27 +222,7 @@ html[xmlns] .clearfix {
   height: 1%;
 }
 
-/* boxes */
 
-#boxes {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  row-gap: 20px;
-  column-gap: 50px;
-  margin-top: 30px;
-}
-
-#boxes h3 {
-  line-height: 1.25em;
-  color: var(--card-fg);
-  background: none;
-  margin-top: 0;
-  padding-top: 0;
-}
-
-#boxes div {
-  list-style: none;
-}
 
 /* doc specific */
 
@@ -599,32 +471,6 @@ h2 a {
 /* responsive */
 
 @media all and (max-width: 1110px) {
-  #boxes {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  #home-content {
-    flex-direction: column;
-  }
-
-  #install-command {
-    display: none;
-  }
-
-  #home-content .pane {
-    min-width: auto;
-    font-size: 74%;
-  }
-
-  #homepage-leftpane {
-    padding-top: 0px;
-  }
-
-  #homepage-rightpane {
-    padding-top: 0;
-    padding-right: 0;
-  }
-
   .table-scroller {
     width: 100%;
     overflow: scroll;
@@ -672,30 +518,6 @@ h2 a {
     padding-left: 0;
   }
 
-  #home-content {
-    margin: 60px 0 0 5%;
-    padding-right: 5%;
-  }
-
-  #description {
-    margin-bottom: 35px;
-  }
-
-  #description .express {
-    display: none;
-  }
-
-  #description .description {
-    font-size: 3em;
-    line-height: .9em;
-    font-weight: 200;
-  }
-
-  #install-command {
-    width: 100%;
-    margin-right: 5%;
-  }
-
   #home-menu {
     display: block;
     position: absolute;
@@ -722,27 +544,9 @@ h2 a {
   }
 }
 
-
-@media all and (max-width: 540px) {
-  #boxes {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media all and (max-width: 420px) {
   #app-settings-property {
     width: auto;
-  }
-
-  #description .express {
-    display: none;
-  }
-}
-
-@media all and (max-width: 320px) {
-
-  #install-command {
-    font-size: 12px;
   }
 }
 
