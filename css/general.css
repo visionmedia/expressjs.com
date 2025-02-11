@@ -320,14 +320,6 @@ h2 a {
   font-size: 16px;
 }
 
-/* search-bar desktop re-sizing */
-@media all and (min-width: 950px) {
-  .algolia-autocomplete {
-    margin-right:15px;
-    max-width: 12em;
-  }
-}
-
 /* responsive */
 
 @media all and (max-width: 1110px) {
@@ -370,12 +362,6 @@ h2 a {
     padding-left: 0;
   }
 
-  #home-menu {
-    display: block;
-    position: absolute;
-    top: 7px;
-  }
-
   #doc-langs {
     font-size: 11px;
   }
@@ -409,10 +395,4 @@ blockquote {
   font-style: italic;
   padding-left: 1.2em;
   border-left: .25rem solid var(--border);
-}
-
-@media all and (max-width: 1110px) {
-  .algolia-autocomplete {
-    display: none !important;
-  }
 }

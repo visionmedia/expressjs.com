@@ -90,3 +90,22 @@
     background-color: var(--hover-bg);
   }
 }
+
+@media all and (max-width: 1110px) {
+  #home-menu {
+    display: block;
+    position: absolute;
+    top: 7px;
+  }
+
+  .algolia-autocomplete {
+    display: none !important;
+  }
+}
+
+@media all and (min-width: 950px) {
+  .algolia-autocomplete {
+    margin-right:15px;
+    max-width: 12em;
+  }
+}
