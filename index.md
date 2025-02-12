@@ -7,7 +7,7 @@ lang: en
 redirect_from: "/en/index.html"
 ---
 <section id="home-content">
-  {% include header/header-{{ page.lang }}.html %}
+  {% include header.html %}
   <div id="overlay"></div>
   <div id="homepage-leftpane" class="pane">
     <section id="description">
@@ -36,7 +36,7 @@ app.listen(port, () => {
   </div>
 </section>
 <section id="announcements">
-  {% include announcement/announcement-en.md %}
+  {% include announcement.html %}
 </section>
 
 <section id="intro">
