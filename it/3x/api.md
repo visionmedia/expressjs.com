@@ -22,10 +22,7 @@ If you are unable to upgrade past 3.x, please consider [Commercial Support Optio
 
   <h1>API 3.x</h1>
 
-{% include api/en/3x/express.md %}
+<a id='application' class='h2'></a>
 {% include api/en/3x/app.md %}
-{% include api/en/3x/req.md %}
-{% include api/en/3x/res.md %}
-{% include api/en/3x/middleware.md %}
 
 </div>
