@@ -101,7 +101,7 @@ Pour ignorer les fonctions middleware issues d'une pile de middleware de routeur
 
 \*\*REMARQUE \*\*: `next('route')` ne fonctionnera qu'avec les fonctions middleware qui ont été chargées via les fonctions `app.METHOD()` ou `router.METHOD()`. %}
 
-Cet exemple illustre une sous-pile de middleware qui gère les demandes GET adressées au chemin `/user/:id`.
+Réapplique les barres obliques "/" lorsque le chemin d'accès est un répertoire.
 
 ```js
 app.get('/user/:id', (req, res, next) => {
@@ -195,7 +195,7 @@ app.use('/', router)
 
 Pour obtenir plus de détails sur la fonction `serve-static` et ses options, reportez-vous à la documentation [serve-static](https://github.com/expressjs/serve-static).
 
-Réapplique les barres obliques "/" lorsque le chemin d'accès est un répertoire.
+Cet exemple illustre une sous-pile de middleware qui gère les demandes GET adressées au chemin `/user/:id`.
 
 ```js
 const options = {
