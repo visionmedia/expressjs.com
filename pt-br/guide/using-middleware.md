@@ -130,8 +130,7 @@ app.get('/user/:id', (req, res, next) => {
 funcionar apenas em funções de middleware que são carregadas usando
 as funções `app.METHOD()` ou `router.METHOD()`. %}
 
-Este exemplo mostra uma sub-pilha de middleware que manipula
-solicitações GET no caminho `/user/:id`.
+Redireciona para o "/" final quando o caminho do arquivo é um diretório.
 
 ```js
 app.get('/user/:id', (req, res, next) => {
@@ -229,7 +228,8 @@ app.use('/', router)
 
 Para obter mais detalhes sobre a função `serve-static` e suas opções, consulte: documentação do[serve-static](https://github.com/expressjs/serve-static).
 
-Redireciona para o "/" final quando o caminho do arquivo é um diretório.
+Este exemplo mostra uma sub-pilha de middleware que manipula
+solicitações GET no caminho `/user/:id`.
 
 ```js
 const options = {
