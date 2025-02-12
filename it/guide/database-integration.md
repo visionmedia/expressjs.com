@@ -60,7 +60,7 @@ client.execute('select key from system.local', function(err, result) {
 
 **Module**: [couchnode](https://github.com/couchbase/couchnode)
 
-### Installazione
+### **Modulo**: **Installazione**&#xA;[pg](https://github.com/brianc/node-postgres)
 
 ```bash
 <a name="couchdb"></a>
@@ -98,7 +98,7 @@ bucket.query(query, [13], (err, result) => {
 **Modulo**: **Installazione**
 [nano](https://github.com/dscape/nano)
 
-### Installation
+### <a name="postgres"></a>
 
 ```bash
 $ npm install nano
@@ -163,7 +163,7 @@ db.put('name', 'LevelUP', function (err) {
 **Modulo**: **Installazione**
 [mysql](https://github.com/felixge/node-mysql/)
 
-### **Modulo**: **Installazione**&#xA;[pg](https://github.com/brianc/node-postgres)
+### <a name="elasticsearch"></a>
 
 ```bash
 $ npm install mysql
@@ -197,7 +197,7 @@ connection.end();
 **Modulo**: **Installazione**
 [mongodb](https://github.com/mongodb/node-mongodb-native)
 
-### <a name="elasticsearch"></a>
+### <a name="oracle"></a>
 
 ```bash
 $ npm install mongodb
@@ -244,7 +244,7 @@ console.log(fail);
 }
 ); </code>
 
-### Installation
+### **Modulo**: **Installazione**&#xA;[apoc](https://github.com/hacksparrow/apoc)
 
 ```bash
 <a name="neo4j"></a>
@@ -455,7 +455,7 @@ function executeStatement () {
 **Modulo**: **Installazione**
 [sqlite3](https://github.com/mapbox/node-sqlite3)
 
-### <a name="oracle"></a>
+### <a name="sqlite"></a>
 
 ```bash
 $ npm install sqlite3
@@ -494,7 +494,7 @@ db.close();
 **Modulo**: **Installazione**
 [elasticsearch](https://github.com/elastic/elasticsearch-js)
 
-### <a name="sqlite"></a>
+### Installazione
 
 ```bash
 $ npm install elasticsearch
