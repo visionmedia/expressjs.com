@@ -100,7 +100,7 @@ Para omitir el resto de las funciones de middleware de una pila de middleware de
 
 **NOTA**: `next('route')` sólo funcionará en las funciones de middleware que se hayan cargado utilizando las funciones `app.METHOD()` o `router.METHOD()`. %}
 
-Redireccionar a la "/" final cuando el nombre de vía de acceso es un directorio.
+Este ejemplo muestra una subpila de middleware que maneja solicitudes GET a la vía de acceso `/user/:id`.
 
 ```js
 app.get('/user/:id', (req, res, next) => {
@@ -194,7 +194,7 @@ app.use('/', router)
 
 Para obtener más detalles sobre la función `serve-static` y sus opciones, consulte la documentación de [serve-static](https://github.com/expressjs/serve-static).
 
-Este ejemplo muestra una subpila de middleware que maneja solicitudes GET a la vía de acceso `/user/:id`.
+Redireccionar a la "/" final cuando el nombre de vía de acceso es un directorio.
 
 ```js
 const options = {
