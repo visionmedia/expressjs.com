@@ -100,7 +100,7 @@ Wenn Sie den Rest der Middlewarefunktionen eines Weiterleitungs-Middleware-Stack
 
 **HINWEIS**: `next('route')` funktioniert nur in Middlewarefunktionen, die über die Funktionen `app.METHOD()` oder `router.METHOD()` geladen wurden. %}
 
-Umleitung zu einem abschließenden "/", wenn der Pfadname ein Verzeichnis ist.
+Dieses Beispiel zeigt einen Middleware-Sub-Stack, über den GET-Anforderungen zum Pfad `/user/:id` verarbeitet werden.
 
 ```js
 app.get('/user/:id', (req, res, next) => {
@@ -195,7 +195,7 @@ app.use('/', router)
 To skip the rest of the router's middleware functions, call `next('router')`
 to pass control back out of the router instance.
 
-Dieses Beispiel zeigt einen Middleware-Sub-Stack, über den GET-Anforderungen zum Pfad `/user/:id` verarbeitet werden.
+Umleitung zu einem abschließenden "/", wenn der Pfadname ein Verzeichnis ist.
 
 ```js
 const options = {
