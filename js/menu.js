@@ -137,60 +137,31 @@ document
 	?.classList.add("current");
 
 // TOC
-// ! important note add scroll observer element common to all pages that include TOC component 👇🏻 remove id to "scroll-observer"
 const tocSubMenu = document.querySelectorAll("#menu > li > ul");
-const firstHeader = document.getElementById("express");
-let observer;
 
-
-// Scroll observer (perform better than window scroll event listener)
-function createScrollObserver() {
-  if (observer) observer.disconnect();
-
-  let options = {
-    root: null, // Observe relative to viewport
-    rootMargin: "-57px 0px 0px 0px", // Slight offset to ensure intersection triggers correctly
-    threshold: 0, // Trigger when the element is fully out of view (i.e. behind header)
-  };
-
-  observer = new IntersectionObserver(handleIntersect, options);
-  // observe intersection of TOC btn with header bar
-  observer.observe(firstHeader);
-}
-
-// Update toc button visibility based on screen size
+// TOC btn Visibility using scroll event
 function updateTocVisibility() {
 	if (isTocScreen) {
-	  overlay?.classList.remove("blurs")
-	  tocList?.classList.remove("open");
+	  document.addEventListener("scroll", handleScroll);
 	  toggleBtn?.classList.add("show");
-	  createScrollObserver();
 	} else {
+	  document.removeEventListener("scroll", handleScroll);
 	  toggleBtn?.classList.remove("show");
-	  if (observer) observer.disconnect();
 	}
   }
 
-function handleIntersect(entries) {
-  const [entry] = entries
-  const clientWidth = entry.boundingClientRect.width
-  // first header in invisible then show floating TOC btn
-  if(!entry.isIntersecting) {
-		if(toggleBtn) {
-			if(clientWidth >= 540) {
-				toggleBtn.innerHTML = "&#x25BC"; 
-			} else {
-				toggleBtn.innerHTML = "Table of content &#x25BC";
-			};
-		}
-		toggleBtn?.classList.add("position-fixed");
-	};
-  // first header is visible then show static TOC btn 
-  if(entry.isIntersecting) {
-		if(toggleBtn) toggleBtn.innerHTML = "Table of content &#x25BC";
-		toggleBtn?.classList.remove("position-fixed");
-  };
-};
+function handleScroll() {
+	const firstHeader = document.getElementById("express");
+	if (!firstHeader) return;
+	const headerRect = firstHeader.getBoundingClientRect();
+	if (headerRect.top < 0) {
+	  toggleBtn?.classList.add("position-fixed");
+	  toggleBtn.innerHTML = window.innerWidth >= 540 ? "&#x25BC" : "Table of content &#x25BC";
+	} else {
+	  toggleBtn?.classList.remove("position-fixed");
+	  toggleBtn.innerHTML = "Table of content &#x25BC";
+	}
+  }
 
 // Show toc button on page load
 updateTocVisibility();
@@ -209,7 +180,7 @@ toggleBtn?.addEventListener("click", () => {
   toggleBtn?.classList.remove("show");
 });
 
-// Close menu on link click
+// Close toc on link click on small screen
 document.querySelectorAll("#menu > li > ul a").forEach((link) => {
   link.addEventListener("click", function () {
    if(isTocScreen) {
@@ -221,14 +192,39 @@ document.querySelectorAll("#menu > li > ul a").forEach((link) => {
   });
 });
 
-// open sub toc content on click
-document.querySelectorAll("#menu > li > a").forEach((link) => {
+// Close TOC on small screens when a link is clicked
+document.querySelectorAll("#menu > li > ul a").forEach((link) => {
 	link.addEventListener("click", function () {
-		  tocSubMenu.forEach((subMenu) => {
-			!link?.classList.contains("active") && subMenu?.classList.remove("active");
-		  });
-		  const closestLiParent = link.closest("li");
-		  const childUlSubMenu = closestLiParent.children[1];
-		  childUlSubMenu?.classList.toggle("active");
+	  if (isTocScreen) {
+		tocList?.classList.remove("open");
+		overlay?.classList.remove("blurs");
+		document.body.classList.remove("no-scroll");
+		toggleBtn?.classList.add("show");
+	  }
 	});
-});
+  });
+  
+  // Open/Close sub TOC content on click
+  document.querySelectorAll("#menu > li > a").forEach((link) => {
+	link.addEventListener("click", function (event) {
+	  event.preventDefault(); // stop navigation to submenu
+  
+	  // Find the closest parent <li>
+	  const closestLiParent = link.closest("li");
+	  const childUlSubMenu = closestLiParent.children[1];
+  
+	  // If submenu is already active, remove "active" class (toggle behavior)
+	  if (childUlSubMenu?.classList.contains("active")) {
+		childUlSubMenu.classList.remove("active");
+	  } else {
+		// Remove "active" from all other submenus
+		document.querySelectorAll("#menu > li > ul").forEach((subMenu) => {
+		  subMenu.classList.remove("active");
+		});
+  
+		// Add "active" to the clicked submenu
+		childUlSubMenu?.classList.add("active");
+	  }
+	});
+  });
+  
