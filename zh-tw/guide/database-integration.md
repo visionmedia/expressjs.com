@@ -41,7 +41,7 @@ search on the [npm](https://www.npmjs.com/) site.
 $ npm install cassandra-driver
 ```
 
-### <a name="redis"></a>
+### **範例**
 
 ```js
 <code class="language-javascript" translate="no">
@@ -447,7 +447,7 @@ function executeStatement () {
 $ npm install sqlite3
 ```
 
-### 資料庫整合
+### <a name="redis"></a>
 
 ```js
 <code class="language-javascript" translate="no">
@@ -486,7 +486,7 @@ db.close();
 $ npm install elasticsearch
 ```
 
-### **範例**
+### 資料庫整合
 
 ```js
 <code class="language-javascript" translate="no">
