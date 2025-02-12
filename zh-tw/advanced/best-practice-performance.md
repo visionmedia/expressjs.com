@@ -16,13 +16,13 @@ redirect_from: /advanced/best-practice-performance.html
 This topic clearly falls into the "devops" world, spanning both traditional development and operations. Accordingly, the information is divided into two parts:
 
 - Things to do in your code (the dev part):
-  - Gzip 壓縮可以大幅減少回應內文的大小，從而提高 Web 應用程式的速度。請使用 [compression](https://www.npmjs.com/package/compression) 中介軟體，在您的 Express 應用程式中進行 gzip 壓縮。例如：
+  - 採用 gzip 壓縮
   - [Don't use synchronous functions](#dont-use-synchronous-functions)
   - [Do logging correctly](#do-logging-correctly)
   - [Handle exceptions properly](#handle-exceptions-properly)
 - Things to do in your environment / setup (the ops part):
   - 將 NODE_ENV 設為 "production"
-  - 在應用程式當機時（不論任何原因），自動重新啟動。
+  - 確定您的應用程式自動重新啟動
   - [Run your app in a cluster](#run-your-app-in-a-cluster)
   - [Cache request results](#cache-request-results)
   - 使用負載平衡器
@@ -32,7 +32,7 @@ This topic clearly falls into the "devops" world, spanning both traditional deve
 
 以下是您可以在程式碼中執行的一些作法，藉以改良您應用程式的效能：
 
-- 採用 gzip 壓縮
+- Gzip 壓縮可以大幅減少回應內文的大小，從而提高 Web 應用程式的速度。請使用 [compression](https://www.npmjs.com/package/compression) 中介軟體，在您的 Express 應用程式中進行 gzip 壓縮。例如：
 - [Don't use synchronous functions](#dont-use-synchronous-functions)
 - [Do logging correctly](#do-logging-correctly)
 - [Handle exceptions properly](#handle-exceptions-properly)
@@ -166,7 +166,7 @@ The `wrap()` function is a wrapper that catches rejected promises and calls `nex
 以下是您可以在系統環境中執行的一些作法，藉以改良您應用程式的效能：
 
 - NODE_ENV 環境變數用來指定應用程式的執行環境（通常是開發或正式作業）。若要改良效能，其中一個最簡單的作法是將 NODE_ENV 設為 "production"。
-- 確定您的應用程式自動重新啟動
+- 在應用程式當機時（不論任何原因），自動重新啟動。
 - [Run your app in a cluster](#run-your-app-in-a-cluster)
 - [Cache request results](#cache-request-results)
 - 負載平衡器通常是一個反向 Proxy，負責協調與多個應用程式實例和伺服器之間的資料流量。利用 [Nginx](http://nginx.org/en/docs/http/load_balancing.html) 或 [HAProxy](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts)，就能輕鬆設定您應用程式的負載平衡器。
