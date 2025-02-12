@@ -1085,11 +1085,11 @@ h2 a {
     background-color: #eee;
     z-index: 100;
     padding-inline: 0.5rem;
-    transition: max-height 0.4s ease;
+    transition: max-height 0.5s ease;
   }
 
   #menu.open {
-    max-height: 75vh;
+    max-height: 50dvh;
     padding: 1rem;
     border-bottom: 1px solid #ddd;
   }
@@ -1173,13 +1173,13 @@ h2 a {
   }
 
   #menu-toggle.position-fixed {
-    width: 105vw;
+    width: 110vw;
   }
 }
 
 @media all and (max-width: 390px) {
   #menu-toggle.position-fixed {
-    width: 110vw;
+    width: 115vw;
   }
 }
 
