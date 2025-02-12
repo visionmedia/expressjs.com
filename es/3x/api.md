@@ -22,10 +22,7 @@ Si no puedes actualizar más allá de la versión 3.x, por favor considera [Opci
 
   <h1>API de 3.x</h1>
 
-{% include api/en/3x/express.md %}
+<a id='application' class='h2'></a>
 {% include api/en/3x/app.md %}
-{% include api/en/3x/req.md %}
-{% include api/en/3x/res.md %}
-{% include api/en/3x/middleware.md %}
 
 </div>
