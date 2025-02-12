@@ -16,12 +16,12 @@ Cet article traite des meilleures pratiques en termes de performances et de fiab
 La présente rubrique s'inscrit clairement dans le concept "devops", qui couvre à la fois le développement traditionnel et l'exploitation. Ainsi, les informations se divisent en deux parties :
 
 - Things to do in your code (the dev part):
-  - Utiliser la compression gzip
+  - Utiliser le middleware pour exploiter les fichiers statiques
   - Ne pas utiliser les fonctions synchrones
   - [Do logging correctly](#do-logging-correctly)
   - <a name="exceptions"></a>
 - [A faire dans votre environnement/configuration](#env) (partie exploitation, "ops").
-  - <a name="env"></a>
+  - Définir NODE_ENV sur "production"
   - Utilisez plutôt le middleware [serve-static](https://www.npmjs.com/package/serve-static) (ou tout middleware équivalent), qui est optimisé pour l'utilisation des fichiers dans les applications Express.
   - [A faire dans votre code](#code) (partie développement, "dev").
   - [Cache request results](#cache-request-results)
@@ -32,7 +32,7 @@ La présente rubrique s'inscrit clairement dans le concept "devops", qui couvre 
 
 Les actions suivantes peuvent être réalisées dans votre code afin d'améliorer les performances de votre application :
 
-- Utiliser le middleware pour exploiter les fichiers statiques
+- Utiliser la compression gzip
 - [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
 - [Do logging correctly](#do-logging-correctly)
 - Traiter correctement les exceptions
@@ -165,7 +165,7 @@ Error Handling in Express with Promises, Generators and ES7.
 
 Les actions suivantes peuvent être réalisées dans votre environnement système afin d'améliorer les performances de votre application :
 
-- Définir NODE_ENV sur "production"
+- <a name="env"></a>
 - Vérifier que votre application redémarre automatiquement
 - Exécuter votre application dans un cluster
 - [Cache request results](#cache-request-results)
