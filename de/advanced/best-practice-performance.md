@@ -16,13 +16,13 @@ In diesem Beitrag werden Best Practices in Bezug auf Leistung und Zuverlässigke
 Dieses Thema gehört sicherlich zur "DevOps"-Welt und deckt traditionelle Entwicklungs- und Betriebsprozesse ab. Entsprechend sind die Informationen hier in zwei Teile unterteilt:
 
 - Things to do in your code (the dev part):
-  - GZIP-Komprimierung verwenden
+  - Für statische Dateien Middleware verwenden
   - Keine synchronen Funktionen verwenden
   - [Do logging correctly](#do-logging-correctly)
   - [Handle exceptions properly](#handle-exceptions-properly)
 - Things to do in your environment / setup (the ops part):
-  - [Empfehlungen für Maßnahmen an Ihrer Umgebung/Ihrem Setup](#env) (Betrieb).
-  - [Empfehlungen für Maßnahmen an Ihrem Code](#code) (Entwicklung).
+  - NODE_ENV auf "production" festlegen
+  - Automatischen Neustart Ihrer Anwendung sicherstellen
   - Anwendung in einem Cluster ausführen
   - Anforderungsergebnisse im Cache speichern
   - Load Balancer verwenden
@@ -32,7 +32,7 @@ Dieses Thema gehört sicherlich zur "DevOps"-Welt und deckt traditionelle Entwic
 
 Dies sind einige Beispiele für Maßnahmen, die Sie an Ihrem Code vornehmen können, um die Anwendungsleistung zu verbessern:
 
-- Für statische Dateien Middleware verwenden
+- GZIP-Komprimierung verwenden
 - [Asynchrone Fehlerbehandlung in Express mit "Promises", Generatoren und ES7](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
 - [Do logging correctly](#do-logging-correctly)
 - [Handle exceptions properly](#handle-exceptions-properly)
@@ -165,8 +165,8 @@ Error Handling in Express with Promises, Generators and ES7.
 
 Dies sind einige Beispiele für Maßnahmen, die Sie an Ihrer Systemumgebung vornehmen können, um die Anwendungsleistung zu verbessern:
 
-- NODE_ENV auf "production" festlegen
-- Automatischen Neustart Ihrer Anwendung sicherstellen
+- [Empfehlungen für Maßnahmen an Ihrer Umgebung/Ihrem Setup](#env) (Betrieb).
+- [Empfehlungen für Maßnahmen an Ihrem Code](#code) (Entwicklung).
 - Wenn Sie StrongLoop Process Manager verwenden, können Sie auch die [Umgebungsvariable festlegen, wenn Sie StrongLoop Process Manager als Service installieren](https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-Setenvironmentvariables).
 - <a name="try-catch"></a>
 - StrongLoop Process Manager mit einem Nginx Load Balancer verwenden
