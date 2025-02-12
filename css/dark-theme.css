@@ -275,14 +275,22 @@ html.dark-mode .blog-excerpt{
 }
 html.dark-mode #blog-side-menu-container h3 a{
   color: var(--dark_header_text);
+
+  &:is(:hover,:active,:focus) {
+    color: var(--link);
+  }
 }
 html.dark-mode #blog-side-menu > li > a{
   color: var(--dark_inner_text);
+
+  &:is(:hover,:active,:focus) {
+    color: var(--link);
+  }
 }
 
 @media all and (max-width: 800px) {
   html.dark-mode #menu,
   html.dark-mode #tags-side-menu,
-  html.dark-mode #blog-side-menu-container {
+  html.dark-mode #blog-side-menu {
     background-color: var(--second_dark_bg);
 }
