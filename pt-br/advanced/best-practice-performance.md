@@ -27,7 +27,7 @@ Este tópico se enquadra claramente no mundo de "devops", abordando o desenvolvi
     de inicialização. Isto é de certa forma mais simples, mas você não
     obtém as vantagens adicionais do uso de um gerenciador de processos.
   - Execute seu aplicativo em um cluster
-  - Armazene em cache os resultados das solicitações
+  - <a name="try-catch"></a>
   - Use um balanceador de carga
   - Use um proxy reverso
 
@@ -225,7 +225,7 @@ A seguir serão apresentados alguns itens que podem ser feitos no seu ambiente d
 - Assegure que o seu aplicativo reinicie automaticamente
 - Ao invés disso, use o middleware [serve-static](https://www.npmjs.com/package/serve-static)
   (ou algo equivalente), que é otimizado para a entrega de arquivos para os aplicativos do Express.
-- <a name="try-catch"></a>
+- Armazene em cache os resultados das solicitações
 - Usando o StrongLoop PM com um balanceador de carga Nginx
 - Uma opção ainda melhor é usar um proxy reverso para entregar
   arquivos estáticos; consulte Use um proxy
