@@ -5,3 +5,4 @@ files:
     translation: /%two_letters_code%/**/%original_file_name%
   - source: /_data/en/**/*.*
     translation: /_data/%two_letters_code%/**/%original_file_name%
+preserve_hierarchy: true
