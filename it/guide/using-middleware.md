@@ -101,7 +101,7 @@ app.get('/user/:id', (req, res, next) => {
 
 **NOTA**: `next('route')` funzionerà solo in funzioni middleware che sono state caricate utilizzando le funzioni `app.METHOD()` o `router.METHOD()`. %}
 
-L'argomento `root` specifica la directory root da cui fornire gli asset statici.
+Questo esempio presenta un sotto-stack middleware che gestisce richieste GET nel percorso `/user/:id`.
 
 ```js
 app.get('/user/:id', (req, res, next) => {
@@ -195,7 +195,7 @@ app.use('/', router)
 
 Per ulteriori dettagli sulla funzione `serve-static` e sulle relative opzioni, consultare: documentazione [serve-static](https://github.com/expressjs/serve-static).
 
-Questo esempio presenta un sotto-stack middleware che gestisce richieste GET nel percorso `/user/:id`.
+L'argomento `root` specifica la directory root da cui fornire gli asset statici.
 
 ```js
 const options = {
