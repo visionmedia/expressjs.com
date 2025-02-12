@@ -161,10 +161,8 @@ function handleScroll() {
 	const headerRect = firstHeader.getBoundingClientRect();
 	if (headerRect.top < 0) {
 	  toggleBtn?.classList.add("position-fixed");
-	  toggleBtn.innerHTML = window.innerWidth >= 540 ? "&#x25BC" : "Table of content &#x25BC";
 	} else {
 	  toggleBtn?.classList.remove("position-fixed");
-	  toggleBtn.innerHTML = "Table of content &#x25BC";
 	}
   }
 

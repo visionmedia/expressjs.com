@@ -682,7 +682,7 @@ footer {
 
 #menu li > * {
   &:is(:hover,:active,:focus) {
-    color: var(--main_dark_bg);
+    color: var(--hover-fg);
   }
 }
 
@@ -690,7 +690,6 @@ footer {
   position: fixed;
   top: 110px;
   right: 170px;
-  margin-inline: 0.5rem;
   font-size: 1rem;
 }
 
@@ -716,7 +715,8 @@ color: var(--fg)
 
 #menu em {
   font-weight: bold;
-  color: var(--card-fg);
+  color: var(--menu-em);
+  font-size: 1rem;
 }
 
 #menu li {
@@ -743,24 +743,21 @@ color: var(--fg)
 }
 
 #blog-side-menu > li > a {
-  color: #666;
+  color: var(--menu-grey);
 
   &:is(:hover,:active,:focus) {
-    color: var(--main_dark_bg);
+    color: var(--link);
   }
 }
 
 #blog-side-menu-container > h3 > a  {
-  color: #353535;
+  color: var(--menu-grey);
 
   &:is(:hover,:active,:focus) {
-    color: var(--main_dark_bg);
+    color: var(--link);
   }
 }
 
-
-
-#menu ul a,
 #tags-side-menu ul a {
   color: #555;
   padding-right: 7px;
@@ -882,7 +879,12 @@ h2 a {
 /* toc title */
 .toc-title {
   display: block;
-  font-size: 1rem;
+
+  & > em {
+    font-weight: bold;
+    color: var(--menu-em);
+    font-size: 1rem;
+  }
 }
 
 
@@ -1117,7 +1119,7 @@ h2 a {
     max-height: 0;
     top: 57px;
     left: 0;
-    background-color: #eee;
+    background-color: var(--card-bg);
     padding-inline: 0.5rem;
     transition: max-height 0.5s ease;
   }
@@ -1129,7 +1131,7 @@ h2 a {
   #menu.open {
     max-height: 50dvh;
     padding: 1rem;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border);
     z-index: 100;
   }
 
@@ -1137,7 +1139,7 @@ h2 a {
     max-width: 100%;
     max-height: fit-content;
     margin-inline: 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border);
     z-index: 100;
     padding: 1rem;
   }
@@ -1151,14 +1153,8 @@ h2 a {
     position: fixed;
     right: 1rem;
     top: 57px;
-    margin-block: 1rem;
-    border-radius: 50%;
-    padding: 1rem;
     background-color: #ffffffac;
     border: 1px solid rgb(202, 199, 199);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     &:is(:hover, :active, :focus) {
       background-color: #acbaf2ac;
@@ -1167,7 +1163,6 @@ h2 a {
 
   #menu li {
     cursor: pointer;
-
     &>a {
       display: block;
       padding-block: 0.3rem;
@@ -1181,7 +1176,7 @@ h2 a {
 
   #menu li ul :not(:last-child),
   #blog-side-menu li:not(:last-child) {
-    border-bottom: 1px solid #cdcdcd;
+    border-bottom: 1px solid var(--border);
   }
 
   #overlay.blurs {
