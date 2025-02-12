@@ -40,8 +40,7 @@ corrigidas na versão da atualização especificadas.
   - Corrigida a vulnerabilidade de divulgação do caminho
     raiz no `express.static`, `res.sendfile`, e `res.sendFile`
 - 4.10.7
-  - Corrigida a vulnerabilidade de redirecionamento aberto
-    no `express.static` ([recomendação](https://npmjs.com/advisories/35),
+  - Corrigida a vulnerabilidade de redirecionamento aberto no `express.static` ([recomendação](https://npmjs.com/advisories/35),
     [CVE-2015-1164](http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1164)).
 - 4.8.8
   - Corrigida a vulnerabilidade de travessia de diretório no `express.static` ([recomendação](http://npmjs.com/advisories/32), [CVE-2014-6394](http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6394)).
@@ -70,7 +69,8 @@ If you are unable to upgrade past 3.x, please consider [Commercial Support Optio
   - Corrigida a vulnerabilidade de divulgação do caminho raiz no `express.static`,
     `res.sendfile`, e `res.sendFile`
 - 3.19.0
-  - Corrigida a vulnerabilidade de redirecionamento aberto no `express.static` ([recomendação](https://npmjs.com/advisories/35),
+  - Corrigida a vulnerabilidade de redirecionamento aberto
+    no `express.static` ([recomendação](https://npmjs.com/advisories/35),
     [CVE-2015-1164](http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1164)).
 - 3.16.10
   - Corrigida a vulnerabilidade de travessia de diretório no `express.static`.
