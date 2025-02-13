@@ -123,7 +123,7 @@ However, try-catch works only for synchronous code. Because the Node platform is
 When an error is thrown in an `async` function or a rejected promise is awaited inside an `async` function, those errors will be passed to the error handler as if calling `next(err)`
 
 ```js
-app.get('/', (req, res, next) => {
+app.get('/', async (req, res, next) => {
   const data = await userData() // If this promise fails, it will automatically call `next(err)` to handle the error.
 
   res.send(data)
