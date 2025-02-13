@@ -138,10 +138,10 @@ Also, you can use asynchronous functions for your middleware, and the router wil
 
 ```js
 app.use(async (req, res, next) => {
-  req.locals.user = await getUser(req);
+  req.locals.user = await getUser(req)
 
-  next(); // This will be called if the promise does not throw an error.
-});
+  next() // This will be called if the promise does not throw an error.
+})
 ```
 
 Best practice is to handle errors as close to the site as possible. So while this is now handled in the router, it’s best to catch the error in the middleware and handle it without relying on separate error-handling middleware
