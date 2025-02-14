@@ -160,7 +160,7 @@ Here are some things you can do in your system environment to improve your app's
 
 ### Set NODE_ENV to "production"
 
-The NODE_ENV environment variable specifies the environment in which an application is running (usually, development or production). One of the simplest things you can do to improve performance is to set NODE_ENV to "production".
+The NODE_ENV environment variable specifies the environment in which an application is running (usually, development or production). One of the simplest things you can do to improve performance is to set NODE_ENV to `production`.
 
 Setting NODE_ENV to "production" makes Express:
 
