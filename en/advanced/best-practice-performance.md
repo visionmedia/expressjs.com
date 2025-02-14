@@ -144,7 +144,7 @@ app.use(async (req, res, next) => {
 })
 ```
 
-Best practice is to handle errors as close to the site as possible. So while this is now handled in the router, it’s best to catch the error in the middleware and handle it without relying on separate error-handling middleware
+Best practice is to handle errors as close to the site as possible. So while this is now handled in the router, it’s best to catch the error in the middleware and handle it without relying on separate error-handling middleware.
 
 ## Things to do in your environment / setup 
 {#in-environment}
