@@ -202,7 +202,7 @@ In addition to restarting your app when it crashes, a process manager can enable
 * Modify settings dynamically to improve performance.
 * Control clustering (pm2).
 
-Historically, it was popular to use a Node.js process manager like [PM2](https://github.com/Unitech/pm2). See their documentation if you wish to do this. However, modern best practices have changed, and we now recommend using your system's init for process management
+Historically, it was popular to use a Node.js process manager like [PM2](https://github.com/Unitech/pm2). See their documentation if you wish to do this. However, modern best practices have changed, and we now recommend using your init system for process management
 
 #### Use an init system
 
