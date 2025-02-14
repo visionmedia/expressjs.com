@@ -69,7 +69,7 @@ If you're logging for purposes of debugging, then instead of using `console.log(
 
 #### For app activity
 
-If you're logging app activity (for example, tracking traffic or API calls), instead of using `console.log()`, use a logging library like [Pino](https://www.npmjs.com/package/pino). There are more packages with the same purpose, you can check the LogRocket blog post ['Comparing Node.js logging tools'](https://blog.logrocket.com/comparing-node-js-logging-tools/) for a comparison between these packages and others.
+If you're logging app activity (for example, tracking traffic or API calls), instead of using `console.log()`, use a logging library like [Pino](https://www.npmjs.com/package/pino), which is the fastest and most efficient option available.
 
 ### Handle exceptions properly
 
@@ -202,11 +202,7 @@ In addition to restarting your app when it crashes, a process manager can enable
 * Modify settings dynamically to improve performance.
 * Control clustering (pm2).
 
-The most popular process managers for Node are as follows:
-
-* [PM2](https://github.com/Unitech/pm2)
-
-Using any of these process managers will suffice to keep your application up, even if it does crash from time to time.
+Historically, it was popular to use a Node.js process manager like [PM2](https://github.com/Unitech/pm2). See their documentation if you wish to do this. However, modern best practices have changed, and we now recommend using your system's init for process management
 
 #### Use an init system
 
