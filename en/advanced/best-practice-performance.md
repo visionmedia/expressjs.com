@@ -144,7 +144,7 @@ app.use(async (req, res, next) => {
 })
 ```
 
-Best practice is to handle errors as close to the site as possible. So while this is now handled in the router, it’s best to catch the error in the middleware and handle it without relying on separate error-handling middleware
+Best practice is to handle errors as close to the site as possible. So while this is now handled in the router, it’s best to catch the error in the middleware and handle it without relying on separate error-handling middleware.
 
 ## Things to do in your environment / setup 
 {#in-environment}
@@ -206,7 +206,7 @@ Historically, it was popular to use a Node.js process manager like [PM2](https:/
 
 #### Use an init system
 
-The next layer of reliability is to ensure that your app restarts when the server restarts. Systems can still go down for a variety of reasons. To ensure that your app restarts if the server crashes, use the init system built into your OS. The main init systems in use today is [systemd](https://wiki.debian.org/systemd).
+The next layer of reliability is to ensure that your app restarts when the server restarts. Systems can still go down for a variety of reasons. To ensure that your app restarts if the server crashes, use the init system built into your OS. The main init system in use today is [systemd](https://wiki.debian.org/systemd).
 
 There are two ways to use init systems with your Express app:
 
