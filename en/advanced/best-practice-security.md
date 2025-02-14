@@ -86,7 +86,7 @@ Helmet is a middleware function that sets security-related HTTP response headers
 - `Cross-Origin-Opener-Policy`: Helps process-isolate your page
 - `Cross-Origin-Resource-Policy`: Blocks others from loading your resources cross-origin
 - `Origin-Agent-Cluster`: Changes process isolation to be origin-based
-- `Referrer-Policy`: Controls the [`Referer`][https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer] header
+- `Referrer-Policy`: Controls the [`Referer`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer) header
 - `Strict-Transport-Security`: Tells browsers to prefer HTTPS
 - `X-Content-Type-Options`: Avoids [MIME sniffing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#mime_sniffing)
 - `X-DNS-Prefetch-Control`: Controls DNS prefetching
