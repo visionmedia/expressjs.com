@@ -129,8 +129,8 @@ app.get('/', async (req, res, next) => {
   res.send(data)
 })
 
-app.use((error, req, res, next) => {
-  res.status(error.status ?? 500).send({ error: error.message })
+app.use((err, req, res, next) => {
+  res.status(err.status ?? 500).send({ error: err.message })
 })
 ```
 
