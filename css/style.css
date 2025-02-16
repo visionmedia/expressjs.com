@@ -1087,10 +1087,6 @@ h2 a {
 
 /* toc */
 @media all and (max-width: 800px) {
-  .content {
-    padding-left: 0;
-  }
-
   #api-doc,
   #blog-doc {
     width: fit-content;
@@ -1116,6 +1112,8 @@ h2 a {
     padding: 1rem;
     border-bottom: 1px solid var(--border);
     z-index: 100;
+    max-width: 100%;
+    margin-top: 0;
   }
 
   #blog-side-menu.open {
@@ -1125,6 +1123,7 @@ h2 a {
     border-bottom: 1px solid var(--border);
     z-index: 100;
     padding: 1rem;
+    margin-top: 0;
   }
 
   #menu-toggle.show {
@@ -1132,12 +1131,16 @@ h2 a {
     opacity: 1;
   }
 
-  #menu-toggle.position-fixed {
+  #menu-toggle {
     position: fixed;
-    right: 1rem;
     top: 57px;
     background-color: #ffffffac;
     border: 1px solid rgb(202, 199, 199);
+    left: 0;
+    margin-block: 0rem;
+    width: 100vw;
+    padding: 0.5rem;
+    border-radius: 0;
 
     &:is(:hover, :active, :focus) {
       background-color: #acbaf2ac;
@@ -1179,14 +1182,6 @@ h2 a {
 @media all and (max-width: 540px) {
   #boxes {
     grid-template-columns: 1fr;
-  }
-
-  #menu-toggle.position-fixed {
-    left: 0;
-    margin-block: 0rem;
-    width: 100vw;
-    padding: 0.5rem;
-    border-radius: 0;
   }
 }
 
