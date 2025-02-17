@@ -141,19 +141,13 @@ main.home {
 
 .content {
   margin: 153px auto 7%;
-  max-width: 1090px;
-  padding-inline: 3%;
+  max-width: 1200px;
+  display: flex;
+  gap: 3rem;
 }
 
 #page-doc {
   padding-inline: 16px;
-}
-
-.content.api, .content.blog {
-  width: 100%;
-  gap: 28px;
-  display: flex;
-  margin-top: 153px;
 }
 
 span.block-section {
@@ -616,6 +610,13 @@ footer {
   gap: 20px;
 }
 
+/* api doc */
+
+#api-doc {
+  padding-inline-start: 10rem;
+  width: 60vw;
+}
+
 
 /* dropdown menu */
 
@@ -675,41 +676,26 @@ footer {
   display: none;
 }
 
-/* secondary menu */
+/* TOC side menu */
 
-#menu,
-#tags-side-menu,
-#blog-side-menu {
+#menu {
   position: sticky;
-  min-width: 210px;
+  min-width: 17vw;
   padding-inline: 0.5rem;
-  top: 0;
+  top: 153px;
   font-size: 1rem;
-  max-width: 20rem;
-  width: 100%;
   overflow-y: auto;
+  max-height: 65vh;
 }
 
-#menu li > * {
+#menu ul a,
+#menu > li > a {
+  display: block;
+  color: var(--menu-grey);
+
   &:is(:hover,:active,:focus) {
-    color: var(--hover-fg);
+    color: var(--menu-hover-grey);
   }
-}
-
-#blog-side-menu-container li {
-  max-width: 100%;
-  margin-bottom: 5px;
-}
-
-#blog-side-menu-container > h3 > a  {
-  color: var(--fg)
-}
-
-#blog-side-menu {
-  list-style: none;
-  padding: 0;
-  max-width: 15rem;
-  margin-inline: 0.5rem;
 }
 
 #menu ul a.active {
@@ -723,47 +709,26 @@ color: var(--fg)
 }
 
 #menu li {
+  cursor: pointer;
   list-style: none;
+  margin-block-start: 0.3rem;
 }
 
-#menu ul {
+#menu ul,
+ul#side-menu  {
   height: 0;
   overflow: hidden;
 }
 
-#menu ul.active {
+#menu ul.active,
+ul#side-menu.active {
   height: auto;
   padding: 0;
 }
-#menu a {
-  color: var(--menu-grey);}
 
-#menu > li > a,
-#blog-side-menu > li > a {
-  color: var(--menu-grey);
+#menu > li > a {
   font-weight: bold;
   font-size: 1rem;
-}
-
-#blog-side-menu > li > a {
-  color: var(--menu-grey);
-
-  &:is(:hover,:active,:focus) {
-    color: var(--link);
-  }
-}
-
-#blog-side-menu-container > h3 > a  {
-  color: var(--menu-grey);
-
-  &:is(:hover,:active,:focus) {
-    color: var(--link);
-  }
-}
-
-#tags-side-menu ul a {
-  color: #555;
-  padding-right: 7px;
 }
 
 /* can't find this in proj*/
@@ -885,11 +850,15 @@ h2 a {
 }
 
 
-/* table of content btn */
+/* TOC btn */
+
 #menu-toggle {
+  position: absolute;
+  top: 57px;
+  left: 0;
   cursor: pointer;
   display: none;
-  margin-block: 1.5rem;
+  margin: 1rem;
   font-size: 1rem;
   padding: 0.5rem;
   opacity: 0;
@@ -907,20 +876,14 @@ h2 a {
 /* responsive */
 
 @media all and (max-width: 1440px) {
-
-  #menu,
-  #tags-side-menu {
+  #menu{
     top: 75px;
   }
 }
 
 @media all and (max-width: 1110px) {
-  #blog-side-menu-container {
-    top: 4rem;
-  }
-
-  #blog-side-menu {
-    top: 6rem;
+  #api-doc {
+    width: 75vw;
   }
 
   #boxes {
@@ -952,10 +915,6 @@ h2 a {
   .table-scroller {
     width: 100%;
     overflow: scroll;
-  }
-
-  #api-doc section {
-    padding-left: 0;
   }
 
   code {
@@ -1085,44 +1044,30 @@ h2 a {
   }
 }
 
-/* toc */
+/* TOC responsive */
 @media all and (max-width: 800px) {
   #api-doc,
   #blog-doc {
-    width: fit-content;
+    padding-inline-start: 1rem;
+    width: 95dvw;
   }
 
-  #menu,
-  #blog-side-menu {
+  #menu {
     position: fixed;
     max-height: 0;
     top: 57px;
     left: 0;
     background-color: var(--card-bg);
     padding-inline: 0.5rem;
+    min-width: 100dvw;
     transition: max-height 0.5s ease;
-  }
-
-  #blog-side-menu-container {
-    z-index: 99;
   }
 
   #menu.open {
     max-height: 50dvh;
-    padding: 1rem;
+    padding-inline: 1rem;
     border-bottom: 1px solid var(--border);
     z-index: 100;
-    max-width: 100%;
-    margin-top: 0;
-  }
-
-  #blog-side-menu.open {
-    max-width: 100%;
-    max-height: fit-content;
-    margin-inline: 0;
-    border-bottom: 1px solid var(--border);
-    z-index: 100;
-    padding: 1rem;
     margin-top: 0;
   }
 
@@ -1131,47 +1076,29 @@ h2 a {
     opacity: 1;
   }
 
-  #menu-toggle {
-    position: fixed;
-    top: 57px;
-    background-color: #ffffffac;
-    border: 1px solid rgb(202, 199, 199);
-    left: 0;
-    margin-block: 0rem;
-    width: 100vw;
-    padding: 0.5rem;
-    border-radius: 0;
-
-    &:is(:hover, :active, :focus) {
-      background-color: #acbaf2ac;
-    }
-  }
-
-  #menu li {
-    cursor: pointer;
-    &>a {
-      display: block;
-      padding-block: 0.3rem;
-      padding-inline: 0.5rem;
-
-      &:is(:hover, :active, :focus) {
-        background-color: #dfdcdc;
-      }
-    }
-  }
-
-  #menu li ul :not(:last-child),
-  #blog-side-menu li:not(:last-child) {
+  #menu > li > a,
+  #menu ul a {
+    color: var(--card-fg);
+    padding-block: 0.5rem;
+    padding-inline: 0.5rem;
     border-bottom: 1px solid var(--border);
+
+    &:is(:hover,:active,:focus) {
+      background: var(--hover-bg);
+    }
   }
 
   #overlay.blurs {
     display: block;
   }
 
-  #menu li ul li>em {
+  #menu li ul li > em {
     font-size: 0.8rem;
-  }
+    padding-inline: 1rem;
+    padding-block: 0.3rem;
+    background-color: var(--hover-bg);
+    border-radius: 0.3rem;
+   }
 
   .toc-title {
     display: none;
@@ -1193,28 +1120,11 @@ h2 a {
   #description .express {
     display: none;
   }
-
-  #menu-toggle.position-fixed {
-    width: 110vw;
-  }
 }
 
 @media all and (max-width: 390px) {
   #menu-toggle.position-fixed {
     width: 115vw;
-  }
-}
-
-@media all and (max-width: 350px) {
-  #menu-toggle.position-fixed {
-    width: 140vw;
-  }
-}
-
-@media all and (max-width: 320px) {
-
-  #install-command {
-    font-size: 12px;
   }
 }
 
@@ -1285,7 +1195,7 @@ h2 a {
 
 /* Blog page styles*/
 #blog-doc {
-  margin: 0 10px;
+  margin: 0 1rem;
 }
 #blog-doc:has(> h1#express-blog),
 #blog-doc:has(> h1#write-a-blog-post) {

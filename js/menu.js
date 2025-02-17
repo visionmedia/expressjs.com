@@ -132,7 +132,6 @@ overlay?.addEventListener("click", () => {
 		tocList?.classList.remove("open");
 		blogList?.classList.remove("open");
 	}
-	tocScreen && toggleBtn?.classList.add("show");
 	overlay.classList.remove("blurs");
 	document.body.classList.remove("no-scroll");
 });
@@ -147,22 +146,9 @@ const tocSubMenu = document.querySelectorAll("#menu > li > ul");
 // TOC btn Visibility using scroll event
 function updateTocVisibility() {
 	if (isTocScreen) {
-	  document.addEventListener("scroll", handleScroll);
 	  toggleBtn?.classList.add("show");
 	} else {
-	  document.removeEventListener("scroll", handleScroll);
 	  toggleBtn?.classList.remove("show");
-	}
-  }
-
-function handleScroll() {
-	const firstHeader = document.querySelector("h1");
-	if (!firstHeader) return;
-	const headerRect = firstHeader.getBoundingClientRect();
-	if (headerRect.top < 0) {
-	  toggleBtn?.classList.add("position-fixed");
-	} else {
-	  toggleBtn?.classList.remove("position-fixed");
 	}
   }
 
@@ -181,7 +167,6 @@ toggleBtn?.addEventListener("click", (e) => {
   tocList?.classList.toggle("open");
   overlay?.classList.toggle("blurs");
   document.body.classList.toggle("no-scroll");
-  toggleBtn?.classList.remove("show");
 });
 
 // Close toc on link click on small screen
@@ -191,7 +176,6 @@ document.querySelectorAll("#menu > li > ul a").forEach((link) => {
 		tocList?.classList.remove("open");
 		overlay?.classList.remove("blurs");
 		document.body.classList.remove("no-scroll");
-		toggleBtn?.classList.add("show");
    }
   });
 });
@@ -203,7 +187,6 @@ document.querySelectorAll("#menu > li > ul a").forEach((link) => {
 		tocList?.classList.remove("open");
 		overlay?.classList.remove("blurs");
 		document.body.classList.remove("no-scroll");
-		toggleBtn?.classList.add("show");
 	  }
 	});
   });
