@@ -7,6 +7,7 @@ lang: en
 redirect_from: "/advanced/healthcheck-graceful-shutdown.html"
 ---
 
+<div id="page-doc" markdown="1">
 # Health Checks and Graceful Shutdown
 
 ## Graceful shutdown
@@ -32,3 +33,4 @@ A load balancer uses health checks to determine if an application instance is he
 
 * `liveness`, that determines when to restart a container.
 * `readiness`, that determines when a container is ready to start accepting traffic. When a pod is not ready, it is removed from the service load balancers.
+</div>
