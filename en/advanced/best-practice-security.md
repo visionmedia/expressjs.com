@@ -7,6 +7,7 @@ lang: en
 redirect_from: "/advanced/best-practice-security.html"
 ---
 
+<div id="page-doc" markdown="1">
 # Production Best Practices: Security
 
 ## Overview
@@ -21,19 +22,21 @@ Development and production environments are usually set up differently and have 
 
 Security best practices for Express applications in production include:
 
-- [Don’t use deprecated or vulnerable versions of Express](#dont-use-deprecated-or-vulnerable-versions-of-express)
-- [Use TLS](#use-tls)
-- [Do not trust user input](#do-not-trust-user-input)
-  - [Prevent open redirects](#prevent-open-redirects)
-- [Use Helmet](#use-helmet)
-- [Reduce fingerprinting](#reduce-fingerprinting)
-- [Use cookies securely](#use-cookies-securely)
-  - [Don't use the default session cookie name](#dont-use-the-default-session-cookie-name)
-  - [Set cookie security options](#set-cookie-security-options)
-- [Prevent brute-force attacks against authorization](#prevent-brute-force-attacks-against-authorization)
-- [Ensure your dependencies are secure](#ensure-your-dependencies-are-secure)
-  - [Avoid other known vulnerabilities](#avoid-other-known-vulnerabilities)
-- [Additional considerations](#additional-considerations)
+- [Production Best Practices: Security](#production-best-practices-security)
+  - [Overview](#overview)
+  - [Don't use deprecated or vulnerable versions of Express](#dont-use-deprecated-or-vulnerable-versions-of-express)
+  - [Use TLS](#use-tls)
+  - [Do not trust user input](#do-not-trust-user-input)
+    - [Prevent open redirects](#prevent-open-redirects)
+  - [Use Helmet](#use-helmet)
+  - [Reduce fingerprinting](#reduce-fingerprinting)
+  - [Use cookies securely](#use-cookies-securely)
+    - [Don't use the default session cookie name](#dont-use-the-default-session-cookie-name)
+    - [Set cookie security options](#set-cookie-security-options)
+  - [Prevent brute-force attacks against authorization](#prevent-brute-force-attacks-against-authorization)
+  - [Ensure your dependencies are secure](#ensure-your-dependencies-are-secure)
+    - [Avoid other known vulnerabilities](#avoid-other-known-vulnerabilities)
+  - [Additional considerations](#additional-considerations)
 
 ## Don't use deprecated or vulnerable versions of Express
 
@@ -267,3 +270,4 @@ Here are some further recommendations from the excellent [Node.js Security Check
 * Use [safe-regex](https://www.npmjs.com/package/safe-regex) to ensure your regular expressions are not susceptible to [regular expression denial of service](https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS) attacks.
 
 [helmet]: https://helmetjs.github.io/
+</div>

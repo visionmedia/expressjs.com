@@ -10,23 +10,21 @@
   <body class="non-en-doc">
   {% endif %}
 
-    <section class="page content">
+  {% include header.html %}
 
-      {% include header.html %}
+  <div id="overlay"></div>
 
-      <div id="overlay"></div>
-
-      {% if page.lang != 'en' %}
-        <div id="i18n-notice-box" class="doc-box doc-notice">
+  {% if page.lang != 'en' %}
+       <div id="i18n-notice-box" class="doc-box doc-notice">
           {% include i18n-notice.html %}
-        </div>
-      {% endif %}
-      <div id="page-doc" markdown="1">
-{{ content }}
       </div>
-    </section>
+  {% endif %}
+    
+  <section class="content">
+      {{ content }}
+  </section>
 
-    {% include footer.html %}
+  {% include footer.html %}
 
   </body>
 

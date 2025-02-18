@@ -1,5 +1,5 @@
 <ul id="menu">
-
+    <span class="toc-title"><em>On this page</em></span>
     <li id="express-api"><a href="#express">express()</a>
     <ul id="express-menu">
         <li><em>Methods</em></li>
@@ -205,3 +205,4 @@
         </ul>
     </li>
 </ul>
+<button id="menu-toggle" title="show table of content">Table of content &#x25BC;</button>

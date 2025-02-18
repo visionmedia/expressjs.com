@@ -4,21 +4,19 @@
   {% include head.html %}
 
   <body>
+    {% include header.html %}
+    <div id="overlay"></div>
 
     <section class="content">
-
-      {% include header.html %}
-
-      {% include api/en/3x/menu.md %}
-
-      <div id="overlay"></div>
-
-      {{ content }}
-
+      <div>
+        {{ content }}
+      </div>
+      <div>
+        {% include api/en/3x/menu.md %}
+      </div>
     </section>
 
     {% include footer.html %}
-
 
   </body>
 
