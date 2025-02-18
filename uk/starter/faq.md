@@ -1,83 +1,98 @@
 ---
 layout: page
 title: ЧАПи Express
+description: Find answers to frequently asked questions about Express.js, including topics on application structure, models, authentication, template engines, error handling, and more.
 menu: starter
 lang: uk
-description: Find answers to frequently asked questions about Express.js, including
-  topics on application structure, models, authentication, template engines, error
-  handling, and more.
+redirect_from: /starter/faq.html
 ---
 
 # Часті Питання (ЧАПи)
 
 ## Яку структуру я повинен використовувати для свого застосунку?
 
-Немає єдиної відповіді на дане питання. Все залежить від
-розміру вашого застосунку та від команди, яка приймає участь у його розробці. Щоб бути на стільки гнучким,
-на скільки це можливо, Express не спирається на фіксовану структуру.
+There is no definitive answer to this question. The answer depends
+on the scale of your application and the team that is involved. To be as
+flexible as possible, Express makes no assumptions in terms of structure.
 
-Маршрути та інша логіка застосунку може розміщуватись у файлах довільної кількості,
-та поміщатись в каталоги будь-якої структури. Розгляньте наступні патерни проектування:
+Routes and other application-specific logic can live in as many files
+as you wish, in any directory structure you prefer. View the following
+examples for inspiration:
 
-* [Списки маршрутів](https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-47)
-* [Карта маршрутів](https://github.com/expressjs/express/blob/4.13.1/examples/route-map/index.js#L52-L66)
-* [MVC-стиль контролерів](https://github.com/expressjs/express/tree/master/examples/mvc)
+- [Списки маршрутів](https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-47)
+- [Карта маршрутів](https://github.com/expressjs/express/blob/4.13.1/examples/route-map/index.js#L52-L66)
+- [MVC-стиль контролерів](https://github.com/expressjs/express/tree/master/examples/mvc)
 
 Також, існують сторонні розширення для Express, які спрощують деякі з перелічених патернів проектування:
 
-* [Ресурсна маршрутизація](https://github.com/expressjs/express-resource)
+- [Ресурсна маршрутизація](https://github.com/expressjs/express-resource)
 
 ## Як визначати моделі?
 
-В Express немає засобів для роботи з базою даних. Їх надають деякі сторонні модулі
-Node.js, що дозволяють вам взаємодіяти практично з будь-якою базою даних.
+Express has no notion of a database. This concept is
+left up to third-party Node modules, allowing you to
+interface with nearly any database.
 
 Ознайомтесь з [LoopBack](http://loopback.io) - цей фреймворк створено на базі Express,
 він зорієнтований на роботу з моделями.
 
 ## Яким чином можна ідентифікувати користувачів?
 
-Ідентифікація - це ще одна чутлива область, яку Express не ризикнув охопити. Ви можете використовувати будь-яку
-схему ідентифікації. Проста схема "логін / пароль", представлена [в цьому прикладі](https://github.com/expressjs/express/tree/master/examples/auth).
-
+Authentication is another opinionated area that Express does not
+venture into. You may use any authentication scheme you wish.
+For a simple username / password scheme, see [this example](https://github.com/expressjs/express/tree/master/examples/auth).
 
 ## Які шаблонізатори підтримує Express?
 
-Express підтримує будь-які шаблонізатори, що узгоджуються з сигнатурою `(path, locals, callback)`.
-Додаткову інформацію, стосовно нормалізації інтерфейсів шаблонізаторів та кешування, можна знайти в проекті
-[consolidate.js](https://github.com/visionmedia/consolidate.js). Цей список може й не містити певних шаблонізаторів,
-проте вони можуть все ж підтримувати сигнатуру Express.
+Express supports any template engine that conforms with the `(path, locals, callback)` signature.
+To normalize template engine interfaces and caching, see the
+[consolidate.js](https://github.com/visionmedia/consolidate.js)
+project for support. Unlisted template engines might still support the Express signature.
 
-## Як можна обробляти 404-ті відповіді?
+For more information, see [Using template engines with Express](/{{page.lang}}/guide/using-template-engines.html).
 
-В Express, 404-ті відповіді не генеруються в результаті помилок, а тому
-проміжні обробники помилок не перехоплюють їх. Така поведінка існує оскільки 404-ту відповідь ми отримуємо
-через відсутність відповідної функції в переліку проміжних обробників при маршрутизації. Все що треба зробити
-в такому випадку, - це додати проміжну функцію в самий низ черги обробників, яка якраз і буде призначатись для
-формування 404-тої відповіді:
+## How do I handle 404 responses?
+
+In Express, 404 responses are not the result of an error, so
+the error-handler middleware will not capture them. This behavior is
+because a 404 response simply indicates the absence of additional work to do;
+in other words, Express has executed all middleware functions and routes,
+and found that none of them responded. All you need to
+do is add a middleware function at the very bottom of the stack (below all other functions)
+to handle a 404 response:
 
 ```js
 app.use((req, res, next) => {
-  res.status(404).send('Вибачте, такої сторінки не існує!')
+  res.status(404).send("Sorry can't find that!")
 })
 ```
-
-## Як можна встановити обробника помилок?
 
 Проміжні обробники помилок визначаються точно так само, як і інші проміжні обробники,
 тільки передається до них чотири параметра, а не три; точніше, вони мають таку сигнатуру `(err, req, res, next)`:
 
-```js
-app.use((err, req, res, next) => {
-  console.error(err.stack)
-  res.status(500).send('Щось поламалось!')
-})
-```
+## How do I setup an error handler?
 
 Більш детально, можна проглянути розділ [обробка помилок](/{{ page.lang }}/guide/error-handling.html).
 
-## Як можна відмальовувати простий код HTML?
+```js
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
+```
 
-Не треба! Не потрібно "відмальовувати" HTML за допомогою функції `res.render()`.
-Якщо ви маєте окремий файл, скористайтесь функцією `res.sendFile()`.
-Якщо ви маєте великий набір файлів в певній директорії, використовуйте проміжну функцію `express.static()`.
+For more information, see [Error handling](/{{ page.lang }}/guide/error-handling.html).
+
+## How do I render plain HTML?
+
+You don't! There's no need to "render" HTML with the `res.render()` function.
+If you have a specific file, use the `res.sendFile()` function.
+If you are serving many assets from a directory, use the `express.static()`
+middleware function.
+
+## What version of Node.js does Express require?
+
+- [Express 4.x](/{{ page.lang }}/4x/api.html) requires Node.js 0.10 or higher.
+- [Express 5.x](/{{ page.lang }}/5x/api.html) requires Node.js 18 or higher.
+
+### [Previous: More examples ](/{{ page.lang }}/starter/examples.html)

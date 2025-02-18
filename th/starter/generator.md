@@ -1,21 +1,29 @@
 ---
 layout: page
 title: Express application generator
+description: Learn how to use the Express application generator tool to quickly create a skeleton for your Express.js applications, streamlining setup and configuration.
 menu: starter
 lang: th
-description: Learn how to use the Express application generator tool to quickly create
-  a skeleton for your Express.js applications, streamlining setup and configuration.
+redirect_from: /starter/generator.html
 ---
 
-# เครื่องมือสร้าง Express
+# Express application generator
 
 ใช้เครื่องมือสร้าง โดยพินพ์คำสั่ง `express-generator` เพื่อสร้างโครงสร้างหลักของแอปพลิเคชันอย่างรวดเร็ว
 
-`express-generator` ติดตั้งแพ็กเกจไปยังชุดคำสั่ง `express`  ใช้คำสั่งด้านล่างนี้เพื่อติดตั้ง:
+You can run the application generator with the `npx` command (available in Node.js 8.2.0).
 
 ```bash
 $ npm install express-generator -g
 ```
+
+For earlier Node versions, install the application generator as a global npm package and then launch it:
+
+```bash
+$ npm install -g express-generator
+$ express
+```
+
 แสดงตัวเลือกคำสั่งทั้งหมดด้วย `h`:
 
 ```bash
@@ -37,7 +45,8 @@ $ express -h
         --git           add .gitignore
     -f, --force         force on non-empty directory
 ```
-สำหรับตัวอย่าง คำสั่งข้างล่างนี้เพื่อสร้าง Express app ที่ชื่อว่า _myapp_ โดยจะสร้างโฟล์เดอร์ชื่อ _myapp_ ในไดเรกเทอรีที่ใช้งานอยู่ และตั้ง view engine เป็น <a href="https://pugjs.org/" target="_blank" title="Pug documentation">Pug</a>:
+
+For example, the following creates an Express app named _myapp_. สำหรับตัวอย่าง คำสั่งข้างล่างนี้เพื่อสร้าง Express app ที่ชื่อว่า _myapp_ โดยจะสร้างโฟล์เดอร์ชื่อ _myapp_ ในไดเรกเทอรีที่ใช้งานอยู่ และตั้ง view engine เป็น <a href="https://pugjs.org/" target="_blank" title="Pug documentation">Pug</a>:
 
 ```bash
 $ express --view=pug myapp
@@ -60,6 +69,7 @@ $ express --view=pug myapp
    create : myapp/bin
    create : myapp/bin/www
 ```
+
 แล้วติดตั้งโมดูลเกี่ยวโยง (dependencies):
 
 ```bash
@@ -67,16 +77,22 @@ $ cd myapp
 $ npm install
 ```
 
-บน MacOS หรือ Linux รัน app ด้วยคำสั่งนี้:
+บน Windows ใช้คำสั่งนี้:
 
 ```bash
 $ DEBUG=myapp:* npm start
 ```
 
-บน Windows ใช้คำสั่งนี้:
+On Windows Command Prompt, use this command:
 
 ```bash
 > set DEBUG=myapp:* & npm start
+```
+
+On Windows PowerShell, use this command:
+
+```bash
+PS> $env:DEBUG='myapp:*'; npm start
 ```
 
 แล้วโหลด `http://localhost:3000/` ในเว็บเบราว์เซอร์ของคุณเพื่อเข้าถึง app
@@ -106,5 +122,9 @@ $ DEBUG=myapp:* npm start
 ```
 
 <div class="doc-box doc-info" markdown="1">
+
 โครงสร้าง app ที่สร้างโดยเครื่องมือสร้างเป็นเพียงวิธีหนึ่งของอีกหลายวิธี ของการสร้างโครงสร้าง app ของ Express สามารถใช้โครงสร้างนี้ได้ หรือว่าจะแก้ไขเพื่อให้เหมาะสมที่สุดสำหรับความต้องการของคุณ
+ Feel free to use this structure or modify it to best suit your needs.
 </div>
+
+### [Previous: Hello World ](/{{ page.lang }}/starter/hello-world.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: Basic routing](/{{ page.lang }}/starter/basic-routing.html)

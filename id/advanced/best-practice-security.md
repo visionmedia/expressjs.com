@@ -1,10 +1,10 @@
 ---
 layout: page
 title: Security Best Practices for Express in Production
+description: Discover crucial security best practices for Express apps in production, including using TLS, input validation, secure cookies, and preventing vulnerabilities.
 menu: advanced
 lang: id
-description: Discover crucial security best practices for Express apps in production,
-  including using TLS, input validation, secure cookies, and preventing vulnerabilities.
+redirect_from: /advanced/best-practice-security.html
 ---
 
 # Production Best Practices: Security
@@ -37,7 +37,7 @@ Security best practices for Express applications in production include:
 
 ## Don't use deprecated or vulnerable versions of Express
 
-Express 2.x and 3.x are no longer maintained. Security and performance issues in these versions won't be fixed. Do not use them! If you haven't moved to version 4, follow the [migration guide](/{{ page.lang }}/guide/migrating-4.html), or consider [Commercial Support Options](/{{ page.lang }}/support#commercial-support-options).
+Express 2.x and 3.x are no longer maintained. Security and performance issues in these versions won't be fixed. Do not use them! If you haven't moved to version 4, follow the [migration guide](/{{ page.lang }}/guide/migrating-4.html) or consider [Commercial Support Options](/{{ page.lang }}/support#commercial-support-options).
 
 Also ensure you are not using any of the vulnerable Express versions listed on the [Security updates page](/{{ page.lang }}/advanced/security-updates.html). If you are, update to one of the stable releases, preferably the latest.
 
@@ -45,22 +45,21 @@ Also ensure you are not using any of the vulnerable Express versions listed on t
 
 If your app deals with or transmits sensitive data, use [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) to secure the connection and the data. This technology encrypts data before it is sent from the client to the server, thus preventing some common (and easy) hacks. Although Ajax and POST requests might not be visibly obvious and seem "hidden" in browsers, their network traffic is vulnerable to [packet sniffing](https://en.wikipedia.org/wiki/Packet_analyzer) and [man-in-the-middle attacks](https://en.wikipedia.org/wiki/Man-in-the-middle_attack).
 
-You may be familiar with Secure Socket Layer (SSL) encryption. [TLS is simply the next progression of SSL](https://msdn.microsoft.com/en-us/library/windows/desktop/aa380515(v=vs.85).aspx). In other words, if you were using SSL before, consider upgrading to TLS. In general, we recommend Nginx to handle TLS. For a good reference to configure TLS on Nginx (and other servers), see [Recommended Server Configurations (Mozilla Wiki)](https://wiki.mozilla.org/Security/Server_Side_TLS#Recommended_Server_Configurations).
+You may be familiar with Secure Socket Layer (SSL) encryption. [TLS is simply the next progression of SSL](https://msdn.microsoft.com/en-us/library/windows/desktop/aa380515\(v=vs.85\).aspx). In other words, if you were using SSL before, consider upgrading to TLS. In general, we recommend Nginx to handle TLS. For a good reference to configure TLS on Nginx (and other servers), see [Recommended Server Configurations (Mozilla Wiki)](https://wiki.mozilla.org/Security/Server_Side_TLS#Recommended_Server_Configurations).
 
 Also, a handy tool to get a free TLS certificate is [Let's Encrypt](https://letsencrypt.org/about/), a free, automated, and open certificate authority (CA) provided by the [Internet Security Research Group (ISRG)](https://www.abetterinternet.org/).
 
 ## Do not trust user input
 
 For web applications, one of the most critical security requirements is proper user input validation and handling. This comes in many forms and we will not cover all of them here.
-Ultimately, the responsibility for validating and correctly handling the types of user input your application accepts. Here are a few examples of validating user input specifically
-using a few `express` apis.
+Ultimately, the responsibility for validating and correctly handling the types of user input your application accepts is yours.
 
 ### Prevent open redirects
 
 An example of potentially dangerous user input is an _open redirect_, where an application accepts a URL as user input (often in the URL query, for example `?url=https://example.com`) and uses `res.redirect` to set the `location` header and
-return a 3xx status. 
+return a 3xx status.
 
-An application must validate that it supports redirecting to the incoming URL to avoid sending users to malicious links such as phishing websites, among other risks. 
+An application must validate that it supports redirecting to the incoming URL to avoid sending users to malicious links such as phishing websites, among other risks.
 
 Here is an example of checking URLs before using `res.redirect` or `res.location`:
 
@@ -83,9 +82,9 @@ app.use((req, res) => {
 
 Helmet is a collection of several smaller middleware functions that set security-related HTTP response headers. Some examples include:
 
-* `helmet.contentSecurityPolicy` which sets the `Content-Security-Policy` header. This helps prevent cross-site scripting attacks among many other things.
-* `helmet.hsts` which sets the `Strict-Transport-Security` header. This helps enforce secure (HTTPS) connections to the server.
-* `helmet.frameguard` which sets the `X-Frame-Options` header. This provides [clickjacking](https://www.owasp.org/index.php/Clickjacking) protection.
+- `helmet.contentSecurityPolicy` which sets the `Content-Security-Policy` header. This helps prevent cross-site scripting attacks among many other things.
+- `helmet.hsts` which sets the `Strict-Transport-Security` header. This helps enforce secure (HTTPS) connections to the server.
+- `helmet.frameguard` which sets the `X-Frame-Options` header. This provides [clickjacking](https://www.owasp.org/index.php/Clickjacking) protection.
 
 Helmet includes several other middleware functions which you can read about [at its documentation website][helmet].
 
@@ -109,12 +108,12 @@ app.use(helmet())
 ## Reduce fingerprinting
 
 It can help to provide an extra layer of security to reduce the ability of attackers to determine
-the software that a server uses, known as "fingerprinting." Though not a security issue itself, 
-reducing the ability to fingerprint an application improves its overall security posture. 
-Server software can be fingerprinted by quirks in how it responds to specific requests, for example in 
-the HTTP response headers. 
+the software that a server uses, known as "fingerprinting." Though not a security issue itself,
+reducing the ability to fingerprint an application improves its overall security posture.
+Server software can be fingerprinted by quirks in how it responds to specific requests, for example in
+the HTTP response headers.
 
-By default, Express sends the `X-Powered-By` response header that you can 
+By default, Express sends the `X-Powered-By` response header that you can
 disable using the `app.disable()` method:
 
 ```js
@@ -153,8 +152,8 @@ To ensure cookies don't open your app to exploits, don't use the default session
 
 There are two main middleware cookie session modules:
 
-* [express-session](https://www.npmjs.com/package/express-session) that replaces `express.session` middleware built-in to Express 3.x.
-* [cookie-session](https://www.npmjs.com/package/cookie-session) that replaces `express.cookieSession` middleware built-in to Express 3.x.
+- [express-session](https://www.npmjs.com/package/express-session) that replaces `express.session` middleware built-in to Express 3.x.
+- [cookie-session](https://www.npmjs.com/package/cookie-session) that replaces `express.cookieSession` middleware built-in to Express 3.x.
 
 The main difference between these two modules is how they save cookie session data. The [express-session](https://www.npmjs.com/package/express-session) middleware stores session data on the server; it only saves the session ID in the cookie itself, not session data. By default, it uses in-memory storage and is not designed for a production environment. In production, you'll need to set up a scalable session-store; see the list of [compatible session stores](https://github.com/expressjs/session#compatible-session-stores).
 
@@ -179,11 +178,11 @@ app.use(session({
 
 Set the following cookie options to enhance security:
 
-* `secure` - Ensures the browser only sends the cookie over HTTPS.
-* `httpOnly` - Ensures the cookie is sent only over HTTP(S), not client JavaScript, helping to protect against cross-site scripting attacks.
-* `domain` - indicates the domain of the cookie; use it to compare against the domain of the server in which the URL is being requested. If they match, then check the path attribute next.
-* `path` - indicates the path of the cookie; use it to compare against the request path. If this and domain match, then send the cookie in the request.
-* `expires` - use to set expiration date for persistent cookies.
+- `secure` - Ensures the browser only sends the cookie over HTTPS.
+- `httpOnly` - Ensures the cookie is sent only over HTTP(S), not client JavaScript, helping to protect against cross-site scripting attacks.
+- `domain` - indicates the domain of the cookie; use it to compare against the domain of the server in which the URL is being requested. If they match, then check the path attribute next.
+- `path` - indicates the path of the cookie; use it to compare against the request path. If this and domain match, then send the cookie in the request.
+- `expires` - use to set expiration date for persistent cookies.
 
 Here is an example using [cookie-session](https://www.npmjs.com/package/cookie-session) middleware:
 
@@ -211,8 +210,9 @@ app.use(session({
 Make sure login endpoints are protected to make private data more secure.
 
 A simple and powerful technique is to block authorization attempts using two metrics:
-1. The number of consecutive failed attempts by the same user name and IP address. 
-1. The number of failed attempts from an IP address over some long period of time. For example, block an IP address if it makes 100 failed attempts in one day.
+
+1. The number of consecutive failed attempts by the same user name and IP address.
+2. The number of failed attempts from an IP address over some long period of time. For example, block an IP address if it makes 100 failed attempts in one day.
 
 [rate-limiter-flexible](https://github.com/animir/node-rate-limiter-flexible) package provides tools to make this technique easy and fast. You can find [an example of brute-force protection in the documentation](https://github.com/animir/node-rate-limiter-flexible/wiki/Overall-example#login-endpoint-protection)
 
@@ -251,10 +251,10 @@ Finally, Express apps&mdash;like any other web apps&mdash;can be vulnerable to a
 
 Here are some further recommendations from the excellent [Node.js Security Checklist](https://blog.risingstack.com/node-js-security-checklist/). Refer to that blog post for all the details on these recommendations:
 
-* Always filter and sanitize user input to protect against cross-site scripting (XSS) and command injection attacks.
-* Defend against SQL injection attacks by using parameterized queries or prepared statements.
-* Use the open-source [sqlmap](http://sqlmap.org/) tool to detect SQL injection vulnerabilities in your app.
-* Use the [nmap](https://nmap.org/) and [sslyze](https://github.com/nabla-c0d3/sslyze) tools to test the configuration of your SSL ciphers, keys, and renegotiation as well as the validity of your certificate.
-* Use [safe-regex](https://www.npmjs.com/package/safe-regex) to ensure your regular expressions are not susceptible to [regular expression denial of service](https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS) attacks.
+- Always filter and sanitize user input to protect against cross-site scripting (XSS) and command injection attacks.
+- Defend against SQL injection attacks by using parameterized queries or prepared statements.
+- Use the open-source [sqlmap](http://sqlmap.org/) tool to detect SQL injection vulnerabilities in your app.
+- Use the [nmap](https://nmap.org/) and [sslyze](https://github.com/nabla-c0d3/sslyze) tools to test the configuration of your SSL ciphers, keys, and renegotiation as well as the validity of your certificate.
+- Use [safe-regex](https://www.npmjs.com/package/safe-regex) to ensure your regular expressions are not susceptible to [regular expression denial of service](https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS) attacks.
 
 [helmet]: https://helmetjs.github.io/

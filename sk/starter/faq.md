@@ -1,72 +1,78 @@
 ---
 layout: page
 title: Express FAQ
+description: Find answers to frequently asked questions about Express.js, including topics on application structure, models, authentication, template engines, error handling, and more.
 menu: starter
 lang: sk
-description: Find answers to frequently asked questions about Express.js, including
-  topics on application structure, models, authentication, template engines, error
-  handling, and more.
+redirect_from: /starter/faq.html
 ---
 
 # FAQ
 
 ## Akú štruktúru priečinkov by som mal zvoliť pre svoju aplikáciu?
 
-Jednoznačná odpoveď na túto otázku neexistuje. Odpoveď závisí od rozsahu
-aplikácie a tímu, ktorí na nej pracuje. Z dôvodu maximálnej flexibility nedefinuje
-Express žiadne pravidlá, či obmedzenia.
+There is no definitive answer to this question. The answer depends
+on the scale of your application and the team that is involved. To be as
+flexible as possible, Express makes no assumptions in terms of structure.
 
-Samotná logika pre routing a ostatné špecifické časti aplikácie môže byť rozdelená
-do ľubovoľného počtu súborov a organizovaná v ľubovoľnej štruktúre priečinkov,
-presne tak, ako vám to vyhovuje. Pre inšpiráciu sa pozrite sa na nasledujúce príklady:
+Routes and other application-specific logic can live in as many files
+as you wish, in any directory structure you prefer. View the following
+examples for inspiration:
 
-* [Route listings](https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-47)
-* [Route maping](https://github.com/expressjs/express/blob/4.13.1/examples/route-map/index.js#L52-L66)
-* [MVC style controllers](https://github.com/expressjs/express/tree/master/examples/mvc)
+- [Route listings](https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-47)
+- [Route maping](https://github.com/expressjs/express/blob/4.13.1/examples/route-map/index.js#L52-L66)
+- [MVC style controllers](https://github.com/expressjs/express/tree/master/examples/mvc)
 
 Existujú taktiež mnohé rozšírenia tretích strán, ktoré toto zjednodušujú:
 
-* [Resourceful routing](https://github.com/expressjs/express-resource)
+- [Resourceful routing](https://github.com/expressjs/express-resource)
 
 ## Ako si zadefinujem model?
 
-Samotný Express nemá žiaden koncept databáze. Tento koncept je ponechaný na Node moduly tretích strán,
-ktoré umožňujú pracovať s takmer všetkými databázami.
+Express has no notion of a database. This concept is
+left up to third-party Node modules, allowing you to
+interface with nearly any database.
 
 Pre viac informácií ohľadom frameworku postavenom na Express-e, ktorý sa zameriava na prácu s modelom,
 navštívte stránku [LoopBack](http://loopback.io).
 
 ## Ako dokážem autentifikovať používateľov?
 
-Autentifikácia je ďalšia otvorená oblasť do ktorej Express priamo nezasahuje.
-Môžete si zvoliť akúkoľvek autentifikačnú schému, ktorá vám vyhovuje. Pre jednoduchú meno / heslo autentifikáciu si pozrite [tento príklad](https://github.com/expressjs/express/tree/master/examples/auth).
-
+Authentication is another opinionated area that Express does not
+venture into. You may use any authentication scheme you wish.
+For a simple username / password scheme, see [this example](https://github.com/expressjs/express/tree/master/examples/auth).
 
 ## Aké template enginy Express podporuje?
 
-Express podporuje všetky template enginy definujúce `(path, locals, callback)` signatúru.
-Pre porovnanie rozhraní template enginov a caching-u sa pozrite na projekt
-[consolidate.js](https://github.com/visionmedia/consolidate.js).
-Templatovacie enginy, ktoré nie sú v zozname, môžu byť Express-om taktiež podporované.
+Express supports any template engine that conforms with the `(path, locals, callback)` signature.
+To normalize template engine interfaces and caching, see the
+[consolidate.js](https://github.com/visionmedia/consolidate.js)
+project for support. Unlisted template engines might still support the Express signature.
 
-## Ako handlovať 404-ky?
+For more information, see [Using template engines with Express](/{{page.lang}}/guide/using-template-engines.html).
 
-V Express aplikácii nie sú odpovede 404 výsledkom chyby, preto ich error-handler middleware nezachytí.
-Toto správanie je z dôvodu, že odpoveď 404 jednoducho indikuje absenciu práce, ktorú treba vykonať,
-inými slovami, Express vykonal všetky middlware funkcie a nenašiel žiaden routing,
-ktorý by na danú požiadavku vedel odpovedať. Všetko čo musíte spraviť k odchyteniu 404-ky je, že pridáte nasledovnú middleware funkciu pod všetky ostatné definície:
+## How do I handle 404 responses?
+
+In Express, 404 responses are not the result of an error, so
+the error-handler middleware will not capture them. This behavior is
+because a 404 response simply indicates the absence of additional work to do;
+in other words, Express has executed all middleware functions and routes,
+and found that none of them responded. All you need to
+do is add a middleware function at the very bottom of the stack (below all other functions)
+to handle a 404 response:
 
 ```js
 app.use((req, res, next) => {
-  res.status(404).send('Sorry cant find that!')
+  res.status(404).send("Sorry can't find that!")
 })
 ```
 
-## Ako si zadefinujem error handler?
+Add routes dynamically at runtime on an instance of `express.Router()`
+so the routes are not superseded by a middleware function.
 
-Error-handling middleware je rovnakým middlewarom ako všetky ostatné,
-s jediným rozdielom a to, že je vyvolaný so štyrmi argumentami, namiesto troch.
-Jeho signatúra je nasledovná `(err, req, res, next)`:
+## How do I setup an error handler?
+
+Viac informácií sa dozviete v kapitole [Error handling](/{{ page.lang }}/guide/error-handling.html).
 
 ```js
 app.use((err, req, res, next) => {
@@ -75,11 +81,18 @@ app.use((err, req, res, next) => {
 })
 ```
 
-Viac informácií sa dozviete v kapitole [Error handling](/{{ page.lang }}/guide/error-handling.html).
+For more information, see [Error handling](/{{ page.lang }}/guide/error-handling.html).
 
-## Ako dokážem rendrovať čisté HTML?
+## How do I render plain HTML?
 
-Nedokážeš! Nie je žiaden dôvod na rendrovanie HTML pomocou `res.render()` funkcie.
-Ak máte konkrétny súbor, použite `res.sendFile()` funkciu.
-Ak potrebujete servovať veľa statických súborov z konkrétneho priečinka, použite `express.static()`
-middleware.
+You don't! There's no need to "render" HTML with the `res.render()` function.
+If you have a specific file, use the `res.sendFile()` function.
+If you are serving many assets from a directory, use the `express.static()`
+middleware function.
+
+## What version of Node.js does Express require?
+
+- [Express 4.x](/{{ page.lang }}/4x/api.html) requires Node.js 0.10 or higher.
+- [Express 5.x](/{{ page.lang }}/5x/api.html) requires Node.js 18 or higher.
+
+### [Previous: More examples ](/{{ page.lang }}/starter/examples.html)

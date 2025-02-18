@@ -1,10 +1,10 @@
 ---
 layout: page
 title: Разработка шаблонизаторов для Express
+description: Learn how to develop custom template engines for Express.js using app.engine(), with examples on creating and integrating your own template rendering logic.
 menu: advanced
 lang: ru
-description: Learn how to develop custom template engines for Express.js using app.engine(),
-  with examples on creating and integrating your own template rendering logic.
+redirect_from: /advanced/developing-template-engines.html
 ---
 
 # Разработка шаблонизаторов для Express
@@ -34,6 +34,7 @@ app.set('view engine', 'ntl') // register the template engine
 #title#
 #message#
 ```
+
 Затем создайте следующий маршрут в своем приложении.
 
 ```js
@@ -41,4 +42,5 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'Hey', message: 'Hello there!' })
 })
 ```
+
 При выполнении запроса к домашней странице файл `index.ntl` будет отображаться как HTML.

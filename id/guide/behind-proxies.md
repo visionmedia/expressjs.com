@@ -1,11 +1,12 @@
 ---
 layout: page
 title: Express behind proxies
+description: Learn how to configure Express.js applications to work correctly behind reverse proxies, including using the trust proxy setting to handle client IP addresses.
 menu: guide
 lang: id
-description: Learn how to configure Express.js applications to work correctly behind
-  reverse proxies, including using the trust proxy setting to handle client IP addresses.
+redirect_from: /guide/behind-proxies.html
 ---
+
 # Express behind proxies
 
 When running an Express app behind a reverse proxy, some of the Express APIs may return different values than expected. In order to adjust for this, the `trust proxy` application setting may be used to expose information provided by the reverse proxy in the Express APIs. The most common issue is express APIs that expose the client's IP address may instead show an internal IP address of the reverse proxy.
@@ -36,9 +37,9 @@ When setting to `true`, it is important to ensure that the last reverse proxy tr
 <td markdown="1">
 An IP address, subnet, or an array of IP addresses and subnets to trust as being a reverse proxy. The following list shows the pre-configured subnet names:
 
-* loopback - `127.0.0.1/8`, `::1/128`
-* linklocal - `169.254.0.0/16`, `fe80::/10`
-* uniquelocal - `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, `fc00::/7`
+- loopback - `127.0.0.1/8`, `::1/128`
+- linklocal - `169.254.0.0/16`, `fe80::/10`
+- uniquelocal - `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, `fc00::/7`
 
 You can set IP addresses in any of the following ways:
 
@@ -50,6 +51,7 @@ app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']) // specify mult
 ```
 
 When specified, the IP addresses or the subnets are excluded from the address determination process, and the untrusted IP address nearest to the application server is determined as the client's IP address. This works by checking if `req.socket.remoteAddress` is trusted. If so, then each address in `X-Forwarded-For` is checked from right to left until the first non-trusted address.
+
 </td>
     </tr>
     <tr>
@@ -73,6 +75,7 @@ app.set('trust proxy', (ip) => {
   else return false
 })
 ```
+
 </td>
     </tr>
   </tbody>

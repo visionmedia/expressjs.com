@@ -1,19 +1,27 @@
 ---
 layout: page
 title: Express uygulama oluşturucu
+description: Learn how to use the Express application generator tool to quickly create a skeleton for your Express.js applications, streamlining setup and configuration.
 menu: starter
 lang: tr
-description: Learn how to use the Express application generator tool to quickly create
-  a skeleton for your Express.js applications, streamlining setup and configuration.
+redirect_from: /starter/generator.html
 ---
+
 # Express uygulama oluşturucu
 
 Çabukça bir uygulama iskeleti oluşturmak için, `express-generator` aracını kullanın.
 
-`express-generator` paketi `express` komut-satır aracını kurar. Bunu yapmak için aşağıdaki komutu çalıştırın:
+You can run the application generator with the `npx` command (available in Node.js 8.2.0).
 
 ```bash
 $ npm install express-generator -g
+```
+
+For earlier Node versions, install the application generator as a global npm package and then launch it:
+
+```bash
+$ npm install -g express-generator
+$ express
 ```
 
 Komut seçeneklerini `-h` opsiyonu ile görüntüleyin:
@@ -62,7 +70,7 @@ $ express --view=pug myapp
    create : myapp/bin/www
 ```
 
-Daha sonrasında bağımlılıkları kurun:
+Then install dependencies:
 
 ```bash
 $ cd myapp
@@ -79,6 +87,12 @@ Windows için bu komutu kullanın:
 
 ```bash
 > set DEBUG=myapp:* & npm start
+```
+
+Daha sonrasında bağımlılıkları kurun:
+
+```bash
+PS> $env:DEBUG='myapp:*'; npm start
 ```
 
 Uygulamaya erişmek için tarayıcınızda `http://localhost:3000/` adresini ziyaret edin.
@@ -111,4 +125,4 @@ Oluşturulan uygulamanın dizini aşağıdaki yapıda olacaktır:
 Burada oluşturulan dizin yapısı, Express uygulamasını yapılandırabileceğiniz birçok seçenekten sadece birisidir. İhtiyacınıza en uygun şekilde bu yapıyı kullanabilir ya da düzenleyebilirsiniz.
 </div>
 
-###  [Önceki: Merhaba Dünya ](/{{ page.lang }}/starter/hello-world.html)&nbsp;&nbsp;&nbsp;&nbsp;[Sonraki: Basit Yol Atama](/{{ page.lang }}/starter/basic-routing.html)
+### [Önceki: Merhaba Dünya ](/{{ page.lang }}/starter/hello-world.html)&nbsp;&nbsp;&nbsp;&nbsp;[Sonraki: Basit Yol Atama](/{{ page.lang }}/starter/basic-routing.html)

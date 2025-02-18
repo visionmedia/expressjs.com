@@ -1,20 +1,20 @@
 ---
 layout: page
 title: Основы маршрутизации в Express
+description: Learn the fundamentals of routing in Express.js applications, including how to define routes, handle HTTP methods, and create route handlers for your web server.
 menu: starter
 lang: ru
-description: Learn the fundamentals of routing in Express.js applications, including
-  how to define routes, handle HTTP methods, and create route handlers for your web
-  server.
+redirect_from: /starter/basic-routing.html
 ---
 
 # Основы маршрутизации
 
-*Маршрутизация* определяет, как приложение отвечает на клиентский запрос к конкретному адресу (конечной точке), которым является URI (или путь), и определенному методу запроса HTTP (GET, POST и т.д.).
+_Маршрутизация_ определяет, как приложение отвечает на клиентский запрос к конкретному адресу (конечной точке), которым является URI (или путь), и определенному методу запроса HTTP (GET, POST и т.д.).
 
 Каждый маршрут может иметь одну или несколько функций обработки, которые выполняются при сопоставлении маршрута.
 
 Определение маршрута имеет следующую структуру:
+
 ```js
 app.METHOD(PATH, HANDLER)
 ```
@@ -65,3 +65,5 @@ app.delete('/user', (req, res) => {
 ```
 
 Дополнительная информация о маршрутизации приведена в [руководстве по маршрутизации](/{{ page.lang }}/guide/routing.html).
+
+### [Previous: Express application generator ](/{{ page.lang }}/starter/generator.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: Serving static files in Express ](/{{ page.lang }}/starter/static-files.html)

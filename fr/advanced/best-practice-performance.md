@@ -1,11 +1,10 @@
 ---
 layout: page
-title: Meilleures pratiques en termes de performances pour l'utilisation d'Express
-  en production
+title: Meilleures pratiques en termes de performances pour l'utilisation d'Express en production
+description: Discover performance and reliability best practices for Express apps in production, covering code optimizations and environment setups for optimal performance.
 menu: advanced
 lang: fr
-description: Discover performance and reliability best practices for Express apps
-  in production, covering code optimizations and environment setups for optimal performance.
+redirect_from: /advanced/best-practice-performance.html
 ---
 
 # Meilleures pratiques en production : performances et fiabilité
@@ -16,20 +15,27 @@ Cet article traite des meilleures pratiques en termes de performances et de fiab
 
 La présente rubrique s'inscrit clairement dans le concept "devops", qui couvre à la fois le développement traditionnel et l'exploitation. Ainsi, les informations se divisent en deux parties :
 
-* [A faire dans votre code](#code) (partie développement, "dev").
-* [A faire dans votre environnement/configuration](#env) (partie exploitation, "ops").
-
-<a name="code"></a>
+- Things to do in your code (the dev part):
+  - Utiliser le middleware pour exploiter les fichiers statiques
+  - Ne pas utiliser les fonctions synchrones
+  - [Do logging correctly](#do-logging-correctly)
+  - <a name="exceptions"></a>
+- [A faire dans votre environnement/configuration](#env) (partie exploitation, "ops").
+  - Définir NODE_ENV sur "production"
+  - Utilisez plutôt le middleware [serve-static](https://www.npmjs.com/package/serve-static) (ou tout middleware équivalent), qui est optimisé pour l'utilisation des fichiers dans les applications Express.
+  - [A faire dans votre code](#code) (partie développement, "dev").
+  - [Cache request results](#cache-request-results)
+  - Utiliser un équilibreur de charge
+  - Utiliser un proxy inverse
 
 ## A faire dans votre code
 
 Les actions suivantes peuvent être réalisées dans votre code afin d'améliorer les performances de votre application :
 
-* Utiliser la compression gzip
-* Ne pas utiliser les fonctions synchrones
-* Utiliser le middleware pour exploiter les fichiers statiques
-* Procéder à une journalisation correcte
-* Traiter correctement les exceptions
+- Utiliser la compression gzip
+- [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
+- [Do logging correctly](#do-logging-correctly)
+- Traiter correctement les exceptions
 
 ### Utiliser la compression gzip
 
@@ -52,14 +58,6 @@ Bien que Node et plusieurs modules mettent à disposition les versions synchrone
 
 Si vous utilisez Node.js 4.0+ ou io.js 2.1.0+, vous pouvez utiliser l'option de ligne de commande `--trace-sync-io` pour imprimer un avertissement et une trace de pile chaque fois que votre application utilise une API synchrone. Bien entendu vous n'utiliserez pas réellement cette option en production, mais plutôt pour vérifier que votre code est prêt pour la phase production. Pour plus d'informations, voir [Weekly update for io.js 2.1.0](https://nodejs.org/en/blog/weekly-updates/weekly-update.2015-05-22/#2-1-0).
 
-### Utiliser le middleware pour exploiter les fichiers statiques
-
-En développement, vous pouvez utiliser [res.sendFile()](/{{ page.lang }}/4x/api.html#res.sendFile) pour exploiter les fichiers statiques. Ne l'utilisez toutefois pas en production, car cette fonction doit lire le système de fichiers pour chaque demande de fichier ; elle se heurterait à des temps d'attente importants qui affecteraient les performances globales de l'application. Notez que `res.sendFile()` n'est *pas* implémentée avec l'appel système [sendfile](http://linux.die.net/man/2/sendfile), qui la rendrait beaucoup plus efficace.
-
-Utilisez plutôt le middleware [serve-static](https://www.npmjs.com/package/serve-static) (ou tout middleware équivalent), qui est optimisé pour l'utilisation des fichiers dans les applications Express.
-
-Encore mieux, utilisez un proxy inverse pour exploiter les fichiers statiques ; pour plus d'informations, voir [Utiliser un proxy inverse](#proxy).
-
 ### Procéder à une journalisation correcte
 
 En règle générale, vous utilisez la journalisation à partir de votre application à deux fins : le débogage et la journalisation de l'activité de votre application (principalement tout le reste). L'utilisation de `console.log()` ou de `console.err()` pour imprimer des messages de journal sur le terminal est une pratique courante en développement. Cependant, [ces fonctions sont synchrones](https://nodejs.org/api/console.html#console_console_1) lorsque la destination est un terminal ou un fichier ; elles ne conviennent donc pas en production, à moins que vous ne dirigiez la sortie vers un autre programme.
@@ -72,33 +70,29 @@ Si vous utilisez la journalisation à des fins de débogage, utilisez un module 
 
 Si vous journalisez l'activité de votre application (par exemple, pour suivre le trafic ou les appels API), utilisez une bibliothèque de journalisation telle que [Winston](https://www.npmjs.com/package/winston) ou [Bunyan](https://www.npmjs.com/package/bunyan) plutôt que d'utiliser `console.log()`. Pour obtenir une comparaison détaillée de ces deux bibliothèques, consultez l'article StrongLoop intitulé [Comparing Winston and Bunyan Node.js Logging](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
 
-<a name="exceptions"></a>
-
 ### Traiter correctement les exceptions
 
 Les applications Node plantent lorsqu'elles tombent sur une exception non interceptée. Si vous ne traitez pas les exceptions et ne prenez pas les décisions appropriées, votre application Express plantera et sera déconnectée. Si vous suivez les conseils de la rubrique ci-dessous intitulée [Vérifier que votre application redémarre automatiquement](#restart), votre application pourra être restaurée suite à un plantage. Le délai de démarrage des applications Express est heureusement court en règle générale. Vous souhaitez toutefois éviter tout plantage en priorité et pour ce faire, vous devez traiter les exceptions correctement.
 
 Pour vérifier que vous traitez toutes les exceptions, procédez comme suit :
 
-* [Utiliser try-catch](#try-catch)
-* [Utiliser des promesses](#promises)
+- [Utiliser try-catch](#try-catch)
+- [Utiliser des promesses](#promises)
 
 Avant de s'immerger dans les rubriques qui suivent, il est conseillé de posséder des connaissances de base concernant le traitement des erreurs Node/Express, à savoir l'utilisation des rappels "error-first" et la propagation des erreurs dans le middleware. Node utilise la convention de "rappel error-first" pour renvoyer les erreurs issues des fonctions asynchrones, dans laquelle le premier paramètre de la fonction callback est l'objet error, suivi par les données de résultat dans les paramètres suivants. Pour n'indiquer aucune erreur, indiquez null comme premier paramètre. La fonction de rappel doit suivre la convention de rappel "error-first" de sorte à traiter l'erreur de manière significative. Dans Express, la meilleure pratique consiste à utiliser la fonction next() pour propager les erreurs via la chaîne du middleware.
 
 Pour plus d'informations sur les bases du traitement des erreurs, voir :
 
-* [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
-* [Building Robust Node Applications: Error Handling](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/robust-node-applications-error-handling/) (blogue StrongLoop)
+- [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
+- [Building Robust Node Applications: Error Handling](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/robust-node-applications-error-handling/) (blogue StrongLoop)
 
 #### A ne pas faire
 
-Vous ne devriez *pas* écouter l'événement `uncaughtException`, émis lorsqu'une exception remonte vers la boucle d'événements. L'ajout d'un programme d'écoute d'événement pour `uncaughtException` va modifier le comportement par défaut du processus qui rencontre une exception ; le processus va continuer à s'exécuter malgré l'exception. Cela pourrait être un bon moyen d'empêcher votre application de planter, mais continuer à exécuter l'application après une exception non interceptée est une pratique dangereuse qui n'est pas recommandée, étant donné que l'état du processus devient peu fiable et imprévisible.
+Vous ne devriez _pas_ écouter l'événement `uncaughtException`, émis lorsqu'une exception remonte vers la boucle d'événements. L'ajout d'un programme d'écoute d'événement pour `uncaughtException` va modifier le comportement par défaut du processus qui rencontre une exception ; le processus va continuer à s'exécuter malgré l'exception. Cela pourrait être un bon moyen d'empêcher votre application de planter, mais continuer à exécuter l'application après une exception non interceptée est une pratique dangereuse qui n'est pas recommandée, étant donné que l'état du processus devient peu fiable et imprévisible.
 
 De plus, l'utilisation d'`uncaughtException` est officiellement reconnue comme étant [rudimentaire](https://nodejs.org/api/process.html#process_event_uncaughtexception) et il a été [proposé](https://github.com/nodejs/node-v0.x-archive/issues/2582) de le supprimer. Ecouter `uncaughtException` n'est qu'une mauvaise idée. Voilà pourquoi nous recommandons d'utiliser plusieurs processus et superviseurs à la place : faire planter son application et la redémarrer est souvent plus sûr que de la restaurer après une erreur.
 
 L'utilisation de [domain](https://nodejs.org/api/domain.html) n'est également pas recommandée. Ce module obsolète ne résout globalement pas le problème.
-
-<a name="try-catch"></a>
 
 #### Utiliser try-catch
 
@@ -126,8 +120,6 @@ app.get('/search', (req, res) => {
 
 Toutefois, try-catch ne fonctionne que dans le code synchrone. Etant donné que la plateforme Node est principalement asynchrone (en particulier dans un environnement de production), try-catch n'interceptera pas beaucoup d'exceptions.
 
-<a name="promises"></a>
-
 #### Utiliser des promesses
 
 Les promesses vont traiter n'importe quelle exception (explicite et implicite) dans les blocs de code asynchrone qui utilisent `then()`. Contentez-vous d'ajouter `.catch(next)` à la fin des chaînes de promesse. Par exemple :
@@ -148,10 +140,10 @@ app.use((err, req, res, next) => {
 
 Toutes les erreurs asynchrones et synchrones sont à présent propagées vers le middleware de traitement des erreurs.
 
-Observez toutefois les deux avertissements suivants :
+However, there are two caveats:
 
-1.  L'intégralité de votre code asynchrone doit renvoyer des promesses (à l'exception des émetteurs). Si une bibliothèque spécifique ne renvoie pas de promesses, convertissez l'objet de base à l'aide d'une fonction d'aide telle que [Bluebird.promisifyAll()](http://bluebirdjs.com/docs/api/promise.promisifyall.html).
-2.  Les émetteurs d'événements (comme les flux) peuvent toujours générer des exceptions non interceptées. Veillez donc à traiter l'événement d'erreur de manière appropriée ; par exemple :
+1. L'intégralité de votre code asynchrone doit renvoyer des promesses (à l'exception des émetteurs). Si une bibliothèque spécifique ne renvoie pas de promesses, convertissez l'objet de base à l'aide d'une fonction d'aide telle que [Bluebird.promisifyAll()](http://bluebirdjs.com/docs/api/promise.promisifyall.html).
+2. Les émetteurs d'événements (comme les flux) peuvent toujours générer des exceptions non interceptées. Veillez donc à traiter l'événement d'erreur de manière appropriée ; par exemple :
 
 ```js
 const wrap = fn => (...args) => fn(...args).catch(args[2])
@@ -163,23 +155,22 @@ app.get('/', wrap(async (req, res, next) => {
 }))
 ```
 
-Pour plus d'informations sur le traitement des erreurs à l'aide de promesses, voir :
+The `wrap()` function is a wrapper that catches rejected promises and calls `next()` with the error as the first argument.
+For details, see Asynchronous
+Error Handling in Express with Promises, Generators and ES7.
 
-* [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
-* [Promises in Node.js with Q – An Alternative to Callbacks](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
-
-<a name="env"></a>
+[Promises in Node.js with Q – An Alternative to Callbacks](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
 
 ## A faire dans votre environnement/configuration
 
 Les actions suivantes peuvent être réalisées dans votre environnement système afin d'améliorer les performances de votre application :
 
-* Définir NODE_ENV sur "production"
-* Vérifier que votre application redémarre automatiquement
-* Exécuter votre application dans un cluster
-* Mettre en cache les résultats d'une demande
-* Utiliser un équilibreur de charge
-* Utiliser un proxy inverse
+- <a name="env"></a>
+- Vérifier que votre application redémarre automatiquement
+- Exécuter votre application dans un cluster
+- [Cache request results](#cache-request-results)
+- Utilisation de StrongLoop PM avec un équilibreur de charge Nginx
+- Encore mieux, utilisez un proxy inverse pour exploiter les fichiers statiques ; pour plus d'informations, voir [Utiliser un proxy inverse](#proxy).
 
 ### Définir NODE_ENV sur "production"
 
@@ -187,9 +178,9 @@ La variable d'environnement NODE_ENV spécifie l'environnement dans lequel une a
 
 En définissant NODE_ENV sur "production", Express :
 
-* Met en cache les modèles d'affichage.
-* Met en cache les fichiers CSS générés à partir d'extensions CSS.
-* Génère moins de messages d'erreur prolixes.
+- Met en cache les modèles d'affichage.
+- Met en cache les fichiers CSS générés à partir d'extensions CSS.
+- Génère moins de messages d'erreur prolixes.
 
 [Les tests indiquent](http://apmblog.dynatrace.com/2015/07/22/the-drastic-effects-of-omitting-node_env-in-your-express-js-applications/) que ce simple paramétrage peut multiplier les performances d'application par trois !
 
@@ -215,14 +206,12 @@ Environment=NODE_ENV=production
 
 Pour plus d'informations, voir [Using Environment Variables In systemd Units](https://coreos.com/os/docs/latest/using-environment-variables-in-systemd-units.html).
 
-Si vous utilisez StrongLoop Process Manager, vous pouvez également [définir la variable d'environnement lorsque vous installez StrongLoop PM en tant que service](https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-Setenvironmentvariables).
-
 ### Vérifier que votre application redémarre automatiquement
 
 En production, vous ne souhaitez jamais que votre application soit déconnectée. Vous devez donc veiller à ce qu'elle redémarre si elle plante et si le serveur plante. Même si vous espérez que cela n'arrive pas, vous devez en réalité considérer ces deux éventualités en :
 
-* Utilisant un gestionnaire de processus pour redémarrer l'application (et Node) lorsqu'elle plante.
-* Utilisant le système init fourni par votre système d'exploitation pour redémarrer le gestionnaire de processus lorsque le système d'exploitation plante. Vous pouvez également utiliser le système init sans gestionnaire de processus.
+- Utilisant un gestionnaire de processus pour redémarrer l'application (et Node) lorsqu'elle plante.
+- Utilisant le système init fourni par votre système d'exploitation pour redémarrer le gestionnaire de processus lorsque le système d'exploitation plante. Vous pouvez également utiliser le système init sans gestionnaire de processus.
 
 Les applications Node plantent si elles tombent sur une exception non interceptée. Avant toute chose, vérifiez que votre application est correctement testée et qu'elle traite toutes les exceptions (voir [Traiter correctement les exceptions](#exceptions) pour plus de détails). En cas d'échec, mettez en place un mécanisme qui garantit que si et lorsque votre application plante, elle redémarre automatiquement.
 
@@ -232,28 +221,28 @@ En développement, vous avez simplement démarré votre application à partir de
 
 En plus de redémarrer votre application lorsqu'elle plante, un gestionnaire de processus peut vous permettre :
 
-* De vous informer sur les performances d'exécution et la consommation des ressources.
-* De modifier les paramètres de manière dynamique afin d'améliorer les performances.
-* De contrôler la mise en cluster (StrongLoop PM et pm2).
+- De vous informer sur les performances d'exécution et la consommation des ressources.
+- De modifier les paramètres de manière dynamique afin d'améliorer les performances.
+- De contrôler la mise en cluster (StrongLoop PM et pm2).
 
 Les gestionnaires de processus les plus populaires pour Node sont les suivants :
 
-* [StrongLoop Process Manager](http://strong-pm.io/)
-* [PM2](https://github.com/Unitech/pm2)
-* [Forever](https://www.npmjs.com/package/forever)
+- [StrongLoop Process Manager](http://strong-pm.io/)
+- [PM2](https://github.com/Unitech/pm2)
+- [Forever](https://www.npmjs.com/package/forever)
 
-Pour obtenir une comparaison détaillée de ces trois gestionnaires de processus, voir [http://strong-pm.io/compare/](http://strong-pm.io/compare/). 
+Pour obtenir une comparaison détaillée de ces trois gestionnaires de processus, voir [http://strong-pm.io/compare/](http://strong-pm.io/compare/).
 
 L'utilisation de l'un de ces trois gestionnaires de processus suffira à garder votre application active, même si elle plantera de temps en temps.
 
 StrongLoop PM possède un grand nombre de fonctionnalités qui ciblent en particulier le déploiement en production. Vous pouvez l'utiliser avec les outils StrongLoop associés pour :
 
-* Générer et mettre en package votre application en local, puis la déployer en toute sécurité sur votre système de production.
-* Redémarrer automatiquement votre application si elle plante pour une raison quelconque.
-* Gérer vos clusters à distance.
-* Afficher les profils d'UC et les instantanés de segment de mémoire pour optimiser les performances et diagnostiquer les fuites de mémoire.
-* Afficher les mesures de performance de votre application.
-* Evoluer facilement vers plusieurs hôtes avec un contrôlé intégré de l'équilibreur de charge Nginx.
+- Générer et mettre en package votre application en local, puis la déployer en toute sécurité sur votre système de production.
+- Redémarrer automatiquement votre application si elle plante pour une raison quelconque.
+- Gérer vos clusters à distance.
+- Afficher les profils d'UC et les instantanés de segment de mémoire pour optimiser les performances et diagnostiquer les fuites de mémoire.
+- Afficher les mesures de performance de votre application.
+- Evoluer facilement vers plusieurs hôtes avec un contrôlé intégré de l'équilibreur de charge Nginx.
 
 Comme décrit ci-dessous, lorsque vous installez StrongLoop PM en tant que service de système d'exploitation à l'aide de votre système init, il redémarre automatiquement au redémarrage du système. Ainsi, vos processus applicatifs et vos clusters resteront toujours actifs.
 
@@ -263,14 +252,14 @@ Le niveau de fiabilité suivant consiste à garantir que votre application redé
 
 Vous pouvez utiliser les systèmes init de deux manières dans votre application Express :
 
-* Exécutez votre application dans un gestionnaire de processus, puis installez le gestionnaire de processus en tant que service avec le système init. Le gestionnaire de processus va redémarrer votre application lorsqu'elle plantera et le système init va redémarrer le gestionnaire de processus lorsque le système d'exploitation redémarrera. Il s'agit de la méthode recommandée.
-* Exécutez votre application (et Node) directement avec le système init. Cette méthode est plus simple, mais vous ne profitez pas des avantages d'un gestionnaire de processus.
+- Exécutez votre application dans un gestionnaire de processus, puis installez le gestionnaire de processus en tant que service avec le système init. Le gestionnaire de processus va redémarrer votre application lorsqu'elle plantera et le système init va redémarrer le gestionnaire de processus lorsque le système d'exploitation redémarrera. Il s'agit de la méthode recommandée.
+- Exécutez votre application (et Node) directement avec le système init. Cette méthode est plus simple, mais vous ne profitez pas des avantages d'un gestionnaire de processus.
 
 ##### Systemd
 
 Systemd est un système Linux et un gestionnaire de services. La plupart des distributions Linux principales ont adopté systemd comme leur système init par défaut.
 
-Un fichier de configuration de service systemd est appelé *fichier d'unité* et porte l'extension .service. Voici un exemple de fichier d'unité permettant de gérer une application Node directement (remplacez le texte en gras par les valeurs appropriées à votre système et votre application) :
+Un fichier de configuration de service systemd est appelé _fichier d'unité_ et porte l'extension .service. Voici un exemple de fichier d'unité permettant de gérer une application Node directement (remplacez le texte en gras par les valeurs appropriées à votre système et votre application) : Replace the values enclosed in `<angle brackets>` for your system and app:
 
 ```sh
 [Unit]
@@ -301,6 +290,7 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 ```
+
 Pour plus d'informations sur systemd, voir la [page d'aide de systemd](http://www.freedesktop.org/software/systemd/man/systemd.unit.html).
 
 ##### StrongLoop PM en tant que service systemd
@@ -359,15 +349,15 @@ respawn
 respawn limit 10 10
 ```
 
-REMARQUE : ce script nécessite Upstart 1.4 ou ultérieur, pris en charge sur Ubuntu 12.04-14.10.
+REMARQUE : ce script nécessite Upstart 1.4 ou ultérieur, pris en charge sur Ubuntu 12.04-14.10. %}
 
 Etant donné que le travail est configuré pour s'exécuter au démarrage du système, votre application sera démarrée avec le système d'exploitation et sera redémarrée automatiquement si l'application plante ou si le système tombe en panne.
 
 En plus de redémarrer automatiquement l'application, Upstart vous permet d'utiliser les commandes suivantes :
 
-* `start myapp` – Démarre l'application
-* `restart myapp` – Redémarre l'application
-* `stop myapp` – Arrête l'application
+- `start myapp` – Démarre l'application
+- `restart myapp` – Redémarre l'application
+- `stop myapp` – Arrête l'application
 
 Pour plus d'informations sur Upstart, voir [Upstart Intro, Cookbook and Best Practises](http://upstart.ubuntu.com/cookbook).
 
@@ -387,13 +377,13 @@ Exécutez ensuite le service comme suit :
 $ sudo /sbin/initctl start strong-pm
 ```
 
-REMARQUE : sur les systèmes qui ne prennent pas en charge Upstart 1.4, les commandes sont légèrement différentes. Pour plus d'informations, voir [Setting up a production host](https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-RHELLinux5and6,Ubuntu10.04-.10,11.04-.10) dans la documentation StrongLoop.
+REMARQUE : sur les systèmes qui ne prennent pas en charge Upstart 1.4, les commandes sont légèrement différentes. Pour plus d'informations, voir [Setting up a production host](https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-RHELLinux5and6,Ubuntu10.04-.10,11.04-.10) dans la documentation StrongLoop. %}
 
 ### Exécuter votre application dans un cluster
 
 Dans un système multicoeur, vous pouvez augmenter les performances d'une application Node en lançant un cluster de processus. Un cluster exécute plusieurs instances de l'application, idéalement une instance sur chaque coeur d'UC, répartissant ainsi la charge et les tâches entre les instances.
 
-<!--![Equilibrage entre les instances d'application à l'aide de l'API de cluster](/images/clustering.png)-->
+![Balancing between application instances using the cluster API](/images/clustering.png)
 
 IMPORTANT : étant donné que les instances d'application s'exécutent en tant que processus distincts, elles ne partagent pas le même espace mémoire. Autrement dit, les objets sont en local sur chaque instance de l'application. Par conséquent, vous ne pouvez pas conserver l'état dans le code de l'application. Vous pouvez toutefois utiliser un magasin de données en mémoire tel que [Redis](http://redis.io/) pour stocker les données de session et l'état. Cette fonctionnalité s'applique essentiellement à toutes les formes de mise à l'échelle horizontale, que la mise en cluster soit effectuée avec plusieurs processus ou avec plusieurs serveurs physiques.
 
@@ -405,7 +395,7 @@ La mise en cluster peut être réalisée avec le [module cluster](https://nodejs
 
 #### Utilisation de StrongLoop PM
 
-Si vous déployez votre application dans StrongLoop Process Manager (PM), vous pouvez alors utiliser la mise en cluster *sans* modifier votre code d'application.
+Si vous déployez votre application dans StrongLoop Process Manager (PM), vous pouvez alors utiliser la mise en cluster _sans_ modifier votre code d'application.
 
 Lorsque StrongLoop Process Manager (PM) exécute une application, il l'exécute automatiquement dans un cluster avec un nombre de processus de traitement égal au nombre de coeurs d'UC sur le système. Vous pouvez modifier manuellement le nombre de processus de traitement dans le cluster à l'aide de l'outil de ligne de commande slc sans arrêter l'application.
 
@@ -416,6 +406,34 @@ $ slc ctl -C http://prod.foo.com:8701 set-size my-app 8
 ```
 
 Pour plus d'informations sur la mise en cluster avec StrongLoop PM, voir [Clustering](https://docs.strongloop.com/display/SLC/Clustering) dans la documentation StrongLoop.
+
+#### Using PM2
+
+If you deploy your application with PM2, then you can take advantage of clustering _without_ modifying your application code.  You should ensure your [application is stateless](http://pm2.keymetrics.io/docs/usage/specifics/#stateless-apps) first, meaning no local data is stored in the process (such as sessions, websocket connections and the like).
+
+When running an application with PM2, you can enable **cluster mode** to run it in a cluster with a number of instances of your choosing, such as the matching the number of available CPUs on the machine. You can manually change the number of processes in the cluster using the `pm2` command line tool without stopping the app.
+
+To enable cluster mode, start your application like so:
+
+```bash
+# Start 4 worker processes
+$ pm2 start npm --name my-app -i 4 -- start
+# Auto-detect number of available CPUs and start that many worker processes
+$ pm2 start npm --name my-app -i max -- start
+```
+
+This can also be configured within a PM2 process file (`ecosystem.config.js` or similar) by setting `exec_mode` to `cluster` and `instances` to the number of workers to start.
+
+Once running, the application can be scaled like so:
+
+```bash
+# Add 3 more workers
+$ pm2 scale my-app +3
+# Scale to a specific number of workers
+$ pm2 scale my-app 2
+```
+
+For more information on clustering with PM2, see [Cluster Mode](https://pm2.keymetrics.io/docs/usage/cluster-mode/) in the PM2 documentation.
 
 ### Mettre en cache les résultats d'une demande
 
@@ -429,12 +447,7 @@ Quel que soit le niveau d'optimisation d'une application, une instance unique ne
 
 Un équilibreur de charge est généralement un proxy inverse qui orchestre le trafic entrant et sortant de plusieurs instances d'application et serveurs. Vous pouvez facilement configurer un équilibreur de charge pour votre application à l'aide de [Nginx](http://nginx.org/en/docs/http/load_balancing.html) ou de [HAProxy](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts).
 
-Avec l'équilibrage de charge, vous devrez peut-être vérifier que les demandes associées à un ID de session spécifique sont connectées au processus dont elles sont issues. Ce procédé est appelé *affinité de session* (ou *sessions persistantes*) et peut être effectué en utilisant un magasin de données tel que Redis pour les données de session (en fonction de votre application), comme décrit ci-dessus. Pour en savoir plus, voir [Using multiple nodes](https://socket.io/docs/v4/using-multiple-nodes/).
-
-#### Utilisation de StrongLoop PM avec un équilibreur de charge Nginx
-
-[StrongLoop Process Manager](http://strong-pm.io/) est intégré à un contrôleur Nginx, ce qui permet de paramétrer facilement les configurations d'environnement de production à plusieurs hôtes. Pour plus d'informations, voir [Scaling to multiple servers](https://docs.strongloop.com/display/SLC/Scaling+to+multiple+servers) (documentation StrongLoop).
-<a name="proxy"></a>
+Avec l'équilibrage de charge, vous devrez peut-être vérifier que les demandes associées à un ID de session spécifique sont connectées au processus dont elles sont issues. Ce procédé est appelé _affinité de session_ (ou _sessions persistantes_) et peut être effectué en utilisant un magasin de données tel que Redis pour les données de session (en fonction de votre application), comme décrit ci-dessus. Pour en savoir plus, voir [Using multiple nodes](https://socket.io/docs/v4/using-multiple-nodes/).
 
 ### Utiliser un proxy inverse
 

@@ -1,21 +1,17 @@
 ---
 layout: page
 title: Express "Hello World" príklad
+description: Get started with Express.js by building a simple 'Hello World' application, demonstrating the basic setup and server creation for beginners.
 menu: starter
 lang: sk
-description: Get started with Express.js by building a simple 'Hello World' application,
-  demonstrating the basic setup and server creation for beginners.
+redirect_from: /starter/hello-world.html
 ---
 
 # Hello world príklad
 
 <div class="doc-box doc-info" markdown="1">
-Toto bude v podstate najjednoduchšia Express aplikácia akú možete vytvoriť. Aplikácia s jedným súborom &mdash; _nie_ taká, ako keby ste použili [Express generátor](/{{ page.lang }}/starter/generator.html), ktorý vytvorí základnú štruktúru pre plnohodnotnú aplikáciu s niekoľkými JavaScript súbormi, Jade templatami a pod-adresármi pre rôzne účely.
+Embedded below is essentially the simplest Express app you can create. It is a single file app &mdash; _not_ what you'd get if you use the [Express generator](/{{ page.lang }}/starter/generator.html), which creates the scaffolding for a full app with numerous JavaScript files, Jade templates, and sub-directories for various purposes.
 </div>
-
-Najskôr si vytvorte priečinok s názvom `myapp`, presuňte sa tam a spustite príkaz `npm init`. Potom nainštalujte `express` ako dependenciu podľa [inštalačnej príručky](/{{ page.lang }}/starter/installing.html).
-
-V priečinku `myapp` vytvorte súbor s názvom `app.js` a vložte do neho nasledovný kód:
 
 ```js
 const express = require('express')
@@ -31,17 +27,26 @@ app.listen(port, () => {
 })
 ```
 
-Aplikácia naštartuje server a na porte 3000 začne počúvať na pripojenia. Aplikácia odpovie "Hello World!" na request na hlavnú URL (`/`) alebo _route_. Pre každú inú URL odpovie prostredníctvom **404 Not Found**.
+This app starts a server and listens on port 3000 for connections. The app responds with "Hello World!" for requests
+to the root URL (`/`) or _route_. For every other path, it will respond with a **404 Not Found**.
+
+### Running Locally
+
+First create a directory named `myapp`, change to it and run `npm init`. Then, install `express` as a dependency, as per the [installation guide](/{{ page.lang }}/starter/installing.html).
+
+In the `myapp` directory, create a file named `app.js` and copy the code from the example above.
 
 <div class="doc-box doc-notice" markdown="1">
-Request (požiadavka) `req` a response (odpoveď) `res` sú presne rovnaké objekty, ktoré Node štandardne poskytuje, takže môžete spraviť `req.pipe()`, `req.on('data', callback)` a hocičo iné, čo by ste spravili v prípade, ak by ste nepoužili Express.
+The `req` (request) and `res` (response) are the exact same objects that Node provides, so you can invoke
+`req.pipe()`, `req.on('data', callback)`, and anything else you would do without Express involved.
 </div>
 
-Spustite aplikáciu pomocou nasledujúceho príkazu:
+Run the app with the following command:
 
 ```bash
 $ node app.js
 ```
 
-Potom v prehliadači zadajte [http://localhost:3000/](http://localhost:3000/) a pozrite si výstup.
+Then, load `http://localhost:3000/` in a browser to see the output.
 
+### [Previous: Installing ](/{{ page.lang }}/starter/installing.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: Express Generator ](/{{ page.lang }}/starter/generator.html)

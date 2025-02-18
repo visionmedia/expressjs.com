@@ -1,31 +1,32 @@
 ---
 layout: page
 title: Express database integration
+description: Discover how to integrate various databases with Express.js applications, including setup examples for MongoDB, MySQL, PostgreSQL, and more.
 menu: guide
 lang: th
-description: Discover how to integrate various databases with Express.js applications,
-  including setup examples for MongoDB, MySQL, PostgreSQL, and more.
+redirect_from: /guide/database-integration.html
 ---
+
 # Database integration
 
 Adding the capability to connect databases to Express apps is just a matter of loading an appropriate Node.js driver for the database in your app. This document briefly explains how to add and use some of the most popular Node.js modules for database systems in your Express app:
 
-* [Cassandra](#cassandra)
-* [Couchbase](#couchbase)
-* [CouchDB](#couchdb)
-* [LevelDB](#leveldb)
-* [MySQL](#mysql)
-* [MongoDB](#mongodb)
-* [Neo4j](#neo4j)
-* [Oracle](#oracle)
-* [PostgreSQL](#postgresql)
-* [Redis](#redis)
-* [SQL Server](#sql-server)
-* [SQLite](#sqlite)
-* [ElasticSearch](#elasticsearch)
+- [Cassandra](#cassandra)
+- [Couchbase](#couchbase)
+- [CouchDB](#couchdb)
+- [LevelDB](#leveldb)
+- [MySQL](#mysql)
+- [MongoDB](#mongodb)
+- [Neo4j](#neo4j)
+- [Oracle](#oracle)
+- [PostgreSQL](#postgresql)
+- [Redis](#redis)
+- [SQL Server](#sql-server)
+- [SQLite](#sqlite)
+- [ElasticSearch](#elasticsearch)
 
 <div class="doc-box doc-notice" markdown="1">
-These database drivers are among many that are available.  For other options,
+These database drivers are among many that are available. For other options,
 search on the [npm](https://www.npmjs.com/) site.
 </div>
 
@@ -193,7 +194,7 @@ connection.end()
 $ npm install mongodb
 ```
 
-### Example
+### Example (v2.\*)
 
 ```js
 const MongoClient = require('mongodb').MongoClient
@@ -209,11 +210,29 @@ MongoClient.connect('mongodb://localhost:27017/animals', (err, db) => {
 })
 ```
 
+### Example (v3.\*)
+
+```js
+const MongoClient = require('mongodb').MongoClient
+
+MongoClient.connect('mongodb://localhost:27017/animals', (err, client) => {
+  if (err) throw err
+
+  const db = client.db('animals')
+
+  db.collection('mammals').find().toArray((err, result) => {
+    if (err) throw err
+
+    console.log(result)
+  })
+})
+```
+
 If you want an object model driver for MongoDB, look at [Mongoose](https://github.com/LearnBoost/mongoose).
 
 ## Neo4j
 
-**Module**: [apoc](https://github.com/hacksparrow/apoc)
+**Module**: [neo4j-driver](https://github.com/neo4j/neo4j-javascript-driver)
 
 ### Installation
 
@@ -224,16 +243,20 @@ $ npm install apoc
 ### Example
 
 ```js
-const apoc = require('apoc')
+const neo4j = require('neo4j-driver')
+const driver = neo4j.driver('neo4j://localhost:7687', neo4j.auth.basic('neo4j', 'letmein'))
 
-apoc.query('match (n) return n').exec().then(
-  (response) => {
-    console.log(response)
-  },
-  (fail) => {
-    console.log(fail)
-  }
-)
+const session = driver.session()
+
+session.readTransaction((tx) => {
+  return tx.run('MATCH (n) RETURN count(n) AS count')
+    .then((res) => {
+      console.log(res.records[0].get('count'))
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+})
 ```
 
 ## Oracle
@@ -242,7 +265,7 @@ apoc.query('match (n) return n').exec().then(
 
 ### Installation
 
- NOTE: [See installation prerequisites](https://github.com/oracle/node-oracledb#-installation).
+NOTE: [See installation prerequisites](https://github.com/oracle/node-oracledb#-installation).
 
 ```bash
 $ npm install oracledb

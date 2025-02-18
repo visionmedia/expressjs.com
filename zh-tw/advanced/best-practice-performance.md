@@ -1,10 +1,10 @@
 ---
 layout: page
 title: 在正式作業中使用 Express 的效能最佳作法
+description: Discover performance and reliability best practices for Express apps in production, covering code optimizations and environment setups for optimal performance.
 menu: advanced
 lang: zh-tw
-description: Discover performance and reliability best practices for Express apps
-  in production, covering code optimizations and environment setups for optimal performance.
+redirect_from: /advanced/best-practice-performance.html
 ---
 
 # 正式作業最佳作法：效能和可靠性
@@ -13,26 +13,33 @@ description: Discover performance and reliability best practices for Express app
 
 本文討論部署至正式作業之 Express 應用程式的效能與可靠性最佳作法。
 
-顯然地，這個主題屬於 "devops" 領域，涵蓋了傳統開發和作業兩者。因此，資訊分為兩大部分：
+This topic clearly falls into the "devops" world, spanning both traditional development and operations. Accordingly, the information is divided into two parts:
 
-* [在程式碼中的作法](#code)（開發部分）。
-* [在環境 / 設定中的作法](#env)（作業部分）。
+- Things to do in your code (the dev part):
+  - 採用 gzip 壓縮
+  - [Don't use synchronous functions](#dont-use-synchronous-functions)
+  - [Do logging correctly](#do-logging-correctly)
+  - [Handle exceptions properly](#handle-exceptions-properly)
+- Things to do in your environment / setup (the ops part):
+  - 將 NODE_ENV 設為 "production"
+  - 確定您的應用程式自動重新啟動
+  - [Run your app in a cluster](#run-your-app-in-a-cluster)
+  - [Cache request results](#cache-request-results)
+  - 使用負載平衡器
+  - 使用反向 Proxy
 
-<a name="code"></a>
-
-## 在程式碼中的作法
+## Things to do in your code {#in-code}
 
 以下是您可以在程式碼中執行的一些作法，藉以改良您應用程式的效能：
 
-* 採用 gzip 壓縮
-* 不使用同步函數
-* 使用中介軟體來提供靜態檔案
-* 正確執行記載
-* 適當處理異常狀況
+- Gzip 壓縮可以大幅減少回應內文的大小，從而提高 Web 應用程式的速度。請使用 [compression](https://www.npmjs.com/package/compression) 中介軟體，在您的 Express 應用程式中進行 gzip 壓縮。例如：
+- [Don't use synchronous functions](#dont-use-synchronous-functions)
+- [Do logging correctly](#do-logging-correctly)
+- [Handle exceptions properly](#handle-exceptions-properly)
 
 ### 採用 gzip 壓縮
 
-Gzip 壓縮可以大幅減少回應內文的大小，從而提高 Web 應用程式的速度。請使用 [compression](https://www.npmjs.com/package/compression) 中介軟體，在您的 Express 應用程式中進行 gzip 壓縮。例如：
+Gzip compressing can greatly decrease the size of the response body and hence increase the speed of a web app. Use the [compression](https://www.npmjs.com/package/compression) middleware for gzip compression in your Express app. For example:
 
 ```js
 const compression = require('compression')
@@ -41,72 +48,61 @@ const app = express()
 app.use(compression())
 ```
 
-在正式作業中，如果網站的資料流量極高，落實執行壓縮最好的作法是在反向 Proxy 層次實作它（請參閱[使用反向 Proxy](#proxy)）。在該情況下，就不需使用壓縮中介軟體。如需在 Nginx 中啟用 gzip 壓縮的詳細資料，請參閱 Nginx 說明文件中的 [ngx_http_gzip_module 模組](http://nginx.org/en/docs/http/ngx_http_gzip_module.html)。
+For a high-traffic website in production, the best way to put compression in place is to implement it at a reverse proxy level (see [Use a reverse proxy](#use-a-reverse-proxy)). In that case, you do not need to use compression middleware. 在正式作業中，如果網站的資料流量極高，落實執行壓縮最好的作法是在反向 Proxy 層次實作它（請參閱[使用反向 Proxy](#proxy)）。在該情況下，就不需使用壓縮中介軟體。如需在 Nginx 中啟用 gzip 壓縮的詳細資料，請參閱 Nginx 說明文件中的 [ngx_http_gzip_module 模組](http://nginx.org/en/docs/http/ngx_http_gzip_module.html)。
 
 ### 不使用同步函數
 
-同步函數和方法直到傳回前，會阻礙執行程序的進行。單次呼叫同步函數，可能在數微秒或毫秒傳回，不過，在高資料流量的網站中，這些呼叫往往會累加，並降低應用程式效能。請避免在正式作業中使用它們。
+Synchronous functions and methods tie up the executing process until they return. A single call to a synchronous function might return in a few microseconds or milliseconds, however in high-traffic websites, these calls add up and reduce the performance of the app. Avoid their use in production.
 
-雖然 Node 和許多模組會提供其函數的同步與非同步版本，在正式作業中，請一律使用非同步版本。唯一有理由使用同步函數的時機是在最初啟動之時。
+雖然 Node 和許多模組會提供其函數的同步與非同步版本，在正式作業中，請一律使用非同步版本。唯一有理由使用同步函數的時機是在最初啟動之時。 The only time when a synchronous function can be justified is upon initial startup.
 
-如果您使用 Node.js 4.0+ 或 io.js 2.1.0+，每當您的應用程式使用同步 API 時，您可以使用 `--trace-sync-io` 指令行旗標，來列印警告和堆疊追蹤。當然，在正式作業中您其實不會想使用此旗標，但這可確保您的程式碼可準備用於正式作業中。如需相關資訊，請參閱 [io.js 2.1.0 每週更新](https://nodejs.org/en/blog/weekly-updates/weekly-update.2015-05-22/#2-1-0)。
+如果您使用 Node.js 4.0+ 或 io.js 2.1.0+，每當您的應用程式使用同步 API 時，您可以使用 `--trace-sync-io` 指令行旗標，來列印警告和堆疊追蹤。當然，在正式作業中您其實不會想使用此旗標，但這可確保您的程式碼可準備用於正式作業中。如需相關資訊，請參閱 [io.js 2.1.0 每週更新](https://nodejs.org/en/blog/weekly-updates/weekly-update.2015-05-22/#2-1-0)。 Of course, you wouldn't want to use this in production, but rather to ensure that your code is ready for production. See the [node command-line options documentation](https://nodejs.org/api/cli.html#cli_trace_sync_io) for more information.
 
-### 使用中介軟體來提供靜態檔案
+### Do logging correctly
 
-在開發中，您可以使用 [res.sendFile()](/{{ page.lang }}/4x/api.html#res.sendFile) 來提供靜態檔案。但是在正式作業中卻不能這樣做，因為此函數得讀取檔案系統，才能取得每一個檔案要求，如此會遇到明顯的延遲，並影響應用程式的整體效能。請注意，`res.sendFile()` *並非*透過更具效率的 [sendfile](http://linux.die.net/man/2/sendfile) 系統呼叫來實作。
+In general, there are two reasons for logging from your app: For debugging and for logging app activity (essentially, everything else). Using `console.log()` or `console.error()` to print log messages to the terminal is common practice in development. But [these functions are synchronous](https://nodejs.org/api/console.html#console_console_1) when the destination is a terminal or a file, so they are not suitable for production, unless you pipe the output to another program.
 
-請改用 [serve-static](https://www.npmjs.com/package/serve-static) 中介軟體（或同等項目），此中介軟體能有效提供 Express 應用程式的檔案。
+#### For debugging
 
-甚至更好的作法是使用反向 Proxy 來提供靜態檔案；如需相關資訊，請參閱[使用反向 Proxy](#proxy)。
-
-### 正確執行記載
-
-一般而言，從您的應用程式進行記載的原因有二：為了除錯，以及為了記載應用程式活動（其實就是除錯之外的每一項）。使用 `console.log()` 或 `console.err()` 將日誌訊息列印至終端機，在開發中是常見作法。但是當目的地是終端機或檔案時，[這些函數是同步的](https://nodejs.org/api/console.html#console_console_1)，除非您將輸出引導至另一個程式，這些函數並不適用於正式作業。
-
-#### 為了除錯
-
-如果您為了除錯而記載，則不要使用 `console.log()`，請改用 [debug](https://www.npmjs.com/package/debug) 之類的特殊除錯模組。這個模組可讓您使用 DEBUG 環境變數，來控制哪些除錯訊息（若有的話）要送往 `console.err()`。為了讓應用程式完全維持非同步，您仍得將 `console.err()` 引導至另一個程式。但之後在正式作業中，實際上您並不會進行除錯，不是嗎？
+如果您為了除錯而記載，則不要使用 `console.log()`，請改用 [debug](https://www.npmjs.com/package/debug) 之類的特殊除錯模組。這個模組可讓您使用 DEBUG 環境變數，來控制哪些除錯訊息（若有的話）要送往 `console.err()`。為了讓應用程式完全維持非同步，您仍得將 `console.err()` 引導至另一個程式。但之後在正式作業中，實際上您並不會進行除錯，不是嗎？ This module enables you to use the DEBUG environment variable to control what debug messages are sent to `console.error()`, if any. To keep your app purely asynchronous, you'd still want to pipe `console.error()` to another program. But then, you're not really going to debug in production, are you?
 
 #### 為了應用程式活動
 
 如果您要記載應用程式活動（例如，追蹤資料流量或 API 呼叫），則不要使用 `console.log()`，請改用 [Winston](https://www.npmjs.com/package/winston) 或
-[Bunyan](https://www.npmjs.com/package/bunyan) 之類的記載程式庫。如需這兩種程式庫的詳細比較，請參閱 StrongLoop 部落格文章 [Comparing Winston and Bunyan Node.js Logging](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/)。
+[Bunyan](https://www.npmjs.com/package/bunyan) 之類的記載程式庫。如需這兩種程式庫的詳細比較，請參閱 StrongLoop 部落格文章 [Comparing Winston and Bunyan Node.js Logging](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/)。 For a detailed comparison of these two libraries, see the StrongLoop blog post [Comparing Winston and Bunyan Node.js Logging](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/).
 
-<a name="exceptions"></a>
+### Handle exceptions properly
 
-### 適當處理異常狀況
-
-Node 應用程式一旦遇到未捕捉到的異常狀況，就會當機。如果不處理異常狀況，並採取適當的動作，您的 Express 應用程式會當機並且離線。如果您遵循下方[確定您的應用程式自動重新啟動](#restart)中的建議，應用程式就能從當機回復。幸好 Express 應用程式的啟動時間通常很短。然而，您會希望一開始就避免當機，如果要這樣做，您需要適當處理異常狀況。
+Node apps crash when they encounter an uncaught exception. Not handling exceptions and taking appropriate actions will make your Express app crash and go offline. If you follow the advice in [Ensure your app automatically restarts](#ensure-your-app-automatically-restarts) below, then your app will recover from a crash. Fortunately, Express apps typically have a short startup time. Nevertheless, you want to avoid crashing in the first place, and to do that, you need to handle exceptions properly.
 
 為了確保您能處理所有的異常狀況，請使用下列技術：
 
-* [使用 try-catch](#try-catch)
-* [使用 promise](#promises)
+- [使用 try-catch](#try-catch)
+- [使用 promise](#promises)
 
-在分別討論這兩個主題之前，您對 Node/Express 錯誤處理方式應有基本的瞭解：使用「錯誤優先回呼」，並將錯誤傳播至中介軟體。Node 從非同步函數傳回錯誤時，會採用「錯誤優先回呼」慣例，其中，回呼函數的第一個參數是錯誤物件，接著是後續參數中的結果資料。如果要指出無錯誤，會傳遞 null 作為第一個參數。回呼函數必須同樣遵循「錯誤優先回呼」慣例，才能實際處理錯誤。在 Express 中，最佳作法是使用 next() 函數，透過中介軟體鏈來傳播錯誤。
+Before diving into these topics, you should have a basic understanding of Node/Express error handling: using error-first callbacks, and propagating errors in middleware. Node uses an "error-first callback" convention for returning errors from asynchronous functions, where the first parameter to the callback function is the error object, followed by result data in succeeding parameters. To indicate no error, pass null as the first parameter. The callback function must correspondingly follow the error-first callback convention to meaningfully handle the error. And in Express, the best practice is to use the next() function to propagate errors through the middleware chain.
 
 如需進一步瞭解錯誤處理的基本概念，請參閱：
 
-* [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
-* [Building Robust Node Applications: Error Handling](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop blog)
+- [Error Handling in Node.js](https://www.tritondatacenter.com/node-js/production/design/errors)
+- [Building Robust Node Applications: Error Handling](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/robust-node-applications-error-handling/) (StrongLoop blog)
 
-#### 禁止事項
+#### What not to do
 
-有一件事*不能*做，就是接聽 `uncaughtException` 事件，此事件是在回歸事件迴圈期間不斷引發異常狀況時產生的。新增 `uncaughtException` 的事件接聽器，會使遇到異常狀況的程序變更其預設行為；儘管發生異常狀況，該程序會繼續執行。阻止應用程式當機，似乎是個好辦法，但是在未捕捉到異常狀況之後，又繼續執行應用程式，卻是危險作法而不建議這麼做，因為程序的狀態會變得不可靠且無法預測。
+One thing you should _not_ do is to listen for the `uncaughtException` event, emitted when an exception bubbles all the way back to the event loop. Adding an event listener for `uncaughtException` will change the default behavior of the process that is encountering an exception; the process will continue to run despite the exception. This might sound like a good way of preventing your app from crashing, but continuing to run the app after an uncaught exception is a dangerous practice and is not recommended, because the state of the process becomes unreliable and unpredictable.
 
-此外，使用 `uncaughtException` 被公認為[拙劣作法](https://nodejs.org/api/process.html#process_event_uncaughtexception)，這裡有一份[提案](https://github.com/nodejs/node-v0.x-archive/issues/2582)，指出如何將它從核心移除。因此，接聽 `uncaughtException` 並不可取。這是我們建議採取多重程序和監督程式等事項的原因：當機再重新啟動，通常是從錯誤回復最可靠的作法。
+此外，使用 `uncaughtException` 被公認為[拙劣作法](https://nodejs.org/api/process.html#process_event_uncaughtexception)，這裡有一份[提案](https://github.com/nodejs/node-v0.x-archive/issues/2582)，指出如何將它從核心移除。因此，接聽 `uncaughtException` 並不可取。這是我們建議採取多重程序和監督程式等事項的原因：當機再重新啟動，通常是從錯誤回復最可靠的作法。 So listening for `uncaughtException` is just a bad idea. This is why we recommend things like multiple processes and supervisors: crashing and restarting is often the most reliable way to recover from an error.
 
-我們也不建議使用 [domains](https://nodejs.org/api/domain.html)。它通常不能解決問題，並且是個已淘汰的模組。
-
-<a name="try-catch"></a>
+我們也不建議使用 [domains](https://nodejs.org/api/domain.html)。它通常不能解決問題，並且是個已淘汰的模組。 It generally doesn't solve the problem and is a deprecated module.
 
 #### 使用 try-catch
 
-try-catch 是一種 JavaScript 語言建構，可用來捕捉同步程式碼中的異常狀況。例如，如以下所示，利用 try-catch 來處理 JSON 剖析錯誤。
+try-catch 是一種 JavaScript 語言建構，可用來捕捉同步程式碼中的異常狀況。例如，如以下所示，利用 try-catch 來處理 JSON 剖析錯誤。 Use try-catch, for example, to handle JSON parsing errors as shown below.
 
 使用 [JSHint](http://jshint.com/) 或 [JSLint](http://www.jslint.com/) 之類的工具，有助您尋找隱含的異常狀況，例如[參照未定義變數中的錯誤](http://www.jshint.com/docs/options/#undef)。
 
-下列範例顯示如何使用 try-catch 來處理潛在的程序當機異常狀況。此中介軟體函數接受名稱是 "params" 的查詢欄位參數，它是一個 JSON 物件。
+Here is an example of using try-catch to handle a potential process-crashing exception.
+This middleware function accepts a query field parameter named "params" that is a JSON object.
 
 ```js
 app.get('/search', (req, res) => {
@@ -123,13 +119,11 @@ app.get('/search', (req, res) => {
 })
 ```
 
-不過，try-catch 只適用於同步程式碼。由於 Node 平台主要是非同步（尤其是在正式作業環境），try-catch 不會捕捉大量的異常狀況。
-
-<a name="promises"></a>
+However, try-catch works only for synchronous code. 不過，try-catch 只適用於同步程式碼。由於 Node 平台主要是非同步（尤其是在正式作業環境），try-catch 不會捕捉大量的異常狀況。
 
 #### 使用 promise
 
-只要非同步程式碼區塊使用 `then()`，promise 就會處理其中的任何異常狀況（包括明確和隱含）。只需在 promise 鏈尾端新增 `.catch(next)` 即可。例如：
+Promises will handle any exceptions (both explicit and implicit) in asynchronous code blocks that use `then()`. 只要非同步程式碼區塊使用 `then()`，promise 就會處理其中的任何異常狀況（包括明確和隱含）。只需在 promise 鏈尾端新增 `.catch(next)` 即可。例如： For example:
 
 ```js
 app.get('/', (req, res, next) => {
@@ -147,10 +141,10 @@ app.use((err, req, res, next) => {
 
 現在，所有非同步與同步錯誤都會傳播到錯誤中介軟體。
 
-不過，請注意下列兩項警告：
+However, there are two caveats:
 
-1.  您所有的非同步程式碼都必須傳回 promise（不包括發射程式）。如果特定程式庫沒有傳回 promise，請使用 [Bluebird.promisifyAll()](http://bluebirdjs.com/docs/api/promise.promisifyall.html) 等之類的 helper 函數來轉換基本物件。
-2.  事件發射程式（例如：串流）仍可能造成未捕捉到的異常狀況。因此，請確定錯誤事件的處理適當；例如：
+1. All your asynchronous code must return promises (except emitters). If a particular library does not return promises, convert the base object by using a helper function like [Bluebird.promisifyAll()](http://bluebirdjs.com/docs/api/promise.promisifyall.html).
+2. Event emitters (like `streams`) can still cause uncaught exceptions. So make sure you are handling the error event properly; for example:
 
 ```js
 const wrap = fn => (...args) => fn(...args).catch(args[2])
@@ -162,42 +156,39 @@ app.get('/', wrap(async (req, res, next) => {
 }))
 ```
 
-如需使用 promise 來處理錯誤的相關資訊，請參閱：
+The `wrap()` function is a wrapper that catches rejected promises and calls `next()` with the error as the first argument.
+[Asynchronous Error Handling in Express with Promises, Generators and ES7](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
 
-* [Asynchronous Error Handling in Express with Promises, Generators and ES7](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/)
-* [Promises in Node.js with Q – An Alternative to Callbacks](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
-
-<a name="env"></a>
+[Promises in Node.js with Q – An Alternative to Callbacks](https://web.archive.org/web/20240000000000/https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/)
 
 ## 在環境 / 設定中的作法
 
 以下是您可以在系統環境中執行的一些作法，藉以改良您應用程式的效能：
 
-* 將 NODE_ENV 設為 "production"
-* 確定您的應用程式自動重新啟動
-* 在叢集中執行應用程式
-* 快取要求結果
-* 使用負載平衡器
-* 使用反向 Proxy
+- NODE_ENV 環境變數用來指定應用程式的執行環境（通常是開發或正式作業）。若要改良效能，其中一個最簡單的作法是將 NODE_ENV 設為 "production"。
+- 在應用程式當機時（不論任何原因），自動重新啟動。
+- [Run your app in a cluster](#run-your-app-in-a-cluster)
+- [Cache request results](#cache-request-results)
+- 負載平衡器通常是一個反向 Proxy，負責協調與多個應用程式實例和伺服器之間的資料流量。利用 [Nginx](http://nginx.org/en/docs/http/load_balancing.html) 或 [HAProxy](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts)，就能輕鬆設定您應用程式的負載平衡器。
+- 反向 Proxy 位於 Web 應用程式前面，除了將要求引導至應用程式，也會對要求執行支援的作業。除此之外，它還可以處理錯誤頁面、壓縮、快取、提供的檔案，以及負載平衡。
 
 ### 將 NODE_ENV 設為 "production"
 
-NODE_ENV 環境變數用來指定應用程式的執行環境（通常是開發或正式作業）。若要改良效能，其中一個最簡單的作法是將 NODE_ENV 設為 "production"。
+The NODE_ENV environment variable specifies the environment in which an application is running (usually, development or production). One of the simplest things you can do to improve performance is to set NODE_ENV to "production."
 
 將 NODE_ENV 設為 "production"，可讓 Express：
 
-* 快取視圖範本。
-* 快取從 CSS 延伸項目產生的 CSS 檔案。
-* 產生簡略的錯誤訊息。
+- Cache view templates.
+- 快取從 CSS 延伸項目產生的 CSS 檔案。
+- Generate less verbose error messages.
 
 [測試指出](http://apmblog.dynatrace.com/2015/07/22/the-drastic-effects-of-omitting-node_env-in-your-express-js-applications/)單單這樣做，就能提高 3 倍的應用程式效能！
 
-如果您需要撰寫環境特定的程式碼，您可以使用 `process.env.NODE_ENV` 來檢查 NODE_ENV 的值。請注意，檢查任何環境變數的值都會影響效能，因此請慎行。
+如果您需要撰寫環境特定的程式碼，您可以使用 `process.env.NODE_ENV` 來檢查 NODE_ENV 的值。請注意，檢查任何環境變數的值都會影響效能，因此請慎行。 Be aware that checking the value of any environment variable incurs a performance penalty, and so should be done sparingly.
 
-在開發中，您通常是在互動式 Shell 中設定環境變數，例如，使用 `export` 或您的 `.bash_profile` 檔。但是在正式作業伺服器中，通常您應該不會這樣做；反而是使用您作業系統的 init 系統（systemd 或 Upstart）。下一節詳述一般性的 init 系統用法，但由於設定 NODE_ENV 對於效能來說很重要（而且輕而易舉），這裡仍特別強調。
+In development, you typically set environment variables in your interactive shell, for example by using `export` or your `.bash_profile` file. But in general, you shouldn't do that on a production server; instead, use your OS's init system (systemd or Upstart). The next section provides more details about using your init system in general, but setting `NODE_ENV` is so important for performance (and easy to do), that it's highlighted here.
 
-採用 Upstart 時，請在您的工作檔中使用 `env` 關鍵字。例如：
-
+採用 Upstart 時，請在您的工作檔中使用 `env` 關鍵字。例如： For example:
 
 ```sh
 # /etc/init/env.conf
@@ -206,8 +197,7 @@ NODE_ENV 環境變數用來指定應用程式的執行環境（通常是開發�
 
 如需相關資訊，請參閱 [Upstart Intro, Cookbook and Best Practices](http://upstart.ubuntu.com/cookbook/#environment-variables)。
 
-採用 systemd 時，請在單位檔案中使用 `Environment` 指引。例如：
-
+採用 systemd 時，請在單位檔案中使用 `Environment` 指引。例如： For example:
 
 ```sh
 # /etc/systemd/system/myservice.service
@@ -216,64 +206,60 @@ Environment=NODE_ENV=production
 
 如需相關資訊，請參閱 [Using Environment Variables In systemd Units](https://coreos.com/os/docs/latest/using-environment-variables-in-systemd-units.html)。
 
-如果您使用 StrongLoop Process Manager，您也可以[在將 StrongLoop PM 安裝成服務時，設定環境變數](https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-Setenvironmentvariables)。
-
-<a name="restart"></a>
-
 ### 確定您的應用程式自動重新啟動
 
-在正式作業中，您始終不希望您的應用程式離線。也就是說，不論是應用程式當機，或是伺服器本身當機，您都需要確保它會重新啟動。儘管最好這些事件都不要發生，您仍必須務實看待這兩種可能的情況，其作法如下：
+In production, you don't want your application to be offline, ever. This means you need to make sure it restarts both if the app crashes and if the server itself crashes. Although you hope that neither of those events occurs, realistically you must account for both eventualities by:
 
-* 當應用程式（和 Node）當機時，使用程序管理程式重新啟動它。
-* 當作業系統當機時，使用您作業系統提供的 init 系統，來重新啟動程序管理程式。也有可能可以使用 init 系統，而不使用程序管理程式。
+- 當應用程式（和 Node）當機時，使用程序管理程式重新啟動它。
+- Using the init system provided by your OS to restart the process manager when the OS crashes. It's also possible to use the init system without a process manager.
 
-Node 應用程式一旦遇到未捕捉到的異常狀況，就會當機。首要之務是確定您的應用程式已妥善測試，且已處理所有的異常狀況（請參閱[適當處理異常狀況](#exceptions)，以取得詳細資料）。但是萬全的作法是落實執行機制，以確保萬一您的應用程式當機，它會自動重新啟動。
+Node applications crash if they encounter an uncaught exception. The foremost thing you need to do is to ensure your app is well-tested and handles all exceptions (see [handle exceptions properly](#handle-exceptions-properly) for details). But as a fail-safe, put a mechanism in place to ensure that if and when your app crashes, it will automatically restart.
 
 #### 使用程序管理程式
 
-在開發中，只需從指令行使用 `node server.js` 或類似指令，就會啟動應用程式。但在正式作業中這樣做，卻會成為禍因。如果應用程式當機，就會離線直到您重新啟動它為止。為了確保應用程式會在當機時重新啟動，請使用程序管理程式。程序管理程式是一個應用程式的「儲存器」，有助於部署、提供高可用性，並可讓您在執行時期管理應用程式。
+在開發中，只需從指令行使用 `node server.js` 或類似指令，就會啟動應用程式。但在正式作業中這樣做，卻會成為禍因。如果應用程式當機，就會離線直到您重新啟動它為止。為了確保應用程式會在當機時重新啟動，請使用程序管理程式。程序管理程式是一個應用程式的「儲存器」，有助於部署、提供高可用性，並可讓您在執行時期管理應用程式。 But doing this in production is a recipe for disaster. If the app crashes, it will be offline until you restart it. To ensure your app restarts if it crashes, use a process manager. A process manager is a "container" for applications that facilitates deployment, provides high availability, and enables you to manage the application at runtime.
 
 除了在應用程式當機時重新啟動它，程序管理程式還可讓您：
 
-* 洞察執行時期效能和資源的耗用情況。
-* 動態修改設定，以改良效能。
-* 控制叢集作業（StrongLoop PM 和 pm2）。
+- 洞察執行時期效能和資源的耗用情況。
+- 動態修改設定，以改良效能。
+- 控制叢集作業（StrongLoop PM 和 pm2）。
 
 最普及的 Node 程序管理程式如下：
 
-* [StrongLoop Process Manager](http://strong-pm.io/)
-* [PM2](https://github.com/Unitech/pm2)
-* [Forever](https://www.npmjs.com/package/forever)
+- [StrongLoop Process Manager](http://strong-pm.io/)
+- [PM2](https://github.com/Unitech/pm2)
+- [Forever](https://www.npmjs.com/package/forever)
 
 有關這三種程序管理程式的特性比較，請參閱 [http://strong-pm.io/compare/](http://strong-pm.io/compare/)。
 
-即使您的應用程式不時發生當機，這些程序管理程式不論哪一個都足以讓您的應用程式維持作用中。
+Using any of these process managers will suffice to keep your application up, even if it does crash from time to time.
 
-不過，StrongLoop PM 有許多特性明確以正式作業部署為目標。您可以使用它和相關的 StrongLoop 工具來：
+However, StrongLoop PM has lots of features that specifically target production deployment. You can use it and the related StrongLoop tools to:
 
-* 在本端建置和包裝您的應用程式，然後安全地部署到正式作業系統。
-* 在應用程式當機時（不論任何原因），自動重新啟動。
-* 遠端管理叢集。
-* 檢視 CPU 設定檔和資料堆 Snapshot，使效能達到最佳，並診斷記憶體洩漏情況。
-* 檢視您應用程式的效能度量。
-* 藉由 Nginx 負載平衡器的整合控制，輕鬆調整至多部主機。
+- 在本端建置和包裝您的應用程式，然後安全地部署到正式作業系統。
+- Automatically restart your app if it crashes for any reason.
+- Manage your clusters remotely.
+- 檢視 CPU 設定檔和資料堆 Snapshot，使效能達到最佳，並診斷記憶體洩漏情況。
+- 檢視您應用程式的效能度量。
+- 藉由 Nginx 負載平衡器的整合控制，輕鬆調整至多部主機。
 
-如同以下說明，當您使用 init 系統將 StrongLoop PM 安裝成作業系統服務時，它會自動隨系統一起重新啟動。因此，它會讓您的應用程式程序和叢集永遠維持作用中。
+如同以下說明，當您使用 init 系統將 StrongLoop PM 安裝成作業系統服務時，它會自動隨系統一起重新啟動。因此，它會讓您的應用程式程序和叢集永遠維持作用中。 Thus, it will keep your application processes and clusters alive forever.
 
 #### 使用 init 系統
 
-接下來的可靠性層級是確保您的應用程式會隨伺服器一起重新啟動。系統仍可能因各種不同的原因而關閉。為了確保您的應用程式會在伺服器當機時重新啟動，請使用您作業系統內建的 init 系統。現今兩個通行的主要 init 系統是 [systemd](https://wiki.debian.org/systemd) 和 [Upstart](http://upstart.ubuntu.com/)。
+The next layer of reliability is to ensure that your app restarts when the server restarts. Systems can still go down for a variety of reasons. To ensure that your app restarts if the server crashes, use the init system built into your OS. The two main init systems in use today are [systemd](https://wiki.debian.org/systemd) and [Upstart](http://upstart.ubuntu.com/).
 
 init 系統若要與 Express 應用程式搭配使用，其作法有二：
 
-* 在程序管理程式中執行應用程式，並利用 init 系統將程序管理程式安裝成服務。當應用程式當機時，程序管理程式會重新啟動應用程式，且 init 系統會在作業系統重新啟動時，重新啟動程序管理程式。這是建議的作法。
-* 直接使用 init 系統來執行應用程式（和 Node）。這樣做比較簡單，但卻少了使用程序管理程式時的其他好處。
+- Run your app in a process manager, and install the process manager as a service with the init system. The process manager will restart your app when the app crashes, and the init system will restart the process manager when the OS restarts. This is the recommended approach.
+- Run your app (and Node) directly with the init system. This is somewhat simpler, but you don't get the additional advantages of using a process manager.
 
 ##### Systemd
 
-Systemd 是一個 Linux 系統和服務管理程式。大部分主要的 Linux 發行套件已採用 systemd 作為其預設 init 系統。
+Systemd 是一個 Linux 系統和服務管理程式。大部分主要的 Linux 發行套件已採用 systemd 作為其預設 init 系統。 Most major Linux distributions have adopted systemd as their default init system.
 
-systemd 服務配置檔稱為*單位檔案*，其副名結尾是 .service。以下是範例單位檔案，用來直接管理 Node 應用程式（請以您的系統和應用程式值取代粗體字）：
+A systemd service configuration file is called a _unit file_, with a filename ending in `.service`. Here's an example unit file to manage a Node app directly. Replace the values enclosed in `<angle brackets>` for your system and app:
 
 ```sh
 [Unit]
@@ -304,11 +290,12 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 ```
+
 如需 systemd 的相關資訊，請參閱 [systemd 參照（線上指令說明）](http://www.freedesktop.org/software/systemd/man/systemd.unit.html)。
 
 ##### 將 StrongLoop PM 當成 systemd 服務
 
-將 StrongLoop Process Manager 安裝成 systemd 服務很簡單。完成之後，當伺服器重新啟動時，就會自動重新啟動 StrongLoop PM，之後它就會重新啟動其所管理的所有應用程式。
+將 StrongLoop Process Manager 安裝成 systemd 服務很簡單。完成之後，當伺服器重新啟動時，就會自動重新啟動 StrongLoop PM，之後它就會重新啟動其所管理的所有應用程式。 After you do, when the server restarts, it will automatically restart StrongLoop PM, which will then restart all the apps it is managing.
 
 將 StrongLoop PM 安裝成 systemd 服務：
 
@@ -326,9 +313,9 @@ $ sudo /usr/bin/systemctl start strong-pm
 
 ##### Upstart
 
-Upstart 是一個可在許多 Linux 發行套件中使用的系統工具，它會在系統啟動期間啟動作業和服務、在關機期間停止它們，並且監督它們。您可以將 Express 應用程式或程序管理程式配置成服務，之後 Express 應用程式或程序管理程式一旦發生當機，Upstart 就會自動重新啟動它。
+Upstart is a system tool available on many Linux distributions for starting tasks and services during system startup, stopping them during shutdown, and supervising them. You can configure your Express app or process manager as a service and then Upstart will automatically restart it when it crashes.
 
-Upstart 服務定義在工作配置檔（亦稱為 "job"）中，其副名結尾是 `.conf`。下列範例顯示如何為名稱是 "myapp" 的應用程式，建立一項名稱是 "myapp" 的工作，且其主要檔案位於 `/projects/myapp/index.js`。
+Upstart 服務定義在工作配置檔（亦稱為 "job"）中，其副名結尾是 `.conf`。下列範例顯示如何為名稱是 "myapp" 的應用程式，建立一項名稱是 "myapp" 的工作，且其主要檔案位於 `/projects/myapp/index.js`。 The following example shows how to create a job called "myapp" for an app named "myapp" with the main file located at `/projects/myapp/index.js`.
 
 在 `/etc/init/` 建立名稱是 `myapp.conf` 的檔案，且其內容如下（請以您系統和應用程式的值取代粗體字）：
 
@@ -362,21 +349,21 @@ respawn
 respawn limit 10 10
 ```
 
-附註：這個 Script 需要 Upstart 1.4 或更新版本，且 Ubuntu 12.04-14.10 支援該 Upstart 版本。
+附註：這個 Script 需要 Upstart 1.4 或更新版本，且 Ubuntu 12.04-14.10 支援該 Upstart 版本。 %}
 
-由於工作是配置成在系統啟動時執行，您的應用程式會隨作業系統一起啟動，並在應用程式當機或系統關閉時自動重新啟動。
+Since the job is configured to run when the system starts, your app will be started along with the operating system, and automatically restarted if the app crashes or the system goes down.
 
 除了自動重新啟動應用程式，Upstart 可讓您使用下列指令：
 
-* `start myapp` – 啟動應用程式
-* `restart myapp` – 重新啟動應用程式
-* `stop myapp` – 停止應用程式。
+- `start myapp` – 啟動應用程式
+- `restart myapp` – 重新啟動應用程式
+- `stop myapp` – 停止應用程式。
 
 如需 Upstart 的相關資訊，請參閱 [Upstart Intro, Cookbook and Best Practises](http://upstart.ubuntu.com/cookbook)。
 
 ##### 將 StrongLoop PM 當成 Upstart 服務
 
-將 StrongLoop Process Manager 安裝成 Upstart 服務很簡單。完成之後，當伺服器重新啟動時，就會自動重新啟動 StrongLoop PM，之後它就會重新啟動其所管理的所有應用程式。
+將 StrongLoop Process Manager 安裝成 Upstart 服務很簡單。完成之後，當伺服器重新啟動時，就會自動重新啟動 StrongLoop PM，之後它就會重新啟動其所管理的所有應用程式。 After you do, when the server restarts, it will automatically restart StrongLoop PM, which will then restart all the apps it is managing.
 
 將 StrongLoop PM 安裝成 Upstart 1.4 服務：
 
@@ -390,28 +377,28 @@ $ sudo sl-pm-install
 $ sudo /sbin/initctl start strong-pm
 ```
 
-附註：在不支援 Upstart 1.4 的系統上，指令略有不同。如需相關資訊，請參閱 [Setting up a production host（StrongLoop 說明文件）](https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-RHELLinux5and6,Ubuntu10.04-.10,11.04-.10)。
+{% include admonitions/note.html content="On systems that don't support Upstart 1.4, the commands are slightly different. 附註：在不支援 Upstart 1.4 的系統上，指令略有不同。如需相關資訊，請參閱 [Setting up a production host（StrongLoop 說明文件）](https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-RHELLinux5and6,Ubuntu10.04-.10,11.04-.10)。 %}
 
-### 在叢集中執行應用程式
+### Run your app in a cluster
 
-在多核心系統中，您可以啟動程序叢集，多次提高 Node 應用程式的效能。叢集會執行該應用程式的多個實例，理論上，每一個 CPU 核心上各有一個實例，因此負載和作業會分散在這些實例之間。
+In a multi-core system, you can increase the performance of a Node app by many times by launching a cluster of processes. A cluster runs multiple instances of the app, ideally one instance on each CPU core, thereby distributing the load and tasks among the instances.
 
-<!--![利用叢集 API 來平衡應用程式實例](/images/clustering.png)-->
+![Balancing between application instances using the cluster API](/images/clustering.png)
 
-重要事項：由於應用程式實例是以個別程序形式執行，因此不會共用相同的記憶體空間。也就是說，物件位於每一個應用程式實例本端。因此，您無法在應用程式碼中維護狀態。不過，您可以利用 [Redis](http://redis.io/) 等之類的記憶體內資料儲存庫，來儲存階段作業的相關資料和狀態。不論叢集是由多個程序或多部實體伺服器組成，這項警告其實適用於所有的水平調整形式。
+IMPORTANT: Since the app instances run as separate processes, they do not share the same memory space. That is, objects are local to each instance of the app. Therefore, you cannot maintain state in the application code. However, you can use an in-memory datastore like [Redis](http://redis.io/) to store session-related data and state. This caveat applies to essentially all forms of horizontal scaling, whether clustering with multiple processes or multiple physical servers.
 
-在叢集化的應用程式中，工作者程序可個別當機，而不會影響其餘的程序。除了效能優點，執行應用程式程序叢集的另一個原因是，可將失效隔離。只要有工作者程序當機，一律要確定會記載事件，並利用 cluster.fork() 來衍生新程序。
+In clustered apps, worker processes can crash individually without affecting the rest of the processes. Apart from performance advantages, failure isolation is another reason to run a cluster of app processes. Whenever a worker process crashes, always make sure to log the event and spawn a new process using cluster.fork().
 
 #### 使用 Node 的叢集模組
 
-利用 Node 的[叢集模組](https://nodejs.org/docs/latest/api/cluster.html)，即可達成叢集作業。這可讓主要程序衍生工作者程序，並將送入的連線分散在這些工作者之間。不過，與其直接使用這個模組，更好的作法是使用其中提供的一個工具，自動為您執行叢集作業；
+Clustering is made possible with Node's [cluster module](https://nodejs.org/dist/latest-v4.x/docs/api/cluster.html). This enables a master process to spawn worker processes and distribute incoming connections among the workers. 利用 Node 的[叢集模組](https://nodejs.org/docs/latest/api/cluster.html)，即可達成叢集作業。這可讓主要程序衍生工作者程序，並將送入的連線分散在這些工作者之間。不過，與其直接使用這個模組，更好的作法是使用其中提供的一個工具，自動為您執行叢集作業；
 例如 [node-pm](https://www.npmjs.com/package/node-pm) 或 [cluster-service](https://www.npmjs.com/package/cluster-service)。
 
 #### 使用 StrongLoop PM
 
-如果您將應用程式部署至 StrongLoop Process Manager (PM)，您可以善用叢集作業，且*不需*修改應用程式碼。
+如果您將應用程式部署至 StrongLoop Process Manager (PM)，您可以善用叢集作業，且_不需_修改應用程式碼。
 
-當 StrongLoop Process Manager (PM) 執行應用程式時，它會自動在叢集中執行它，且該叢集中的工作者數目等於系統上的 CPU 核心數。您可以使用 slc 指令行工具，直接手動變更工作者程序數目，而不需停止應用程式。
+當 StrongLoop Process Manager (PM) 執行應用程式時，它會自動在叢集中執行它，且該叢集中的工作者數目等於系統上的 CPU 核心數。您可以使用 slc 指令行工具，直接手動變更工作者程序數目，而不需停止應用程式。 You can manually change the number of worker processes in the cluster using the slc command line tool without stopping the app.
 
 舉例來說，假設您將應用程式部署至 prod.foo.com，且 StrongLoop PM 是在埠 8701（預設值）接聽，請使用 slc 將叢集大小設為 8：
 
@@ -421,6 +408,34 @@ $ slc ctl -C http://prod.foo.com:8701 set-size my-app 8
 
 如需利用 StrongLoop PM 執行叢集作業的相關資訊，請參閱 StrongLoop 說明文件中的[叢集作業](https://docs.strongloop.com/display/SLC/Clustering)。
 
+#### Using PM2
+
+If you deploy your application with PM2, then you can take advantage of clustering _without_ modifying your application code.  You should ensure your [application is stateless](http://pm2.keymetrics.io/docs/usage/specifics/#stateless-apps) first, meaning no local data is stored in the process (such as sessions, websocket connections and the like).
+
+When running an application with PM2, you can enable **cluster mode** to run it in a cluster with a number of instances of your choosing, such as the matching the number of available CPUs on the machine. You can manually change the number of processes in the cluster using the `pm2` command line tool without stopping the app.
+
+To enable cluster mode, start your application like so:
+
+```bash
+# Start 4 worker processes
+$ pm2 start npm --name my-app -i 4 -- start
+# Auto-detect number of available CPUs and start that many worker processes
+$ pm2 start npm --name my-app -i max -- start
+```
+
+This can also be configured within a PM2 process file (`ecosystem.config.js` or similar) by setting `exec_mode` to `cluster` and `instances` to the number of workers to start.
+
+Once running, the application can be scaled like so:
+
+```bash
+# Add 3 more workers
+$ pm2 scale my-app +3
+# Scale to a specific number of workers
+$ pm2 scale my-app 2
+```
+
+For more information on clustering with PM2, see [Cluster Mode](https://pm2.keymetrics.io/docs/usage/cluster-mode/) in the PM2 documentation.
+
 ### 快取要求結果
 
 在正式作業中改良效能的另一項策略是快取要求的結果，這樣您的應用程式就不會重複執行作業而反覆處理相同的要求。
@@ -429,19 +444,14 @@ $ slc ctl -C http://prod.foo.com:8701 set-size my-app 8
 
 ### 使用負載平衡器
 
-不論如何將應用程式最佳化，單一實例所能處理的負載量與資料流量有限。調整應用程式的其中一個作法是執行其多個實例，並透過負載平衡器來分散資料流量。設定負載平衡器可改良您應用程式的效能和速度，且透過其單一實例，使該應用程式得以多次調整。
+No matter how optimized an app is, a single instance can handle only a limited amount of load and traffic. One way to scale an app is to run multiple instances of it and distribute the traffic via a load balancer. Setting up a load balancer can improve your app's performance and speed, and enable it to scale more than is possible with a single instance.
 
-負載平衡器通常是一個反向 Proxy，負責協調與多個應用程式實例和伺服器之間的資料流量。利用 [Nginx](http://nginx.org/en/docs/http/load_balancing.html) 或 [HAProxy](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts)，就能輕鬆設定您應用程式的負載平衡器。
+A load balancer is usually a reverse proxy that orchestrates traffic to and from multiple application instances and servers. You can easily set up a load balancer for your app by using [Nginx](http://nginx.org/en/docs/http/load_balancing.html) or [HAProxy](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts).
 
-如果進行負載平衡，您可能得確定與特定階段作業 ID 相關聯的要求，會連接至發出該要求的程序。這就是所謂的*階段作業親緣性*或*組合階段作業*，如果要解決此情況，可按照上述建議，使用 Redis 等之類的資料儲存庫來儲存階段作業資料（視您的應用程式而定）。相關討論請參閱[使用多個節點](https://socket.io/docs/v4/using-multiple-nodes/)。
-
-#### StrongLoop PM 與 Nginx 負載平衡器搭配使用
-
-[StrongLoop Process Manager](http://strong-pm.io/) 整合了 Nginx Controller，因此配置多主機正式作業環境配置更簡單。如需相關資訊，請參閱 [Scaling to multiple servers](https://docs.strongloop.com/display/SLC/Scaling+to+multiple+servers)（StrongLoop 說明文件）。
-<a name="proxy"></a>
+With load balancing, you might have to ensure that requests that are associated with a particular session ID connect to the process that originated them. This is known as _session affinity_, or _sticky sessions_, and may be addressed by the suggestion above to use a data store such as Redis for session data (depending on your application). For a discussion, see [Using multiple nodes](https://socket.io/docs/v4/using-multiple-nodes/).
 
 ### 使用反向 Proxy
 
-反向 Proxy 位於 Web 應用程式前面，除了將要求引導至應用程式，也會對要求執行支援的作業。除此之外，它還可以處理錯誤頁面、壓縮、快取、提供的檔案，以及負載平衡。
+A reverse proxy sits in front of a web app and performs supporting operations on the requests, apart from directing requests to the app. It can handle error pages, compression, caching, serving files, and load balancing among other things.
 
-將不需要瞭解應用程式狀態的作業移交給反向 Proxy，使 Express 更有餘裕執行特殊的應用程式作業。基於此因，在正式作業中，建議讓 Express 在 [Nginx](https://www.nginx.com/) 或 [HAProxy](http://www.haproxy.org/) 等之類的反向 Proxy 背後執行。
+Handing over tasks that do not require knowledge of application state to a reverse proxy frees up Express to perform specialized application tasks. For this reason, it is recommended to run Express behind a reverse proxy like [Nginx](https://www.nginx.com/) or [HAProxy](http://www.haproxy.org/) in production.

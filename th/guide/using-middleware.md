@@ -1,11 +1,12 @@
 ---
 layout: page
 title: Using Express middleware
+description: Learn how to use middleware in Express.js applications, including application-level and router-level middleware, error handling, and integrating third-party middleware.
 menu: guide
 lang: th
-description: Learn how to use middleware in Express.js applications, including application-level
-  and router-level middleware, error handling, and integrating third-party middleware.
+redirect_from: /guide/using-middleware.html
 ---
+
 # Using middleware
 
 Express is a routing and middleware web framework that has minimal functionality of its own: An Express application is essentially a series of middleware function calls.
@@ -14,20 +15,20 @@ _Middleware_ functions are functions that have access to the [request object](/{
 
 Middleware functions can perform the following tasks:
 
-* Execute any code.
-* Make changes to the request and the response objects.
-* End the request-response cycle.
-* Call the next middleware function in the stack.
+- Execute any code.
+- Make changes to the request and the response objects.
+- End the request-response cycle.
+- Call the next middleware function in the stack.
 
 If the current middleware function does not end the request-response cycle, it must call `next()` to pass control to the next middleware function. Otherwise, the request will be left hanging.
 
 An Express application can use the following types of middleware:
 
- - [Application-level middleware](#middleware.application)
- - [Router-level middleware](#middleware.router)
- - [Error-handling middleware](#middleware.error-handling)
- - [Built-in middleware](#middleware.built-in)
- - [Third-party middleware](#middleware.third-party)
+- [Application-level middleware](#middleware.application)
+- [Router-level middleware](#middleware.router)
+- [Error-handling middleware](#middleware.error-handling)
+- [Built-in middleware](#middleware.built-in)
+- [Third-party middleware](#middleware.third-party)
 
 You can load application-level and router-level middleware with an optional mount path.
 You can also load a series of middleware functions together, which creates a sub-stack of the middleware system at a mount point.
@@ -97,7 +98,8 @@ app.get('/user/:id', (req, res, next) => {
 ```
 
 To skip the rest of the middleware functions from a router middleware stack, call `next('route')` to pass control to the next route.
-**NOTE**: `next('route')` will work only in middleware functions that were loaded by using the `app.METHOD()` or `router.METHOD()` functions.
+
+**NOTE**: `next('route')` will work only in middleware functions that were loaded by using the `app.METHOD()` or `router.METHOD()` functions. %}
 
 This example shows a middleware sub-stack that handles GET requests to the `/user/:id` path.
 
@@ -118,6 +120,27 @@ app.get('/user/:id', (req, res, next) => {
 })
 ```
 
+Middleware can also be declared in an array for reusability.
+
+This example shows an array with a middleware sub-stack that handles GET requests to the `/user/:id` path
+
+```js
+function logOriginalUrl (req, res, next) {
+  console.log('Request URL:', req.originalUrl)
+  next()
+}
+
+function logMethod (req, res, next) {
+  console.log('Request Type:', req.method)
+  next()
+}
+
+const logStuff = [logOriginalUrl, logMethod]
+app.get('/user/:id', logStuff, (req, res, next) => {
+  res.send('User Info')
+})
+```
+
 <h2 id='middleware.router'>Router-level middleware</h2>
 
 Router-level middleware works in the same way as application-level middleware, except it is bound to an instance of `express.Router()`.
@@ -125,6 +148,7 @@ Router-level middleware works in the same way as application-level middleware, e
 ```js
 const router = express.Router()
 ```
+
 Load router-level middleware by using the `router.use()` and `router.METHOD()` functions.
 
 The following example code replicates the middleware system that is shown above for application-level middleware, by using router-level middleware:
@@ -197,7 +221,7 @@ app.use('/admin', router, (req, res) => {
 <h2 id='middleware.error-handling'>Error-handling middleware</h2>
 
 <div class="doc-box doc-notice" markdown="1">
-Error-handling middleware always takes _four_ arguments.  You must provide four arguments to identify it as an error-handling middleware function. Even if you don't need to use the `next` object, you must specify it to maintain the signature. Otherwise, the `next` object will be interpreted as regular middleware and will fail to handle errors.
+Error-handling middleware always takes _four_ arguments. You must provide four arguments to identify it as an error-handling middleware function. Even if you don't need to use the `next` object, you must specify it to maintain the signature. Otherwise, the `next` object will be interpreted as regular middleware and will fail to handle errors.
 </div>
 
 Define error-handling middleware functions in the same way as other middleware functions, except with four arguments instead of three, specifically with the signature `(err, req, res, next)`):

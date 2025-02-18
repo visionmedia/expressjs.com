@@ -1,10 +1,10 @@
 ---
 layout: page
 title: Express glossary
+description: A comprehensive glossary of terms related to Express.js, Node.js, middleware, routing, and other key concepts to help you understand and use Express effectively.
 menu: resources
 lang: id
-description: A comprehensive glossary of terms related to Express.js, Node.js, middleware,
-  routing, and other key concepts to help you understand and use Express effectively.
+redirect_from: /resources/glossary.html
 ---
 
 # Glossary
@@ -25,13 +25,13 @@ A fast, un-opinionated, minimalist web framework for Node.js applications. In ge
 
 A multi-platform support library which focuses on asynchronous I/O, primarily developed for use by Node.js.
 
-### middleware 
+### middleware
 
 A function that is invoked by the Express routing layer before the final request handler, and thus sits in the middle between a raw request and the final intended route. A few fine points of terminology around middleware:
 
-  * `var foo = require('middleware')` is called _requiring_ or _using_ a Node.js module. Then the statement `var mw = foo()` typically returns the middleware.
-  * `app.use(mw)` is called _adding the middleware to the global processing stack_.
-  * `app.get('/foo', mw, function (req, res) { ... })` is called _adding the middleware to the "GET /foo" processing stack_.
+- `var foo = require('middleware')` is called _requiring_ or _using_ a Node.js module. Then the statement `var mw = foo()` typically returns the middleware.
+- `app.use(mw)` is called _adding the middleware to the global processing stack_.
+- `app.get('/foo', mw, function (req, res) { ... })` is called _adding the middleware to the "GET /foo" processing stack_.
 
 ### Node.js
 
@@ -39,7 +39,7 @@ A software platform that is used to build scalable network applications. Node.js
 
 ### open-source, open source
 
-When used as an adjective, hyphenate; for example: "This is open-source software." See [Open-source software on Wikipedia](http://en.wikipedia.org/wiki/Open-source_software). 
+When used as an adjective, hyphenate; for example: "This is open-source software." See [Open-source software on Wikipedia](http://en.wikipedia.org/wiki/Open-source_software).
 
 {% include admonitions/note.html content="Although it is common not to hyphenate this term, we are using the standard English rules for hyphenating a compound adjective." %}
 

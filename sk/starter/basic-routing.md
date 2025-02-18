@@ -1,11 +1,10 @@
 ---
 layout: page
 title: Express základný routing
+description: Learn the fundamentals of routing in Express.js applications, including how to define routes, handle HTTP methods, and create route handlers for your web server.
 menu: starter
 lang: sk
-description: Learn the fundamentals of routing in Express.js applications, including
-  how to define routes, handle HTTP methods, and create route handlers for your web
-  server.
+redirect_from: /starter/basic-routing.html
 ---
 
 # Základný routing
@@ -15,6 +14,7 @@ _Routing_ rozhoduje o tom, ako aplikácia odpovedá na požiadavky (requesty) kl
 Každý definovaný route môže mať jednu, alebo viacero handler funkcií, ktoré sa vykonajú v prípade, ak je route spárovaný s požiadavkou klienta.
 
 Route definícia má nasledovnú štruktúru:
+
 ```js
 app.METHOD(PATH, HANDLER)
 ```
@@ -27,7 +27,7 @@ Kde:
 - `HANDLER` je funkcia, ktorá sa vykoná, ak je route spárovaný.
 
 <div class="doc-box doc-notice" markdown="1">
-Tento tutoriál predpokladá, že existuje inštancia `express` aplikácie s názvom `app` a server je spustený. Ak nie ste oboznámení s vytváraním a spuštaním aplikácií, začnite [Hello world prikladom](/{{ page.lang }}/starter/hello-world.html).
+This tutorial assumes that an instance of `express` named `app` is created and the server is running. If you are not familiar with creating an app and starting it, see the [Hello world example](/{{ page.lang }}/starter/hello-world.html).
 </div>
 
 Nasledujúce priklady ilustrujú definovanie jednoduchých route-ov.
@@ -65,3 +65,5 @@ app.delete('/user', (req, res) => {
 ```
 
 Viac informácií ohľadom routing-u nájdete v [routing príručke](/{{ page.lang }}/guide/routing.html).
+
+### [Previous: Express application generator ](/{{ page.lang }}/starter/generator.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: Serving static files in Express ](/{{ page.lang }}/starter/static-files.html)

@@ -1,11 +1,10 @@
 ---
 layout: page
 title: Часто задаваемые вопросы (FAQ) по Express
+description: Find answers to frequently asked questions about Express.js, including topics on application structure, models, authentication, template engines, error handling, and more.
 menu: starter
 lang: ru
-description: Find answers to frequently asked questions about Express.js, including
-  topics on application structure, models, authentication, template engines, error
-  handling, and more.
+redirect_from: /starter/faq.html
 ---
 
 # Часто задаваемые вопросы (FAQ)
@@ -16,13 +15,13 @@ description: Find answers to frequently asked questions about Express.js, includ
 
 Маршруты и другая логика приложений могут размещаться в любом количестве файлов, на ваше усмотрение, и в любой структуре каталогов, которую вы предпочтете. В качестве источника вдохновения, ознакомьтесь со следующими примерами:
 
-* [Объявления маршрутов](https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-47)
-* [Карта маршрутов](https://github.com/expressjs/express/blob/4.13.1/examples/route-map/index.js#L52-L66)
-* [Контроллеры в MVC стиле](https://github.com/expressjs/express/tree/master/examples/mvc)
+- [Объявления маршрутов](https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-47)
+- [Карта маршрутов](https://github.com/expressjs/express/blob/4.13.1/examples/route-map/index.js#L52-L66)
+- [Контроллеры в MVC стиле](https://github.com/expressjs/express/tree/master/examples/mvc)
 
 Также существуют сторонние расширения для Express, упрощающие некоторые из этих шаблонов:
 
-* [Ресурсная маршрутизация](https://github.com/expressjs/express-resource)
+- [Ресурсная маршрутизация](https://github.com/expressjs/express-resource)
 
 ## Как определить модели?
 
@@ -33,9 +32,8 @@ description: Find answers to frequently asked questions about Express.js, includ
 
 ## Как идентифицировать пользователей?
 
-Аутентификация - это еще одна своеобразная область, которую Express не охватывает.  Можно использовать любую схему аутентификации, по вашему желанию.
+Аутентификация - это еще одна своеобразная область, которую Express не охватывает. Можно использовать любую схему аутентификации, по вашему желанию.
 Простая схема "имя пользователя / пароль" представлена в [следующем примере](https://github.com/expressjs/express/tree/master/examples/auth).
-
 
 ## Какие шаблонизаторы поддерживает Express?
 
@@ -43,16 +41,22 @@ Express поддерживает все шаблонизаторы, соглас
 Дополнительную информацию о нормализации интерфейсов шаблонизации и кеширования можно найти в проекте
 [consolidate.js](https://github.com/visionmedia/consolidate.js). Не представленные в списке шаблонизаторы также могут поддерживать сигнатуру Express.
 
+For more information, see [Using template engines with Express](/{{page.lang}}/guide/using-template-engines.html).
+
 ## Как обрабатывать ошибки 404?
 
-В Express код 404 не является результатом ошибки. Обработчик ошибок
-не фиксирует их, потому что код ответа 404 указывает лишь на факт отсутствия дополнительной работы.  Другими словами, Express выполнил все функции промежуточной обработки и маршруты и обнаружил, что ни один из них не отвечает. Все, что вам нужно сделать, - добавить промежуточный обработчик в конец стека (после всех остальных функций) для обработки кода 404:
+In Express, 404 responses are not the result of an error, so
+the error-handler middleware will not capture them. Обработчик ошибок
+не фиксирует их, потому что код ответа 404 указывает лишь на факт отсутствия дополнительной работы. Другими словами, Express выполнил все функции промежуточной обработки и маршруты и обнаружил, что ни один из них не отвечает. Все, что вам нужно сделать, - добавить промежуточный обработчик в конец стека (после всех остальных функций) для обработки кода 404:
 
 ```js
 app.use((req, res, next) => {
   res.status(404).send('Sorry cant find that!')
 })
 ```
+
+Add routes dynamically at runtime on an instance of `express.Router()`
+so the routes are not superseded by a middleware function.
 
 ## Как определяется обработчик ошибок?
 
@@ -72,3 +76,10 @@ app.use((err, req, res, next) => {
 Вам не нужно этого делать! Нет необходимости отображать HTML с помощью функции `res.render()`.
 Если у вас есть отдельный файл, воспользуйтесь функцией `res.sendFile()`.
 В случае предоставления нескольких ресурсов из каталога воспользуйтесь промежуточным обработчиком `express.static()`.
+
+## What version of Node.js does Express require?
+
+- [Express 4.x](/{{ page.lang }}/4x/api.html) requires Node.js 0.10 or higher.
+- [Express 5.x](/{{ page.lang }}/5x/api.html) requires Node.js 18 or higher.
+
+### [Previous: More examples ](/{{ page.lang }}/starter/examples.html)

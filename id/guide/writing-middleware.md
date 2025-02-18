@@ -1,11 +1,12 @@
 ---
 layout: page
 title: Writing middleware for use in Express apps
+description: Learn how to write custom middleware functions for Express.js applications, including examples and best practices for enhancing request and response handling.
 menu: guide
 lang: id
-description: Learn how to write custom middleware functions for Express.js applications,
-  including examples and best practices for enhancing request and response handling.
+redirect_from: /guide/writing-middleware.html
 ---
+
 # Writing middleware for use in Express apps
 
 <h2>Overview</h2>
@@ -14,21 +15,21 @@ _Middleware_ functions are functions that have access to the [request object](/{
 
 Middleware functions can perform the following tasks:
 
-* Execute any code.
-* Make changes to the request and the response objects.
-* End the request-response cycle.
-* Call the next middleware in the stack.
+- Execute any code.
+- Make changes to the request and the response objects.
+- End the request-response cycle.
+- Call the next middleware in the stack.
 
 If the current middleware function does not end the request-response cycle, it must call `next()` to pass control to the next middleware function. Otherwise, the request will be left hanging.
 
 The following figure shows the elements of a middleware function call:
 
 <table id="mw-fig">
-<tr><td id="mw-fig-imgcell">
+<tbody><tr><td id="mw-fig-imgcell">
 <img src="/images/express-mw.png" id="mw-fig-img" />
 </td>
 <td class="mw-fig-callouts">
-<div class="callout" id="callout1">HTTP method for which the middleware function applies.</div>
+<div class="callout" id="callout1">HTTP method for which the middleware function applies.</div></tbody>
 
 <div class="callout" id="callout2">Path (route) for which the middleware function applies.</div>
 

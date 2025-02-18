@@ -1,38 +1,48 @@
 ---
 layout: page
 title: Using template engines with Express
+description: Discover how to integrate and use template engines like Pug, Handlebars, and EJS with Express.js to render dynamic HTML pages efficiently.
 menu: guide
 lang: uz
-description: Discover how to integrate and use template engines like Pug, Handlebars,
-  and EJS with Express.js to render dynamic HTML pages efficiently.
+redirect_from: /guide/using-template-engines.html
 ---
 
 # Using template engines with Express
 
-Before Express can render template files, the following application settings have to be set.
+A _template engine_ enables you to use static template files in your application. At runtime, the template engine replaces
+variables in a template file with actual values, and transforms the template into an HTML file sent to the client.
+This approach makes it easier to design an HTML page.
 
-* `views`, the directory where the template files are located. Eg: `app.set('views', './views')`
-* `view engine`, the template engine to use. Eg: `app.set('view engine', 'pug')`
+The [Express application generator](/{{ page.lang }}/starter/generator.html) uses [Pug](https://pugjs.org/api/getting-started.html) as its default, but it also supports [Handlebars](https://www.npmjs.com/package/handlebars), and [EJS](https://www.npmjs.com/package/ejs), among others.
 
 Then install the corresponding template engine npm package.
+
+- `views`, the directory where the template files are located. Eg: `app.set('views', './views')`.
+  This defaults to the `views` directory in the application root directory.
+- `view engine`, the template engine to use. For example, to use the Pug template engine: `app.set('view engine', 'pug')`.
+
+Then install the corresponding template engine npm package; for example to install Pug:
 
 ```bash
 $ npm install pug --save
 ```
 
 <div class="doc-box doc-notice" markdown="1">
-Express-compliant template engines such as Pug, export a function named `__express(filePath, options, callback)`, which is called by `res.render()` to render the template code.
+Express-compliant template engines such as Pug export a function named `__express(filePath, options, callback)`,
+which `res.render()` calls to render the template code.
 
-Some template engines do not follow this convention, the [Consolidate.js](https://www.npmjs.org/package/consolidate) library was created to map all of node's popular template engines to follow this convention, thus allowing them to work seamlessly within Express.
+Some template engines do not follow this convention. The [@ladjs/consolidate](https://www.npmjs.com/package/@ladjs/consolidate)
+library follows this convention by mapping all of the popular Node.js template engines, and therefore works seamlessly within Express.
+
 </div>
 
-Once the view engine is set, you don't have to explicitly specify the engine or load the template engine module in your app, Express loads it internally as shown below, for the example above.
+Create a Pug template files named "index.pug" in the views directory, with the following content.
 
 ```js
 app.set('view engine', 'pug')
 ```
 
-Create a Pug template files named "index.pug" in the views directory, with the following content.
+Then, create a Pug template file named `index.pug` in the `views` directory, with the following content:
 
 ```pug
 html
@@ -42,7 +52,8 @@ html
     h1= message
 ```
 
-Then create a route to render the "index.pug" file. If the `view engine` property is not set, you will have to specify the extension of the view file, else you can omit it.
+Create a route to render the `index.pug` file. If the `view engine` property is not set,
+you must specify the extension of the `view` file. Otherwise, you can omit it.
 
 ```js
 app.get('/', (req, res) => {
@@ -50,6 +61,6 @@ app.get('/', (req, res) => {
 })
 ```
 
-On making a request to the home page, "index.pug" will be rendered as HTML.
+When you make a request to the home page, the `index.pug` file will be rendered as HTML.
 
-To better understand how template engines work in Express, read ["Developing template engines for Express"](/{{ page.lang }}/advanced/developing-template-engines.html).
+The view engine cache does not cache the contents of the template's output, only the underlying template itself. The view is still re-rendered with every request even when the cache is on.

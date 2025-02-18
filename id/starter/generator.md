@@ -1,10 +1,10 @@
 ---
 layout: page
 title: Generator aplikasi Express
+description: Learn how to use the Express application generator tool to quickly create a skeleton for your Express.js applications, streamlining setup and configuration.
 menu: starter
 lang: id
-description: Learn how to use the Express application generator tool to quickly create
-  a skeleton for your Express.js applications, streamlining setup and configuration.
+redirect_from: /starter/generator.html
 ---
 
 # Generator aplikasi Express
@@ -46,7 +46,7 @@ $ express -h
     -f, --force         force on non-empty directory
 ```
 
-Misal, tutorial berikut ini kita akan membuat aplikasi Express bernama _myapp_. Aplikasi akan dibuat dalam folder bernama _myapp_ di direktori kerja saat ini dan _view engine_ yang akan digunakan adalah <a href="https://pugjs.org/" target="_blank" title="Pug documentation">Pug</a>:
+For example, the following creates an Express app named _myapp_. The app will be created in a folder named _myapp_ in the current working directory and the view engine will be set to <a href="https://pugjs.org/" target="_blank" title="Pug documentation">Pug</a>:
 
 ```bash
 $ express --view=pug myapp
@@ -95,7 +95,6 @@ Di _PowerShell_ Windows, gunakan perintah ini:
 PS> $env:DEBUG='myapp:*'; npm start
 ```
 
-
 Kemudian, kunjungi `http://localhost:3000/` di browser Anda untuk mengakses aplikasi.
 
 Aplikasi yang dihasilkan memiliki struktur direktori sebagai berikut:
@@ -123,7 +122,7 @@ Aplikasi yang dihasilkan memiliki struktur direktori sebagai berikut:
 ```
 
 <div class="doc-box doc-info" markdown="1">
-Struktur aplikasi yang dibuat oleh generator hanyalah salah satu dari banyak cara untuk membuat struktur aplikasi Express. Jangan ragu untuk menggunakan struktur ini atau memodifikasinya agar sesuai dengan kebutuhan Anda.
+The app structure created by the generator is just one of many ways to structure Express apps. Feel free to use this structure or modify it to best suit your needs.
 </div>
 
-###  [Previous: Hello World ](/{{ page.lang }}/starter/hello-world.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: Basic routing](/{{ page.lang }}/starter/basic-routing.html)
+### [Previous: Hello World ](/{{ page.lang }}/starter/hello-world.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: Basic routing](/{{ page.lang }}/starter/basic-routing.html)

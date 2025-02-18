@@ -1,11 +1,10 @@
 ---
 layout: page
 title: Dasar routing Express
+description: Learn the fundamentals of routing in Express.js applications, including how to define routes, handle HTTP methods, and create route handlers for your web server.
 menu: starter
 lang: id
-description: Learn the fundamentals of routing in Express.js applications, including
-  how to define routes, handle HTTP methods, and create route handlers for your web
-  server.
+redirect_from: /starter/basic-routing.html
 ---
 
 # Dasar _routing_
@@ -28,7 +27,7 @@ Dimana:
 - `HANDLER` adalah _function_ yang dijalankan ketika rute yang dipanggil cocok.
 
 <div class="doc-box doc-notice" markdown="1">
-Pada tutorial ini mengasumsikan bahwa <em>class</em> dari `express` bernama `app` telah dibuat dan server sedang berjalan. Jika Anda belum terbiasa dalam membuat sebuah aplikasi dan memulainya, Anda dapat melihat [Contoh hello world](/{{ page.lang }}/starter/hello-world.html).
+This tutorial assumes that an instance of `express` named `app` is created and the server is running. If you are not familiar with creating an app and starting it, see the [Hello world example](/{{ page.lang }}/starter/hello-world.html).
 </div>
 
 Contoh berikut ini akan mengilustrasikan cara pendefinisian rute secara sederhana.
@@ -67,4 +66,4 @@ app.delete('/user', (req, res) => {
 
 Untuk detail lebih lanjut tentang perutean, Anda dapat melihat [panduan _routing_](/{{ page.lang }}/guide/routing.html).
 
-###  [Previous: Express application generator ](/{{ page.lang }}/starter/generator.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: Serving static files in Express ](/{{ page.lang }}/starter/static-files.html)
+### [Previous: Express application generator ](/{{ page.lang }}/starter/generator.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: Serving static files in Express ](/{{ page.lang }}/starter/static-files.html)

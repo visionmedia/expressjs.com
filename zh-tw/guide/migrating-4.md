@@ -1,17 +1,17 @@
 ---
 layout: page
 title: 移轉至 Express 4
+description: A guide to migrating your Express.js applications from version 3 to 4, covering changes in middleware, routing, and how to update your codebase effectively.
 menu: guide
 lang: zh-tw
-description: A guide to migrating your Express.js applications from version 3 to 4,
-  covering changes in middleware, routing, and how to update your codebase effectively.
+redirect_from: /guide/migrating-4.html
 ---
 
 # 移至 Express 4
 
 <h2 id="overview">概觀</h2>
 
-Express 4 是對 Express 3 的突破性變更。也就是說，如果您在其相依關係中更新 Express 版本，現有的 Express 3 應用程式將無法運作。
+Express 4 是對 Express 3 的突破性變更。也就是說，如果您在其相依關係中更新 Express 版本，現有的 Express 3 應用程式將無法運作。 That means an existing Express 3 app will _not_ work if you update the Express version in its dependencies.
 
 本文涵蓋：
 
@@ -34,16 +34,18 @@ Express 4 有數項明顯的變更：
 
 另請參閱：
 
-* [New features in 4.x](https://github.com/expressjs/express/wiki/New-features-in-4.x)
-* [Migrating from 3.x to 4.x](https://github.com/expressjs/express/wiki/Migrating-from-3.x-to-4.x)
+- [New features in 4.x](https://github.com/expressjs/express/wiki/New-features-in-4.x)
+- [Migrating from 3.x to 4.x](https://github.com/expressjs/express/wiki/Migrating-from-3.x-to-4.x)
 
 <h3 id="core-changes">
 Express 核心和中介軟體系統的變更
 </h3>
 
-Express 4 不再相依於 Connect，除了 `express.static` 函數，其他所有的內建中介軟體皆已從其核心移除。也就是說，Express 現在是一個獨立的路由與中介軟體 Web 架構，Express 的版本化與版次不受中介軟體更新的影響。
+Express 4 不再相依於 Connect，除了 `express.static` 函數，其他所有的內建中介軟體皆已從其核心移除。也就是說，Express 現在是一個獨立的路由與中介軟體 Web 架構，Express 的版本化與版次不受中介軟體更新的影響。 This means that
+Express is now an independent routing and middleware web framework, and
+Express versioning and releases are not affected by middleware updates.
 
-由於沒有內建中介軟體，您必須明確新增執行您應用程式所需的所有中介軟體。只需遵循下列步驟：
+由於沒有內建中介軟體，您必須明確新增執行您應用程式所需的所有中介軟體。只需遵循下列步驟： Simply follow these steps:
 
 1. 安裝模組：`npm install --save <module-name>`
 2. 在您的應用程式中，需要模組：`require('module-name')`
@@ -52,7 +54,7 @@ Express 4 不再相依於 Connect，除了 `express.static` 函數，其他所�
 下表列出 Express 3 中介軟體和其在 Express 4 中的對應項目。
 
 <table class="doctable" border="1">
-<tr><th>Express 3</th><th>Express 4</th></tr>
+<tbody><tr><th>Express 3</th><th>Express 4</th></tr>
 <tr><td><code>express.bodyParser</code></td>
 <td><a href="https://github.com/expressjs/body-parser">body-parser</a> +
 <a href="https://github.com/expressjs/multer">multer</a></td></tr>
@@ -84,16 +86,18 @@ Express 4 不再相依於 Connect，除了 `express.static` 函數，其他所�
 <td><a href="https://github.com/expressjs/serve-index">serve-index</a></td></tr>
 <tr><td><code>express.static</code></td>
 <td><a href="https://github.com/expressjs/serve-static">serve-static</a></td></tr>
-</table>
+</tbody></table>
 
 以下是 Express 4 中介軟體的[完整清單](https://github.com/senchalabs/connect#middleware)。
 
-在大部分情況下，只需將舊有第 3 版中介軟體取代為其 Express 4 對應項目。如需詳細資料，請參閱 GitHub 中的模組說明文件。
+In most cases, you can simply replace the old version 3 middleware with
+its Express 4 counterpart. For details, see the module documentation in
+GitHub.
 
 <h4 id="app-use"><code>app.use</code> 接受參數</h4>
 
-在第 4 版中，您可以使用變數參數，來定義中介軟體函數的載入路徑，然後從路由處理程式讀取參數值。例如：
-
+In version 4 you can use a variable parameter to define the path where middleware functions are loaded, then read the value of the parameter from the route handler.
+For example:
 
 ```js
 app.use('/book/:id', function (req, res, next) {
@@ -101,6 +105,7 @@ app.use('/book/:id', function (req, res, next) {
   next()
 })
 ```
+
 <h3 id="routing">
 路由系統
 </h3>
@@ -110,12 +115,14 @@ Apps 現在隱含地載入了路由中介軟體，因此您不用再擔心該中
 路由的定義方式不變，但是路由系統多了兩個新特性，可協助您組織路由：
 
 {: .doclist }
-* 新方法 `app.route()`，用來為路由路徑建立可鏈接的路由處理程式。
-* 新類別 `express.Router`，用來建立可裝載的模組路由處理程式。
+
+- 新方法 `app.route()`，用來為路由路徑建立可鏈接的路由處理程式。
+- 新類別 `express.Router`，用來建立可裝載的模組路由處理程式。
 
 <h4 id="app-route"><code>app.route()</code> 方法</h4>
 
-新的 `app.route()` 方法可讓您為路由路徑建立可鏈接的路由處理程式。由於是在單一位置指定路徑，建立模組路由很有用，因為它可減少冗餘和打錯字的情況。如需路由的相關資訊，請參閱 [`Router()` 說明文件](/{{ page.lang }}/4x/api.html#router)。
+新的 `app.route()` 方法可讓您為路由路徑建立可鏈接的路由處理程式。由於是在單一位置指定路徑，建立模組路由很有用，因為它可減少冗餘和打錯字的情況。如需路由的相關資訊，請參閱 [`Router()` 說明文件](/{{ page.lang }}/4x/api.html#router)。 Because the path is specified in a single location, creating modular routes is helpful, as is reducing redundancy and typos. For more
+information about routes, see [`Router()` documentation](/{{ page.lang }}/4x/api.html#router).
 
 下列範例顯示利用 `app.route()` 函數所定義的路由處理程式鏈。
 
@@ -134,8 +141,10 @@ app.route('/book')
 
 <h4 id="express-router"><code>express.Router</code> 類別</h4>
 
-有助於組織路由的另一項特性是一個新類別 `express.Router`，可用來建立可裝載的模組路由處理程式。`Router` 實例是一個完整的中介軟體與路由系統；
-因此，常被稱為「迷你應用程式」。
+The other feature that helps to organize routes is a new class,
+`express.Router`, that you can use to create modular mountable
+route handlers. A `Router` instance is a complete middleware and
+routing system; for this reason it is often referred to as a "mini-app".
 
 下列範例是將路由器建立成模組、
 在其中載入中介軟體、定義一些路由，並將它裝載在主要應用程式中的路徑。
@@ -182,9 +191,9 @@ app.use('/birds', birds)
 下表列出 Express 4 其他小幅卻很重要的變更：
 
 <table class="doctable" border="1">
-<tr>
-<th>物件</th>
-<th>說明</th>
+<tbody><tr>
+<th>Object</th>
+<th>Description</th>
 </tr>
 <tr>
 <td>Node.js</td>
@@ -195,7 +204,10 @@ app.use('/birds', birds)
 `http.createServer()`
 </td>
 <td markdown="1">
+
 不再需要 `http` 模組，除非您需要直接使用它 (socket.io/SPDY/HTTPS)。應用程式可藉由使用 `app.listen()` 函數來啟動。
+ The app can be started by using the
+`app.listen()` function.
 </td>
 </tr>
 <tr>
@@ -203,7 +215,9 @@ app.use('/birds', birds)
 `app.configure()`
 </td>
 <td markdown="1">
+The `app.configure()` function has been removed.  
 `app.configure()` 函數已移除。請使用 `process.env.NODE_ENV` 或 `app.get('env')` 函數來偵測環境，並據以配置應用程式。
+
 </td>
 </tr>
 <tr>
@@ -234,7 +248,7 @@ Express 4 中依預設會停用 `json spaces` 應用程式內容。
 `req.params`
 </td>
 <td markdown="1">
-之前是陣列；現在是物件。
+Was an array; now an object.
 </td>
 </tr>
 <tr>
@@ -242,7 +256,7 @@ Express 4 中依預設會停用 `json spaces` 應用程式內容。
 `res.locals`
 </td>
 <td markdown="1">
-之前是函數；現在是物件。
+Was a function; now an object.
 </td>
 </tr>
 <tr>
@@ -282,15 +296,18 @@ Express 4 中依預設會停用 `json spaces` 應用程式內容。
 `res.setHeader('Set-Cookie', val)`
 </td>
 <td markdown="1">
+Functionality is now limited to setting the basic cookie value. 
 現在功能僅限於設定基本 Cookie 值。請使用
 `res.cookie()` 來取得新增的功能。
+
 </td>
 </tr>
-</table>
+</tbody></table>
 
 <h2 id="example-migration">應用程式移轉範例</h2>
 
 下列範例顯示如何將 Express 3 應用程式移轉至 Express 4。值得一提的檔案是 `app.js` 和 `package.json`。
+The files of interest are `app.js` and `package.json`.
 
 <h3 id="">
 第 3 版應用程式
@@ -366,11 +383,13 @@ $ npm install serve-favicon morgan method-override express-session body-parser m
 對 `app.js` 進行下列變更：
 
 1. `express` 物件中不再提供內建 Express 中介軟體函數
-`express.favicon`、`express.logger`, `express.methodOverride`、`express.session`、`express.bodyParser` 和 `express.errorHandler`。您必須手動安裝其替代項目，並將它們載入到應用程式。
+   `express.favicon`、`express.logger`, `express.methodOverride`、`express.session`、`express.bodyParser` 和 `express.errorHandler`。您必須手動安裝其替代項目，並將它們載入到應用程式。 You must install their alternatives
+   manually and load them in the app.
 
-2. 不再需要載入 `app.router` 函數。它不是有效的 Express 4 應用程式物件，因此請移除 `app.use(app.router);` 程式碼。
+2. You no longer need to load the `app.router` function.
+   不再需要載入 `app.router` 函數。它不是有效的 Express 4 應用程式物件，因此請移除 `app.use(app.router);` 程式碼。
 
-3. 請確定中介軟體函數的載入順序正確 - 載入應用程式路由之後，再載入 `errorHandler`。
+3. Make sure that the middleware functions are loaded in the correct order - load `errorHandler` after loading the app routes.
 
 <h3 id="">第 4 版應用程式</h3>
 
@@ -402,7 +421,8 @@ $ npm install serve-favicon morgan method-override express-session body-parser m
 
 <h4 id=""><code>app.js</code></h4>
 
-然後移除無效的程式碼、載入必要的中介軟體，並視需要進行其他的變更。`app.js` 檔看似如下：
+Then, remove invalid code, load the required middleware, and make other
+changes as necessary. The `app.js` file will look like this:
 
 ```js
 var http = require('http')
@@ -463,9 +483,10 @@ app.listen(app.get('port'), function () {
 
 </div>
 
-<h3 id="">執行應用程式</h3>
+<h3 id="">Run the app</h3>
 
-移轉程序已完成，現在應用程式是一個 Express 4 應用程式。若要確認，請使用下列指令來啟動應用程式：
+The migration process is complete, and the app is now an
+Express 4 app. To confirm, start the app by using the following command:
 
 ```bash
 $ node .
@@ -497,14 +518,15 @@ $ npm install -g express-generator
 
 現在，您系統上的 `express` 指令已更新為 Express 4 產生器。
 
-<h3 id="">應用程式產生器的變更</h3>
+<h3 id="">Changes to the app generator </h3>
 
 除了以下，指令的選項與用法大致不變：
 
 {: .doclist }
-* 已移除 `--sessions` 選項。
-* 已移除 `--jshtml` 選項。
-* 新增了 `--hogan` 選項，以支援 [Hogan.js](http://twitter.github.io/hogan.js/)。
+
+- 已移除 `--sessions` 選項。
+- 已移除 `--jshtml` 選項。
+- 新增了 `--hogan` 選項，以支援 [Hogan.js](http://twitter.github.io/hogan.js/)。
 
 <h3 id="">範例</h3>
 
@@ -526,10 +548,14 @@ $ npm start
 
 如果您查看 `package.json` 檔中的 npm 啟動 Script，您會發現，啟動應用程式的實際指令是 `node ./bin/www`，這在 Express 3 中是 `node app.js`。
 
-由於 Express 4 產生器產生的 `app.js` 檔現在是一個 Node.js 模組，因此無法再以應用程式形式單獨啟動它（除非您修改程式碼）。模組必須載入到 Node.js 檔，並透過 Node.js 檔啟動。在本例中，Node.js 檔是 `./bin/www`。
+由於 Express 4 產生器產生的 `app.js` 檔現在是一個 Node.js 模組，因此無法再以應用程式形式單獨啟動它（除非您修改程式碼）。模組必須載入到 Node.js 檔，並透過 Node.js 檔啟動。在本例中，Node.js 檔是 `./bin/www`。 The module must be loaded in a Node.js file
+and started via the Node.js file. The Node.js file is `./bin/www`
+in this case.
 
-在建立 Express 應用程式或啟動應用程式時，`bin` 目錄和沒有副檔名
-`www` 的檔案都不是必要的。它們只是產生器所建議的，您大可根據自己的需求來修改它們。
+Neither the `bin` directory nor the extensionless `www`
+file is mandatory for creating an Express app or starting the app. They are
+just suggestions made by the generator, so feel free to modify them to suit your
+needs.
 
 若要除去 `www` 目錄，並採用「Express 3 形式」，請刪除 `app.js` 檔尾端的 `module.exports = app;` 字行，然後在該處貼上下列程式碼：
 
@@ -549,4 +575,6 @@ var debug = require('debug')('app4')
 
 然後將 `package.json` 檔中的 `"start": "node ./bin/www"` 變更為 `"start": "node app.js"`。
 
-現在您已將 `./bin/www` 的功能移回至 `app.js`。不建議進行這項變更，但這項練習有助您瞭解 `./bin/www` 檔的運作方式，以及 `app.js` 檔不再自行啟動的原因。
+現在您已將 `./bin/www` 的功能移回至 `app.js`。不建議進行這項變更，但這項練習有助您瞭解 `./bin/www` 檔的運作方式，以及 `app.js` 檔不再自行啟動的原因。 This change is not recommended, but the exercise helps you
+to understand how the `./bin/www` file works, and why the `app.js` file
+no longer starts on its own.

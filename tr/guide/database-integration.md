@@ -1,29 +1,29 @@
 ---
 layout: page
 title: Express veritabanı integrasyonu
+description: Discover how to integrate various databases with Express.js applications, including setup examples for MongoDB, MySQL, PostgreSQL, and more.
 menu: guide
 lang: tr
 redirect_from: /guide/database-integration.html
-description: Discover how to integrate various databases with Express.js applications,
-  including setup examples for MongoDB, MySQL, PostgreSQL, and more.
 ---
+
 # Veritabanı integrasyonu
 
 Veritabanlarını Express uygulamalarına bağlama kabiliyeti eklemek, uygulamanızdaki veritabanı için uygun bir Node.js sürücüsünü yükleyerek yapılabilecek kadar kolaydır. Bu döküman, Express uygulamanıza veritabanı sistemleri için bazı popüler Node.js modüllerinin nasıl eklendiğini ve kullanıldığını kısaca anlatır:
 
-* [Cassandra](#cassandra)
-* [Couchbase](#couchbase)
-* [CouchDB](#couchdb)
-* [LevelDB](#leveldb)
-* [MySQL](#mysql)
-* [MongoDB](#mongodb)
-* [Neo4j](#neo4j)
-* [Oracle](#oracle)
-* [PostgreSQL](#postgresql)
-* [Redis](#redis)
-* [SQL Server](#sql-server)
-* [SQLite](#sqlite)
-* [Elasticsearch](#elasticsearch)
+- [Cassandra](#cassandra)
+- [Couchbase](#couchbase)
+- [CouchDB](#couchdb)
+- [LevelDB](#leveldb)
+- [MySQL](#mysql)
+- [MongoDB](#mongodb)
+- [Neo4j](#neo4j)
+- [Oracle](#oracle)
+- [PostgreSQL](#postgresql)
+- [Redis](#redis)
+- [SQL Server](#sql-server)
+- [SQLite](#sqlite)
+- [Elasticsearch](#elasticsearch)
 
 <div class="doc-box doc-notice" markdown="1">
 Bu veritabanı sürücüleri mevcut olanların çoğunun arasındadır. Diğer seçenekler için, [npm](https://www.npmjs.com/) sitesinde arayınız.
@@ -193,7 +193,7 @@ connection.end()
 $ npm install mongodb
 ```
 
-### Örnek (v2.*)
+### Örnek (v2.\*)
 
 ```js
 const MongoClient = require('mongodb').MongoClient
@@ -209,7 +209,7 @@ MongoClient.connect('mongodb://localhost:27017/animals', (err, db) => {
 })
 ```
 
-### Örnek (v3.*)
+### Örnek (v3.\*)
 
 ```js
 const MongoClient = require('mongodb').MongoClient
@@ -231,7 +231,7 @@ MongoDB için bir nesne model sürücüsü istiyorsanız, bakınız [Mongoose](h
 
 ## Neo4j
 
-**Module**: [apoc](https://github.com/hacksparrow/apoc)
+**Module**: [neo4j-driver](https://github.com/neo4j/neo4j-javascript-driver)
 
 ### Yükleme
 
@@ -242,16 +242,20 @@ $ npm install apoc
 ### Örnek
 
 ```js
-const apoc = require('apoc')
+const neo4j = require('neo4j-driver')
+const driver = neo4j.driver('neo4j://localhost:7687', neo4j.auth.basic('neo4j', 'letmein'))
 
-apoc.query('match (n) return n').exec().then(
-  (response) => {
-    console.log(response)
-  },
-  (fail) => {
-    console.log(fail)
-  }
-)
+const session = driver.session()
+
+session.readTransaction((tx) => {
+  return tx.run('MATCH (n) RETURN count(n) AS count')
+    .then((res) => {
+      console.log(res.records[0].get('count'))
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+})
 ```
 
 ## Oracle
@@ -260,7 +264,7 @@ apoc.query('match (n) return n').exec().then(
 
 ### Yükleme
 
- NOTE: [Yükleme önkoşulları için bakınız](https://github.com/oracle/node-oracledb#-installation).
+NOTE: [Yükleme önkoşulları için bakınız](https://github.com/oracle/node-oracledb#-installation).
 
 ```bash
 $ npm install oracledb

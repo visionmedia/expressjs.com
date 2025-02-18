@@ -1,10 +1,10 @@
 ---
 layout: page
 title: Express Kurulumu
+description: Learn how to install Express.js in your Node.js environment, including setting up your project directory and managing dependencies with npm.
 menu: starter
 lang: tr
-description: Learn how to install Express.js in your Node.js environment, including
-  setting up your project directory and managing dependencies with npm.
+redirect_from: /starter/installing.html
 ---
 
 # Kurulum
@@ -12,13 +12,16 @@ description: Learn how to install Express.js in your Node.js environment, includ
 [Node.js](https://nodejs.org/)'in kurulu olduğunu varsayarak, uygulamanızı
 barındıracak bir dizin oluşturun ve o dizine geçiş yapın.
 
+- [Express 4.x](/{{ page.lang }}/4x/api.html) requires Node.js 0.10 or higher.
+- [Express 5.x](/{{ page.lang }}/5x/api.html) requires Node.js 18 or higher.
+
 ```bash
 $ mkdir myapp
 $ cd myapp
 ```
 
 Uygulamanız için `package.json` dosyasını oluşturmak için `npm init` komutunu
-çalıştırın. 
+çalıştırın.
 `package.json` dosyasının nasıl çalıştığı hakkında daha fazla bilgi edinmek için [Specifics of npm's package.json handling](https://docs.npmjs.com/files/package.json) adresini kullanın.
 
 ```bash
@@ -28,15 +31,13 @@ $ npm init
 Bu komut size uygulamanızın adı ve versiyonu gibi bir kaç soru yöneltecektir.
 Şimdilik, çoğu soru için ENTER tuşuna basıp varsayılan ayarları uygulayabilirsiniz, aşağıdaki hariç:
 
-
-```bash
+```
 entry point: (index.js)
 ```
 
 `app.js` ya da ana dosyanıza vermek istediğiniz ismi girin. Eğer ana dosyanızın `index.js` olmasını istiyorsanız, ENTER tuşu ile varsayılanı uygulayabilirsiniz.
 
 Şimdi Express'i `myapp` dizinine kurun ve bağımlı uygulamalar listesine ekleyin. Örneğin:
-
 
 ```bash
 $ npm install express
@@ -52,4 +53,4 @@ $ npm install express --no-save
 npm 5.0+ versiyonları için npm install komutu, kurulacak modülü varsayılan olarak `package.json` içindeki bağımlılıklar listesine ekler; daha eski npm versiyonları için `--save` ayrıca belirtilmelidir. Daha sonrasında, uygulama dizininde `npm install` komutunu çalıştırmak, bağımlılık listesindeki uygulamaları otomatik olarak yükler.
 </div>
 
-###  [Sonraki: Merhaba Dünya ](/{{ page.lang }}/starter/hello-world.html)
+### [Sonraki: Merhaba Dünya ](/{{ page.lang }}/starter/hello-world.html)

@@ -1,12 +1,12 @@
 ---
 layout: page
 title: Express hata işleme
+description: Understand how Express.js handles errors in synchronous and asynchronous code, and learn to implement custom error handling middleware for your applications.
 menu: guide
 lang: tr
 redirect_from: /guide/error-handling.html
-description: Understand how Express.js handles errors in synchronous and asynchronous
-  code, and learn to implement custom error handling middleware for your applications.
 ---
+
 # Hata İşleme
 
 _Error Handling_, senkron ve asenkron olarak meydana gelen hataların Express tarafından nasıl yakalandığına ve işlendiğine değinir. Express varsayılan olarak bir hata işleyiciyle gelir, bu nedenle hata işlemeye başlamak için kendinizin yazmanıza gerek yoktur.
@@ -14,6 +14,7 @@ _Error Handling_, senkron ve asenkron olarak meydana gelen hataların Express ta
 ## Hataları Yakalamak
 
 Express tarafından, rota işleyicileri ve ara yazılımları koşarken oluşan hataların yakalanmasının sağlanması önemlidir.
+
 Rota işleyicilerinde ve ara yazılımlarda senkron kodda oluşan hataları yakalamak için ek birşey yapmaka gerek yoktur. Eğer senkron kod bir hata fırlatırsa, Express onu yakalayıp işleyecektir. Örneğin:
 
 ```js
@@ -22,7 +23,7 @@ app.get('/', (req, res) => {
 })
 ```
 
-Rota işleyicileri ve ara yazılım tarafından çağrılan asenkron fonksiyonlardan dönen hataları Express'in yakalayp işleyeceği `next()` fonksiyonuna vermelisiniz. Örnek olarak:
+Rota işleyicileri ve ara yazılım tarafından çağrılan asenkron fonksiyonlardan dönen hataları Express'in yakalayp işleyeceği `next()` fonksiyonuna vermelisiniz.  Örnek olarak:
 
 ```js
 app.get('/', (req, res, next) => {
@@ -36,7 +37,8 @@ app.get('/', (req, res, next) => {
 })
 ```
 
-Express 5 ile başlayarak, Promise döndüren rota işleyicileri ve ara yazılımlar ret verdiklerinde (reject) veya hata fırlattıklarında otomatik olarak `next(value)` fonksiyonunu çağıracaklar. Örneğin:
+Express 5 ile başlayarak, Promise döndüren rota işleyicileri ve ara yazılımlar ret verdiklerinde (reject) veya hata fırlattıklarında otomatik olarak `next(value)` fonksiyonunu çağıracaklar.
+Örneğin:
 
 ```js
 app.get('/user/:id', async (req, res, next) => {
@@ -80,7 +82,7 @@ app.get('/', (req, res, next) => {
 
 Yukarıdaki örnek asenkron kodda hataları yakalamak için bir `try...catch` bloku kullanıyor. Eğer `try...catch` bloku olmaz ise, işleyici senkron kodun bir parçası olmadığı için Express hatayı yakalamayacak.
 
-`try..catch` blokunun yükünden kaçınmak için promise veya promise döndüren fonksiyonlar kullanın. Örnek olarak:
+`try..catch` blokunun yükünden kaçınmak için promise veya promise döndüren fonksiyonlar kullanın.  Örnek olarak:
 
 ```js
 app.get('/', (req, res, next) => {
@@ -93,7 +95,6 @@ app.get('/', (req, res, next) => {
 Promise'lar otomatik olarak senkron hatalarını ve ret edilen promise'ları yakaladığından, sonuncu yakalama işleyicisi olarak `next` fonksiyonunu verebilirsiniz ve Express hataları yakalar, çünkü yakalama işleyicisine birinci argüman olarak hata verimiştir.
 
 Senkron hata yakalamaya güvenmek için asenkron kodu basite indirgeyerek bir işleyiciler zincirini de kullanabilirsiniz. Örnek olarak:
-
 
 ```js
 app.get('/', [
@@ -118,7 +119,7 @@ Hangi yöntemi kullanırsanız kullanın, Express hata işleyicilerinin çağrı
 
 Express, uygulamada oluşabilecek herhangi bir hatayla ilgilenecek gömülü bir hata işleyicisiyle gelir. Bu varsayıla hata işleyici ara yazılım fonksiyonu, ara yazlım fonksiyon yığınının en sonuna eklenir.
 
-`next()` fonksiyonuna bir hata verip özel bir hata işleyicisinde işlemezseniz, bu hata gömülü hata işleyicisi tarafından işlenir; hata istemcide stack-trace ile beraber yazdırılır. Stack-trace üretim (production) ortamında dahil değildir. 
+`next()` fonksiyonuna bir hata verip özel bir hata işleyicisinde işlemezseniz, bu hata gömülü hata işleyicisi tarafından işlenir; hata istemcide stack-trace ile beraber yazdırılır. Stack-trace üretim (production) ortamında dahil değildir.
 
 <div class="doc-box doc-info" markdown="1">
 Uygulamayı üretim modunda koşmak için `NODE_ENV` ortam değişkeninin değerini `production` olarak ayarlayın.
@@ -126,12 +127,12 @@ Uygulamayı üretim modunda koşmak için `NODE_ENV` ortam değişkeninin değer
 
 Bir hata yazdırıldığında, aşağıdaki bilgiler yanıta eklenir:
 
-* `res.statusCode` alanının değeri `err.status` alanından gelir (veya `err.statusCode`). Eğer bu değer 4xx veya 5xx'in aralığında değilse, 500 olarak ayarlanacak.
-* `res.statusMessage` alanı statü koduna göre ayarlanır.
-* Üretim modunda ise, gövde (body) statü kodu mesajının HTML'i olur, aksi takdirde ise `err.stack`.
-* `err.headers` objesinde belirtilen herhangi bir başlık (header).
+- `res.statusCode` alanının değeri `err.status` alanından gelir (veya `err.statusCode`). Eğer bu değer 4xx veya 5xx'in aralığında değilse, 500 olarak ayarlanacak.
+- `res.statusMessage` alanı statü koduna göre ayarlanır.
+- Üretim modunda ise, gövde (body) statü kodu mesajının HTML'i olur, aksi takdirde ise `err.stack`.
+- `err.headers` objesinde belirtilen herhangi bir başlık (header).
 
-`next()` fonksiyonunu yanıtı yazmaya başladıktan sonra bir hata ile çağırırsanız (örneğin, istemciye yanıtı aktarma esnasında bir hata ile karşılaşırsanız) varsayılan Express hata işleyicisi bağlantıyı kapatıp isteği başarısız kılar. 
+`next()` fonksiyonunu yanıtı yazmaya başladıktan sonra bir hata ile çağırırsanız (örneğin, istemciye yanıtı aktarma esnasında bir hata ile karşılaşırsanız) varsayılan Express hata işleyicisi bağlantıyı kapatıp isteği başarısız kılar.
 
 Özel bir hata işleyicisi eklediğiniz zaman başlıklar (header) halihazırda istemciye gönderilmiş ise varsayılan Express hata işleyicisine yetki vermelisiniz:
 
@@ -146,6 +147,8 @@ function errorHandler (err, req, res, next) {
 ```
 
 Kodunuzda `next()` fonksiyonunu bir hata ile birden fazla kez çağırdığınızda varsayılan hata işleyicisi tetiklenebilir, özel hata işleyici ara yazılımı yerinde olsa bile.
+
+Other error handling middleware can be found at [Express middleware](/{{ page.lang }}/resources/middleware.html).
 
 ## Hata işleyicileri yazmak
 
@@ -224,7 +227,7 @@ function errorHandler (err, req, res, next) {
 }
 ```
 
-Birden fazla geri çağırma fonksiyonu olan bir rota işleyiciniz var ise bir sonraki rota işleyicisine geçmek için `route` parametresini kullanabilirsiniz. Örnek: 
+Birden fazla geri çağırma fonksiyonu olan bir rota işleyiciniz var ise bir sonraki rota işleyicisine geçmek için `route` parametresini kullanabilirsiniz. Örnek:
 
 ```js
 app.get('/a_route_behind_paywall',
@@ -246,5 +249,5 @@ app.get('/a_route_behind_paywall',
 Bu örnekte, `getPaidContent` işleyicisi es geçilecek ama `app` uygulaması `/a_route_behind_paywall` yolu için geriye kalan herhangi bir işleyici çalışmaya devam edecek.
 
 <div class="doc-box doc-info" markdown="1">
-`next()` ve `next(err)` fonksiyonlarına yapılacak çağrılar şimdiki işleyicinin tamamlandığını ve hangi durumda tamamlandıklarını belirtir. `next(err)` çağrısı, yukarıda gösterildiği gibi hata işlemek için kurulanlar hariç, zincirde geriye kalan bütün işleyicileri es geçer.
+`next()` ve `next(err)` fonksiyonlarına yapılacak çağrılar şimdiki işleyicinin tamamlandığını ve hangi durumda tamamlandıklarını belirtir.  `next(err)` çağrısı, yukarıda gösterildiği gibi hata işlemek için kurulanlar hariç, zincirde geriye kalan bütün işleyicileri es geçer.
 </div>

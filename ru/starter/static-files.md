@@ -1,17 +1,26 @@
 ---
 layout: page
 title: Предоставление статических файлов в Express
+description: Understand how to serve static files like images, CSS, and JavaScript in Express.js applications using the built-in 'static' middleware.
 menu: starter
 lang: ru
-description: Understand how to serve static files like images, CSS, and JavaScript
-  in Express.js applications using the built-in 'static' middleware.
+redirect_from: /starter/static-files.html
 ---
 
 # Предоставление статических файлов в Express
 
 Для предоставления статических файлов, например, изображений, файлов CSS и JavaScript в Express используется функция промежуточной обработки `express.static`.
 
-Для того чтобы начать непосредственное предоставление файлов, необходимо передать имя каталога, в котором находятся статические ресурсы, в функцию промежуточной обработки `express.static`. Например, воспользуйтесь приведенным ниже кодом для предоставления изображений, файлов CSS и JavaScript, расположенных в каталоге `public`:
+The function signature is:
+
+```js
+express.static(root, [options])
+```
+
+The `root` argument specifies the root directory from which to serve static assets.
+For more information on the `options` argument, see [express.static](/{{page.lang}}/4x/api.html#express.static).
+
+Например, воспользуйтесь приведенным ниже кодом для предоставления изображений, файлов CSS и JavaScript, расположенных в каталоге `public`:
 
 ```js
 app.use(express.static('public'))
@@ -40,6 +49,11 @@ app.use(express.static('files'))
 
 Express выполняет поиск файлов в том порядке, в котором указаны статические каталоги в функции промежуточной обработки `express.static`.
 
+{% capture alert_content %}
+For best results, [use a reverse proxy](/{{page.lang}}/advanced/best-practice-performance.html#use-a-reverse-proxy) cache to improve performance of serving static assets.
+{% endcapture %}
+{% include admonitions/note.html content=alert_content %}
+
 Для того чтобы создать префикс виртуального пути (то есть, пути, фактически не существующего в файловой системе) для файлов, предоставляемых с помощью функции `express.static`, необходимо [указать путь монтирования](/{{ page.lang }}/4x/api.html#app.use) для статического каталога, как показано ниже:
 
 ```js
@@ -62,3 +76,7 @@ http://localhost:3000/static/hello.html
 const path = require('path')
 app.use('/static', express.static(path.join(__dirname, 'public')))
 ```
+
+For more details about the `serve-static` function and its options, see  [serve-static](/resources/middleware/serve-static.html).
+
+### [Previous: Basic Routing ](/{{ page.lang }}/starter/basic-routing.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: More examples ](/{{ page.lang }}/starter/examples.html)

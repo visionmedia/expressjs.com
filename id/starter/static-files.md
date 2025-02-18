@@ -1,10 +1,10 @@
 ---
 layout: page
 title: Menampilkan file statis di Express
+description: Understand how to serve static files like images, CSS, and JavaScript in Express.js applications using the built-in 'static' middleware.
 menu: starter
 lang: id
-description: Understand how to serve static files like images, CSS, and JavaScript
-  in Express.js applications using the built-in 'static' middleware.
+redirect_from: /starter/static-files.html
 ---
 
 # Menampilkan file statis di Express
@@ -17,8 +17,8 @@ _Signature_ fungsinya adalah:
 express.static(root, [options])
 ```
 
-Argumen `root` menentukan direktori _root_ tempat aset statis akan ditampilkan.
-Untuk informasi selengkapnya tentang argumen `options`, lihat [express.static](/{{page.lang}}/4x/api.html#express.static).
+The `root` argument specifies the root directory from which to serve static assets.
+For more information on the `options` argument, see [express.static](/{{page.lang}}/4x/api.html#express.static).
 
 Misalnya, gunakan kode berikut untuk menyajikan gambar, file CSS, dan file JavaScript dalam direktori bernama `public`:
 
@@ -49,8 +49,10 @@ app.use(express.static('files'))
 
 Express akan mencari file sesuai urutan Anda mengatur direktori statis melalui fungsi middleware `express.static`.
 
-<div class="doc-box doc-info" markdown="1">CATATAN: Untuk hasil terbaik, [gunakan reverse proxy](/{{page.lang}}/advanced/best-practice-performance.html#use-a-reverse-proxy) cache untuk meningkatkan kinerja penyajian aset statis.
-</div>
+{% capture alert_content %}
+For best results, [use a reverse proxy](/{{page.lang}}/advanced/best-practice-performance.html#use-a-reverse-proxy) cache to improve performance of serving static assets.
+{% endcapture %}
+{% include admonitions/note.html content=alert_content %}
 
 Untuk membuat awalan jalur virtual (yang jalurnya sebenarnya tidak ada dalam sistem file) untuk file yang akan ditampilkan oleh fungsi `express.static`, [tentukan jalur pemasangan](/{{ page.lang }}/4x /api.html#app.use) untuk direktori statis, seperti yang ditunjukkan di bawah ini:
 
@@ -68,7 +70,7 @@ http://localhost:3000/static/images/bg.png
 http://localhost:3000/static/hello.html
 ```
 
-Namun, jalur yang Anda berikan ke fungsi `express.static` adalah relatif terhadap direktori tempat Anda meluncurkan proses `node`. Jika Anda menjalankan aplikasi ekspres dari direktori lain, lebih aman menggunakan jalur absolut dari direktori yang ingin Anda ditampilkan:
+However, the path that you provide to the `express.static` function is relative to the directory from where you launch your `node` process. If you run the express app from another directory, it's safer to use the absolute path of the directory that you want to serve:
 
 ```js
 const path = require('path')

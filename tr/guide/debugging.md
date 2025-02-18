@@ -1,12 +1,12 @@
 ---
 layout: page
 title: Express hata ayıklama
+description: Learn how to enable and use debugging logs in Express.js applications by setting the DEBUG environment variable for enhanced troubleshooting.
 menu: guide
 lang: tr
 redirect_from: /guide/debugging.html
-description: Learn how to enable and use debugging logs in Express.js applications
-  by setting the DEBUG environment variable for enhanced troubleshooting.
 ---
+
 # Express hata ayıklama
 
 Express uygulamasında kullanılan ütün dahili logları görmek için, uygulamanızı başlatırken `DEBUG` ortam değikenini `express:*` olarak güncelleyin.
@@ -20,6 +20,7 @@ Windows'ta aynı komutun karşılığını kullanın.
 ```bash
 > set DEBUG=express:* & node index.js
 ```
+
 [express generator](/{{ page.lang }}/starter/generator.html) kullanılarak yaratılan varsayılan uygulamada bu komutu koşmak aşağıdakileri yazdıracak:
 
 ```bash
@@ -108,13 +109,13 @@ $ DEBUG=http,mail,express:* node index.js
 
 Node.js üzerinden koşulduğunda hata ayıklama loglamasının davranışını değiştirecek birkaç ortam değişkeni ayarlayabilirsiniz:
 
-| İsim      | Amaç                                            |
-|-----------|-------------------------------------------------|
-| `DEBUG`   | Spesifik hata ayıklama isim alanlarını devre dışı bırakma veya etkinleştirme. |
-| `DEBUG_COLORS`| Hata ayıklama çıktısında renk kullanıp kullanmama.|
-| `DEBUG_DEPTH` | Nesne inceleme derinliği.|
-| `DEBUG_FD`    | Hata ayıklama çıktısının yazılacağı dosya tanımlayıcı. |
-| `DEBUG_SHOW_HIDDEN` | İncelenen nesnelerde gizli özellikleri gösterme. |
+| İsim                | Amaç                                                                                          |
+| ------------------- | --------------------------------------------------------------------------------------------- |
+| `DEBUG`             | Spesifik hata ayıklama isim alanlarını devre dışı bırakma veya etkinleştirme. |
+| `DEBUG_COLORS`      | Hata ayıklama çıktısında renk kullanıp kullanmama.                            |
+| `DEBUG_DEPTH`       | Nesne inceleme derinliği.                                                     |
+| `DEBUG_FD`          | Hata ayıklama çıktısının yazılacağı dosya tanımlayıcı.                        |
+| `DEBUG_SHOW_HIDDEN` | İncelenen nesnelerde gizli özellikleri gösterme.                              |
 
-__Not:__ `DEBUG_` ile başlayan ortam değişkenleri, `%o`/`%O` biçemleyicileriyle kullanılmak üzere bir Seçenekler nesnesine dönüştürülür.
-Tam listeyi görmek için Node.js'in [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) dökümantasyonuna bakınız.
+**Not:** `DEBUG_` ile başlayan ortam değişkenleri, `%o`/`%O` biçemleyicileriyle kullanılmak üzere bir Seçenekler nesnesine dönüştürülür.
+Tam listeyi görmek için Node.js'in [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) dökümantasyonuna bakınız. %}

@@ -1,16 +1,16 @@
 ---
 layout: page
 title: Contoh Express "Hello World"
+description: Get started with Express.js by building a simple 'Hello World' application, demonstrating the basic setup and server creation for beginners.
 menu: starter
 lang: id
-description: Get started with Express.js by building a simple 'Hello World' application,
-  demonstrating the basic setup and server creation for beginners.
+redirect_from: /starter/hello-world.html
 ---
 
 # Contoh hello world
 
 <div class="doc-box doc-info" markdown="1">
-Contoh di bawah ini pada dasarnya adalah aplikasi Express paling sederhana yang dapat Anda buat. Ini adalah aplikasi file tunggal &mdash; _bukan_ apa yang akan Anda dapatkan jika menggunakan [Generator Express](/{{ page.lang }}/starter/generator.html), yang membuat struktur untuk aplikasi lengkap dengan banyak file JavaScript, dengan templat Jade, dan sub- direktori untuk berbagai tujuan.
+Embedded below is essentially the simplest Express app you can create. It is a single file app &mdash; _not_ what you'd get if you use the [Express generator](/{{ page.lang }}/starter/generator.html), which creates the scaffolding for a full app with numerous JavaScript files, Jade templates, and sub-directories for various purposes.
 </div>
 
 ```js
@@ -27,12 +27,12 @@ app.listen(port, () => {
 })
 ```
 
-Aplikasi ini memulai server dan mendengarkan koneksi pada _port_ 3000. Aplikasi merespon dengan "Hello World!" untuk _request_
-ke URL _root_ (`/`) atau _route_. Untuk setiap jalur lainnya, ia akan merespons dengan **404 Not Found**.
+This app starts a server and listens on port 3000 for connections. The app responds with "Hello World!" for requests
+to the root URL (`/`) or _route_. For every other path, it will respond with a **404 Not Found**.
 
 ### Berjalan secara Lokal
 
-Pertama buat direktori bernama `myapp`, masuk ke direktori tersebut dan jalankan `npm init`. Kemudian, instal `express` sebagai dependensi, sesuai dengan [panduan instalasi](/{{ page.lang }}/starter/installing.html).
+First create a directory named `myapp`, change to it and run `npm init`. Then, install `express` as a dependency, as per the [installation guide](/{{ page.lang }}/starter/installing.html).
 
 Di direktori `myapp`, buat file bernama `app.js` dan salin kode dari contoh di atas.
 
@@ -49,4 +49,4 @@ $ node app.js
 
 Kemudian, kunjungi `http://localhost:3000/` di browser untuk melihat hasilnya.
 
-###  [Previous: Installing ](/{{ page.lang }}/starter/installing.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: Express Generator ](/{{ page.lang }}/starter/generator.html)
+### [Previous: Installing ](/{{ page.lang }}/starter/installing.html)&nbsp;&nbsp;&nbsp;&nbsp;[Next: Express Generator ](/{{ page.lang }}/starter/generator.html)

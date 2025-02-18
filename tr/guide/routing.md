@@ -1,13 +1,13 @@
 ---
 layout: page
 title: Express yönlendirmesi
+description: Learn how to define and use routes in Express.js applications, including route methods, route paths, parameters, and using Router for modular routing.
 menu: guide
 lang: tr
-description: Learn how to define and use routes in Express.js applications, including
-  route methods, route paths, parameters, and using Router for modular routing.
+redirect_from: /guide/routing.html
 ---
-<div id="page-doc" markdown="1">
-# Yönlendirme
+
+# # Yönlendirme
 
 _Routing_ uygulama bitiş noktalarının tanımını (URI'ler) ve istemci isteklerine nasıl yanıt verdiklerini ifade eder.
 Yönlendirme'ye giriş için, [Temel yönlendirme] sayfasına bakınız.(/{{ page.lang }}/starter/basic-routing.html).
@@ -16,7 +16,8 @@ HTTP metod isimlerine karşılık gelen Express `app` objesinin metodlarını ku
 
 Bu yönlendirme metodları, uygulamanın belirtilen bir rotaya (bitiş noktası) ve HTTP metoduna aldığı isteklerde çağrılan bir geri çağırma fonksiyonu belirtirler (bazen "işleyici fonksiyonlar" olarak isimlendirilirler). Başka bir deyişle, uygulama, belirtilen rota(lar) ve metod(lar) ile eşleşen istekleri "dinler", ve bir eşleşme algıladığında, ilgili geri çağırma fonksiyonunu çağırır.
 
-Aslında yönlendirme metodları birden fazla geri çağırma fonksiyonunu argüman olarak alabilir. Birden fazla geri çağırma fonksiyonu olduğunda, bir sonraki fonksiyona kontrolü vermek için geri çağırma fonksiyonuna `next`' argümanını verip, geri çağırma fonksiyonunun içinde `next()` metodunu çağırmak önemlidir.
+Aslında yönlendirme metodları birden fazla geri çağırma fonksiyonunu argüman olarak alabilir.
+Birden fazla geri çağırma fonksiyonu olduğunda, bir sonraki fonksiyona kontrolü vermek için geri çağırma fonksiyonuna `next`' argümanını verip, geri çağırma fonksiyonunun içinde `next()` metodunu çağırmak önemlidir.
 
 Aşağıdaki kod çok temel bir rota örneğidir.
 
@@ -48,16 +49,10 @@ app.post('/', (req, res) => {
 })
 ```
 
-Express, HTTP metodlarına karşılık gelen bu yönlendirme metodlarını destekler: `get`, `post`, `put`, `head`, `delete`, `options`, `trace`, `copy`, `lock`, `mkcol`, `move`, `purge`, `propfind`, `proppatch`, `unlock`, `report`, `mkactivity`, `checkout`, `merge`, `m-search`, `notify`, `subscribe`, `unsubscribe`, `patch`, `search`, ve `connect`.
+Express supports methods that correspond to all HTTP request methods: `get`, `post`, and so on.
+For a full list, see [app.METHOD](/{{ page.lang }}/5x/api.html#app.METHOD).
 
-<div class="doc-box doc-info" markdown="1">
-Geçersiz JavaScript değişken adlarına denk gelen metodları yönlendirmek için köşeli parantez notasyonunu kullanınız. Örneğin,
-`app['m-search']('/', function ...`
-</div>
-
-Hiçbir HTTP metodundan türemeyen özel bir yönlendirme metodu olan `app.all()` mevcut. bu metod, tüm istek metodları için bir yolda ara katman yazılım(middleware) fonksiyonlarını yüklemek için kullanılır.
-
-Bir sonraki örnekte, "/secret" rotasına yapılan isteklerde, GET, POST, PUT, DELETE veya [http modülü](https://nodejs.org/api/http.html#http_http_methods)'nde desteklenen herhangi bir HTTP istek metodu farketmeksizin bu işleyici çalıştırılacak.
+Hiçbir HTTP metodundan türemeyen özel bir yönlendirme metodu olan `app.all()` mevcut. bu metod, tüm istek metodları için bir yolda ara katman yazılım(middleware) fonksiyonlarını yüklemek için kullanılır. Bir sonraki örnekte, "/secret" rotasına yapılan isteklerde, GET, POST, PUT, DELETE veya [http modülü](https://nodejs.org/api/http.html#http_http_methods)'nde desteklenen herhangi bir HTTP istek metodu farketmeksizin bu işleyici çalıştırılacak.
 
 ```js
 app.all('/secret', (req, res, next) => {
@@ -70,19 +65,23 @@ app.all('/secret', (req, res, next) => {
 
 Rota yolları, bir istek metoduyla birlikte, isteklerin yapılabileceği bitiş noktalarını tanımlar. Rota yolları karakter dizini, karakter dizin modeli veya düzenli ifadeler(reqular expression) olabilir.
 
-`?`, `+`, `*`, ve `()` karakterleri düzenli ifade karşılıklarının alt kümeleridir. Tire (`-`) ve nokta (`.`) karakter-dizisi tabanlı yollar tarafından oldukları gibi değerlendirilir.
+{% capture caution-character %} In express 5, the characters `?`, `+`, `*`, `[]`, and `()` are handled differently than in version 4, please review the [migration guide](/{{ page.lang }}/guide/migrating-5.html#path-syntax) for more information.{% endcapture %}
 
-Eğer dolar karakterini (`$`) bir karakter dizini yolunda kullanma ihtiyacınız olursa, `([` ve `])` karakterlerinin içinde kullanınız. Örneğin, "`/data/$book`" istekleri için dizin yolu bu şekilde olur: "`/data/([\$])book`".
+{% include admonitions/caution.html content=caution-character %}
 
-<div class="doc-box doc-info" markdown="1">
-  Express, rota yollarını eşleştirmek için [path-to-regexp](https://www.npmjs.com/package/path-to-regexp) kullanır; rota tanımlamadaki bütün olasılıkları öğrenmek için path-to-regexp dökümantasyonuna bakınız. Basit Express rotalarını test etmek için [Express Route Tester](http://forbeslindesay.github.io/express-route-tester/) kullanışlı bir araçtır, ancak bu araç model eşleştirmeyi desteklememektedir.
-</div>
+{% capture note-dollar-character %}In express 4, regular expression characters such as `$` need to be escaped with a `\`.
+{% endcapture %}
 
-<div class="doc-box doc-warn" markdown="1">
-Sorgu dizeleri rota yolunun bir parçası değillerdir.
-</div>
+{% include admonitions/caution.html content=note-dollar-character %}
 
-Karakter dizininlerine dayalı bazı rota yolları örnekleri.
+Express, rota yollarını eşleştirmek için [path-to-regexp](https://www.npmjs.com/package/path-to-regexp) kullanır; rota tanımlamadaki bütün olasılıkları öğrenmek için path-to-regexp dökümantasyonuna bakınız. Basit Express rotalarını test etmek için [Express Route Tester](http://forbeslindesay.github.io/express-route-tester/) kullanışlı bir araçtır, ancak bu araç model eşleştirmeyi desteklememektedir.
+{% endcapture %}
+
+{% include admonitions/note.html content=note-path-to-regexp %}
+
+{% include admonitions/warning.html content="Query strings are not part of the route path." %}
+
+### Karakter dizininlerine dayalı bazı rota yolları örnekleri.
 
 Bu rota yolu, istekleri kök rotaya eşleştirecek, `/`.
 
@@ -108,7 +107,11 @@ app.get('/random.text', (req, res) => {
 })
 ```
 
-Aşağıda, dizin modellerine dayalı rota yollarının bazı örnekleri verilmiştir.
+### Düzenli ifadelere dayalı rota yolları örnekleri:
+
+{% capture caution-string-patterns %} The string patterns in Express 5 no longer work. Please refer to the [migration guide](/{{ page.lang }}/guide/migrating-5.html#path-syntax) for more information.{% endcapture %}
+
+{% include admonitions/caution.html content=caution-string-patterns %}
 
 Bu rota yolu, `acd` ve `abcd` ile eşleşecek.
 
@@ -142,7 +145,7 @@ app.get('/ab(cd)?e', (req, res) => {
 })
 ```
 
-Düzenli ifadelere dayalı rota yolları örnekleri:
+### Route paths based on regular expressions
 
 Bu rota yolu, rota isminde "a" karakteri olan herhangi bir şey ile eşleşecek.
 
@@ -160,7 +163,7 @@ app.get(/.*fly$/, (req, res) => {
 })
 ```
 
-<h3 id="route-parameters">Rota parametreleri</h3>
+<h2 id="route-parameters">Rota parametreleri</h2>
 
 Rota parametreleri, URL'deki konumlarında belirtilen değerleri yakalamak için kullanılan adlandırılmış URL bölümleridir. Yakalanan değerler, yolda belirtilen rota parameterlerinin ilgili isimlerini alarak `req.params` objesinde tutulur.
 
@@ -196,6 +199,11 @@ Rota yolu: /plantae/:genus.:species
 req.params: { "genus": "Prunus", "species": "persica" }
 ```
 
+{% capture warning-regexp %}
+In express 5, Regexp characters are not supported in route paths, for more information please refer to the [migration guide](/{{ page.lang }}/guide/migrating-5.html#path-syntax).{% endcapture %}
+
+{% include admonitions/caution.html content=warning-regexp %}
+
 Bir rota parametresiyle eşleşen dizin üzerinde daha fazla kontrole sahip olmak için, parantez içinde (`()`) düzenli ifade ekleyebilirsiniz:
 
 ```
@@ -204,18 +212,17 @@ Rota yolu: /user/:userId(\d+)
 req.params: {"userId": "42"}
 ```
 
-<div class="doc-box doc-warn" markdown="1">
 Düzenli ifadeler genellikle tam bir dizenin parçaları oldukları için, <code>\</code> karakterlerinden ek olarak ters eğik çizgi ile kaçtığınızdan emin olun, örneğin <code>\\d+</code>.
-</div>
+%}
 
-<div class="doc-box doc-warn" markdown="1">
-Express 4.x'te, <a href="https://github.com/expressjs/express/issues/2495">düzenli ifadelerdeki <code>*</code> karakteri normal durumlardaki gibi değerlendirilmiyor</a>. Geçici çözüm olarak, <code>*</code> karakteri yerine<code>{0,}</code> karakterini kullanınız. Bu muhtemelen Express 5'te düzeltilecektir.
-</div>
+Express 4.x'te, <a href="https://github.com/expressjs/express/issues/2495">düzenli ifadelerdeki <code>_</code> karakteri normal durumlardaki gibi değerlendirilmiyor</a>. Geçici çözüm olarak, <code>_</code> karakteri yerine<code>{0,}</code> karakterini kullanınız. As a workaround, use `{0,}` instead of `*`. Bu muhtemelen Express 5'te düzeltilecektir.
+{% endcapture %}
+
+{% include admonitions/warning.html content=warning-version %}
 
 <h2 id="route-handlers">Rota işleyicileri</h2>
 
 Bir isteği işlemek için, [ara-katman](/{{ page.lang }}/guide/using-middleware.html) gibi davranan birden fazla geri çağırma fonksiyonu sağlayabilirsiniz. Bunun tek istisnası, bu geri çağırmalar, arda kalan rota metodlarını atlatmak için `next('route')` metodunu çağırabilir. Bir rotaya ön koşullar uygulamak için bu mekanizmayı kullanabilirsiniz, ve sonra geçerli rotaya devam etmek için bir neden yoksa kontrolü sonraki rotalara aktarabilirsiniz.
-
 
 Rota işleyicileri, aşağıdaki örneklerde gösterildiği gibi bir fonksiyon, fonksiyonlar dizisi veya her ikisinin birleşimi biçiminde olabilir.
 
@@ -237,6 +244,7 @@ app.get('/example/b', (req, res, next) => {
   res.send('B\'den merhaba')
 })
 ```
+
 Geri çağırma fonksiyonları dizini bir rotayı işleyebilir. Örneğin:
 
 ```js
@@ -282,17 +290,17 @@ app.get('/example/d', [cb0, cb1], (req, res, next) => {
 
 Aşağıdaki tabloda yanıt nesnesindeki (`res`) metodlar istemciye yanıt gönderebilir ve istek-yanıt döngüsünü sonlandırabilir. Bu metodlardan hiçbiri bir rota işleyiciden çağrılmazsa, istemci isteği asılı kalır.
 
-| Metod                | Açıklama
-|----------------------|--------------------------------------
-| [res.download()](/{{ page.lang }}/4x/api.html#res.download)   | Bir dosyanın indirilmesini iste.
-| [res.end()](/{{ page.lang }}/4x/api.html#res.end)        | Yanıt sürecini sonlandır.
-| [res.json()](/{{ page.lang }}/4x/api.html#res.json)       | JSON yanıtı gönder.
-| [res.jsonp()](/{{ page.lang }}/4x/api.html#res.jsonp)      | JSONP destekli bir JSON yanıtı gönder
-| [res.redirect()](/{{ page.lang }}/4x/api.html#res.redirect)   | Bir isteği yeniden yönlendir.
-| [res.render()](/{{ page.lang }}/4x/api.html#res.render)     | Bir görünüm şablonu görüntüle.
-| [res.send()](/{{ page.lang }}/4x/api.html#res.send)       | Çeşitli tiplerde yanıt gönder.
-| [res.sendFile()](/{{ page.lang }}/4x/api.html#res.sendFile)     | Dosyayı sekizli akış olarak gönder.
-| [res.sendStatus()](/{{ page.lang }}/4x/api.html#res.sendStatus) | Yanıt durum kodunu ayarla ve karakter dize temsilini yanıt gövdesi olarak gönder.
+| Metod                                                                                                                                                                                                                     | Açıklama                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| [res.download()](/{{ page.lang }}/4x/api.html#res.download)     | Bir dosyanın indirilmesini iste.                                                  |
+| [res.end()](/{{ page.lang }}/4x/api.html#res.end)               | Yanıt sürecini sonlandır.                                                         |
+| [res.json()](/{{ page.lang }}/4x/api.html#res.json)             | JSON yanıtı gönder.                                                               |
+| [res.jsonp()](/{{ page.lang }}/4x/api.html#res.jsonp)           | JSONP destekli bir JSON yanıtı gönder                                                             |
+| [res.redirect()](/{{ page.lang }}/4x/api.html#res.redirect)     | Bir isteği yeniden yönlendir.                                                     |
+| [res.render()](/{{ page.lang }}/4x/api.html#res.render)         | Bir görünüm şablonu görüntüle.                                                    |
+| [res.send()](/{{ page.lang }}/4x/api.html#res.send)             | Çeşitli tiplerde yanıt gönder.                                                    |
+| [res.sendFile()](/{{ page.lang }}/4x/api.html#res.sendFile)     | Dosyayı sekizli akış olarak gönder.                                               |
+| [res.sendStatus()](/{{ page.lang }}/4x/api.html#res.sendStatus) | Yanıt durum kodunu ayarla ve karakter dize temsilini yanıt gövdesi olarak gönder. |
 
 <h2 id="app-route">app.route()</h2>
 
@@ -354,4 +362,9 @@ app.use('/birds', birds)
 ```
 
 Uygulama artık `/birds` ve `/birds/about` isteklerini işleyebileceği gibi, rotaya özgü `timeLog` ara katman yazılımı fonksiyonunu da çağırabilecektir.
-</div>
+
+But if the parent route `/birds` has path parameters, it will not be accessible by default from the sub-routes. To make it accessible, you will need to pass the `mergeParams` option to the Router constructor [reference](/{{ page.lang }}/5x/api.html#app.use).
+
+```js
+Express, HTTP metodlarına karşılık gelen bu yönlendirme metodlarını destekler: `get`, `post`, `put`, `head`, `delete`, `options`, `trace`, `copy`, `lock`, `mkcol`, `move`, `purge`, `propfind`, `proppatch`, `unlock`, `report`, `mkactivity`, `checkout`, `merge`, `m-search`, `notify`, `subscribe`, `unsubscribe`, `patch`, `search`, ve `connect`.
+```
