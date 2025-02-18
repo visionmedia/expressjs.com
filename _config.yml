@@ -13,6 +13,8 @@ defaults:
       menu: blog
       lang: en
 
+announcement: false # Enable or disable the announcements.
+
 # Build settings
 
 plugins:
