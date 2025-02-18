@@ -511,8 +511,8 @@ html[xmlns] .clearfix {
 }
 
 .button {
-  display: block;
-  padding: 3px 5px;
+  display: flex;
+  justify-content: center;
   border-radius: 3px;
   cursor: pointer;
   color: var(--box-fg);
