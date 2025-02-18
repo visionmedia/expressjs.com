@@ -31,3 +31,7 @@ html.dark-mode {
     color: var(--notice-accent);
   }
 }
+
+.hidden-dark {
+  display: block;
+}

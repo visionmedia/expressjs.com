@@ -1,0 +1,661 @@
+/* ----------------- Menu Header --------------------- */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--card-bg);
+  width: 100%;
+  height: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 25px;
+  z-index: 100;
+  border-bottom: 1px solid var(--hover-fg);
+}
+
+.scroll header {
+  box-shadow: 0 0 4px var(--card-bg);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+@media all and (max-width: 1110px) {
+  header {
+    column-gap: 12px;
+    padding-inline: 32px;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: -10px;
+  }
+}
+
+/* -------- Logo -------- */
+
+#logo {
+  width: auto;
+  z-index: 1;
+}
+
+#logo .express {
+  display: block;
+  font: 25px "Helvetica Neue", "Open Sans", sans-serif;
+  font-weight: 100;
+  color: var(--card-fg)
+}
+
+@media all and (max-width: 1110px) {
+  #logo {
+    position: static;
+    width: 100%;
+    margin-left: 60px;
+  }
+
+  #logo a {
+    display: table !important;
+    margin: 0 auto;
+  }
+
+  #logo .express {
+    margin-top: 0px;
+    font-weight: bold;
+  }
+}
+
+/* -------- Overlay -------- */
+
+#overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 1;
+  background-color: var(--bg);
+}
+
+@media all and (max-width: 1110px) {
+  #overlay.blurs {
+    display: block;
+  }
+}
+
+/* -------- Navigation Bar -------- */
+
+#navbar {
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+#navbar a {
+  color: var(--card-fg);
+}
+
+#navbar a.active {
+  font-weight: bold;
+}
+
+#navbar ul {
+  list-style: none;
+}
+
+@media all and (max-width: 1110px) {
+  #navbar {
+    padding: 0;
+    top: 1px;
+    position: static;
+  }
+}
+
+/* -------- Navigation Menu --------*/
+
+#mobile-menu {
+  display: none;
+  position: relative;
+}
+
+#navmenu {
+  padding: 0;
+  margin: 0;
+  right: 0px;
+  z-index: 1000;
+  margin-right: 15px;
+  display: flex;
+  gap: 20px;
+}
+
+@media all and (max-width: 1110px) {
+  #navmenu {
+    left: 0;
+    padding: 0;
+    top: 57px;
+    width: 100%;
+    position: absolute;
+    display: none;
+  }
+
+  #navmenu>li:first-child {
+    display: none;
+  }
+
+  #navmenu>li {
+    border-bottom: 1px solid var(--border);
+    margin: 0;
+    min-height: 47px;
+    background: var(--card-bg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  #navmenu>li.open:hover {
+    background: var(--card-bg);
+  }
+
+  #navmenu>li:hover {
+    background: var(--hover-bg);
+
+    & ul {
+      background-color: var(--card-bg);
+    }
+  }
+
+  #navmenu.opens {
+    display: block;
+  }
+
+
+  #navbar a {
+    font-size: 19px;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 5%;
+  }
+
+  #navbar .submenu.open {
+    flex-direction: column;
+    align-items: initial;
+
+    >a {
+      border-bottom: 3px solid var(--border);
+    }
+  }
+
+  #navbar .submenu-content li a {
+    font-size: 16px;
+    padding: 5px 5px 5px 5%;
+    padding-left: 10%;
+  }
+
+
+  #mobile-menu {
+    display: block;
+  }
+}
+
+/* -------- Submenu --------*/
+
+.submenu {
+  position: relative;
+  list-style: none;
+}
+
+@media all and (max-width: 1110px) {
+  .submenu.open>a {
+    display: flex;
+    align-items: center;
+    min-height: 47px;
+  }
+}
+
+/* ---- Submenu Content ---- */
+
+.submenu-content {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  margin: auto;
+  box-shadow: 1px 2px var(--hover-fg);
+  z-index: 1000;
+  min-width: max-content;
+  width: fit-content;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background-color: var(--bg);
+  padding: 0;
+  display: none;
+}
+
+.submenu-content li:first-child a {
+  border-radius: 12px 12px 0 0;
+}
+
+.submenu-content li:last-child a {
+  border-radius: 0px 0px 12px 12px;
+}
+
+.submenu.open .submenu-content {
+  display: initial;
+}
+
+.submenu-content li a {
+  display: block;
+  padding: 2px 20px 2px 20px;
+}
+
+#navbar .submenu-content a:hover {
+  background: var(--hover-bg);
+  text-decoration: none;
+}
+
+@media all and (max-width: 1110px) {
+  .submenu-content {
+    width: 100%;
+    position: static;
+    display: none;
+    margin-top: 7px;
+    background-color: var(--card-bg);
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    max-height: 190px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform: none;
+    cursor: pointer;
+  }
+
+  .submenu-content li>a {
+    width: 100%;
+  }
+
+  .submenu-content li:first-child a {
+    border-radius: 0;
+  }
+
+  .submenu-content li:last-child {
+    border-bottom: 0;
+  }
+
+  .submenu-content li:last-child a {
+    border-radius: 0;
+  }
+
+  .submenu-content.open {
+    display: inline-block;
+  }
+
+  .submenu-content li {
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+
+/* -------- i18n Button --------*/
+
+#language-picker-menu {
+  display: none;
+}
+
+@media all and (max-width: 1110px) {
+  #language-picker-menu #navmenu>li:first-child {
+    display: flex;
+  }
+
+  #language-picker-menu #navmenu {
+    max-height: 70vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    text-align: center;
+  }
+
+  #language-picker-menu {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+}
+
+/* -------- theme button --------*/
+
+#theme-icon-container {
+  cursor: pointer;
+}
+
+@media all and (max-width: 1110px) {
+  #theme-icon-container {
+    z-index: 10000;
+  }
+}
+
+/* -------- Print --------*/
+
+@media print {
+  header {
+    position: absolute;
+  }
+
+  #mobile-menu {
+    display: none;
+  }
+}
+
+/* ----------------- Blog --------------------- */
+
+#blog-side-menu-container {
+  position: fixed;
+  margin: 0;
+  padding: 0 10px 0 0;
+  top: 153px;
+  left: 30px;
+  height: 500px;
+  text-align: left;
+  font-size: 13px;
+  overflow-y: auto;
+}
+
+#blog-side-menu-container {
+  max-width: 210px;
+}
+
+#blog-side-menu-container li {
+  max-width: 100%;
+  margin-bottom: 5px;
+}
+
+#blog-side-menu-container>h3>a {
+  color: var(--fg)
+}
+
+#blog-side-menu {
+  list-style: none;
+  padding: 0;
+}
+
+#blog-side-menu>li>a {
+  color: var(--menu-grey);
+  font-weight: bold;
+  font-size: 13px;
+}
+
+@media all and (max-width: 1110px) {
+  #blog-side-menu-container {
+    display: none;
+  }
+}
+
+/* ----------------- Side Menu --------------------- */
+
+#menu {
+  position: fixed;
+  margin: 0;
+  padding: 0 10px 0 0;
+  top: 153px;
+  left: 30px;
+  height: 500px;
+  text-align: left;
+  font-size: 13px;
+  overflow-y: auto;
+}
+
+#menu ul a.active {
+  color: var(--fg)
+}
+
+#menu em {
+  font-weight: bold;
+  color: var(--card-fg);
+}
+
+#menu li {
+  list-style: none;
+}
+
+#menu ul {
+  height: 0;
+  overflow: hidden;
+}
+
+#menu ul.active {
+  height: auto;
+  padding: 0;
+}
+
+#menu a {
+  color: var(--menu-grey);
+}
+
+#menu>li>a {
+  color: var(--menu-grey);
+  font-weight: bold;
+  font-size: 13px;
+}
+
+#menu ul a {
+  padding-right: 7px;
+}
+
+@media all and (max-width: 1110px) {
+  #menu {
+    display: none;
+  }
+
+  .menu ul {
+    display: block;
+  }
+}
+
+/* -------- Footer -------- */
+
+footer {
+  font-size: 12px;
+  margin: 60px 5% 30px;
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+}
+
+#footer-content {
+  width: 100%;
+  justify-content: space-between;
+  gap: 32px;
+  display: flex;
+}
+
+#footer-copyright {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+#footer-copyright a {
+  width: fit-content;
+}
+
+#footer-copyright img {
+  max-width: 125px;
+}
+
+#footer-policy {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 8px;
+  justify-content: center;
+  font-size: 15px;
+}
+
+#footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+}
+
+@media all and (max-width: 1110px) {
+  #footer-content {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #footer-copyright>a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* ---- i18n footer section ---- */
+
+#doc-langs {
+  text-align: center;
+  font-size: 12px;
+}
+
+#doc-langs p {
+  margin: 3px 0;
+}
+
+@media all and (max-width: 1110px) {
+  #doc-langs {
+    font-size: 11px;
+  }
+}
+
+/* -------- Search -------- */
+
+#q {
+  display: none;
+  height: 2.5em;
+  max-width: 100%;
+  padding: 5px;
+}
+
+.algolia-autocomplete {
+  max-width: 9em;
+
+  >input {
+    color: var(--fg);
+    background-color: var(--bg);
+  }
+
+  >input::placeholder {
+    color: var(--fg);
+  }
+
+  #q {
+    display: initial;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: color .3s ease;
+    padding-inline: 12px;
+    outline: none;
+
+    &:focus-visible,
+    &:focus {
+      border-color: var(--hover-border);
+      border-width: 2px;
+    }
+  }
+}
+
+#navbar {
+  .ds-dropdown-menu .ds-dataset-1 {
+    background-color: var(--bg);
+
+    .ds-suggestions {
+      /* background-color: var(--bg); */
+      color: var(--fg);
+    }
+
+    .ds-suggestion a {
+      background-color: var(--bg);
+      color: var(--fg);
+    }
+
+    .ds-suggestion a {
+      background-color: var(--bg);
+      color: var(--fg);
+    }
+
+    .algolia-docsearch-suggestion--category-header {
+      color: var(--fg);
+    }
+
+    .algolia-docsearch-suggestion--wrapper {
+      background-color: var(--bg);
+
+      .algolia-docsearch-suggestion--subcategory-column {
+        color: var(--menu-grey);
+
+      }
+
+      .algolia-docsearch-suggestion--title,
+      .algolia-docsearch-suggestion--text {
+        color: var(--fg);
+      }
+
+      .algolia-docsearch-suggestion--highlight {
+        color: var(--link);
+        background-color: initial;
+      }
+    }
+
+    .algolia-docsearch-suggestion {
+      background-color: initial;
+    }
+
+    .algolia-docsearch-suggestion--content .algolia-docsearch-suggestion--no-results {
+      background-color: initial;
+    }
+
+  }
+
+  .ds-suggestion.ds-cursor .algolia-docsearch-suggestion--title,
+  .ds-suggestion.ds-cursor .algolia-docsearch-suggestion--content {
+    background-color: var(--hover-bg);
+  }
+}
+
+@media all and (max-width: 1110px) {
+  #home-menu {
+    display: block;
+    position: absolute;
+    top: 7px;
+  }
+
+  .algolia-autocomplete {
+    display: none !important;
+  }
+}
+
+@media all and (min-width: 950px) {
+  .algolia-autocomplete {
+    margin-right:15px;
+    max-width: 12em;
+  }
+}
