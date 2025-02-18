@@ -11,18 +11,18 @@
   {% endif %}
 
   {% include header.html %}
-    
-    <section class="content">
-      <div id="overlay"></div>
 
-      {% if page.lang != 'en' %}
-        <div id="i18n-notice-box" class="doc-box doc-notice">
+  <div id="overlay"></div>
+
+  {% if page.lang != 'en' %}
+       <div id="i18n-notice-box" class="doc-box doc-notice">
           {% include i18n-notice.html %}
-        </div>
-      {% endif %}
-      
+      </div>
+  {% endif %}
+    
+  <section class="content">
       {{ content }}
-    </section>
+  </section>
 
   {% include footer.html %}
 

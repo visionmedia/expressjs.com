@@ -317,6 +317,7 @@ Handing over tasks that do not require knowledge of application state to a rever
 Handing over tasks that do not require knowledge of application state to a reverse proxy frees up Express to perform specialized application tasks. For this reason, it is recommended to run Express behind a reverse proxy like [Nginx](https://www.nginx.com/) or [HAProxy](http://www.haproxy.org/) in production.
 </div>
 
+<div>
 <ul id="menu">
   <span class="toc-title"><em>Best Practices</em></span>
   <li>
@@ -360,4 +361,6 @@ Handing over tasks that do not require knowledge of application state to a rever
   </ul>
   </li>
 </ul> 
-<button id="menu-toggle" title="show blogs list">Table of content &#x25BC</button>
+
+<button id="menu-toggle" title="show best practices">Table of content &#x25BC;</button>
+</div>

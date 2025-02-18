@@ -612,7 +612,8 @@ footer {
 
 /* api doc */
 
-#api-doc {
+#api-doc,
+#page-doc {
   padding-inline-start: 10rem;
   width: 60vw;
 }
@@ -882,7 +883,8 @@ h2 a {
 }
 
 @media all and (max-width: 1110px) {
-  #api-doc {
+  #api-doc,
+  #page-doc {
     width: 75vw;
   }
 
@@ -1047,9 +1049,10 @@ h2 a {
 /* TOC responsive */
 @media all and (max-width: 800px) {
   #api-doc,
-  #blog-doc {
-    padding-inline-start: 1rem;
-    width: 95dvw;
+  #blog-doc,
+  #page-doc {
+    padding-inline: 1rem;
+    width: 100%;
   }
 
   #menu {
@@ -1059,7 +1062,7 @@ h2 a {
     left: 0;
     background-color: var(--card-bg);
     padding-inline: 0.5rem;
-    min-width: 100dvw;
+    min-width: 100%;
     transition: max-height 0.5s ease;
   }
 

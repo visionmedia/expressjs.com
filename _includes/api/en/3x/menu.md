@@ -160,4 +160,4 @@
         </ul>
     </li>
 </ul>
-<button id="menu-toggle" title="show table of content">Table of content &#x25BC</button>
+<button id="menu-toggle" title="show table of content">Table of content &#x25BC;</button>

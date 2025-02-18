@@ -13,4 +13,4 @@
   </ul>
   </li>
 </ul> 
-<button id="menu-toggle" title="show blogs list">All Blogs &#x25BC</button>
+<button id="menu-toggle" title="show blogs list">All Blogs &#x25BC;</button>
