@@ -20,7 +20,7 @@ h1 {
   line-height: 36px;
 }
 
-#intro h3, #api-doc h1 {
+#intro h2, #api-doc h1 {
   font-weight: normal;
 }
 
@@ -149,7 +149,7 @@ span.block-section {
   display: block;
 }
 
-#intro h3 {
+#intro h2 {
   font-size: 25px;
   margin-bottom: 10px;
 }
@@ -391,7 +391,7 @@ html[xmlns] .clearfix {
   margin-top: 30px;
 }
 
-#boxes h3 {
+#boxes h2 {
   line-height: 1.25em;
   color: var(--card-fg);
   background: none;

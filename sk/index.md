@@ -12,7 +12,7 @@ description: Express is a fast, unopinionated, minimalist web framework for Node
   <div id="overlay"></div>
   <div id="homepage-leftpane" class="pane">
     <section id="description">
-        <div class="express"><a href="/">Express</a></div>
+        <h1 class="express"><a href="/">Express</a></h1>
         <span class="description">Rýchly, jednoduchý a minimalistický webový aplikačný framework pre <a href='http://nodejs.org'>Node.js</a></span>
     </section>
     <div id="install-command">$ npm install express --save</div>
@@ -26,15 +26,15 @@ description: Express is a fast, unopinionated, minimalist web framework for Node
 
   <div id="boxes" class="clearfix">
       <div id="web-applications">
-        <h3>Webové aplikácie</h3> Express je minimalistický, flexibilný, webový Node.js framework poskytujúci robustnú škálu funkcionality pre webové a mobilné aplikácie.
+        <h2>Webové aplikácie</h2> Express je minimalistický, flexibilný, webový Node.js framework poskytujúci robustnú škálu funkcionality pre webové a mobilné aplikácie.
       </div>
 
       <div id="apis">
-        <h3>API</h3> S nespočetným množstvom dostupných HTTP utilít a middlewarov je tvorba robustného API rýchla a jednoduchá.
+        <h2>API</h2> S nespočetným množstvom dostupných HTTP utilít a middlewarov je tvorba robustného API rýchla a jednoduchá.
       </div>
 
       <div id="performance">
-        <h3>Vyhotovenie</h3> Express predstavuje tenkú vrstvu elementárnych prvkov webovej aplikácie bez skrývania Node.js prvkov, ktoré poznáte a milujete.
+        <h2>Vyhotovenie</h2> Express predstavuje tenkú vrstvu elementárnych prvkov webovej aplikácie bez skrývania Node.js prvkov, ktoré poznáte a milujete.
       </div>
 
       <div id="frameworks">
