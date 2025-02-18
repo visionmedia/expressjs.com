@@ -24,6 +24,10 @@ h1 {
   font-weight: normal;
 }
 
+.link-underlined {
+  text-decoration: underline;
+}
+
 h1, h2, h3 {
   margin: 5px 0;
   color: var(--card-fg);
@@ -282,6 +286,10 @@ a {
 
 #doc-langs p {
   margin: 3px 0;
+}
+
+#doc-langs a {
+  text-decoration: underline;
 }
 
 .header-right {
