@@ -56,7 +56,7 @@ app.listen(port, () => {
     </div>
 
     <div id="middleware">
-      <h3>Middleware2</h3> 
+      <h3>Middleware</h3> 
       Express is a lightweight and flexible routing framework with minimal core features 
       meant to be augmented through the use of Express <a class="link-underlined" href="{{ page.lang }}/resources/middleware.html">middleware</a> modules.
     </div>
