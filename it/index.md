@@ -11,7 +11,7 @@ description: Express is a fast, unopinionated, minimalist web framework for Node
   <div id="overlay"></div>
   <div id="homepage-leftpane" class="pane">
     <section id="description">
-        <div class="express"><a href="/">Express</a></div>
+        <h1 class="express"><a href="/">Express</a></h1>
         <span class="description">Framework web veloce, non categorico e minimalista per <a href='http://nodejs.org'>Node.js</a></span>
     </section>
     <div id="install-command">$ npm install express --save</div>
@@ -30,19 +30,19 @@ description: Express is a fast, unopinionated, minimalist web framework for Node
 
   <div id="boxes" class="clearfix">
       <div id="web-applications">
-          <h3>Applicazioni web</h3> Express è un framework per applicazioni web Node.js flessibile e leggero che fornisce una serie di funzioni avanzate per le applicazioni web e per dispositivi mobili.
+          <h2>Applicazioni web</h2> Express è un framework per applicazioni web Node.js flessibile e leggero che fornisce una serie di funzioni avanzate per le applicazioni web e per dispositivi mobili.
       </div>
 
       <div id="apis">
-          <h3>API</h3> Con una miriade di metodi di utilità HTTP e middleware a disposizione, la creazione di un'API affidabile è un processo facile e veloce.
+          <h2>API</h2> Con una miriade di metodi di utilità HTTP e middleware a disposizione, la creazione di un'API affidabile è un processo facile e veloce.
       </div>
 
       <div id="performance">
-          <h3>Prestazioni</h3> Express fornisce uno strato sottile di funzionalità di base per le applicazioni web, senza nascondere le funzioni Node.js che conosci e ami.
+          <h2>Prestazioni</h2> Express fornisce uno strato sottile di funzionalità di base per le applicazioni web, senza nascondere le funzioni Node.js che conosci e ami.
       </div>
 
       <div id="sponsorship">
-          <a href="http://loopback.io/"><h3>LoopBack</h3> Sviluppare applicazioni basate sul modello con un framework basato su Express.<br/>Ulteriori informazioni su loopback.io.</a>
+          <a href="http://loopback.io/"><h2>LoopBack</h2> Sviluppare applicazioni basate sul modello con un framework basato su Express.<br/>Ulteriori informazioni su loopback.io.</a>
       </div>
   </div>
 
