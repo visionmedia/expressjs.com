@@ -199,24 +199,20 @@ NODE_ENV 環境變數用來指定應用程式的執行環境（通常是開發�
 採用 Upstart 時，請在您的工作檔中使用 `env` 關鍵字。例如：
 
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 # /etc/init/env.conf
  env NODE_ENV=production
-</code>
-</pre>
+```
 
 如需相關資訊，請參閱 [Upstart Intro, Cookbook and Best Practices](http://upstart.ubuntu.com/cookbook/#environment-variables)。
 
 採用 systemd 時，請在單位檔案中使用 `Environment` 指引。例如：
 
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 # /etc/systemd/system/myservice.service
 Environment=NODE_ENV=production
-</code>
-</pre>
+```
 
 如需相關資訊，請參閱 [Using Environment Variables In systemd Units](https://coreos.com/os/docs/latest/using-environment-variables-in-systemd-units.html)。
 
@@ -279,8 +275,7 @@ Systemd 是一個 Linux 系統和服務管理程式。大部分主要的 Linux �
 
 systemd 服務配置檔稱為*單位檔案*，其副名結尾是 .service。以下是範例單位檔案，用來直接管理 Node 應用程式（請以您的系統和應用程式值取代粗體字）：
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 [Unit]
 Description=Awesome Express App
 
@@ -308,8 +303,7 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-</code>
-</pre>
+```
 如需 systemd 的相關資訊，請參閱 [systemd 參照（線上指令說明）](http://www.freedesktop.org/software/systemd/man/systemd.unit.html)。
 
 ##### 將 StrongLoop PM 當成 systemd 服務
@@ -318,13 +312,13 @@ WantedBy=multi-user.target
 
 將 StrongLoop PM 安裝成 systemd 服務：
 
-```console
+```bash
 $ sudo sl-pm-install --systemd
 ```
 
 然後使用下列指令來啟動服務：
 
-```console
+```bash
 $ sudo /usr/bin/systemctl start strong-pm
 ```
 
@@ -338,8 +332,7 @@ Upstart 服務定義在工作配置檔（亦稱為 "job"）中，其副名結尾
 
 在 `/etc/init/` 建立名稱是 `myapp.conf` 的檔案，且其內容如下（請以您系統和應用程式的值取代粗體字）：
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 # When to start the process
 start on runlevel [2345]
 
@@ -367,8 +360,7 @@ respawn
 
 # Limit restart attempt to 10 times within 10 seconds
 respawn limit 10 10
-</code>
-</pre>
+```
 
 附註：這個 Script 需要 Upstart 1.4 或更新版本，且 Ubuntu 12.04-14.10 支援該 Upstart 版本。
 
@@ -388,13 +380,13 @@ respawn limit 10 10
 
 將 StrongLoop PM 安裝成 Upstart 1.4 服務：
 
-```console
+```bash
 $ sudo sl-pm-install
 ```
 
 然後使用下列指令來執行服務：
 
-```console
+```bash
 $ sudo /sbin/initctl start strong-pm
 ```
 
@@ -423,7 +415,7 @@ $ sudo /sbin/initctl start strong-pm
 
 舉例來說，假設您將應用程式部署至 prod.foo.com，且 StrongLoop PM 是在埠 8701（預設值）接聽，請使用 slc 將叢集大小設為 8：
 
-```console
+```bash
 $ slc ctl -C http://prod.foo.com:8701 set-size my-app 8
 ```
 

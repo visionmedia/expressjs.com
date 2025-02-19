@@ -20,18 +20,6 @@ $(function(){
     }
   })
 
-  // code highlight
-
-  $('code.language-js').each(function(){
-    $(this).addClass('language-javascript').removeClass('language-js')
-  })
-
-  $('code.language-sh').each(function(){
-    $(this).parent().addClass('language-sh')
-  })
-
-  Prism.highlightAll()
-
   // menu bar
 
   var headings = $('h2, h3').map(function(i, el){
@@ -54,6 +42,19 @@ $(function(){
   var currentApiPrefix;
   var parentMenuSelector;
   var lastApiPrefix;
+
+  if (document.readyState !== 'loading') {
+    const languageElement = document.getElementById('languageData');
+    const languagesData = languageElement ? JSON.parse(languageElement.dataset.languages) : [];
+
+    const langDisplay = document.getElementById('current-lang');
+
+    if (langDisplay) {
+      const currentLanguage = window.location.pathname.split('/')[1];
+      const matchedLang = languagesData.find(lang => lang.code === currentLanguage);
+      langDisplay.textContent = matchedLang ? matchedLang.name : 'English';
+    }  
+  }
 
   $(window).bind('load resize', function() {
 

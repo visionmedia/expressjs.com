@@ -6,7 +6,7 @@ menu: home
 lang: de
 ---
 <section id="home-content">
-    {% include header/header-{{ page.lang }}.html %}
+    {% include header.html %}
     <div id="overlay"></div>
     <div id="homepage-leftpane" class="pane">
     <section id="description">
@@ -43,9 +43,3 @@ lang: de
   </div>
 
 </section>
-
-<!--
-<section id="announcements">
-  {% include announcement/announcement-{{ page.lang }}.md %}
-</section>
--->

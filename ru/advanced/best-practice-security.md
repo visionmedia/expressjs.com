@@ -48,20 +48,20 @@ Helmet, по сути, представляет собой набор из де�
 
 Установите Helmet, как обычный модуль:
 
-```console
+```bash
 $ npm install --save helmet
 ```
 
 Затем используйте его в своем коде:
 
-<pre>
-<code class="language-javascript" translate="no">
-...
-var helmet = require('helmet');
-app.use(helmet());
-...
-</code>
-</pre>
+```js
+/// ...
+
+const helmet = require('helmet')
+app.use(helmet())
+
+/// ...
+```
 
 ### Как минимум, отключите заголовок X-Powered-By
 
@@ -69,11 +69,9 @@ app.use(helmet());
 
 Поэтому рекомендуется отключить данный заголовок с помощью метода `app.disable()`.
 
-<pre>
-<code class="language-javascript" translate="no">
-app.disable('x-powered-by');
-</code>
-</pre>
+```js
+app.disable('x-powered-by')
+```
 
 Если вы используете `helmet.js`, это будет сделано автоматически.
 
@@ -96,17 +94,15 @@ app.disable('x-powered-by');
 
 Для того чтобы избежать такой проблемы, используйте обобщенные имена cookie; например, при использовании промежуточного обработчика [express-session](https://www.npmjs.com/package/express-session):
 
-<pre>
-<code class="language-javascript" translate="no">
-var session = require('express-session');
+```js
+const session = require('express-session')
 app.set('trust proxy', 1) // trust first proxy
-app.use( session({
-   secret : 's3Cur3',
-   name : 'sessionId',
-  })
-);
-</code>
-</pre>
+app.use(session({
+  secret: 's3Cur3',
+  name: 'sessionId'
+})
+)
+```
 
 ### Настройка опций защиты cookie
 
@@ -120,26 +116,25 @@ app.use( session({
 
 Ниже приведен пример с использованием промежуточного обработчика [cookie-session](https://www.npmjs.com/package/cookie-session):
 
-<pre>
-<code class="language-javascript" translate="no">
-var session = require('cookie-session');
-var express = require('express');
-var app = express();
+```js
+const session = require('cookie-session')
+const express = require('express')
+const app = express()
 
-var expiryDate = new Date( Date.now() + 60 * 60 * 1000 ); // 1 hour
+const expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 app.use(session({
   name: 'session',
   keys: ['key1', 'key2'],
-  cookie: { secure: true,
-            httpOnly: true,
-            domain: 'example.com',
-            path: 'foo/bar',
-            expires: expiryDate
-          }
-  })
-);
-</code>
-</pre>
+  cookie: {
+    secure: true,
+    httpOnly: true,
+    domain: 'example.com',
+    path: 'foo/bar',
+    expires: expiryDate
+  }
+})
+)
+```
 
 ## Дополнительные замечания
 

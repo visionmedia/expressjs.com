@@ -7,7 +7,7 @@ lang: en
 redirect_from: "/en/index.html"
 ---
 <section id="home-content">
-  {% include header/header-{{ page.lang }}.html %}
+  {% include header.html %}
   <div id="overlay"></div>
   <div id="homepage-leftpane" class="pane">
     <section id="description">
@@ -17,9 +17,9 @@ redirect_from: "/en/index.html"
     <div id="install-command">$ npm install express --save</div>
   </div>
 
-  <div id="homepage-rightpane" class="pane">
-    <div id="quick-start">
-      <pre><code class="language-javascript">
+  <div id="homepage-rightpane" class="pane" markdown="1">
+    
+```javascript
 const express = require('express')
 const app = express()
 const port = 3000
@@ -31,13 +31,16 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
-      </code></pre>
-    </div>
+```
+
   </div>
 </section>
+
+{% if site.announcement %}
 <section id="announcements">
-  {% include announcement/announcement-en.md %}
+  {% include announcement.html %}
 </section>
+{% endif %}
 
 <section id="intro">
 

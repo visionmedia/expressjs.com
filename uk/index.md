@@ -7,7 +7,7 @@ description: Express is a fast, unopinionated, minimalist web framework for Node
   providing a robust set of features for web and mobile applications.
 ---
 <section id="home-content">
-  {% include header/header-{{ page.lang }}.html %}
+  {% include header.html %}
   <div id="overlay"></div>
   <div id="homepage-leftpane" class="pane">
     <section id="description">
@@ -43,9 +43,3 @@ description: Express is a fast, unopinionated, minimalist web framework for Node
   </div>
 
 </section>
-
-<!--
-<section id="announcements">
-  {% include announcement/announcement-{{ page.lang }}.md %}
-</section>
--->

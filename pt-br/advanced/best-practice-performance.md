@@ -268,23 +268,19 @@ mas configurando NODE_ENV é tão importante para o desempenho (e fácil de faze
 Com o Upstart, use a palavra-chave `env` no
 seu arquivo de tarefa. Por exemplo:
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 # /etc/init/env.conf
  env NODE_ENV=production
-</code>
-</pre>
+```
 
 Para obter mais informações, consulte o [Introdução, Cookbook e Melhores Práticas para o Upstart](http://upstart.ubuntu.com/cookbook/#environment-variables).
 
 Com o systemd, use a diretiva `Environment` no seu arquivo de unidade. Por exemplo:
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 # /etc/systemd/system/myservice.service
 Environment=NODE_ENV=production
-</code>
-</pre>
+```
 
 Para obter mais informações, consulte [Usando
 Variáveis de Ambiente em Unidades systemd](https://coreos.com/os/docs/latest/using-environment-variables-in-systemd-units.html).
@@ -387,8 +383,7 @@ terminando em .service. Aqui está um exemplo de arquivo de unidade
 para gerenciar um aplicativo Node diretamente (substitua o texto em
 negrito com valores para o seu sistema e aplicativo):
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 [Unit]
 Description=Awesome Express App
 
@@ -416,8 +411,7 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-</code>
-</pre>
+```
 Para obter mais informações sobre o systemd, consulte a
 [referência
 do systemd (página do manual)](http://www.freedesktop.org/software/systemd/man/systemd.unit.html).
@@ -431,13 +425,13 @@ então reiniciar todos os aplicativos que está gerenciando.
 
 Para instalar o StrongLoop PM como um serviço do systemd:
 
-```console
+```bash
 $ sudo sl-pm-install --systemd
 ```
 
 Em seguida inicie o serviço com:
 
-```console
+```bash
 $ sudo /usr/bin/systemctl start strong-pm
 ```
 
@@ -463,8 +457,7 @@ Crie um arquivo chamado `myapp.conf` em
 `/etc/init/` com o seguinte conteúdo (substitua o
 texto em negrito com os valores para o seu sistema e aplicativo):
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 # When to start the process
 start on runlevel [2345]
 
@@ -492,8 +485,7 @@ respawn
 
 # Limit restart attempt to 10 times within 10 seconds
 respawn limit 10 10
-</code>
-</pre>
+```
 
 NOTA: Este script requer o Upstart 1.4 ou mais novo, suportado no Ubuntu 12.04-14.10.
 
@@ -522,13 +514,13 @@ então reiniciar todos os aplicativos que está gerenciando.
 
 Para instalar o StrongLoop PM como um serviço do Upstart 1.4:
 
-```console
+```bash
 $ sudo sl-pm-install
 ```
 
 Em seguida execute o serviço com:
 
-```console
+```bash
 $ sudo /sbin/initctl start strong-pm
 ```
 
@@ -580,7 +572,7 @@ para prod.foo.com e o StrongLoop PM está escutando na porta 8701 (a
 padrão), em seguida configurar o tamanho do cluster para oito usando
 o slc:
 
-```console
+```bash
 $ slc ctl -C http://prod.foo.com:8701 set-size my-app 8
 ```
 

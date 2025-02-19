@@ -198,23 +198,19 @@ Nello sviluppo, solitamente si impostano le variabili di ambiente nella shell in
 
 Con Upstart, utilizzare la parola chiave `env` nel file job. Ad esempio:
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 # /etc/init/env.conf
  env NODE_ENV=production
-</code>
-</pre>
+```
 
 Per ulteriori informazioni, consultare [Upstart Intro, Cookbook and Best Practices](http://upstart.ubuntu.com/cookbook/#environment-variables).
 
 Con systemd, utilizzare la direttiva `Environment` nel file unit. Ad esempio:
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 # /etc/systemd/system/myservice.service
 Environment=NODE_ENV=production
-</code>
-</pre>
+```
 
 Per ulteriori informazioni, consultare [Using Environment Variables In systemd Units](https://coreos.com/os/docs/latest/using-environment-variables-in-systemd-units.html).
 
@@ -275,8 +271,7 @@ Systemd è un sistema Linux e un service manager. Le più importanti distribuzio
 
 Un file di configurazione del servizio systemd è denominato *unit file*, con un nome file che termina con .service. Segue un unit file di esempio per gestire un'applicazione Node direttamente (sostituire il testo in grassetto con i valori appropriati per il proprio sistema e applicazione):
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 [Unit]
 Description=Awesome Express App
 
@@ -304,8 +299,7 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-</code>
-</pre>
+```
 Per ulteriori informazioni su systemd, consultare [systemd reference (man page)](http://www.freedesktop.org/software/systemd/man/systemd.unit.html).
 
 ##### StrongLoop PM in qualità di servizio systemd
@@ -314,13 +308,13 @@ Per ulteriori informazioni su systemd, consultare [systemd reference (man page)]
 
 Per installare StrongLoop PM in qualità di servizio systemd:
 
-```console
+```bash
 $ sudo sl-pm-install --systemd
 ```
 
 Successivamente, avviare il servizio con:
 
-```console
+```bash
 $ sudo /usr/bin/systemctl start strong-pm
 ```
 
@@ -334,8 +328,7 @@ Un servizio Upstart è definito in un file di configurazione del lavoro (anche n
 
 Creare un file denominato `myapp.conf` in `/etc/init/` con il seguente contenuto (sostituire il testo in grassetto con i valori appropriati per il proprio sistema e applicazione):
 
-<pre>
-<code class="language-sh" translate="no">
+```sh
 # When to start the process
 start on runlevel [2345]
 
@@ -363,8 +356,7 @@ respawn
 
 # Limit restart attempt to 10 times within 10 seconds
 respawn limit 10 10
-</code>
-</pre>
+```
 
 NOTA: questo script richiede Upstart 1.4 o versione successiva, supportato su Ubuntu 12.04-14.10.
 
@@ -384,13 +376,13 @@ Per ulteriori informazioni su Upstart, consultare [Upstart Intro, Cookbook and B
 
 Per installare StrongLoop PM in qualità di servizio Upstart 1.4:
 
-```console
+```bash
 $ sudo sl-pm-install
 ```
 
 Successivamente, eseguire il servizio con:
 
-```console
+```bash
 $ sudo /sbin/initctl start strong-pm
 ```
 
@@ -418,7 +410,7 @@ Quando StrongLoop Process Manager (PM) esegue un'applicazione, la esegue automat
 
 Ad esempio, se l'applicazione è stata implementata su prod.foo.com e StrongLoop PM è in ascolto sulla porta 8701 (quella predefinita), per impostare la dimensione del cluster a otto utilizzando slc:
 
-```console
+```bash
 $ slc ctl -C http://prod.foo.com:8701 set-size my-app 8
 ```
 

@@ -8,7 +8,7 @@ description: Express is a fast, unopinionated, minimalist web framework for Node
 ---
 
 <section id="home-content">
-  {% include header/header-{{ page.lang }}.html %}
+  {% include header.html %}
   <div id="overlay"></div>
   <div id="homepage-leftpane" class="pane">
     <section id="description">
@@ -21,11 +21,7 @@ description: Express is a fast, unopinionated, minimalist web framework for Node
     <iframe src="https://www.youtube.com/embed/HxGt_3F0ULg" frameborder="0" allowfullscreen></iframe>
   </div>
 </section>
-<!--
-<section id="announcements">
-  {% include announcement/announcement-{{ page.lang }}.md %}
-</section>
--->
+
 <section id="doc-langs" markdown="1">
 
   Express の資料は、他の言語 ([スペイン語](/es)、[日本語](/ja)、[ロシア語](/ru)、[中国語](/zh-cn)、[韓国語](/ko)、[ポルトガル語](/pt-br)) でも提供されています。
