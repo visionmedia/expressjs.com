@@ -5,7 +5,7 @@ let isSmallScreen = mobileScreen?.matches;
 mobileScreen?.addEventListener("change", (event) => {
 	isSmallScreen = event.matches
 
-	if (!event.matches) {
+  if (!isSmallScreen) {
 		document.body.classList.remove("no-scroll")
 	}
 });
@@ -13,11 +13,30 @@ mobileScreen?.addEventListener("change", (event) => {
 // Desktop Menu
 
 const itemsMenu = document.querySelectorAll(".submenu");
+const navDrawers = document.querySelectorAll('#navmenu > li')
+let activeDrawer
+// Desktop Menu
+
 
 for (const el of itemsMenu) {
 	el.addEventListener("click", () => {
 		if (isSmallScreen || 'ontouchstart' in document.documentElement) {
+      // if none set page is set by markup logic on load
+      if (!activeDrawer) {
+        // remove default active link
+        removeAllActiveDrawer(navDrawers)
+        // set new active drawer to clicked
+        activeDrawer = el
+		// add active class
+		addActiveToDrawer(el)
+      } else if (activeDrawer.id !== el.id) {
+        activeDrawer.querySelector('a').classList.remove('active')
+        addActiveToDrawer(el)
+        activeDrawer = el
+      }
+
 			for (const item of itemsMenu) {
+        // close any open drawers on click next drawer
 				if (item.id !== el.id) {
 					item.classList.remove("open");
 				}
@@ -38,24 +57,6 @@ for (const el of itemsMenu) {
 		}
 	});
 }
-// mid-size desktop nav links menu
-for(const item of itemsMenu){
-// remove all active links put by markup
-	item.querySelector('a').classList.remove('active')
-}
-// set top link to active on open
-var current = itemsMenu[0].querySelector('a')
-current.classList.add('active')
-for(const item of itemsMenu){
-	item.addEventListener('click', (e) => {
-		if(e.target != current){
-			current.classList.remove('active')
-		}
-		current = e.target
-		current.classList.add('active')
-	})
-}
-
 // Mobile Menu
 
 const linkItemsMenu = document.querySelectorAll(".submenu > a");
@@ -91,3 +92,12 @@ overlay?.addEventListener("click", () => {
 document
 	.querySelector(`.submenu-content a[href="{document.location.pathname}"]`)
 	?.classList.add("current");
+
+function removeAllActiveDrawer(navDrawers) {
+  for (const item of navDrawers) {
+    item.querySelector('a').classList.remove('active')
+  }
+}
+function addActiveToDrawer(drawer) {
+	drawer.querySelector('a').classList.add('active')
+}
